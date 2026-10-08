@@ -20,6 +20,14 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
     lede: 'Every ZIP in the guide now has its full local ballot: Los Angeles, Orange, Riverside, Placer, Alameda and Santa Clara counties join San Diego.',
     panels: [
       {
+        summary: 'Three ways to read the summary table',
+        bullets: [
+          '“Typology fit” is the original table: picks by worldview.',
+          '“Experience” lists the most experienced candidate in each race.',
+          '“Fit + experience” keeps strong typology picks, but switches a weak one when a rival is at least two experience levels higher. Switched cells are marked ⇄, with the reason on hover or tap.',
+        ],
+      },
+      {
         summary: 'Easier to read',
         bullets: [
           'One consistent type scale: five text sizes and two weights, nothing smaller than about 15px, and no all-caps labels.',

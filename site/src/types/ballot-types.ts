@@ -291,6 +291,25 @@ export interface TldrRow {
   cells: Record<TypologyCode, string>;
   /** Highest red-flag tier of the candidate picked in each column (severe/serious only). */
   flags: Partial<Record<TypologyCode, 'severe' | 'serious'>>;
+  /** Most experienced candidate(s); null for measures and retention votes. */
+  experience: TldrExperienceCell | null;
+  /** Typology pick adjusted for experience (see `combinedCellFor`). */
+  combined: Record<TypologyCode, TldrCombinedCell>;
+}
+
+export interface TldrExperienceCell {
+  entries: { label: string; level: ExperienceLevel }[];
+  /** More candidates tied at the top level than there are seats. */
+  tie: boolean;
+  unopposed: boolean;
+}
+
+export interface TldrCombinedCell {
+  /** Same `"Name ●"` shape as `TldrRow.cells`. */
+  cell: string;
+  flag?: 'severe' | 'serious';
+  /** Set when experience changed the typology pick: one sentence on why. */
+  reason?: string;
 }
 
 /** A race as shown for one ZIP: adds how much of the ZIP votes in it when not all of it does. */

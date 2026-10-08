@@ -1602,7 +1602,7 @@ main {
   }
 
   /* Wide typology matrix: keep legible cells; scroll horizontally */
-  .matrix-table:not(.matrix-table--compact) {
+  .matrix-table:not(.matrix-table--compact):not(.exp-table) {
     min-width: 36rem;
   }
 
@@ -1686,7 +1686,7 @@ main {
     justify-self: center;
   }
 
-  .matrix-table:not(.matrix-table--compact) {
+  .matrix-table:not(.matrix-table--compact):not(.exp-table) {
     min-width: 34rem;
   }
 }
@@ -2247,4 +2247,92 @@ button:focus-visible {
       color: var(--rad-text-muted);
     }
   }
+}
+
+/* ---- TL;DR view toggle ---- */
+
+.view-toggle {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  margin: 0 0 1rem;
+  border: 1px solid var(--rad-border);
+  border-radius: var(--rad-radius);
+  background: var(--rad-surface-elevated);
+}
+
+.view-toggle__btn {
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border: 0;
+  border-radius: calc(var(--rad-radius) - 3px);
+  background: transparent;
+  color: var(--rad-text-muted);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--rad-text);
+  }
+
+  &[aria-pressed='true'] {
+    background: var(--rad-surface);
+    color: var(--rad-text);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--rad-accent);
+    outline-offset: 1px;
+  }
+}
+
+.pick-changed {
+  color: var(--rad-accent-dim);
+  font-weight: 600;
+  cursor: help;
+}
+
+.exp-table th.exp-table__col,
+.exp-table td.exp-table__cell {
+  text-align: left;
+}
+
+.exp-table th.exp-table__col {
+  background: color-mix(in srgb, var(--rad-surface-elevated) 88%, var(--rad-page-bg));
+  color: var(--rad-text-muted);
+}
+
+.exp-table__entries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+}
+
+.exp-table__entry {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.4rem;
+}
+
+.exp-table__note {
+  color: var(--rad-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.exp-table__note {
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.pick-cell--nowrap {
+  white-space: nowrap;
+}
+
+/* Consecutive Methodology paragraphs need a gap (margin is 0 by default). */
+.methodology__text + .methodology__text {
+  margin-top: 0.75rem;
 }

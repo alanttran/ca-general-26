@@ -57,6 +57,7 @@ import {
   sortRedFlags,
   STATUS_LABEL,
 } from './data/red-flags';
+import { COMBINED_LEVEL_GAP } from './data/experience-views';
 
 const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
 
@@ -98,7 +99,12 @@ function srConfidenceLabel(c: string): string {
   }
 }
 
-function fillPickCell(td: HTMLTableCellElement, cell: string, flag?: 'severe' | 'serious'): void {
+function fillPickCell(
+  td: HTMLTableCellElement,
+  cell: string,
+  flag?: 'severe' | 'serious',
+  changedReason?: string,
+): void {
   td.classList.add('matrix-pick-cell');
   const { label, confidence } = parsePickCell(cell);
   const inner = el('span', 'pick-cell');
@@ -112,6 +118,16 @@ function fillPickCell(td: HTMLTableCellElement, cell: string, flag?: 'severe' | 
     inner.append(badge);
     td.append(inner);
     return;
+  }
+  if (changedReason) {
+    if (!label.includes(',')) inner.classList.add('pick-cell--nowrap');
+    const mark = el('span', 'pick-changed', { title: changedReason, tabindex: '0' });
+    const sr = el('span', 'visually-hidden');
+    sr.textContent = `Changed by experience: ${changedReason} `;
+    const glyph = el('span', undefined, { 'aria-hidden': 'true' });
+    glyph.textContent = '⇄';
+    mark.append(sr, glyph);
+    inner.append(mark, document.createTextNode(' '));
   }
   inner.append(document.createTextNode(label));
   if (flag) inner.append(pickFlagMarker(flag));
@@ -606,7 +622,7 @@ function renderIntroBlocks(): HTMLElement {
     </section>
     <section class="intro-card" aria-labelledby="how-guide">
       <h2 id="how-guide"><span class="intro-card__heading-icon intro-card__heading-icon--secondary" aria-hidden="true"></span>How to use this guide</h2>
-      <p>Each race includes <strong>web-condensed</strong> backgrounds, scorecards where available, money and endorsement notes, red-flag callouts, and a <strong>cross-typology recommendation row</strong> with confidence icons (see legend under the TL;DR matrix).</p>
+      <p>Each race includes <strong>web-condensed</strong> backgrounds, scorecards where available, money and endorsement notes, red-flag callouts, and a <strong>cross-typology recommendation row</strong> with confidence icons (see legend under the TL;DR summary).</p>
       <p>Propositions and local measures get a Yes/No pick per column; judicial retention votes are grouped into one table per court. Use <strong>Print my picks</strong> in the header for a one-page cheat sheet in ballot order.</p>
     </section>
   `;
@@ -680,7 +696,7 @@ function renderMethodologySection(): HTMLElement {
     'Each race and measure includes a row of suggested picks keyed to PL through FF. We ask which candidate is least mismatched with the policy and cultural instincts Pew summarizes for that bucket—then sanity-check against viability and red flags. When two candidates are both plausible, the write-up states the trade-off instead of pretending certainty.';
 
   const hConf = el('h3', 'methodology__subhead');
-  hConf.textContent = 'Confidence symbols in the TL;DR matrix';
+  hConf.textContent = 'Confidence symbols in the TL;DR summary';
 
   const ulConf = el('ul', 'confidence-legend__list methodology__confidence-legend');
   for (const def of CONFIDENCE_LEVEL_ROWS) {
@@ -748,6 +764,8 @@ function renderMethodologySection(): HTMLElement {
   const pExp2 = el('p', 'methodology__text');
   pExp2.textContent =
     'Where an outside evaluator publishes a rating—bar associations for trial judges, the State Bar’s Commission on Judicial Nominees Evaluation for appellate appointees—we show it word for word. Experience informs picks but never decides them: Outsider Left and Populist Right voters, among others, often prefer a newcomer.';
+  const pExp3 = el('p', 'methodology__text');
+  pExp3.textContent = `The TL;DR summary has two more views. “Experience” lists the most experienced candidate in each race. “Fit + experience” starts from the typology picks: strong (●) picks stay; a medium or low pick switches to a rival rated at least ${COMBINED_LEVEL_GAP} levels more experienced (for example, Little experience to Experienced); and a race with no typology pick goes to the clearly most experienced candidate. When two rivals tie, nothing switches. Red flags are already reflected in confidence, so they don’t count twice.`;
 
   const hPew = el('h3', 'methodology__subhead');
   hPew.textContent = "About Pew's groups vs. our cells";
@@ -775,16 +793,86 @@ function renderMethodologySection(): HTMLElement {
 
   sec.append(
     h2, lead, hCross, pCross, hConf, ulConf, hScore, pScore, hRecord, pRecord, hRed, pRed,
-    hRubric, pRubric, ulRubric, pStatus, pPicks, hExp, pExp, ulExp, pExp2, hPew, pPew,
+    hRubric, pRubric, ulRubric, pStatus, pPicks, hExp, pExp, ulExp, pExp2, pExp3, hPew, pPew,
   );
   return sec;
 }
+
+type TldrView = 'typology' | 'experience' | 'combined';
+
+const TLDR_VIEW_KEY = 'ca-general-26:tldr-view';
+
+const TLDR_VIEWS: { id: TldrView; label: string; caption: string }[] = [
+  {
+    id: 'typology',
+    label: 'Typology fit',
+    caption:
+      'Picks by worldview. Each cell shows the recommended name plus a confidence icon (see legend above). A red flag after a name means that candidate has a Severe or Serious red flag on their card.',
+  },
+  {
+    id: 'experience',
+    label: 'Experience',
+    caption:
+      'The most experienced candidate in each race, using the experience rating on each candidate card. Experience doesn’t depend on worldview, so there is one column. Ballot measures and retention votes aren’t listed: there are no candidates to compare.',
+  },
+  {
+    id: 'combined',
+    label: 'Fit + experience',
+    caption: `Typology picks, adjusted for experience. Strong (●) picks stand. A medium or low pick switches to a rival who is at least ${COMBINED_LEVEL_GAP} experience levels higher, and a race with no pick goes to the clearly most experienced candidate. Switched cells are marked ⇄ and drop to low confidence (hover or tap for why). Red flags show the same marker as before and don’t change picks here.`,
+  },
+];
+
+function readTldrView(): TldrView {
+  try {
+    const v = localStorage.getItem(TLDR_VIEW_KEY);
+    if (v === 'typology' || v === 'experience' || v === 'combined') return v;
+  } catch {
+    /* storage unavailable: use the default */
+  }
+  return 'typology';
+}
+
+let tldrView: TldrView = readTldrView();
 
 function renderTldr(data: BallotData): HTMLElement {
   const sec = el('section', 'tldr');
   const h2 = el('h2');
   h2.id = 'tldr-matrix';
-  h2.textContent = 'TL;DR matrix (all races × typologies)';
+  h2.textContent = 'TL;DR summary (all races)';
+
+  const toggle = el('div', 'view-toggle', { role: 'group', 'aria-label': 'Summary view' });
+  const body = el('div', 'tldr__body');
+  const buttons = TLDR_VIEWS.map((v) => {
+    const b = el('button', 'view-toggle__btn', { type: 'button' });
+    b.textContent = v.label;
+    b.addEventListener('click', () => {
+      tldrView = v.id;
+      try {
+        localStorage.setItem(TLDR_VIEW_KEY, v.id);
+      } catch {
+        /* not remembered; still switches */
+      }
+      paint();
+    });
+    toggle.append(b);
+    return b;
+  });
+
+  const paint = (): void => {
+    buttons.forEach((b, i) => b.setAttribute('aria-pressed', String(TLDR_VIEWS[i].id === tldrView)));
+    body.replaceChildren(...renderTldrView(data, tldrView));
+  };
+  paint();
+  sec.append(h2, toggle, body);
+  return sec;
+}
+
+function renderTldrView(data: BallotData, view: TldrView): HTMLElement[] {
+  const cap = el('p', 'table-caption');
+  cap.id = 'tldr-cap';
+  cap.textContent = TLDR_VIEWS.find((v) => v.id === view)!.caption;
+  if (view === 'experience') return [cap, renderExperienceTable(data)];
+
   const spectrum = el('div', 'typology-spectrum');
   spectrum.setAttribute('role', 'presentation');
   const spectrumLabel = el('p', 'typology-spectrum__label');
@@ -792,10 +880,6 @@ function renderTldr(data: BallotData): HTMLElement {
   const bar = el('div', 'typology-spectrum__bar');
   spectrum.append(spectrumLabel, bar);
   const legend = renderConfidenceLegend();
-  const cap = el('p', 'table-caption');
-  cap.id = 'tldr-cap';
-  cap.textContent =
-    'At-a-glance picks from the research guide. Each cell shows the recommended name plus a confidence icon (see legend above). A red flag after a name means that candidate has a Severe or Serious red flag on their card.';
   const wrap = el('div', 'table-scroll');
   const table = el('table', 'matrix-table');
   table.setAttribute('aria-labelledby', 'tldr-matrix');
@@ -822,15 +906,65 @@ function renderTldr(data: BallotData): HTMLElement {
     tr.append(th);
     for (const code of TY_CODES) {
       const td = el('td', `matrix-col matrix-col--${code}`);
-      fillPickCell(td, row.cells[code] ?? '—', row.flags[code]);
+      if (view === 'combined') {
+        const c = row.combined[code];
+        fillPickCell(td, c.cell, c.flag, c.reason);
+      } else {
+        fillPickCell(td, row.cells[code] ?? '—', row.flags[code]);
+      }
       tr.append(td);
     }
     tb.append(tr);
   }
   table.append(thead, tb);
   wrap.append(table);
-  sec.append(h2, spectrum, legend, cap, wrap);
-  return sec;
+  return [spectrum, legend, cap, wrap];
+}
+
+function renderExperienceTable(data: BallotData): HTMLElement {
+  const wrap = el('div', 'table-scroll');
+  const table = el('table', 'matrix-table exp-table');
+  table.setAttribute('aria-labelledby', 'tldr-matrix');
+  table.setAttribute('aria-describedby', 'tldr-cap');
+  const thead = el('thead');
+  const trh = el('tr');
+  const thRace = el('th', 'matrix-col matrix-col--race', { scope: 'col' });
+  thRace.textContent = 'Race';
+  const thExp = el('th', 'exp-table__col', { scope: 'col' });
+  thExp.textContent = 'Most experienced';
+  trh.append(thRace, thExp);
+  thead.append(trh);
+  const tb = el('tbody');
+  for (const row of data.tldrRows) {
+    const exp = row.experience;
+    if (!exp) continue; // measures and retention votes: no candidates to compare
+    const tr = el('tr');
+    const th = el('th', 'matrix-col matrix-col--race', { scope: 'row' });
+    const link = el('a', undefined, { href: `#race-${row.raceId}` });
+    link.textContent = row.label;
+    th.append(link);
+    const td = el('td', 'exp-table__cell');
+    const list = el('span', 'exp-table__entries');
+    for (const e of exp.entries) {
+      const item = el('span', 'exp-table__entry');
+      const name = el('span');
+      name.textContent = e.label;
+      item.append(name, experienceBadge(e.level));
+      list.append(item);
+    }
+    td.append(list);
+    const note = exp.unopposed ? 'Unopposed' : exp.tie ? 'Tied' : '';
+    if (note) {
+      const n = el('span', 'exp-table__note');
+      n.textContent = note;
+      td.append(n);
+    }
+    tr.append(th, td);
+    tb.append(tr);
+  }
+  table.append(thead, tb);
+  wrap.append(table);
+  return wrap;
 }
 
 function renderRacesByCategory(data: BallotData): DocumentFragment {
