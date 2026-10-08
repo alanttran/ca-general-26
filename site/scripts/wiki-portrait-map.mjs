@@ -30,6 +30,16 @@ export const WIKI_BY_CANDIDATE_ID = {
   'juan-vargas': 'Juan_Vargas',
   'monica-montgomery-steppe': 'Monica_Montgomery_Steppe',
   'richard-bailey': 'Richard_Bailey_(politician)',
+  'mike-gipson': 'Mike_Gipson',
+  'laura-friedman': 'Laura_Friedman',
+  'caroline-menjivar': 'Caroline_Menjivar',
+  'nick-schultz': 'Nick_Schultz_(politician)',
+  'rick-zbur': 'Rick_Zbur',
+  'robert-luna': 'Robert_Luna',
+  'alex-villanueva': 'Alex_Villanueva',
+  'nancy-pearlman': 'Nancy_Pearlman',
+  'karen-bass': 'Karen_Bass',
+  'nithya-raman': 'Nithya_Raman',
 };
 
 export function wikiSummaryUrl(title) {

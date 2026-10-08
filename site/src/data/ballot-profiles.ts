@@ -1,5 +1,6 @@
 import type { BallotCategory } from '../types/ballot-types';
 import { SD_WAVE2_PROFILES } from './profiles-sd-wave2';
+import { WAVE3_PROFILES } from './profiles-wave3';
 
 export const DEFAULT_BALLOT_ZIP = '92126';
 
@@ -11,7 +12,7 @@ export const BALLOT_CATEGORIES: BallotCategory[] = [
   { id: 'statewide', label: 'Statewide offices' },
   { id: 'federal', label: 'U.S. House' },
   { id: 'state-leg', label: 'State Legislature' },
-  { id: 'judicial', label: 'Judicial retention' },
+  { id: 'judicial', label: 'Judges and justices' },
   { id: 'school', label: 'Schools' },
   { id: 'county', label: 'County' },
   { id: 'city', label: 'City' },
@@ -67,9 +68,9 @@ export const BALLOT_PROFILES: Record<string, BallotProfile> = {
       'sdusd-measure-m',
     ],
   },
-  '90028': pending('90028', 'Hollywood, Los Angeles County', 'Los Angeles County Registrar-Recorder/County Clerk', 'https://www.lavote.gov'),
-  '91501': pending('91501', 'Burbank, Los Angeles County', 'Los Angeles County Registrar-Recorder/County Clerk', 'https://www.lavote.gov'),
   ...SD_WAVE2_PROFILES,
+  '90028': WAVE3_PROFILES['90028'],
+  '91501': WAVE3_PROFILES['91501'],
   '92562': pending('92562', 'Murrieta, Riverside County', 'Riverside County Registrar of Voters', 'https://www.voteinfo.net'),
   '92868': pending('92868', 'Orange, Orange County', 'Orange County Registrar of Voters', 'https://www.ocvote.gov'),
   '94043': pending('94043', 'Mountain View, Santa Clara County', 'Santa Clara County Registrar of Voters', 'https://vote.santaclaracounty.gov'),

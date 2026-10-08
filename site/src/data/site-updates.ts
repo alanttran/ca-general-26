@@ -16,6 +16,21 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'October 8, 2026',
+    lede: 'Los Angeles County ballots for Hollywood (90028) and Burbank (91501) are now complete; Orange, Riverside, Placer, Alameda and Santa Clara ZIPs are next.',
+    panels: [
+      {
+        summary: 'Los Angeles County: 90028 and 91501',
+        bullets: [
+          'Countywide: Sheriff (Luna vs. Villanueva), four Superior Court runoffs with LA County Bar ratings, 18 Court of Appeal (2nd District) justices, three LA Community College seats, and County Measures A and E.',
+          'Hollywood (90028): CA-30, Board of Equalization 3, State Senate 24 or 26, Assembly 51, LA Mayor (Bass vs. Raman), City Attorney, and all eight City of Los Angeles measures.',
+          'Burbank (91501): Senate 20, Assembly 44, Burbank City Council (vote for 3 of 13), clerk, treasurer, Measures C, CC and CD, and Burbank Unified Area 3.',
+          'The “Judicial retention” section is now “Judges and justices,” since it also holds trial-court runoffs.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'October 7, 2026',
     lede:
       'Every statewide office and all 14 propositions, plus full local ballots for nine San Diego County ZIPs. ZIPs elsewhere in the state show statewide content now; their local races are coming next.',

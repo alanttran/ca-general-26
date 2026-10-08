@@ -1,4 +1,11 @@
 import type { Race } from '../../types/ballot-types';
+import { RACES_BURBANK } from './burbank';
+import { RACES_LA_CITY } from './la-city';
+import { RACES_LA_CITY_MEASURES } from './la-city-measures';
+import { RACES_LA_COUNTY } from './la-county';
+import { RACES_LA_COURTS } from './la-courts';
+import { RACES_LA_DISTRICTS_A } from './la-districts-a';
+import { RACES_LA_DISTRICTS_B } from './la-districts-b';
 import { RACES_CHULA_VISTA } from './chula-vista';
 import { RACES_ESCONDIDO } from './escondido';
 import { RACES_NORTH_COASTAL } from './north-coastal';
@@ -40,4 +47,11 @@ export const LOCAL_RACES: Race[] = [
   ...RACES_CHULA_VISTA,
   ...RACES_NORTH_COASTAL,
   ...RACES_ESCONDIDO,
+  ...RACES_LA_DISTRICTS_A,
+  ...RACES_LA_DISTRICTS_B,
+  ...RACES_LA_COURTS,
+  ...RACES_LA_COUNTY,
+  ...RACES_LA_CITY,
+  ...RACES_LA_CITY_MEASURES,
+  ...RACES_BURBANK,
 ];

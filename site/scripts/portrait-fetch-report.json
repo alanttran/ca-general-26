@@ -1,10 +1,11 @@
 {
   "ok": [
+    "alex-villanueva",
     "ben-allen",
     "carl-demaio",
+    "caroline-menjivar",
     "catherine-blakespear",
     "chris-ward",
-    "darshana-patel",
     "david-alvarez",
     "don-wagner",
     "eleni-kounalakis",
@@ -12,16 +13,21 @@
     "gloria-romero",
     "jane-kim",
     "jim-desmond",
-    "juan-vargas",
+    "karen-bass",
     "kent-lee",
     "lashae-sharp-collins",
+    "laura-friedman",
     "malia-cohen",
     "mara-elliott",
     "marni-von-wilpert",
+    "mike-gipson",
     "mike-levin",
     "monica-montgomery-steppe",
+    "nick-schultz",
+    "nithya-raman",
     "richard-bailey",
-    "rob-bonta",
+    "rick-zbur",
+    "robert-luna",
     "sara-jacobs",
     "scott-peters",
     "shirley-weber",
@@ -31,8 +37,31 @@
     "tom-umberg",
     "xavier-becerra"
   ],
-  "fail": [],
+  "fail": [
+    [
+      "rob-bonta",
+      "Rob_Bonta",
+      "429 after retries"
+    ],
+    [
+      "darshana-patel",
+      "Darshana_Patel",
+      "429 after retries"
+    ],
+    [
+      "juan-vargas",
+      "Juan_Vargas",
+      "429 after retries"
+    ]
+  ],
   "attribution": [
+    {
+      "photoSlug": "alex-villanueva",
+      "wikipediaTitle": "Alex Villanueva",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Alex_Villanueva",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Sheriff-Villanueva-Official-Portrait.jpg/330px-Sheriff-Villanueva-Official-Portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/5/53/Sheriff-Villanueva-Official-Portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
     {
       "photoSlug": "ben-allen",
       "wikipediaTitle": "Ben Allen (California politician)",
@@ -48,6 +77,13 @@
       "originalImage": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Carl_DeMaio%2C_California_State_Assembly_Portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
+      "photoSlug": "caroline-menjivar",
+      "wikipediaTitle": "Caroline Menjivar",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Caroline_Menjivar",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Caroline_Menjivar%2C_2026.jpg/330px-Caroline_Menjivar%2C_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Caroline_Menjivar%2C_2026.jpg/3840px-Caroline_Menjivar%2C_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+    },
+    {
       "photoSlug": "catherine-blakespear",
       "wikipediaTitle": "Catherine Blakespear",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Catherine_Blakespear",
@@ -60,13 +96,6 @@
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Chris_Ward_(California_politician)",
       "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Chris_Ward%2C_2025.jpg/330px-Chris_Ward%2C_2025.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "originalImage": "https://upload.wikimedia.org/wikipedia/commons/0/02/Chris_Ward%2C_2025.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-    },
-    {
-      "photoSlug": "darshana-patel",
-      "wikipediaTitle": "Darshana Patel",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Darshana_Patel",
-      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Darshana_Patel%2C_2024.jpg/330px-Darshana_Patel%2C_2024.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Darshana_Patel%2C_2024.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "photoSlug": "david-alvarez",
@@ -118,11 +147,11 @@
       "originalImage": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Jim_Desmond_Official_Portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
-      "photoSlug": "juan-vargas",
-      "wikipediaTitle": "Juan Vargas",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Juan_Vargas",
-      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Juan_Vargas_official_photo.jpg/330px-Juan_Vargas_official_photo.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Juan_Vargas_official_photo.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "photoSlug": "karen-bass",
+      "wikipediaTitle": "Karen Bass",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Karen_Bass",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Karen_Bass%2C_2023_%28cropped%29.jpg/330px-Karen_Bass%2C_2023_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Karen_Bass%2C_2023_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "photoSlug": "kent-lee",
@@ -137,6 +166,13 @@
       "wikipediaUrl": "https://en.wikipedia.org/wiki/LaShae_Sharp-Collins",
       "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/LaShae_Sharp-Collins%2C_2024.jpg/330px-LaShae_Sharp-Collins%2C_2024.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "originalImage": "https://upload.wikimedia.org/wikipedia/commons/4/47/LaShae_Sharp-Collins%2C_2024.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "laura-friedman",
+      "wikipediaTitle": "Laura Friedman",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Laura_Friedman",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Laura_Friedman%2C_House_portrait.jpg/330px-Laura_Friedman%2C_House_portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Laura_Friedman%2C_House_portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "photoSlug": "malia-cohen",
@@ -160,6 +196,13 @@
       "originalImage": "https://upload.wikimedia.org/wikipedia/commons/5/50/Marni_von_Wilpert.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
+      "photoSlug": "mike-gipson",
+      "wikipediaTitle": "Mike Gipson",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mike_Gipson",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Mike_Gipson_assembly_portrait.jpg/330px-Mike_Gipson_assembly_portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Mike_Gipson_assembly_portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
       "photoSlug": "mike-levin",
       "wikipediaTitle": "Mike Levin",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Mike_Levin",
@@ -174,6 +217,20 @@
       "originalImage": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Monica_Montgomery_Steppe.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
+      "photoSlug": "nick-schultz",
+      "wikipediaTitle": "Nick Schultz (politician)",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nick_Schultz_(politician)",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Nick_Schultz%2C_2024.jpg/330px-Nick_Schultz%2C_2024.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Nick_Schultz%2C_2024.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "nithya-raman",
+      "wikipediaTitle": "Nithya Raman",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nithya_Raman",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Nithya_Raman%2C_2022.jpg/330px-Nithya_Raman%2C_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/1/15/Nithya_Raman%2C_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
       "photoSlug": "richard-bailey",
       "wikipediaTitle": "Richard Bailey (politician)",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Richard_Bailey_(politician)",
@@ -181,11 +238,18 @@
       "originalImage": "https://upload.wikimedia.org/wikipedia/commons/2/20/RichardBaileyCrop.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
-      "photoSlug": "rob-bonta",
-      "wikipediaTitle": "Rob Bonta",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rob_Bonta",
-      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Rob_Bonta_official_portrait_%28cropped%29.jpg/330px-Rob_Bonta_official_portrait_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/2/22/Rob_Bonta_official_portrait_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+      "photoSlug": "rick-zbur",
+      "wikipediaTitle": "Rick Zbur",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rick_Zbur",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Rick_Chavez_Zbur%2C_2022.jpg/330px-Rick_Chavez_Zbur%2C_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Rick_Chavez_Zbur%2C_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "robert-luna",
+      "wikipediaTitle": "Robert Luna",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Robert_Luna",
+      "thumbnailSource": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Sheriff_Robert_Luna%2C_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Sheriff_Robert_Luna%2C_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "photoSlug": "sara-jacobs",
