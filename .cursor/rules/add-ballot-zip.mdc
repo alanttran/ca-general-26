@@ -1,0 +1,8 @@
+# Add ballot ZIP or race
+
+When the user asks to add a sample-ballot ZIP, a race, or a measure:
+
+1. Read and follow `.cursor/skills/add-ballot-zip/SKILL.md` (general-election research & data standard).
+2. Follow `.cursor/skills/site-build-changelog/SKILL.md` for `site-updates.ts` and `meta.ts`.
+
+Do not ship contested races with bio-only candidates—every contested candidate needs a topical `scorecard`, and every measure needs the full `measure` block.

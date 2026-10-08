@@ -1,0 +1,135 @@
+{
+  "ok": [
+    "ben-allen",
+    "chris-ward",
+    "don-wagner",
+    "eleni-kounalakis",
+    "fiona-ma",
+    "gloria-romero",
+    "jane-kim",
+    "kent-lee",
+    "malia-cohen",
+    "mara-elliott",
+    "rob-bonta",
+    "scott-peters",
+    "shirley-weber",
+    "steve-hilton",
+    "tom-umberg",
+    "xavier-becerra"
+  ],
+  "fail": [],
+  "attribution": [
+    {
+      "photoSlug": "ben-allen",
+      "wikipediaTitle": "Ben Allen (California politician)",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ben_Allen_(California_politician)",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Ben_Allen%2C_2021.jpg/330px-Ben_Allen%2C_2021.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Ben_Allen%2C_2021.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "chris-ward",
+      "wikipediaTitle": "Chris Ward (California politician)",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Chris_Ward_(California_politician)",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Chris_Ward%2C_2025.jpg/330px-Chris_Ward%2C_2025.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/0/02/Chris_Ward%2C_2025.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "don-wagner",
+      "wikipediaTitle": "Donald P. Wagner",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Donald_P._Wagner",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Donald_P._Wagner%2C_2022.jpg/330px-Donald_P._Wagner%2C_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/7/73/Donald_P._Wagner%2C_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "eleni-kounalakis",
+      "wikipediaTitle": "Eleni Kounalakis",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Eleni_Kounalakis",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/LG_Kounalakis_Signing_%28cropped%29.jpg/330px-LG_Kounalakis_Signing_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/d/d9/LG_Kounalakis_Signing_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "fiona-ma",
+      "wikipediaTitle": "Fiona Ma",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fiona_Ma",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Fiona_Ma_official2.jpg/330px-Fiona_Ma_official2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/1/14/Fiona_Ma_official2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "gloria-romero",
+      "wikipediaTitle": "Gloria Romero (politician)",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Gloria_Romero_(politician)",
+      "thumbnailSource": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Gloria_Romero%2C_c._2007.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Gloria_Romero%2C_c._2007.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "jane-kim",
+      "wikipediaTitle": "Jane Kim",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Jane_Kim",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/SupervisorJaneKim.png/330px-SupervisorJaneKim.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/f/f1/SupervisorJaneKim.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "kent-lee",
+      "wikipediaTitle": "Kent Lee (politician)",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Kent_Lee_(politician)",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Councilmember-kent-lee-cd6.jpg/330px-Councilmember-kent-lee-cd6.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/9/95/Councilmember-kent-lee-cd6.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "malia-cohen",
+      "wikipediaTitle": "Malia Cohen",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Malia_Cohen",
+      "thumbnailSource": "https://upload.wikimedia.org/wikipedia/commons/0/03/Malia_Cohen_State_Controller_portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/0/03/Malia_Cohen_State_Controller_portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "mara-elliott",
+      "wikipediaTitle": "Mara Elliott",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mara_Elliott",
+      "thumbnailSource": "https://upload.wikimedia.org/wikipedia/commons/1/1d/CityAttorneyMaraElliott.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/1/1d/CityAttorneyMaraElliott.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "rob-bonta",
+      "wikipediaTitle": "Rob Bonta",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rob_Bonta",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Rob_Bonta_official_portrait_%28cropped%29.jpg/330px-Rob_Bonta_official_portrait_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/2/22/Rob_Bonta_official_portrait_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "scott-peters",
+      "wikipediaTitle": "Scott Peters (politician)",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Scott_Peters_(politician)",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Scott_Peters_official_portrait_116th_Congress.jpg/330px-Scott_Peters_official_portrait_116th_Congress.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/4/49/Scott_Peters_official_portrait_116th_Congress.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "shirley-weber",
+      "wikipediaTitle": "Shirley Weber",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Shirley_Weber",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Shirley_Weber.jpg/330px-Shirley_Weber.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Shirley_Weber.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "steve-hilton",
+      "wikipediaTitle": "Steve Hilton",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Steve_Hilton",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Steve_Hilton_%2854233445987_crop%29.jpg/330px-Steve_Hilton_%2854233445987_crop%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Steve_Hilton_%2854233445987_crop%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "tom-umberg",
+      "wikipediaTitle": "Tom Umberg",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Tom_Umberg",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Tom_Umberg_CA_Senate_official_photo.jpg/330px-Tom_Umberg_CA_Senate_official_photo.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Tom_Umberg_CA_Senate_official_photo.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "xavier-becerra",
+      "wikipediaTitle": "Xavier Becerra",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Xavier_Becerra",
+      "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/HHS_Xavier_Becerra.jpg/330px-HHS_Xavier_Becerra.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/8/85/HHS_Xavier_Becerra.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    }
+  ]
+}

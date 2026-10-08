@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "jcodemunch": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/jgravelle/jcodemunch-mcp",
+        "jcodemunch-mcp"
+      ]
+    }
+  }
+}

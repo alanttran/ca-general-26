@@ -1,0 +1,15 @@
+---
+description: After voter-guide site changes, update the build changelog and meta date per the site-build-changelog skill.
+globs: site/src/**
+alwaysApply: false
+---
+
+# Site build changelog
+
+When you finish editing files under `site/src/` (races, ballot data, render, styles tied to new UI copy):
+
+1. Read and follow `.cursor/skills/site-build-changelog/SKILL.md`.
+2. Prepend the current session’s changes to `site/src/data/site-updates.ts`.
+3. Set `BALLOT_META.lastContentUpdated` in `site/src/data/meta.ts` to the same `dateLabel`.
+
+Do this in the same task as the feature—do not leave changelog updates for the user to request separately.

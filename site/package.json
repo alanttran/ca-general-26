@@ -1,0 +1,22 @@
+{
+  "name": "site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run validate-typology && tsc && vite build",
+    "validate-typology": "tsx scripts/validate-typology.ts",
+    "audit-typology": "tsx scripts/audit-typology.ts",
+    "preview": "vite preview",
+    "fetch-portraits": "node scripts/fetch-candidate-portraits.mjs",
+    "portrait-attribution": "node scripts/build-portrait-attribution.mjs"
+  },
+  "devDependencies": {
+    "sass": "^1.99.0",
+    "sharp": "^0.33.5",
+    "tsx": "^4.22.2",
+    "typescript": "~5.7.2",
+    "vite": "^5.4.19"
+  }
+}
