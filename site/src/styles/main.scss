@@ -2197,14 +2197,14 @@ button:focus-visible {
   }
 }
 
-/* Phones: per-race picks stack as cards (chip · pick · confidence, then the full-width reason). */
+/* Phones: per-race picks stack as cards (chip · pick, then the full-width reason). */
 @media (max-width: 719px) {
   .race__cross .table-scroll {
     overflow-x: visible;
     border: 0;
   }
 
-  .race__cross .matrix-table--compact {
+  .race__cross .cross-table {
     display: block;
     min-width: 0;
 
@@ -2219,9 +2219,9 @@ button:focus-visible {
 
     tr {
       display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 0.25rem 0.6rem;
+      grid-template-columns: auto 1fr;
+      align-items: start;
+      gap: 0.4rem 0.6rem;
       padding: 0.6rem 0.75rem;
       border: 1px solid var(--rad-border);
       border-radius: var(--rad-radius);
@@ -2234,40 +2234,16 @@ button:focus-visible {
       padding: 0;
       border: 0;
       min-width: 0;
-      text-align: left;
-    }
-
-    td.cross__pick {
-      font-weight: 600;
+      background: none;
     }
 
     td.cross__why {
       grid-column: 1 / -1;
-      order: 2;
-      color: var(--rad-text-muted);
     }
+  }
 
-    td.cross__combined {
-      grid-column: 1 / -1;
-      order: 1;
-      padding: 0.4rem 0.6rem;
-      border-radius: calc(var(--rad-radius) - 3px);
-      background: var(--rad-surface-elevated);
-    }
-
-    td.cross__combined--same {
-      display: none;
-    }
-
-    .cross__combined-label {
-      position: static;
-      width: auto;
-      height: auto;
-      clip: auto;
-      overflow: visible;
-      white-space: normal;
-      font-weight: 600;
-    }
+  .race__cross .cross-table td.cross__why {
+    min-width: 0;
   }
 }
 
@@ -2359,27 +2335,63 @@ button:focus-visible {
   margin-top: 0.75rem;
 }
 
-/* Per-race “Fit + experience” column. */
-.cross__combined {
-  text-align: left;
+/* Per-race picks table: Typology · Pick · Why. */
+.cross-table {
+  th.cross__ty {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: top;
+  }
+
+  td.cross__pick {
+    width: 1%;
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: top;
+    font-weight: 600;
+  }
+
+  td.cross__why {
+    text-align: left;
+    vertical-align: top;
+    white-space: normal;
+    min-width: 16rem;
+    line-height: var(--lh-body);
+  }
+
+  td.cross__pick .pick-cell {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
 }
 
-.cross__combined-label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+.cross__was .pick-cell {
+  display: inline;
+  font-weight: 400;
 }
 
-.cross__combined-why {
+.cross__was {
   display: block;
   margin-top: 0.2rem;
+  font-weight: 400;
   color: var(--rad-text-muted);
   font-size: var(--fs-sm);
 }
 
-.cross__combined--same {
+.cross__switch,
+.cross__fit {
+  margin: 0;
+}
+
+.cross__switch {
+  color: var(--rad-text);
+}
+
+.cross__fit {
+  margin-top: 0.35rem;
   color: var(--rad-text-muted);
+
+  strong {
+    font-weight: 600;
+  }
 }

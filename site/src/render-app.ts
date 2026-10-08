@@ -2,7 +2,6 @@ import type {
   BallotData,
   Candidate,
   CandidateQualification,
-  ConfidenceSymbol,
   ExternalRating,
   MeasureBlock,
   DebateBreakdown,
@@ -155,21 +154,6 @@ function pickFlagMarker(tier: 'severe' | 'serious'): HTMLElement {
   ic.setAttribute('aria-hidden', 'true');
   wrap.append(sr, ic);
   return wrap;
-}
-
-function appendConfidenceCell(td: HTMLTableCellElement, symbol: string): void {
-  td.classList.add('confidence-matrix-cell');
-  const ch = symbol.trim() === '\u2014' ? '—' : symbol.trim();
-  const icon = confidenceIconFromChar(ch);
-  if (!icon) {
-    td.textContent = symbol;
-    return;
-  }
-  const wrap = el('span', 'confidence-badge');
-  const sr = el('span', 'visually-hidden');
-  sr.textContent = srConfidenceLabel(ch);
-  wrap.append(sr, icon);
-  td.append(wrap);
 }
 
 function appendTopicPositionCell(td: HTMLTableCellElement, raw: string): void {
@@ -1254,17 +1238,13 @@ function renderRetention(block: RetentionBlock): HTMLElement {
 function renderCrossTable(race: Race): HTMLElement {
   const h3 = el('h3', 'race__subhead');
   h3.textContent = 'Cross-typology picks';
-  const withCombined = race.kind === 'candidates';
-  const table = el('table', `matrix-table matrix-table--compact${withCombined ? ' cross--combined' : ''}`);
+  const table = el('table', 'matrix-table matrix-table--compact cross-table');
   const cap = el('caption', 'visually-hidden');
   cap.textContent = `Recommendations for ${race.title}`;
   table.append(cap);
   const thead = el('thead');
   const trh = el('tr');
-  const cols = withCombined
-    ? ['Typology', 'Fit + experience', 'Typology pick', 'Confidence', 'Rationale']
-    : ['Typology', 'Pick', 'Confidence', 'Rationale'];
-  for (const text of cols) {
+  for (const text of ['Typology', 'Pick', 'Why']) {
     const th = el('th', undefined, { scope: 'col' });
     th.textContent = text;
     trh.append(th);
@@ -1273,17 +1253,40 @@ function renderCrossTable(race: Race): HTMLElement {
   const tb = el('tbody');
   for (const row of race.crossTypology) {
     const tr = el('tr');
-    const th = el('th', undefined, { scope: 'row' });
-    th.append(typologyChip(row.typology));
-    tr.append(th);
-    if (withCombined) tr.append(combinedCrossCell(race, row.pick, row.confidence));
-    const td1 = el('td', 'cross__pick');
-    td1.textContent = row.pick;
-    const td2 = el('td', 'cross__conf');
-    appendConfidenceCell(td2, row.confidence);
-    const td3 = el('td', 'cross__why');
-    td3.textContent = row.rationale;
-    tr.append(td1, td2, td3);
+    const th = el('th', 'cross__ty', { scope: 'row' });
+    th.append(typologyChip(row.typology, { title: typologyNameForChip(row.typology) }));
+    const c =
+      race.kind === 'candidates'
+        ? combinedCellFor(race, row.pick, row.confidence)
+        : { cell: `${row.pick} ${row.confidence}`.trim(), reason: undefined, flag: undefined };
+
+    const tdPick = el('td', 'cross__pick');
+    fillPickCell(tdPick, c.cell, c.flag, c.reason ? 'Switched for experience' : undefined);
+    if (c.reason) {
+      const was = el('span', 'cross__was');
+      was.append(document.createTextNode('On fit alone: '));
+      const orig = el('span', 'cross__was-pick');
+      fillPickCell(orig as unknown as HTMLTableCellElement, `${row.pick} ${row.confidence}`.trim());
+      orig.classList.remove('matrix-pick-cell');
+      was.append(orig);
+      tdPick.append(was);
+    }
+
+    const tdWhy = el('td', 'cross__why');
+    if (c.reason) {
+      const lead = el('p', 'cross__switch');
+      const strong = el('strong');
+      strong.textContent = 'Switched for experience. ';
+      lead.append(strong, document.createTextNode(c.reason));
+      const fit = el('p', 'cross__fit');
+      const fitLabel = el('strong');
+      fitLabel.textContent = 'On fit alone: ';
+      fit.append(fitLabel, document.createTextNode(row.rationale));
+      tdWhy.append(lead, fit);
+    } else {
+      tdWhy.textContent = row.rationale;
+    }
+    tr.append(th, tdPick, tdWhy);
     tb.append(tr);
   }
   table.append(thead, tb);
@@ -1292,25 +1295,6 @@ function renderCrossTable(race: Race): HTMLElement {
   const wrap = el('div', 'race__cross');
   wrap.append(h3, scroll);
   return wrap;
-}
-
-/** “Fit + experience” cell: the adjusted pick and why, or a quiet “Same” when experience changes nothing. */
-function combinedCrossCell(race: Race, pick: string, confidence: ConfidenceSymbol): HTMLTableCellElement {
-  const c = combinedCellFor(race, pick, confidence);
-  const td = el('td', 'cross__combined');
-  if (!c.reason) {
-    td.classList.add('cross__combined--same');
-    td.textContent = 'Same';
-    return td;
-  }
-  const label = el('span', 'cross__combined-label');
-  label.textContent = 'Fit + experience: ';
-  td.append(label);
-  fillPickCell(td, c.cell, c.flag, c.reason);
-  const why = el('span', 'cross__combined-why', { 'aria-hidden': 'true' }); // reason is already read with the ⇄ marker
-  why.textContent = c.reason;
-  td.append(why);
-  return td;
 }
 
 function renderMeasure(m: MeasureBlock): HTMLElement {
