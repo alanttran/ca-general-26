@@ -2176,17 +2176,6 @@ button:focus-visible {
   overflow-wrap: anywhere;
 }
 
-/* Legibility: comfortable line length for running prose. */
-.race__stakes,
-.race__context,
-.candidate-card__text p,
-.measure p,
-.measure li,
-.methodology__text,
-.intro-card p {
-  max-width: 72ch;
-}
-
 /* Phones: keep the sticky section menu to one swipeable row so it doesn't cover the page. */
 @media (max-width: 719px) {
   .toc-nav {
