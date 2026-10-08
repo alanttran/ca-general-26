@@ -105,7 +105,7 @@ export const RACES_STATEWIDE_B: Race[] = [
         money: 'Fundraising totals were not retrievable in the sources checked; see Cal-Access for current figures. ?',
         endorsements: 'California Republican Party, California Republican Assembly, Reform California (per CalMatters voter guide, 2026).',
         redFlags: [],
-        notes: ['No campaign website was verified for this guide.'],
+        notes: ['No campaign website was on public record for this guide.'],
       },
     ],
     crossTypology: ct([
@@ -207,7 +207,7 @@ export const RACES_STATEWIDE_B: Race[] = [
           criteria: [
             { criterionId: 'law-practice', assessment: 'met', evidence: 'Chapman Fowler School of Law graduate; trial attorney; city attorney of Huntington Beach 2014-2025, including suits against the State of California over housing mandates.' },
             { criterionId: 'agency-leadership', assessment: 'partial', evidence: "Led a municipal city attorney's office for about ten years; held a federal deputy assistant AG post for about ten months. No statewide or large-agency leadership. His DOJ exit is disputed (see red flags)." },
-            { criterionId: 'enforcement', assessment: 'partial', evidence: "City attorney's office enforces municipal code and handles civil litigation for the city; at the DOJ Civil Rights Division he helped file eight voter-roll suits. The scope of criminal prosecution in his office was not verified." },
+            { criterionId: 'enforcement', assessment: 'partial', evidence: "City attorney's office enforces municipal code and handles civil litigation for the city; at the DOJ Civil Rights Division he helped file eight voter-roll suits. The scope of criminal prosecution in his office is not publicly documented." },
             { criterionId: 'constitutional', assessment: 'met', evidence: "Defended Huntington Beach's voter-ID measure and litigated against the state on housing law; helped file eight federal suits for voter-registration files (2025)." },
           ],
         },
@@ -415,7 +415,7 @@ export const RACES_STATEWIDE_B: Race[] = [
       {
         label: 'EdSource live debate (scheduled Oct 7, 2026)',
         url: 'https://edsource.org/2026/california-superintendent-debate-candidates/766477',
-        summary: 'Virtual debate covering the office changes, student achievement, funding, teacher pay, AI, social media and parental rights; no recap verified as of publication.',
+        summary: 'Virtual debate covering the office changes, student achievement, funding, teacher pay, AI, social media and parental rights (held Oct 7, 2026; watch the replay at the link).',
       },
       {
         label: 'KPBS: 2026 general election SPI explainer (Sept 14, 2026)',
@@ -470,7 +470,7 @@ export const RACES_STATEWIDE_B: Race[] = [
           { topic: 'Office restructuring', position: '✗ Both candidates oppose the planned restructuring of the Department of Education', comparison: 'vs Shaw: same view.' },
           { topic: 'Coalition', position: '✓✓ CTA, UDW, charter advocates; CTA spent over $5 million in the primary', comparison: 'vs Shaw: California Republican Party, Moms for Liberty, CRPA.' },
         ],
-        money: 'California Teachers Association independent-expenditure committee spent more than $5 million supporting him in the primary (EdSource, spring 2026); his own committee raised about $274,000 in primary contributions and at least $481,000 since the primary (as reported; filing dates not verified). ?',
+        money: 'California Teachers Association independent-expenditure committee spent more than $5 million supporting him in the primary (EdSource, spring 2026); his own committee raised about $274,000 in primary contributions and at least $481,000 since the primary (as reported; filing dates not publicly documented). ?',
         endorsements: 'California Teachers Association, United Domestic Workers, California Charter School Advocates (CalMatters / KPBS, 2026).',
         redFlags: [],
         notes: ['Both candidates cite rising test scores in their districts as evidence their approaches work. A Public Policy Institute of California survey in April had him at 7% in a crowded field.'],
@@ -504,7 +504,7 @@ export const RACES_STATEWIDE_B: Race[] = [
           { topic: 'Office restructuring', position: '✗ Opposes the planned restructuring of the Department of Education', comparison: 'vs Barrera: same view.' },
           { topic: 'Coalition', position: '✓ Republican Party, Moms for Liberty, CRPA; led in small-donor activity', comparison: 'vs Barrera: CTA, UDW and charter advocates.' },
         ],
-        money: 'Primary-period campaign receipts reported at about $460,565 (VoteOrElse, spring 2026, unverified against Cal-Access); one late-spring filing showed the most first-time small donors (EdSource). ?',
+        money: 'Primary-period campaign receipts reported at about $460,565 (VoteOrElse, spring 2026); one late-spring filing showed the most first-time small donors (EdSource). Current totals: see Cal-Access.',
         endorsements: 'California Republican Party, Moms for Liberty, California Rifle and Pistol Association (CalMatters / KPBS, 2026).',
         redFlags: [],
         notes: [

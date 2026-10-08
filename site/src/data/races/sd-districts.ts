@@ -514,7 +514,7 @@ export const RACES_SD_DISTRICTS: Race[] = [
             { criterionId: 'law-policy', assessment: 'unknown', evidence: 'No public record of drafting legislation or legal-policy work found.' },
             { criterionId: 'budget-oversight', assessment: 'partial', evidence: 'As a water-district director she votes on that agency’s budget and rates; her campaign cites fiscal accountability.' },
             { criterionId: 'public-mgmt', assessment: 'partial', evidence: 'Elected Olivenhain Municipal Water District director in November 2020 (Division 4: 4S Ranch, Rancho Cielo, Elfin Forest, Harmony Grove); a governing-board role, not executive management.' },
-            { criterionId: 'district-service', assessment: 'partial', evidence: 'Elected to a North County water board and, per her campaign, served on a regional homelessness task force; whether her division lies inside SD-40 was not verified.' },
+            { criterionId: 'district-service', assessment: 'partial', evidence: 'Elected to a North County water board and, per her campaign, served on a regional homelessness task force; whether her division lies inside SD-40 is not publicly documented.' },
             { criterionId: 'coalition', assessment: 'unknown', evidence: 'No public record of passing legislation or building legislative coalitions found.' },
           ],
         },

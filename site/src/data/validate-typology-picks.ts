@@ -30,6 +30,14 @@ function isCrossPartyRace(candidates: Candidate[]): boolean {
 export function collectTypologyValidationIssues(races: Race[]): TypologyValidationIssue[] {
   const issues: TypologyValidationIssue[] = [];
   const seen = new Set<string>();
+  const candidateIds = new Map<string, string>();
+  for (const race of races) {
+    for (const c of race.candidates) {
+      const prev = candidateIds.get(c.id);
+      if (prev) issues.push({ raceId: race.id, message: `candidate id "${c.id}" also used in ${prev}` });
+      candidateIds.set(c.id, race.id);
+    }
+  }
   const categoryIds = new Set(BALLOT_CATEGORIES.map((c) => c.id));
 
   for (const race of races) {
@@ -56,6 +64,19 @@ export function collectTypologyValidationIssues(races: Race[]): TypologyValidati
       if (race.kind === 'measure' || race.kind === 'retention') {
         if (!MEASURE_PICK_RE.test(row.pick.trim())) {
           issues.push({ raceId: race.id, typology: row.typology, pick: row.pick, message: 'measure/retention pick must start with Yes or No' });
+        }
+        continue;
+      }
+
+      if ((race.voteFor ?? 1) > 1) {
+        const names = row.pick.split(',').map((n) => n.trim()).filter(Boolean);
+        if (names.length > (race.voteFor ?? 1)) {
+          issues.push({ raceId: race.id, typology: row.typology, pick: row.pick, message: `picks ${names.length} names but voters choose up to ${race.voteFor}` });
+        }
+        for (const n of names) {
+          if (!resolveCandidateForPick(n, race.candidates)) {
+            issues.push({ raceId: race.id, typology: row.typology, pick: n, message: 'multi-seat pick name does not match a candidate' });
+          }
         }
         continue;
       }
@@ -178,6 +199,9 @@ export function collectProfileIssues(races: Race[], profiles: BallotProfile[]): 
   for (const p of profiles) {
     for (const id of p.localRaceIds) {
       if (!ids.has(id)) issues.push({ raceId: id, message: `ZIP ${p.zip} lists a race id with no race file` });
+    }
+    for (const id of Object.keys(p.partialShares ?? {})) {
+      if (!p.localRaceIds.includes(id)) issues.push({ raceId: id, message: `ZIP ${p.zip} has a partial share for a race it does not list` });
     }
   }
   return issues;

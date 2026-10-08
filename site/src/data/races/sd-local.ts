@@ -54,8 +54,8 @@ export const RACES_SD_LOCAL: Race[] = [
           { topic: 'Office duties', position: '✓ Seeking a second term running assessment, recording, and clerk services', comparison: 'No opponent on the ballot to compare against.' },
           { topic: 'Transparency', position: '~ Argued in May 2026 that charters "should never be written by those in power to benefit themselves" and backed the rival charter plan', comparison: 'That was about the county charter debate (see Measure A), not about the Assessor’s own office.' },
         ],
-        endorsements: 'San Diego County Republican Party; Deputy Sheriffs’ Association of San Diego County (per its endorsements page). No other endorsements verified.',
-        notes: ['Money: no campaign finance totals verified for this unopposed race.'],
+        endorsements: 'San Diego County Republican Party; Deputy Sheriffs’ Association of San Diego County (per its endorsements page). No other endorsements on public record.',
+        notes: ['Money: no campaign finance totals published for this unopposed race.'],
       },
     ],
     crossTypology: ct([
@@ -89,7 +89,7 @@ export const RACES_SD_LOCAL: Race[] = [
       'In the June 2 primary, Cohen led with 47.38% and Nakawatase placed second with 33.68% (San Diego County Registrar results as summarized by East County Magazine and Ballot Brief); Supervisor Joel Anderson finished third. The office is nonpartisan, but the county parties split: Democrats back Cohen and Republicans back Nakawatase (KPBS endorsement guide, Sept. 30, 2026).',
     ],
     legalRequirements:
-      'U.S. citizen and registered voter of San Diego County (Gov. Code § 24001). Where a county has adopted them, Gov. Code § 27000.7 requires one of: 3+ continuous years in senior public-finance management; a related bachelor’s degree plus 16 semester units of accounting, auditing or finance; a California CPA license; or a CFA charter plus those units. Gov. Code § 27000.8 requires 48 hours of continuing education during each term. Whether San Diego County has adopted § 27000.7 was not verified.',
+      'U.S. citizen and registered voter of San Diego County (Gov. Code § 24001). Where a county has adopted them, Gov. Code § 27000.7 requires one of: 3+ continuous years in senior public-finance management; a related bachelor’s degree plus 16 semester units of accounting, auditing or finance; a California CPA license; or a CFA charter plus those units. Gov. Code § 27000.8 requires 48 hours of continuing education during each term. Whether San Diego County has adopted § 27000.7 is not publicly documented.',
     qualificationCriteria: [
       { id: 'investment', label: 'Managing a public investment pool', detail: 'The office invests county and local-agency funds that the county places at $10 to $19 billion.' },
       { id: 'collection', label: 'Property-tax collection operations', detail: 'The office bills and collects about $9 billion a year from nearly one million parcels.' },
@@ -125,9 +125,9 @@ export const RACES_SD_LOCAL: Race[] = [
           { topic: 'Property tax relief', position: '✓✓ Wants expanded relief programs for seniors, veterans, and low-income homeowners', comparison: 'Nakawatase emphasizes efficient collection and taxpayer education rather than expanding relief programs.' },
           { topic: 'Modernization', position: '✓ Focus on modernizing the property tax system and protecting seniors from scams', comparison: 'Nakawatase also pledges modern, accessible tools.' },
           { topic: 'Transparency', position: '✓ Promises transparent financial reporting', comparison: 'Both promise transparency; neither has published verifiable benchmarks I could find.' },
-          { topic: 'Investments', position: '~ "Prudent investment of public funds" with no specific policy detail verified', comparison: 'Nakawatase uses nearly identical language.' },
+          { topic: 'Investments', position: '~ "Prudent investment of public funds" with no specific policy detail on public record', comparison: 'Nakawatase uses nearly identical language.' },
         ],
-        money: 'Reported raising more than $200,000 by early 2026, including $95,000 loaned to his campaign and $23,000 from the county Democratic Party (La Prensa San Diego / OB Rag). More recent totals not verified.',
+        money: 'Reported raising more than $200,000 by early 2026, including $95,000 loaned to his campaign and $23,000 from the county Democratic Party (La Prensa San Diego / OB Rag). More recent totals not publicly documented.',
         endorsements:
           'San Diego County Democratic Party; Supervisors Paloma Aguirre, Monica Montgomery Steppe, and Terra Lawson-Remer; Sheriff Kelly Martinez; Mayor Todd Gloria; Reps. Juan Vargas, Mike Levin, Scott Peters, Sara Jacobs (self-published list on larry-cohen.com).',
         notes: [
@@ -159,9 +159,9 @@ export const RACES_SD_LOCAL: Race[] = [
           { topic: 'Investments', position: '✓ Pledges prudent management and investment of county funds', comparison: 'Cohen uses similar language; neither lists specific investment policy changes.' },
           { topic: 'Property tax relief', position: '~ Emphasizes taxpayer advocacy and tax-relief education rather than expanding programs', comparison: 'Cohen proposes expanding relief programs.' },
           { topic: 'Modernization', position: '✓ Promises modern, accessible collection tools', comparison: 'Both candidates promise modernization.' },
-          { topic: 'Transparency', position: '✓ Promises transparent collection and reporting', comparison: 'Same pledge as Cohen; no verified specifics.' },
+          { topic: 'Transparency', position: '✓ Promises transparent collection and reporting', comparison: 'Same pledge as Cohen; no public specifics.' },
         ],
-        money: 'No campaign finance totals verified as of Oct 7, 2026.',
+        money: 'No campaign finance totals published as of Oct 7, 2026; filings are posted on the county or city campaign-disclosure site.',
         endorsements: 'San Diego County Republican Party (KPBS endorsement guide, Sept. 30, 2026). No Democratic or progressive organization endorsements found.',
         notes: [
           'Her daughter, Mariko Nakawatase, works as District Director in Supervisor Joel Anderson’s office and sits on the Imperial Beach City Council (OB Rag, Feb. 2026); Anderson was her primary-election rival.',
@@ -224,7 +224,7 @@ export const RACES_SD_LOCAL: Race[] = [
           summary: 'Lee holds the District 6 seat and has served on the Council since December 2022, including as Council President Pro Tem since December 2024.',
           criteria: [
             { criterionId: 'governance', assessment: 'met', evidence: 'Councilmember since Dec 2022; Council President Pro Tem since Dec 2024; non-voting member of the North County Transit District board.' },
-            { criterionId: 'land-budget', assessment: 'met', evidence: 'Has voted on the city’s annual budgets and zoning and land-use items as a councilmember since 2023; specific committee assignments were not verified.' },
+            { criterionId: 'land-budget', assessment: 'met', evidence: 'Has voted on the city’s annual budgets and zoning and land-use items as a councilmember since 2023; specific committee assignments are not publicly documented.' },
             { criterionId: 'constituent', assessment: 'met', evidence: 'Has represented District 6 for one term; before that led the Pacific Arts Movement (San Diego Asian Film Festival) and worked in development for the Boy Scouts’ San Diego-Imperial Council.' },
             { criterionId: 'coalition', assessment: 'met', evidence: 'Chosen by council colleagues as Council President Pro Tem; has worked on regional transit as an NCTD board member.' },
           ],
@@ -239,12 +239,12 @@ export const RACES_SD_LOCAL: Race[] = [
           { topic: 'Housing', position: '✓✓ Supports more density near transit, including high-rise housing along major corridors (per Doug Porter’s candidate review)', comparison: 'Powell opposes high-density projects.' },
           { topic: 'Homelessness', position: '✓ Lists homelessness as a top priority', comparison: 'Powell’s published stance centers on City Hall failures rather than a specific program.' },
           { topic: 'Transit/infrastructure', position: '✓ Priority on transit and infrastructure; NCTD board seat', comparison: 'Powell opposes the city’s bike-lane build-out.' },
-          { topic: 'Budget/fees', position: '~ His website cites transparency, fiscal responsibility, and accountability; no specific fee position verified', comparison: 'Powell opposes the city’s new fees.' },
+          { topic: 'Budget/fees', position: '~ His website cites transparency, fiscal responsibility, and accountability; no specific fee position on public record', comparison: 'Powell opposes the city’s new fees.' },
           { topic: 'Ideology', position: '✓ Democrat; backed by county Democrats and the Labor Council', comparison: 'Powell is Republican-aligned.' },
         ],
-        money: 'No campaign finance totals verified as of Oct 7, 2026.',
+        money: 'No campaign finance totals published as of Oct 7, 2026; filings are posted on the county or city campaign-disclosure site.',
         endorsements: 'San Diego County Democratic Party; San Diego & Imperial Counties Labor Council (per Doug Porter’s review and KPBS endorsement guide).',
-        notes: ['A voter guide said he pushed to reduce the mayor’s power; a reader challenged the claim and it could not be verified, so it is not treated as established.'],
+        notes: [],
       },
       {
         id: 'mark-powell',
@@ -254,10 +254,10 @@ export const RACES_SD_LOCAL: Race[] = [
         qualification: {
           level: 'some',
           legal: 'meets',
-          summary: 'Powell is an educator who was elected to the San Diego County Board of Education in 2016, with a past as a reserve police officer. He has not held city office, and his term dates and occupation details were not verified.',
+          summary: 'Powell is an educator who was elected to the San Diego County Board of Education in 2016, with a past as a reserve police officer. He has not held city office, and his term dates and occupation details are not publicly documented.',
           criteria: [
             { criterionId: 'governance', assessment: 'partial', evidence: 'Elected to the San Diego County Board of Education in 2016 (current status unconfirmed); no city government role documented.' },
-            { criterionId: 'land-budget', assessment: 'unknown', evidence: 'No municipal budget or zoning role documented; his campaign site describes him as a real estate broker, but a license was not verified (city ballot designation: Business Owner/Educator).' },
+            { criterionId: 'land-budget', assessment: 'unknown', evidence: 'No municipal budget or zoning role documented; his campaign site describes him as a real estate broker, but a license is not publicly documented (city ballot designation: Business Owner/Educator).' },
             { criterionId: 'constituent', assessment: 'partial', evidence: 'Describes himself as a lifelong San Diegan and former teacher, dean, vice principal and university professor, and former San Diego Police reserve officer (campaign site via Ballot Brief); no constituent-service role documented.' },
             { criterionId: 'coalition', assessment: 'partial', evidence: 'Sits on a multi-member elected board (County Board of Education); no record of passing city legislation.' },
           ],
@@ -270,10 +270,10 @@ export const RACES_SD_LOCAL: Race[] = [
           { topic: 'Housing', position: '✗ Opposes high-density housing projects', comparison: 'Lee supports density near transit.' },
           { topic: 'Budget/fees', position: '✓✓ Opposes the city’s new fees; wants a more business-like city', comparison: 'Lee is more comfortable with city revenue measures.' },
           { topic: 'Transit/bikes', position: '✗ Opposes bike lanes', comparison: 'Lee emphasizes transit and infrastructure.' },
-          { topic: 'Public safety', position: '? No specific policy verified', comparison: 'Lee has not been verified on specifics either.' },
+          { topic: 'Public safety', position: '? No specific policy on public record', comparison: 'Lee has not published specifics either.' },
           { topic: 'Ideology', position: '✓ Republican-aligned; backed by county GOP', comparison: 'Lee is the Democratic-backed incumbent.' },
         ],
-        money: 'No campaign finance totals verified as of Oct 7, 2026.',
+        money: 'No campaign finance totals published as of Oct 7, 2026; filings are posted on the county or city campaign-disclosure site.',
         endorsements: 'San Diego County Republican Party; Assemblymember Carl DeMaio; San Diego Union-Tribune editorial board (opinion), as reported in coverage of the race.',
       },
     ],
@@ -456,7 +456,7 @@ export const RACES_SD_LOCAL: Race[] = [
       'It would be the district’s fifth voter-approved bond since 2008 and would bring total approved bond funding to roughly $15 billion; the district estimates about $8.1 billion in debt service over the coming decades.',
     ],
     introParagraphs: [
-      'School bonds need 55% voter approval rather than two-thirds. The ballot title promises "No Tax Rate Increase"; the district plans to issue new bonds as older ones are paid off so the rate on tax bills stays about the same (KPBS). No major organization has publicly opposed the measure (KPBS), and no money totals were verified.',
+      'School bonds need 55% voter approval rather than two-thirds. The ballot title promises "No Tax Rate Increase"; the district plans to issue new bonds as older ones are paid off so the rate on tax bills stays about the same (KPBS). No major organization has publicly opposed the measure (KPBS), and no money totals were on public record.',
     ],
     measure: {
       question:

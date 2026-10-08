@@ -1,4 +1,4 @@
-import type { BallotData, Race, TldrRow, TypologyCode } from '../types/ballot-types';
+import type { BallotData, Race, TldrRow, TypologyCode, ZipRace } from '../types/ballot-types';
 import { BALLOT_META } from './meta';
 import { mergeRaceDerivedFields } from './merge-races';
 import { maxSeverity, resolveCandidateForPick } from './red-flags';
@@ -42,7 +42,10 @@ export function buildBallotData(zip: string): BallotData {
   const ordered = [...ALL_STATEWIDE_RACES, ...local]
     .map((race, i) => ({ race, i }))
     .sort((a, b) => (CATEGORY_INDEX.get(a.race.categoryId) ?? 99) - (CATEGORY_INDEX.get(b.race.categoryId) ?? 99) || a.i - b.i)
-    .map((x) => x.race);
+    .map((x): ZipRace => {
+      const share = profile.partialShares?.[x.race.id];
+      return share !== undefined ? { ...x.race, zipSharePct: share } : x.race;
+    });
   const categoryIds = new Set(ordered.map((r) => r.categoryId));
 
   return {

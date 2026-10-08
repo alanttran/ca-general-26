@@ -1,4 +1,5 @@
 import type { BallotCategory } from '../types/ballot-types';
+import { SD_WAVE2_PROFILES } from './profiles-sd-wave2';
 
 export const DEFAULT_BALLOT_ZIP = '92126';
 
@@ -31,6 +32,8 @@ export interface BallotProfile {
    * Statewide offices, SPI, and state propositions are added for every ZIP automatically.
    */
   localRaceIds: string[];
+  /** Approximate % of residents voting in contests that cover only part of the ZIP (≥20%; smaller slivers go in the note). */
+  partialShares?: Record<string, number>;
   /** True until this ZIP’s local research lands; shows a “local races coming” note. */
   localPending?: boolean;
 }
@@ -66,14 +69,7 @@ export const BALLOT_PROFILES: Record<string, BallotProfile> = {
   },
   '90028': pending('90028', 'Hollywood, Los Angeles County', 'Los Angeles County Registrar-Recorder/County Clerk', 'https://www.lavote.gov'),
   '91501': pending('91501', 'Burbank, Los Angeles County', 'Los Angeles County Registrar-Recorder/County Clerk', 'https://www.lavote.gov'),
-  '91911': pending('91911', 'Chula Vista, San Diego', SD_REGISTRAR.registrarLabel, SD_REGISTRAR.registrarUrl),
-  '91914': pending('91914', 'East Chula Vista, San Diego', SD_REGISTRAR.registrarLabel, SD_REGISTRAR.registrarUrl),
-  '92009': pending('92009', 'Carlsbad, San Diego', SD_REGISTRAR.registrarLabel, SD_REGISTRAR.registrarUrl),
-  '92026': pending('92026', 'Escondido, San Diego', SD_REGISTRAR.registrarLabel, SD_REGISTRAR.registrarUrl),
-  '92111': pending('92111', 'Linda Vista / Clairemont, San Diego', SD_REGISTRAR.registrarLabel, SD_REGISTRAR.registrarUrl),
-  '92130': pending('92130', 'Carmel Valley, San Diego', SD_REGISTRAR.registrarLabel, SD_REGISTRAR.registrarUrl),
-  '92131': pending('92131', 'Scripps Ranch, San Diego', SD_REGISTRAR.registrarLabel, SD_REGISTRAR.registrarUrl),
-  '92139': pending('92139', 'Paradise Hills, San Diego', SD_REGISTRAR.registrarLabel, SD_REGISTRAR.registrarUrl),
+  ...SD_WAVE2_PROFILES,
   '92562': pending('92562', 'Murrieta, Riverside County', 'Riverside County Registrar of Voters', 'https://www.voteinfo.net'),
   '92868': pending('92868', 'Orange, Orange County', 'Orange County Registrar of Voters', 'https://www.ocvote.gov'),
   '94043': pending('94043', 'Mountain View, Santa Clara County', 'Santa Clara County Registrar of Voters', 'https://vote.santaclaracounty.gov'),

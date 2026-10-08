@@ -16,6 +16,20 @@ export const WIKI_BY_CANDIDATE_ID = {
   'mara-elliott': 'Mara_Elliott',
   'chris-ward': 'Chris_Ward_(California_politician)',
   'kent-lee': 'Kent_Lee_(politician)',
+  'tasha-boerner': 'Tasha_Boerner',
+  'lashae-sharp-collins': 'LaShae_Sharp-Collins',
+  'david-alvarez': 'David_Alvarez_(politician)',
+  'steve-padilla': 'Steve_Padilla',
+  'catherine-blakespear': 'Catherine_Blakespear',
+  'carl-demaio': 'Carl_DeMaio',
+  'darshana-patel': 'Darshana_Patel',
+  'marni-von-wilpert': 'Marni_von_Wilpert',
+  'jim-desmond': 'Jim_Desmond',
+  'mike-levin': 'Mike_Levin',
+  'sara-jacobs': 'Sara_Jacobs',
+  'juan-vargas': 'Juan_Vargas',
+  'monica-montgomery-steppe': 'Monica_Montgomery_Steppe',
+  'richard-bailey': 'Richard_Bailey_(politician)',
 };
 
 export function wikiSummaryUrl(title) {

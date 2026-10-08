@@ -244,6 +244,8 @@ export interface Race {
   title: string;
   /** Short row label in the TL;DR matrix and print sheet (defaults to `title`). */
   tldrLabel?: string;
+  /** Multi-seat contests (e.g. “vote for up to 3”); picks then list names separated by `, `. */
+  voteFor?: number;
   /**
    * Short seat status shown in the race header, e.g. `Open (term limits)` or `Incumbent`.
    * Distinct from ballot designation on candidate cards.
@@ -291,10 +293,16 @@ export interface TldrRow {
   flags: Partial<Record<TypologyCode, 'severe' | 'serious'>>;
 }
 
+/** A race as shown for one ZIP: adds how much of the ZIP votes in it when not all of it does. */
+export interface ZipRace extends Race {
+  /** Approximate % of the ZIP’s residents in this contest (omitted when ~100%). */
+  zipSharePct?: number;
+}
+
 export interface BallotData {
   meta: BallotMeta;
   typologies: TypologyDefinition[];
   categories: BallotCategory[];
   tldrRows: TldrRow[];
-  races: Race[];
+  races: ZipRace[];
 }

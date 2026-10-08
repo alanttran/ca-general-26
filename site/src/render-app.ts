@@ -8,6 +8,7 @@ import type {
   MeasureReadingLink,
   Race,
   RacePoll,
+  ZipRace,
   RedFlag,
   RetentionBlock,
   ScorecardRow,
@@ -852,7 +853,7 @@ function renderRacesByCategory(data: BallotData): DocumentFragment {
   return frag;
 }
 
-function renderRace(race: Race): HTMLElement {
+function renderRace(race: ZipRace): HTMLElement {
   const details = el('details', 'race');
   details.id = `race-${race.id}`;
   const summary = el('summary', 'race__summary');
@@ -866,6 +867,19 @@ function renderRace(race: Race): HTMLElement {
     const seatEl = el('span', 'race__summary-seat');
     seatEl.textContent = race.seatContext;
     sumText.append(seatEl);
+  }
+  if (race.voteFor && race.voteFor > 1) {
+    sumText.append(document.createTextNode(' · '));
+    const vf = el('span', 'race__summary-seat');
+    vf.textContent = `Vote for up to ${race.voteFor}`;
+    sumText.append(vf);
+  }
+  if (race.zipSharePct !== undefined) {
+    const share = el('span', 'race__zip-share', {
+      title: 'Only part of this ZIP votes in this contest — check your official sample ballot.',
+    });
+    share.textContent = `~${Math.round(race.zipSharePct)}% of this ZIP`;
+    sumText.append(document.createTextNode(' '), share);
   }
   summary.append(chev, sumText);
   details.append(summary);
@@ -1483,7 +1497,10 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
   }
   if (c.money) {
     const pm = el('p', 'candidate-card__meta');
-    pm.innerHTML = `<strong>Money:</strong> ${escapeHtml(c.money)}`;
+    const head = el('strong');
+    head.textContent = 'Money: ';
+    pm.append(head);
+    appendRichCandidateText(pm, c.money, reformCaliforniaIconSrc);
     text.append(pm);
   }
   if (c.endorsements) {
@@ -1491,11 +1508,7 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     const head = el('strong');
     head.textContent = 'Endorsements: ';
     pe.append(head);
-    if (textMentionsReformCalifornia(c.endorsements)) {
-      appendTextWithReformCaliforniaBadges(pe, c.endorsements, reformCaliforniaIconSrc);
-    } else {
-      pe.append(document.createTextNode(c.endorsements));
-    }
+    appendRichCandidateText(pe, c.endorsements, reformCaliforniaIconSrc);
     text.append(pe);
   }
   if (c.reformCaliforniaSection?.length) {

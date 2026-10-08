@@ -74,6 +74,8 @@ Candidate ids must be **globally unique** — use `firstname-lastname` (e.g. `st
 
 Scorecard symbols: `✓✓` strong support · `✓` support · `✗` oppose · `~` mixed · `?` unclear. Topics by office: U.S. House (Housing, Climate, Health care, Immigration, Trump/House majority, District clout); Legislature (Housing & transit, Climate, Education, Public safety, Taxes, Caucus/ideology); statewide execs (office-specific duties + 3–4 policy rows); county/city (office duties, budget, housing/homelessness, public safety, transparency).
 
+**Multi-seat contests** (“vote for up to 3”): set `voteFor: 3`; each typology pick lists up to that many last names separated by `, ` (e.g. `'Clark, Hargrave, Sanchez'`), or `—`. Nonpartisan local offices use party `'NP'`; mention known party registration/endorsements in bio or endorsements. Low-information local races still need a scorecard and qualification — use `?`/`unknown` honestly where the record is empty (candidate statements in the county voter guide, local news Q&As, and VOTE411 are good sources).
+
 **Unopposed:** one candidate, short bio, 1–2 scorecard rows; the header auto-labels “Unopposed”. All 9 picks = that name with ● (or `—` with rationale if a column should leave it blank / write in).
 
 ## 6. Measures (state props + local)

@@ -18,8 +18,17 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
     dateLabel: 'October 7, 2026',
     lede:
-      'First general-election build: every statewide office and all 14 state propositions, plus the full Mira Mesa (92126) ballot. Other ZIPs show statewide content now; their local races are coming next.',
+      'Every statewide office and all 14 propositions, plus full local ballots for nine San Diego County ZIPs. ZIPs elsewhere in the state show statewide content now; their local races are coming next.',
     panels: [
+      {
+        summary: 'Eight more San Diego County ZIPs',
+        bullets: [
+          'Added 91911 and 91914 (Chula Vista), 92009 (Carlsbad), 92026 (Escondido), 92111 (Linda Vista / Clairemont), 92130 (Carmel Valley), 92131 (Scripps Ranch) and 92139 (Paradise Hills), built from the Registrar’s own November sample ballots.',
+          'New races: CA-48, 49, 51 and 52; State Senate 18 and 38; Assembly 75, 76, 77, 79 and 80; Supervisor Districts 4 and 5; the Chula Vista, Carlsbad, Escondido and San Diego council and mayoral races; and school, college, water and fire boards.',
+          'Many ZIPs are split across districts. A dashed “~45% of this ZIP” tag marks contests that only part of the ZIP votes in, and each ZIP’s note lists smaller contests we don’t cover.',
+          'Multi-seat school and fire boards show “Vote for up to 3” with up to three picks per column.',
+        ],
+      },
       {
         summary: 'What’s covered',
         bullets: [

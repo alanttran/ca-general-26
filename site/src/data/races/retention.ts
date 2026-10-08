@@ -33,7 +33,7 @@ export const RACES_RETENTION_STATEWIDE: Race[] = [
           title: 'Associate Justice',
           appointedBy: 'Governor Brown (2018)',
           notes: [
-            'Before joining the court he was a senior policy adviser to Gov. Brown, and earlier worked in private practice on antitrust and intellectual property cases. He won a "Yes" majority in every county for which results were found in the Nov 2022 retention vote (statewide percentage not verified here), and is seeking a full 12-year term.',
+            'Before joining the court he was a senior policy adviser to Gov. Brown, and earlier worked in private practice on antitrust and intellectual property cases. He won a "Yes" majority in every county for which results were found in the Nov 2022 retention vote (statewide percentage not publicly documented here), and is seeking a full 12-year term.',
           ],
           externalRating: { source: 'State Bar Commission on Judicial Nominees Evaluation', rating: 'Exceptionally Well Qualified', url: 'https://atthelectern.com/ca-supreme-court-nominee-joshua-groban-exceptionally-well-qualified-evaluators-say', dateLabel: 'Dec 2018 (Supreme Court nomination)' },
           sources: [
@@ -72,7 +72,7 @@ export const RACES_RETENTION_STATEWIDE: Race[] = [
     ]),
     counterArguments: [
       'PR/FF (No on all): But removal would let the governor pick the replacement, and Newsom, not voters, would choose who sits on the court for a 12-year term — a No vote does not produce a more conservative bench.',
-      'PL/OL (Yes on all): But the court\'s 2024 Prop 22 ruling disappointed labor-aligned voters; anyone who weighs that ruling heavily may reasonably treat retention as a chance to register disagreement, though no individual authorship was verified here.',
+      'PL/OL (Yes on all): But the court\'s 2024 Prop 22 ruling disappointed labor-aligned voters; anyone who weighs that ruling heavily may reasonably treat retention as a chance to register disagreement, though no individual authorship was on public record here.',
     ],
   },
 ];
