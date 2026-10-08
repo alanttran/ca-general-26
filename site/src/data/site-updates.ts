@@ -17,8 +17,21 @@ export interface SiteUpdateBuild {
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
     dateLabel: 'October 8, 2026',
-    lede: 'Los Angeles County ballots for Hollywood (90028) and Burbank (91501) are now complete; Orange, Riverside, Placer, Alameda and Santa Clara ZIPs are next.',
+    lede: 'Every ZIP in the guide now has its full local ballot: Los Angeles, Orange, Riverside, Placer, Alameda and Santa Clara counties join San Diego.',
     panels: [
+      {
+        summary: 'Orange, Riverside and Northern California',
+        bullets: [
+          'Orange (92868): CA-46, Senate 34, Assembly 68, Orange mayor, MWDOC Division 2 and City Measures I, J and K.',
+          'Murrieta (92562): CA-40 (two incumbents, Young Kim vs. Ken Calvert), Senate 32, Assembly 71, Superior Court Office 10, Murrieta Valley Unified seats and Measure M, Rancho California Water and Riverside County Measure A.',
+          'Rocklin (95765): CA-6, Senate 6, Assembly 5, Board of Equalization 1, 3rd District Court of Appeal, Rocklin council and Measure C, Rocklin Unified Measure D, and Placer County Measures G and H.',
+          'Hayward (94544) and Mountain View (94043): CA-14 and CA-16, Senate 10, Assemblies 20 and 23, Board of Equalization 2, 1st and 6th District Courts of Appeal, city councils and measures, school, college, transit and water boards, and the Bay Area regional transit measure.',
+        ],
+      },
+      {
+        summary: 'Ballot designations checked against the state list',
+        body: 'Every statewide, Board of Equalization, congressional and legislative candidate’s ballot designation now matches the Secretary of State’s certified list of candidates word for word; ten earlier entries were corrected.',
+      },
       {
         summary: 'Los Angeles County: 90028 and 91501',
         bullets: [

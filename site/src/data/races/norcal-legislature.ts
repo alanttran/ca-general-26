@@ -84,6 +84,7 @@ export const RACES_NORCAL_LEGISLATURE: Race[] = [
       },
       {
         id: 'roger-niello',
+        photoSlug: 'roger-niello',
         name: 'Roger Niello',
         party: 'R',
         role: 'California State Senator',
@@ -330,6 +331,7 @@ export const RACES_NORCAL_LEGISLATURE: Race[] = [
       },
       {
         id: 'joe-patterson',
+        photoSlug: 'joe-patterson',
         name: 'Joe Patterson',
         party: 'R',
         role: 'Member of State Assembly, 5th District',
@@ -421,6 +423,7 @@ export const RACES_NORCAL_LEGISLATURE: Race[] = [
     candidates: [
       {
         id: 'liz-ortega',
+        photoSlug: 'liz-ortega',
         name: 'Liz Ortega',
         party: 'D',
         role: 'Assemblymember',
@@ -545,6 +548,7 @@ export const RACES_NORCAL_LEGISLATURE: Race[] = [
     candidates: [
       {
         id: 'marc-berman',
+        photoSlug: 'marc-berman',
         name: 'Marc Berman',
         party: 'D',
         role: 'State Assemblymember',

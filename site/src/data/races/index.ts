@@ -1,4 +1,13 @@
 import type { Race } from '../../types/ballot-types';
+import { RACES_HAYWARD } from './hayward';
+import { RACES_MOUNTAIN_VIEW } from './mountain-view';
+import { RACES_NORCAL_COURTS } from './norcal-courts';
+import { RACES_NORCAL_FEDERAL } from './norcal-federal';
+import { RACES_NORCAL_LEGISLATURE } from './norcal-legislature';
+import { RACES_OC_ORANGE } from './oc-orange';
+import { RACES_OC_RIVERSIDE_DISTRICTS } from './oc-riverside-districts';
+import { RACES_RIVCO_MURRIETA } from './rivco-murrieta';
+import { RACES_ROCKLIN_PLACER } from './rocklin-placer';
 import { RACES_BURBANK } from './burbank';
 import { RACES_LA_CITY } from './la-city';
 import { RACES_LA_CITY_MEASURES } from './la-city-measures';
@@ -54,4 +63,13 @@ export const LOCAL_RACES: Race[] = [
   ...RACES_LA_CITY,
   ...RACES_LA_CITY_MEASURES,
   ...RACES_BURBANK,
+  ...RACES_NORCAL_FEDERAL,
+  ...RACES_NORCAL_LEGISLATURE,
+  ...RACES_NORCAL_COURTS,
+  ...RACES_ROCKLIN_PLACER,
+  ...RACES_HAYWARD,
+  ...RACES_MOUNTAIN_VIEW,
+  ...RACES_OC_RIVERSIDE_DISTRICTS,
+  ...RACES_OC_ORANGE,
+  ...RACES_RIVCO_MURRIETA,
 ];

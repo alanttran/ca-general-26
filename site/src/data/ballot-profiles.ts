@@ -44,8 +44,6 @@ const SD_REGISTRAR = {
   registrarUrl: 'https://www.sdvote.com',
 };
 
-const PENDING_NOTE =
-  'Statewide offices and all state propositions are ready for this ZIP. Its district and local races are still being researched and will be added before Election Day—until then, use your official sample ballot for those.';
 
 export const BALLOT_PROFILES: Record<string, BallotProfile> = {
   '92126': {
@@ -71,16 +69,13 @@ export const BALLOT_PROFILES: Record<string, BallotProfile> = {
   ...SD_WAVE2_PROFILES,
   '90028': WAVE3_PROFILES['90028'],
   '91501': WAVE3_PROFILES['91501'],
-  '92562': pending('92562', 'Murrieta, Riverside County', 'Riverside County Registrar of Voters', 'https://www.voteinfo.net'),
-  '92868': pending('92868', 'Orange, Orange County', 'Orange County Registrar of Voters', 'https://www.ocvote.gov'),
-  '94043': pending('94043', 'Mountain View, Santa Clara County', 'Santa Clara County Registrar of Voters', 'https://vote.santaclaracounty.gov'),
-  '94544': pending('94544', 'Hayward, Alameda County', 'Alameda County Registrar of Voters', 'https://acvote.alamedacountyca.gov/'),
-  '95765': pending('95765', 'Rocklin, Placer County', 'Placer County Elections', 'https://www.placerelections.com'),
+  '95765': WAVE3_PROFILES['95765'],
+  '94544': WAVE3_PROFILES['94544'],
+  '94043': WAVE3_PROFILES['94043'],
+  '92868': WAVE3_PROFILES['92868'],
+  '92562': WAVE3_PROFILES['92562'],
 };
 
-function pending(zip: string, scopeLabel: string, registrarLabel: string, registrarUrl: string): BallotProfile {
-  return { zip, scopeLabel, verificationNote: PENDING_NOTE, registrarLabel, registrarUrl, localRaceIds: [], localPending: true };
-}
 
 /** ZIP dropdown, ascending numeric for quick scanning. */
 export const BALLOT_ZIP_OPTIONS: { zip: string; label: string }[] = Object.values(BALLOT_PROFILES)

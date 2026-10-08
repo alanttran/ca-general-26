@@ -40,6 +40,23 @@ export const WIKI_BY_CANDIDATE_ID = {
   'nancy-pearlman': 'Nancy_Pearlman',
   'karen-bass': 'Karen_Bass',
   'nithya-raman': 'Nithya_Raman',
+  'lou-correa': 'Lou_Correa',
+  'ken-calvert': 'Ken_Calvert',
+  'young-kim': 'Young_Kim',
+  'avelino-valencia': 'Avelino_Valencia',
+  'kelly-seyarto': 'Kelly_Seyarto',
+  'kate-sanchez': 'Kate_Sanchez',
+  'roger-niello': 'Roger_Niello',
+  'joe-patterson': 'Joe_Patterson_(California_politician)',
+  'liz-ortega': 'Liz_Ortega',
+  'marc-berman': 'Marc_Berman',
+  'nelson-esparza': 'Nelson_Esparza',
+  'shannon-grove': 'Shannon_Grove',
+  'sally-lieber': 'Sally_Lieber',
+  'richard-pan': 'Richard_Pan',
+  'kevin-kiley': 'Kevin_Kiley_(politician)',
+  'aisha-wahab': 'Aisha_Wahab',
+  'sam-liccardo': 'Sam_Liccardo',
 };
 
 export function wikiSummaryUrl(title) {

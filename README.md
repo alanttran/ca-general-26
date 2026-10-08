@@ -1,6 +1,6 @@
 # 2026 California general election voter guide
 
-An unofficial, research-backed voter guide for the **November 3, 2026 California general election**: statewide offices, every statewide proposition, judicial retention votes, and district/county/city races and local measures for a set of sample ZIP codes.
+An unofficial, research-backed voter guide for the **November 3, 2026 California general election**: statewide offices, every statewide proposition, judicial retention votes, and full local ballots (district, county, city, school, special-district races and local measures) for 16 sample ZIP codes across San Diego, Los Angeles, Orange, Riverside, Placer, Alameda and Santa Clara counties.
 
 **Live site (GitHub Pages):** [https://alanttran.github.io/ca-general-26/](https://alanttran.github.io/ca-general-26/)
 **June primary edition:** [https://alanttran.github.io/ca-primary-26/](https://alanttran.github.io/ca-primary-26/)
@@ -14,7 +14,7 @@ The guide is built around the **nine [Pew Research political typologies](https:/
 | **`site/`** | Static **Vite + TypeScript + SCSS** app: TL;DR matrix, per-race cross-typology picks, candidate scorecards, proposition breakdowns, judicial retention tables, and a printable “my picks” cheat sheet. |
 | **`site/src/data/races/`** | One research file per race group (statewide offices, props, retention, regional districts, local races/measures), registered in `races/index.ts`. |
 | **`site/src/data/ballot-profiles.ts`** | ZIP dropdown: each ZIP lists its local race ids in printed ballot order. Statewide races and props appear for every ZIP. |
-| **`docs/sample-ballot-92126.md`** | Transcription of the official 92126 sample ballot (source of truth for names and order). |
+| **`docs/sample-ballot-92126.md`**, **`docs/wave*-scope.md`** | The 92126 sample-ballot transcription and per-region scoping reports (which contests appear on each ZIP’s ballot, with sources and district shares). |
 | **`.cursor/skills/`** | Research/data standard and changelog conventions. |
 | **`site/ATTRIBUTION.md`** | Image credits for candidate portraits. |
 

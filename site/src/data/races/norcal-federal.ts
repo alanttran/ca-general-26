@@ -66,6 +66,7 @@ export const RACES_NORCAL_FEDERAL: Race[] = [
     candidates: [
       {
         id: 'nelson-esparza',
+        photoSlug: 'nelson-esparza',
         name: 'Nelson Esparza',
         party: 'D',
         role: 'Teacher/Economist/Councilmember',
@@ -116,6 +117,7 @@ export const RACES_NORCAL_FEDERAL: Race[] = [
       },
       {
         id: 'shannon-grove',
+        photoSlug: 'shannon-grove',
         name: 'Shannon Grove',
         party: 'R',
         role: 'State Senator/Businesswoman',
@@ -221,6 +223,7 @@ export const RACES_NORCAL_FEDERAL: Race[] = [
     candidates: [
       {
         id: 'sally-lieber',
+        photoSlug: 'sally-lieber',
         name: 'Sally Lieber',
         party: 'D',
         role: 'Incumbent',
@@ -349,6 +352,7 @@ export const RACES_NORCAL_FEDERAL: Race[] = [
     candidates: [
       {
         id: 'richard-pan',
+        photoSlug: 'richard-pan',
         name: 'Richard Pan',
         party: 'D',
         role: 'Doctor/Health Advocate',
@@ -388,6 +392,7 @@ export const RACES_NORCAL_FEDERAL: Race[] = [
       },
       {
         id: 'kevin-kiley',
+        photoSlug: 'kevin-kiley',
         name: 'Kevin Kiley',
         party: 'NP',
         role: 'United States Representative',
@@ -520,6 +525,7 @@ export const RACES_NORCAL_FEDERAL: Race[] = [
       },
       {
         id: 'aisha-wahab',
+        photoSlug: 'aisha-wahab',
         name: 'Aisha Wahab',
         party: 'D',
         role: 'State Senator',
@@ -614,6 +620,7 @@ export const RACES_NORCAL_FEDERAL: Race[] = [
     candidates: [
       {
         id: 'sam-liccardo',
+        photoSlug: 'sam-liccardo',
         name: 'Sam Liccardo',
         party: 'D',
         role: 'United States Representative',
