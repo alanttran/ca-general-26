@@ -1,4 +1,13 @@
 :root {
+  /* Type scale: five sizes, two weights (see legibility pass). */
+  --fs-sm: 0.9375rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.15rem;
+  --fs-xl: 1.35rem;
+  --fs-2xl: clamp(1.5rem, 5vw, 1.9rem);
+  --lh-body: 1.6;
+  --lh-tight: 1.3;
+
   --rad-page-bg: #f1f5f9;
   --rad-surface: #ffffff;
   --rad-surface-elevated: #e8eef5;
@@ -59,7 +68,7 @@
 html {
   font-family: var(--rad-font);
   font-size: 17px;
-  line-height: 1.55;
+  line-height: var(--lh-body);
   color: var(--rad-text);
   background: var(--rad-page-bg);
   scroll-behavior: smooth;
@@ -74,6 +83,37 @@ body {
 
 #app {
   min-height: 100vh;
+}
+
+/* Base type: every heading and bold run sits on the shared scale (component rules below may refine size). */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: var(--lh-tight);
+}
+
+h2 {
+  font-size: var(--fs-xl);
+}
+
+h3 {
+  font-size: var(--fs-lg);
+}
+
+h4,
+h5,
+h6 {
+  font-size: var(--fs-base);
+}
+
+strong,
+b,
+th {
+  font-weight: 600;
 }
 
 /* ---- Icons (inline SVG, currentColor) ---- */
@@ -139,10 +179,9 @@ body {
   min-width: 2.35rem;
   padding: 0.2rem 0.45rem;
   border-radius: 6px;
-  font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  line-height: 1.2;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-tight);
   border: 1px solid transparent;
 }
 
@@ -198,7 +237,7 @@ body {
 
 .typology-spectrum__label {
   margin: 0 0 0.4rem;
-  font-size: 0.82rem;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 }
 
@@ -230,7 +269,7 @@ body {
 
 .confidence-legend__title {
   margin: 0 0 0.5rem;
-  font-size: 0.88rem;
+  font-size: var(--fs-sm);
   font-weight: 600;
   color: var(--rad-text);
 }
@@ -248,7 +287,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.82rem;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 }
 
@@ -392,9 +431,8 @@ body {
 
 .site-header__title {
   margin: 0;
-  font-size: 2rem;
+  font-size: var(--fs-2xl);
   font-weight: 700;
-  letter-spacing: -0.02em;
   flex: 1;
 }
 
@@ -409,7 +447,7 @@ body {
 }
 
 .zip-select__label {
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   font-weight: 600;
   color: var(--rad-text-muted);
 }
@@ -428,7 +466,7 @@ body {
   margin: 0 auto 1rem;
   max-width: var(--rad-max-width);
   color: var(--rad-text-muted);
-  font-size: 1.05rem;
+  font-size: var(--fs-base);
   padding-left: calc(2.65rem + 1rem);
 }
 
@@ -454,8 +492,8 @@ body {
   background: var(--rad-site-updates-surface-bg-default, var(--rad-surface));
   border: 1px solid var(--rad-site-updates-border-color-default, var(--rad-border));
   border-radius: var(--rad-radius);
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
   color: var(--rad-text-muted);
 
   &__summary {
@@ -522,7 +560,7 @@ body {
     cursor: pointer;
     font-weight: 600;
     color: var(--rad-accent);
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     list-style: none;
 
     &:focus-visible {
@@ -539,7 +577,7 @@ body {
       content: '+';
       display: inline-block;
       width: 1em;
-      font-weight: 700;
+      font-weight: 600;
     }
   }
 
@@ -549,13 +587,13 @@ body {
 
   &__panel-body {
     margin: 0.4rem 0 0 1.15rem;
-    font-size: 0.88rem;
+    font-size: var(--fs-sm);
   }
 
   &__panel-list {
     margin: 0.4rem 0 0 1.15rem;
     padding-left: 1.1rem;
-    font-size: 0.88rem;
+    font-size: var(--fs-sm);
   }
 }
 
@@ -571,9 +609,7 @@ body {
 
 .toc-nav__title {
   margin: 0 0 0.35rem;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 }
 
@@ -593,7 +629,7 @@ body {
     gap: 0.45rem;
     color: var(--rad-accent);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
 
     &:hover {
       text-decoration: underline;
@@ -629,7 +665,7 @@ main {
     align-items: center;
     gap: 0.55rem;
     margin-top: 0;
-    font-size: 1.15rem;
+    font-size: var(--fs-lg);
     flex-wrap: wrap;
   }
 
@@ -667,7 +703,7 @@ main {
 .typology-key__lede {
   margin: 0.5rem 0 1rem;
   color: var(--rad-text-muted);
-  line-height: 1.55;
+  line-height: var(--lh-body);
 }
 
 .typology-key__table {
@@ -690,9 +726,7 @@ main {
     background: var(--rad-surface-elevated);
     color: var(--rad-text-muted);
     font-weight: 600;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: var(--fs-sm);
   }
 
   tbody th {
@@ -725,25 +759,25 @@ main {
 
 .methodology__title {
   margin-top: 0;
-  font-size: 1.25rem;
+  font-size: var(--fs-lg);
 }
 
 .methodology__lede {
   margin: 0.5rem 0 0;
   color: var(--rad-text-muted);
-  line-height: 1.55;
+  line-height: var(--lh-body);
 }
 
 .methodology__subhead {
   margin: 1.25rem 0 0.4rem;
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--rad-text);
 }
 
 .methodology__text {
   margin: 0;
   color: var(--rad-text-muted);
-  line-height: 1.55;
+  line-height: var(--lh-body);
 }
 
 .methodology__confidence-legend {
@@ -754,7 +788,7 @@ main {
   margin: 0.35rem 0 0;
   padding-left: 1.15rem;
   color: var(--rad-text-muted);
-  line-height: 1.5;
+  line-height: var(--lh-body);
 
   li + li {
     margin-top: var(--rad-list-item-gap);
@@ -779,7 +813,7 @@ main {
 
 .table-caption {
   color: var(--rad-text-muted);
-  font-size: 0.92rem;
+  font-size: var(--fs-sm);
   margin: 0 0 0.75rem;
 }
 
@@ -797,7 +831,7 @@ main {
   width: 100%;
   border-collapse: collapse;
   background: var(--rad-surface);
-  font-size: 0.88rem;
+  font-size: var(--fs-sm);
 
   th,
   td {
@@ -815,9 +849,7 @@ main {
     text-align: left;
     background: color-mix(in srgb, var(--rad-surface-elevated) 88%, var(--rad-page-bg));
     color: var(--rad-text-muted);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    font-size: var(--fs-sm);
   }
 
   thead th.matrix-col--PL {
@@ -849,10 +881,8 @@ main {
   }
 
   tbody th.matrix-col--race {
-    font-weight: 500;
-    text-transform: none;
-    letter-spacing: normal;
-    font-size: 0.88rem;
+    font-weight: 600;
+    font-size: var(--fs-sm);
     color: var(--rad-text);
 
     a {
@@ -895,7 +925,7 @@ main {
   }
 
   &--compact {
-    font-size: 0.85rem;
+    font-size: var(--fs-sm);
 
     th,
     td {
@@ -917,7 +947,7 @@ main {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  font-size: 1.35rem;
+  font-size: var(--fs-xl);
   padding-bottom: 0.6rem;
   margin-bottom: 1rem;
 
@@ -967,7 +997,7 @@ main {
   padding: 0.85rem 1.1rem;
   cursor: pointer;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: var(--fs-base);
   list-style: none;
 
   &::-webkit-details-marker {
@@ -984,9 +1014,9 @@ main {
 }
 
 .race__summary-seat {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--rad-text-muted);
-  font-size: 0.92em;
+  font-size: var(--fs-sm);
 }
 
 .race[open] .race__chevron {
@@ -1018,18 +1048,18 @@ main {
   border-left: 3px solid var(--rad-accent);
   border-radius: 0 var(--rad-radius) var(--rad-radius) 0;
   color: var(--rad-text);
-  font-size: 0.95rem;
-  line-height: 1.55;
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
 }
 
 .race__context {
   margin: 0 0 0.75rem;
   color: var(--rad-text-muted);
-  line-height: 1.55;
+  line-height: var(--lh-body);
 }
 
 .race__subhead {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   margin: 1.25rem 0 0.5rem;
   color: var(--rad-accent);
 }
@@ -1101,8 +1131,8 @@ main {
   justify-content: center;
   background: var(--rad-surface-elevated);
   color: var(--rad-accent);
-  font-weight: 700;
-  font-size: 1.35rem;
+  font-weight: 600;
+  font-size: var(--fs-xl);
 }
 
 .candidate-card__name {
@@ -1110,7 +1140,7 @@ main {
   align-items: center;
   flex-wrap: wrap;
   margin: 0 0 0.15rem;
-  font-size: 1.15rem;
+  font-size: var(--fs-lg);
 }
 
 .party-mark {
@@ -1158,9 +1188,8 @@ main {
   padding: 0.06rem 0.32rem;
   border-radius: 0.2rem;
   font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  line-height: 1.2;
+  font-weight: 600;
+  line-height: var(--lh-tight);
   color: var(--rad-text-muted);
   background: var(--rad-surface-elevated);
   border: 1px solid var(--rad-border);
@@ -1173,7 +1202,7 @@ main {
 .candidate-card__role {
   margin: 0 0 0.5rem;
   color: var(--rad-text-muted);
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 .candidate-card__role-link {
@@ -1197,25 +1226,25 @@ main {
 
 .candidate-card__record-vs-change-heading {
   margin: 0 0 0.35rem;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   font-weight: 600;
   color: var(--rad-text);
 }
 
 .candidate-card__record-vs-change-text {
   margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.45;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
   color: var(--rad-text-muted);
 }
 
 .candidate-card__sub {
   margin: 0.75rem 0 0.35rem;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 .candidate-card__meta {
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 }
 
@@ -1261,7 +1290,7 @@ main {
   align-items: center;
   gap: 0.35rem;
   margin: 0 0 0.35rem;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 .candidate-card__reform-california-icon {
@@ -1271,7 +1300,7 @@ main {
 
 .candidate-card__reform-california-text {
   margin: 0 0 0.45rem;
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 
   &:last-child {
@@ -1294,7 +1323,7 @@ main {
   align-items: center;
   gap: 0.35rem;
   margin: 0 0 0.25rem;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--rad-warn);
 }
 
@@ -1304,7 +1333,7 @@ main {
 
 .candidate-card__flag-sources {
   display: inline;
-  font-size: 0.88em;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 
   .link-external {
@@ -1325,7 +1354,7 @@ main {
 .scorecard {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.88rem;
+  font-size: var(--fs-sm);
   margin-top: 0.25rem;
 
   th,
@@ -1343,8 +1372,8 @@ main {
 .scorecard__comparison {
   margin: 0.35rem 0 0;
   padding: 0;
-  font-size: 0.8rem;
-  line-height: 1.35;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-tight);
   font-weight: 400;
   color: var(--rad-text-muted);
 }
@@ -1354,7 +1383,7 @@ main {
 
   h4 {
     margin: 0.75rem 0 0.25rem;
-    font-size: 0.95rem;
+    font-size: var(--fs-base);
   }
 
   ul {
@@ -1385,8 +1414,8 @@ main {
 
 .reading-link-item__summary {
   margin: 0.35rem 0 0.85rem;
-  font-size: 0.9rem;
-  line-height: 1.45;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
   color: var(--rad-text-muted);
 }
 
@@ -1400,7 +1429,7 @@ main {
   &__summary {
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     color: var(--rad-accent);
     list-style: none;
 
@@ -1419,7 +1448,7 @@ main {
       display: inline-block;
       width: 1em;
       margin-right: 0.35rem;
-      font-weight: 700;
+      font-weight: 600;
     }
   }
 
@@ -1429,8 +1458,8 @@ main {
 
   &__intro {
     margin: 0.65rem 0 0.85rem;
-    font-size: 0.9rem;
-    line-height: 1.45;
+    font-size: var(--fs-sm);
+    line-height: var(--lh-body);
     color: var(--rad-text-muted);
   }
 
@@ -1452,7 +1481,7 @@ main {
 
   &__name {
     margin: 0 0 0.5rem;
-    font-size: 1rem;
+    font-size: var(--fs-base);
   }
 
   &__topic {
@@ -1465,7 +1494,7 @@ main {
 
   &__topic-label {
     margin: 0 0 0.25rem;
-    font-size: 0.85rem;
+    font-size: var(--fs-sm);
     font-weight: 600;
     color: var(--rad-text);
   }
@@ -1473,16 +1502,16 @@ main {
   &__bullets {
     margin: 0;
     padding-left: 1.2rem;
-    font-size: 0.88rem;
-    line-height: 1.4;
+    font-size: var(--fs-sm);
+    line-height: var(--lh-body);
     color: var(--rad-text-muted);
   }
 }
 
 .measure__reading-note {
   margin: 0.5rem 0 0;
-  font-size: 0.82rem;
-  line-height: 1.35;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-tight);
   color: var(--rad-text-muted);
 }
 
@@ -1493,7 +1522,7 @@ main {
   padding-bottom: max(2rem, env(safe-area-inset-bottom));
   border-top: 1px solid var(--rad-border);
   color: var(--rad-text-muted);
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
 
   a {
     color: var(--rad-accent);
@@ -1522,14 +1551,14 @@ main {
   }
 
   .site-header__title {
-    font-size: clamp(1.35rem, 5.2vw, 1.85rem);
+    font-size: var(--fs-2xl);
     min-width: 0;
   }
 
   .site-header__subtitle {
     padding-left: 0;
     margin: 0 auto 0.75rem;
-    font-size: 0.98rem;
+    font-size: var(--fs-base);
   }
 
   .toc-nav {
@@ -1560,7 +1589,7 @@ main {
   }
 
   .typology-key__table {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
 
     th,
     td {
@@ -1598,7 +1627,7 @@ main {
   }
 
   .race__stakes {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     padding: 0.55rem 0.7rem;
   }
 
@@ -1621,11 +1650,7 @@ main {
   }
 
   .candidate-card__placeholder {
-    font-size: 1.15rem;
-  }
-
-  .candidate-card__name {
-    font-size: 1.05rem;
+    font-size: var(--fs-lg);
   }
 
   .candidate-card .table-scroll {
@@ -1633,7 +1658,7 @@ main {
   }
 
   .scorecard {
-    font-size: 0.82rem;
+    font-size: var(--fs-sm);
 
     th,
     td {
@@ -1692,7 +1717,7 @@ button:focus-visible {
   margin: 0 auto 0.75rem;
   max-width: var(--rad-max-width);
   padding-left: calc(2.65rem + 1rem);
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 }
 
@@ -1793,7 +1818,7 @@ button:focus-visible {
 .retention__table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.92rem;
+  font-size: var(--fs-sm);
 
   th,
   td {
@@ -1818,7 +1843,7 @@ button:focus-visible {
 
 .retention__title {
   font-weight: 400;
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 }
 
@@ -1839,7 +1864,7 @@ button:focus-visible {
 
 .retention__sources {
   margin: 0.25rem 0 0;
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
 }
 
 /* Print cheat sheet: hidden on screen, the only thing printed. */
@@ -1945,7 +1970,7 @@ button:focus-visible {
 }
 
 .flag-item__why {
-  font-size: 0.92em;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 }
 
@@ -1954,9 +1979,9 @@ button:focus-visible {
   display: inline-block;
   padding: 0.05rem 0.45rem;
   border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  line-height: 1.5;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: var(--lh-body);
 }
 
 .flag-badge {
@@ -1983,7 +2008,7 @@ button:focus-visible {
 
 .candidate-card__flags-rubric {
   margin-left: auto;
-  font-size: 0.8rem;
+  font-size: var(--fs-sm);
   font-weight: 400;
 }
 
@@ -2022,9 +2047,9 @@ button:focus-visible {
   display: inline-block;
   padding: 0.05rem 0.5rem;
   border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  line-height: 1.5;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: var(--lh-body);
   vertical-align: middle;
   border: 1px solid currentColor;
   white-space: nowrap;
@@ -2052,14 +2077,14 @@ button:focus-visible {
 
 .qual-compare__legal,
 .qual-compare__note {
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 }
 
 .qual-compare__table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
 
   th,
   td {
@@ -2081,14 +2106,14 @@ button:focus-visible {
 
 .qual-compare__detail {
   font-weight: 400;
-  font-size: 0.82rem;
+  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 }
 
 .qual-cell__mark {
   display: inline-block;
   min-width: 1.1rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .qual-cell--met .qual-cell__mark {
@@ -2120,14 +2145,14 @@ button:focus-visible {
 .candidate-card__qual-rating,
 .retention__rating {
   margin: 0 0 0.35rem;
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
 }
 
 .race__zip-share {
   display: inline-block;
   padding: 0 0.45rem;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: var(--fs-sm);
   font-weight: 600;
   border: 1px dashed var(--rad-text-muted);
   color: var(--rad-text-muted);
@@ -2149,4 +2174,88 @@ button:focus-visible {
 .candidate-card__text li,
 .retention__table td {
   overflow-wrap: anywhere;
+}
+
+/* Legibility: comfortable line length for running prose. */
+.race__stakes,
+.race__context,
+.candidate-card__text p,
+.measure p,
+.measure li,
+.methodology__text,
+.intro-card p {
+  max-width: 72ch;
+}
+
+/* Phones: keep the sticky section menu to one swipeable row so it doesn't cover the page. */
+@media (max-width: 719px) {
+  .toc-nav {
+    padding: 0.5rem 1rem;
+  }
+
+  .toc-nav__title {
+    display: none;
+  }
+
+  .toc-nav__list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+
+    li {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+/* Phones: per-race picks stack as cards (chip · pick · confidence, then the full-width reason). */
+@media (max-width: 719px) {
+  .race__cross .table-scroll {
+    overflow-x: visible;
+    border: 0;
+  }
+
+  .race__cross .matrix-table--compact {
+    display: block;
+    min-width: 0;
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    tr {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 0.25rem 0.6rem;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--rad-border);
+      border-radius: var(--rad-radius);
+      background: var(--rad-surface);
+    }
+
+    th,
+    td {
+      display: block;
+      padding: 0;
+      border: 0;
+      min-width: 0;
+      text-align: left;
+    }
+
+    td:nth-of-type(1) {
+      font-weight: 600;
+    }
+
+    td:nth-of-type(3) {
+      grid-column: 1 / -1;
+      color: var(--rad-text-muted);
+    }
+  }
 }

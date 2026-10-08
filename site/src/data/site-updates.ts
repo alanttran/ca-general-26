@@ -20,6 +20,14 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
     lede: 'Every ZIP in the guide now has its full local ballot: Los Angeles, Orange, Riverside, Placer, Alameda and Santa Clara counties join San Diego.',
     panels: [
       {
+        summary: 'Easier to read',
+        bullets: [
+          'One consistent type scale: five text sizes and two weights, nothing smaller than about 15px, and no all-caps labels.',
+          'Experience badges now read “Very experienced,” “Experienced,” “Some experience,” or “Little experience.”',
+          'On phones, the section menu is a single swipeable row, and each race’s typology picks stack as cards with the full reasoning visible.',
+        ],
+      },
+      {
         summary: 'Orange, Riverside and Northern California',
         bullets: [
           'Orange (92868): CA-46, Senate 34, Assembly 68, Orange mayor, MWDOC Division 2 and City Measures I, J and K.',
@@ -70,7 +78,7 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         summary: 'Experience for the job',
         bullets: [
           'Every candidate race lists the office’s legal requirements and 3–5 things the job actually requires, with a side-by-side check of both finalists (✓ met, ~ partly, ✗ not met).',
-          'Each candidate gets an overall experience level—Extensive, Substantial, Some, or Limited—with the evidence behind it; published bar and judicial-evaluation ratings are shown word for word.',
+          'Each candidate gets an overall experience level—Very experienced, Experienced, Some experience, or Little experience—with the evidence behind it; published bar and judicial-evaluation ratings are shown word for word.',
           'Experience informs the picks but never decides them; some voters prefer outsiders.',
         ],
       },
