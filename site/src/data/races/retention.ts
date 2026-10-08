@@ -35,6 +35,7 @@ export const RACES_RETENTION_STATEWIDE: Race[] = [
           notes: [
             'Before joining the court he was a senior policy adviser to Gov. Brown, and earlier worked in private practice on antitrust and intellectual property cases. He won a "Yes" majority in every county for which results were found in the Nov 2022 retention vote (statewide percentage not verified here), and is seeking a full 12-year term.',
           ],
+          externalRating: { source: 'State Bar Commission on Judicial Nominees Evaluation', rating: 'Exceptionally Well Qualified', url: 'https://atthelectern.com/ca-supreme-court-nominee-joshua-groban-exceptionally-well-qualified-evaluators-say', dateLabel: 'Dec 2018 (Supreme Court nomination)' },
           sources: [
             { label: 'CalMatters 2026 voter guide — Supreme Court', url: 'https://calmatters.org/california-voter-guide-2026/supreme-court' },
             { label: 'Secretary of State voter guide — justices', url: 'https://vig.cdn.sos.ca.gov/2026/general/pdf/justices.pdf' },
@@ -49,6 +50,7 @@ export const RACES_RETENTION_STATEWIDE: Race[] = [
           notes: [
             'A former Alameda County Superior Court judge, she was Gov. Newsom\'s chief deputy legal affairs secretary and earlier worked as a civil rights attorney, public defender, and State Bar senior director. She was confirmed unanimously by the Commission on Judicial Appointments and was reported by the Bay Area Reporter (EBAR) as the first openly LGBTQ justice on the court; this is her first retention vote.',
           ],
+          externalRating: { source: 'State Bar Commission on Judicial Nominees Evaluation', rating: 'Well Qualified', url: 'https://www.10news.com/news/california-installs-first-lesbian-supreme-court-justice', dateLabel: 'Nov 2022 (Supreme Court nomination)' },
           sources: [
             { label: 'CalMatters 2026 voter guide — Supreme Court', url: 'https://calmatters.org/california-voter-guide-2026/supreme-court' },
             { label: 'Secretary of State voter guide — justices', url: 'https://vig.cdn.sos.ca.gov/2026/general/pdf/justices.pdf' },
@@ -167,6 +169,7 @@ export const RACES_RETENTION_LOCAL: Race[] = [
           notes: [
             'A former Imperial County Superior Court judge and its presiding judge, she previously worked at UC San Diego\'s Office for the Prevention of Harassment & Discrimination and in private practice. Nominated April 16, 2026, she was confirmed May 22, 2026 to replace retiring Justice Richard Huffman and has no prior retention record.',
           ],
+          externalRating: { source: 'State Bar Commission on Judicial Nominees Evaluation', rating: 'Exceptionally Well Qualified', url: 'https://appellate.courts.ca.gov/node/4927', dateLabel: 'Apr to May 2026 (Court of Appeal nomination)' },
           sources: [
             { label: 'Court of Appeal bio', url: 'https://appellate.courts.ca.gov/district-courts/4dca/bio/eran-m-bermudez' },
             { label: 'Commission confirms five appointments', url: 'https://newsroom.courts.ca.gov/news/commission-confirms-five-appointments-courts-appeal-0' },
@@ -180,6 +183,7 @@ export const RACES_RETENTION_LOCAL: Race[] = [
           notes: [
             'A San Bernardino County Superior Court judge for about ten years (appointed by Gov. Brown in 2015), she was earlier an Assistant U.S. Attorney and deputy chief of the Riverside branch of the U.S. Attorney\'s Office. Nominated in August 2025, she was confirmed unanimously in November 2025 to replace retired Justice Marsha Slough.',
           ],
+          externalRating: { source: 'State Bar Commission on Judicial Nominees Evaluation', rating: 'Exceptionally Well Qualified', url: 'https://appellate.courts.ca.gov/district-courts/4dca/bio/corey-g-lee', dateLabel: '2025 (Court of Appeal nomination)' },
           sources: [{ label: 'Court of Appeal bio', url: 'https://appellate.courts.ca.gov/district-courts/4dca/bio/corey-g-lee' }],
         },
         {
@@ -190,6 +194,7 @@ export const RACES_RETENTION_LOCAL: Race[] = [
           notes: [
             'A former Assistant U.S. Attorney in Los Angeles for over twelve years (chief of the Criminal Appeals Section) and a Los Angeles Superior Court judge from 2012, he clerked on the Sixth Circuit and was confirmed unanimously in 2018. Ballotpedia lists him as retained by voters in November 2022.',
           ],
+          externalRating: { source: 'State Bar Commission on Judicial Nominees Evaluation', rating: 'Exceptionally Well Qualified', url: 'https://appellate.courts.ca.gov/district-courts/4dca/bio/michael-j-raphael', dateLabel: '2018 (Court of Appeal nomination)' },
           sources: [
             { label: 'Court of Appeal bio', url: 'https://appellate.courts.ca.gov/district-courts/4dca/bio/michael-j-raphael' },
             { label: 'Ballotpedia: 4th District Court of Appeal', url: 'https://ballotpedia.org/California_Fourth_District_Court_of_Appeal' },
@@ -203,6 +208,7 @@ export const RACES_RETENTION_LOCAL: Race[] = [
           notes: [
             'A former Orange County Superior Court judge (presiding judge of its Juvenile Court, 2018–2022) and longtime public defender who also worked as a trial attorney at the UN International Criminal Tribunal, she joined the court in 2022 and was elevated to presiding justice (replacing Kathleen O\'Leary) with unanimous confirmation on May 22, 2026. She was rated "exceptionally well qualified" in 2022 by the State Bar\'s evaluation commission.',
           ],
+          externalRating: { source: 'State Bar Commission on Judicial Nominees Evaluation', rating: 'Exceptionally Well Qualified', url: 'https://appellate.courts.ca.gov/district-courts/4dca/bio/joanne-motoike', dateLabel: '2022 (Court of Appeal nomination)' },
           sources: [
             { label: 'Court of Appeal bio', url: 'https://appellate.courts.ca.gov/district-courts/4dca/bio/joanne-motoike' },
             { label: 'Commission confirms five appointments (May 2026)', url: 'https://newsroom.courts.ca.gov/news/commission-confirms-five-appointments-courts-appeal-0' },
@@ -226,6 +232,7 @@ export const RACES_RETENTION_LOCAL: Race[] = [
           notes: [
             'An Orange County Superior Court judge from 2012, he was a senior appellate court attorney at the 4th District from 2005 to 2012 and a Kirkland & Ellis associate; Harvard Law graduate. Nominated Nov 21, 2024 to replace retired Justice William Bedsworth, he was confirmed unanimously in February 2025.',
           ],
+          externalRating: { source: 'State Bar Commission on Judicial Nominees Evaluation', rating: 'Exceptionally Well Qualified', url: 'https://appellate.courts.ca.gov/district-courts/4dca/bio/nathan-r-scott', dateLabel: 'Nov 2024 to Feb 2025 (Court of Appeal nomination)' },
           sources: [{ label: 'Governor\'s Nov 21, 2024 appointments', url: 'https://www.gov.ca.gov/2024/11/21/governor-newsom-announces-judicial-appointments-11-21-24/' }],
         },
         {
@@ -236,6 +243,7 @@ export const RACES_RETENTION_LOCAL: Race[] = [
           notes: [
             'An Orange County Superior Court judge since 2009 and a California deputy attorney general from 1997 to 2009, she was nominated April 16, 2026 and confirmed May 22, 2026 to replace retiring Justice Thomas Goethals; this is her first retention vote.',
           ],
+          externalRating: { source: 'State Bar Commission on Judicial Nominees Evaluation', rating: 'Exceptionally Well Qualified', url: 'https://appellate.courts.ca.gov/node/4925', dateLabel: 'Apr to May 2026 (Court of Appeal nomination)' },
           sources: [
             { label: 'Governor\'s Apr 16, 2026 appointments', url: 'https://www.gov.ca.gov/2026/04/16/governor-newsom-announces-updated-judicial-appointments/' },
             { label: 'Commission confirms five appointments', url: 'https://newsroom.courts.ca.gov/news/commission-confirms-five-appointments-courts-appeal-0' },
@@ -249,6 +257,7 @@ export const RACES_RETENTION_LOCAL: Race[] = [
           notes: [
             'An Orange County Superior Court judge from 2013, she spent decades in private litigation (partner at Howard Rice, Howrey, and Jones Day). Nominated May 19, 2023, she was confirmed unanimously on September 26, 2023.',
           ],
+          externalRating: { source: 'State Bar Commission on Judicial Nominees Evaluation', rating: 'Exceptionally Well Qualified', url: 'https://appellate.courts.ca.gov/node/3929', dateLabel: 'May to Sep 2023 (Court of Appeal nomination)' },
           sources: [{ label: 'Court of Appeal bio', url: 'https://appellate.courts.ca.gov/node/3929' }],
         },
         {

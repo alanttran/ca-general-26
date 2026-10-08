@@ -9,6 +9,9 @@
   --rad-border: #cbd5e1;
   --rad-alert-bg: #fff1f2;
   --rad-alert-border: #f43f5e;
+  --flag-severe: #be123c;
+  --flag-serious: #c2410c;
+  --flag-notable: #a16207;
   --rad-warn: #c2410c;
   --rad-font: 'Segoe UI', system-ui, -apple-system, sans-serif;
   --rad-max-width: 72rem;
@@ -1071,6 +1074,12 @@ main {
     border: 1px solid var(--rad-alert-border);
     border-radius: var(--rad-radius);
   }
+
+  /* Serious (not Severe) flags: a left rule only, so the red outline stays meaningful. */
+  &--caution {
+    box-shadow: inset 3px 0 0 var(--flag-serious);
+    padding-left: 0.85rem;
+  }
 }
 
 .candidate-card__media {
@@ -1598,7 +1607,8 @@ main {
     gap: 0.85rem;
     padding: 1rem 0;
 
-    &--alert {
+    &--alert,
+    &--caution {
       margin-inline: 0;
       padding-inline: 0.85rem;
     }
@@ -1893,4 +1903,222 @@ button:focus-visible {
   @page {
     margin: 0.5in;
   }
+}
+
+/* ---- Red flag tiers ---- */
+
+.flag-list {
+  list-style: none;
+  padding-left: 0 !important;
+  color: var(--rad-text) !important;
+}
+
+.flag-item {
+  padding: 0.55rem 0.7rem;
+  border-left: 3px solid var(--flag-notable);
+  background: var(--rad-surface);
+  border-radius: 0 6px 6px 0;
+
+  &--severe {
+    border-left-color: var(--flag-severe);
+  }
+
+  &--serious {
+    border-left-color: var(--flag-serious);
+  }
+
+  & + & {
+    margin-top: 0.5rem;
+  }
+}
+
+.flag-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.3rem;
+}
+
+.flag-item__text,
+.flag-item__why {
+  margin: 0 0 0.3rem;
+}
+
+.flag-item__why {
+  font-size: 0.92em;
+  color: var(--rad-text-muted);
+}
+
+.flag-badge,
+.flag-status {
+  display: inline-block;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.flag-badge {
+  color: #fff;
+
+  &--severe {
+    background: var(--flag-severe);
+  }
+
+  &--serious {
+    background: var(--flag-serious);
+  }
+
+  &--notable {
+    background: var(--flag-notable);
+  }
+}
+
+.flag-status {
+  border: 1px solid var(--rad-border);
+  color: var(--rad-text-muted);
+  font-weight: 600;
+}
+
+.candidate-card__flags-rubric {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.pick-flag {
+  display: inline-flex;
+  margin-left: 0.2rem;
+  vertical-align: -0.1em;
+
+  .icon {
+    width: 0.85em;
+    height: 0.85em;
+  }
+
+  &--severe {
+    color: var(--flag-severe);
+  }
+
+  &--serious {
+    color: var(--flag-serious);
+  }
+}
+
+.methodology__rubric {
+  margin: 0.25rem 0 0.75rem;
+  padding-left: 0;
+  list-style: none;
+
+  li + li {
+    margin-top: 0.4rem;
+  }
+}
+
+/* ---- Experience for the job ---- */
+
+.exp-badge {
+  display: inline-block;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+  vertical-align: middle;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+
+  &--extensive {
+    color: #0f766e;
+    background: color-mix(in srgb, #0f766e 10%, var(--rad-surface));
+  }
+
+  &--substantial {
+    color: #0369a1;
+    background: color-mix(in srgb, #0369a1 10%, var(--rad-surface));
+  }
+
+  &--some {
+    color: #6d28d9;
+    background: color-mix(in srgb, #6d28d9 8%, var(--rad-surface));
+  }
+
+  &--limited {
+    color: var(--rad-text-muted);
+    background: var(--rad-surface-elevated);
+  }
+}
+
+.qual-compare__legal,
+.qual-compare__note {
+  font-size: 0.9rem;
+  color: var(--rad-text-muted);
+}
+
+.qual-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--rad-border);
+  }
+
+  thead th {
+    background: var(--rad-surface-elevated);
+    min-width: 11rem;
+  }
+
+  tbody th {
+    min-width: 10rem;
+  }
+}
+
+.qual-compare__detail {
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: var(--rad-text-muted);
+}
+
+.qual-cell__mark {
+  display: inline-block;
+  min-width: 1.1rem;
+  font-weight: 700;
+}
+
+.qual-cell--met .qual-cell__mark {
+  color: #15803d;
+}
+
+.qual-cell--partial .qual-cell__mark {
+  color: #a16207;
+}
+
+.qual-cell--not-met .qual-cell__mark {
+  color: var(--flag-severe);
+}
+
+.qual-cell--unknown .qual-cell__mark {
+  color: var(--rad-text-muted);
+}
+
+.qual-cell__evidence {
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.candidate-card__qual-legal {
+  color: var(--flag-severe);
+  font-weight: 600;
+}
+
+.candidate-card__qual-rating,
+.retention__rating {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
 }

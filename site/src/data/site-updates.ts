@@ -30,6 +30,22 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         ],
       },
       {
+        summary: 'Experience for the job',
+        bullets: [
+          'Every candidate race lists the office’s legal requirements and 3–5 things the job actually requires, with a side-by-side check of both finalists (✓ met, ~ partly, ✗ not met).',
+          'Each candidate gets an overall experience level—Extensive, Substantial, Some, or Limited—with the evidence behind it; published bar and judicial-evaluation ratings are shown word for word.',
+          'Experience informs the picks but never decides them; some voters prefer outsiders.',
+        ],
+      },
+      {
+        summary: 'Red flags are now rated',
+        bullets: [
+          'Each red flag is labeled Severe, Serious, or Worth knowing, with a status (e.g. Alleged, Settled, Official finding) and a line on why it matters for that office.',
+          'Only Severe flags outline a candidate card in red; the summary table and print sheet mark picks whose candidate has a Severe or Serious flag.',
+          'Policy criticism moved out of red flags into Notes. See “How we rate red flags” under Methodology.',
+        ],
+      },
+      {
         summary: 'New for November',
         bullets: [
           'Races appear in the same order as the printed ballot.',

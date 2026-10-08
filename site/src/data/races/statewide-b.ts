@@ -31,9 +31,27 @@ export const RACES_STATEWIDE_B: Race[] = [
         summary: 'Explainer on what the treasurer does and the November matchup.',
       },
     ],
+    legalRequirements: "U.S. citizen, California resident and registered voter (Cal. Const. art. II); the office is limited to two four-year terms.",
+    qualificationCriteria: [
+      { id: 'debt-investment', label: 'Debt issuance and investment management', detail: "The Treasurer sells state bonds and invests the state's cash, so direct experience with debt markets and portfolios matters." },
+      { id: 'finance-boards', label: 'Serving on public finance and pension boards', detail: 'The Treasurer sits on CalPERS, CalSTRS and dozens of financing authorities and commissions.' },
+      { id: 'public-finance', label: 'Public finance administration', detail: 'The office administers state financing programs, including housing, school and clean-energy bonds.' },
+      { id: 'exec-management', label: 'Managing an organization and budget', detail: 'The Treasurer runs a state office with staff, investment operations and a public budget.' },
+    ],
     candidates: [
       {
         id: 'eleni-kounalakis',
+        qualification: {
+          level: 'some',
+          legal: 'meets',
+          summary: "Two terms as Lieutenant Governor, with seats on the UC Regents, CSU Trustees and the State Lands Commission (which she chairs, per her campaign site). She has no documented role managing debt issuance or an investment portfolio.",
+          criteria: [
+            { criterionId: 'debt-investment', assessment: 'unknown', evidence: "No treasury, bond-issuance or portfolio-management role found in the sources checked; the UC Regents oversee the university's investments as a board." },
+            { criterionId: 'finance-boards', assessment: 'met', evidence: 'Lieutenant Governor since Jan 2019; member of the UC Board of Regents, the CSU Board of Trustees and the State Lands Commission; earlier service on the San Francisco Port Commission and First 5 California (per campaign site and Wikipedia).' },
+            { criterionId: 'public-finance', assessment: 'partial', evidence: 'State Lands Commission oversees state-owned land and resource revenue; no direct role running state financing programs found.' },
+            { criterionId: 'exec-management', assessment: 'partial', evidence: "President of AKT Development, a Sacramento real-estate firm, until 2010 (per campaign site); U.S. Ambassador to Hungary Jan 2010 to Jul 2013; heads the Lieutenant Governor's office." },
+          ],
+        },
         name: 'Eleni Kounalakis',
         party: 'D',
         role: 'Lieutenant Governor of California',
@@ -59,6 +77,17 @@ export const RACES_STATEWIDE_B: Race[] = [
       },
       {
         id: 'jennifer-hawks',
+        qualification: {
+          level: 'limited',
+          legal: 'meets',
+          summary: "Worked about 20 years at Sacred Heart Schools in Atherton, where the San Francisco Examiner describes finance-related administrative work (office manager and executive assistant), and earlier in banking. She has held no elected or state-board position.",
+          criteria: [
+            { criterionId: 'debt-investment', assessment: 'unknown', evidence: 'Early-career banking work is reported; no bond-issuance or investment-management role found.' },
+            { criterionId: 'finance-boards', assessment: 'not-met', evidence: 'No elected office or state or pension board service found; the Examiner reports she has never held office.' },
+            { criterionId: 'public-finance', assessment: 'not-met', evidence: 'No public-sector finance role found in the sources checked.' },
+            { criterionId: 'exec-management', assessment: 'partial', evidence: 'Retired in 2021 after about 20 years at Sacred Heart Schools (San Francisco Examiner); some outlets say she served on its executive team; no CFO title found. Her own campaign materials cite budget management.' },
+          ],
+        },
         name: 'Jennifer Hawks',
         party: 'R',
         role: 'Retired Business Executive',
@@ -124,9 +153,27 @@ export const RACES_STATEWIDE_B: Race[] = [
         summary: 'Explainer on the office and the November matchup.',
       },
     ],
+    legalRequirements: "Must have been admitted to practice law in California courts for the five years immediately preceding election (Cal. Const. art. V, sec. 13); registered voter; limited to two four-year terms.",
+    qualificationCriteria: [
+      { id: 'law-practice', label: 'Legal practice and litigation', detail: "The Attorney General is the state's chief lawyer and argues cases in state and federal court." },
+      { id: 'agency-leadership', label: 'Running a large law-enforcement agency', detail: 'The AG heads the Department of Justice, a statewide agency of attorneys, agents and lab staff.' },
+      { id: 'enforcement', label: 'Criminal and civil enforcement', detail: 'The office prosecutes and sues under criminal, consumer, civil-rights, antitrust and environmental laws.' },
+      { id: 'constitutional', label: 'Constitutional and federal litigation', detail: 'The AG defends state laws and decides whether California sues the federal government.' },
+    ],
     candidates: [
       {
         id: 'rob-bonta',
+        qualification: {
+          level: 'extensive',
+          legal: 'meets',
+          summary: "Has held this office since April 2021 (appointed, then elected in 2022). Before that, he was a litigation associate and San Francisco deputy city attorney, and served in the Assembly 2012-2021.",
+          criteria: [
+            { criterionId: 'law-practice', assessment: 'met', evidence: 'Yale Law JD; litigation associate at a Bay Area firm; law clerk to a federal district judge; San Francisco deputy city attorney (per Vote Smart and Wikipedia).' },
+            { criterionId: 'agency-leadership', assessment: 'met', evidence: 'Attorney General and head of the California Department of Justice since April 23, 2021.' },
+            { criterionId: 'enforcement', assessment: 'met', evidence: 'As AG, enforces state criminal, consumer and housing laws; news accounts cite housing-law actions and a Meta child-safety settlement (reported by SF Standard).' },
+            { criterionId: 'constitutional', assessment: 'met', evidence: 'Has filed or joined more than 50 suits against the federal administration since 2025 (as reported).' },
+          ],
+        },
         name: 'Rob Bonta',
         party: 'D',
         role: 'California Attorney General',
@@ -135,7 +182,7 @@ export const RACES_STATEWIDE_B: Race[] = [
           "Appointed Attorney General by Gov. Newsom in 2021 and elected to a four-year term in 2022; previously an East Bay Assemblymember. Since Trump's return he has filed or joined more than 50 lawsuits against the federal administration.",
           "His first term emphasized enforcing state housing laws against resisting cities and criminal-justice reform; he was also credited by supporters with a large settlement with Meta over child-safety concerns.",
         ],
-        recordVsChange: "Bonta has delivered the state's litigation response to the Trump administration and enforced housing-element law against resisting cities. The case for change rests on Gates's argument that Sacramento is too lenient on crime and too aggressive toward local governments, and on unresolved questions about legal spending from his campaign account; voters who want continuity in federal litigation have little reason to switch.",
+        recordVsChange: "Bonta has delivered the state's litigation response to the Trump administration and enforced housing-element law against resisting cities. The case for change rests on Gates's argument that Sacramento is too lenient on crime and too aggressive toward local governments (critics also questioned his campaign-funded legal fees, though the FPPC found no violation); voters who want continuity in federal litigation have little reason to switch.",
         scorecard: [
           { topic: 'Suing the federal government', position: '✓✓ 50+ lawsuits against the Trump administration', comparison: 'vs Gates: Gates worked in Trump DOJ and would not lead that litigation.' },
           { topic: 'Crime & criminal justice', position: '~ Reform-leaning record; supports state criminal-justice reforms', comparison: 'vs Gates: Gates says Sacramento policy is too lenient.' },
@@ -145,21 +192,25 @@ export const RACES_STATEWIDE_B: Race[] = [
         ],
         money: 'Reelection-account totals were not retrievable in the sources checked; see Cal-Access for current figures. ?',
         endorsements: 'California Democratic Party, California Teachers Association, California Environmental Voters (CalMatters voter guide, 2026).',
-        redFlags: [
-          {
-            text: "Bonta's reelection campaign paid about $468,000 to the law firm Wilson Sonsini for counsel after federal investigators approached him in the bribery probe of the Duong family, longtime donors whose $155,000 in contributions he returned; he was never charged, and his campaign says the spending was proper. Campaign funds may cover legal costs only when tied to the campaign, and some legal experts questioned that link; no official ruling on the spending was found.",
-            sources: [
-              { label: 'KQED', url: 'https://www.kqed.org/news/12065004/california-ag-rob-bonta-wont-rule-out-a-run-for-governor-amid-campaign-fund-questions' },
-              { label: 'NBC Bay Area', url: 'https://nbcbayarea.com/news/california/california-attorney-general-rob-bonta-campaign-spending/3983667' },
-            ],
-          },
-        ],
+        redFlags: [],
         notes: [
+          "His reelection campaign paid about $468,000 to the law firm Wilson Sonsini after federal investigators contacted him for information in the Oakland bribery probe involving the Duong family, longtime donors whose roughly $155,000 in contributions he returned. Bonta says investigators treated him as someone with relevant information, not a target, and he was not charged — https://www.kqed.org/news/12065004/california-ag-rob-bonta-wont-rule-out-a-run-for-governor-amid-campaign-fund-questions. After a complaint, the Fair Political Practices Commission said in December 2025 that it found no evidence the spending violated the law — https://www.yahoo.com/news/articles/state-watchdog-clears-bonta-campaign-015028470.html. Critics still argue the fees were personal rather than campaign-related.",
           "Reform California's Carl DeMaio has accused Bonta of altering the Prop 39 voter-ID ballot title and announced a lawsuit; this is a partisan claim and no independent ruling was found.",
         ],
       },
       {
         id: 'michael-gates',
+        qualification: {
+          level: 'substantial',
+          legal: 'meets',
+          summary: "Elected Huntington Beach city attorney three times (first in 2014) and spent about ten months in 2025 as a deputy assistant attorney general in the U.S. Justice Department Civil Rights Division. He has not led a statewide agency.",
+          criteria: [
+            { criterionId: 'law-practice', assessment: 'met', evidence: 'Chapman Fowler School of Law graduate; trial attorney; city attorney of Huntington Beach 2014-2025, including suits against the State of California over housing mandates.' },
+            { criterionId: 'agency-leadership', assessment: 'partial', evidence: "Led a municipal city attorney's office for about ten years; held a federal deputy assistant AG post for about ten months. No statewide or large-agency leadership. His DOJ exit is disputed (see red flags)." },
+            { criterionId: 'enforcement', assessment: 'partial', evidence: "City attorney's office enforces municipal code and handles civil litigation for the city; at the DOJ Civil Rights Division he helped file eight voter-roll suits. The scope of criminal prosecution in his office was not verified." },
+            { criterionId: 'constitutional', assessment: 'met', evidence: "Defended Huntington Beach's voter-ID measure and litigated against the state on housing law; helped file eight federal suits for voter-registration files (2025)." },
+          ],
+        },
         name: 'Michael E. Gates',
         party: 'R',
         role: 'Deputy United States Attorney',
@@ -178,10 +229,14 @@ export const RACES_STATEWIDE_B: Race[] = [
         endorsements: 'California Republican Party, California Parents Union, California Rifle & Pistol Association (CalMatters voter guide, 2026).',
         redFlags: [
           {
-            text: "His November 2025 exit from the Justice Department was disputed: the Orange County Register reported a personnel form indicating termination for cause, while Gates produced a resignation letter dated Nov. 8 and said he resigned. DOJ later rescinded the termination and accepted his voluntary resignation.",
+            severity: 'serious',
+            status: 'disputed',
+            text: "His November 2025 exit from the Justice Department is disputed. His federal personnel form (SF-52), approved by Civil Rights Division head Harmeet Dhillon, listed him as \"terminated for cause,\" and the Orange County Register reported he was accused of creating a hostile work environment for several women he worked with. About two weeks later DOJ, without explanation, rescinded the termination and accepted his voluntary resignation. Gates posted a resignation letter dated Nov. 8, says he left to come home, and told the Register that department leaders were \"angry I resigned.\" No details of the accusation or any finding have been made public.",
+            whyItMatters:
+              'The Attorney General runs a department of thousands of lawyers and staff and enforces state workplace-harassment law, so a for-cause dismissal tied to a reported harassment accusation, even one later rescinded without explanation, bears on how he would lead it.',
             sources: [
-              { label: 'LAist', url: 'https://laist.com/news/politics/huntington-beachs-michael-gates-quits-justice-department' },
-              { label: 'Daily Journal', url: 'https://dailyjournal.com/article/388543-former-huntington-beach-city-attorney-resigns-from-doj-returns-to-local-post' },
+              { label: 'San Francisco Chronicle (Jan 2026)', url: 'https://www.sfchronicle.com/politics/joegarofoli/article/michael-gates-attorney-general-21292842.php' },
+              { label: 'LAist (Nov 2025)', url: 'https://laist.com/news/politics/huntington-beachs-michael-gates-quits-justice-department' },
             ],
           },
         ],
@@ -194,7 +249,7 @@ export const RACES_STATEWIDE_B: Race[] = [
       ['PL', 'Bonta', '●', "Progressive Left voters value the Attorney General leading the 50-plus suits against the Trump administration and enforcing housing and consumer law."],
       ['EL', 'Bonta', '●', "Establishment Liberals favor an experienced incumbent who defends state institutions in court and is backed by the Democratic Party and teachers."],
       ['DM', 'Bonta', '●', "Democratic Mainstays support the party-endorsed incumbent who has become the face of California's legal resistance to Trump."],
-      ['OL', 'Bonta', '◐', "Outsider Left voters are uneasy about the campaign-account legal spending questions but still back the Democrat over a former Trump DOJ official."],
+      ['OL', 'Bonta', '◐', "Outsider Left voters are uneasy about his ties to Oakland donors caught up in a bribery probe, even though the FPPC cleared his legal-fee spending, but still back the Democrat over a former Trump DOJ official."],
       ['SS', 'Bonta', '○', "Stressed Sideliners lean to the known incumbent whose lawsuits touch cost-of-living and consumer issues, though neither candidate has broad name recognition."],
       ['AR', 'Gates', '○', "Ambivalent Right voters worried about crime may prefer Gates's tough-on-crime message, tempered by doubts about his DOJ exit dispute."],
       ['PR', 'Gates', '◐', "Populist Right voters like his fight against state mandates and his DOJ voter-roll lawsuits, though his Washington ties are mixed."],
@@ -202,8 +257,8 @@ export const RACES_STATEWIDE_B: Race[] = [
       ['FF', 'Gates', '●', "Faith and Flag Conservatives favor the GOP nominee backed by the California Parents Union and gun-rights groups over the Democrat who sues the federal government."],
     ]),
     counterArguments: [
-      "PL/EL/DM (Bonta): But consider that questions over roughly $468,000 in campaign-funded legal fees tied to the Duong probe could become a distraction, because an AG's credibility is central to enforcement.",
-      "PR/CC/FF (Gates): But consider that Gates's Justice Department exit was contested, and the AG manages a large agency on which continuity of litigation already underway matters.",
+      "PL/EL/DM (Bonta ●): But consider that his longtime donors, the Duong family, were indicted in an Oakland bribery case (they have pleaded not guilty) and his campaign spent about $468,000 on lawyers in that probe, because even though he was not charged and the FPPC found no violation, an AG's credibility depends on distance from such cases.",
+      "CC/FF (Gates ●): But consider that a Justice Department personnel form recorded Gates as terminated for cause, with the Orange County Register reporting a hostile-work-environment accusation, before DOJ rescinded it and accepted his resignation, because the Attorney General runs a department of thousands and the matter was never publicly explained.",
     ],
   },
 
@@ -240,9 +295,27 @@ export const RACES_STATEWIDE_B: Race[] = [
         summary: 'Candidate profiles with positions and endorsements.',
       },
     ],
+    legalRequirements: "U.S. citizen, California resident and registered voter; limited to two four-year terms. No professional license or insurance background is required by law.",
+    qualificationCriteria: [
+      { id: 'rate-review', label: 'Insurance regulation and rate review', detail: 'The Commissioner approves or denies rate requests under Proposition 103 and oversees insurer solvency.' },
+      { id: 'consumer-protection', label: 'Consumer protection and claims enforcement', detail: 'The Department of Insurance investigates claim handling and insurer misconduct.' },
+      { id: 'agency-leadership', label: 'Running a regulatory agency', detail: 'The Commissioner leads the Department of Insurance, with regulators, attorneys and investigators.' },
+      { id: 'catastrophe-policy', label: 'Wildfire and catastrophe insurance policy', detail: 'The office oversees the FAIR Plan and rules on catastrophe modeling and reinsurance in rates.' },
+    ],
     candidates: [
       {
         id: 'ben-allen',
+        qualification: {
+          level: 'some',
+          legal: 'meets',
+          summary: "State senator since 2014 and former Santa Monica-Malibu school board president, with a law degree (UC Berkeley JD) and several insurance bills. He has not worked at an insurance regulator or insurer.",
+          criteria: [
+            { criterionId: 'rate-review', assessment: 'partial', evidence: 'Has carried insurance bills (contents-coverage payout; nonrenewal notice SB 1301; SB 1209); no rate-review or regulatory role found.' },
+            { criterionId: 'consumer-protection', assessment: 'partial', evidence: 'Authored a law requiring insurers to pay 60% of contents coverage without a detailed inventory (per campaign and news accounts).' },
+            { criterionId: 'agency-leadership', assessment: 'partial', evidence: 'Chairs Senate committees (Environmental Quality; earlier Education 2017-19); school board president, helping pass a $385 million bond; no regulatory agency role.' },
+            { criterionId: 'catastrophe-policy', assessment: 'partial', evidence: 'Helped write Prop 4 (2024 climate bond) and led $3.5 billion of its appropriation as Budget subcommittee chair; his district was hit by the January 2025 fires.' },
+          ],
+        },
         name: 'Ben Allen',
         party: 'D',
         role: 'California State Senator',
@@ -261,18 +334,25 @@ export const RACES_STATEWIDE_B: Race[] = [
         ],
         money: 'Largest outside support is a California Environmental Voters PAC, to which crypto billionaire Chris Larsen gave $1 million in May 2026 (CalMatters, Aug 2026). Has pledged to refuse insurance-industry money. Campaign totals: see Cal-Access. ?',
         endorsements: 'California Democratic Party, California Environmental Voters, California Professional Firefighters, Sierra Club, Consumer Federation of California, Speaker Robert Rivas, Senate leader Monique Limón, Sens. Padilla and Schiff, San Francisco Chronicle editorial board.',
-        redFlags: [
-          {
-            text: 'A Working Families Party leader criticized Allen for crypto-linked money late in the race; the $1 million came from Chris Larsen to a supportive PAC, not directly to Allen. Allen has pledged to refuse insurance-industry money.',
-            sources: [{ label: 'CalMatters (Aug 2026)', url: 'https://calmatters.org/economy/2026/08/insurance-commissioner-progressive-wave/' }],
-          },
-        ],
+        redFlags: [],
         notes: [
+          "The Working Families Party's California director, a Kim ally, criticized Allen for \"crypto money\": Ripple co-founder Chris Larsen gave $1 million in May 2026 to the California Environmental Voters-sponsored PAC that is Allen's largest outside backer. That is legal independent spending, not a contribution to Allen, and no ethics or campaign-finance problem has been reported; Allen has pledged to refuse insurance-industry money — https://calmatters.org/economy/2026/08/insurance-commissioner-progressive-wave/",
           'Supporters (RL Miller) call him progressive by any standard; critics call his establishment backing out of touch. Allen supports encouraging residents to leave high fire-risk areas and discouraging building there.',
         ],
       },
       {
         id: 'jane-kim',
+        qualification: {
+          level: 'limited',
+          legal: 'meets',
+          summary: "Attorney and former San Francisco supervisor (2011-2019) and school board president, who later directed the California Working Families Party. News reports say she has no professional insurance experience.",
+          criteria: [
+            { criterionId: 'rate-review', assessment: 'not-met', evidence: 'No insurance-regulation or rate-review role found; reported as having no professional insurance experience (SF Chronicle / SFist coverage).' },
+            { criterionId: 'consumer-protection', assessment: 'partial', evidence: 'Civil rights attorney; as supervisor sponsored tenant and eviction protections (per her bio); no insurance-claims enforcement role found.' },
+            { criterionId: 'agency-leadership', assessment: 'partial', evidence: 'San Francisco supervisor 2011-2019 and Board of Education president; inaugural director of the California Working Families Party; no regulatory agency role.' },
+            { criterionId: 'catastrophe-policy', assessment: 'not-met', evidence: 'No catastrophe-insurance role found; her state-run disaster insurance proposal is a plan, not experience.' },
+          ],
+        },
         name: 'Jane Kim',
         party: 'D',
         role: 'Attorney/Consumer Advocate',
@@ -291,16 +371,11 @@ export const RACES_STATEWIDE_B: Race[] = [
         ],
         money: 'Top contributors: California Working Families Party (about $365,000) and California Teachers Association (about $150,000) per CalMatters, Aug 2026. Business groups (JOBSPAC, Chamber of Commerce) spent about $1.5 million against her in the primary. Pledged to refuse insurance-industry money. ?',
         endorsements: 'California Labor Federation, SEIU California, California Teachers Association, California Faculty Association, Working Families Party, Sen. Bernie Sanders, Rep. Ro Khanna; also Lt. Gov. Kounalakis and Controller Malia Cohen per one report.',
-        redFlags: [
-          {
-            text: "Consumer Watchdog, the group founded around Prop 103, has questioned whether her state-run fund could raise the tens of billions of dollars it would need to survive a bad fire season, and consumer advocates note she has not released specifics on capital; she says the plan needs further study.",
-            sources: [
-              { label: 'CalMatters (June 2026)', url: 'https://calmatters.org/economy/2026/06/california-insurance-commissioner-top-two/' },
-              { label: 'CalMatters (Aug 2026)', url: 'https://calmatters.org/economy/2026/08/insurance-commissioner-progressive-wave/' },
-            ],
-          },
+        redFlags: [],
+        notes: [
+          "Consumer Watchdog president Jamie Court has warned that a state-run disaster fund would need \"tens of billions of dollars to start\" and could be wiped out by one catastrophic fire; Kim says the plan needs further study and that \"just allowing the insurance industry to raise rates\" is not the answer. This is a policy critique, not a red flag — https://calmatters.org/economy/2026/08/insurance-commissioner-progressive-wave/",
+          'Her plan has drawn industry criticism as shifting catastrophic risk onto the state, as earthquake insurance comparisons suggest.',
         ],
-        notes: ['Her plan has drawn industry criticism as shifting catastrophic risk onto the state, as earthquake insurance comparisons suggest.'],
       },
     ],
     crossTypology: ct([
@@ -358,9 +433,27 @@ export const RACES_STATEWIDE_B: Race[] = [
         summary: 'Compares the candidates on transgender students, funding and ethnic studies.',
       },
     ],
+    legalRequirements: "Nonpartisan office (no party on the ballot); U.S. citizen, California resident and registered voter; four-year term, limited to two terms.",
+    qualificationCriteria: [
+      { id: 'k12-leadership', label: 'K-12 education governance', detail: 'The Superintendent leads the state education system and sits on the State Board of Education.' },
+      { id: 'agency-leadership', label: 'Running a large state agency', detail: 'The office leads the California Department of Education, which serves nearly 6 million students.' },
+      { id: 'school-finance', label: 'School budgeting and finance', detail: 'The Department administers state school funding and advises on the budget.' },
+      { id: 'state-policy', label: 'Working with the State Board and Legislature', detail: 'Most policy is set by the State Board and Legislature, and the 2027 restructuring will shift more duties to the Board.' },
+    ],
     candidates: [
       {
         id: 'richard-barrera',
+        qualification: {
+          level: 'substantial',
+          legal: 'meets',
+          summary: "San Diego Unified board member since 2008, including about five years as president, and since July 2024 a senior adviser at the California Department of Education. He has not run a state agency.",
+          criteria: [
+            { criterionId: 'k12-leadership', assessment: 'met', evidence: 'Elected to the San Diego Unified board in 2008 and re-elected four times; about five years as board president (EdSource, 2026).' },
+            { criterionId: 'agency-leadership', assessment: 'partial', evidence: 'Senior adviser for special projects at the California Department of Education since 2024, leading three initiatives; advisory, not head of the department.' },
+            { criterionId: 'school-finance', assessment: 'met', evidence: "As a board member for 18 years, votes on San Diego Unified's annual budget, which California districts must adopt." },
+            { criterionId: 'state-policy', assessment: 'partial', evidence: "Works in the Department of Education's initiatives office under the current Superintendent; no State Board or legislative role found." },
+          ],
+        },
         name: 'Richard Barrera',
         party: 'NP',
         role: 'State Superintendent Advisor',
@@ -384,6 +477,17 @@ export const RACES_STATEWIDE_B: Race[] = [
       },
       {
         id: 'sonja-shaw',
+        qualification: {
+          level: 'some',
+          legal: 'meets',
+          summary: "Chino Valley Unified board member since her November 2022 election and board president (EdSource, 2026). Before that she owned two small businesses; she has no state-agency role.",
+          criteria: [
+            { criterionId: 'k12-leadership', assessment: 'met', evidence: 'Elected to the Chino Valley Unified board in November 2022 and serves as its president; about four years on the board.' },
+            { criterionId: 'agency-leadership', assessment: 'not-met', evidence: 'No state-agency role found; previously owned a fitness-training business and a photography business (district bio).' },
+            { criterionId: 'school-finance', assessment: 'partial', evidence: "As a board member, votes on the district's annual budget; no other school-finance role found." },
+            { criterionId: 'state-policy', assessment: 'unknown', evidence: 'No State Board or legislative role found in the sources checked.' },
+          ],
+        },
         name: 'Sonja Shaw',
         party: 'NP',
         role: 'School District President',
@@ -402,13 +506,9 @@ export const RACES_STATEWIDE_B: Race[] = [
         ],
         money: 'Primary-period campaign receipts reported at about $460,565 (VoteOrElse, spring 2026, unverified against Cal-Access); one late-spring filing showed the most first-time small donors (EdSource). ?',
         endorsements: 'California Republican Party, Moms for Liberty, California Rifle and Pistol Association (CalMatters / KPBS, 2026).',
-        redFlags: [
-          {
-            text: "In 2023, while presiding over a Chino Valley school board meeting during a debate on transgender student rights, she oversaw the removal of then-State Superintendent Tony Thurmond from the meeting.",
-            sources: [{ label: 'CalMatters voter guide', url: 'https://calmatters.org/california-voter-guide-2026/superintendent-of-public-instruction/' }],
-          },
-        ],
-        notes: ['Both candidates identify low test scores as a problem; Shaw led the primary with 22.6%.'],
+        redFlags: [],
+        notes: [
+          "At a July 2023 Chino Valley board meeting on a parental-notification policy for transgender students, Shaw, as board president, had then-State Superintendent Tony Thurmond escorted out after he ran past the one-minute public-comment limit; Thurmond said he was \"forcibly removed,\" and Shaw said he was a \"danger to our students.\" This is a contested confrontation, not misconduct or an official finding — https://ktvu.com/news/california-school-superintendent-kicked-out-verbally-attacked-at-school-board-meeting",'Both candidates identify low test scores as a problem; Shaw led the primary with 22.6%.'],
       },
     ],
     crossTypology: ct([

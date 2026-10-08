@@ -1,6 +1,7 @@
 import type { BallotData, Race, TldrRow, TypologyCode } from '../types/ballot-types';
 import { BALLOT_META } from './meta';
 import { mergeRaceDerivedFields } from './merge-races';
+import { maxSeverity, resolveCandidateForPick } from './red-flags';
 import { BALLOT_CATEGORIES, BALLOT_PROFILES, DEFAULT_BALLOT_ZIP, type BallotProfile } from './ballot-profiles';
 import { LOCAL_RACES, STATEWIDE_RACES } from './races';
 import { TYPOLOGIES } from './typologies-data';
@@ -23,11 +24,15 @@ export function getBallotProfile(zip: string): BallotProfile {
 /** TL;DR row derived from the race’s own picks, so the matrix can never drift from race files. */
 function tldrRowFor(race: Race): TldrRow {
   const cells = {} as Record<TypologyCode, string>;
+  const flags: TldrRow['flags'] = {};
   for (const code of TY_CODES) {
     const row = race.crossTypology.find((r) => r.typology === code);
     cells[code] = row ? `${row.pick} ${row.confidence}`.trim() : '— —';
+    if (!row || race.kind !== 'candidates') continue;
+    const tier = maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags);
+    if (tier === 'severe' || tier === 'serious') flags[code] = tier;
   }
-  return { raceId: race.id, label: race.tldrLabel ?? race.title, cells };
+  return { raceId: race.id, label: race.tldrLabel ?? race.title, cells, flags };
 }
 
 /** Statewide races + this ZIP’s local races, sorted into official ballot order. */

@@ -29,13 +29,80 @@ export interface RedFlagSource {
   url: string;
 }
 
-/** One serious caveat; use `sources` to point readers to reporting or official records. */
-export type RedFlagBullet =
-  | string
-  | {
-      text: string;
-      sources?: RedFlagSource[];
-    };
+/**
+ * How much a red flag should weigh (see “How we rate red flags” in Methodology).
+ * - `severe`: conviction or criminal charge; official misconduct/ethics finding; sustained harassment or
+ *   abuse finding; ties to extremist groups; acting to overturn an election.
+ * - `serious`: active investigation; settlement of misconduct claims; documented ethics or campaign-finance
+ *   problem; credible lawsuit or dismissal tied to conduct in office.
+ * - `notable`: conflicts of interest, donor or self-dealing concerns, documented management failures in office.
+ * Policy disagreements and opponents’ talking points are not red flags — put them in `notes`.
+ */
+export type RedFlagSeverity = 'severe' | 'serious' | 'notable';
+
+/** Where the matter stands, so readers can tell an accusation from an established fact. */
+export type RedFlagStatus =
+  | 'convicted'
+  | 'charged'
+  | 'official-finding'
+  | 'settled'
+  | 'under-investigation'
+  | 'documented'
+  | 'alleged'
+  | 'disputed'
+  | 'cleared';
+
+/** One sourced caveat about a candidate or justice. */
+export interface RedFlag {
+  severity: RedFlagSeverity;
+  status: RedFlagStatus;
+  /** What happened, neutrally stated, including the candidate’s response when they gave one. */
+  text: string;
+  /** One sentence: why this bears on the specific office being sought. */
+  whyItMatters: string;
+  /** At least one link to reporting, a court/agency record, or an official finding. */
+  sources: RedFlagSource[];
+}
+
+/** @deprecated Alias kept for older imports; use `RedFlag`. */
+export type RedFlagBullet = RedFlag;
+
+/** How much directly relevant experience a candidate brings, judged against the race’s criteria. */
+export type ExperienceLevel = 'extensive' | 'substantial' | 'some' | 'limited';
+
+/** One thing the job actually requires (3–5 per race), e.g. “Running a large public agency”. */
+export interface QualificationCriterion {
+  id: string;
+  label: string;
+  /** One sentence on why this matters for the office. */
+  detail?: string;
+}
+
+export interface CriterionAssessment {
+  criterionId: string;
+  assessment: 'met' | 'partial' | 'not-met' | 'unknown';
+  /** Specific, checkable evidence (roles, years, scale), not adjectives. */
+  evidence: string;
+}
+
+/** A published rating from an outside evaluator (bar association, JNE Commission, etc.). Shown verbatim. */
+export interface ExternalRating {
+  source: string;
+  rating: string;
+  url: string;
+  /** e.g. `Aug 2026` */
+  dateLabel?: string;
+}
+
+export interface CandidateQualification {
+  level: ExperienceLevel;
+  /** Legal eligibility for the office (e.g. bar membership for AG). `meets` unless documented otherwise. */
+  legal: 'meets' | 'does-not-meet';
+  /** One or two sentences summarizing the experience case, in plain language. */
+  summary: string;
+  criteria: CriterionAssessment[];
+  externalRating?: ExternalRating;
+}
 
 /** One cited head-to-head general-election poll (race level; manually maintained; must link to source). */
 export interface RacePoll {
@@ -64,8 +131,8 @@ export interface Candidate {
   scorecard?: ScorecardRow[];
   money?: string;
   endorsements?: string;
-  /** Serious caveats voters may weigh heavily (shown under “Red flags” with a flag icon). */
-  redFlags?: RedFlagBullet[];
+  /** Sourced, tiered caveats (shown under “Red flags”, most severe first). */
+  redFlags?: RedFlag[];
   /** FYI context—background or perspective, not the same weight as red flags (shown under “Notes”). */
   notes?: string[];
   /**
@@ -80,8 +147,8 @@ export interface Candidate {
    * one candidate and the role reads as an incumbent (not “unopposed”).
    */
   recordVsChange?: string;
-  /** Highlight the whole card when red-flag severity is especially high. */
-  redFlagCallout?: boolean;
+  /** Experience-for-the-job rating against the race’s `qualificationCriteria`. */
+  qualification?: CandidateQualification;
 }
 
 export interface CrossTypologyRow {
@@ -158,7 +225,9 @@ export interface RetentionJustice {
   /** One or two neutral sentences: background, notable rulings, prior retention result. */
   notes: string[];
   /** Serious, sourced concerns (shown with the red-flag treatment). Omit when none found. */
-  redFlags?: RedFlagBullet[];
+  redFlags?: RedFlag[];
+  /** Published evaluation, e.g. the Commission on Judicial Nominees Evaluation rating at appointment. */
+  externalRating?: ExternalRating;
   /** Official bio / Commission on Judicial Nominees Evaluation / news links. */
   sources?: RedFlagSource[];
 }
@@ -187,6 +256,10 @@ export interface Race {
   candidates: Candidate[];
   measure?: MeasureBlock;
   retention?: RetentionBlock;
+  /** Legal requirements to hold the office, one line (e.g. “Registered voter; State Bar member for 5 years”). */
+  legalRequirements?: string;
+  /** What the job actually requires (3–5); every candidate is assessed against each. Required for candidate races. */
+  qualificationCriteria?: QualificationCriterion[];
   /** Cited head-to-head general-election polls (newest first). */
   polling?: RacePoll[];
   crossTypology: CrossTypologyRow[];
@@ -214,6 +287,8 @@ export interface TldrRow {
   raceId: string;
   label: string;
   cells: Record<TypologyCode, string>;
+  /** Highest red-flag tier of the candidate picked in each column (severe/serious only). */
+  flags: Partial<Record<TypologyCode, 'severe' | 'serious'>>;
 }
 
 export interface BallotData {

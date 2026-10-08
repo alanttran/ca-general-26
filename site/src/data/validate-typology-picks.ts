@@ -1,5 +1,6 @@
-import type { Candidate, Race, TypologyCode } from '../types/ballot-types';
+import type { Candidate, Race, RedFlag, TypologyCode } from '../types/ballot-types';
 import { BALLOT_CATEGORIES, type BallotProfile } from './ballot-profiles';
+import { resolveCandidateForPick, SEVERITY_ORDER, STATUS_LABEL } from './red-flags';
 
 const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
 
@@ -18,16 +19,6 @@ export interface TypologyValidationIssue {
   typology?: TypologyCode;
   pick?: string;
   message: string;
-}
-
-function resolveCandidateForPick(pick: string, candidates: Candidate[]): Candidate | undefined {
-  const token = pick.trim().toLowerCase();
-  if (!token || SKIP_PICKS.has(token)) return undefined;
-  return candidates.find((c) => {
-    const parts = c.name.toLowerCase().split(/\s+/);
-    const last = parts[parts.length - 1] ?? '';
-    return token === c.id.toLowerCase() || token === c.name.toLowerCase() || token.includes(last) || parts.includes(token);
-  });
 }
 
 /** True only when the race pits a left-of-center party against a Republican (not D-vs-D or R-vs-R). */
@@ -99,6 +90,87 @@ export function collectTypologyValidationIssues(races: Race[]): TypologyValidati
   return issues;
 }
 
+function flagIssues(raceId: string, who: string, flags: RedFlag[] | undefined): TypologyValidationIssue[] {
+  const issues: TypologyValidationIssue[] = [];
+  for (const f of flags ?? []) {
+    const where = `${who} red flag "${f.text?.slice(0, 40) ?? ''}…"`;
+    if (!SEVERITY_ORDER.includes(f.severity)) issues.push({ raceId, message: `${where}: missing/invalid severity` });
+    if (!(f.status in STATUS_LABEL)) issues.push({ raceId, message: `${where}: missing/invalid status` });
+    if (!f.whyItMatters?.trim()) issues.push({ raceId, message: `${where}: missing whyItMatters` });
+    if (!f.sources?.length || f.sources.some((s) => !/^https:\/\//.test(s.url))) {
+      issues.push({ raceId, message: `${where}: needs at least one https source` });
+    }
+  }
+  return issues;
+}
+
+/**
+ * Red-flag rubric: every flag is tiered + sourced; a Severe flag caps that candidate’s picks below ●;
+ * a Serious flag on a picked candidate must be addressed in the race’s counter-arguments.
+ */
+export function collectRedFlagIssues(races: Race[]): TypologyValidationIssue[] {
+  const issues: TypologyValidationIssue[] = [];
+  for (const race of races) {
+    for (const c of race.candidates) issues.push(...flagIssues(race.id, c.name, c.redFlags));
+    for (const j of race.retention?.justices ?? []) issues.push(...flagIssues(race.id, j.name, j.redFlags));
+    if (race.kind !== 'candidates') continue;
+
+    const counter = (race.counterArguments ?? []).join(' ').toLowerCase();
+    for (const row of race.crossTypology) {
+      const picked = resolveCandidateForPick(row.pick, race.candidates);
+      const tiers = new Set(picked?.redFlags?.map((f) => f.severity));
+      if (!picked) continue;
+      if (tiers.has('severe') && row.confidence === '●') {
+        issues.push({ raceId: race.id, typology: row.typology, pick: row.pick, message: `${picked.name} has a Severe red flag — cap confidence at ◐ and name the flag in the rationale` });
+      }
+      const last = picked.name.split(/\s+/).pop()?.toLowerCase() ?? '';
+      if ((tiers.has('severe') || tiers.has('serious')) && !counter.includes(last)) {
+        issues.push({ raceId: race.id, typology: row.typology, pick: row.pick, message: `${picked.name} has a Severe/Serious red flag — address it in counterArguments` });
+      }
+    }
+  }
+  // One issue per (race, message) is enough for the counter-argument rule.
+  const seen = new Set<string>();
+  return issues.filter((i) => {
+    const key = i.message.includes('counterArguments') ? `${i.raceId}|${i.message}` : `${i.raceId}|${i.typology}|${i.message}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+/** Every candidate race defines 3–5 criteria; every candidate is rated and assessed on each criterion. */
+export function collectQualificationIssues(races: Race[]): TypologyValidationIssue[] {
+  const issues: TypologyValidationIssue[] = [];
+  for (const race of races) {
+    if (race.kind !== 'candidates') continue;
+    const crit = race.qualificationCriteria ?? [];
+    if (crit.length < 3 || crit.length > 5) {
+      issues.push({ raceId: race.id, message: `needs 3–5 qualificationCriteria (has ${crit.length})` });
+    }
+    if (!race.legalRequirements?.trim()) issues.push({ raceId: race.id, message: 'missing legalRequirements' });
+    for (const c of race.candidates) {
+      const q = c.qualification;
+      if (!q) {
+        issues.push({ raceId: race.id, message: `${c.name}: missing qualification` });
+        continue;
+      }
+      if (!q.summary?.trim()) issues.push({ raceId: race.id, message: `${c.name}: qualification summary empty` });
+      for (const k of crit) {
+        const a = q.criteria.find((x) => x.criterionId === k.id);
+        if (!a) issues.push({ raceId: race.id, message: `${c.name}: no assessment for criterion "${k.id}"` });
+        else if (!a.evidence?.trim()) issues.push({ raceId: race.id, message: `${c.name}: criterion "${k.id}" has no evidence` });
+      }
+      for (const a of q.criteria) {
+        if (!crit.some((k) => k.id === a.criterionId)) {
+          issues.push({ raceId: race.id, message: `${c.name}: assessment for unknown criterion "${a.criterionId}"` });
+        }
+      }
+    }
+  }
+  return issues;
+}
+
 /** Every local race id a ZIP profile lists must exist (catches typos and unfinished research). */
 export function collectProfileIssues(races: Race[], profiles: BallotProfile[]): TypologyValidationIssue[] {
   const ids = new Set(races.map((r) => r.id));
@@ -113,7 +185,12 @@ export function collectProfileIssues(races: Race[], profiles: BallotProfile[]): 
 
 /** Throws on validation failure so `npm run build` catches mistakes. */
 export function assertBallotDataValid(races: Race[], profiles: BallotProfile[]): void {
-  const issues = [...collectTypologyValidationIssues(races), ...collectProfileIssues(races, profiles)];
+  const issues = [
+    ...collectTypologyValidationIssues(races),
+    ...collectRedFlagIssues(races),
+    ...collectQualificationIssues(races),
+    ...collectProfileIssues(races, profiles),
+  ];
   if (issues.length === 0) return;
 
   const lines = issues.map((i) => `  • ${i.raceId}${i.typology ? ` [${i.typology}]` : ''}: ${i.message}`);

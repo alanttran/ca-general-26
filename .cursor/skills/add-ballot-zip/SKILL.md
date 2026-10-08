@@ -67,7 +67,7 @@ Candidate ids must be **globally unique** — use `firstname-lastname` (e.g. `st
   scorecard: [ { topic: 'Housing', position: '✓ …', comparison: 'vs opponent …' }, … ], // 4–6 rows, REQUIRED
   money: 'Cal-Access / FEC totals with as-of date',
   endorsements: 'major orgs, party, papers (dated)',
-  redFlags: [{ text: '…', sources: [{ label: 'CalMatters', url: 'https://…' }] }], // only serious + sourced
+  redFlags: [{ severity: 'serious', status: 'settled', text: '…', whyItMatters: '…', sources: [{ label: 'CalMatters', url: 'https://…' }] }], // see §8a
   notes: ['FYI items; bare https:// links become links'],
 }
 ```
@@ -122,6 +122,37 @@ PL Progressive Left · EL Establishment Liberals · DM Democratic Mainstays · O
 - **Measures:** Yes/No by what that typology values (taxes, spending, regulation, social issues, institutional trust). Explain the value, not the outcome you prefer.
 - Rationales are third person about the voter group (“Establishment Liberals value…”), one sentence, specific to this race.
 
+## 5b. Experience for the job (every candidate race)
+
+On the race: `legalRequirements` (one line: statutory/constitutional eligibility, e.g. “Registered voter; State Bar member 5+ years” for AG) and 3–5 `qualificationCriteria` — what the job actually requires, office-specific and party-neutral (e.g. Controller: public-sector accounting/audit; managing a large finance operation; fiscal reporting & transparency; independence from the Legislature). Legislature/Congress criteria should be about the work (lawmaking or policy experience, constituent services, budget/committee work, knowledge of the district) — never ideology.
+
+On each candidate, `qualification`:
+```ts
+qualification: {
+  level: 'extensive' | 'substantial' | 'some' | 'limited',
+  legal: 'meets',                       // 'does-not-meet' only with a documented basis
+  summary: 'One or two plain sentences.',
+  criteria: [{ criterionId: 'audit', assessment: 'met' | 'partial' | 'not-met' | 'unknown', evidence: 'Specific roles, years, scale.' }],
+  externalRating?: { source, rating, url, dateLabel },  // bar association / JNE rating, verbatim
+}
+```
+Levels: **extensive** = held this office or direct equivalent / nearly every criterion with years of evidence; **substantial** = most criteria via closely related roles; **some** = some criteria, real gaps; **limited** = little documented experience. Rate incumbents and challengers by the same yardstick; evidence must be checkable (no adjectives). Experience informs but never mechanically drives typology picks.
+
+## 8a. Red flags (tiered)
+
+Every flag: `severity`, `status`, neutral `text` (include the candidate’s response if any), one-sentence `whyItMatters` tied to **this office**, and ≥1 `sources` link. Rubric (also in `src/data/red-flags.ts`):
+
+| Tier | Use for |
+|------|---------|
+| `severe` | conviction or criminal charge; official misconduct/ethics finding (court, FPPC, State Bar, CJP, IG); sustained harassment/abuse finding; ties to extremist groups; acting to overturn an election |
+| `serious` | active investigation; settlement of misconduct claims; documented ethics or campaign-finance problem; credible lawsuit or dismissal tied to conduct in office |
+| `notable` | conflicts of interest, donor/self-dealing concerns, documented management failures in an office they ran |
+| not a flag | policy disagreements, opponents’ attacks, interest-group criticism of positions → `notes` |
+
+`status`: `convicted` · `charged` · `official-finding` · `settled` · `under-investigation` · `documented` (on the public record, e.g. late filings) · `alleged` · `disputed` · `cleared`. When a matter was investigated and closed, say so and use `cleared` (and usually downgrade or drop it).
+
+Effect on picks (build-enforced): a candidate with a **severe** flag can’t get ● in any column, and the rationale should name the flag; any **severe/serious** flag on a picked candidate must be addressed in `counterArguments` (mention the candidate’s last name). Only severe flags outline the card in red; the TL;DR matrix shows a ⚑ next to picks with severe/serious flags.
+
 ## 9. Sourcing & tone
 
 Source ranking: official (SoS, LAO, county registrar, court sites, Cal-Access, FEC) → nonpartisan news (CalMatters, AP, LA Times/SD Union-Tribune news side, KPBS, LAist, KQED, Politico CA, Voice of San Diego) → reference (Ballotpedia, Wikipedia) → partisan/endorser lists (label them) → editorial boards (label as opinion). Exclude single-source partisan blogs. Every red flag needs at least one source link. Never invent numbers, polls, endorsements, or quotes — if you can’t verify, omit or mark `?`. Neutral, plain language; no snark. Dates on money/endorsements (“as of Sept 30, 2026”).
@@ -129,7 +160,8 @@ Source ranking: official (SoS, LAO, county registrar, court sites, Cal-Access, F
 ## 10. Checklist
 
 - [ ] Every race: 2 stakes paragraphs, intro, 9 typology rows, 1–3 counter-arguments
-- [ ] Every contested candidate: bio + 4–6 row scorecard; red flags sourced
+- [ ] Every contested candidate: bio + 4–6 row scorecard; red flags tiered (§8a) and sourced
+- [ ] Every candidate race: legalRequirements + 3–5 qualificationCriteria; every candidate has `qualification` (§5b)
 - [ ] Measures: question, type, threshold, fiscal impact, supporters/opponents, for/against, reading links
 - [ ] File registered in `races/index.ts`; local ids listed in each ZIP profile in ballot order
 - [ ] `cd site && npm run build` passes

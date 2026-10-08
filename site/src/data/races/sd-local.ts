@@ -20,6 +20,14 @@ export const RACES_SD_LOCAL: Race[] = [
     introParagraphs: [
       'Marks was first elected in 2022 and is seeking a second four-year term; the county sample ballot lists him as the only candidate. In 2022 he defeated former San Diego City Councilmember Barbara Bry (a Democrat) by roughly 27,000 votes out of nearly 900,000 cast (NBC San Diego).',
     ],
+    legalRequirements:
+      'U.S. citizen and registered voter of San Diego County (Gov. Code § 24001). The assessor must hold a State Board of Equalization appraiser’s certificate, or a temporary one obtained within 30 days of taking office and converted within a year (Gov. Code § 24002.5).',
+    qualificationCriteria: [
+      { id: 'appraisal', label: 'Property appraisal and assessment law', detail: 'The Assessor sets the taxable value of every parcel under Proposition 13 rules and state appraisal standards.' },
+      { id: 'agency', label: 'Running a large assessment agency', detail: 'The office values roughly one million parcels and tens of thousands of business accounts each year.' },
+      { id: 'records', label: 'Recording and clerk functions', detail: 'The same elected official oversees the public land record and county clerk filings.' },
+      { id: 'taxpayer', label: 'Taxpayer service and appeals', detail: 'Owners dispute values and apply for exemptions through the office.' },
+    ],
     candidates: [
       {
         id: 'jordan-marks',
@@ -27,6 +35,17 @@ export const RACES_SD_LOCAL: Race[] = [
         party: 'NP',
         role: 'Assessor/Recorder/County Clerk',
         campaignUrl: 'https://www.sdarcc.gov/content/arcc/home/about/arcc-executive-office.html',
+        qualification: {
+          level: 'extensive',
+          legal: 'meets',
+          summary: 'Marks is the sitting Assessor/Recorder/County Clerk and previously served as the office’s Chief Deputy Assessor/Taxpayer Advocate. The county describes him as a certified property tax appraiser and attorney.',
+          criteria: [
+            { criterionId: 'appraisal', assessment: 'met', evidence: 'County biography lists him as a Certified Property Tax Appraiser and licensed attorney; earlier worked as an attorney at the state agency that oversees county assessors.' },
+            { criterionId: 'agency', assessment: 'met', evidence: 'Has headed the office since January 2023; its 2025 report lists 1,020,253 real property parcels ($772 billion assessed) and 72,202 personal property accounts; the 2026 roll reached $845 billion.' },
+            { criterionId: 'records', assessment: 'met', evidence: 'As elected head, oversees the Recorder and County Clerk divisions along with the Assessor (county executive office page).' },
+            { criterionId: 'taxpayer', assessment: 'met', evidence: 'Served as the office’s Chief Deputy Assessor/Taxpayer Advocate, assisting taxpayers and leading its outreach programs (county biography).' },
+          ],
+        },
         bio: [
           'Marks is the sitting county Assessor/Recorder/County Clerk, sworn in for a four-year term after the 2022 election. Before that he was the office’s Chief Deputy Assessor/Taxpayer Advocate, and earlier an attorney at the state agency that oversees county assessors, appointed under Gov. Jerry Brown. County materials describe him as a licensed attorney and certified property tax appraiser.',
           'The office is nonpartisan on the ballot. Local coverage of his 2022 win identified him as a Republican, and the San Diego County Republican Party lists him among its endorsed candidates (KPBS endorsement guide, Sept. 30, 2026).',
@@ -69,6 +88,14 @@ export const RACES_SD_LOCAL: Race[] = [
     introParagraphs: [
       'In the June 2 primary, Cohen led with 47.38% and Nakawatase placed second with 33.68% (San Diego County Registrar results as summarized by East County Magazine and Ballot Brief); Supervisor Joel Anderson finished third. The office is nonpartisan, but the county parties split: Democrats back Cohen and Republicans back Nakawatase (KPBS endorsement guide, Sept. 30, 2026).',
     ],
+    legalRequirements:
+      'U.S. citizen and registered voter of San Diego County (Gov. Code § 24001). Where a county has adopted them, Gov. Code § 27000.7 requires one of: 3+ continuous years in senior public-finance management; a related bachelor’s degree plus 16 semester units of accounting, auditing or finance; a California CPA license; or a CFA charter plus those units. Gov. Code § 27000.8 requires 48 hours of continuing education during each term. Whether San Diego County has adopted § 27000.7 was not verified.',
+    qualificationCriteria: [
+      { id: 'investment', label: 'Managing a public investment pool', detail: 'The office invests county and local-agency funds that the county places at $10 to $19 billion.' },
+      { id: 'collection', label: 'Property-tax collection operations', detail: 'The office bills and collects about $9 billion a year from nearly one million parcels.' },
+      { id: 'credentials', label: 'Finance or accounting credentials', detail: 'State law ties eligibility to public-finance experience, finance coursework, or CPA/CFA credentials.' },
+      { id: 'management', label: 'Managing a department', detail: 'The office runs billing, payment processing and banking staff and must deliver accurate distributions.' },
+    ],
     candidates: [
       {
         id: 'larry-cohen',
@@ -76,6 +103,17 @@ export const RACES_SD_LOCAL: Race[] = [
         party: 'NP',
         role: 'Appointed Treasurer Tax Collector San Diego County',
         campaignUrl: 'https://larry-cohen.com/',
+        qualification: {
+          level: 'substantial',
+          legal: 'meets',
+          summary: 'Cohen has held the office since November 18, 2025, after finance-policy staff work in Congress and a business-line role in the pharmaceutical industry. His time in the job is short and he lists no CPA or CFA credential.',
+          criteria: [
+            { criterionId: 'investment', assessment: 'partial', evidence: 'Has overseen the county investment pool (county page lists $15 to $19 billion) since Nov 18, 2025; earlier work was advising on House Financial Services Committee issues, not managing an investment portfolio.' },
+            { criterionId: 'collection', assessment: 'partial', evidence: 'Has overseen collection of more than $9 billion in annual property taxes since Nov 2025, about 11 months in the job; no prior tax-collection role documented.' },
+            { criterionId: 'credentials', assessment: 'partial', evidence: 'Holds an MBA (Strayer University) and a political science B.A. (UC San Diego); the county biography lists no CPA or CFA, and his eligibility route under Gov. Code § 27000.7 was not found.' },
+            { criterionId: 'management', assessment: 'partial', evidence: 'Heads the department since Nov 2025 (staff size not stated); earlier managed a $30 million business line at MilliporeSigma and was a congressional chief of staff for over five years (county biography).' },
+          ],
+        },
         bio: [
           'Cohen (Lawrence Cohen) is the appointed incumbent. He previously served as Chief of Staff to Rep. Juan Vargas and as senior policy advisor to a House financial services committee, and spent more than 25 years in the pharmaceutical industry in business development, sales and drug discovery (OB Rag). He is a registered Democrat from Carlsbad.',
           'His stated priorities are taxpayer protection and transparent financial reporting, expanded property-tax relief for seniors, veterans and low-income homeowners, modernizing the property-tax system, and protecting seniors from scams (campaign site; Voice of San Diego).',
@@ -101,6 +139,17 @@ export const RACES_SD_LOCAL: Race[] = [
         name: 'Shirley Nakawatase',
         party: 'NP',
         role: 'Businesswoman/Treasurer/CPA',
+        qualification: {
+          level: 'some',
+          legal: 'meets',
+          summary: 'Nakawatase is a CPA with about four decades of tax and accounting work and runs her own accounting firm. She has not held a public finance office or managed a public investment portfolio.',
+          criteria: [
+            { criterionId: 'investment', assessment: 'partial', evidence: 'Serves as treasurer of the San Diego County Capital Asset Leasing Corporation (KPBS); no management of a public investment pool is documented.' },
+            { criterionId: 'collection', assessment: 'partial', evidence: 'More than 40 years of tax preparation and tax consulting for clients (Voice of San Diego); no role collecting taxes for a government is documented.' },
+            { criterionId: 'credentials', assessment: 'met', evidence: 'Certified public accountant, a credential listed in Gov. Code § 27000.7; accounting degree from San Diego State University.' },
+            { criterionId: 'management', assessment: 'partial', evidence: 'Founded and runs Nakawatase & Co. CPAs (now HNK CPAs) with offices in Imperial Beach and El Cajon (KPBS); no public department management documented.' },
+          ],
+        },
         bio: [
           'Nakawatase is an Imperial Beach certified public accountant with more than 40 years in tax preparation, financial consulting and business restructuring, and an accounting degree from San Diego State University. She has served as treasurer of the county’s building-finance corporation and chaired San Diego-Imperial Counties Developmental Services (Voice of San Diego).',
           'She ran for mayor of Imperial Beach in 2022. Her stated priorities are efficient, transparent tax collection with modern, accessible tools, prudent management of county funds, and taxpayer advocacy including financial literacy.',
@@ -154,6 +203,14 @@ export const RACES_SD_LOCAL: Race[] = [
     introParagraphs: [
       'Lee and Powell were the only two candidates in the June 2 primary, so the November contest is a rematch; Lee received about 59% (Times of San Diego voter guide). The office is nonpartisan, but state-party affiliations matter in practice: county Democrats back Lee and the county Republican Party backs Powell (KPBS, Sept. 30, 2026).',
     ],
+    legalRequirements:
+      'Resident and elector of the City of San Diego, and an actual resident and elector of the district from which nominated (City Charter, Art. II, § 7).',
+    qualificationCriteria: [
+      { id: 'governance', label: 'Municipal policy and governance', detail: 'Councilmembers pass city laws, oversee departments and sit on regional boards.' },
+      { id: 'land-budget', label: 'Land use and budget', detail: 'The Council adopts the city budget, fees, and zoning and community plans.' },
+      { id: 'constituent', label: 'Constituent services and district knowledge', detail: 'The office handles resident requests and represents neighborhoods such as Mira Mesa and Miramar.' },
+      { id: 'coalition', label: 'Coalition-building', detail: 'Passing items takes votes from at least five of nine members and work with the mayor and regional agencies.' },
+    ],
     candidates: [
       {
         id: 'kent-lee',
@@ -161,6 +218,17 @@ export const RACES_SD_LOCAL: Race[] = [
         name: 'Kent Lee',
         party: 'NP',
         role: 'City Councilmember',
+        qualification: {
+          level: 'extensive',
+          legal: 'meets',
+          summary: 'Lee holds the District 6 seat and has served on the Council since December 2022, including as Council President Pro Tem since December 2024.',
+          criteria: [
+            { criterionId: 'governance', assessment: 'met', evidence: 'Councilmember since Dec 2022; Council President Pro Tem since Dec 2024; non-voting member of the North County Transit District board.' },
+            { criterionId: 'land-budget', assessment: 'met', evidence: 'Has voted on the city’s annual budgets and zoning and land-use items as a councilmember since 2023; specific committee assignments were not verified.' },
+            { criterionId: 'constituent', assessment: 'met', evidence: 'Has represented District 6 for one term; before that led the Pacific Arts Movement (San Diego Asian Film Festival) and worked in development for the Boy Scouts’ San Diego-Imperial Council.' },
+            { criterionId: 'coalition', assessment: 'met', evidence: 'Chosen by council colleagues as Council President Pro Tem; has worked on regional transit as an NCTD board member.' },
+          ],
+        },
         bio: [
           'Lee is a Democrat who has represented District 6 since December 2022 and has been Council President Pro Tem since December 2024. Born in West Covina to Chinese immigrants from Vietnam and Myanmar, he earned a UC San Diego degree in economics and biology in 2007, worked in development for the Boy Scouts’ San Diego-Imperial Council, and led the Pacific Arts Movement, which runs the San Diego Asian Film Festival (Wikipedia).',
           'His stated priorities are homelessness, housing attainability, and infrastructure and transit; he sits as a non-voting member of the North County Transit District board.',
@@ -183,8 +251,19 @@ export const RACES_SD_LOCAL: Race[] = [
         name: 'Mark Powell',
         party: 'NP',
         role: 'Business Owner/Educator',
+        qualification: {
+          level: 'some',
+          legal: 'meets',
+          summary: 'Powell is an educator who was elected to the San Diego County Board of Education in 2016, with a past as a reserve police officer. He has not held city office, and his term dates and occupation details were not verified.',
+          criteria: [
+            { criterionId: 'governance', assessment: 'partial', evidence: 'Elected to the San Diego County Board of Education in 2016 (current status unconfirmed); no city government role documented.' },
+            { criterionId: 'land-budget', assessment: 'unknown', evidence: 'No municipal budget or zoning role documented; his campaign site describes him as a real estate broker, but a license was not verified (city ballot designation: Business Owner/Educator).' },
+            { criterionId: 'constituent', assessment: 'partial', evidence: 'Describes himself as a lifelong San Diegan and former teacher, dean, vice principal and university professor, and former San Diego Police reserve officer (campaign site via Ballot Brief); no constituent-service role documented.' },
+            { criterionId: 'coalition', assessment: 'partial', evidence: 'Sits on a multi-member elected board (County Board of Education); no record of passing city legislation.' },
+          ],
+        },
         bio: [
-          'Powell is a real estate broker and former member of the San Diego County Board of Education who has run for office before (Times of San Diego voter guide). He is aligned with the Republican Party, which endorsed him.',
+          'Powell is a real estate broker who was elected to the San Diego County Board of Education in 2016 who has run for office before (Times of San Diego voter guide). He is aligned with the Republican Party, which endorsed him.',
           'He says City Hall is failing the district and that he is "not beholden to City Hall"; he opposes the city’s new fees, bike lanes, and high-density housing projects (Voice of San Diego).',
         ],
         scorecard: [

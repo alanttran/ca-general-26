@@ -5,12 +5,14 @@
 import { BALLOT_PROFILES } from '../src/data/ballot-profiles';
 import { mergeRaceDerivedFields } from '../src/data/merge-races';
 import { LOCAL_RACES, STATEWIDE_RACES } from '../src/data/races';
-import { collectProfileIssues, collectTypologyValidationIssues } from '../src/data/validate-typology-picks';
+import { collectProfileIssues, collectQualificationIssues, collectRedFlagIssues, collectTypologyValidationIssues } from '../src/data/validate-typology-picks';
 
 const ALL_RACES = mergeRaceDerivedFields([...STATEWIDE_RACES, ...LOCAL_RACES]);
 
 const errors = [
   ...collectTypologyValidationIssues(ALL_RACES),
+  ...collectRedFlagIssues(ALL_RACES),
+  ...collectQualificationIssues(ALL_RACES),
   ...collectProfileIssues(ALL_RACES, Object.values(BALLOT_PROFILES)),
 ];
 

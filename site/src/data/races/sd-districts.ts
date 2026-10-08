@@ -11,6 +11,14 @@ export const RACES_SD_DISTRICTS: Race[] = [
     categoryId: 'statewide',
     title: 'State Board of Equalization, District 4',
     tldrLabel: 'BoE-4',
+    legalRequirements:
+      'Must be a registered voter and elector of the Board of Equalization district; members serve four-year terms with a two-term limit.',
+    qualificationCriteria: [
+      { id: 'tax-admin', label: 'Property- and state-tax administration knowledge', detail: 'The Board oversees county assessors and hears certain property-tax appeals, so understanding assessment law and tax administration matters.' },
+      { id: 'hearings', label: 'Quasi-judicial hearings and appeals', detail: 'Members sit as a panel deciding taxpayer appeals and must avoid conflicts with parties before them.' },
+      { id: 'agency-mgmt', label: 'Managing or overseeing a public agency', detail: 'The Board oversees the 58 county assessors and has an audit-driven reform history.' },
+      { id: 'large-district', label: 'Representing a very large, multi-county district', detail: 'Each of the four BoE districts covers roughly ten million Californians.' },
+    ],
     seatContext: 'Open seat',
     kind: 'candidates',
     stakesParagraphs: [
@@ -46,6 +54,18 @@ export const RACES_SD_DISTRICTS: Race[] = [
         name: 'Tom Umberg',
         party: 'D',
         role: 'Small Businessman/Senator',
+        qualification: {
+          level: 'substantial',
+          legal: 'meets',
+          summary:
+            'A sitting state senator and former assemblyman and federal prosecutor who held a senior post in a federal agency, but he has not held a tax-administration or assessment role.',
+          criteria: [
+            { criterionId: 'tax-admin', assessment: 'partial', evidence: 'Member of the Senate Revenue and Taxation Committee (per campaign materials); no assessor, tax-agency or tax-appeals post found.' },
+            { criterionId: 'hearings', assessment: 'partial', evidence: 'Former federal prosecutor and chair of the Senate Judiciary Committee since 2021, which holds hearings on legal and judicial matters; has not sat as an adjudicator of appeals.' },
+            { criterionId: 'agency-mgmt', assessment: 'met', evidence: 'Deputy director of the federal Office of National Drug Control Policy (1997–2000) and chair of a major Senate committee since 2021.' },
+            { criterionId: 'large-district', assessment: 'met', evidence: 'Represents the 34th Senate District (roughly one million residents) in the Senate; served in the Assembly 1990–94 and 2004–06.' },
+          ],
+        },
         campaignUrl: 'https://www.tomumberg.com',
         bio: [
           'State senator for the 34th District (northern Orange County) and chair of the Senate Judiciary Committee since 2021; a retired U.S. Army colonel and former federal prosecutor who served in the Assembly (1990–94, 2004–06) and as deputy director of the Office of National Drug Control Policy (1997–2000).',
@@ -89,12 +109,17 @@ export const RACES_SD_DISTRICTS: Race[] = [
           'San Diego County Democratic Party (KPBS endorsement guide, Sept 30, 2026). From his campaign site: SEIU California, Sen. Adam Schiff, BoE member Sally Lieber, Sen. Pro Tem Monique Limón, Reps. Juan Vargas and Mike Levin, Sens. Akilah Weber-Pierson and Steve Padilla, Asm. Chris Ward. LAist also lists the California Teachers Association and Equality California.',
         redFlags: [
           {
-            text: 'Attorney and law-firm donors with business before the Senate Judiciary Committee he chairs gave tens of thousands of dollars, including a $19,600 maximum from attorney John Manly, whose firm lobbied for childhood-abuse lawsuit bills Umberg backed; Common Cause called such gifts “naturally suspect.” Umberg says he has never made a legislative decision based on contributions.',
+            severity: 'notable',
+            status: 'documented',
+            text: 'Lawyers, law firms and attorney groups such as Consumer Attorneys of California, many with business before the Senate Judiciary Committee he chairs, gave tens of thousands of dollars to his BoE campaign. That includes a $19,600 maximum from attorney John Manly, whose firm lobbied for a childhood-abuse lawsuit bill Umberg backed. A California Common Cause official called such donations “naturally suspect.” Umberg says, “I have never made a legislative decision based on who contributed to my campaign, and I never will.” No complaint or finding against him has been reported.',
+            whyItMatters:
+              'Board of Equalization members rule on taxpayer appeals and must step aside when a party has given them $250 or more in the prior year, so a donor base with business before his current committee is the kind of conflict that rule exists to police.',
             sources: [
               {
-                label: 'KPBS/CalMatters',
+                label: 'KPBS/CalMatters (June 2026)',
                 url: 'https://www.kpbs.org/news/politics/2026/06/15/the-board-of-equalization-has-little-power-campaign-donors-still-spent-millions-on-it',
               },
+              { label: 'BoE: Kopp Act contribution disclosure rules', url: 'https://boe.ca.gov/meetings/contribut_disc.htm' },
             ],
           },
         ],
@@ -108,6 +133,18 @@ export const RACES_SD_DISTRICTS: Race[] = [
         name: 'Denis Bilodeau',
         party: 'R',
         role: 'Councilmember/Civil Engineer',
+        qualification: {
+          level: 'some',
+          legal: 'meets',
+          summary:
+            'An Orange city councilmember since 2022 and a taxpayer-association president with a civil-engineering designation; his public record on tax administration and appeals is limited to advocacy.',
+          criteria: [
+            { criterionId: 'tax-admin', assessment: 'partial', evidence: 'President of a taxpayer association and Proposition 13 advocate (per KPBS/CalMatters and LAist); no assessor or tax-agency role found.' },
+            { criterionId: 'hearings', assessment: 'unknown', evidence: 'No public record found of service on a tax-appeals or other formal adjudicative body.' },
+            { criterionId: 'agency-mgmt', assessment: 'partial', evidence: 'Elected to the Orange City Council (District 4) in 2022, so he votes on a city budget; no role running an agency found.' },
+            { criterionId: 'large-district', assessment: 'not-met', evidence: 'Represents one council district of one city (Orange); no multi-city or countywide elected office found.' },
+          ],
+        },
         bio: [
           'Orange city councilmember (first elected in 2022) and president of a taxpayer association; his ballot designation lists civil engineering.',
           'He campaigns against tax increases and for defending Proposition 13, with a promise of transparency and exposing wasteful spending at the Board.',
@@ -174,6 +211,14 @@ export const RACES_SD_DISTRICTS: Race[] = [
     categoryId: 'federal',
     title: 'U.S. Representative, 50th District',
     tldrLabel: 'CA-50',
+    legalRequirements:
+      'At least 25 years old, a U.S. citizen for at least 7 years, and an inhabitant of California when elected (U.S. Constitution art. I, section 2); two-year term.',
+    qualificationCriteria: [
+      { id: 'lawmaking', label: 'Lawmaking and policy experience', detail: 'The job is writing, amending and voting on federal law.' },
+      { id: 'committee-budget', label: 'Committee and budget/appropriations work', detail: 'Most legislative work happens in committees that shape spending and oversight.' },
+      { id: 'district-service', label: 'Constituent services and knowledge of the district', detail: 'Members run casework offices and carry local priorities to Washington.' },
+      { id: 'coalition', label: 'Coalition-building and passing legislation', detail: 'Little becomes law without bipartisan or cross-chamber partners.' },
+    ],
     seatContext: 'Incumbent',
     kind: 'candidates',
     stakesParagraphs: [
@@ -203,6 +248,18 @@ export const RACES_SD_DISTRICTS: Race[] = [
         name: 'Scott Peters',
         party: 'D',
         role: 'Member of Congress',
+        qualification: {
+          level: 'extensive',
+          legal: 'meets',
+          summary:
+            'Seven-term member of the House on Energy and Commerce and Budget, after eight years on the San Diego City Council (including as first council president) and a stint on the Port Commission.',
+          criteria: [
+            { criterionId: 'lawmaking', assessment: 'met', evidence: 'In the House since 2013; co-leads the bipartisan Build More Housing Near Transit Act and led the Protecting Sensitive Locations Act (2026); voted for the 2022 Inflation Reduction Act.' },
+            { criterionId: 'committee-budget', assessment: 'met', evidence: 'Sits on the Energy and Commerce and Budget Committees.' },
+            { criterionId: 'district-service', assessment: 'met', evidence: 'San Diego City Council 2000–2008 and the Port Commission before Congress; has represented San Diego-area districts since 2013.' },
+            { criterionId: 'coalition', assessment: 'met', evidence: 'Vice-chair of the New Democrat Coalition and a Problem Solvers Caucus member; co-leads housing legislation with Republican and Democratic colleagues.' },
+          ],
+        },
         campaignUrl: 'https://scottpeters.com',
         bio: [
           'San Diego Democrat first elected in 2012; served on the city council (2000–2008, first council president) and the Port Commission before Congress. Sits on the Energy and Commerce and Budget committees.',
@@ -244,13 +301,9 @@ export const RACES_SD_DISTRICTS: Race[] = [
           'Peters brings seven terms of committee seniority, a bipartisan-caucus profile and a record of local and national service; the case for change is mainly partisan, since Cohen would join a Republican caucus and has no legislative record. Switching trades Energy and Commerce clout for a first-term member with an anti-establishment pitch.',
         money: 'No current filing totals found; see the FEC committee page https://www.fec.gov/data/committee/C00503110/ (Scott Peters For Congress). His career pharmaceutical-industry donations have drawn criticism.',
         endorsements: 'San Diego County Democratic Party (KPBS endorsement guide, Sept 30, 2026).',
-        redFlags: [
-          {
-            text: 'Critics have attacked his pharmaceutical-industry donations and his leadership of opposition to a 2021 Medicare drug-price negotiation bill.',
-            sources: [{ label: 'Wikipedia — Scott Peters', url: 'https://en.wikipedia.org/wiki/Scott_Peters_(politician)' }],
-          },
-        ],
+        redFlags: [],
         notes: [
+          'In September 2021 Peters was one of three Energy and Commerce Democrats who voted against the House’s broad Medicare drug-price negotiation plan, saying it would choke off investment in new drugs; KFF Health News reported he received more drug-industry contributions than any other member of Congress in the first half of 2021 ($63,900) — https://kffhealthnews.org/news/article/pharma-campaign-cash-delivered-to-key-lawmakers-with-surgical-precision/. He then pushed a narrower negotiation plan, parts of which became law in the 2022 Inflation Reduction Act, which he voted for (San Diego Union-Tribune column, reposted by his campaign) — https://scottpeters.com/in-the-news/https-www-sandiegouniontribune-com-columnists-story-2022-08-21-column-rep-scott-peters-prevails-on-drug-pricing-plan/. Critics still cite this; it is a policy and donor critique, not an ethics finding.',
           'A 2002 council vote on city pension funding led to an SEC inquiry that cleared him of fraud; the Kroll report called city officials “negligent” (Wikipedia). It is old but still cited by critics.',
           'Won 2024 re-election with about 64% of the vote against Peter Bono (Wikipedia).',
         ],
@@ -260,6 +313,18 @@ export const RACES_SD_DISTRICTS: Race[] = [
         name: 'Steve Cohen',
         party: 'R',
         role: 'Television News Consultant',
+        qualification: {
+          level: 'limited',
+          legal: 'meets',
+          summary:
+            'About 50 years in television news, including 20 as KUSI news director; he has covered San Diego politics but has not held public office or worked on legislation.',
+          criteria: [
+            { criterionId: 'lawmaking', assessment: 'not-met', evidence: 'No elected office, legislative staff role or authored legislation found.' },
+            { criterionId: 'committee-budget', assessment: 'not-met', evidence: 'No committee, budget or appropriations role found.' },
+            { criterionId: 'district-service', assessment: 'partial', evidence: 'Led the KUSI San Diego newsroom for 20 years until its 2023 sale to Nexstar; no public-office or casework experience.' },
+            { criterionId: 'coalition', assessment: 'unknown', evidence: 'No public record of building legislative coalitions; his management experience was in a private newsroom.' },
+          ],
+        },
         campaignUrl: 'https://cohenforcongressca50.com',
         bio: [
           'About 50 years in television news, including 20 years as KUSI news director until the station’s 2023 sale to Nexstar; now a TV consultant. He is not the Tennessee congressman of the same name.',
@@ -316,7 +381,7 @@ export const RACES_SD_DISTRICTS: Race[] = [
       ['FF', 'Cohen', '●', 'Faith and Flag Conservatives favor the Republican with border security as a stated priority over a Democrat who opposed the border wall and new ICE funding.'],
     ]),
     counterArguments: [
-      'AR (Peters ◐): But consider that Peters leads opposition to Medicare drug-price negotiation, so voters who care about drug costs may find his moderation costly rather than reassuring.',
+      'OL (Peters ○): But consider that Peters helped block the broader 2021 Medicare drug-price negotiation plan while taking significant drug-industry money, so voters who care about drug costs may see his moderation as donor-friendly, even though he later voted for the narrower negotiation in the 2022 Inflation Reduction Act.',
       'CC (Cohen ●): But consider that Cohen has no legislative record or published budget plan, so “fiscal accountability” is a promise, not a track record.',
     ],
   },
@@ -325,6 +390,15 @@ export const RACES_SD_DISTRICTS: Race[] = [
     categoryId: 'state-leg',
     title: 'State Senate, District 40',
     tldrLabel: 'SD-40',
+    legalRequirements:
+      'At least 18, a registered voter, a U.S. citizen, and a California resident for 3 years and a resident of the district for 1 year before the election (California Constitution art. IV, section 2); limited to 12 years total in the Legislature.',
+    qualificationCriteria: [
+      { id: 'law-policy', label: 'Lawmaking, legal drafting or policy experience', detail: 'Senators write, amend and vote on state statutes and confirm appointees.' },
+      { id: 'budget-oversight', label: 'Budget and committee work', detail: 'The state budget and policy committees are central to a senator’s workload.' },
+      { id: 'public-mgmt', label: 'Managing a public agency or elected body', detail: 'Experience running or governing a public organization transfers to oversight of state agencies.' },
+      { id: 'district-service', label: 'Knowledge of the district and constituent services', detail: 'SD-40 spans inland San Diego County communities with distinct water, fire and land-use needs.' },
+      { id: 'coalition', label: 'Coalition-building and passing legislation', detail: 'Bills need majorities in both houses and the governor’s signature.' },
+    ],
     seatContext: 'Open seat',
     kind: 'candidates',
     stakesParagraphs: [
@@ -354,6 +428,19 @@ export const RACES_SD_DISTRICTS: Race[] = [
         name: 'Mara Elliott',
         party: 'D',
         role: 'Ethics Attorney',
+        qualification: {
+          level: 'substantial',
+          legal: 'meets',
+          summary:
+            'Eight years as the elected San Diego city attorney running a large public legal office, preceded by public-sector counsel roles; she has not served in a legislature.',
+          criteria: [
+            { criterionId: 'law-policy', assessment: 'partial', evidence: 'City attorney 2016–2024; earlier counsel to San Diego County (senior deputy county counsel 2002–2007), the Metropolitan Transit Development Board and school districts; advised the council on legal matters but did not vote on legislation.' },
+            { criterionId: 'budget-oversight', assessment: 'unknown', evidence: 'No public record found of legislative budget or committee work; she managed her own office’s budget.' },
+            { criterionId: 'public-mgmt', assessment: 'met', evidence: 'Elected head of the San Diego City Attorney’s Office for two four-year terms (2016–2024).' },
+            { criterionId: 'district-service', assessment: 'partial', evidence: 'Served the city of San Diego, part of which lies in SD-40; no record of serving the inland communities specifically.' },
+            { criterionId: 'coalition', assessment: 'partial', evidence: 'Worked with the council and other agencies on legal and enforcement matters, though she also had public process disputes with the council president (2022).' },
+          ],
+        },
         bio: [
           'San Diego city attorney from 2016 to 2024, the first woman and first Latina elected to that office; entered the Senate race in September 2025.',
           'Her priorities include gun-violence prevention, law-enforcement training on restraining orders, support for domestic-violence and trafficking survivors, and homelessness and mental-health conservatorship services. As city attorney she created the office’s first affirmative civil enforcement unit to protect consumers, workers and the environment, according to her campaign.',
@@ -395,16 +482,11 @@ export const RACES_SD_DISTRICTS: Race[] = [
           'San Diego County Democratic Party (KPBS endorsement guide, Sept 30, 2026); San Diego County Young Democrats (June primary).',
         redFlags: [
           {
-            text: 'As city attorney she publicly announced a proposed settlement over hotel-purchase broker commissions before informing the City Council, then suggested the council president’s criticism reflected sexism; critics also cited repeated transparency disputes with the council and press during her tenure.',
-            sources: [
-              {
-                label: 'Voice of San Diego (Sept 2022)',
-                url: 'https://voiceofsandiego.org/2022/09/13/city-attorney-accuses-council-president-of-trying-to-silence-her-as-council-approves-settlement-with-accused-broker/',
-              },
-            ],
-          },
-          {
-            text: 'In a 2018 leak investigation, an appellate court found that the police department and her office breached a suspect’s attorney-client privilege and that a deputy city attorney violated State Bar conduct rules, though it declined to remove her office from the case.',
+            severity: 'notable',
+            status: 'official-finding',
+            text: 'In December 2018 a state appeals court found that the city violated a police detective’s attorney-client privilege when SDPD internal-affairs investigators, with a deputy city attorney present, questioned her about conversations with her lawyer during a leak investigation, and that the deputy city attorney violated State Bar conduct rules. The court reversed a lower-court order disqualifying the City Attorney’s office from the detective’s lawsuit. No finding was made against Elliott personally; her office said it would review the ruling.',
+            whyItMatters:
+              'It is a court finding about how the legal office she ran handled a basic ethics rule, which is relevant to a former city attorney running on her law-enforcement and “ethics attorney” record.',
             sources: [
               {
                 label: 'Voice of San Diego (Dec 2018)',
@@ -413,13 +495,29 @@ export const RACES_SD_DISTRICTS: Race[] = [
             ],
           },
         ],
-        notes: ['The ballot designation printed is “Ethics Attorney.”'],
+        notes: [
+          'The ballot designation printed is “Ethics Attorney.”',
+          'In 2022 her office announced a roughly $1 million settlement with a broker over city hotel-purchase commissions before the City Council had approved it; Council President Sean Elo-Rivera said future settlements should reach the council before a press release, and Elliott, who said she had authority to settle, replied that she was held to different rules than her predecessors as the first woman in the job. The council approved the deal. This was a dispute over process, not misconduct — https://voiceofsandiego.org/2022/09/13/city-attorney-accuses-council-president-of-trying-to-silence-her-as-council-approves-settlement-with-accused-broker/',
+        ],
       },
       {
         id: 'kristie-bruce-lane',
         name: 'Kristie Bruce-Lane',
         party: 'R',
         role: 'Businesswoman/Victims Advocate',
+        qualification: {
+          level: 'some',
+          legal: 'meets',
+          summary:
+            'Elected to the Olivenhain Municipal Water District board in 2020 and works in agriculture and health care; no legislative or large-agency executive record found.',
+          criteria: [
+            { criterionId: 'law-policy', assessment: 'unknown', evidence: 'No public record of drafting legislation or legal-policy work found.' },
+            { criterionId: 'budget-oversight', assessment: 'partial', evidence: 'As a water-district director she votes on that agency’s budget and rates; her campaign cites fiscal accountability.' },
+            { criterionId: 'public-mgmt', assessment: 'partial', evidence: 'Elected Olivenhain Municipal Water District director in November 2020 (Division 4: 4S Ranch, Rancho Cielo, Elfin Forest, Harmony Grove); a governing-board role, not executive management.' },
+            { criterionId: 'district-service', assessment: 'partial', evidence: 'Elected to a North County water board and, per her campaign, served on a regional homelessness task force; whether her division lies inside SD-40 was not verified.' },
+            { criterionId: 'coalition', assessment: 'unknown', evidence: 'No public record of passing legislation or building legislative coalitions found.' },
+          ],
+        },
         campaignUrl: 'https://www.kristiebrucelane.com/',
         bio: [
           'Businesswoman with a career in agriculture and health care; served on a regional task force on homelessness and was elected a director of the Olivenhain Municipal Water District, focusing on affordable drinking water, drought prevention and fiscal accountability. She previously ran for Assembly.',
@@ -469,7 +567,7 @@ export const RACES_SD_DISTRICTS: Race[] = [
       ['PL', 'Elliott', '◐', 'Progressive Left voters back the Democrat with a gun-violence-prevention and survivor-services record, even if her prosecutorial style is more centrist than they prefer.'],
       ['EL', 'Elliott', '●', 'Establishment Liberals value a former city attorney with institutional Democratic backing and a focus on public safety plus services.'],
       ['DM', 'Elliott', '●', 'Democratic Mainstays follow the party and local Democratic officials in a seat Democrats are trying to flip from Republican control.'],
-      ['OL', 'Elliott', '○', 'Outsider Left voters are wary of her transparency disputes as city attorney but still prefer the Democrat to a Reform San Diego-backed Republican.'],
+      ['OL', 'Elliott', '○', 'Outsider Left voters are wary of her clashes with the City Council as city attorney but still prefer the Democrat to a Reform San Diego-backed Republican.'],
       ['SS', 'Elliott', '○', 'Stressed Sideliners facing cost pressures get an experienced public-safety official, though Bruce-Lane’s tax-cut pitch also speaks to their worries.'],
       ['AR', 'Bruce-Lane', '○', 'Ambivalent Right voters in a swing district lean to the Republican on taxes and cost of living, but Elliott’s law-and-order record gives them a real reason to hesitate.'],
       ['PR', 'Bruce-Lane', '●', 'Populist Right voters favor the DeMaio-backed candidate who attacks Sacramento’s taxes and “job-killing” policies.'],
@@ -478,7 +576,7 @@ export const RACES_SD_DISTRICTS: Race[] = [
     ]),
     counterArguments: [
       'AR (Bruce-Lane ○): But consider that Elliott’s public-safety record as a former city attorney may suit moderates better than a Reform San Diego-aligned candidate.',
-      'PL (Elliott ◐): But consider that her clashes with the council and press over transparency may sit poorly with voters who want an open-government legislator.',
+      'PL (Elliott ◐): But consider that her clashes with the City Council over process, and a 2018 appeals-court finding that her office breached a detective’s attorney-client privilege, may sit poorly with voters who want an open-government legislator.',
     ],
   },
   {
@@ -486,6 +584,14 @@ export const RACES_SD_DISTRICTS: Race[] = [
     categoryId: 'state-leg',
     title: 'State Assembly, District 78',
     tldrLabel: 'AD-78',
+    legalRequirements:
+      'At least 18, a registered voter, a U.S. citizen, and a California resident for 3 years and a resident of the district for 1 year before the election (California Constitution art. IV, section 2); limited to 12 years total in the Legislature.',
+    qualificationCriteria: [
+      { id: 'lawmaking', label: 'Lawmaking or policy experience', detail: 'Assembly members write, amend and vote on state statutes.' },
+      { id: 'committee-budget', label: 'Committee leadership and budget work', detail: 'Committee chairs and budget votes shape what reaches the floor.' },
+      { id: 'district-service', label: 'Knowledge of the district and constituent services', detail: 'AD-78 covers central San Diego and El Cajon neighborhoods.' },
+      { id: 'coalition', label: 'Coalition-building and passing legislation', detail: 'Bills need majorities in both houses and the governor’s signature.' },
+    ],
     seatContext: 'Incumbent',
     kind: 'candidates',
     stakesParagraphs: [
@@ -515,6 +621,18 @@ export const RACES_SD_DISTRICTS: Race[] = [
         name: 'Chris Ward',
         party: 'D',
         role: 'Member of the State Assembly, 78th District',
+        qualification: {
+          level: 'extensive',
+          legal: 'meets',
+          summary:
+            'Incumbent since December 2020 with Assembly leadership posts and committee chairmanships, after four years on the San Diego City Council and eight as a state legislator’s chief of staff.',
+          criteria: [
+            { criterionId: 'lawmaking', assessment: 'met', evidence: 'Assemblymember since 2020; authored AB 253, AB 474, AB 1070 and AB 2316; authored the city’s Equal Pay Ordinance as a councilmember.' },
+            { criterionId: 'committee-budget', assessment: 'met', evidence: 'Chairs the Assembly Arts, Entertainment, Sports and Tourism Committee (2025 bio); earlier chaired Housing and Community Development (2024 bio); has been Speaker pro Tempore and Assistant Majority Leader.' },
+            { criterionId: 'district-service', assessment: 'met', evidence: 'San Diego City Council District 3 (2016–2020) and chief of staff to Marty Block (2008–2016); represents San Diego and El Cajon.' },
+            { criterionId: 'coalition', assessment: 'met', evidence: 'Moved bills through the Assembly, including AB 2089 (72-0, May 2026); chairs the Legislative LGBTQ Caucus.' },
+          ],
+        },
         campaignUrl: 'https://ward.asmdc.org',
         bio: [
           'First elected in 2020; former San Diego city councilmember who authored the city’s Equal Pay Ordinance, and earlier chief of staff to state Sen. Marty Block. He has held leadership posts including Speaker Pro Tempore and Assistant Majority Leader and chairs the Assembly Arts, Entertainment, Sports and Tourism Committee.',
@@ -558,6 +676,18 @@ export const RACES_SD_DISTRICTS: Race[] = [
         name: 'Payton Galvez',
         party: 'R',
         role: 'Constituent Services Manager',
+        qualification: {
+          level: 'limited',
+          legal: 'meets',
+          summary:
+            'Listed as a constituent services manager and, per KPBS, a field manager for Reform California; little other public background is available.',
+          criteria: [
+            { criterionId: 'lawmaking', assessment: 'unknown', evidence: 'No public record of lawmaking, legislative staff or policy work found.' },
+            { criterionId: 'committee-budget', assessment: 'unknown', evidence: 'No public record of committee or budget experience found.' },
+            { criterionId: 'district-service', assessment: 'unknown', evidence: 'No public record of district roles or casework found beyond the ballot designation “Constituent Services Manager.”' },
+            { criterionId: 'coalition', assessment: 'unknown', evidence: 'No public record of coalition-building or passing legislation found; works as a field manager for Reform California (KPBS).' },
+          ],
+        },
         bio: [
           'Listed on the ballot as a “constituent services manager”; KPBS reports he works as a field manager for Reform California.',
           'Little public biographical or policy information is available; no campaign website was listed as of Sept 27, 2026.',

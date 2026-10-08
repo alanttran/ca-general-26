@@ -1,12 +1,14 @@
 import type {
   BallotData,
   Candidate,
+  CandidateQualification,
+  ExternalRating,
   MeasureBlock,
   DebateBreakdown,
   MeasureReadingLink,
   Race,
   RacePoll,
-  RedFlagBullet,
+  RedFlag,
   RetentionBlock,
   ScorecardRow,
   TypologyCode,
@@ -38,6 +40,22 @@ import {
   typologyChip,
 } from './icons.ts';
 import { parsePickCell } from './parse-pick-cell.ts';
+import {
+  ASSESSMENT_LABEL,
+  ASSESSMENT_SYMBOL,
+  EXPERIENCE_DEFINITION,
+  EXPERIENCE_LABEL,
+  EXPERIENCE_ORDER,
+} from './data/qualifications';
+import {
+  maxSeverity,
+  resolveCandidateForPick,
+  SEVERITY_DEFINITION,
+  SEVERITY_LABEL,
+  SEVERITY_ORDER,
+  sortRedFlags,
+  STATUS_LABEL,
+} from './data/red-flags';
 
 const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
 
@@ -79,7 +97,7 @@ function srConfidenceLabel(c: string): string {
   }
 }
 
-function fillPickCell(td: HTMLTableCellElement, cell: string): void {
+function fillPickCell(td: HTMLTableCellElement, cell: string, flag?: 'severe' | 'serious'): void {
   td.classList.add('matrix-pick-cell');
   const { label, confidence } = parsePickCell(cell);
   const inner = el('span', 'pick-cell');
@@ -95,6 +113,7 @@ function fillPickCell(td: HTMLTableCellElement, cell: string): void {
     return;
   }
   inner.append(document.createTextNode(label));
+  if (flag) inner.append(pickFlagMarker(flag));
   if (confidence) {
     inner.append(document.createTextNode('\u00a0'));
     const badge = el('span', 'pick-cell__confidence');
@@ -105,6 +124,19 @@ function fillPickCell(td: HTMLTableCellElement, cell: string): void {
     inner.append(badge);
   }
   td.append(inner);
+}
+
+/** Small flag after a pick whose candidate has a Severe or Serious red flag. */
+function pickFlagMarker(tier: 'severe' | 'serious'): HTMLElement {
+  const wrap = el('span', `pick-flag pick-flag--${tier}`, {
+    title: `${SEVERITY_LABEL[tier]} red flag — see the candidate card`,
+  });
+  const sr = el('span', 'visually-hidden');
+  sr.textContent = ` (${SEVERITY_LABEL[tier]} red flag)`;
+  const ic = iconRedFlag('icon icon--red-flag');
+  ic.setAttribute('aria-hidden', 'true');
+  wrap.append(sr, ic);
+  return wrap;
 }
 
 function appendConfidenceCell(td: HTMLTableCellElement, symbol: string): void {
@@ -545,7 +577,10 @@ function fillPrintSheet(data: BallotData, code: TypologyCode): void {
       const th = el('th', undefined, { scope: 'row' });
       th.textContent = race.tldrLabel ?? race.title;
       const td = el('td');
-      td.textContent = row && row.confidence !== '—' ? `${row.pick} ${row.confidence}` : '— (no pick)';
+      const picked = row ? resolveCandidateForPick(row.pick, race.candidates) : undefined;
+      const tier = maxSeverity(picked?.redFlags);
+      const mark = tier === 'severe' || tier === 'serious' ? ` ⚑ ${SEVERITY_LABEL[tier].toLowerCase()} red flag` : '';
+      td.textContent = row && row.confidence !== '—' ? `${row.pick} ${row.confidence}${mark}` : '— (no pick)';
       tr.append(th, td);
       tb.append(tr);
     }
@@ -553,7 +588,7 @@ function fillPrintSheet(data: BallotData, code: TypologyCode): void {
     sheet.append(ch, tbl);
   }
   const legend = el('p', 'print-sheet__sub');
-  legend.textContent = '● high confidence · ◐ medium · ○ low · — skip / no pick';
+  legend.textContent = '● high confidence · ◐ medium · ○ low · — skip / no pick · ⚑ candidate has a Severe or Serious red flag';
   sheet.append(legend);
 }
 
@@ -679,6 +714,40 @@ function renderMethodologySection(): HTMLElement {
   pRed.textContent =
     'In a two-person runoff, a candidate with serious red flags can still be the closest fit for some columns. When that happens we keep the pick, lower the confidence, and surface the sourced warning in the profile so you are not blindsided. A column may also skip a race (—) when neither finalist is a reasonable match.';
 
+  const hRubric = el('h3', 'methodology__subhead');
+  hRubric.id = 'red-flag-rubric';
+  hRubric.textContent = 'How we rate red flags';
+  const pRubric = el('p', 'methodology__text');
+  pRubric.textContent =
+    'Every red flag links to reporting or an official record and carries three labels: a tier, a status, and a one-line note on why it matters for that particular office. Policy disagreements and opponents’ talking points are not red flags; they go in Notes.';
+  const ulRubric = el('ul', 'methodology__rubric');
+  for (const tier of SEVERITY_ORDER) {
+    const li = el('li');
+    li.append(severityBadge(tier), document.createTextNode(` — ${SEVERITY_DEFINITION[tier]}`));
+    ulRubric.append(li);
+  }
+  const pStatus = el('p', 'methodology__text');
+  pStatus.textContent = `Status tells you where the matter stands: ${Object.values(STATUS_LABEL).join(', ')}. “Alleged” and “Disputed” mean nothing has been proven.`;
+  const pPicks = el('p', 'methodology__text');
+  pPicks.textContent =
+    'Red flags never decide a pick on their own—picks are about values fit—but a Severe flag caps that candidate’s confidence at medium (◐) and must be named in the rationale, and any Severe or Serious flag on a picked candidate is addressed in the race’s counter-arguments. Only Severe flags outline the whole candidate card in red.';
+
+  const hExp = el('h3', 'methodology__subhead');
+  hExp.id = 'experience-rubric';
+  hExp.textContent = 'How we rate experience for the job';
+  const pExp = el('p', 'methodology__text');
+  pExp.textContent =
+    'Each race lists three to five things the office actually requires, plus its legal requirements. Every finalist is checked against each one (✓ met, ~ partly, ✗ not met, ? unclear) with specific evidence, then given an overall level:';
+  const ulExp = el('ul', 'methodology__rubric');
+  for (const level of EXPERIENCE_ORDER) {
+    const li = el('li');
+    li.append(experienceBadge(level), document.createTextNode(` — ${EXPERIENCE_DEFINITION[level]}`));
+    ulExp.append(li);
+  }
+  const pExp2 = el('p', 'methodology__text');
+  pExp2.textContent =
+    'Where an outside evaluator publishes a rating—bar associations for trial judges, the State Bar’s Commission on Judicial Nominees Evaluation for appellate appointees—we show it word for word. Experience informs picks but never decides them: Outsider Left and Populist Right voters, among others, often prefer a newcomer.';
+
   const hPew = el('h3', 'methodology__subhead');
   hPew.textContent = "About Pew's groups vs. our cells";
 
@@ -703,7 +772,10 @@ function renderMethodologySection(): HTMLElement {
     ),
   );
 
-  sec.append(h2, lead, hCross, pCross, hConf, ulConf, hScore, pScore, hRecord, pRecord, hRed, pRed, hPew, pPew);
+  sec.append(
+    h2, lead, hCross, pCross, hConf, ulConf, hScore, pScore, hRecord, pRecord, hRed, pRed,
+    hRubric, pRubric, ulRubric, pStatus, pPicks, hExp, pExp, ulExp, pExp2, hPew, pPew,
+  );
   return sec;
 }
 
@@ -722,7 +794,7 @@ function renderTldr(data: BallotData): HTMLElement {
   const cap = el('p', 'table-caption');
   cap.id = 'tldr-cap';
   cap.textContent =
-    'At-a-glance picks from the research guide. Each cell shows the recommended name plus a confidence icon (see legend above).';
+    'At-a-glance picks from the research guide. Each cell shows the recommended name plus a confidence icon (see legend above). A red flag after a name means that candidate has a Severe or Serious red flag on their card.';
   const wrap = el('div', 'table-scroll');
   const table = el('table', 'matrix-table');
   table.setAttribute('aria-labelledby', 'tldr-matrix');
@@ -749,7 +821,7 @@ function renderTldr(data: BallotData): HTMLElement {
     tr.append(th);
     for (const code of TY_CODES) {
       const td = el('td', `matrix-col matrix-col--${code}`);
-      fillPickCell(td, row.cells[code] ?? '—');
+      fillPickCell(td, row.cells[code] ?? '—', row.flags[code]);
       tr.append(td);
     }
     tb.append(tr);
@@ -827,6 +899,10 @@ function renderRace(race: Race): HTMLElement {
 
   if (race.polling?.length) body.append(renderRacePolling(race.polling));
 
+  if (race.kind === 'candidates' && race.qualificationCriteria?.length) {
+    body.append(renderQualificationComparison(race));
+  }
+
   body.append(renderCrossTable(race));
 
   if (race.kind === 'measure' && race.measure) {
@@ -855,6 +931,93 @@ function renderRace(race: Race): HTMLElement {
 
   details.append(body);
   return details;
+}
+
+function experienceBadge(level: CandidateQualification['level']): HTMLElement {
+  const b = el('span', `exp-badge exp-badge--${level}`, { title: EXPERIENCE_DEFINITION[level] });
+  b.textContent = EXPERIENCE_LABEL[level];
+  return b;
+}
+
+function externalRatingLine(r: ExternalRating, className: string): HTMLElement {
+  const p = el('p', className);
+  const strong = el('strong');
+  strong.textContent = `${r.source}: `;
+  p.append(strong, document.createTextNode(`${r.rating}${r.dateLabel ? ` (${r.dateLabel})` : ''} `));
+  p.append(extLink(r.url, 'Source', true));
+  return p;
+}
+
+function assessmentCell(td: HTMLTableCellElement, assessment: keyof typeof ASSESSMENT_LABEL, evidence?: string): void {
+  td.classList.add('qual-cell', `qual-cell--${assessment}`);
+  const mark = el('span', 'qual-cell__mark', { 'aria-hidden': 'true' });
+  mark.textContent = ASSESSMENT_SYMBOL[assessment];
+  const sr = el('span', 'visually-hidden');
+  sr.textContent = `${ASSESSMENT_LABEL[assessment]}. `;
+  td.append(mark, sr);
+  if (evidence) {
+    const ev = el('span', 'qual-cell__evidence');
+    ev.textContent = evidence;
+    td.append(ev);
+  }
+}
+
+/** Side-by-side: each finalist against the office’s criteria. */
+function renderQualificationComparison(race: Race): HTMLElement {
+  const wrap = el('div', 'qual-compare');
+  const h3 = el('h3', 'race__subhead');
+  h3.textContent = 'Experience for the job';
+  wrap.append(h3);
+  if (race.legalRequirements) {
+    const legal = el('p', 'qual-compare__legal');
+    const strong = el('strong');
+    strong.textContent = 'Legal requirements: ';
+    legal.append(strong, document.createTextNode(race.legalRequirements));
+    wrap.append(legal);
+  }
+  const table = el('table', 'qual-compare__table');
+  const cap = el('caption', 'visually-hidden');
+  cap.textContent = `Experience comparison for ${race.title}`;
+  const thead = el('thead');
+  const trh = el('tr');
+  const th0 = el('th', undefined, { scope: 'col' });
+  th0.textContent = 'What the job needs';
+  trh.append(th0);
+  for (const c of race.candidates) {
+    const th = el('th', undefined, { scope: 'col' });
+    th.textContent = c.name;
+    if (c.qualification) th.append(el('br'), experienceBadge(c.qualification.level));
+    trh.append(th);
+  }
+  thead.append(trh);
+  const tb = el('tbody');
+  for (const crit of race.qualificationCriteria ?? []) {
+    const tr = el('tr');
+    const th = el('th', undefined, { scope: 'row' });
+    th.textContent = crit.label;
+    if (crit.detail) {
+      const d = el('span', 'qual-compare__detail');
+      d.textContent = crit.detail;
+      th.append(el('br'), d);
+    }
+    tr.append(th);
+    for (const c of race.candidates) {
+      const td = el('td');
+      const a = c.qualification?.criteria.find((x) => x.criterionId === crit.id);
+      assessmentCell(td, a?.assessment ?? 'unknown', a?.evidence);
+      tr.append(td);
+    }
+    tb.append(tr);
+  }
+  table.append(cap, thead, tb);
+  const scroll = el('div', 'table-scroll');
+  scroll.append(table);
+  const note = el('p', 'qual-compare__note');
+  const rubricLink = el('a', undefined, { href: '#experience-rubric' });
+  rubricLink.textContent = 'How we rate experience';
+  note.append(document.createTextNode('Experience is one input, not a verdict—some voters prefer outsiders. '), rubricLink);
+  wrap.append(scroll, note);
+  return wrap;
 }
 
 function renderRacePolling(polls: RacePoll[]): HTMLElement {
@@ -895,7 +1058,7 @@ function renderRetention(block: RetentionBlock): HTMLElement {
   const rcIcon = `${import.meta.env.BASE_URL}images/reform-california-icon.svg`;
   for (const j of block.justices) {
     const tr = el('tr');
-    if (j.redFlags?.length) tr.classList.add('retention__row--alert');
+    if (maxSeverity(j.redFlags) === 'severe') tr.classList.add('retention__row--alert');
     const th = el('th', undefined, { scope: 'row' });
     th.textContent = j.name;
     const title = el('span', 'retention__title');
@@ -906,18 +1069,16 @@ function renderRetention(block: RetentionBlock): HTMLElement {
     const tdAppt = el('td');
     tdAppt.textContent = j.appointedBy;
     const tdNotes = el('td');
+    if (j.externalRating) tdNotes.append(externalRatingLine(j.externalRating, 'retention__rating'));
     for (const n of j.notes) {
       const p = el('p', 'retention__text');
       appendRichCandidateText(p, n, rcIcon);
       tdNotes.append(p);
     }
     if (j.redFlags?.length) {
-      const ul = el('ul', 'retention__flags');
-      for (const f of j.redFlags) {
+      const ul = el('ul', 'retention__flags flag-list');
+      for (const f of sortRedFlags(j.redFlags)) {
         const li = el('li');
-        const ic = iconRedFlag('icon icon--red-flag');
-        ic.setAttribute('aria-hidden', 'true');
-        li.append(ic, document.createTextNode(' '));
         appendRedFlagListItem(li, f);
         ul.append(li);
       }
@@ -1115,22 +1276,33 @@ function renderDebateCandidateBreakdown(
   return article;
 }
 
-function appendRedFlagListItem(li: HTMLLIElement, bullet: RedFlagBullet): void {
-  if (typeof bullet === 'string') {
-    li.textContent = bullet;
-    return;
-  }
-  li.append(document.createTextNode(bullet.text));
-  const sources = bullet.sources;
-  if (!sources?.length) return;
-  li.append(document.createTextNode(' '));
-  const srcWrap = el('span', 'candidate-card__flag-sources');
-  srcWrap.append(document.createTextNode(sources.length > 1 ? 'Sources: ' : 'Source: '));
-  for (let i = 0; i < sources.length; i++) {
+function severityBadge(tier: RedFlag['severity']): HTMLElement {
+  const b = el('span', `flag-badge flag-badge--${tier}`);
+  b.textContent = SEVERITY_LABEL[tier];
+  return b;
+}
+
+/** One tiered red flag: badges, neutral account, why it matters here, sources. */
+function appendRedFlagListItem(li: HTMLLIElement, flag: RedFlag): void {
+  li.classList.add('flag-item', `flag-item--${flag.severity}`);
+  const meta = el('span', 'flag-item__meta');
+  const status = el('span', 'flag-status');
+  status.textContent = STATUS_LABEL[flag.status];
+  meta.append(severityBadge(flag.severity), status);
+  const text = el('p', 'flag-item__text');
+  text.textContent = flag.text;
+  const why = el('p', 'flag-item__why');
+  const whyHead = el('strong');
+  whyHead.textContent = 'Why it matters for this office: ';
+  why.append(whyHead, document.createTextNode(flag.whyItMatters));
+  li.append(meta, text, why);
+  if (!flag.sources.length) return;
+  const srcWrap = el('p', 'candidate-card__flag-sources');
+  srcWrap.append(document.createTextNode(flag.sources.length > 1 ? 'Sources: ' : 'Source: '));
+  flag.sources.forEach((src, i) => {
     if (i > 0) srcWrap.append(document.createTextNode('; '));
-    const s = sources[i];
-    if (s) srcWrap.append(extLink(s.url, s.label, true));
-  }
+    srcWrap.append(extLink(src.url, src.label, true));
+  });
   li.append(srcWrap);
 }
 
@@ -1199,7 +1371,9 @@ function partyMarkElement(party: string): HTMLElement {
 
 function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement {
   const card = el('article', 'candidate-card');
-  if (c.redFlagCallout || (c.redFlags?.length ?? 0) > 0) card.classList.add('candidate-card--alert');
+  const topTier = maxSeverity(c.redFlags);
+  if (topTier === 'severe') card.classList.add('candidate-card--alert');
+  else if (topTier === 'serious') card.classList.add('candidate-card--caution');
 
   const media = el('div', 'candidate-card__media');
   const initials = c.name
@@ -1246,6 +1420,7 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
   const nameText = el('span', 'candidate-card__name-text');
   nameText.textContent = c.name;
   h3.append(nameText, document.createTextNode('\u00a0'), partyMarkElement(c.party));
+  if (c.qualification) h3.append(document.createTextNode(' '), experienceBadge(c.qualification.level));
   const role = el('p', 'candidate-card__role');
   if (c.campaignUrl) {
     const a = extLink(c.campaignUrl, c.role, false);
@@ -1275,6 +1450,7 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     box.append(rh, rp);
     text.append(box);
   }
+  if (c.qualification) text.append(renderCandidateQualification(c.qualification));
   if (c.scorecard?.length) {
     const hs = el('h4', 'candidate-card__sub');
     hs.textContent = 'Topical scorecard';
@@ -1345,9 +1521,12 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     const rh = el('h4', 'candidate-card__flags-heading');
     const flagIc = iconRedFlag('icon icon--red-flag candidate-card__flags-heading-icon');
     flagIc.setAttribute('aria-hidden', 'true');
-    rh.append(flagIc, document.createTextNode(' Red flags'));
-    const ul = el('ul');
-    for (const f of c.redFlags) {
+    rh.append(flagIc, document.createTextNode(' Red flags '));
+    const rubricLink = el('a', 'candidate-card__flags-rubric', { href: '#red-flag-rubric' });
+    rubricLink.textContent = 'How we rate these';
+    rh.append(rubricLink);
+    const ul = el('ul', 'flag-list');
+    for (const f of sortRedFlags(c.redFlags)) {
       const li = el('li');
       appendRedFlagListItem(li, f);
       ul.append(li);
@@ -1371,6 +1550,22 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
 
   card.append(media, text);
   return card;
+}
+
+function renderCandidateQualification(q: CandidateQualification): HTMLElement {
+  const box = el('div', 'candidate-card__qual');
+  const h = el('h4', 'candidate-card__sub');
+  h.textContent = 'Experience for the job';
+  const summary = el('p');
+  summary.textContent = q.summary;
+  box.append(h, summary);
+  if (q.legal === 'does-not-meet') {
+    const warn = el('p', 'candidate-card__qual-legal');
+    warn.textContent = 'Does not appear to meet the legal requirements for this office.';
+    box.append(warn);
+  }
+  if (q.externalRating) box.append(externalRatingLine(q.externalRating, 'candidate-card__qual-rating'));
+  return box;
 }
 
 function placeholderAvatar(initials: string): HTMLElement {

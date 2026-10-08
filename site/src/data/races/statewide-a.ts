@@ -19,6 +19,14 @@ export const RACES_STATEWIDE_A: Race[] = [
     categoryId: 'statewide',
     title: 'Governor',
     tldrLabel: 'Governor',
+    legalRequirements: 'U.S. citizen, registered voter and qualified elector; Cal. Const. art. V §2 also requires five years of California residency (the Secretary of State’s legal opinion is that this residency rule is unenforceable); limit of two terms (art. V §§2, 11).',
+    qualificationCriteria: [
+      { id: 'executive', label: 'Running a large executive branch', detail: 'The governor directs state departments and agencies and appoints their leaders.' },
+      { id: 'budget', label: 'Budget and fiscal management', detail: 'The governor proposes the annual state budget and signs or vetoes it.' },
+      { id: 'legislature', label: 'Working with the Legislature', detail: 'Every bill needs the governor’s signature or veto, so results depend on negotiating with legislators.' },
+      { id: 'crisis', label: 'Crisis and emergency management', detail: 'The governor directs state resources in wildfires, earthquakes and other emergencies.' },
+      { id: 'federal', label: 'Federal-state relations', detail: 'The governor manages the state’s funding, lawsuits and cooperation with the federal government.' },
+    ],
     seatContext: 'Open seat',
     kind: 'candidates',
     stakesParagraphs: [
@@ -90,6 +98,18 @@ export const RACES_STATEWIDE_A: Race[] = [
         party: 'D',
         role: 'Voting Rights Attorney',
         campaignUrl: 'https://www.xavierbecerra2026.com',
+        qualification: {
+          level: 'substantial',
+          legal: 'meets',
+          summary: 'Has run two very large executive organizations (California Department of Justice and the federal HHS) and served 24 years in Congress, but has not been governor or a member of the state Legislature.',
+          criteria: [
+            { criterionId: 'executive', assessment: 'met', evidence: 'California Attorney General 2017–2021 (Department of Justice, about 4,500 employees and $1B budget per press accounts); U.S. Secretary of Health and Human Services 2021–2025 (about 80,000 employees, budget above $1 trillion).' },
+            { criterionId: 'budget', assessment: 'met', evidence: 'Defended HHS budget requests before Congress (about $131.7B discretionary in FY2022); earlier served in the U.S. House 1993–2017.' },
+            { criterionId: 'legislature', assessment: 'partial', evidence: '24 years negotiating in the U.S. House and two years in the state Assembly; no service in the current state Legislature or in a governor’s office.' },
+            { criterionId: 'crisis', assessment: 'partial', evidence: 'HHS Secretary during the COVID-19 public health response and the 2021 border surge of unaccompanied children (an HHS inspector-general review of the latter is cited under red flags); no state emergency command role.' },
+            { criterionId: 'federal', assessment: 'met', evidence: 'As Attorney General, California filed well over 100 lawsuits against the first Trump administration; as HHS Secretary, administered federal-state programs such as Medicaid.' },
+          ],
+        },
         bio: [
           'Becerra served about 24 years in the U.S. House representing Los Angeles (1993–2017), was California Attorney General from 2017 to 2021 (during which the state sued the first Trump administration well over 100 times), and then served as U.S. Secretary of Health and Human Services under President Biden. He is the son of Mexican immigrants and would be California’s first Latino governor in about 150 years.',
           'His campaign centers on affordability (a state of emergency to freeze utility and insurance rates, crack down on price gouging), housing, and opposing Trump. He has drawn criticism for running a cautious, low-profile campaign with few public appearances, and for HHS’s handling of unaccompanied migrant children during his tenure.',
@@ -132,17 +152,27 @@ export const RACES_STATEWIDE_A: Race[] = [
           'Gov. Gavin Newsom, former VP Kamala Harris and Tom Steyer (all after the June primary); California Faculty Association, Equality California and Planned Parenthood California (per CalMatters/LAist voter guides), plus labor and Latino legislative leaders who backed him early in the primary.',
         redFlags: [
           {
-            text: 'His former chief of staff, Sean McCluskie, pleaded guilty to taking about $225,000 from Becerra’s dormant state campaign account through a scheme with Newsom’s ex-chief of staff Dana Williamson. Prosecutors did not charge Becerra and the indictment indicated he had no knowledge of the scheme; in a KTLA interview he said he was “aware of the payments” and “had authorized them” after advisers asked about managing the dormant account, while saying he was never fully apprised of the scheme.',
+            severity: 'notable',
+            status: 'documented',
+            text: 'About $225,000 was diverted from Becerra’s dormant state campaign account, disguised as $10,000-a-month “account maintenance” payments. His longtime chief of staff Sean McCluskie pleaded guilty to fraud, and Dana Williamson (a former Becerra consultant and later Newsom’s chief of staff) pleaded guilty in May 2026 and agreed to repay Becerra $225,000. Becerra has not been charged, and prosecutors treat him as a victim. He told KTLA he was “aware of the payments” and “had authorized them” when advisers asked about maintaining the account, but did not know where the money went. He said he cooperated with investigators and called the news a “gut punch.”',
+            whyItMatters:
+              'A governor answers for hundreds of appointees and a large budget, so it is fair to ask how he oversaw spending he personally approved from his own account by a trusted aide.',
             sources: [
               { label: 'CalMatters (Nov 2025)', url: 'https://calmatters.org/politics/2025/11/newsom-chief-of-staff-indicted/' },
-              { label: 'KTLA interview with Becerra', url: 'https://ktla.com/news/politics/inside-california-politics/exclusive-becerra-says-investigators-didnt-fully-unform-him-of-case-against-former-staff/amp/' },
               { label: 'CalMatters: Williamson pleads guilty (May 2026)', url: 'https://www.mv-voice.com/calmatters/2026/05/14/former-newsom-chief-of-staff-pleads-guilty-to-scheme-that-bled-money-from-becerras-account/' },
+              { label: 'KTLA interview with Becerra', url: 'https://ktla.com/news/politics/inside-california-politics/exclusive-becerra-says-investigators-didnt-fully-unform-him-of-case-against-former-staff/amp/' },
             ],
           },
           {
-            text: 'Hilton and conservative critics blame Becerra’s HHS for placing unaccompanied migrant children with inadequately vetted sponsors; Becerra denies it and says he rebuilt child-protection systems. The dispute is unresolved in independent reporting, and the specific numbers Hilton cites (e.g., about 319,000 children “unaccounted for”) come from a DHS inspector-general audit about ICE monitoring, not an HHS finding.',
+            severity: 'notable',
+            status: 'documented',
+            text: 'A February 2024 HHS inspector-general report on children released by HHS’s Office of Refugee Resettlement during the spring 2021 border surge, while Becerra ran HHS, found that 16% of sampled case files lacked documentation of one or more required sponsor safety checks and that 22% of required follow-up calls were not made on time. The agency agreed with all six recommendations and tightened sponsor vetting in 2024. Hilton goes further and says Becerra “actively put [children] at risk”; Becerra denies that. Larger figures critics cite for children “unaccounted for” come from a separate 2024 DHS inspector-general alert about ICE’s tracking (OIG-24-46), not from an HHS finding.',
+            whyItMatters:
+              'A governor oversees California’s own child-welfare and foster-care system, so how his federal department handled vetting during a surge is relevant evidence on his management.',
             sources: [
-              { label: 'ABC7 on Hilton’s allegations and Becerra’s response', url: 'https://abc7.com/post/california-gubernatorial-candidate-steve-hilton-accuses-xavier-becerra-putting-unaccompanied-migrant-children-risk/19631499/' },
+              { label: 'HHS Office of Inspector General, OEI-07-21-00250 (Feb 2024)', url: 'https://oig.hhs.gov/reports/all/2024/gaps-in-sponsor-screening-and-followup-raise-safety-concerns-for-unaccompanied-children/' },
+              { label: 'DHS OIG-24-46 (via Oversight.gov)', url: 'https://www.oversight.gov/report/DHS/Management-Alert-ICE-Cannot-Monitor-All-Unaccompanied-Migrant-Children-Released-DHS-and' },
+              { label: 'ABC7: Hilton’s allegations and Becerra’s response', url: 'https://abc7.com/post/california-gubernatorial-candidate-steve-hilton-accuses-xavier-becerra-putting-unaccompanied-migrant-children-risk/19631499/' },
             ],
           },
         ],
@@ -159,6 +189,18 @@ export const RACES_STATEWIDE_A: Race[] = [
         party: 'R',
         role: 'Small Business Owner',
         campaignUrl: 'https://www.stevehiltonforgovernor.com',
+        qualification: {
+          level: 'limited',
+          legal: 'meets',
+          summary: 'Has never held elected or executive government office; his government experience is as a senior adviser to the UK prime minister (2010–2012), and his other career is in media and a political-technology startup.',
+          criteria: [
+            { criterionId: 'executive', assessment: 'partial', evidence: 'Director of Strategy to UK Prime Minister David Cameron 2010–2012, a senior policy role at the center of a national government but not running agencies; later co-founded the startup Crowdpac and hosted on Fox News (2017–2023). Has held no elected or appointed executive post.' },
+            { criterionId: 'budget', assessment: 'not-met', evidence: 'No documented role preparing or managing a government budget.' },
+            { criterionId: 'legislature', assessment: 'not-met', evidence: 'Has not served in or negotiated with the California Legislature; advised a UK government as a staff member.' },
+            { criterionId: 'crisis', assessment: 'not-met', evidence: 'No documented emergency-management role.' },
+            { criterionId: 'federal', assessment: 'not-met', evidence: 'No documented role in federal-state relations.' },
+          ],
+        },
         bio: [
           'Hilton, who was born in Britain, was a senior strategist to UK Prime Minister David Cameron (2010–2012), co-founded a political crowdfunding platform in Silicon Valley, and hosted Fox News’s “The Next Revolution” (2017–2023). He has never held elected office.',
           'He pitches himself as the change candidate against “one-party rule,” promising to cut gas to about $3 a gallon, halve the gas tax, exempt the first $150,000 of income from state income tax, roll back climate mandates, and limit CEQA lawsuits. Trump endorsed him in April 2026; he has tried to give Democrats and independents “a permission slip” to vote for a Republican anyway.',
@@ -230,6 +272,13 @@ export const RACES_STATEWIDE_A: Race[] = [
     categoryId: 'statewide',
     title: 'Lieutenant Governor',
     tldrLabel: 'Lt. Governor',
+    legalRequirements: 'U.S. citizen, registered voter and qualified elector; same qualifications as the governor (Cal. Const. art. V §9), including the five-year residency clause the Secretary of State considers unenforceable; limit of two terms.',
+    qualificationCriteria: [
+      { id: 'presiding', label: 'Presiding over a legislative chamber', detail: 'The lieutenant governor is president of the state Senate and casts tie-breaking votes.' },
+      { id: 'succession', label: 'Readiness to act as governor', detail: 'The office is first in line to exercise the governor’s powers if the governor leaves office or is out of state.' },
+      { id: 'boards', label: 'Serving on governing boards', detail: 'The office holds seats on the UC Regents, CSU Trustees and State Lands Commission, which set tuition, campus and coastal-land policy.' },
+      { id: 'econ-dev', label: 'Economic development', detail: 'The lieutenant governor chairs the Commission for Economic Development.' },
+    ],
     seatContext: 'Open seat',
     kind: 'candidates',
     stakesParagraphs: [
@@ -265,6 +314,17 @@ export const RACES_STATEWIDE_A: Race[] = [
         party: 'D',
         role: 'State Treasurer/CPA',
         campaignUrl: 'https://fionama.com',
+        qualification: {
+          level: 'substantial',
+          legal: 'meets',
+          summary: 'Elected statewide twice as Treasurer (2018, 2022) after serving in the Assembly (2006–2012, including Speaker pro Tempore), on the Board of Equalization and on the San Francisco Board of Supervisors; she has not served on the UC/CSU boards or presided over the Senate.',
+          criteria: [
+            { criterionId: 'presiding', assessment: 'met', evidence: 'Assembly Speaker pro Tempore 2010–2012, a presiding-officer role in the Assembly (not the Senate); earlier Assembly Majority Whip.' },
+            { criterionId: 'succession', assessment: 'met', evidence: 'California State Treasurer since January 2019, a statewide executive office; Board of Equalization chair Feb 2016–Feb 2017.' },
+            { criterionId: 'boards', assessment: 'partial', evidence: 'As Treasurer sits on multiple state boards including CalPERS; has not served on the UC Regents, CSU Trustees or State Lands Commission.' },
+            { criterionId: 'econ-dev', assessment: 'partial', evidence: 'Treasurer’s office finances housing and business lending programs; San Francisco supervisor 2002–2006 working on economic development.' },
+          ],
+        },
         bio: [
           'Ma has been California State Treasurer since 2019. A CPA since 1992, she previously served on the San Francisco Board of Supervisors, four terms in the Assembly (including a leadership role), and the Board of Equalization. She is the oldest child of immigrant parents and the daughter of a public-school art teacher.',
           'As treasurer she says she financed a record number of affordable-housing units, expanded down-payment assistance and helped distressed hospitals. For lieutenant governor she proposes making higher education more affordable, expanding paid internships, and raising Cal State revenue from sources outside the general fund, such as leasing underused campus space. She is a listed supporter of Prop 37 on the ballot.',
@@ -302,8 +362,13 @@ export const RACES_STATEWIDE_A: Race[] = [
           'California Labor Federation, State Building and Construction Trades Council, AFSCME, California Democratic Party (per her official statement), Equality California, Planned Parenthood, California Professional Firefighters, California Nurses Association, CTA, CFT, California Farm Bureau, California Hispanic Chambers of Commerce, San Jose Mercury News and Bakersfield Californian (per her state voter-guide statement, which the SOS does not fact-check); CalMatters notes the state party did not make a primary endorsement.',
         redFlags: [
           {
-            text: 'A former Tax Credit Allocation Committee director sued Ma in 2021 alleging sexual harassment. The state paid $350,000 to settle in 2024, a court had earlier dismissed the wrongful-termination and discrimination claims, and Ma has denied the allegations and called the suit baseless and “frivolous.” An independent group has spent about $753K attacking her over it.',
+            severity: 'serious',
+            status: 'settled',
+            text: 'Judith Blackwell, former executive director of the California Tax Credit Allocation Committee (part of the Treasurer’s office), sued Ma in 2021, alleging that Ma exposed herself and got into her bed while they shared staff lodging in Sacramento. In 2023 a judge dismissed Blackwell’s race-discrimination and wrongful-termination claims but sent the harassment claims toward trial. In August 2024 the state paid $350,000 to settle, with no admission of liability. Ma denies the allegations, calls the suit “frivolous” and filed by “a disgruntled employee,” and says the settlement vindicated her.',
+            whyItMatters:
+              'The lieutenant governor sits on the UC and CSU governing boards, which handle campus harassment policy, and is first in line to act as governor, so voters may weigh a taxpayer-funded harassment settlement involving her own office.',
             sources: [
+              { label: 'AP via ABC News (Aug 2024)', url: 'https://abcnews.go.com/US/wireStory/former-california-employee-350k-settle-sexual-harassment-claims-113283548' },
               { label: 'NBC Bay Area (settlement)', url: 'https://nbcbayarea.com/news/california/california-employee-settle-sexual-harassment-claims-state-treasurer/3639597' },
               { label: 'Bond Buyer', url: 'https://bondbuyer.com/news/california-reaches-settlement-agreement-in-sexual-harassment-case-against-treasurer' },
               { label: 'CalMatters (Apr 2026)', url: 'https://calmatters.org/politics/2026/04/california-lieutenant-governor-race/' },
@@ -321,6 +386,17 @@ export const RACES_STATEWIDE_A: Race[] = [
         party: 'R',
         role: 'Educator/Businesswoman',
         campaignUrl: 'https://gloriajromero.com',
+        qualification: {
+          level: 'some',
+          legal: 'meets',
+          summary: 'Served nearly 12 years in the state Legislature, including as Senate Majority Leader and Education Committee chair, and on the Los Angeles Community College board; she has not held a statewide executive office.',
+          criteria: [
+            { criterionId: 'presiding', assessment: 'partial', evidence: 'State senator 2001–2010 and Senate Majority Leader 2005–2008 (first woman in that post), managing Senate floor business; the Majority Leader does not preside as lieutenant governor does.' },
+            { criterionId: 'succession', assessment: 'partial', evidence: 'No statewide or agency-head role; Los Angeles Community College Board of Trustees 1995–1998 and about 12 years in the Legislature.' },
+            { criterionId: 'boards', assessment: 'partial', evidence: 'Chaired the Senate Education Committee and taught at USC and CSU Long Beach; has not served on the UC Regents, CSU Trustees or State Lands Commission.' },
+            { criterionId: 'econ-dev', assessment: 'unknown', evidence: 'No documented economic-development role found in the sources reviewed.' },
+          ],
+        },
         bio: [
           'Romero represented East Los Angeles for nearly 12 years in the state Legislature as a Democrat and was the first woman to serve as state Senate Majority Leader (2005–2008). She left the Democratic Party for the Republican Party in 2024, citing education reform and school choice, and endorsed Donald Trump that year.',
           'She runs on restoring education standards, a “bold economic plan,” reining in politicized commissions, defending Title IX in girls’ sports and fighting antisemitism on campuses. She is Steve Hilton’s running mate and is also backed by Reform California.',
@@ -375,7 +451,7 @@ export const RACES_STATEWIDE_A: Race[] = [
       ['FF', 'Romero', '◐', 'Faith and Flag Conservatives welcome her stand on girls’ sports and gender identity, though the race itself involves few direct faith-and-culture levers.'],
     ]),
     counterArguments: [
-      'OL (Ma ○): But consider that the 2021 harassment lawsuit ended in a $350,000 taxpayer settlement and Ma has repeatedly denied wrongdoing, because Outsider Left voters who prize accountability may weigh that over party label.',
+      'EL (Ma ●): But consider that the 2021 harassment lawsuit against Ma ended in a $350,000 taxpayer-funded settlement shortly before trial, because even though Ma denies the allegations and no court ruled on them, Establishment Liberals who value institutional standards may weigh it against her résumé.',
       'AR (Romero ◐): But consider that the lieutenant governor’s main lever on schools is a vote on UC and CSU boards, because her K-12 voucher agenda cannot be implemented from this office.',
     ],
   },
@@ -386,6 +462,13 @@ export const RACES_STATEWIDE_A: Race[] = [
     categoryId: 'statewide',
     title: 'Secretary of State',
     tldrLabel: 'Secretary of State',
+    legalRequirements: 'U.S. citizen, registered voter and qualified to vote for the office when nomination papers are issued; not convicted of bribery, embezzlement, extortion, theft of public money or perjury-type felonies; limit of two terms (Cal. Const. art. V §11).',
+    qualificationCriteria: [
+      { id: 'elections', label: 'Running statewide elections', detail: 'The Secretary of State is chief elections officer: sets registration rules, oversees counties and certifies results.' },
+      { id: 'security-access', label: 'Election security and voter access', detail: 'The office defends election law and voter data against legal and security challenges while keeping ballots accessible.' },
+      { id: 'business', label: 'Business filings and records', detail: 'The office registers businesses, regulates notaries and keeps state archives.' },
+      { id: 'disclosure', label: 'Campaign and lobbying disclosure', detail: 'The office provides public access to campaign-finance and lobbying records.' },
+    ],
     seatContext: 'Incumbent',
     kind: 'candidates',
     stakesParagraphs: [
@@ -426,6 +509,17 @@ export const RACES_STATEWIDE_A: Race[] = [
         party: 'D',
         role: 'California Secretary of State',
         campaignUrl: 'https://www.drshirleyweber.com',
+        qualification: {
+          level: 'extensive',
+          legal: 'meets',
+          summary: 'Has been Secretary of State since January 2021 and ran the 2021 recall, 2022 and 2024 general elections, the 2025 Prop 50 special election and the 2026 primary; she previously chaired the Assembly Elections and Redistricting Committee.',
+          criteria: [
+            { criterionId: 'elections', assessment: 'met', evidence: 'Secretary of State since Jan 29, 2021, elected to a full term in 2022; oversaw the 2021 recall and subsequent statewide elections, with a record 23.2 million eligible voters as of May 2026.' },
+            { criterionId: 'security-access', assessment: 'met', evidence: 'Defended state election law in court and fended off the Trump Justice Department’s demand for state voter data (per CalMatters reporting cited above); expanded campus and rural outreach.' },
+            { criterionId: 'business', assessment: 'met', evidence: 'Heads the office that includes business filings, notary regulation and state archives (office duties per the official voter guide).' },
+            { criterionId: 'disclosure', assessment: 'met', evidence: 'Heads the office that provides public access to campaign and lobbying records; as Assemblymember 2012–2021 chaired the Elections and Redistricting Committee.' },
+          ],
+        },
         bio: [
           'Weber, a former San Diego school-board member and professor, represented the 79th Assembly District from 2012 to 2021, authoring the bill that created California’s reparations task force. Newsom appointed her Secretary of State in 2021, the first Black person to hold the office, and voters elected her in 2022 with 60.1%.',
           'She has overseen the 2021 recall election and the November 2025 redistricting (Prop 50) vote, expanded voter outreach to rural areas and campuses, and defended state election law in court. The state’s registration rolls reached a record 23.2 million eligible voters in May 2026.',
@@ -476,6 +570,17 @@ export const RACES_STATEWIDE_A: Race[] = [
         party: 'R',
         role: 'Orange County Supervisor',
         campaignUrl: 'https://wagnerforcalifornia.com',
+        qualification: {
+          level: 'some',
+          legal: 'meets',
+          summary: 'An attorney who has led Irvine and Orange County governments and served six years in the Assembly, but has not run a statewide elections or records agency.',
+          criteria: [
+            { criterionId: 'elections', assessment: 'partial', evidence: 'Assemblymember 2010–2016 (voted on state election law); Orange County Supervisor since 2019, on the board that funds and oversees county government; no direct election-administration role found.' },
+            { criterionId: 'security-access', assessment: 'partial', evidence: 'Campaigns on voter ID and faster counts; no documented role in election security or voter outreach operations.' },
+            { criterionId: 'business', assessment: 'unknown', evidence: 'Practicing attorney; no documented role with business-filing or records programs.' },
+            { criterionId: 'disclosure', assessment: 'unknown', evidence: 'No documented role in campaign-finance or lobbying disclosure; served on Assembly Appropriations, Budget and Judiciary committees.' },
+          ],
+        },
         bio: [
           'Wagner, an attorney, served three terms on the South Orange County Community College District board, in the Assembly (2010–2016), as mayor of Irvine (2016–2019), and since 2019 as Orange County’s 3rd District Supervisor, including board chair in 2023–2025.',
           'He campaigns on fast, free and fair elections: photo ID at the polls (he supports Prop 39), faster counts, cleaning outdated voter rolls, and rolling back universal mail ballots. He says he does not believe there is “rampant fraud” but that voter ID gives people more confidence, and has called for a “non-partisan” office.',
@@ -511,16 +616,10 @@ export const RACES_STATEWIDE_A: Race[] = [
           'About $752K raised, no independent spending reported, as of Sept 28, 2026 (CalMatters / Secretary of State data). Large donors include the Building Industry Association of Southern California and the Orange County Professional Firefighters local.',
         endorsements:
           'California Republican Party, Reform California, California Republican Assembly (per CalMatters voter guide).',
-        redFlags: [
-          {
-            text: 'In January 2024 as an Orange County supervisor, Wagner voted against Supervisor Vicente Sarmiento’s ethics proposal to require disclosure of close family ties to groups the board funds (a 2–2 deadlock killed it), saying there was “nothing illegal” about a grant steered by then-Supervisor Andrew Do to his daughter’s nonprofit. Do later pleaded guilty to bribery charges.',
-            sources: [
-              { label: 'LAist (Jan 2024 vote)', url: 'https://laist.com/brief/news/politics/orange-county-ethics-reforms-supervisor-andrew-do-taxpayer-dollars-daughter-viet-america-society' },
-            ],
-          },
-        ],
+        redFlags: [],
         notes: [
           'Wagner’s own election plan is at protectmyvoteca.org.',
+          'In January 2024 Wagner voted against Supervisor Vicente Sarmiento’s proposal to require supervisors to disclose family ties to county-funded groups (it died 2–2), calling it unconstitutional and saying there was “nothing illegal” about then-Supervisor Andrew Do’s grant to a nonprofit tied to Do’s daughter — https://laist.com/brief/news/politics/orange-county-ethics-reforms-supervisor-andrew-do-taxpayer-dollars-daughter-viet-america-society. After FBI raids in August 2024, Wagner, then board chair, called for removing Do from all committee assignments (his office’s release: https://bos3.oc.gov/pr-vote-remove-do-committee-assignments), and the board unanimously censured Do in September — https://spectrumnews1.com/ca/la/politics/2024/09/24/andrew-do-censure. Do pleaded guilty to a federal bribery conspiracy charge in October 2024. This is a vote and a judgment call, not an ethics finding against Wagner.',
           'In 2021 Wagner asked a county health officer whether COVID vaccines contained “tracking devices.” He said he was walking the doctor through claims made by residents, not because he believed them; Snopes rated the claim that he was seriously concerned as false: https://www.snopes.com/fact-check/don-wagner-tracking-device/',
         ],
       },
@@ -548,6 +647,13 @@ export const RACES_STATEWIDE_A: Race[] = [
     categoryId: 'statewide',
     title: 'State Controller',
     tldrLabel: 'Controller',
+    legalRequirements: 'U.S. citizen, registered voter and qualified to vote for the office when nomination papers are issued; not convicted of bribery, embezzlement, extortion, theft of public money or perjury-type felonies; limit of two terms (Cal. Const. art. V §11).',
+    qualificationCriteria: [
+      { id: 'audit', label: 'Public-sector accounting and audit', detail: 'The Controller audits agencies that spend state funds and reviews state operations.' },
+      { id: 'operations', label: 'Managing a large finance and payroll operation', detail: 'The office pays state and CSU employees and runs the unclaimed-property program.' },
+      { id: 'reporting', label: 'Fiscal reporting and transparency', detail: 'The office publishes monthly cash reports and the annual financial report that markets and federal agencies rely on.' },
+      { id: 'boards', label: 'Board service and independence', detail: 'The Controller sits on the Board of Equalization, chairs the Franchise Tax Board and sits on the CalPERS and CalSTRS boards, among others.' },
+    ],
     seatContext: 'Incumbent',
     kind: 'candidates',
     stakesParagraphs: [
@@ -583,6 +689,17 @@ export const RACES_STATEWIDE_A: Race[] = [
         party: 'D',
         role: 'State Controller/Mother',
         campaignUrl: 'https://www.maliacohenforca.com',
+        qualification: {
+          level: 'extensive',
+          legal: 'meets',
+          summary: 'Has been Controller since January 2023 and chairs the Franchise Tax Board; she previously served on the Board of Equalization (2019–2022) and the San Francisco Board of Supervisors (2011–2018).',
+          criteria: [
+            { criterionId: 'audit', assessment: 'met', evidence: 'Controller since Jan 2023, whose office audits agencies that spend state funds; released charter-school fraud-prevention recommendations in Sept 2024.' },
+            { criterionId: 'operations', assessment: 'met', evidence: 'Office administers payroll for state and CSU employees (compensation data for more than 400,700 positions reported in 2026) and the unclaimed-property program.' },
+            { criterionId: 'reporting', assessment: 'partial', evidence: 'Publishes monthly cash reports; the 2024–25 annual financial report was filed in May 2026, about six weeks late, a delay documented before her tenure too (see red flags).' },
+            { criterionId: 'boards', assessment: 'met', evidence: 'Chairs the Franchise Tax Board; sits on the Board of Equalization, CalPERS and CalSTRS; elected to the BoE in 2018 and chaired it in 2019 and 2022.' },
+          ],
+        },
         bio: [
           'Cohen began as a field organizer and aide to Gavin Newsom, then served on the San Francisco Board of Supervisors (2011–2018; Board president in 2018), and the state Board of Equalization (2019–2022) before winning the Controller’s office in 2022. She has been Controller since January 2023.',
           'In office she has announced recommendations to prevent charter-school fraud (September 2024) and says she has expanded public access to financial and payroll data, released monthly cash reports on time, reunited all 58 counties with unclaimed property and advanced payroll modernization.',
@@ -622,9 +739,15 @@ export const RACES_STATEWIDE_A: Race[] = [
           'California Democratic Party, California Labor Federation, Equality California (per CalMatters/LAist), plus teachers, nurses, firefighters and Planned Parenthood Affiliates of California named in her state voter-guide statement.',
         redFlags: [
           {
-            text: 'Her office’s annual financial report and audit have been filed months late; Morgan says the first report under her was about 22 months late and this year’s about six weeks late and warns that federal funds could be withheld over late reports. The newspaper’s editor’s note says the state had been late before Cohen took office, which officials blamed on the pandemic and the FI$Cal transition, and that the 2024–25 audit had not yet been released.',
+            severity: 'notable',
+            status: 'documented',
+            text: 'California’s Annual Comprehensive Financial Report (ACFR), which the Controller’s office compiles, and its audit have missed the March 31 deadline for several years running, a pattern that began before Cohen took office; the 2024–25 report was filed in May 2026, about six weeks late. The State Auditor made late financial reporting a statewide high-risk issue, and a July 2026 review by an outside accounting firm pointed to shared causes, including unclear roles between the Controller’s office and the Department of Finance and departments submitting data late; officials have also blamed the pandemic and the FI$Cal accounting-system transition. Morgan calls it a competence failure that could put federal funds at risk; no response from Cohen’s office was found in the sources reviewed.',
+            whyItMatters:
+              'Producing the state’s audited financial statements on time is a core Controller duty that bond markets and federal agencies rely on.',
             sources: [
-              { label: 'SF Examiner', url: 'https://www.sfexaminer.com/news/politics/gop-controller-candidate-morgan-emphasizes-competence/article_767130f0-6810-422e-b884-79539f2efe93.html' },
+              { label: 'SF Examiner (June 2026)', url: 'https://www.sfexaminer.com/news/politics/gop-controller-candidate-morgan-emphasizes-competence/article_767130f0-6810-422e-b884-79539f2efe93.html' },
+              { label: 'California State Auditor, high-risk review 2025-602 (July 2026)', url: 'https://www.auditor.ca.gov/wp-content/uploads/2026/07/2025-602-State-High-Risk-State-of-California-Late-Financial-Reporting.pdf' },
+              { label: 'KMPH (Aug 2026)', url: 'https://kmph.com/news/waste-watch/years-of-late-financial-reporting-spurs-high-risk-state-audit-report' },
             ],
           },
         ],
@@ -638,6 +761,17 @@ export const RACES_STATEWIDE_A: Race[] = [
         party: 'R',
         role: 'Chief Investment Officer',
         campaignUrl: 'https://www.herbmorgan.com',
+        qualification: {
+          level: 'some',
+          legal: 'meets',
+          summary: 'About 40 years in investment management, including founding and running an investment advisory firm and serving as a San Diego city pension trustee, but no government audit or large public-payroll experience.',
+          criteria: [
+            { criterionId: 'audit', assessment: 'not-met', evidence: 'No documented government audit or public accounting role.' },
+            { criterionId: 'operations', assessment: 'partial', evidence: 'Founded and ran Efficient Market Advisors (CEO/CIO 2004–2017); senior managing director at Cantor Fitzgerald 2017–2026 (per a candidate profile); neither is a public payroll operation.' },
+            { criterionId: 'reporting', assessment: 'partial', evidence: 'Financial and investment reporting in the private sector; no documented role producing public-sector financial statements.' },
+            { criterionId: 'boards', assessment: 'partial', evidence: 'President and trustee of the San Diego City Employees’ Retirement System 2009–2013 (per candidate profile); no seat on state boards.' },
+          ],
+        },
         bio: [
           'Morgan is a San Diego-area investment executive with about 40 years in finance, most recently chief investment officer at Cantor Fitzgerald; he says he founded an investment firm that Cantor Fitzgerald’s investment-advisory arm acquired. He is an Oceanside native.',
           'He runs on “Radical Transparency”: a public, near-real-time database of every state transaction, a “Transparency War Room,” and risk-based audits. He says he is a lifelong Republican who disagrees with parts of the party’s current direction, including mass deportation and “anti-woke” politics.',
