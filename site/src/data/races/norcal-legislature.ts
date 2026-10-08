@@ -52,7 +52,7 @@ export const RACES_NORCAL_LEGISLATURE: Race[] = [
         id: 'sean-frame',
         name: 'Sean Frame',
         party: 'D',
-        role: 'Education Specialist',
+        role: 'Small Business Owner',
         qualification: {
           level: 'some',
           legal: 'meets',
@@ -299,7 +299,7 @@ export const RACES_NORCAL_LEGISLATURE: Race[] = [
         id: 'neva-parker',
         name: 'Neva Parker',
         party: 'D',
-        role: 'Small Business Owner',
+        role: 'Community Advocate',
         qualification: {
           level: 'some',
           legal: 'meets',
@@ -332,7 +332,7 @@ export const RACES_NORCAL_LEGISLATURE: Race[] = [
         id: 'joe-patterson',
         name: 'Joe Patterson',
         party: 'R',
-        role: 'Assemblymember',
+        role: 'Member of State Assembly, 5th District',
         campaignUrl: 'https://assembly.ca.gov/assemblymembers/05',
         qualification: {
           level: 'extensive',
@@ -547,7 +547,7 @@ export const RACES_NORCAL_LEGISLATURE: Race[] = [
         id: 'marc-berman',
         name: 'Marc Berman',
         party: 'D',
-        role: 'Assemblymember',
+        role: 'State Assemblymember',
         campaignUrl: 'https://a23.asmdc.org',
         qualification: {
           level: 'extensive',

@@ -56,7 +56,7 @@ export const RACES_SD_LEGISLATURE_B: Race[] = [
         photoSlug: 'tasha-boerner',
         name: 'Tasha Boerner',
         party: 'D',
-        role: 'Member of the State Assembly, 77th District',
+        role: 'California State Assemblymember',
         campaignUrl: 'https://boerner.asmdc.org',
         qualification: {
           level: 'extensive',
@@ -178,7 +178,7 @@ export const RACES_SD_LEGISLATURE_B: Race[] = [
         photoSlug: 'lashae-sharp-collins',
         name: 'LaShae Sharp-Collins',
         party: 'D',
-        role: 'Member of the State Assembly, 79th District',
+        role: 'Incumbent',
         campaignUrl: 'https://sharp-collins.asmdc.org',
         qualification: {
           level: 'extensive',
@@ -304,7 +304,7 @@ export const RACES_SD_LEGISLATURE_B: Race[] = [
         photoSlug: 'david-alvarez',
         name: 'David A. Alvarez',
         party: 'D',
-        role: 'Member of the State Assembly, 80th District',
+        role: 'Assemblymember',
         campaignUrl: 'https://a80.asmdc.org',
         qualification: {
           level: 'extensive',

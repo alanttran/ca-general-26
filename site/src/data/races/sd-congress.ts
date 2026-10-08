@@ -57,7 +57,7 @@ export const RACES_SD_CONGRESS: Race[] = [
         photoSlug: 'jim-desmond',
         name: 'Jim Desmond',
         party: 'R',
-        role: 'County Supervisor',
+        role: 'San Diego County Supervisor',
         qualification: {
           level: 'substantial',
           legal: 'meets',
@@ -227,7 +227,7 @@ export const RACES_SD_CONGRESS: Race[] = [
         photoSlug: 'mike-levin',
         name: 'Mike Levin',
         party: 'D',
-        role: 'U.S. Representative',
+        role: 'U.S. Representative, 49th District',
         qualification: {
           level: 'extensive',
           legal: 'meets',
@@ -570,7 +570,7 @@ export const RACES_SD_CONGRESS: Race[] = [
         photoSlug: 'juan-vargas',
         name: 'Juan Vargas',
         party: 'D',
-        role: 'U.S. Representative',
+        role: 'Member of Congress',
         qualification: {
           level: 'extensive',
           legal: 'meets',

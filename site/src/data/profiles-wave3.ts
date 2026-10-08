@@ -136,7 +136,7 @@ export const WAVE3_PROFILES: Record<string, BallotProfile> = {
     'Mountain View, Santa Clara County',
     'Santa Clara County Registrar of Voters',
     'https://vote.santaclaracounty.gov',
-    'Built from Santa Clara County’s November candidate and measure lists and district maps (the county’s sample ballots need a voter lookup): CA-16, Assembly 23, Board of Equalization 2, the 6th District Court of Appeal, Mountain View City Council and Measures E and F, Mountain View Whisman and Mountain View–Los Altos school seats, Valley Water District 7, El Camino Healthcare Measure S and the regional transit measure. There is no State Senate race (District 13 isn’t up). Trust your official sample ballot over us.',
+    'Built from Santa Clara County’s November candidate and measure lists and district maps (the county’s sample ballots need a voter lookup): CA-16, Assembly 23, Board of Equalization 2, the 6th District Court of Appeal, Mountain View City Council and Measures E and F, Mountain View Whisman and Mountain View–Los Altos school seats, Valley Water District 7, El Camino Healthcare Measure S and the regional transit measure. There is no State Senate race (District 13 isn’t up). Only eastern Mountain View (south of Central Expressway) votes for Mountain View–Los Altos Trustee Area 3; Areas 1 and 2 are unopposed this year. Trust your official sample ballot over us.',
     [
       'boe-d2', 'us-rep-ca16', 'assembly-ad23', 'retention-dca6',
       'mvwsd-board', 'mvlahsd-trustee-area-3', 'mountain-view-city-council', 'valley-water-d7',

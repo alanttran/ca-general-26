@@ -203,7 +203,7 @@ export const RACES_LA_DISTRICTS_A: Race[] = [
         photoSlug: 'laura-friedman',
         name: 'Laura Friedman',
         party: 'D',
-        role: 'Member, U.S. House of Representatives',
+        role: 'Member, United States House of Representatives',
         campaignUrl: 'https://friedman.house.gov',
         qualification: {
           level: 'extensive',

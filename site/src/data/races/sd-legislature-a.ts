@@ -58,7 +58,7 @@ export const RACES_SD_LEGISLATURE_A: Race[] = [
         photoSlug: 'steve-padilla',
         name: 'Steve Padilla',
         party: 'D',
-        role: 'State Senator',
+        role: 'California State Senator',
         campaignUrl: 'https://sd18.senate.ca.gov/',
         qualification: {
           level: 'extensive',
@@ -230,7 +230,7 @@ export const RACES_SD_LEGISLATURE_A: Race[] = [
         photoSlug: 'catherine-blakespear',
         name: 'Catherine S. Blakespear',
         party: 'D',
-        role: 'State Senator',
+        role: 'California State Senator',
         campaignUrl: 'https://sd38.senate.ca.gov/',
         qualification: {
           level: 'extensive',
@@ -585,7 +585,7 @@ export const RACES_SD_LEGISLATURE_A: Race[] = [
         photoSlug: 'darshana-patel',
         name: 'Darshana Patel',
         party: 'D',
-        role: 'Assemblymember',
+        role: 'California State Assemblymember',
         campaignUrl: 'https://patel.asmdc.org',
         qualification: {
           level: 'extensive',
