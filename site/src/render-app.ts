@@ -2,6 +2,7 @@ import type {
   BallotData,
   Candidate,
   CandidateQualification,
+  ConfidenceSymbol,
   ExternalRating,
   MeasureBlock,
   DebateBreakdown,
@@ -57,7 +58,7 @@ import {
   sortRedFlags,
   STATUS_LABEL,
 } from './data/red-flags';
-import { COMBINED_LEVEL_GAP } from './data/experience-views';
+import { COMBINED_LEVEL_GAP, combinedCellFor } from './data/experience-views';
 
 const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
 
@@ -804,10 +805,9 @@ const TLDR_VIEW_KEY = 'ca-general-26:tldr-view';
 
 const TLDR_VIEWS: { id: TldrView; label: string; caption: string }[] = [
   {
-    id: 'typology',
-    label: 'Typology fit',
-    caption:
-      'Picks by worldview. Each cell shows the recommended name plus a confidence icon (see legend above). A red flag after a name means that candidate has a Severe or Serious red flag on their card.',
+    id: 'combined',
+    label: 'Fit + experience',
+    caption: `Typology picks, adjusted for experience. Strong (●) picks stand. A medium or low pick switches to a rival who is at least ${COMBINED_LEVEL_GAP} experience levels higher, and a race with no pick goes to the clearly most experienced candidate. Switched cells are marked ⇄ and drop to low confidence (hover or tap for why). Red flags show the same marker as before and don’t change picks here.`,
   },
   {
     id: 'experience',
@@ -816,9 +816,10 @@ const TLDR_VIEWS: { id: TldrView; label: string; caption: string }[] = [
       'The most experienced candidate in each race, using the experience rating on each candidate card. Experience doesn’t depend on worldview, so there is one column. Ballot measures and retention votes aren’t listed: there are no candidates to compare.',
   },
   {
-    id: 'combined',
-    label: 'Fit + experience',
-    caption: `Typology picks, adjusted for experience. Strong (●) picks stand. A medium or low pick switches to a rival who is at least ${COMBINED_LEVEL_GAP} experience levels higher, and a race with no pick goes to the clearly most experienced candidate. Switched cells are marked ⇄ and drop to low confidence (hover or tap for why). Red flags show the same marker as before and don’t change picks here.`,
+    id: 'typology',
+    label: 'Typology fit',
+    caption:
+      'Picks by worldview. Each cell shows the recommended name plus a confidence icon (see legend above). A red flag after a name means that candidate has a Severe or Serious red flag on their card.',
   },
 ];
 
@@ -829,7 +830,7 @@ function readTldrView(): TldrView {
   } catch {
     /* storage unavailable: use the default */
   }
-  return 'typology';
+  return 'combined';
 }
 
 let tldrView: TldrView = readTldrView();
@@ -1253,13 +1254,17 @@ function renderRetention(block: RetentionBlock): HTMLElement {
 function renderCrossTable(race: Race): HTMLElement {
   const h3 = el('h3', 'race__subhead');
   h3.textContent = 'Cross-typology picks';
-  const table = el('table', 'matrix-table matrix-table--compact');
+  const withCombined = race.kind === 'candidates';
+  const table = el('table', `matrix-table matrix-table--compact${withCombined ? ' cross--combined' : ''}`);
   const cap = el('caption', 'visually-hidden');
   cap.textContent = `Recommendations for ${race.title}`;
   table.append(cap);
   const thead = el('thead');
   const trh = el('tr');
-  for (const text of ['Typology', 'Pick', 'Confidence', 'Rationale']) {
+  const cols = withCombined
+    ? ['Typology', 'Fit + experience', 'Typology pick', 'Confidence', 'Rationale']
+    : ['Typology', 'Pick', 'Confidence', 'Rationale'];
+  for (const text of cols) {
     const th = el('th', undefined, { scope: 'col' });
     th.textContent = text;
     trh.append(th);
@@ -1270,13 +1275,15 @@ function renderCrossTable(race: Race): HTMLElement {
     const tr = el('tr');
     const th = el('th', undefined, { scope: 'row' });
     th.append(typologyChip(row.typology));
-    const td1 = el('td');
+    tr.append(th);
+    if (withCombined) tr.append(combinedCrossCell(race, row.pick, row.confidence));
+    const td1 = el('td', 'cross__pick');
     td1.textContent = row.pick;
-    const td2 = el('td');
+    const td2 = el('td', 'cross__conf');
     appendConfidenceCell(td2, row.confidence);
-    const td3 = el('td');
+    const td3 = el('td', 'cross__why');
     td3.textContent = row.rationale;
-    tr.append(th, td1, td2, td3);
+    tr.append(td1, td2, td3);
     tb.append(tr);
   }
   table.append(thead, tb);
@@ -1285,6 +1292,25 @@ function renderCrossTable(race: Race): HTMLElement {
   const wrap = el('div', 'race__cross');
   wrap.append(h3, scroll);
   return wrap;
+}
+
+/** “Fit + experience” cell: the adjusted pick and why, or a quiet “Same” when experience changes nothing. */
+function combinedCrossCell(race: Race, pick: string, confidence: ConfidenceSymbol): HTMLTableCellElement {
+  const c = combinedCellFor(race, pick, confidence);
+  const td = el('td', 'cross__combined');
+  if (!c.reason) {
+    td.classList.add('cross__combined--same');
+    td.textContent = 'Same';
+    return td;
+  }
+  const label = el('span', 'cross__combined-label');
+  label.textContent = 'Fit + experience: ';
+  td.append(label);
+  fillPickCell(td, c.cell, c.flag, c.reason);
+  const why = el('span', 'cross__combined-why', { 'aria-hidden': 'true' }); // reason is already read with the ⇄ marker
+  why.textContent = c.reason;
+  td.append(why);
+  return td;
 }
 
 function renderMeasure(m: MeasureBlock): HTMLElement {

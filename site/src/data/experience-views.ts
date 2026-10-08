@@ -67,8 +67,8 @@ function flagOf(c: Candidate | undefined): TldrCombinedCell['flag'] {
   return tier === 'severe' || tier === 'serious' ? tier : undefined;
 }
 
-function levelText(level: ExperienceLevel): string {
-  return EXPERIENCE_LABEL[level].toLowerCase();
+function levelText(c: Candidate): string {
+  return EXPERIENCE_LABEL[c.qualification!.level as ExperienceLevel];
 }
 
 /**
@@ -99,7 +99,7 @@ export function combinedCellFor(race: Race, pick: string, confidence: Confidence
     return {
       cell: `${pickLabelFor(best, race)} ○`,
       flag: flagOf(best),
-      reason: `No typology pick here; ${best.name} is the most experienced candidate (${levelText(best.qualification!.level)}).`,
+      reason: `No typology pick; ${pickLabelFor(best, race)} is the most experienced candidate (${levelText(best)}).`,
     };
   }
 
@@ -113,7 +113,7 @@ export function combinedCellFor(race: Race, pick: string, confidence: Confidence
     if (pool.length > 1 && rank(pool[1]) === rank(rival)) continue; // no clear replacement
     chosen[chosen.indexOf(p)] = rival;
     reasons.push(
-      `${rival.name} (${levelText(rival.qualification!.level)}) replaces ${p.name} (${levelText(p.qualification!.level)}).`,
+      `${pickLabelFor(p, race)}’s typology edge is weak, and ${pickLabelFor(rival, race)} is far more experienced (${levelText(rival)} vs. ${levelText(p)}).`,
     );
   }
   if (!reasons.length) return keep;
@@ -121,6 +121,6 @@ export function combinedCellFor(race: Race, pick: string, confidence: Confidence
   return {
     cell: `${chosen.map((c) => pickLabelFor(c, race)).join(', ')} ○`,
     flag: worstFlag,
-    reason: `Weak typology lean; ${reasons.join(' ')}`,
+    reason: reasons.join(' '),
   };
 }

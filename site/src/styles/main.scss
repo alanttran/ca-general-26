@@ -67,7 +67,7 @@
 
 html {
   font-family: var(--rad-font);
-  font-size: 17px;
+  font-size: 16px;
   line-height: var(--lh-body);
   color: var(--rad-text);
   background: var(--rad-page-bg);
@@ -1536,7 +1536,6 @@ main {
 /* ---- Responsive (mobile / small tablet) ---- */
 @media (max-width: 719px) {
   html {
-    font-size: 16px;
     scroll-padding-top: 4.25rem;
   }
 
@@ -2238,13 +2237,36 @@ button:focus-visible {
       text-align: left;
     }
 
-    td:nth-of-type(1) {
+    td.cross__pick {
       font-weight: 600;
     }
 
-    td:nth-of-type(3) {
+    td.cross__why {
       grid-column: 1 / -1;
+      order: 2;
       color: var(--rad-text-muted);
+    }
+
+    td.cross__combined {
+      grid-column: 1 / -1;
+      order: 1;
+      padding: 0.4rem 0.6rem;
+      border-radius: calc(var(--rad-radius) - 3px);
+      background: var(--rad-surface-elevated);
+    }
+
+    td.cross__combined--same {
+      display: none;
+    }
+
+    .cross__combined-label {
+      position: static;
+      width: auto;
+      height: auto;
+      clip: auto;
+      overflow: visible;
+      white-space: normal;
+      font-weight: 600;
     }
   }
 }
@@ -2335,4 +2357,29 @@ button:focus-visible {
 /* Consecutive Methodology paragraphs need a gap (margin is 0 by default). */
 .methodology__text + .methodology__text {
   margin-top: 0.75rem;
+}
+
+/* Per-race “Fit + experience” column. */
+.cross__combined {
+  text-align: left;
+}
+
+.cross__combined-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.cross__combined-why {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--rad-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.cross__combined--same {
+  color: var(--rad-text-muted);
 }

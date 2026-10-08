@@ -22,15 +22,16 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
       {
         summary: 'Three ways to read the summary table',
         bullets: [
-          '“Typology fit” is the original table: picks by worldview.',
+          '“Fit + experience” is now the default: it keeps strong typology picks, but switches a weak one when a rival is at least two experience levels higher. Switched cells are marked ⇄, with the reason on hover or tap.',
           '“Experience” lists the most experienced candidate in each race.',
-          '“Fit + experience” keeps strong typology picks, but switches a weak one when a rival is at least two experience levels higher. Switched cells are marked ⇄, with the reason on hover or tap.',
+          '“Typology fit” is the original table: picks by worldview.',
+          'Each race’s cross-typology table now shows the Fit + experience pick next to the typology pick, with the reason whenever they differ.',
         ],
       },
       {
         summary: 'Easier to read',
         bullets: [
-          'One consistent type scale: five text sizes and two weights, nothing smaller than about 15px, and no all-caps labels.',
+          'One consistent type scale on a 16px base: five text sizes and two weights, and no all-caps labels.',
           'Experience badges now read “Very experienced,” “Experienced,” “Some experience,” or “Little experience.”',
           'On phones, the section menu is a single swipeable row, and each race’s typology picks stack as cards with the full reasoning visible.',
         ],
