@@ -1,5 +1,6 @@
 import type { BallotCategory } from '../types/ballot-types';
 import { SD_WAVE2_PROFILES } from './profiles-sd-wave2';
+import { SD_CITY_PROFILES } from './profiles-sd-city';
 import { WAVE3_PROFILES } from './profiles-wave3';
 
 export const DEFAULT_BALLOT_ZIP = '92126';
@@ -33,7 +34,7 @@ export interface BallotProfile {
    * Statewide offices, SPI, and state propositions are added for every ZIP automatically.
    */
   localRaceIds: string[];
-  /** Approximate % of residents voting in contests that cover only part of the ZIP (≥20%; smaller slivers go in the note). */
+  /** Approximate % of residents voting in contests that cover only part of the ZIP (threshold set per profile file; smaller slivers go in the note). */
   partialShares?: Record<string, number>;
   /** True until this ZIP’s local research lands; shows a “local races coming” note. */
   localPending?: boolean;
@@ -67,6 +68,7 @@ export const BALLOT_PROFILES: Record<string, BallotProfile> = {
     ],
   },
   ...SD_WAVE2_PROFILES,
+  ...SD_CITY_PROFILES,
   '90028': WAVE3_PROFILES['90028'],
   '91501': WAVE3_PROFILES['91501'],
   '95765': WAVE3_PROFILES['95765'],

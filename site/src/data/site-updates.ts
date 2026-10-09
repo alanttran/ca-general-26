@@ -59,6 +59,14 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         ],
       },
       {
+        summary: 'City of San Diego: 32 more ZIPs',
+        bullets: [
+          'Every ZIP mainly in the City of San Diego now has its full local ballot, from La Jolla, Point Loma and Downtown to City Heights, Rancho Bernardo, Otay Mesa and San Ysidro, built from the Registrar’s ballot-type map and sample ballots.',
+          'New contests: City Council District 8, SDUSD District C, the San Ysidro School District board, Poway Unified Trustee Areas B, C and D, Palomar College Trustee Area 1, Palomar Health Divisions 5 and 7, San Dieguito Union High Trustee Area 3, and Del Mar City Council.',
+          'When a ZIP is split, each contest shows roughly what share of residents vote on it; contests reaching fewer than 8% of a ZIP are named in its note instead.',
+        ],
+      },
+      {
         summary: 'Orange, Riverside and Northern California',
         bullets: [
           'Orange (92868): CA-46, Senate 34, Assembly 68, Orange mayor, MWDOC Division 2 and City Measures I, J and K.',
