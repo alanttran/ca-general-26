@@ -67,6 +67,13 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         ],
       },
       {
+        summary: 'Escondido: 3 more ZIPs',
+        bullets: [
+          'Central and south Escondido (92025), east Escondido (92027) and southwest Escondido / Felicita / Harmony Grove (92029) now have full local ballots, built from the Registrar’s ballot-type map and sample ballots, joining 92026.',
+          'New contests: Escondido Union High Trustee Area 1 (Weller vs. Haines), Escondido Union School Trustee Areas 2 (Shulok vs. Ranglas) and 4 (Harper vs. Cascio), Palomar Health Division 3 (Edwards-Tate vs. Telahun) and Rincon del Diablo Water Division 3 (Hoving vs. Martinez).',
+        ],
+      },
+      {
         summary: 'Orange, Riverside and Northern California',
         bullets: [
           'Orange (92868): CA-46, Senate 34, Assembly 68, Orange mayor, MWDOC Division 2 and City Measures I, J and K.',

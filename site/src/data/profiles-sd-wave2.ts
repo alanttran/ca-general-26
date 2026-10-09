@@ -46,16 +46,19 @@ export const SD_WAVE2_PROFILES: Record<string, BallotProfile> = {
   '92026': sd(
     '92026',
     'Escondido, San Diego',
-    'This ZIP spans the City of Escondido and unincorporated land to the north, and is split across 36 ballot types, so check which races apply to you. Most residents are in CA-48 (about 16% are in CA-50 instead), Senate 40, Assembly 76 (about 23% are in Assembly 75), and Supervisor District 5. Smaller slivers also vote on Palomar Health Division 3 (~17%), Escondido Union School Trustee Area 2 (~15%) or Area 4 (~6%), Escondido Union High Trustee Area 1 (~13%) or San Marcos Unified Area E (~7%), which we don’t cover. Trust your official sample ballot over us.',
+    'This ZIP spans the City of Escondido and unincorporated land to the north, and is split across 36 ballot types, so check which races apply to you. Most residents are in CA-48 (about 16% are in CA-50 instead), Senate 40, Assembly 76 (about 23% are in Assembly 75), and Supervisor District 5. About 17% also vote for Palomar Health Division 3. Smaller slivers vote on Escondido Union School Trustee Area 4 (~6%) or San Marcos Unified Area E (~7%), which we don’t cover. Trust your official sample ballot over us.',
     [
       'us-rep-ca48', 'senate-sd40', 'assembly-ad76', 'assembly-ad75', 'sd-supervisor-d5',
-      'euhsd-trustee-area-5', 'euhsd-trustee-area-2', 'eusd-trustee-area-5', 'palomar-ccd-area-5',
-      'escondido-mayor', 'escondido-council-d2', 'escondido-council-d1', 'deer-springs-fire-board',
+      'euhsd-trustee-area-5', 'euhsd-trustee-area-2', 'euhsd-trustee-area-1', 'eusd-trustee-area-5', 'eusd-trustee-area-2',
+      'palomar-ccd-area-5',
+      'escondido-mayor', 'escondido-council-d2', 'escondido-council-d1', 'deer-springs-fire-board', 'palomar-health-div-3',
     ],
     {
       'us-rep-ca48': 84, 'assembly-ad76': 77, 'assembly-ad75': 23,
-      'euhsd-trustee-area-5': 49, 'euhsd-trustee-area-2': 21, 'eusd-trustee-area-5': 51, 'palomar-ccd-area-5': 40,
+      'euhsd-trustee-area-5': 49, 'euhsd-trustee-area-2': 21, 'euhsd-trustee-area-1': 13,
+      'eusd-trustee-area-5': 51, 'eusd-trustee-area-2': 15, 'palomar-ccd-area-5': 40,
       'escondido-mayor': 72, 'escondido-council-d2': 36, 'escondido-council-d1': 21, 'deer-springs-fire-board': 23,
+      'palomar-health-div-3': 17,
     },
   ),
   '92111': sd(

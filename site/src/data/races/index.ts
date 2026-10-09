@@ -17,6 +17,7 @@ import { RACES_LA_DISTRICTS_A } from './la-districts-a';
 import { RACES_LA_DISTRICTS_B } from './la-districts-b';
 import { RACES_CHULA_VISTA } from './chula-vista';
 import { RACES_ESCONDIDO } from './escondido';
+import { RACES_ESCONDIDO_B } from './escondido-b';
 import { RACES_NORTH_COASTAL } from './north-coastal';
 import { RACES_SD_CONGRESS } from './sd-congress';
 import { RACES_SD_COUNTY_CITY } from './sd-county-city';
@@ -88,6 +89,7 @@ export const LOCAL_RACES: Race[] = [
   ...RACES_CHULA_VISTA,
   ...RACES_NORTH_COASTAL,
   ...RACES_ESCONDIDO,
+  ...RACES_ESCONDIDO_B,
   ...RACES_LA_DISTRICTS_A,
   ...RACES_LA_DISTRICTS_B,
   ...RACES_LA_COURTS,
