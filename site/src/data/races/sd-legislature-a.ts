@@ -455,10 +455,6 @@ export const RACES_SD_LEGISLATURE_A: Race[] = [
         money:
           'No on public record current filing totals; see Cal-Access at https://cal-access.sos.ca.gov/. Reform California, which he chairs, raised about $5 million in 2024 (CalMatters, March 2026).',
         endorsements: `Republican Party of San Diego County (KPBS endorsement guide, Sept 30, 2026) — ${KPBS_GUIDE}`,
-        reformCaliforniaSection: [
-          'DeMaio chairs Reform California, a political organization that includes two committees he controls, Reform California with Carl DeMaio and Reform California Voter Guide, plus a consulting firm and a YouTube channel. It says it has raised $25 million, mostly from small online donors (CalMatters, March 2026): https://calmatters.org/politics/2026/03/california-republican-endorsements/',
-          'The group raised about $5 million in 2024, roughly three times what the San Diego County Republican Party raised that year, and the county party’s endorsements have been a point of friction: former county chair Corey Gustafson was ousted after refusing to back DeMaio’s 2024 Assembly campaign, and critics say DeMaio’s allies shaped the local party’s endorsement process. DeMaio has said his critics want “to seize power back and line their pockets.”',
-        ],
         redFlags: [
           {
             severity: 'serious',
@@ -471,6 +467,10 @@ export const RACES_SD_LEGISLATURE_A: Race[] = [
               { label: 'Voice of San Diego (Jun 2024)', url: 'https://voiceofsandiego.org/2024/06/07/sacramento-report-assembly-candidate-carl-demaio-accused-of-campaign-finance-violations/' },
             ],
           },
+        ],
+        notes: [
+          'DeMaio chairs Reform California, a political organization that includes two committees he controls, Reform California with Carl DeMaio and Reform California Voter Guide, plus a consulting firm and a YouTube channel. It says it has raised $25 million, mostly from small online donors (CalMatters, March 2026): https://calmatters.org/politics/2026/03/california-republican-endorsements/',
+          'The group raised about $5 million in 2024, roughly three times what the San Diego County Republican Party raised that year, and the county party’s endorsements have been a point of friction: former county chair Corey Gustafson was ousted after refusing to back DeMaio’s 2024 Assembly campaign, and critics say DeMaio’s allies shaped the local party’s endorsement process. DeMaio has said his critics want “to seize power back and line their pockets.”',
         ],
       },
       {

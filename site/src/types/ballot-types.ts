@@ -136,11 +136,6 @@ export interface Candidate {
   /** FYI context—background or perspective, not the same weight as red flags (shown under “Notes”). */
   notes?: string[];
   /**
-   * Optional Reform California org context (chairmanship, voter-guide machine, party friction).
-   * Rendered as its own subsection with the Reform California badge—not mixed into Notes.
-   */
-  reformCaliforniaSection?: string[];
-  /**
    * For sitting officeholders in contested races: one short paragraph on what they have
    * actually delivered in the role and when replacing them is (or is not) likely worth losing
    * seniority, committee fit, or institutional momentum. Shown only when the race has more than

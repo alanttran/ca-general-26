@@ -30,7 +30,6 @@ import {
   iconBook,
   iconChevron,
   iconExternal,
-  iconReformCalifornia,
   iconRedFlag,
   iconTopicMixed,
   iconTopicOppose,
@@ -271,12 +270,6 @@ function extLink(href: string, text: string, withIcon = false): HTMLAnchorElemen
   return a;
 }
 
-const REFORM_CALIFORNIA_LABEL = 'Reform California';
-
-function textMentionsReformCalifornia(text: string | undefined): boolean {
-  return Boolean(text?.includes(REFORM_CALIFORNIA_LABEL));
-}
-
 function externalLinkLabel(url: string): string {
   try {
     const host = new URL(url).hostname.replace(/^www\./, '');
@@ -290,38 +283,8 @@ function externalLinkLabel(url: string): string {
   }
 }
 
-/**
- * Appends plain text, turning each “Reform California” substring into a linked badge + label.
- */
-function appendTextWithReformCaliforniaBadges(
-  parent: HTMLElement,
-  text: string,
-  reformCaliforniaIconSrc: string,
-): void {
-  const parts = text.split(REFORM_CALIFORNIA_LABEL);
-  for (let i = 0; i < parts.length; i += 1) {
-    const chunk = parts[i];
-    if (chunk) parent.append(document.createTextNode(chunk));
-    if (i < parts.length - 1) {
-      const link = extLink('https://www.reformcalifornia.org/', REFORM_CALIFORNIA_LABEL, true);
-      link.classList.add('reform-california-tag');
-      const mark = iconReformCalifornia(
-        'icon icon--reform-california reform-california-tag__icon',
-        reformCaliforniaIconSrc,
-      );
-      mark.setAttribute('aria-hidden', 'true');
-      link.prepend(mark, document.createTextNode('\u00a0'));
-      parent.append(link);
-    }
-  }
-}
-
-/** Appends prose with optional ` — https://…` citation tail, inline URLs, and Reform California badges. */
-function appendRichCandidateText(
-  parent: HTMLElement,
-  text: string,
-  reformCaliforniaIconSrc: string,
-): void {
+/** Appends prose with optional ` — https://…` citation tail and inline URLs as links. */
+function appendRichCandidateText(parent: HTMLElement, text: string): void {
   const citation = text.match(/ — (https:\/\/\S+)$/);
   const body = citation ? text.slice(0, text.length - citation[0].length) : text;
   const segments = body.split(/(https:\/\/[^\s]+)/g);
@@ -329,8 +292,6 @@ function appendRichCandidateText(
     if (!segment) continue;
     if (segment.startsWith('https://')) {
       parent.append(extLink(segment, externalLinkLabel(segment), true));
-    } else if (textMentionsReformCalifornia(segment)) {
-      appendTextWithReformCaliforniaBadges(parent, segment, reformCaliforniaIconSrc);
     } else {
       parent.append(document.createTextNode(segment));
     }
@@ -344,12 +305,8 @@ function appendRichCandidateText(
 /**
  * Appends a note list item, turning bare `https://…` segments into external links (rest stays plain text).
  */
-function appendCandidateNoteLine(
-  li: HTMLLIElement,
-  note: string,
-  reformCaliforniaIconSrc: string,
-): void {
-  appendRichCandidateText(li, note, reformCaliforniaIconSrc);
+function appendCandidateNoteLine(li: HTMLLIElement, note: string): void {
+  appendRichCandidateText(li, note);
 }
 
 function renderSiteUpdatePanel(panel: SiteUpdatePanel): HTMLElement {
@@ -572,25 +529,45 @@ function fillPrintSheet(data: BallotData, code: TypologyCode): void {
     const ch = el('h3', 'print-sheet__cat');
     ch.textContent = cat.label;
     const tbl = el('table', 'print-sheet__table');
+    const thead = el('thead');
+    const trh = el('tr');
+    for (const label of ['', 'Fit + experience', 'Typology fit']) {
+      const th = el('th', undefined, { scope: 'col' });
+      th.textContent = label;
+      trh.append(th);
+    }
+    thead.append(trh);
     const tb = el('tbody');
+    const flagMark = (flag: 'severe' | 'serious' | undefined) =>
+      flag ? ` ⚑ ${SEVERITY_LABEL[flag].toLowerCase()} red flag` : '';
+    const cellText = (cell: string, flag: 'severe' | 'serious' | undefined) =>
+      !cell || cell.trim().endsWith('—') ? '— (no pick)' : `${cell}${flagMark(flag)}`;
     for (const race of races) {
       const row = race.crossTypology.find((r) => r.typology === code);
       const tr = el('tr');
       const th = el('th', undefined, { scope: 'row' });
       th.textContent = race.tldrLabel ?? race.title;
-      const td = el('td');
       const picked = row ? resolveCandidateForPick(row.pick, race.candidates) : undefined;
       const tier = maxSeverity(picked?.redFlags);
-      const mark = tier === 'severe' || tier === 'serious' ? ` ⚑ ${SEVERITY_LABEL[tier].toLowerCase()} red flag` : '';
-      td.textContent = row && row.confidence !== '—' ? `${row.pick} ${row.confidence}${mark}` : '— (no pick)';
-      tr.append(th, td);
+      const fitFlag = tier === 'severe' || tier === 'serious' ? tier : undefined;
+      const fitCell = row ? `${row.pick} ${row.confidence}`.trim() : '';
+      const combined =
+        row && race.kind === 'candidates' ? combinedCellFor(race, row.pick, row.confidence) : undefined;
+      const tdCombined = el('td');
+      tdCombined.textContent = combined?.reason
+        ? `⇄ ${cellText(combined.cell, combined.flag)}`
+        : cellText(fitCell, fitFlag);
+      const tdFit = el('td');
+      tdFit.textContent = cellText(fitCell, fitFlag);
+      tr.append(th, tdCombined, tdFit);
       tb.append(tr);
     }
-    tbl.append(tb);
+    tbl.append(thead, tb);
     sheet.append(ch, tbl);
   }
   const legend = el('p', 'print-sheet__sub');
-  legend.textContent = '● high confidence · ◐ medium · ○ low · — skip / no pick · ⚑ candidate has a Severe or Serious red flag';
+  legend.textContent =
+    '● high confidence · ◐ medium · ○ low · — skip / no pick · ⇄ switched for experience · ⚑ candidate has a Severe or Serious red flag';
   sheet.append(legend);
 }
 
@@ -660,7 +637,7 @@ function renderTypologyKey(data: BallotData): HTMLElement {
 }
 
 /**
- * Documents how cross-typology picks, confidence marks, scorecards, and exclusions are evaluated.
+ * How picks, confidence, experience and red flags are judged: one short block each, two columns on wide screens.
  */
 function renderMethodologySection(): HTMLElement {
   const sec = el('section', 'methodology');
@@ -668,20 +645,24 @@ function renderMethodologySection(): HTMLElement {
 
   const h2 = el('h2', 'methodology__title');
   h2.textContent = 'Methodology';
-
   const lead = el('p', 'methodology__lede');
   lead.textContent =
-    'This guide compresses public records, reporting, and questionnaires into skimmable cards. Nothing here is a poll of Pew typology groups; it is our best-effort translation of candidate positioning into the values language those chapters describe.';
+    'Picks translate public records, reporting and questionnaires into the values Pew describes for each group. They are our judgment, not a poll of those groups.';
 
-  const hCross = el('h3', 'methodology__subhead');
-  hCross.textContent = 'Cross-typology recommendations';
-
-  const pCross = el('p', 'methodology__text');
-  pCross.textContent =
-    'Each race and measure includes a row of suggested picks keyed to PL through FF. We ask which candidate is least mismatched with the policy and cultural instincts Pew summarizes for that bucket—then sanity-check against viability and red flags. When two candidates are both plausible, the write-up states the trade-off instead of pretending certainty.';
-
-  const hConf = el('h3', 'methodology__subhead');
-  hConf.textContent = 'Confidence symbols in the TL;DR summary';
+  const grid = el('div', 'methodology__grid');
+  const block = (heading: string, id: string | undefined, ...children: Node[]) => {
+    const b = el('div', 'methodology__block');
+    const h = el('h3', 'methodology__subhead');
+    h.textContent = heading;
+    if (id) h.id = id;
+    b.append(h, ...children);
+    grid.append(b);
+  };
+  const text = (t: string) => {
+    const p = el('p', 'methodology__text');
+    p.textContent = t;
+    return p;
+  };
 
   const ulConf = el('ul', 'confidence-legend__list methodology__confidence-legend');
   for (const def of CONFIDENCE_LEVEL_ROWS) {
@@ -690,96 +671,81 @@ function renderMethodologySection(): HTMLElement {
     const ic = confidenceIconFromChar(def.symbol);
     if (ic) icWrap.append(ic);
     const txt = el('span');
-    txt.innerHTML = `<strong>${def.title}</strong> — ${def.methodologyDetail}`;
+    const strong = el('strong');
+    strong.textContent = def.title;
+    txt.append(strong, document.createTextNode(` — ${def.methodologyDetail}`));
     li.append(icWrap, txt);
     ulConf.append(li);
   }
+  block(
+    'How picks are made',
+    undefined,
+    text(
+      'For each column we pick the candidate (or Yes/No) least at odds with that group’s instincts, then check viability and red flags. Close calls say what the trade-off is.',
+    ),
+    ulConf,
+  );
 
-  const hScore = el('h3', 'methodology__subhead');
-  hScore.textContent = 'Candidate scorecard markers';
+  block(
+    'Fit + experience',
+    undefined,
+    text(
+      `The default summary view. Strong (●) picks stay. A medium or low pick switches to a rival at least ${COMBINED_LEVEL_GAP} experience levels higher. A column with no pick goes to the most experienced candidate, with ties broken by job criteria met; if still tied, it stays blank. Multi-seat races fill only seats with a clear case, and “Little experience” candidates are never filled in. Switched cells drop to ○ and are marked ⇄.`,
+    ),
+  );
 
-  const pScore = el('p', 'methodology__text');
-  pScore.textContent =
-    'Where a scorecard appears, leading symbols compress the stance: ✓✓ strong support, ✓ support, ✗ oppose, ~ mixed or context-dependent, ? unclear from available sources. Text after the icon carries the nuance. When a second muted line appears under a cell, it contrasts that stance with the termed-out incumbent, the sitting officeholder, or other leading candidates in the same race.';
-
-  const hRecord = el('h3', 'methodology__subhead');
-  hRecord.textContent = '“Record vs. change” on incumbent cards';
-
-  const pRecord = el('p', 'methodology__text');
-  pRecord.textContent =
-    'When a sitting officeholder faces a challenger in November, some cards add a short “Record vs. change” note after the bio. It is not a second scorecard—just a plain-language read on what they have delivered in the role and when replacing them is likely worth losing seniority, committee fit, or institutional momentum. We omit it for single-candidate races and for lines labeled unopposed.';
-
-  const hRed = el('h3', 'methodology__subhead');
-  hRed.textContent = 'Red flags and picks';
-
-  const pRed = el('p', 'methodology__text');
-  pRed.textContent =
-    'In a two-person runoff, a candidate with serious red flags can still be the closest fit for some columns. When that happens we keep the pick, lower the confidence, and surface the sourced warning in the profile so you are not blindsided. A column may also skip a race (—) when neither finalist is a reasonable match.';
-
-  const hRubric = el('h3', 'methodology__subhead');
-  hRubric.id = 'red-flag-rubric';
-  hRubric.textContent = 'How we rate red flags';
-  const pRubric = el('p', 'methodology__text');
-  pRubric.textContent =
-    'Every red flag links to reporting or an official record and carries three labels: a tier, a status, and a one-line note on why it matters for that particular office. Policy disagreements and opponents’ talking points are not red flags; they go in Notes.';
-  const ulRubric = el('ul', 'methodology__rubric');
-  for (const tier of SEVERITY_ORDER) {
-    const li = el('li');
-    li.append(severityBadge(tier), document.createTextNode(` — ${SEVERITY_DEFINITION[tier]}`));
-    ulRubric.append(li);
-  }
-  const pStatus = el('p', 'methodology__text');
-  pStatus.textContent = `Status tells you where the matter stands: ${Object.values(STATUS_LABEL).join(', ')}. “Alleged” and “Disputed” mean nothing has been proven.`;
-  const pPicks = el('p', 'methodology__text');
-  pPicks.textContent =
-    'Red flags never decide a pick on their own—picks are about values fit—but a Severe flag caps that candidate’s confidence at medium (◐) and must be named in the rationale, and any Severe or Serious flag on a picked candidate is addressed in the race’s counter-arguments. Only Severe flags outline the whole candidate card in red.';
-
-  const hExp = el('h3', 'methodology__subhead');
-  hExp.id = 'experience-rubric';
-  hExp.textContent = 'How we rate experience for the job';
-  const pExp = el('p', 'methodology__text');
-  pExp.textContent =
-    'Each race lists three to five things the office actually requires, plus its legal requirements. Every finalist is checked against each one (✓ met, ~ partly, ✗ not met, ? unclear) with specific evidence, then given an overall level:';
   const ulExp = el('ul', 'methodology__rubric');
   for (const level of EXPERIENCE_ORDER) {
     const li = el('li');
-    li.append(experienceBadge(level), document.createTextNode(` — ${EXPERIENCE_DEFINITION[level]}`));
+    li.append(experienceBadge(level), document.createTextNode(` ${EXPERIENCE_DEFINITION[level]}`));
     ulExp.append(li);
   }
-  const pExp2 = el('p', 'methodology__text');
-  pExp2.textContent =
-    'Where an outside evaluator publishes a rating—bar associations for trial judges, the State Bar’s Commission on Judicial Nominees Evaluation for appellate appointees—we show it word for word. Experience informs picks but never decides them: Outsider Left and Populist Right voters, among others, often prefer a newcomer.';
-  const pExp3 = el('p', 'methodology__text');
-  pExp3.textContent = `The TL;DR summary has two more views. “Experience” lists the most experienced candidate in each race. “Fit + experience” starts from the typology picks: strong (●) picks stay; a medium or low pick switches to a rival rated at least ${COMBINED_LEVEL_GAP} levels more experienced (for example, Little experience to Experienced); and a cell with no typology pick goes to the most experienced candidate. When candidates share an experience level, the one who meets more of the job’s criteria gets the edge; if they’re still even, the cell stays blank. In races with several seats, only seats with a clear experience case are filled, and candidates rated Little experience are never filled in. Red flags are already reflected in confidence, so they don’t count twice.`;
+  block(
+    'How we rate experience',
+    'experience-rubric',
+    text(
+      'Each race lists the legal requirements and 3–5 things the job needs; every finalist is checked against each (✓ met, ~ partly, ✗ not met, ? unclear) with evidence. Bar and judicial-evaluation ratings are quoted word for word. Experience informs picks but doesn’t decide them; some voters prefer outsiders.',
+    ),
+    ulExp,
+  );
 
-  const hPew = el('h3', 'methodology__subhead');
-  hPew.textContent = "About Pew's groups vs. our cells";
+  const ulRubric = el('ul', 'methodology__rubric');
+  for (const tier of SEVERITY_ORDER) {
+    const li = el('li');
+    li.append(severityBadge(tier), document.createTextNode(`: ${SEVERITY_DEFINITION[tier]}`));
+    ulRubric.append(li);
+  }
+  block(
+    'How we rate red flags',
+    'red-flag-rubric',
+    text(
+      'Each flag is sourced and labeled with a tier, a status, and why it matters for that office. Policy disagreements go in Notes instead.',
+    ),
+    ulRubric,
+    text(
+      `Status: ${Object.values(STATUS_LABEL).join(', ')}. “Alleged” and “Disputed” mean nothing is proven. A Severe flag caps a pick at ◐ and is named in its rationale; Severe and Serious flags on a picked candidate are marked ⚑ in the summary and answered in the counter-arguments.`,
+    ),
+  );
+
+  block(
+    'Reading the cards',
+    undefined,
+    text(
+      'Scorecards: ✓✓ strong support, ✓ support, ✗ oppose, ~ mixed, ? unclear; a muted second line compares the stance with the other candidate or the outgoing officeholder. “Record vs. change” on a contested incumbent’s card weighs what they’ve delivered against what replacing them would cost.',
+    ),
+  );
 
   const pPew = el('p', 'methodology__text');
   pPew.append(
-    document.createTextNode(
-      'Pew built the nine profiles from national survey clustering; our cells map candidates to those profiles heuristically. Read their survey and construction notes in ',
-    ),
-    extLink(
-      'https://www.pewresearch.org/politics/2021/11/09/political-typology-appendix-b/',
-      'Appendix B: Typology group creation and analysis',
-      true,
-    ),
+    document.createTextNode('Pew built the nine groups from national survey clustering (see '),
+    extLink('https://www.pewresearch.org/politics/2021/11/09/political-typology-appendix-a/', 'Appendix A', true),
     document.createTextNode(' and '),
-    extLink(
-      'https://www.pewresearch.org/politics/2021/11/09/political-typology-appendix-a/',
-      'Appendix A: Survey methodology',
-      true,
-    ),
-    document.createTextNode(
-      `—then treat our picks as shortcuts, not substitutes for their methodology or your county's official wording.`,
-    ),
+    extLink('https://www.pewresearch.org/politics/2021/11/09/political-typology-appendix-b/', 'Appendix B', true),
+    document.createTextNode('); our mapping of candidates to them is heuristic. Treat picks as shortcuts, and check your official ballot.'),
   );
+  block('About Pew’s groups', undefined, pPew);
 
-  sec.append(
-    h2, lead, hCross, pCross, hConf, ulConf, hScore, pScore, hRecord, pRecord, hRed, pRed,
-    hRubric, pRubric, ulRubric, pStatus, pPicks, hExp, pExp, ulExp, pExp2, pExp3, hPew, pPew,
-  );
+  sec.append(h2, lead, grid);
   return sec;
 }
 
@@ -1183,7 +1149,6 @@ function renderRetention(block: RetentionBlock): HTMLElement {
   }
   thead.append(trh);
   const tb = el('tbody');
-  const rcIcon = `${import.meta.env.BASE_URL}images/reform-california-icon.svg`;
   for (const j of block.justices) {
     const tr = el('tr');
     if (maxSeverity(j.redFlags) === 'severe') tr.classList.add('retention__row--alert');
@@ -1200,7 +1165,7 @@ function renderRetention(block: RetentionBlock): HTMLElement {
     if (j.externalRating) tdNotes.append(externalRatingLine(j.externalRating, 'retention__rating'));
     for (const n of j.notes) {
       const p = el('p', 'retention__text');
-      appendRichCandidateText(p, n, rcIcon);
+      appendRichCandidateText(p, n);
       tdNotes.append(p);
     }
     if (j.redFlags?.length) {
@@ -1579,7 +1544,6 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     .slice(0, 3)
     .toUpperCase();
   const base = import.meta.env.BASE_URL;
-  const reformCaliforniaIconSrc = `${base}images/reform-california-icon.svg`;
   if (c.photoSlug) {
     const img = el('img', 'candidate-card__photo', {
       src: `${base}images/candidates/${c.photoSlug}.webp`,
@@ -1628,8 +1592,8 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
   text.append(role);
   for (const para of c.bio) {
     const p = el('p');
-    if (textMentionsReformCalifornia(para) || /https:\/\/\S+/.test(para)) {
-      appendRichCandidateText(p, para, reformCaliforniaIconSrc);
+    if (/https:\/\/\S+/.test(para)) {
+      appendRichCandidateText(p, para);
     } else {
       p.textContent = para;
     }
@@ -1663,24 +1627,6 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     }
     rf.append(rh, ul);
     text.append(rf);
-  }
-  if (c.reformCaliforniaSection?.length) {
-    const rc = el('aside', 'candidate-card__reform-california');
-    rc.setAttribute('aria-label', 'Reform California');
-    const rh = el('h4', 'candidate-card__reform-california-heading');
-    const mark = iconReformCalifornia(
-      'icon icon--reform-california candidate-card__reform-california-icon',
-      reformCaliforniaIconSrc,
-    );
-    mark.setAttribute('aria-hidden', 'true');
-    rh.append(mark, document.createTextNode(` ${REFORM_CALIFORNIA_LABEL}`));
-    rc.append(rh);
-    for (const para of c.reformCaliforniaSection) {
-      const rp = el('p', 'candidate-card__reform-california-text');
-      appendRichCandidateText(rp, para, reformCaliforniaIconSrc);
-      rc.append(rp);
-    }
-    text.append(rc);
   }
   // Positions, money, endorsements and notes: one tap away so the summary, experience and red flags lead.
   const more: Node[] = [];
@@ -1719,7 +1665,7 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     const head = el('strong');
     head.textContent = 'Money: ';
     pm.append(head);
-    appendRichCandidateText(pm, c.money, reformCaliforniaIconSrc);
+    appendRichCandidateText(pm, c.money);
     more.push(pm);
   }
   if (c.endorsements) {
@@ -1727,7 +1673,7 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     const head = el('strong');
     head.textContent = 'Endorsements: ';
     pe.append(head);
-    appendRichCandidateText(pe, c.endorsements, reformCaliforniaIconSrc);
+    appendRichCandidateText(pe, c.endorsements);
     more.push(pe);
   }
   if (c.notes?.length) {
@@ -1737,7 +1683,7 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     const ul = el('ul');
     for (const n of c.notes) {
       const li = el('li');
-      appendCandidateNoteLine(li, n, reformCaliforniaIconSrc);
+      appendCandidateNoteLine(li, n);
       ul.append(li);
     }
     nf.append(nh, ul);

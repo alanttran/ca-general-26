@@ -1,5 +1,6 @@
 :root {
   /* Type scale: five sizes, two weights (see legibility pass). */
+  --fs-xs: 0.8125rem;
   --fs-sm: 0.9375rem;
   --fs-base: 1rem;
   --fs-lg: 1.15rem;
@@ -781,7 +782,26 @@ main {
 }
 
 .methodology__confidence-legend {
-  margin: 0.35rem 0 0;
+  margin: 0.5rem 0 0;
+}
+
+.methodology__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  gap: 0.25rem 2rem;
+}
+
+.methodology__block .methodology__subhead {
+  margin-top: 1rem;
+}
+
+.methodology__block .methodology__text {
+  font-size: var(--fs-sm);
+}
+
+.methodology__block .methodology__rubric,
+.methodology__block .confidence-legend__list {
+  font-size: var(--fs-sm);
 }
 
 .methodology__list {
@@ -1263,49 +1283,6 @@ main {
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.15rem 0.25rem;
-}
-
-.reform-california-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.2rem;
-  white-space: nowrap;
-}
-
-.icon--reform-california {
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
-}
-
-.candidate-card__reform-california {
-  margin-top: 0.65rem;
-  padding: 0.65rem 0.75rem;
-  border-left: 3px solid var(--rad-accent, #0b3d6e);
-  background: color-mix(in srgb, var(--rad-surface-muted, #f4f4f6) 88%, transparent);
-}
-
-.candidate-card__reform-california-heading {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin: 0 0 0.35rem;
-  font-size: var(--fs-base);
-}
-
-.candidate-card__reform-california-icon {
-  width: 1.1rem;
-  height: 1.1rem;
-}
-
-.candidate-card__reform-california-text {
-  margin: 0 0 0.45rem;
-  font-size: var(--fs-sm);
-  color: var(--rad-text-muted);
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 
 .candidate-card__flags {
@@ -2038,13 +2015,27 @@ button:focus-visible {
       border-bottom: 1px dotted #999;
     }
 
-    th {
+    tbody th {
       font-weight: 400;
-      width: 70%;
+      width: 50%;
+    }
+
+    thead th {
+      padding-top: 0;
+      font-size: 8pt;
+      font-weight: 400;
+      font-style: italic;
+      border-bottom: none;
     }
 
     td {
+      width: 25%;
       font-weight: 700;
+    }
+
+    td + td {
+      font-weight: 400;
+      color: #444;
     }
   }
 
@@ -2207,29 +2198,30 @@ button:focus-visible {
 .qual-compare__table {
   width: 100%;
   border-collapse: collapse;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
+  line-height: 1.45;
 
   th,
   td {
     text-align: left;
     vertical-align: top;
-    padding: 0.5rem 0.6rem;
+    padding: 0.4rem 0.5rem;
     border-bottom: 1px solid var(--rad-border);
   }
 
   thead th {
     background: var(--rad-surface-elevated);
-    min-width: 11rem;
+    font-size: var(--fs-sm);
+    min-width: 9rem;
   }
 
   tbody th {
-    min-width: 10rem;
+    min-width: 8rem;
   }
 }
 
 .qual-compare__detail {
   font-weight: 400;
-  font-size: var(--fs-sm);
   color: var(--rad-text-muted);
 }
 

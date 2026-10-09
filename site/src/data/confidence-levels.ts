@@ -17,27 +17,27 @@ export const CONFIDENCE_LEVEL_ROWS: ConfidenceLevelRow[] = [
     title: 'High',
     legendDetail: 'Clear typology match',
     methodologyDetail:
-      'Public record (votes, sponsorships, platforms, key endorsements) lines up cleanly with what that typology prioritizes.',
+      'the record lines up cleanly with what the group prioritizes.',
   },
   {
     symbol: '◐',
     title: 'Medium',
     legendDetail: 'Defensible trade-offs',
     methodologyDetail:
-      'Defensible call with real tension—mixed record, sparse data, or competing priorities inside the same band.',
+      'defensible, with real tension: a mixed record, thin data or competing priorities.',
   },
   {
     symbol: '○',
     title: 'Low',
     legendDetail: 'Uncertain call',
     methodologyDetail:
-      'Thin evidence, conflicting signals, or a contest where typology mapping is a weak signal (for example low-information judges).',
+      'thin or conflicting evidence, or a contest where values say little.',
   },
   {
     symbol: '\u2014' as ConfidenceSymbol,
     title: 'Skip',
     legendDetail: 'No pick / skip race',
     methodologyDetail:
-      'No endorsement-style pick for that column, or the race is a toss-up on values we weight.',
+      'no pick: neither side is a reasonable fit.',
   },
 ];

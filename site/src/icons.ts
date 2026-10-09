@@ -54,21 +54,6 @@ export function iconFlag(className = 'icon icon--nav'): SVGElement {
   );
 }
 
-/**
- * Reform California favicon (32×32 PNG embedded in `reform-california-icon.svg`).
- * Pass a resolved `iconHref` (include `import.meta.env.BASE_URL` prefix at call sites).
- */
-export function iconReformCalifornia(
-  className = 'icon icon--reform-california',
-  iconHref = 'images/reform-california-icon.svg',
-): SVGElement {
-  return svgIcon(
-    '0 0 32 32',
-    `<image href="${iconHref}" width="32" height="32" preserveAspectRatio="xMidYMid meet"/>`,
-    className,
-  );
-}
-
 /** Triangular warning flag; pair with `.icon--red-flag` for color. */
 export function iconRedFlag(className = 'icon icon--red-flag'): SVGElement {
   return svgIcon(
