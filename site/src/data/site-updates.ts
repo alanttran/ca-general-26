@@ -24,6 +24,7 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         bullets: [
           'The ZIP dropdown is now a ZIP box. ZIPs with a full local ballot work as before; any other California ZIP shows the statewide races and propositions plus its district races: U.S. House, State Senate, Assembly, Board of Equalization and Court of Appeal.',
           'Every district race in the state is now covered: all 52 House seats, the 20 State Senate seats up this year, all 80 Assembly seats, and justices on all six Courts of Appeal. County, city and school contests are still only in the full local ballots.',
+          'The guide remembers the last ZIP you typed on this device, so it opens to your ballot next time. Shared links with a ZIP still open that ZIP.',
           'Districts are matched from Census data, using the new Prop 50 congressional map. When district lines split a ZIP, the share shown is a rough estimate by land area.',
         ],
       },

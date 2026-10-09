@@ -82,9 +82,29 @@ export const BALLOT_ZIP_OPTIONS: { zip: string; label: string }[] = Object.value
   .sort((a, b) => a.zip.localeCompare(b.zip))
   .map((p) => ({ zip: p.zip, label: `${p.zip} — ${p.scopeLabel}` }));
 
-/** Any 5-digit ZIP from `?zip=`; ZIPs without a hand-built profile are looked up by district. */
+const SAVED_ZIP_KEY = 'ballot-zip';
+
+/** The ZIP this browser last typed in, if any. Storage can be blocked, so failures read as none. */
+export function savedBallotZip(): string | null {
+  try {
+    const z = localStorage.getItem(SAVED_ZIP_KEY);
+    return z && /^\d{5}$/.test(z) ? z : null;
+  } catch {
+    return null;
+  }
+}
+
+export function saveBallotZip(zip: string): void {
+  try {
+    localStorage.setItem(SAVED_ZIP_KEY, zip);
+  } catch {
+    // Private mode or blocked storage: the ZIP just isn't remembered.
+  }
+}
+
+/** Any 5-digit ZIP from `?zip=`, else the one this browser last used; ZIPs without a hand-built profile are looked up by district. */
 export function resolveBallotZip(search: string): string {
   const raw = new URLSearchParams(search).get('zip')?.trim();
   if (raw && /^\d{5}$/.test(raw)) return raw;
-  return DEFAULT_BALLOT_ZIP;
+  return savedBallotZip() ?? DEFAULT_BALLOT_ZIP;
 }

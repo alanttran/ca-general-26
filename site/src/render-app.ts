@@ -15,7 +15,7 @@ import type {
   TypologyCode,
 } from './types/ballot-types';
 import { CONFIDENCE_LEVEL_ROWS, NO_PICK_TOKEN } from './data/confidence-levels';
-import { BALLOT_PROFILES, BALLOT_ZIP_OPTIONS } from './data/ballot-profiles';
+import { BALLOT_PROFILES, BALLOT_ZIP_OPTIONS, saveBallotZip } from './data/ballot-profiles';
 import { loadZipDistricts } from './data/zip-lookup';
 import { buildBallotData, getBallotProfile } from './data/build-ballot-data';
 import {
@@ -414,6 +414,7 @@ function renderZipSelector(currentZip: string, appRoot: HTMLElement): HTMLElemen
       input.focus();
       return;
     }
+    saveBallotZip(zip);
     if (zip === currentZip) return;
     btn.disabled = true;
     if (!BALLOT_PROFILES[zip]) await loadZipDistricts();
