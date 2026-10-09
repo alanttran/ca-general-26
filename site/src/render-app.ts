@@ -1277,7 +1277,7 @@ function renderCrossTable(race: Race): HTMLElement {
       const lead = el('p', 'cross__switch');
       const strong = el('strong');
       strong.textContent = 'Switched for experience. ';
-      lead.append(strong, document.createTextNode(c.reason));
+      lead.append(strong, document.createTextNode(row.experienceRationale ?? c.reason));
       const fit = el('p', 'cross__fit');
       const fitLabel = el('strong');
       fitLabel.textContent = 'On fit alone: ';

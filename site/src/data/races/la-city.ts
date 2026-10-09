@@ -169,7 +169,7 @@ export const RACES_LA_CITY: Race[] = [
       ['OL', 'Raman', '●', 'Outsider Left voters want a break from the city’s establishment and are drawn to an insurgent councilmember who calls for audits.'],
       ['SS', 'Raman', '○', 'Stressed Sideliners, frustrated with city services and 63% unfavorable toward Bass in the poll, lean slightly to the challenger promising change.'],
       ['AR', 'Bass', '○', 'Ambivalent Right voters weakly prefer the more moderate, establishment Democrat to a DSA-endorsed challenger.'],
-      ['PR', '—', '—', 'Populist Right voters distrust City Hall but both finalists are Democrats and neither clearly fits; no pick.'],
+      ['PR', '—', '—', 'Populist Right voters distrust City Hall but both finalists are Democrats and neither clearly fits; no pick.', 'Neither Democrat fits Populist Right voters, so experience breaks the tie: Bass has run the city since 2022 after serving as Assembly Speaker and in Congress, though she faces disputed reports about softening the Palisades fire review and a pending retaliation suit.'],
       ['CC', 'Bass', '○', 'Committed Conservatives lean to the less left-leaning finalist who stresses LAPD hiring, a weak preference since both are Democrats.'],
       ['FF', 'Bass', '○', 'Faith and Flag Conservatives lean toward the less progressive finalist, weakly, because both are Democrats.'],
     ]),

@@ -25,7 +25,7 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
           '“Fit + experience” is now the default: it keeps strong typology picks, but switches a weak one when a rival is at least two experience levels higher. Switched cells are marked ⇄, with the reason on hover or tap.',
           '“Experience” lists the most experienced candidate in each race.',
           '“Typology fit” is the original table: picks by worldview.',
-          'Each race’s cross-typology table is simpler: typology, pick and why. When experience switches a pick, the reason comes first, followed by the case for the original pick “on fit alone.”',
+          'Each race’s cross-typology table is simpler: typology, pick and why. When experience switches a pick, a written explanation comes first (why that group could back the more experienced candidate, and what they give up), followed by the case for the original pick “on fit alone.”',
         ],
       },
       {

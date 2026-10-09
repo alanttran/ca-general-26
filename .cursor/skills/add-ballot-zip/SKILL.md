@@ -123,6 +123,7 @@ PL Progressive Left · EL Establishment Liberals · DM Democratic Mainstays · O
 - **Same-party race (D vs D / R vs R):** pick on ideology — say *in the rationale* which finalist is further left/right, more establishment/outsider, and why that fits the column.
 - **Measures:** Yes/No by what that typology values (taxes, spending, regulation, social issues, institutional trust). Explain the value, not the outcome you prefer.
 - Rationales are third person about the voter group (“Establishment Liberals value…”), one sentence, specific to this race.
+- **Fit + experience switches:** when the combined view switches a pick (a ◐/○ pick whose rival is 2+ experience levels higher, or a `—` cell with a clear most-experienced candidate), add a 5th `ct()` element: one or two sentences (≤55 words) on why an experience-first voter in that group could back the switched-to candidate, and what they give up. Name red flags and cross-party votes plainly. The build fails if a switched pick lacks one, or an unswitched pick has one.
 
 ## 5b. Experience for the job (every candidate race)
 

@@ -1,5 +1,6 @@
 import type { Candidate, Race, RedFlag, TypologyCode } from '../types/ballot-types';
 import { BALLOT_CATEGORIES, type BallotProfile } from './ballot-profiles';
+import { combinedCellFor } from './experience-views';
 import { resolveCandidateForPick, SEVERITY_ORDER, STATUS_LABEL } from './red-flags';
 
 const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
@@ -208,12 +209,30 @@ export function collectProfileIssues(races: Race[], profiles: BallotProfile[]): 
 }
 
 /** Throws on validation failure so `npm run build` catches mistakes. */
+/** Every pick the Fit + experience view switches needs its own written rationale, and only those. */
+export function collectExperienceRationaleIssues(races: Race[]): TypologyValidationIssue[] {
+  const issues: TypologyValidationIssue[] = [];
+  for (const race of races) {
+    for (const row of race.crossTypology) {
+      const switched = race.kind === 'candidates' && Boolean(combinedCellFor(race, row.pick, row.confidence).reason);
+      const has = Boolean(row.experienceRationale?.trim());
+      if (switched && !has) {
+        issues.push({ raceId: race.id, typology: row.typology, message: 'Fit + experience switches this pick: add an experienceRationale.' });
+      } else if (!switched && has) {
+        issues.push({ raceId: race.id, typology: row.typology, message: 'experienceRationale is set but this pick is not switched: remove it.' });
+      }
+    }
+  }
+  return issues;
+}
+
 export function assertBallotDataValid(races: Race[], profiles: BallotProfile[]): void {
   const issues = [
     ...collectTypologyValidationIssues(races),
     ...collectRedFlagIssues(races),
     ...collectQualificationIssues(races),
     ...collectProfileIssues(races, profiles),
+    ...collectExperienceRationaleIssues(races),
   ];
   if (issues.length === 0) return;
 

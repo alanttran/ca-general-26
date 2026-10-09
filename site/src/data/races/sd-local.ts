@@ -283,7 +283,7 @@ export const RACES_SD_LOCAL: Race[] = [
       ['DM', 'Lee', '●', 'Democratic Mainstays follow the county party and the Labor Council to the incumbent Democrat.'],
       ['OL', 'Lee', '◐', 'Outsider Left voters may find him establishment-leaning, but his pro-housing and transit stance beats a challenger opposing density.'],
       ['SS', 'Lee', '○', 'Stressed Sideliners lean to the incumbent who is delivering visible local service, though many will not know either candidate.'],
-      ['AR', 'Powell', '○', 'Ambivalent Right voters may like the lower-fee, less-density pitch, but weakly because both candidates are relatively unknown.'],
+      ['AR', 'Powell', '○', 'Ambivalent Right voters may like the lower-fee, less-density pitch, but weakly because both candidates are relatively unknown.', 'Ambivalent Right voters who care most about getting things done at City Hall could choose Lee, who has voted on city budgets since 2023 and was picked by colleagues as Council President Pro Tem, though that means giving up Powell’s stand against new fees and high-density projects.'],
       ['PR', 'Powell', '●', 'Populist Right voters favor an outsider who says he is not beholden to City Hall and opposes new fees.'],
       ['CC', 'Powell', '●', 'Committed Conservatives prefer the Republican-backed candidate who opposes fee increases and wants a business-style city.'],
       ['FF', 'Powell', '●', 'Faith and Flag Conservatives will back the Republican-endorsed challenger against a Democratic incumbent.'],

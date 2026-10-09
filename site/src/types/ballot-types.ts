@@ -156,6 +156,11 @@ export interface CrossTypologyRow {
   pick: string;
   confidence: ConfidenceSymbol;
   rationale: string;
+  /**
+   * Why this typology could back the switched pick in the Fit + experience view, written from that
+   * typology's point of view. Required exactly when experience switches the pick (see `combinedCellFor`).
+   */
+  experienceRationale?: string;
 }
 
 export interface DebateTopicBreakdown {
