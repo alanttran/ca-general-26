@@ -15,7 +15,8 @@ import type {
   TypologyCode,
 } from './types/ballot-types';
 import { CONFIDENCE_LEVEL_ROWS, NO_PICK_TOKEN } from './data/confidence-levels';
-import { BALLOT_ZIP_OPTIONS } from './data/ballot-profiles';
+import { BALLOT_PROFILES, BALLOT_ZIP_OPTIONS } from './data/ballot-profiles';
+import { loadZipDistricts } from './data/zip-lookup';
 import { buildBallotData, getBallotProfile } from './data/build-ballot-data';
 import {
   earlierSiteUpdateBuilds,
@@ -377,29 +378,53 @@ function renderSiteUpdatesSection(lastContentUpdated: string): HTMLElement {
 }
 
 function renderZipSelector(currentZip: string, appRoot: HTMLElement): HTMLElement {
-  const wrap = el('div', 'zip-select');
+  const form = el('form', 'zip-select', { role: 'search' }) as HTMLFormElement;
   const label = el('label', 'zip-select__label', { for: 'ballot-zip' });
-  label.textContent = 'Ballot ZIP';
-  const select = el('select', 'zip-select__control', {
+  label.textContent = 'Your ZIP';
+  const input = el('input', 'zip-select__control', {
     id: 'ballot-zip',
     name: 'zip',
-    'aria-label': 'Choose ballot ZIP code',
-  }) as HTMLSelectElement;
+    type: 'text',
+    inputmode: 'numeric',
+    autocomplete: 'postal-code',
+    maxlength: '5',
+    pattern: '[0-9]{5}',
+    list: 'ballot-zip-built',
+    value: currentZip,
+    'aria-describedby': 'ballot-zip-hint',
+  }) as HTMLInputElement;
+  const list = el('datalist', undefined, { id: 'ballot-zip-built' });
   for (const opt of BALLOT_ZIP_OPTIONS) {
     const option = document.createElement('option');
     option.value = opt.zip;
-    option.textContent = opt.label;
-    if (opt.zip === currentZip) option.selected = true;
-    select.append(option);
+    option.label = opt.label;
+    list.append(option);
   }
-  select.addEventListener('change', () => {
+  const btn = el('button', 'zip-select__button', { type: 'submit' });
+  btn.textContent = 'Show my ballot';
+  const hint = el('p', 'zip-select__hint', { id: 'ballot-zip-hint', 'aria-live': 'polite' });
+  const defaultHint = `Any California ZIP works. Full local ballots are built for ${BALLOT_ZIP_OPTIONS.length} ZIPs: ${BALLOT_ZIP_OPTIONS.map((o) => o.zip).join(', ')}.`;
+  hint.textContent = defaultHint;
+  input.addEventListener('focus', () => input.select());
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const zip = input.value.trim();
+    if (!/^\d{5}$/.test(zip)) {
+      hint.textContent = 'Enter a 5-digit ZIP code.';
+      input.focus();
+      return;
+    }
+    if (zip === currentZip) return;
+    btn.disabled = true;
+    if (!BALLOT_PROFILES[zip]) await loadZipDistricts();
     const url = new URL(location.href);
-    url.searchParams.set('zip', select.value);
+    url.searchParams.set('zip', zip);
+    url.hash = '';
     history.pushState({}, '', url);
-    renderApp(appRoot, select.value);
+    renderApp(appRoot, zip);
   });
-  wrap.append(label, select);
-  return wrap;
+  form.append(label, input, btn, list, hint);
+  return form;
 }
 
 /** ZIP-specific scope note (which districts we modeled) + link to the official sample ballot. */

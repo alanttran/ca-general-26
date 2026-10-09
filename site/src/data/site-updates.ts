@@ -20,6 +20,13 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
     lede: 'Every ZIP in the guide now has its full local ballot: Los Angeles, Orange, Riverside, Placer, Alameda and Santa Clara counties join San Diego.',
     panels: [
       {
+        summary: 'Type any California ZIP',
+        bullets: [
+          'The ZIP dropdown is now a ZIP box. ZIPs with a full local ballot work as before; any other California ZIP shows the statewide races and propositions plus the district races already researched for it (U.S. House, State Senate, Assembly, Board of Equalization and Court of Appeal), and names the ones not yet covered.',
+          'Districts are matched from Census data, using the new Prop 50 congressional map. When district lines split a ZIP, the share shown is a rough estimate by land area.',
+        ],
+      },
+      {
         summary: 'Three ways to read the summary table',
         bullets: [
           '“Fit + experience” is now the default: it keeps strong typology picks, but switches a weak one when a rival is at least two experience levels higher, and fills cells with no typology pick (including multi-seat races and close calls decided by the job’s criteria). Switched cells are marked ⇄, with the reason on hover or tap.',

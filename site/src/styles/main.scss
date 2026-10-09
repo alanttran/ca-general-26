@@ -455,12 +455,41 @@ th {
 
 .zip-select__control {
   font: inherit;
-  min-width: min(100%, 18rem);
+  width: 7ch;
+  box-sizing: content-box;
   padding: 0.35rem 0.5rem;
   border: 1px solid var(--rad-border);
   border-radius: 6px;
   background: var(--rad-surface);
   color: var(--rad-text);
+}
+
+.zip-select__button {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--rad-accent-dim);
+  border-radius: 6px;
+  background: var(--rad-accent);
+  color: #fff;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--rad-accent-dim);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+}
+
+.zip-select__hint {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
 }
 
 .site-header__subtitle {

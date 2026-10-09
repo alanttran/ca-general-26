@@ -6,6 +6,7 @@ import { maxSeverity, resolveCandidateForPick } from './red-flags';
 import { BALLOT_CATEGORIES, BALLOT_PROFILES, DEFAULT_BALLOT_ZIP, type BallotProfile } from './ballot-profiles';
 import { LOCAL_RACES, STATEWIDE_RACES } from './races';
 import { TYPOLOGIES } from './typologies-data';
+import { generatedProfile } from './zip-lookup';
 import { assertBallotDataValid } from './validate-typology-picks';
 
 const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
@@ -18,8 +19,13 @@ assertBallotDataValid([...ALL_STATEWIDE_RACES, ...ALL_LOCAL_RACES], Object.value
 const LOCAL_BY_ID = new Map(ALL_LOCAL_RACES.map((r) => [r.id, r]));
 const CATEGORY_INDEX = new Map(BALLOT_CATEGORIES.map((c, i) => [c.id, i]));
 
+const KNOWN_LOCAL_IDS = new Set(LOCAL_BY_ID.keys());
+
+/** Hand-built profile when we have one; otherwise districts looked up from the ZIP (call `loadZipDistricts` first). */
 export function getBallotProfile(zip: string): BallotProfile {
-  return BALLOT_PROFILES[zip] ?? BALLOT_PROFILES[DEFAULT_BALLOT_ZIP];
+  if (BALLOT_PROFILES[zip]) return BALLOT_PROFILES[zip];
+  if (/^\d{5}$/.test(zip)) return generatedProfile(zip, KNOWN_LOCAL_IDS);
+  return BALLOT_PROFILES[DEFAULT_BALLOT_ZIP];
 }
 
 /** TL;DR row derived from the race’s own picks, so the matrix can never drift from race files. */

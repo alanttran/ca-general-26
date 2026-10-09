@@ -82,8 +82,9 @@ export const BALLOT_ZIP_OPTIONS: { zip: string; label: string }[] = Object.value
   .sort((a, b) => a.zip.localeCompare(b.zip))
   .map((p) => ({ zip: p.zip, label: `${p.zip} — ${p.scopeLabel}` }));
 
+/** Any 5-digit ZIP from `?zip=`; ZIPs without a hand-built profile are looked up by district. */
 export function resolveBallotZip(search: string): string {
   const raw = new URLSearchParams(search).get('zip')?.trim();
-  if (raw && raw in BALLOT_PROFILES) return raw;
+  if (raw && /^\d{5}$/.test(raw)) return raw;
   return DEFAULT_BALLOT_ZIP;
 }
