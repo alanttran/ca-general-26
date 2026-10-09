@@ -564,12 +564,10 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure M would let Murrieta Valley Unified issue up to $359 million in general obligation bonds to repair and modernize schools. The district says its facilities master plan identifies about $359 million in needs that the state does not regularly fund, including more than 125 roof leaks in the past year.',
-      'The bonds would be repaid through a property tax on homes and businesses inside the district, which covers about 99.9% of ZIP 92562.',
+      'Measure M would fund school repairs with bonds repaid by a property tax on homes and businesses in the district, which covers about 99.9% of ZIP 92562. The trade-off is fixing aging schools without a rate increase, the district says, versus keeping the current tax in place for years longer.',
     ],
     introParagraphs: [
-      'The school board voted unanimously on May 12, 2026 to place the bond on the Nov. 3 ballot. School bonds can only be placed on statewide election dates, and under Proposition 39 they pass with 55% of the vote, not two-thirds.',
-      'The district says the measure would keep current tax rates because older bonds from the 1990s and early 2000s are being paid off. At the board meeting, two Republican activists spoke against it, objecting to the ballot language (Riverside Record).',
+      'The school board voted unanimously on May 12, 2026 to place the bond on the Nov. 3 ballot. School bonds can only be placed on statewide election dates.',
     ],
     measure: {
       question:
@@ -582,29 +580,21 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
       opponents: 'Republican activists Bob Kowell and Jack Guerrero spoke against the ballot language at the board meeting (Riverside Record). No organized opposition committee found as of Oct 8, 2026.',
       voterConnection: [
         'Property owners pay through their property tax bill; renters may pay indirectly if landlords pass costs through.',
-        'The district says rates would not rise, but the bonds would extend the current tax levy for years longer than if the measure failed, so total payments are higher than the alternative.',
-        'Bond money cannot pay teacher or administrator salaries or pensions; it funds buildings and repairs.',
+        'Bond money funds buildings and repairs, not teacher or administrator salaries or pensions.',
         'State law requires a citizens’ oversight committee and annual audits of how the money is spent.',
       ],
       mechanismBullets: [
-        'Amount: up to $359 million in general obligation bonds (district notice, Aug 7, 2026).',
-        'Threshold: at least 55% of voters, as a Proposition 39 school bond (district Measure M page).',
-        'Rate: no more than $60 per $100,000 of assessed value; the district says it expects the rate to remain at the current level.',
-        'Uses: roofs, plumbing, gas and sewer lines, ventilation and electrical systems; classroom and science, technology and engineering upgrades; career technical education labs; replacing HVAC units over 20 years old; replacing aging portables with permanent classrooms.',
-        'Oversight: a citizens’ oversight committee and annual independent audits are required; funds stay local and cannot be used for administrator salaries or pensions.',
-        'Term and total repayment: not stated on the district pages we could read.',
+        'Uses: roofs, plumbing, gas and sewer lines, ventilation and electrical systems; classroom and science, technology and engineering upgrades; career technical education labs; replacing HVAC units over 20 years old; replacing aging portables with permanent classrooms. Funds stay local.',
       ],
       argumentsFor: [
         'Many schools are more than 30 years old, and the district counted more than 125 roof leaks in the past year.',
-        'The state does not provide regular facility funding, so local bonds are the main way to pay for repairs.',
-        'The district says rates would stay the same as older bonds are paid off.',
-        'Citizens’ oversight, annual audits and a ban on spending on administrator pay or pensions are written into the measure.',
+        'The state does not regularly fund facilities; the district’s master plan identifies about $359 million in needs.',
+        'The district says rates would stay the same as bonds from the 1990s and early 2000s are paid off.',
       ],
       argumentsAgainst: [
-        'Extending the current tax rate means homeowners keep paying for years longer than if the bonds were not issued.',
-        'Interest on bonds raises the total cost beyond $359 million, and the district has not published a total repayment figure on its pages.',
+        'Keeping the rate flat means homeowners keep paying for years longer than if the bonds were not issued.',
+        'Interest pushes the total cost beyond $359 million, and the district’s pages give no term or total repayment figure.',
         'At the board meeting, critics called the ballot language inadequate (Riverside Record).',
-        'The district’s own pages do not state the bond’s term or total cost, so voters cannot see the full repayment amount.',
       ],
       readingLinks: [
         { label: 'Murrieta Valley USD: Measure M', url: 'https://www.murrieta.k12.ca.us/directory/business-operations/facilities-operations-technology/measure-m', summary: 'District description of the bond, threshold and project categories.' },
@@ -639,12 +629,10 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure A would extend Riverside County’s existing half-cent transportation sales tax past its 2039 sunset, without raising the rate. The Riverside County Transportation Commission (RCTC) estimates it would raise about $280 million a year for highways, local streets and roads, and public transit.',
-      'The tax has no end date under the renewal: it would continue until voters repeal it. Because it is a dedicated transportation tax, it needs two-thirds of voters to pass.',
+      'Measure A would renew Riverside County’s half-cent sales tax for highways, local streets and roads, and public transit beyond its 2039 sunset. Because it is a dedicated transportation tax, it needs two-thirds of voters to pass.',
     ],
     introParagraphs: [
-      'Voters first approved the half-cent tax in 1988 (Inland Empire Business Daily) and extended it in 2002 for an additional 30 years. RCTC adopted Ordinance No. 26-001 on June 10, 2026, and the Board of Supervisors ordered the election on July 14, 2026 on a 3-2 vote (Supervisors Medina, Spiegel and Gutierrez yes; Washington and Perez no).',
-      'The renewal adds a new Independent Taxpayers Oversight Committee, which the original measure never had. We found no organized opposition campaign as of Oct 8, 2026.',
+      'Voters first approved the tax in 1988 (Inland Empire Business Daily) and extended it in 2002 for 30 years. The Riverside County Transportation Commission (RCTC) adopted Ordinance No. 26-001 on June 10, 2026; the Board of Supervisors ordered the election on July 14, 2026 on a 3-2 vote (Medina, Spiegel and Gutierrez yes).',
     ],
     measure: {
       question:
@@ -656,31 +644,27 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
       supporters: 'Riverside County Transportation Commission (Ordinance No. 26-001, RCTC chair Raymond Gregory). No formal campaign committee reviewed as of Oct 8, 2026.',
       opponents: 'No organized opposition found as of Oct 8, 2026; Supervisors Washington and Perez voted against the July 14, 2026 resolution ordering the election (County Board submittal).',
       voterConnection: [
-        'Everyone who buys taxable goods in Riverside County pays the half-cent tax; it is already in place and would continue at the same rate.',
-        'Sales taxes take a larger share of income from lower-income households, though the money funds roads and public transit that those households use.',
-        'The renewal has no sunset: once passed, it ends only if voters repeal it.',
-        'Money is split among three areas: highways and regional corridors, local streets and roads, and public transportation, and is returned in proportion to what each area (Western Riverside, Coachella Valley, Palo Verde Valley) generates.',
+        'Everyone who buys taxable goods in Riverside County already pays the half-cent; the rate would not change.',
+        'Money returns in proportion to what each area (Western Riverside, Coachella Valley, Palo Verde Valley) generates.',
       ],
       mechanismBullets: [
-        'Rate and term: continues a one-half percent sales tax beyond March 31, 2039 until repealed by voters (Ordinance Sec. III).',
-        'Vote needed: two-thirds of Riverside County voters (the ordinance defines its “Approval Threshold” as two-thirds under the RCTC sales tax statutes).',
-        'Spending categories: highways and regional corridors (such as I-10, I-15, SR-91 and I-215), local streets and roads, and public transportation; the funding plan is detailed in the Riverside County Transportation Improvement Plan.',
-        'Accountability: annual independent audit posted publicly; administrative salaries and benefits capped at 1% of revenue; funds limited to projects serving Riverside County.',
-        'Oversight: a new Independent Taxpayers Oversight Committee of up to seven members meets annually to review the audit.',
+        'Spending categories: highways and regional corridors (such as I-10, I-15, SR-91 and I-215), local streets and roads, and public transportation, per the Riverside County Transportation Improvement Plan.',
+        'Accountability: administrative salaries and benefits capped at 1% of revenue; funds limited to projects serving Riverside County; the annual independent audit is posted publicly.',
+        'Oversight: a new Independent Taxpayers Oversight Committee of up to seven members, which the original measure never had.',
         'Review: starting in 2037 and at least every ten years after, the Commission must review and propose revisions to the Expenditure Plan.',
         'Bonding: the Commission may borrow against future revenue, up to the estimated tax proceeds, and must pay debt service first.',
       ],
       argumentsFor: [
-        'It continues an existing tax without raising the rate, and keeps funding for roads, highway projects and public transit.',
-        'Local money is used to match state and federal grants; the RCTC chair has called it the county’s “only source of leverage for outside grants.”',
-        'Annual audits, a 1% cap on administrative salaries and a new oversight committee add accountability.',
-        'Revenue is returned to the area that generates it, with funding for every city and unincorporated area.',
+        'Keeps funding for roads, highway projects and public transit flowing.',
+        'Local money matches state and federal grants; the RCTC chair called it the county’s “only source of leverage for outside grants.”',
+        'Annual audits, a 1% administrative cap and a new oversight committee add accountability.',
+        'Every city and unincorporated area gets funding.',
       ],
       argumentsAgainst: [
-        'The renewal has no end date, so the tax would continue until voters repeal it.',
-        'A sales tax is regressive and falls on residents’ everyday purchases.',
+        'No end date: the tax continues until voters repeal it.',
+        'A sales tax is regressive, taking a larger share of income from lower-income households.',
         'The oversight committee meets only once a year and reviews the audit, not spending decisions.',
-        'The renewal commits revenue 13 years before the current tax expires in 2039, when voters could otherwise revisit it.',
+        'It commits revenue 13 years before the current tax expires, when voters could otherwise revisit it.',
       ],
       readingLinks: [
         { label: 'RCTC: Renewing Measure A', url: 'https://www.rctc.org/measure-a-renewal/', summary: 'Commission overview, funding categories and accountability provisions.' },

@@ -260,11 +260,10 @@ export const RACES_LA_COUNTY: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure A would amend the county charter so that when contract talks with certain public safety unions reach an impasse, a three-member arbitration panel issues a binding decision instead of the Board of Supervisors imposing its "best and final offer." It also bans strikes by the covered employees.',
-      'About 17,000 employees across 14 bargaining units would be covered, including sheriff’s deputies, firefighters, lifeguards and civilian staff of the Fire, Sheriff’s and Medical Examiner departments; county salaries and benefits already exceeded $23 billion last year (LAist).',
+      'Measure A would let an arbitration panel, instead of the Board of Supervisors imposing its "best and final offer," settle contract impasses with certain public safety unions, and would ban strikes by those workers. Unions gain a neutral decision-maker; the elected Board loses the final say over their pay.',
     ],
     introParagraphs: [
-      'The Board of Supervisors voted 4-0 to place the measure on the ballot, with Supervisor Holly Mitchell abstaining (LAist). The unions behind the "Safer Los Angeles County" campaign had also begun a signature drive. Through mid-September, the Association for Los Angeles Deputy Sheriffs had put in more than $2 million and the firefighters union and another sworn-employee union more than $1 million each (LAist). LAist reported no organized opposition.',
+      'The Board of Supervisors voted 4-0 to place the measure on the ballot, with Supervisor Holly Mitchell abstaining; the backing unions had also begun a signature drive. Through mid-September, the deputies’ union had put in more than $2 million and the firefighters union and another sworn-employee union more than $1 million each (LAist).',
     ],
     measure: {
       question:
@@ -276,29 +275,24 @@ export const RACES_LA_COUNTY: Race[] = [
       supporters: '"Safer Los Angeles County" campaign: ALADS, Los Angeles County Professional Peace Officers Association, Los Angeles County Fire Fighters Local 1014, Los Angeles County Lifeguard Association and the Los Angeles/Orange Counties Building and Construction Trades Council; Supervisor Kathryn Barger.',
       opponents: 'No organized opposition found. A former Loyola Law School Anti-Racism Center fellow argued that arbitration "frustrates transparency" when used by police unions (LAist).',
       voterConnection: [
-        'County payroll is one of the largest items in a budget that already faces federal health-care cuts, wildfire recovery and large child-abuse settlements, so a binding award could reduce money for other services such as health care and social programs.',
-        'A Yes vote takes final authority over pay disputes for these workers away from the elected Board of Supervisors and gives it to an arbitration panel, which voters cannot hold accountable.',
-        'A Yes vote also bans strikes by these employees, which supporters say protects emergency response during disputes.',
-        'A No vote leaves the current process, in which the county can impose its final offer if talks fail.',
+        'County pay and benefits exceeded $23 billion last year (LAist); with federal health-care cuts, wildfire recovery and child-abuse settlements, binding awards could squeeze health care and social programs.',
+        'Final say over these workers’ pay would move from elected supervisors to a panel voters cannot hold accountable.',
+        'A No vote keeps the current process, in which the county can impose its final offer.',
       ],
       mechanismBullets: [
-        'If bargaining reaches impasse, the dispute goes to a three-member panel: one member picked by the county, one by the union, and a third chosen by agreement; the panel’s decision is binding.',
-        'Covers about 17,000 employees in 14 bargaining units across six union groups.',
-        'Prohibits strikes by DA investigators, medical examiners, lifeguards and their supervisors, and nonadministrative civilian employees of the Fire, Sheriff’s and Medical Examiner departments; reiterates the duty to bargain in good faith.',
-        'Arbitration costs are shared by the county and the unions.',
+        'Panel: one member picked by the county, one by the union, and a third by agreement.',
+        'Covers about 17,000 employees in 14 bargaining units across six union groups, including sheriff’s deputies, firefighters and lifeguards.',
         'Takes effect 10 days after the results are certified (LAist).',
       ],
       argumentsFor: [
-        'Supporters say arbitration "takes politics out of public safety pay decisions" and prevents the Board from imposing terms unilaterally.',
-        'Supporters cite staffing shortages and competition for deputies and firefighters from smaller jurisdictions with better pay.',
-        'Supervisor Barger says a "fair and efficient bargaining process" is needed to keep wages competitive.',
-        'The strike ban gives the public an assurance of uninterrupted emergency services.',
+        'Supporters say arbitration "takes politics out of public safety pay decisions" and stops the Board from imposing terms unilaterally.',
+        'Supporters cite staffing shortages and better-paying smaller jurisdictions; Supervisor Barger says a "fair and efficient bargaining process" is needed to keep wages competitive.',
+        'The strike ban assures uninterrupted emergency services.',
       ],
       argumentsAgainst: [
-        'The county’s then-acting CEO warned binding awards not tied to budget policy could strain reserves and credit.',
-        'Voters in Vallejo and San Luis Obispo later repealed binding arbitration, which critics cite as a cautionary example.',
-        'Arbitration by a panel decides money that elected officials are accountable to voters for, and critics say it reduces transparency, particularly for police unions.',
-        'The measure applies to the deputies’ union that is also a major campaign spender, a concern for some voters.',
+        'Awards not tied to budget policy could strain reserves and credit, and other California cities have repealed binding arbitration.',
+        'A panel, not officials accountable to voters, would decide pay, and critics say arbitration reduces transparency, particularly for police unions.',
+        'It benefits the deputies’ union, which is also a major campaign spender.',
       ],
       readingLinks: [
         { label: 'LAist: LA County Measure A', url: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-your-la-county-measure-a-binding-arbitration', summary: 'Neutral explainer with money raised, board vote and fiscal concerns.' },
@@ -331,11 +325,10 @@ export const RACES_LA_COUNTY: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure E would write into the county charter the structure, independence and minimum funding of the county’s new Ethics Commission and Office of Ethics Compliance, which voters created through Measure G in 2024. The commission could investigate county officials, candidates, lobbyists and contractors, issue subpoenas and fine violators up to $15,000 per offense (LAist).',
-      'The same measure restores the county’s 10% general-fund set-aside for community investment and alternatives to incarceration, which voters approved in 2020 as Measure J but which county officials accidentally let Measure G undo in 2024 (LAist).',
+      'Measure E locks the new county Ethics Commission’s independence and minimum funding into the charter, and restores a 10% set-aside for community investment and alternatives to incarceration. Supporters see a complete, protected watchdog; critics say bundling in a spending set-aside limits the Board’s budget flexibility.',
     ],
     introParagraphs: [
-      'The ethics provisions follow a task force recommendation that the commission’s independence be put in the charter, which requires a vote of the people (LAist). LAist reports no organized opposition on the official ballot materials; the Daily News editorial board opposes the measure.',
+      'Voters created the Ethics Commission through Measure G in 2024; a task force recommended putting its independence in the charter, which requires a public vote. Voters approved the set-aside as Measure J in 2020, but county officials accidentally let Measure G undo it (LAist).',
     ],
     measure: {
       question:
@@ -347,29 +340,24 @@ export const RACES_LA_COUNTY: Race[] = [
       supporters: 'League of Women Voters of Los Angeles County; California Clean Money; California Common Cause; AAPI Equity Alliance; Supervisor Lindsey Horvath (LAist).',
       opponents: 'No opponents on the official ballot materials; the Los Angeles Daily News editorial board opposes the measure.',
       voterConnection: [
-        'The commission would police ethics for county officials who control a very large county budget, including contracts and lobbying.',
-        'A guaranteed $14.3 million a year in the charter means a future Board could not easily cut the commission’s funding.',
-        'The measure also fixes the 2020 voter-approved 10% set-aside for community investment and alternatives to incarceration, which would otherwise be at risk of repeal.',
-        'A set-aside reduces the Board’s flexibility to spend that money elsewhere, which is the Daily News’s objection.',
+        'The commission would police ethics, contracts and lobbying for officials who control a very large county budget.',
+        'Charter-guaranteed funding means a future Board could not easily cut the commission.',
+        'Restoring the set-aside protects that spending, which would otherwise be at risk of repeal, but reduces the Board’s flexibility to spend the money elsewhere.',
       ],
       mechanismBullets: [
-        'Gives the commission authority to investigate misconduct by county officials, candidates, lobbyists and contractors, to issue subpoenas, and to fine up to $15,000 per offense.',
-        'Seven commissioners: three chosen by elected officials; the rest through a public application process.',
-        'Guarantees a minimum budget of $14.3 million a year for the commission, funding a proposed 54-person staff.',
-        'Restores the 10% general-fund set-aside for community investment and alternatives to incarceration (2020 Measure J) that was accidentally dropped in 2024.',
-        'Implements the 2024 Measure G reforms, which also create an elected county CEO in 2028 and expand the Board of Supervisors by four seats in 2032.',
+        'The commission can investigate county officials, candidates, lobbyists and contractors, issue subpoenas, and fine up to $15,000 per offense.',
+        'Seven commissioners: three chosen by elected officials, the rest through a public application process.',
+        'Implements the 2024 Measure G reforms, which also create an elected county CEO in 2028 and add four Board of Supervisors seats in 2032.',
       ],
       argumentsFor: [
-        'Completes the independent Ethics Commission voters approved in 2024 with real investigative and enforcement power.',
-        'Puts funding and structure in the charter so a future Board cannot weaken it.',
+        'Completes the independent Ethics Commission voters approved in 2024, with real investigative and enforcement power.',
+        'Charter protection keeps a future Board from weakening it.',
         'Corrects an administrative error that wiped out Measure J’s voter-approved set-aside.',
-        'Supported by good-government groups including the League of Women Voters and Common Cause.',
       ],
       argumentsAgainst: [
-        'The Daily News editorial board calls the ethics provisions "plausibly fine" but says restoring the set-aside is bad policy.',
-        'Locking in spending through the charter ties the hands of supervisors facing shrinking federal funds.',
+        'The Daily News editorial board calls the ethics provisions "plausibly fine" but restoring the set-aside bad policy.',
+        'Charter-locked spending ties supervisors’ hands as federal funds shrink.',
         'Bundles two unrelated changes, ethics and a budget set-aside, into one yes or no.',
-        'A $14.3 million guaranteed budget is a fixed cost in a strained county budget.',
       ],
       readingLinks: [
         { label: 'LAist: LA County Measure E', url: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-county-measure-e-ethics-comission-measure-j', summary: 'Neutral explainer with background on Measures G and J.' },

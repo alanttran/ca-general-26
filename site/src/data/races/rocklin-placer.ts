@@ -386,11 +386,10 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'The Placer County Charter says a vacancy on the five-member Board of Supervisors must be filled by unanimous vote of the remaining supervisors within 30 days, or the governor makes the appointment. Measure G would give the board 60 days.',
-      'Supervisors set county budgets, land-use rules and public safety funding for roughly the whole county, so who fills a vacated seat, and how fast, can change board votes.',
+      'Today the remaining supervisors must fill a vacancy on the five-member board by unanimous vote within 30 days. Supervisors set county budgets, land-use rules and public safety funding, so who fills a vacated seat, and how fast, can change board votes.',
     ],
     introParagraphs: [
-      'The Board of Supervisors voted 5-0 on July 14, 2026 to advance charter amendments recommended by a county charter review committee (Hoodline, July 2026). Two go to the Nov. 3, 2026 ballot (this one and Measure H); a third, on supervisor compensation, is set for Nov. 7, 2028.',
+      'The board advanced charter amendments recommended by a county charter review committee (Hoodline, July 2026). Two are on the Nov. 3 ballot (this one and Measure H); a third, on supervisor compensation, is set for Nov. 7, 2028.',
     ],
     measure: {
       question:
@@ -402,15 +401,12 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
       supporters: 'Placer County Board of Supervisors (5-0 vote to advance, July 14, 2026); recommended by the county charter review committee.',
       opponents: 'No organized opposition found.',
       voterConnection: [
-        'Supervisors set the county budget, land-use rules and fire and sheriff funding, so a vacancy affects every county resident, including those in Rocklin.',
-        'If the board cannot agree within the deadline, the governor picks the replacement. A longer deadline makes a local appointment more likely.',
+        'If the board cannot agree within the deadline, the governor picks the replacement.',
         'Appointees would face voters at the next statewide primary if the vacancy occurs 130 or more days before it, instead of serving most of the remainder without an election.',
       ],
       mechanismBullets: [
-        'Extends the deadline to fill a Board of Supervisors vacancy from 30 days to 60 days.',
-        'The current charter requires a unanimous vote of the remaining supervisors; the governor appoints if they do not act in time. The summaries reviewed do not say whether the unanimity requirement changes.',
-        'Vacancies occurring 130 days or more before a statewide direct primary would be filled temporarily by appointment and the seat placed on that primary ballot.',
-        'Takes effect as provided by state law if approved; if rejected, the current 30-day rule remains.',
+        'The summaries reviewed do not say whether the unanimity requirement changes.',
+        'Takes effect as provided by state law if approved; if rejected, the 30-day rule remains.',
       ],
       argumentsFor: [
         'More time for recruitment and interviews of applicants (county announcement).',
@@ -418,9 +414,9 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         'Clarifies when a vacancy must go to voters at a statewide primary.',
       ],
       argumentsAgainst: [
-        'Sixty days could leave a seat empty longer and a four-supervisor board risks 2-2 splits.',
+        'Sixty days could leave a seat empty longer.',
+        'A four-supervisor board risks 2-2 splits.',
         'An appointment still bypasses voters until the next primary.',
-        'No published opposition was found; this is a mostly procedural change.',
       ],
       readingLinks: [
         { label: 'Placer County: charter amendments approved to go before voters', url: 'https://www.placer.ca.gov/10984/Charter-amendments', summary: 'County explanation of the vacancy and CEO-removal amendments.' },
@@ -451,11 +447,10 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'The County Executive Officer runs the county’s day-to-day operations and budget for the Board of Supervisors. Under the charter, three supervisors can remove the CEO.',
-      'Measure H would let an employment agreement specify a different removal procedure. The board says this helps recruit and keep top executives.',
+      'The County Executive Officer runs the county’s day-to-day operations and budget for the Board of Supervisors, so how easily the CEO can be removed shapes how stable and accountable county management is. The board says contract flexibility helps recruit and keep top executives.',
     ],
     introParagraphs: [
-      'The Board of Supervisors voted 5-0 on July 14, 2026 to advance the charter amendments recommended by the county’s charter review committee. This amendment and Measure G are on the Nov. 3, 2026 ballot.',
+      'This amendment and Measure G came from the county’s charter review committee and are on the Nov. 3, 2026 ballot.',
     ],
     measure: {
       question:
@@ -467,26 +462,20 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
       supporters: 'Placer County Board of Supervisors (5-0 vote to advance, July 14, 2026); recommended by the county charter review committee.',
       opponents: 'No organized opposition found.',
       voterConnection: [
-        'The CEO carries out board policy and manages the county budget, so the contract terms affect how stable and accountable county management is.',
         'The default stays the same: three supervisors can remove the CEO unless an employment agreement says otherwise.',
-        'A contract could make removal harder or easier. That is a decision a majority of the board would make in negotiating with a candidate.',
+        'A contract could make removal harder or easier; a board majority would decide that when negotiating with a candidate.',
       ],
       mechanismBullets: [
-        'Amends Article V, Section 502(a) of the Placer County Charter.',
-        'Keeps the current rule that three supervisors can remove the County Executive Officer unless an employment agreement specifies otherwise.',
-        'Allows alternative removal procedures when written into the CEO’s employment agreement.',
-        'The county says the board’s oversight authority is preserved.',
         'If rejected, the current charter language remains.',
       ],
       argumentsFor: [
         'Gives the board more flexibility to recruit and retain a strong CEO (county announcement).',
-        'Keeps the board’s oversight authority and default removal rule.',
+        'Keeps the board’s oversight authority.',
         'Lets the board match what other counties offer in contracts.',
       ],
       argumentsAgainst: [
         'A contract could lock in removal procedures that are harder for a future board to use.',
         'Contract terms are negotiated by the board, so voters would have less direct say over them.',
-        'No published opposition was found; the concern is theoretical.',
       ],
       readingLinks: [
         { label: 'Placer County: charter amendments approved to go before voters', url: 'https://www.placer.ca.gov/10984/Charter-amendments', summary: 'County explanation of the amendments.' },
@@ -517,11 +506,10 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure C would raise Rocklin’s sales tax rate from 7.25% to 7.75%, matching Roseville, and raise about $8 million a year for the city’s general fund (ballot label; Sacramento Bee). It applies to purchases made in Rocklin, including by people from outside the city.',
-      'The city says it is not in an immediate financial crisis but that long-term forecasts show structural deficits if nothing changes. Because it is a general tax, the money is not locked to a specific project.',
+      'Measure C would raise Rocklin’s sales tax rate from 7.25% to 7.75%, matching Roseville (Sacramento Bee). The city says it is not in an immediate financial crisis but long-term forecasts show structural deficits if nothing changes; the choice is whether to raise revenue now.',
     ],
     introParagraphs: [
-      'The City Council placed the tax on the Nov. 3 ballot in June 2026. Placer County originally printed the threshold as two-thirds, then issued an amended notice stating it requires a simple majority (county notice, Aug 2026). The tax would take effect April 1, 2027, if approved.',
+      'The City Council placed the tax on the Nov. 3 ballot in June 2026. Placer County first printed the threshold as two-thirds, then issued an amended notice stating it requires a simple majority (county notice, Aug 2026).',
     ],
     measure: {
       question:
@@ -533,29 +521,21 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
       supporters: 'City of Rocklin and the City Council, which placed it on the ballot. Printed ballot arguments were not retrieved.',
       opponents: 'No organized opposition or printed opposing argument was found in the coverage reviewed.',
       voterConnection: [
-        'Shoppers pay: an extra 5 cents on a $10 purchase; the tax applies to taxable goods bought in Rocklin, not to groceries or most prescription drugs under California law.',
-        'Because it is a general tax, the council decides how to spend it; the ballot lists public safety and park services as examples, not requirements.',
-        'The city says it has not been in an immediate crisis, but forecasts show deficits as costs grow.',
+        'Shoppers pay an extra 5 cents on a $10 purchase of taxable goods in Rocklin; groceries and most prescription drugs are exempt under California law.',
         'It has no end date; only voters can repeal it.',
       ],
       mechanismBullets: [
-        'Half-cent transactions and use (sales) tax, raising the Rocklin rate from 7.25% to 7.75%.',
-        'Estimated at about $8 million a year for general revenue purposes.',
-        'General tax: requires a majority, and the money goes to the city general fund for any lawful purpose.',
-        'Continues until ended by voters; operative April 1, 2027 if approved.',
-        'Annual audits and public spending disclosure are required.',
         'Voters within city limits registered by Oct. 19 may vote on it.',
       ],
       argumentsFor: [
-        'Funds 911 response, police and fire protection and parks as the city’s population has doubled over 25 years while service levels stayed relatively flat (city FAQ).',
-        'Heads off projected long-term structural deficits without cutting services.',
-        'Funds stay local and are subject to annual audits and public reporting.',
-        'Part of the cost is paid by visitors who shop in Rocklin; Roseville’s 2018 half-cent measure passed with 62%.',
+        'The city’s population has doubled over 25 years while service levels stayed relatively flat (city FAQ).',
+        'Heads off projected structural deficits without cutting services.',
+        'Funds stay local, with annual audits and public reporting.',
+        'Visitors who shop in Rocklin pay part of it; Roseville’s 2018 half-cent measure passed with 62%.',
       ],
       argumentsAgainst: [
         'A general tax carries no legal guarantee that the money goes to police, fire or parks.',
         'Sales taxes are regressive, taking a larger share of lower incomes.',
-        'No sunset: it lasts until voters repeal it.',
         'Rocklin would join the highest local sales tax rate in Placer County, which could push some shoppers to neighboring cities.',
       ],
       readingLinks: [
@@ -590,11 +570,10 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure D would authorize Rocklin Unified to borrow $288 million, repaid through property taxes, to repair and modernize classrooms and schools across the district’s 17 campuses. A 2024 facilities master plan identified more than $300 million of needs (district and local news).',
-      'The district says the bond would replace an expiring 2002 bond, so tax rates are not projected to rise. Bonds need 55% of the vote and, by law, money cannot be used for salaries.',
+      'Measure D would fund repairs and modernization across Rocklin Unified’s 17 campuses, where a 2024 facilities master plan identified more than $300 million of needs (district and local news). The trade-off is decades of property-tax debt versus fixing aging schools.',
     ],
     introParagraphs: [
-      'The RUSD board voted June 10, 2026 to place the bond on the Nov. 3 ballot. All Rocklin voters in the district vote on it. Trustee Dereck Counter backs it (CapRadio); no organized opposition was found.',
+      'The RUSD board voted June 10, 2026 to place the bond on the Nov. 3 ballot. All Rocklin voters in the district vote on it.',
     ],
     measure: {
       question:
@@ -606,27 +585,21 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
       supporters: 'Rocklin Unified School District board and administration, including Superintendent Roger Stock and trustee Dereck Counter. Printed ballot arguments were not retrieved.',
       opponents: 'No organized opposition found.',
       voterConnection: [
-        'Homeowners pay: about $59 per year for each $100,000 of assessed (not market) value, collected with property taxes. Renters pay indirectly if landlords pass costs through.',
-        'The district says the rate is no higher than the bond it replaces, so many owners would see no change.',
-        'Most Rocklin schools are over 20 years old and two (Parker Whitney and Rocklin Elementary) are over 60 (local news).',
-        'Funds are limited to buildings and equipment; the ballot label bars use for salaries.',
+        'Homeowners pay with property taxes, based on assessed (not market) value; renters pay indirectly if landlords pass costs through.',
+        'Most Rocklin schools are over 20 years old, and two (Parker Whitney and Rocklin Elementary) are over 60 (local news).',
       ],
       mechanismBullets: [
-        '$288 million in general obligation bonds at legal rates.',
-        'Average annual collection about $15.8 million while bonds are outstanding.',
-        'Approximate tax rate $59 per $100,000 assessed value.',
         'Projects: classroom upgrades and modernization, career technical education buildings, leaky roofs, heating and cooling, safety and security.',
-        'Citizens’ oversight committee, annual audits, funds stay in the district, none for salaries.',
-        '55% of voters must approve (Proposition 39 school bond threshold).',
+        'The 55% threshold is the Proposition 39 rule for school bonds.',
       ],
       argumentsFor: [
-        'Fixes aging roofs, plumbing and HVAC at campuses that are decades old.',
+        'Fixes aging roofs, plumbing and HVAC at decades-old campuses.',
         'No projected rate increase because it replaces expiring debt.',
-        'Protects Rocklin’s school quality and property values as new-construction fees dry up with build-out.',
-        'Local oversight and audits; money cannot be spent on salaries.',
+        'Protects school quality and property values as new-construction fees dry up with build-out.',
+        'Local oversight and audits; no money for salaries.',
       ],
       argumentsAgainst: [
-        'Borrowing $288 million costs more over time than the principal, and homeowners are repaying for decades.',
+        'Borrowing $288 million costs more than the principal, and homeowners repay for decades.',
         'The “no tax increase” claim depends on projections of assessed values and interest rates.',
         'Bond money cannot cover ongoing maintenance or staffing.',
         'Some residents may prefer different priorities or lower property taxes.',

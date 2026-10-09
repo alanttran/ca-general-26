@@ -1646,6 +1646,44 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     text.append(box);
   }
   if (c.qualification) text.append(renderCandidateQualification(c.qualification));
+  if (c.redFlags?.length) {
+    const rf = el('div', 'candidate-card__flags');
+    const rh = el('h4', 'candidate-card__flags-heading');
+    const flagIc = iconRedFlag('icon icon--red-flag candidate-card__flags-heading-icon');
+    flagIc.setAttribute('aria-hidden', 'true');
+    rh.append(flagIc, document.createTextNode(' Red flags '));
+    const rubricLink = el('a', 'candidate-card__flags-rubric', { href: '#red-flag-rubric' });
+    rubricLink.textContent = 'How we rate these';
+    rh.append(rubricLink);
+    const ul = el('ul', 'flag-list');
+    for (const f of sortRedFlags(c.redFlags)) {
+      const li = el('li');
+      appendRedFlagListItem(li, f);
+      ul.append(li);
+    }
+    rf.append(rh, ul);
+    text.append(rf);
+  }
+  if (c.reformCaliforniaSection?.length) {
+    const rc = el('aside', 'candidate-card__reform-california');
+    rc.setAttribute('aria-label', 'Reform California');
+    const rh = el('h4', 'candidate-card__reform-california-heading');
+    const mark = iconReformCalifornia(
+      'icon icon--reform-california candidate-card__reform-california-icon',
+      reformCaliforniaIconSrc,
+    );
+    mark.setAttribute('aria-hidden', 'true');
+    rh.append(mark, document.createTextNode(` ${REFORM_CALIFORNIA_LABEL}`));
+    rc.append(rh);
+    for (const para of c.reformCaliforniaSection) {
+      const rp = el('p', 'candidate-card__reform-california-text');
+      appendRichCandidateText(rp, para, reformCaliforniaIconSrc);
+      rc.append(rp);
+    }
+    text.append(rc);
+  }
+  // Positions, money, endorsements and notes: one tap away so the summary, experience and red flags lead.
+  const more: Node[] = [];
   if (c.scorecard?.length) {
     const hs = el('h4', 'candidate-card__sub');
     hs.textContent = 'Topical scorecard';
@@ -1674,7 +1712,7 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     tbl.append(thead, tb);
     const scoreScroll = el('div', 'table-scroll');
     scoreScroll.append(tbl);
-    text.append(hs, scoreScroll);
+    more.push(hs, scoreScroll);
   }
   if (c.money) {
     const pm = el('p', 'candidate-card__meta');
@@ -1682,7 +1720,7 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     head.textContent = 'Money: ';
     pm.append(head);
     appendRichCandidateText(pm, c.money, reformCaliforniaIconSrc);
-    text.append(pm);
+    more.push(pm);
   }
   if (c.endorsements) {
     const pe = el('p', 'candidate-card__meta candidate-card__meta--endorsements');
@@ -1690,43 +1728,7 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     head.textContent = 'Endorsements: ';
     pe.append(head);
     appendRichCandidateText(pe, c.endorsements, reformCaliforniaIconSrc);
-    text.append(pe);
-  }
-  if (c.reformCaliforniaSection?.length) {
-    const rc = el('aside', 'candidate-card__reform-california');
-    rc.setAttribute('aria-label', 'Reform California');
-    const rh = el('h4', 'candidate-card__reform-california-heading');
-    const mark = iconReformCalifornia(
-      'icon icon--reform-california candidate-card__reform-california-icon',
-      reformCaliforniaIconSrc,
-    );
-    mark.setAttribute('aria-hidden', 'true');
-    rh.append(mark, document.createTextNode(` ${REFORM_CALIFORNIA_LABEL}`));
-    rc.append(rh);
-    for (const para of c.reformCaliforniaSection) {
-      const rp = el('p', 'candidate-card__reform-california-text');
-      appendRichCandidateText(rp, para, reformCaliforniaIconSrc);
-      rc.append(rp);
-    }
-    text.append(rc);
-  }
-  if (c.redFlags?.length) {
-    const rf = el('div', 'candidate-card__flags');
-    const rh = el('h4', 'candidate-card__flags-heading');
-    const flagIc = iconRedFlag('icon icon--red-flag candidate-card__flags-heading-icon');
-    flagIc.setAttribute('aria-hidden', 'true');
-    rh.append(flagIc, document.createTextNode(' Red flags '));
-    const rubricLink = el('a', 'candidate-card__flags-rubric', { href: '#red-flag-rubric' });
-    rubricLink.textContent = 'How we rate these';
-    rh.append(rubricLink);
-    const ul = el('ul', 'flag-list');
-    for (const f of sortRedFlags(c.redFlags)) {
-      const li = el('li');
-      appendRedFlagListItem(li, f);
-      ul.append(li);
-    }
-    rf.append(rh, ul);
-    text.append(rf);
+    more.push(pe);
   }
   if (c.notes?.length) {
     const nf = el('div', 'candidate-card__notes');
@@ -1739,7 +1741,18 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
       ul.append(li);
     }
     nf.append(nh, ul);
-    text.append(nf);
+    more.push(nf);
+  }
+
+  if (more.length) {
+    const label = [c.scorecard?.length && 'Positions', c.money && 'money', c.endorsements && 'endorsements', c.notes?.length && 'notes']
+      .filter(Boolean)
+      .join(', ')
+      .replace(/^./, (ch) => ch.toUpperCase())
+      .replace(/, ([^,]+)$/, ' & $1');
+    const d = moreDetails(label, ...more);
+    d.classList.add('candidate-card__more');
+    text.append(d);
   }
 
   card.append(media, text);

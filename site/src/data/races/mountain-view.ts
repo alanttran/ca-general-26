@@ -806,11 +806,10 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure E would amend the city charter, Mountain View’s governing document, to use gender-neutral language, give the council 60 days instead of 30 to fill a council vacancy, end the requirement to read ordinances and resolutions aloud in full, and let the council set membership qualifications for boards and commissions it creates by ordinance or resolution.',
-      'City staff called the changes non-substantive and non-controversial, and more substantive charter changes are planned for a separate 2028 measure (Mountain View Voice).',
+      'Measure E is a cleanup of the city charter, Mountain View’s governing document. City staff called the changes non-substantive and non-controversial; more substantive charter changes are planned for a separate 2028 measure (Mountain View Voice).',
     ],
     introParagraphs: [
-      'The council voted unanimously on June 9, 2026 to place the measure on the Nov. 3 ballot (Mountain View Voice). The city estimated placing it on the ballot costs about $100,000. No organized opposition was found.',
+      'The council voted unanimously on June 9, 2026 to place the measure on the Nov. 3 ballot (Mountain View Voice).',
     ],
     measure: {
       question:
@@ -823,27 +822,24 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
       opponents: 'None found.',
       voterConnection: [
         'The charter is the city’s constitution; it controls how the council fills vacancies and creates advisory bodies.',
-        'A 60-day window gives the council more time to choose between appointing a replacement and calling a special election.',
-        'No tax or fee changes; the measure affects procedure rather than services.',
+        'It changes procedure, not taxes, fees or services.',
       ],
       mechanismBullets: [
-        'Replaces gender-specific terms with gender-neutral language.',
-        'Extends the time the council has to fill a vacancy, by appointment or calling a special election, from 30 to 60 days; staff noted state law allows up to 60 days.',
-        'Eliminates the charter requirement to read ordinances and resolutions aloud in full before adoption.',
-        'Lets the council set membership qualifications for boards, commissions and committees created by ordinance or resolution; bodies created by the charter, such as the Environmental Planning Commission, Board of Library Trustees and Parks and Recreation Commission, keep their current requirements.',
-        'Threshold: charter amendments need a simple majority of voters under state law, as news reports note. The measure text was not available on the city or county sites I could reach; the figure comes from news reports.',
+        'Vacancies: the council would have 60 days instead of 30 to appoint a replacement or call a special election; staff noted state law allows up to 60 days.',
+        'Charter-created bodies, such as the Environmental Planning Commission, Board of Library Trustees and Parks and Recreation Commission, keep their current membership requirements.',
+        'The measure text was not available on city or county sites; these details come from news reports.',
       ],
       argumentsFor: [
         'Brings the charter in line with current state law and city practice.',
         'More time to fill vacancies avoids rushed appointments or a poorly timed special election.',
-        'Removing the read-aloud rule saves meeting time with no loss of public access, since the text is published.',
+        'Dropping the read-aloud rule saves meeting time; the text is still published.',
         'Flexibility on advisory-body qualifications lets the city adapt without another charter vote.',
       ],
       argumentsAgainst: [
-        'A $100,000 election cost for changes staff describe as minor.',
-        'Giving the council discretion over who may serve on advisory bodies could be used to narrow participation.',
+        'A $100,000 election for changes staff call minor.',
+        'Council control over who may serve on advisory bodies could be used to narrow participation.',
         'A longer vacancy window leaves a seat empty and delays a public vote.',
-        'Bundling several changes into one measure prevents voters from approving some and rejecting others.',
+        'Bundling several changes keeps voters from approving some and rejecting others.',
       ],
       readingLinks: [
         { label: 'Mountain View Voice: charter update heads to November ballot (June 11, 2026)', url: 'https://www.mv-voice.com/news/2026/06/11/mountain-view-city-charter-update-heads-to-november-ballot/', summary: 'What the measure changes and the council vote.' },
@@ -876,12 +872,10 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure F would let the council raise the city’s hotel and short-term-rental tax (transient occupancy tax) from 10% to as high as 15%, generating up to about $5.2 million a year for general city purposes until voters end it.',
-      'The tax is paid by guests, not residents; the ballot label lists streets and sidewalks, police, fire and 911 response, affordable housing and new parks among the uses, but as a general tax the money can go to any city purpose.',
+      'Measure F would let the council raise the hotel and short-term-rental tax (transient occupancy tax) above today’s 10%, up to 15%. The choice is whether to raise more for city services from visitors, leaving the final rate and the spending to the council.',
     ],
     introParagraphs: [
-      'The council voted unanimously on June 23, 2026 to place the measure on the ballot, after scrapping a planned bond when polling showed 52% support against the two-thirds a bond requires (Mountain View Voice). If approved, staff plan to return in November or December to propose the actual rate.',
-      'All eight council candidates said they support the measure at the Aug. 27 business forum. No organized opposition or hotel-industry position was found.',
+      'The council voted unanimously on June 23, 2026 to place the measure on the ballot after scrapping a planned bond when polling showed 52% support, short of the two-thirds a bond requires (Mountain View Voice). All eight council candidates backed it at the Aug. 27 business forum; no hotel-industry position was found.',
     ],
     measure: {
       question:
@@ -893,30 +887,22 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
       supporters: 'City Council (unanimous). No organized campaign committee or official ballot-argument signers were found.',
       opponents: 'None found; reader comments criticizing lack of transparency are not an organized position.',
       voterConnection: [
-        'Hotel and short-term-rental guests pay the tax, not Mountain View residents, so it shifts costs to visitors.',
-        'A 10% rate has not changed since 1991; Andrews said nearly all neighboring cities charge more.',
-        'Because it is a general tax, the council can spend the revenue on any city purpose; the listed uses are not binding.',
-        'Government employees on official business and stays longer than 30 consecutive days are exempt.',
+        'Hotel and short-term-rental guests pay it, not Mountain View residents.',
+        'If it passes, staff will propose the actual rate in November or December; the council sets it, up to 15%.',
       ],
       mechanismBullets: [
-        'Raises the maximum tax rate on hotel and short-term-rental stays from 10% to 15%; the council would set the actual rate later.',
-        'Raises up to about $5.2 million a year per the ballot label; staff estimated about $5.4 million.',
-        'Listed uses: street and sidewalk repair, police, fire and 911 response, affordable housing, new parks and other general government services.',
         'Exempts government employees on official business and stays longer than 30 consecutive days.',
-        'Includes independent audits and has no end date unless voters repeal it.',
-        'Threshold: a general tax needs a simple majority under Prop 218; news reports say the same. The official measure text was not available on the city or county sites I could reach; the figure comes from news reports and the ballot summary.',
+        'A general tax needs a simple majority under Prop 218. The official text was not available on the city or county sites checked; details come from news reports and the ballot summary.',
       ],
       argumentsFor: [
-        'The tax is paid by visitors rather than residents.',
-        'Mountain View’s rate is among the lowest in the region and has not changed since 1991.',
-        'Provides money for streets, public safety, housing and parks after a bond proposal lacked two-thirds support.',
+        'Visitors, not residents, pay it.',
+        'The 10% rate has not changed since 1991; Andrews said nearly all neighboring cities charge more.',
         'Includes independent audits.',
       ],
       argumentsAgainst: [
-        'General-tax revenue is not legally limited to the listed uses, so the council could spend it elsewhere.',
+        'As a general tax, the money is not legally limited to the listed uses.',
         'Higher rates could make local hotels less competitive or reduce stays.',
-        'The tax has no sunset date.',
-        'Revenue of about $5 million is modest against city needs and may lead to other tax proposals.',
+        'About $5 million a year is modest against city needs and may lead to other tax proposals.',
       ],
       readingLinks: [
         { label: 'Mountain View Voice: city scraps bond plans, opts for hotel tax (June 24, 2026)', url: 'https://www.mv-voice.com/election/2026/06/24/mountain-view-scraps-bond-plans-opts-for-hotel-tax-measure-instead/', summary: 'Rate, revenue, exemptions and why the bond was dropped.' },
@@ -949,12 +935,11 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure S would amend the El Camino Healthcare District’s bylaws to limit its elected directors to four four-year terms (16 years). The district covers Mountain View, Los Altos, Los Altos Hills, most of Sunnyvale, and parts of Cupertino, Santa Clara and Palo Alto, and is the sole member of the El Camino Hospital nonprofit.',
-      'State law sets four-year terms for healthcare-district directors but sets no limit on how many terms they may serve; the district currently has none. All versions the board considered would apply only to terms beginning on or after Dec. 1, 2026, with no earlier service counted.',
+      'Measure S would add term limits for El Camino Healthcare District directors, who have none today; state law sets none either. The district covers Mountain View, Los Altos, Los Altos Hills, most of Sunnyvale, and parts of Cupertino, Santa Clara and Palo Alto, and is the sole member of the El Camino Hospital nonprofit.',
     ],
     introParagraphs: [
-      'The board decided in March 2026 to place a term-limits measure on the Nov. 3 ballot, and in May 2026 considered four versions of the bylaw language (absolute or consecutive limit; partial terms counting or not). The board packet shows the ballot question as “limit District Directors to four [consecutive] four-year terms”; which version the board finally adopted was not in the materials found.',
-      'Directors Peter Fung and George Ting are the only candidates for the two board seats and are effectively unopposed. In draft minutes, Dr. Fung said the proposal would not affect current board members; Chair John Zoglin opposed placing the measure on the ballot, citing cost and value. County Counsel prepares the impartial analysis.',
+      'The board decided in March 2026 to place term limits on the ballot and in May weighed four versions of the bylaw. The packet’s ballot question reads “four [consecutive] four-year terms”; which version the board finally adopted was not in the materials found.',
+      'In draft minutes, Dr. Peter Fung said the proposal would not affect current board members.',
     ],
     measure: {
       question:
@@ -966,30 +951,24 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
       supporters: 'El Camino Healthcare District board: Director Julia Miller presented the proposal and the board directed staff in March 2026 to prepare it. No official ballot-argument signers were found.',
       opponents: 'Chair John Zoglin said in March 2026 he did not support moving forward, citing cost and value (draft minutes). No organized opposition found.',
       voterConnection: [
-        'You elect the directors who oversee tax money and the El Camino Hospital nonprofit; term limits would force turnover after 16 years.',
-        'The limit starts with terms beginning Dec. 1, 2026, so current directors’ past service would not count.',
-        'No director could reach the cap before 2042, when a term beginning Dec. 1, 2026 would be the first of four to end.',
-        'There is no tax change; the cost is the one-time election expense.',
+        'You elect the directors who oversee tax money and the El Camino Hospital nonprofit; the limit would force turnover after 16 years.',
+        'Only terms beginning on or after Dec. 1, 2026 count, so no director could reach the cap before 2042.',
       ],
       mechanismBullets: [
-        'Amends Article IV, Section 2 of the district bylaws to cap directors at four four-year terms.',
-        'Applies only to terms beginning on or after Dec. 1, 2026; prior service, full or partial, does not count.',
-        'Options the board reviewed differed on whether the limit is lifetime or consecutive (with a two- or four-year break to return) and whether partial terms count.',
-        'Under the options where partial terms count, a partial term counts as a full term if the director served more than two years of it.',
-        'State law (Gov. Code § 53077) allows a district to adopt a term-limit proposal that takes effect if a majority of votes cast favor it; the board’s resolution cites that threshold.',
-        'The impartial analysis is prepared by County Counsel, and primary and rebuttal arguments may be filed under the Elections Code.',
+        'Amends Article IV, Section 2 of the district bylaws; prior service, full or partial, does not count.',
+        'The versions the board reviewed differed on whether the limit is lifetime or consecutive (with a two- or four-year break to return) and whether partial terms count; where they do, serving more than two years of a term counts as a full term.',
+        'County Counsel prepares the impartial analysis; primary and rebuttal arguments may be filed under the Elections Code.',
       ],
       argumentsFor: [
-        'Limits entrenchment on a board that has no term limits now; this year both seats are uncontested.',
+        'Limits entrenchment on a board with no term limits; this year both seats are uncontested (Directors Peter Fung and George Ting).',
         'Sixteen years leaves ample time for expertise and continuity.',
-        'Because past service does not count, the limit is a clean start rather than a retroactive ban.',
-        'Forces periodic renewal of a board that oversees a large hospital system.',
+        'Not counting past service makes it a clean start rather than a retroactive ban.',
+        'Forces periodic renewal of a board overseeing a large hospital system.',
       ],
       argumentsAgainst: [
         'Removes experienced directors regardless of performance and cuts institutional knowledge.',
-        'Voters already have the power to replace directors every four years.',
-        'Costs the district money to place the measure on the ballot.',
-        'Chair Zoglin questioned whether the measure is worth the cost at this time.',
+        'Voters can already replace directors every four years.',
+        'Chair Zoglin questioned whether the measure is worth the cost of an election at this time.',
       ],
       readingLinks: [
         { label: 'Los Altos Town Crier: El Camino Healthcare District ballot measure seeks term limits', url: 'https://www.losaltosonline.com/elections/el-camino-healthcare-district-ballot-measure-seeks-term-limits-on-district-directors/article_d0b494bd-302a-455d-8353-2018414502d5.html', summary: 'Majority vote threshold, four four-year terms, and district boundaries.' },

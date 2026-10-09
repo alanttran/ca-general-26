@@ -471,11 +471,10 @@ export const RACES_BURBANK: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure C would raise Burbank’s hotel guest tax (transient occupancy tax) from 10% to 12%, which the city estimates would bring in about $3 million a year for city services.',
-      'Hotel guests, not Burbank residents as such, would pay the tax, but the revenue would go to the general fund at a time when the city faces a deficit.',
+      'Measure C would raise Burbank’s hotel guest tax from 10% to 12%. Hotel guests, not residents as such, would pay it, and the money would go to the general fund while the city faces a deficit.',
     ],
     introParagraphs: [
-      'The City Council placed the measure on the ballot as the “City Services Measure.” Because it raises an existing tax for general purposes, the city classifies it as a general tax that passes with a simple majority. At the Sept. 22 forum candidates broadly supported it, and David Donahue explicitly urged a Yes vote (HeySoCal).',
+      'The City Council placed the measure on the ballot as the “City Services Measure.” At the Sept. 22 forum Council candidates broadly supported it (HeySoCal).',
     ],
     measure: {
       question:
@@ -486,29 +485,23 @@ export const RACES_BURBANK: Race[] = [
       supporters: 'Burbank City Council placed the measure on the ballot; Council candidate David Donahue has urged a Yes vote.',
       opponents: 'No organized opposition was found.',
       voterConnection: [
-        'Hotel guests pay the tax at check-in; residents pay it only if they book a Burbank hotel.',
-        'The revenue is not restricted, so the Council could spend it on any city purpose, including closing the general fund deficit.',
-        'Two percentage points on a $200 night is $4 more per night.',
-        'The tax continues until voters end it.',
+        'Residents pay it only if they book a Burbank hotel; on a $200 night it adds $4.',
+        'The Council could spend the money on any city purpose, including closing the deficit.',
       ],
       mechanismBullets: [
-        'Rate: raises the transient occupancy tax on hotel and motel stays from 10% to 12%.',
-        'Revenue: about $3,000,000 a year in additional funding (city estimate).',
-        'Use: general fund (“locally controlled funding for City services”), not dedicated to one purpose.',
-        'Threshold: a general tax, so a simple majority passes it.',
-        'Start date: the increase takes effect Jan. 1, 2027 if approved.',
-        'Duration: no sunset; the tax continues until ended by voters.',
+        'Applies to hotel and motel stays (the transient occupancy tax).',
+        'General tax: revenue goes to the general fund (“locally controlled funding for City services”), not one purpose, so a simple majority passes it (City Attorney’s impartial analysis).',
+        'No sunset; the tax continues until voters end it.',
       ],
       argumentsFor: [
-        'It raises revenue mostly from visitors rather than residents.',
-        'It helps fund city services as the general fund faces a deficit.',
-        'The money stays in Burbank and is locally controlled.',
-        'It needs only a simple majority, and no organized opposition was found.',
+        'Visitors, not residents, pay most of it.',
+        'It helps fund city services while the general fund faces a deficit.',
+        'The money stays in Burbank under local control.',
       ],
       argumentsAgainst: [
-        'A higher hotel tax can make Burbank hotels less competitive with nearby cities.',
-        'General fund money is not tied to a specific promise, so there is no guarantee it goes to a particular service.',
-        'It has no end date unless voters end it.',
+        'A higher rate can make Burbank hotels less competitive with nearby cities.',
+        'Unrestricted money carries no guarantee for any particular service.',
+        'It has no end date.',
         'Some voters prefer cutting costs or other revenue options before raising taxes.',
       ],
       readingLinks: [
@@ -541,12 +534,10 @@ export const RACES_BURBANK: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Burbank’s charter currently requires City Council members to be elected at large, meaning every voter chooses among all candidates citywide. Measure CC would remove that requirement so the election system can be set by ordinance instead.',
-      'On its own, CC does not create districts; it only removes the charter barrier. Measure CD, on the same ballot, is what would switch to by-district elections, and CD works only if CC also passes.',
+      'Measure CC removes the charter requirement that Council members be elected at large (citywide), so the election system can be set by ordinance. It does not create districts itself; Measure CD does, and CD works only if CC also passes.',
     ],
     introParagraphs: [
-      'The Council voted unanimously to place both measures on the ballot after settling a California Voting Rights Act lawsuit, Gutierrez v. City of Burbank (filed Oct. 2023), through court-ordered mediation in Feb. 2026. The city says it does not believe the at-large system violates the law but that defending the suit would be imprudent if voters want districts. The settlement requires a public vote, not passage.',
-      'The Green Party of Los Angeles County opposes both measures, arguing the settlement requires only a vote and that ranked-choice voting would be a better alternative.',
+      'The Council placed CC and CD on the ballot after settling a California Voting Rights Act lawsuit, Gutierrez v. City of Burbank (filed Oct. 2023), in court-ordered mediation in Feb. 2026. The city says the at-large system is lawful but defending the suit would be imprudent if voters want districts.',
     ],
     measure: {
       question:
@@ -557,27 +548,21 @@ export const RACES_BURBANK: Race[] = [
       supporters: 'Burbank City Council (unanimous vote to place on ballot).',
       opponents: 'Green Party of Los Angeles County.',
       voterConnection: [
-        'A Yes vote does not by itself change how you vote; it only allows a different system to be adopted.',
-        'If Measure CD also passes, future Council members would be chosen by district rather than citywide.',
-        'Under districts you would vote for only the one seat in your own district.',
-        'A No vote keeps citywide at-large elections.',
+        'A Yes vote alone does not change how you vote; it allows a different system to be adopted.',
+        'If CD also passes, you would vote only for your own district’s Council seat; a No vote keeps citywide elections.',
       ],
       mechanismBullets: [
-        'Removes the charter’s at-large election requirement for City Council.',
-        'Lets the election system be set by ordinance (Council or voter initiative).',
-        'Does not itself create districts.',
+        'After CC, the election system can be set by ordinance (Council or voter initiative).',
         'Placed on the ballot under the Gutierrez v. City of Burbank settlement (No. 23STCV25587).',
-        'Required for Measure CD to take effect.',
       ],
       argumentsFor: [
         'It gives the city flexibility and addresses a California Voting Rights Act dispute.',
         'It makes districts and other systems, such as ranked-choice voting, possible.',
         'It could reduce the risk of costly future litigation.',
-        'The Council unanimously supported placing it on the ballot.',
       ],
       argumentsAgainst: [
-        'The settlement requires only a vote, not passage, so voters are not obliged to approve it.',
-        'Removing the at-large requirement could weaken citywide accountability for Council members.',
+        'The settlement requires only a vote, not passage.',
+        'Ending at-large elections could weaken citywide accountability.',
         'The Green Party argues ranked-choice voting would be a better fix.',
         'It changes the charter, a long-term governing document.',
       ],
@@ -611,11 +596,10 @@ export const RACES_BURBANK: Race[] = [
     kind: 'measure',
     candidates: [],
     stakesParagraphs: [
-      'Measure CD would change Council elections from at-large to by-district: the city would be divided into single-member districts (the settlement fixed the lines as “Map 130”), and each Council member would be chosen only by voters in their own district.',
-      'CD can take effect only if voters also approve Measure CC. If CC fails, CD does nothing even if it wins a majority. If CC passes but CD fails, districts are not adopted by this ordinance.',
+      'Measure CD would replace citywide Council elections with single-member districts, each member chosen only by voters in that district. It takes effect only if Measure CC also passes; if CC fails, CD does nothing even if it wins a majority.',
     ],
     introParagraphs: [
-      'This is the second half of the pair placed on the ballot after the Gutierrez v. City of Burbank California Voting Rights Act settlement. The settlement locked in Map 130 but left the order of district elections to the Council. The city says that if both measures pass, Districts 2 and 4 would be elected in November 2028 and Districts 1, 3 and 5 in 2030.',
+      'The second half of the pair placed on the ballot after the Gutierrez v. City of Burbank California Voting Rights Act settlement, which locked in the district lines (“Map 130”) but left the order of district elections to the Council.',
     ],
     measure: {
       question:
@@ -626,23 +610,17 @@ export const RACES_BURBANK: Race[] = [
       supporters: 'Burbank City Council (unanimous vote to place on ballot).',
       opponents: 'Green Party of Los Angeles County.',
       voterConnection: [
-        'If both CC and CD pass, you would vote for only one Council member, the one for your own district.',
         'The 2026 election is still at large for the three seats on this ballot.',
-        'Candidates would have to win the district they represent.',
-        'If CC fails, CD has no effect no matter how many vote Yes, so voters who want districts must vote Yes on both.',
+        'Voters who want districts must vote Yes on both CC and CD.',
       ],
       mechanismBullets: [
-        'Creates single-member Council districts defined by Map 130.',
-        'Takes effect only if Measure CC also passes.',
         'Per the city, Districts 2 and 4 would be elected in Nov 2028 and Districts 1, 3 and 5 in 2030.',
-        'Ends citywide at-large Council elections after 2026.',
-        'Part of the Gutierrez v. City of Burbank settlement, which requires the vote but not passage.',
+        'If CC passes but CD fails, this ordinance does not adopt districts.',
       ],
       argumentsFor: [
         'Districts can make it easier for neighborhoods and communities of color to elect candidates of choice.',
-        'Smaller districts can cost less to campaign in, which can open the field to newcomers.',
-        'It resolves the voting-rights lawsuit.',
-        'Council members would answer directly to a defined neighborhood.',
+        'Smaller districts can cost less to campaign in, opening the field to newcomers.',
+        'It resolves the voting-rights lawsuit, and members would answer directly to a defined neighborhood.',
       ],
       argumentsAgainst: [
         'Each voter would choose only one Council member instead of up to two or three.',
