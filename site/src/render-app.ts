@@ -389,21 +389,13 @@ function renderZipSelector(currentZip: string, appRoot: HTMLElement): HTMLElemen
     autocomplete: 'postal-code',
     maxlength: '5',
     pattern: '[0-9]{5}',
-    list: 'ballot-zip-built',
     value: currentZip,
     'aria-describedby': 'ballot-zip-hint',
   }) as HTMLInputElement;
-  const list = el('datalist', undefined, { id: 'ballot-zip-built' });
-  for (const opt of BALLOT_ZIP_OPTIONS) {
-    const option = document.createElement('option');
-    option.value = opt.zip;
-    option.label = opt.label;
-    list.append(option);
-  }
   const btn = el('button', 'zip-select__button', { type: 'submit' });
   btn.textContent = 'Show my ballot';
   const hint = el('p', 'zip-select__hint', { id: 'ballot-zip-hint', 'aria-live': 'polite' });
-  const defaultHint = `Any California ZIP works. Full local ballots are built for ${BALLOT_ZIP_OPTIONS.length} ZIPs: ${BALLOT_ZIP_OPTIONS.map((o) => o.zip).join(', ')}.`;
+  const defaultHint = `Any California ZIP shows your statewide and district races. City, school and local-district contests are also in for ${BALLOT_ZIP_OPTIONS.length} ZIPs: ${BALLOT_ZIP_OPTIONS.map((o) => o.zip).join(', ')}.`;
   hint.textContent = defaultHint;
   input.addEventListener('focus', () => input.select());
   form.addEventListener('submit', async (e) => {
@@ -424,7 +416,7 @@ function renderZipSelector(currentZip: string, appRoot: HTMLElement): HTMLElemen
     history.pushState({}, '', url);
     renderApp(appRoot, zip);
   });
-  form.append(label, input, btn, list, hint);
+  form.append(label, input, btn, hint);
   return form;
 }
 

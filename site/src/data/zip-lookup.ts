@@ -42,6 +42,22 @@ const APPELLATE_DISTRICT: Record<string, number> = Object.fromEntries(
   ).flatMap(([d, names]) => names.split(' ').map((n) => [n.replace(/_/g, ' '), d])),
 );
 
+/** Contests every voter in the county sees, already researched for the hand-built ZIPs. */
+const COUNTYWIDE: Record<string, string[]> = {
+  'San Diego': ['sd-county-assessor', 'sd-county-treasurer', 'sd-measure-a', 'sd-measure-b'],
+  'Los Angeles': [
+    'la-superior-court-64', 'la-superior-court-65', 'la-superior-court-87', 'la-superior-court-131',
+    'la-sheriff', 'la-measure-a', 'la-measure-e',
+  ],
+  Riverside: ['rivco-superior-court-10', 'rctc-measure-a'],
+  Placer: ['placer-measure-g', 'placer-measure-h'],
+  Alameda: ['bay-area-regional-transit-measure'],
+  'Contra Costa': ['bay-area-regional-transit-measure'],
+  'San Francisco': ['bay-area-regional-transit-measure'],
+  'San Mateo': ['bay-area-regional-transit-measure'],
+  'Santa Clara': ['bay-area-regional-transit-measure'],
+};
+
 const COUNTY_OFFICES_URL = 'https://www.sos.ca.gov/elections/voting-resources/county-elections-offices';
 
 const ORDINAL = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th'}`;
@@ -85,14 +101,22 @@ export function generatedProfile(zip: string, knownRaceIds: Set<string>): Ballot
   for (const [n, pct] of d.a) add(`assembly-ad${n}`, `Assembly District ${n}`, pct);
   const courts = [...new Set(d.k.map(([name]) => APPELLATE_DISTRICT[name]).filter(Boolean))];
   for (const c of courts) add(`retention-dca${c}`, `${ORDINAL(c)} District Court of Appeal`, 100);
+  let countywide = false;
+  for (const [name, pct] of d.k) {
+    for (const id of COUNTYWIDE[name] ?? []) {
+      if (ids.includes(id)) continue;
+      countywide = true;
+      add(id, id, pct);
+    }
+  }
 
   const counties = d.k.map(([name]) => `${name} County`);
   const split = d.c.length > 1 || d.s.length > 1 || d.a.length > 1;
   const parts = [
-    `We haven’t built a full ballot for ZIP ${zip} yet. This shows the statewide races and propositions plus your district races${split ? '; district lines split this ZIP, so shares are rough estimates by land area' : ''}.`,
+    `This shows the statewide races and propositions plus every district race for ZIP ${zip}: Congress, Legislature, Board of Equalization and Court of Appeal${countywide ? ', along with your countywide contests' : ''}${split ? '. District lines split this ZIP, so shares are rough estimates by land area' : ''}.`,
     missing.length ? `Not yet covered: ${missing.join(', ')}.` : '',
     d.s.length && d.s.every(([n]) => n % 2 === 1) ? 'Your State Senate seat isn’t up this year.' : '',
-    `County, city, school and local-measure contests aren’t included. Find your full ballot through`,
+    `${countywide ? 'Supervisor, city' : 'County, city'}, school and local-district contests for this ZIP aren’t in the guide yet. Find your full ballot through`,
   ];
   return {
     zip,
