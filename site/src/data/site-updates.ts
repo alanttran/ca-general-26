@@ -17,12 +17,13 @@ export interface SiteUpdateBuild {
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
     dateLabel: 'October 8, 2026',
-    lede: 'Every ZIP in the guide now has its full local ballot: Los Angeles, Orange, Riverside, Placer, Alameda and Santa Clara counties join San Diego.',
+    lede: 'Type any California ZIP to see your statewide and district races: every House, State Senate, Assembly and appeals-court contest in the state is now covered. Full local ballots now include Los Angeles, Orange, Riverside, Placer, Alameda and Santa Clara counties alongside San Diego.',
     panels: [
       {
         summary: 'Type any California ZIP',
         bullets: [
-          'The ZIP dropdown is now a ZIP box. ZIPs with a full local ballot work as before; any other California ZIP shows the statewide races and propositions plus the district races already researched for it (U.S. House, State Senate, Assembly, Board of Equalization and Court of Appeal), and names the ones not yet covered.',
+          'The ZIP dropdown is now a ZIP box. ZIPs with a full local ballot work as before; any other California ZIP shows the statewide races and propositions plus its district races: U.S. House, State Senate, Assembly, Board of Equalization and Court of Appeal.',
+          'Every district race in the state is now covered: all 52 House seats, the 20 State Senate seats up this year, all 80 Assembly seats, and justices on all six Courts of Appeal. County, city and school contests are still only in the full local ballots.',
           'Districts are matched from Census data, using the new Prop 50 congressional map. When district lines split a ZIP, the share shown is a rough estimate by land area.',
         ],
       },

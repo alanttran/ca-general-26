@@ -89,7 +89,7 @@ export function generatedProfile(zip: string, knownRaceIds: Set<string>): Ballot
   const counties = d.k.map(([name]) => `${name} County`);
   const split = d.c.length > 1 || d.s.length > 1 || d.a.length > 1;
   const parts = [
-    `We haven’t built a full ballot for ZIP ${zip} yet. This shows the statewide races and propositions plus the district races we’ve researched${split ? '; district lines split this ZIP, so shares are rough estimates by land area' : ''}.`,
+    `We haven’t built a full ballot for ZIP ${zip} yet. This shows the statewide races and propositions plus your district races${split ? '; district lines split this ZIP, so shares are rough estimates by land area' : ''}.`,
     missing.length ? `Not yet covered: ${missing.join(', ')}.` : '',
     d.s.length && d.s.every(([n]) => n % 2 === 1) ? 'Your State Senate seat isn’t up this year.' : '',
     `County, city, school and local-measure contests aren’t included. Find your full ballot through`,
