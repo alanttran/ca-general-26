@@ -65,6 +65,13 @@ export const SD_WAVE2_PROFILES: Record<string, BallotProfile> = {
     ['us-rep-ca50', 'assembly-ad78', 'sd-supervisor-d4', 'sdccd-district-c', 'sdccd-district-a', 'sdusd-district-b', 'sd-city-council-d2', 'sdusd-measure-m'],
     { 'sdccd-district-c': 54, 'sdccd-district-a': 45, 'sdusd-district-b': 20, 'sd-city-council-d2': 45 },
   ),
+  '92116': sd(
+    '92116',
+    'Normal Heights / Kensington, San Diego',
+    'Built from the county’s sample ballots for this ZIP: CA-51, Assembly 78, Supervisor District 4 and SDUSD Measure M for everyone. There is no State Senate race (District 39 isn’t up until 2028) and no City Council race (92116 is in Districts 3 and 9, neither up this year). School and college seats depend on your address: about 81% vote for SDUSD District B, 68% for Community College District C and 58% for County Board of Education District 3. Trust your official sample ballot over us.',
+    ['us-rep-ca51', 'assembly-ad78', 'sd-county-board-ed-d3', 'sdccd-district-c', 'sdusd-district-b', 'sd-supervisor-d4', 'sdusd-measure-m'],
+    { 'sd-county-board-ed-d3': 58, 'sdccd-district-c': 68, 'sdusd-district-b': 81 },
+  ),
   '92130': sd(
     '92130',
     'Carmel Valley, San Diego',
@@ -75,9 +82,9 @@ export const SD_WAVE2_PROFILES: Record<string, BallotProfile> = {
   '92131': sd(
     '92131',
     'Scripps Ranch, San Diego',
-    'Built from the county’s sample ballots for this ZIP: CA-50, Senate 40, Assembly 75 and SDUSD Measure M. Most of Scripps Ranch is in City Council District 5, which isn’t up this year; about 23% are in District 6. Smaller slivers also vote on Palomar Health Division 7 (~15%), County Board of Education District 3 (~10%) or Palomar College Trustee Area 1 (~6%), which we don’t cover. Trust your official sample ballot over us.',
-    ['us-rep-ca50', 'senate-sd40', 'assembly-ad75', 'sd-city-council-d6', 'sdusd-measure-m'],
-    { 'sd-city-council-d6': 23, 'sdusd-measure-m': 91 },
+    'Built from the county’s sample ballots for this ZIP: CA-50, Senate 40, Assembly 75 and SDUSD Measure M. Most of Scripps Ranch is in City Council District 5, which isn’t up this year; about 23% are in District 6. About 10% also vote for County Board of Education District 3. Smaller slivers vote on Palomar Health Division 7 (~15%) or Palomar College Trustee Area 1 (~6%), which we don’t cover. Trust your official sample ballot over us.',
+    ['us-rep-ca50', 'senate-sd40', 'assembly-ad75', 'sd-county-board-ed-d3', 'sd-city-council-d6', 'sdusd-measure-m'],
+    { 'sd-county-board-ed-d3': 10, 'sd-city-council-d6': 23, 'sdusd-measure-m': 91 },
   ),
   '92139': sd(
     '92139',

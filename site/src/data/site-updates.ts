@@ -53,6 +53,12 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         ],
       },
       {
+        summary: 'San Diego: 92116',
+        bullets: [
+          'Normal Heights / Kensington / University Heights (92116), built from the Registrar’s sample ballots: CA-51, Assembly 78, Supervisor District 4, SDUSD Measure M, and, depending on your address, SDUSD District B, Community College District C and the new County Board of Education District 3 race (Muñoz vs. Brown). No State Senate or City Council race is on these ballots.',
+        ],
+      },
+      {
         summary: 'Orange, Riverside and Northern California',
         bullets: [
           'Orange (92868): CA-46, Senate 34, Assembly 68, Orange mayor, MWDOC Division 2 and City Measures I, J and K.',

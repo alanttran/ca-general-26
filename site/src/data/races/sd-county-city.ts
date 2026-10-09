@@ -3,7 +3,8 @@ import { ct } from './helpers';
 
 /**
  * San Diego County Board of Supervisors, County Board of Education, community college and school board seats,
- * and City of San Diego Council contests (Wave 2 ZIPs: 92009, 92026, 92111, 92130, 92139).
+ * and City of San Diego Council contests (Wave 2 ZIPs: 92009, 92026, 92111, 92130, 92139; County Board of Education
+ * District 3 added Oct 9, 2026 for 92116).
  * All nonpartisan offices. Research current as of Oct 7, 2026. Money and endorsement dates are stated in-line.
  */
 
@@ -327,6 +328,111 @@ export const RACES_SD_COUNTY_CITY: Race[] = [
     ]),
     counterArguments: [
       'PR/CC/FF (— ): But a challenger need not have a published platform to be preferred: a voter who wants a change from an 11-year incumbent may still reasonably choose Ragonesi-Lasche, though little is verifiable about her.',
+    ],
+  },
+
+  {
+    id: 'sd-county-board-ed-d3',
+    categoryId: 'school',
+    title: 'County Board of Education, District 3',
+    tldrLabel: 'County Board of Ed D3',
+    seatContext: 'Incumbent',
+    kind: 'candidates',
+    stakesParagraphs: [
+      'The elected County Board of Education oversees the San Diego County Office of Education, which runs juvenile court and community schools, reviews school districts’ budgets, and decides charter-school and expulsion appeals. It does not run neighborhood schools.',
+      'District 3 covers much of the southeastern county and, on the Registrar’s ballots, mid-city San Diego neighborhoods such as Normal Heights and Kensington. The choice is between a three-term incumbent backed by Democrats and labor and a Republican-endorsed newcomer with little public record.',
+    ],
+    introParagraphs: [
+      'Alicia Muñoz, first elected in 2014, says in her county voter-guide statement that she won the June primary with 57% of the vote. Cory Brown, whose ballot designation is Parent/Business Owner, is the other finalist and filed no statement. The county Democratic Party backs Muñoz; the county Republican Party and Reform California back Brown (KPBS, Sept. 30, 2026). The office is nonpartisan.',
+    ],
+    readingLinks: [
+      { label: 'KPBS: General election endorsement guide (Sept. 30, 2026)', url: 'https://www.kpbs.org/news/politics/2026/09/30/2026-general-election-guide-to-endorsements-from-san-diego-democrats-republicans-green-libertarian', summary: 'Party and group endorsements for County Board of Education seats.' },
+      { label: 'SDCOE: Alicia Muñoz board bio', url: 'https://www.sdcoe.net/board-of-education/bio/~const-id/4027', summary: 'The County Office of Education’s profile of the incumbent.' },
+    ],
+    legalRequirements: 'Registered voter and resident of the board trustee area at the time of filing.',
+    qualificationCriteria: [
+      { id: 'governance', label: 'School-board governance', detail: 'The board sets county education policy and approves its budget.' },
+      { id: 'budget', label: 'Education budget oversight', detail: 'The board reviews county and district budgets and the county office’s own finances.' },
+      { id: 'special-ed', label: 'At-risk and court-school programs', detail: 'The county office educates students in juvenile court and community schools.' },
+      { id: 'appeals', label: 'Appeals and charter oversight', detail: 'The board decides charter petitions and expulsion appeals.' },
+    ],
+    candidates: [
+      {
+        id: 'alicia-munoz',
+        name: 'Alicia Muñoz',
+        party: 'NP',
+        role: 'Governing Board Member, San Diego County Board of Education',
+        qualification: {
+          level: 'extensive',
+          legal: 'meets',
+          summary: 'Muñoz has held the seat since winning it in 2014, has served as board president and vice president, and spent 25 years at Cuyamaca College, ending as interim vice president of instruction.',
+          criteria: [
+            { criterionId: 'governance', assessment: 'met', evidence: 'County Board member since the 2014 election; board president and vice president; Policy Committee (SDCOE; county voter-guide statement).' },
+            { criterionId: 'budget', assessment: 'met', evidence: 'Has voted on the county office budget as a member since 2015; was a college academic dean and interim vice president of instruction (SDCOE).' },
+            { criterionId: 'special-ed', assessment: 'partial', evidence: 'Says she worked with SDCOE staff on programs for English learners, foster, homeless and at-risk youth (county voter-guide statement); no court-school role of her own documented.' },
+            { criterionId: 'appeals', assessment: 'met', evidence: 'Has sat on the board that decides charter and expulsion appeals since 2015; specific votes are not summarized in public sources found.' },
+          ],
+        },
+        bio: [
+          'Muñoz retired in 2023 from Cuyamaca College after 25 years as an ESL professor, ESL department chair, Academic Senate president, academic dean and interim vice president of instruction. She holds an M.A. in English from San Francisco State and a B.A. from UC Berkeley (SDCOE).',
+          'She was elected in 2014 and kept the seat in 2018, when a charter-school group spent about $305,000 backing her opponent and she won with 56.7% (KPBS).',
+        ],
+        recordVsChange:
+          'She has led the board and brings long community-college administration experience; the case for change rests on wanting a different direction after 12 years, though the challenger has published no platform to compare.',
+        scorecard: [
+          { topic: 'Board governance', position: '✓✓ Board president and vice president; member since 2015', comparison: 'Brown has no governing-board record found.' },
+          { topic: 'English learners & at-risk youth', position: '✓ Lists English learners, foster, homeless and at-risk youth as priorities (county voter-guide statement)', comparison: 'Brown has no public position.' },
+          { topic: 'Charter schools', position: '~ Backed by teachers’ groups when charter supporters spent against her in 2018 (KPBS)', comparison: 'Brown’s stance is not on public record.' },
+          { topic: 'Budget oversight', position: '✓ Former college dean and interim vice president of instruction', comparison: 'Brown’s designation is Parent/Business Owner; no oversight record found.' },
+        ],
+        money: 'No campaign finance totals found as of Oct 9, 2026; filings are posted on the county campaign-disclosure site.',
+        endorsements: 'San Diego County Democratic Party (KPBS, Sept. 30, 2026). Her ballot statement lists the American Federation of Teachers, the San Diego Labor Council and her fellow County Board members.',
+        notes: ['Source for statement claims: county sample ballot and voter information guide, Nov 3, 2026 (https://www.sdvote.com).'],
+      },
+      {
+        id: 'cory-brown',
+        name: 'Cory Brown',
+        party: 'NP',
+        role: 'Parent/Business Owner',
+        qualification: {
+          level: 'limited',
+          legal: 'meets',
+          summary: 'His ballot designation is Parent/Business Owner; he filed no voter-guide statement, and no public record of school-board, education or budget-oversight experience was found.',
+          criteria: [
+            { criterionId: 'governance', assessment: 'unknown', evidence: 'No governing-board experience on public record.' },
+            { criterionId: 'budget', assessment: 'unknown', evidence: 'Ballot designation is Parent/Business Owner; no budget-oversight role documented.' },
+            { criterionId: 'special-ed', assessment: 'unknown', evidence: 'No education or at-risk youth work documented.' },
+            { criterionId: 'appeals', assessment: 'unknown', evidence: 'No appeals or charter-related role documented.' },
+          ],
+        },
+        bio: [
+          'Brown’s ballot designation is Parent/Business Owner. He did not submit a candidate statement for the county voter guide, and no campaign website or news coverage of his platform could be found.',
+          'He is endorsed by the Republican Party of San Diego County and Reform California (KPBS, Sept. 30, 2026).',
+        ],
+        scorecard: [
+          { topic: 'Board governance', position: '? No governing-board experience on public record', comparison: 'Muñoz has served since 2015.' },
+          { topic: 'English learners & at-risk youth', position: '? No position on public record', comparison: 'Muñoz lists these as priorities.' },
+          { topic: 'Charter schools', position: '? No public stance found', comparison: 'Muñoz was backed by teachers’ groups against a charter-funded challenger in 2018.' },
+          { topic: 'Budget oversight', position: '? Designation is Parent/Business Owner; no budget platform on public record', comparison: 'Muñoz was a college dean.' },
+        ],
+        money: 'No campaign finance totals found as of Oct 9, 2026; filings are posted on the county campaign-disclosure site.',
+        endorsements: 'Republican Party of San Diego County; Reform California (KPBS, Sept. 30, 2026).',
+      },
+    ],
+    crossTypology: ct([
+      ['PL', 'Muñoz', '●', 'Progressive Left voters can back the labor- and teacher-endorsed incumbent who lists English learners and homeless youth as priorities.'],
+      ['EL', 'Muñoz', '●', 'Establishment Liberals value a long-serving, party-endorsed incumbent with college administration experience.'],
+      ['DM', 'Muñoz', '●', 'Democratic Mainstays follow the county Democratic Party’s endorsement of the incumbent.'],
+      ['OL', 'Muñoz', '◐', 'Outsider Left voters may want fresh faces, but the only alternative is backed by the Republican Party and Reform California.'],
+      ['SS', 'Muñoz', '○', 'Stressed Sideliners are likely to know neither name, and only the incumbent has a record they can check.'],
+      ['AR', 'Muñoz', '○', 'Ambivalent Right voters often prefer experienced hands on low-profile nonpartisan boards, and the challenger has published no platform.'],
+      ['PR', 'Brown', '◐', 'Populist Right voters can back the Reform California-endorsed challenger as a parent outsider against a 12-year incumbent.', 'Populist Right voters who weigh experience could stick with Muñoz, a former college dean who has led the board, rather than a challenger with no statement or record; the cost is keeping a Democratic- and labor-backed incumbent.'],
+      ['CC', 'Brown', '◐', 'Committed Conservatives can follow the county Republican Party’s endorsement of Brown to shift the board’s direction.', 'Committed Conservatives who put experience first could pick Muñoz, who has run board meetings and reviewed budgets since 2015, while accepting that she is the Democratic Party’s endorsed candidate and Brown has no public record.'],
+      ['FF', 'Brown', '◐', 'Faith and Flag Conservatives can back the Republican-endorsed parent as the more conservative option, though he has stated no curriculum positions.', 'Faith and Flag Conservatives who put experience first could pick Muñoz for her decade on the board and long college career, giving up a Republican-endorsed parent whose views are not on the public record.'],
+    ]),
+    counterArguments: [
+      'PR/CC/FF (Brown ◐): But Brown filed no voter-guide statement and has no public platform, so a vote for him rests on endorsements alone.',
+      'PL/EL/DM (Muñoz ●): But she has held the seat since 2015, and voters who think the county office needs a new direction may reasonably want turnover, even with little known about the challenger.',
     ],
   },
 
