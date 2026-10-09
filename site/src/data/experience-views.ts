@@ -67,6 +67,25 @@ function flagOf(c: Candidate | undefined): TldrCombinedCell['flag'] {
   return tier === 'severe' || tier === 'serious' ? tier : undefined;
 }
 
+const CRITERIA_POINTS = { met: 2, partial: 1, 'not-met': 0, unknown: 0 } as const;
+
+/** Tie-breaker within a level: job criteria met (2) or partly met (1). */
+function criteriaScore(c: Candidate): number {
+  return (c.qualification?.criteria ?? []).reduce((sum, a) => sum + CRITERIA_POINTS[a.assessment], 0);
+}
+
+function criteriaText(c: Candidate): string {
+  const crit = c.qualification?.criteria ?? [];
+  const met = crit.filter((a) => a.assessment === 'met').length;
+  const partly = crit.filter((a) => a.assessment === 'partial').length;
+  return `${met} met${partly ? `, ${partly} partly` : ''} of ${crit.length}`;
+}
+
+/** Most experienced first: level, then criteria score. 0 = no experience edge either way. */
+function compareExperience(a: Candidate, b: Candidate): number {
+  return rank(a) - rank(b) || criteriaScore(b) - criteriaScore(a);
+}
+
 function levelText(c: Candidate): string {
   return EXPERIENCE_LABEL[c.qualification!.level as ExperienceLevel];
 }
@@ -75,7 +94,8 @@ function levelText(c: Candidate): string {
  * Typology pick adjusted for experience:
  * - ● picks stand.
  * - ◐/○ picks yield to a rival who is at least two experience levels higher (multi-seat: per name).
- * - No pick (—) in a single-seat race goes to the clear most-experienced candidate.
+ * - No pick (—) goes to the most experienced candidate(s): level first, then job criteria met; in
+ *   multi-seat races only seats with a clear experience edge are filled.
  * Changed cells drop to ○: the typology fit behind them is weak by definition.
  */
 export function combinedCellFor(race: Race, pick: string, confidence: ConfidenceSymbol): TldrCombinedCell {
@@ -93,14 +113,28 @@ export function combinedCellFor(race: Race, pick: string, confidence: Confidence
   if (picked.some((c) => !c)) return keep; // e.g. "Yes"/"write-in": nothing to compare
 
   if (!picked.length) {
-    if (seats > 1) return keep;
-    const [best, next] = byExperience(rated);
-    if (rank(best) === rank(next)) return keep;
-    return {
-      cell: `${pickLabelFor(best, race)} ○`,
-      flag: flagOf(best),
-      reason: `No typology pick; ${pickLabelFor(best, race)} is the most experienced candidate (${levelText(best)}).`,
-    };
+    // Most experienced first; same level → more of the job’s criteria met. Fill only seats with a clear edge.
+    // “Little experience” is no experience case, so those candidates are never filled in.
+    const sorted = rated.filter((c) => c.qualification!.level !== 'limited').sort(compareExperience);
+    if (!sorted.length) return keep;
+    let take = Math.min(seats, sorted.length);
+    while (take > 0 && take < sorted.length && compareExperience(sorted[take - 1], sorted[take]) === 0) take--;
+    if (take === 0) return keep;
+    const chosen = sorted.slice(0, take);
+    const label = (c: Candidate) => pickLabelFor(c, race);
+    let reason: string;
+    if (seats === 1) {
+      const [best, next] = sorted;
+      reason =
+        !next || rank(best) < rank(next)
+          ? `No typology pick; ${label(best)} is the most experienced candidate (${levelText(best)}).`
+          : `No typology pick; ${label(best)} and ${label(next)} are both rated “${levelText(best)},” and ${label(best)} meets more of the job’s criteria (${criteriaText(best)} vs. ${criteriaText(next)}).`;
+    } else {
+      reason = `No typology pick; ${chosen.map((c) => `${label(c)} (${levelText(c)})`).join(', ')} ${chosen.length === 1 ? 'is the most experienced candidate' : 'are the most experienced candidates'}.`;
+      if (take < seats) reason += ` Only ${take} of ${seats} seats have a candidate with a clear experience case.`;
+    }
+    const worst = chosen.map(flagOf).find((f) => f === 'severe') ?? chosen.map(flagOf).find(Boolean);
+    return { cell: `${chosen.map(label).join(', ')} ○`, flag: worst, reason };
   }
 
   const chosen = picked as Candidate[];

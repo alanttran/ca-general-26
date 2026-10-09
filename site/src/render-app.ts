@@ -750,7 +750,7 @@ function renderMethodologySection(): HTMLElement {
   pExp2.textContent =
     'Where an outside evaluator publishes a rating—bar associations for trial judges, the State Bar’s Commission on Judicial Nominees Evaluation for appellate appointees—we show it word for word. Experience informs picks but never decides them: Outsider Left and Populist Right voters, among others, often prefer a newcomer.';
   const pExp3 = el('p', 'methodology__text');
-  pExp3.textContent = `The TL;DR summary has two more views. “Experience” lists the most experienced candidate in each race. “Fit + experience” starts from the typology picks: strong (●) picks stay; a medium or low pick switches to a rival rated at least ${COMBINED_LEVEL_GAP} levels more experienced (for example, Little experience to Experienced); and a race with no typology pick goes to the clearly most experienced candidate. When two rivals tie, nothing switches. Red flags are already reflected in confidence, so they don’t count twice.`;
+  pExp3.textContent = `The TL;DR summary has two more views. “Experience” lists the most experienced candidate in each race. “Fit + experience” starts from the typology picks: strong (●) picks stay; a medium or low pick switches to a rival rated at least ${COMBINED_LEVEL_GAP} levels more experienced (for example, Little experience to Experienced); and a cell with no typology pick goes to the most experienced candidate. When candidates share an experience level, the one who meets more of the job’s criteria gets the edge; if they’re still even, the cell stays blank. In races with several seats, only seats with a clear experience case are filled, and candidates rated Little experience are never filled in. Red flags are already reflected in confidence, so they don’t count twice.`;
 
   const hPew = el('h3', 'methodology__subhead');
   hPew.textContent = "About Pew's groups vs. our cells";
@@ -791,7 +791,7 @@ const TLDR_VIEWS: { id: TldrView; label: string; caption: string }[] = [
   {
     id: 'combined',
     label: 'Fit + experience',
-    caption: `Typology picks, adjusted for experience. Strong (●) picks stand. A medium or low pick switches to a rival who is at least ${COMBINED_LEVEL_GAP} experience levels higher, and a race with no pick goes to the clearly most experienced candidate. Switched cells are marked ⇄ and drop to low confidence (hover or tap for why). Red flags show the same marker as before and don’t change picks here.`,
+    caption: `Typology picks, adjusted for experience. Strong (●) picks stand. A medium or low pick switches to a rival who is at least ${COMBINED_LEVEL_GAP} experience levels higher, and a cell with no pick goes to the most experienced candidate (ties go to whoever meets more of the job’s criteria). Switched cells are marked ⇄ and drop to low confidence (hover or tap for why). Red flags show the same marker as before and don’t change picks here.`,
   },
   {
     id: 'experience',

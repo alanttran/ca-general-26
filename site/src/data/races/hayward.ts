@@ -920,9 +920,9 @@ export const RACES_HAYWARD: Race[] = [
       ['OL', 'Yragui', '○', 'Outsider Left voters lean to the grassroots conservancy co-founder, with little to separate the two main candidates.'],
       ['SS', 'Lewington', '○', 'Stressed Sideliners weakly favor the candidate whose platform includes transport links and low-cost recreation access.'],
       ['AR', 'Lewington', '○', 'Ambivalent Right voters weakly favor her emphasis on financial stewardship and mixed funding over a pure-advocacy pitch.'],
-      ['PR', '—', '—', 'Populist Right voters have no stated platform from the three candidates that separates them on the issues they emphasize.'],
+      ['PR', '—', '—', 'Populist Right voters have no stated platform from the three candidates that separates them on the issues they emphasize.', 'Populist Right voters get no platform from any of the three that speaks to their priorities. Experience barely separates the two newcomers; Lewington edges Yragui only because her bonds-grants-and-fees plan partly addresses budget stewardship, where he shows no fiscal role. Neither has served on a board.'],
       ['CC', 'Lewington', '○', 'Committed Conservatives may note her financial-stewardship priority, but the weak lean reflects the lack of conservative-leaning candidates.'],
-      ['FF', '—', '—', 'Faith and Flag Conservatives have no public position from any candidate to act on.'],
+      ['FF', '—', '—', 'Faith and Flag Conservatives have no public position from any candidate to act on.', 'Faith and Flag Conservatives have no stated position from any candidate to act on. An experience-first voter could lean narrowly to Lewington: like Yragui she knows the parks firsthand, as a volunteer trail crew lead, and her stated financing plan gives her a slight edge on fiscal stewardship.'],
     ]),
     counterArguments: [
       'PL/DM (Lewington ●/◐): But Yragui has more documented years of park advocacy, and Lewington’s endorsements come largely from partisan and labor groups rather than park experts.',
