@@ -455,8 +455,11 @@ th {
 
 .zip-select__control {
   font: inherit;
-  width: 7ch;
-  box-sizing: content-box;
+  width: 12rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: var(--fs-lg);
+  letter-spacing: 0.05em;
   padding: 0.35rem 0.5rem;
   border: 1px solid var(--rad-border);
   border-radius: 6px;

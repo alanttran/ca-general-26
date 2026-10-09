@@ -31,6 +31,20 @@ import { RACES_SD_LOCAL } from './sd-local';
 import { RACES_STATEWIDE_A } from './statewide-a';
 import { RACES_STATEWIDE_B } from './statewide-b';
 
+import { RACES_D_NORTH_STATE } from './d-north-state';
+import { RACES_D_SACRAMENTO_DELTA } from './d-sacramento-delta';
+import { RACES_D_EAST_BAY_SF } from './d-east-bay-sf';
+import { RACES_D_BAY_CENTRAL_COAST } from './d-bay-central-coast';
+import { RACES_D_VALLEY_A } from './d-valley-a';
+import { RACES_D_VALLEY_B } from './d-valley-b';
+import { RACES_D_CENTRAL_COAST_SOUTH } from './d-central-coast-south';
+import { RACES_D_INLAND_A } from './d-inland-a';
+import { RACES_D_INLAND_B } from './d-inland-b';
+import { RACES_D_LA_A } from './d-la-a';
+import { RACES_D_LA_B } from './d-la-b';
+import { RACES_D_LA_OC } from './d-la-oc';
+import { RACES_D_LA_C } from './d-la-c';
+
 /**
  * Race registry. Statewide races (offices, SPI, Supreme Court retention, state props) appear on
  * every ZIP; local races appear only when listed in a ZIP profile’s `localRaceIds`.
@@ -46,6 +60,20 @@ export const STATEWIDE_RACES: Race[] = [
 ];
 
 export const LOCAL_RACES: Race[] = [
+  // Statewide district sweep (ZIP lookup): one file per region.
+  ...RACES_D_NORTH_STATE,
+  ...RACES_D_SACRAMENTO_DELTA,
+  ...RACES_D_EAST_BAY_SF,
+  ...RACES_D_BAY_CENTRAL_COAST,
+  ...RACES_D_VALLEY_A,
+  ...RACES_D_VALLEY_B,
+  ...RACES_D_CENTRAL_COAST_SOUTH,
+  ...RACES_D_INLAND_A,
+  ...RACES_D_INLAND_B,
+  ...RACES_D_LA_A,
+  ...RACES_D_LA_B,
+  ...RACES_D_LA_OC,
+  ...RACES_D_LA_C,
   ...RACES_SD_DISTRICTS,
   ...RACES_RETENTION_LOCAL,
   ...RACES_SD_LOCAL,
