@@ -1004,42 +1004,37 @@ function renderRace(race: ZipRace): HTMLElement {
   details.append(summary);
 
   const body = el('div', 'race__body');
-  if (race.stakesParagraphs?.length) {
-    const stakeHead = el('h3', 'race__subhead race__subhead--stakes');
-    stakeHead.textContent = 'What’s at stake';
-    body.append(stakeHead);
-    for (const p of race.stakesParagraphs) {
-      const para = el('p', 'race__stakes');
-      para.textContent = p;
-      body.append(para);
-    }
-  }
-  for (const p of race.introParagraphs) {
-    const para = el('p', 'race__context');
-    para.textContent = p;
-    body.append(para);
-  }
-
-  if (race.readingLinks?.length) {
-    const h3 = el('h3', 'race__subhead');
-    h3.textContent = 'Debates & forums';
-    const ul = el('ul', 'race__reading-list measure__reading-list');
-    for (const link of race.readingLinks) {
-      ul.append(renderMeasureReadingItem(link));
-    }
-    body.append(h3, ul);
-  }
-
-  if (race.polling?.length) body.append(renderRacePolling(race.polling));
-
-  if (race.kind === 'candidates' && race.qualificationCriteria?.length) {
-    body.append(renderQualificationComparison(race));
-  }
-
-  body.append(renderCrossTable(race));
-
   if (race.kind === 'measure' && race.measure) {
-    body.append(renderMeasure(race.measure));
+    // Measures lead with what the vote decides and the case each way; background folds away.
+    body.append(renderMeasureOverview(race.measure));
+    if (race.polling?.length) body.append(renderRacePolling(race.polling));
+    body.append(renderCrossTable(race));
+    body.append(renderMeasureMore(race, race.measure));
+  } else {
+    if (race.stakesParagraphs?.length) {
+      const stakeHead = el('h3', 'race__subhead race__subhead--stakes');
+      stakeHead.textContent = 'What’s at stake';
+      body.append(stakeHead);
+      for (const p of race.stakesParagraphs) {
+        const para = el('p', 'race__stakes');
+        para.textContent = p;
+        body.append(para);
+      }
+    }
+    const background = raceBackground(race);
+    if (background) body.append(background);
+
+    if (race.polling?.length) body.append(renderRacePolling(race.polling));
+
+    if (race.kind === 'candidates' && race.qualificationCriteria?.length) {
+      body.append(renderQualificationComparison(race));
+    }
+
+    body.append(renderCrossTable(race));
+  }
+
+  if (race.kind === 'measure') {
+    // rendered above
   } else if (race.kind === 'retention' && race.retention) {
     body.append(renderRetention(race.retention));
   } else {
@@ -1297,81 +1292,123 @@ function renderCrossTable(race: Race): HTMLElement {
   return wrap;
 }
 
-function renderMeasure(m: MeasureBlock): HTMLElement {
+function bulletList(items: string[], className?: string): HTMLUListElement {
+  const ul = el('ul', className);
+  for (const b of items) {
+    const li = el('li');
+    li.textContent = b;
+    ul.append(li);
+  }
+  return ul;
+}
+
+/** Collapsed “+ label” block for secondary detail. */
+function moreDetails(label: string, ...children: Node[]): HTMLDetailsElement {
+  const d = el('details', 'race__more');
+  const s = el('summary', 'race__more-summary');
+  s.textContent = label;
+  const inner = el('div', 'race__more-body');
+  inner.append(...children);
+  d.append(s, inner);
+  return d;
+}
+
+/** Candidate/retention races: background paragraphs and debate links, collapsed. */
+function raceBackground(race: Race): HTMLDetailsElement | null {
+  const parts: Node[] = [];
+  for (const p of race.introParagraphs) {
+    const para = el('p', 'race__context');
+    para.textContent = p;
+    parts.push(para);
+  }
+  if (race.readingLinks?.length) {
+    const h4 = el('h4', 'race__more-heading');
+    h4.textContent = 'Debates & forums';
+    const ul = el('ul', 'race__reading-list measure__reading-list');
+    for (const link of race.readingLinks) ul.append(renderMeasureReadingItem(link));
+    parts.push(h4, ul);
+  }
+  if (!parts.length) return null;
+  return moreDetails(race.readingLinks?.length ? 'Background, debates & forums' : 'Background', ...parts);
+}
+
+/** What the measure does, what it costs, and the case each way: the part every voter needs. */
+function renderMeasureOverview(m: MeasureBlock): HTMLElement {
   const art = el('article', 'measure');
-  const hq = el('h3', 'race__subhead');
-  hq.textContent = 'Measure summary';
   const pq = el('p', 'measure__question');
-  pq.innerHTML = `<strong>Question:</strong> ${escapeHtml(m.question)}`;
-  art.append(hq, pq);
-  const facts: [string, string | undefined][] = [
-    ['Type', m.measureType],
-    ['Needs to pass', m.voteThreshold],
-    ['Fiscal impact', m.fiscalImpact],
-    ['Supporters', m.supporters],
-    ['Opponents', m.opponents],
-  ];
-  const shown = facts.filter((f): f is [string, string] => Boolean(f[1]?.trim()));
-  if (shown.length) {
-    const dl = el('dl', 'measure__facts');
-    for (const [k, v] of shown) {
-      const dt = el('dt');
-      dt.textContent = k;
-      const dd = el('dd');
-      dd.textContent = v;
-      dl.append(dt, dd);
+  const label = el('span', 'measure__label');
+  label.textContent = 'On the ballot';
+  pq.append(label, document.createTextNode(m.question));
+  art.append(pq);
+
+  const threshold = (m.voteThreshold ?? 'Simple majority').replace(/^Simple majority/, 'a simple majority');
+  const meta = el('p', 'measure__meta');
+  meta.textContent = [m.measureType, `Passes with ${threshold}`].filter(Boolean).join(' · ');
+  art.append(meta);
+
+  if (m.fiscalImpact) {
+    const cost = el('p', 'measure__cost');
+    const strong = el('strong');
+    strong.textContent = 'Cost: ';
+    cost.append(strong, document.createTextNode(m.fiscalImpact));
+    art.append(cost);
+  }
+
+  const sides = el('div', 'measure__sides');
+  const side = (mod: 'yes' | 'no', heading: string, args: string[], backers: string | undefined, backersLabel: string) => {
+    const col = el('section', `measure__side measure__side--${mod}`);
+    const h = el('h4', 'measure__side-heading');
+    h.textContent = heading;
+    col.append(h, bulletList(args));
+    if (backers?.trim()) {
+      const p = el('p', 'measure__backers');
+      const strong = el('strong');
+      strong.textContent = `${backersLabel}: `;
+      p.append(strong, document.createTextNode(backers));
+      col.append(p);
     }
-    art.append(dl);
-  }
-  if (m.voterConnection?.length) {
-    const hv = el('h4', 'measure__voter-heading');
-    hv.textContent = 'Why you’re voting on this';
-    const ulv = el('ul', 'measure__voter-list');
-    for (const b of m.voterConnection) {
-      const li = el('li');
-      li.textContent = b;
-      ulv.append(li);
-    }
-    art.append(hv, ulv);
-  }
-  const mech = el('h4');
-  mech.textContent = 'Key facts (amounts & rules)';
-  const ulm = el('ul');
-  for (const b of m.mechanismBullets) {
-    const li = el('li');
-    li.textContent = b;
-    ulm.append(li);
-  }
-  const hf = el('h4');
-  hf.textContent = m.argumentsForHeading ?? 'Arguments for';
-  const ulf = el('ul');
-  for (const b of m.argumentsFor) {
-    const li = el('li');
-    li.textContent = b;
-    ulf.append(li);
-  }
-  const ha = el('h4');
-  ha.textContent = m.argumentsAgainstHeading ?? 'Arguments against';
-  const ula = el('ul');
-  for (const b of m.argumentsAgainst) {
-    const li = el('li');
-    li.textContent = b;
-    ula.append(li);
-  }
-  art.append(mech, ulm, hf, ulf, ha, ula);
+    return col;
+  };
+  sides.append(
+    side('yes', m.argumentsForHeading ?? 'Reasons to vote Yes', m.argumentsFor, m.supporters, 'Supporters'),
+    side('no', m.argumentsAgainstHeading ?? 'Reasons to vote No', m.argumentsAgainst, m.opponents, 'Opponents'),
+  );
+  art.append(sides);
+  return art;
+}
+
+/** Everything else about a measure, collapsed: stakes, background, who it affects, the numbers, reading. */
+function renderMeasureMore(race: Race, m: MeasureBlock): HTMLElement {
+  const parts: Node[] = [];
+  const section = (heading: string, ...nodes: Node[]) => {
+    const h = el('h4', 'race__more-heading');
+    h.textContent = heading;
+    parts.push(h, ...nodes);
+  };
+  const paras = [...(race.stakesParagraphs ?? []), ...race.introParagraphs].map((t) => {
+    const p = el('p', 'race__context');
+    p.textContent = t;
+    return p;
+  });
+  if (paras.length) section('Background', ...paras);
+  if (m.voterConnection?.length) section('How it affects you', bulletList(m.voterConnection));
+  if (m.mechanismBullets.length) section('The details', bulletList(m.mechanismBullets));
   if (m.readingLinks?.length) {
-    const hr = el('h4');
-    hr.textContent = 'Further reading';
-    const ulr = el('ul', 'measure__reading-list');
-    for (const link of m.readingLinks) {
-      ulr.append(renderMeasureReadingItem(link));
-    }
+    const ul = el('ul', 'measure__reading-list');
+    for (const link of m.readingLinks) ul.append(renderMeasureReadingItem(link));
     const note = el('p', 'measure__reading-note');
     note.textContent =
       'Links include official fiscal analysis, news explainers, and organized support or opposition—judge each on its own.';
-    art.append(hr, ulr, note);
+    section('Further reading', ul, note);
   }
-  return art;
+  if (race.readingLinks?.length) {
+    const ul = el('ul', 'race__reading-list measure__reading-list');
+    for (const link of race.readingLinks) ul.append(renderMeasureReadingItem(link));
+    section('Debates & forums', ul);
+  }
+  const wrap = el('div', 'measure measure--more');
+  wrap.append(moreDetails('Background, details & further reading', ...parts));
+  return wrap;
 }
 
 function renderMeasureReadingItem(link: MeasureReadingLink): HTMLLIElement {
@@ -1731,12 +1768,4 @@ function placeholderAvatar(initials: string): HTMLElement {
   div.setAttribute('aria-label', `No photo; initials ${initials}`);
   div.textContent = initials;
   return div;
-}
-
-function escapeHtml(s: string): string {
-  return s
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;');
 }

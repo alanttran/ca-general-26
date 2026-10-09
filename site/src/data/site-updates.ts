@@ -31,6 +31,8 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
       {
         summary: 'Easier to read',
         bullets: [
+          'Propositions and local measures now open with what’s on the ballot, what it costs, and the reasons to vote Yes and No side by side, with supporters and opponents under each. Background, who it affects, the detailed numbers and further reading are one tap away.',
+          'In candidate races, background paragraphs and debate links are folded under “Background,” so what’s at stake, the experience comparison and the picks come first.',
           'One consistent type scale on a 16px base: five text sizes and two weights, and no all-caps labels.',
           'Experience badges now read “Very experienced,” “Experienced,” “Some experience,” or “Little experience.”',
           'On phones, the section menu is a single swipeable row, and each race’s typology picks stack as cards with the full reasoning visible.',

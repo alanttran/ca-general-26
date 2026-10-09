@@ -1394,6 +1394,130 @@ main {
 }
 
 .measure__question {
+  margin: 1rem 0 0.35rem;
+  color: var(--rad-text);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+}
+
+.measure__label {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--rad-accent);
+}
+
+.measure__meta {
+  margin: 0 0 0.75rem;
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+}
+
+.measure__cost {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.85rem;
+  background: color-mix(in srgb, var(--rad-stakes-surface-tint) 8%, var(--rad-surface));
+  border-left: 3px solid var(--rad-accent);
+  border-radius: 0 var(--rad-radius) var(--rad-radius) 0;
+  line-height: var(--lh-body);
+}
+
+.measure__sides {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+
+  @media (max-width: 40rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.measure__side {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--rad-border);
+  border-top-width: 3px;
+  border-radius: var(--rad-radius);
+  background: var(--rad-surface);
+
+  &--yes {
+    border-top-color: var(--rad-accent);
+  }
+
+  &--no {
+    border-top-color: var(--rad-warn);
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+.measure .measure__side-heading {
+  margin-top: 0;
+}
+
+.measure__backers {
+  margin: 0.75rem 0 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rad-border);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--rad-text-muted);
+}
+
+.race__more {
+  margin: 0.75rem 0 0.5rem;
+  border: 1px solid var(--rad-border);
+  border-radius: var(--rad-radius);
+  background: color-mix(in srgb, var(--rad-page-bg) 50%, var(--rad-surface));
+}
+
+.race__more-summary {
+  padding: 0.6rem 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--rad-accent);
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::before {
+    content: '+';
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.35rem;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--rad-accent);
+    outline-offset: 2px;
+    border-radius: var(--rad-radius);
+  }
+}
+
+.race__more[open] > .race__more-summary::before {
+  content: '\2212';
+}
+
+.race__more-body {
+  padding: 0 0.85rem 0.85rem;
+
+  > :first-child {
+    margin-top: 0.25rem;
+  }
+
+  .race__context:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.race__more-heading {
+  margin: 1rem 0 0.35rem;
+  font-size: var(--fs-base);
   color: var(--rad-text);
 }
 
