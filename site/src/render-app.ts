@@ -395,7 +395,8 @@ function renderZipSelector(currentZip: string, appRoot: HTMLElement): HTMLElemen
   const btn = el('button', 'zip-select__button', { type: 'submit' });
   btn.textContent = 'Show my ballot';
   const hint = el('p', 'zip-select__hint', { id: 'ballot-zip-hint', 'aria-live': 'polite' });
-  const defaultHint = `Any California ZIP shows your statewide and district races. City, school and local-district contests are also in for ${BALLOT_ZIP_OPTIONS.length} ZIPs: ${BALLOT_ZIP_OPTIONS.map((o) => o.zip).join(', ')}.`;
+  const caZips = BALLOT_ZIP_OPTIONS.filter((o) => !o.zip.startsWith('8'));
+  const defaultHint = `Any California ZIP shows your statewide and district races. City, school and local-district contests are also in for ${caZips.length} ZIPs: ${caZips.map((o) => o.zip).join(', ')}. One Colorado ZIP is in too: 80204 (Denver).`;
   hint.textContent = defaultHint;
   input.addEventListener('focus', () => input.select());
   form.addEventListener('submit', async (e) => {
@@ -432,7 +433,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
   const data = buildBallotData(zip);
   root.replaceChildren();
   const profile = getBallotProfile(zip);
-  document.title = `Unofficial 2026 CA general election guide — ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel})`;
+  document.title = `Unofficial 2026 ${data.meta.state === 'CO' ? 'CO' : 'CA'} general election guide — ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel})`;
 
   const header = el('header', 'site-header');
   const brand = el('div', 'site-header__brand');
@@ -442,7 +443,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
   h1.textContent = data.meta.siteTitle;
   brand.append(brandIcon, h1);
   const sub = el('p', 'site-header__subtitle');
-  sub.textContent = `November 3, 2026 California general election · ZIP ${data.meta.scopeZip} ballot · unofficial independent research — not the government, not legal advice.`;
+  sub.textContent = `November 3, 2026 ${data.meta.state === 'CO' ? 'Colorado' : 'California'} general election · ZIP ${data.meta.scopeZip} ballot · unofficial independent research — not the government, not legal advice.`;
   header.append(
     brand,
     sub,
@@ -468,7 +469,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
 
   const main = el('main', undefined, { id: 'main-content' });
   main.append(
-    renderIntroBlocks(),
+    renderIntroBlocks(data.meta.state === 'CO'),
     renderTypologyKey(data),
     renderMethodologySection(),
     renderTldr(data),
@@ -479,7 +480,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
   const fp = el('p');
   fp.append(
     document.createTextNode(
-      'Not affiliated with the California Secretary of State, any county registrar, or any candidate committee. Cross-typology picks are ',
+      `Not affiliated with the ${data.meta.state === 'CO' ? 'Colorado' : 'California'} Secretary of State, any county ${data.meta.state === 'CO' ? 'clerk' : 'registrar'}, or any candidate committee. Cross-typology picks are `,
     ),
     extLink(
       'https://www.pewresearch.org/politics/2021/political-typology/',
@@ -589,16 +590,26 @@ function fillPrintSheet(data: BallotData, code: TypologyCode): void {
   sheet.append(legend);
 }
 
-function renderIntroBlocks(): HTMLElement {
-  const wrap = el('section', 'intro-grid');
-  wrap.innerHTML = `
-    <section class="intro-card" aria-labelledby="how-general">
+const HOW_GENERAL_CA = `
       <h2 id="how-general"><span class="intro-card__heading-icon" aria-hidden="true"></span>How the November general works</h2>
       <p>Most contests on the <strong>November 3, 2026</strong> ballot are runoffs between the <strong>top two</strong> finishers from June’s primary—sometimes two candidates from the same party. Supreme Court and Court of Appeal justices appear as <strong>yes/no retention</strong> votes, and every Californian votes on the statewide <strong>propositions</strong>.</p>
       <p>Mail ballots went out in early October. Return yours by mail (postmarked by Nov 3), at a drop box, or vote in person; same-day registration is available at vote centers.</p>
       <p><a href="https://www.sos.ca.gov/elections" target="_blank" rel="noopener noreferrer">SOS elections hub</a> ·
          <a href="https://voterguide.sos.ca.gov/" target="_blank" rel="noopener noreferrer">Official CA voter guide</a> ·
-         <a href="https://california.ballottrax.net/voter/" target="_blank" rel="noopener noreferrer">Where’s My Ballot?</a></p>
+         <a href="https://california.ballottrax.net/voter/" target="_blank" rel="noopener noreferrer">Where’s My Ballot?</a></p>`;
+
+const HOW_GENERAL_CO = `
+      <h2 id="how-general"><span class="intro-card__heading-icon" aria-hidden="true"></span>How Colorado’s November general works</h2>
+      <p>Colorado holds party primaries, so most partisan contests on the <strong>November 3, 2026</strong> ballot pit each party’s nominee against each other, plus minor-party and unaffiliated candidates. Judges face <strong>yes/no retention</strong> votes, and every Coloradan votes on the statewide <strong>amendments and propositions</strong>; constitutional amendments need 55% to pass.</p>
+      <p>Every active voter is mailed a ballot about three weeks before Election Day. Return it to a drop box or voter service center by 7 p.m. on Nov 3 (postmarks don’t count), or vote in person; you can register and vote the same day.</p>
+      <p><a href="https://www.coloradosos.gov/pubs/elections/main.html" target="_blank" rel="noopener noreferrer">Colorado SOS elections</a> ·
+         <a href="https://leg.colorado.gov/bluebook" target="_blank" rel="noopener noreferrer">Blue Book</a> ·
+         <a href="https://www.denvergov.org/elections" target="_blank" rel="noopener noreferrer">Denver Elections</a></p>`;
+
+function renderIntroBlocks(colorado: boolean): HTMLElement {
+  const wrap = el('section', 'intro-grid');
+  wrap.innerHTML = `
+    <section class="intro-card" aria-labelledby="how-general">${colorado ? HOW_GENERAL_CO : HOW_GENERAL_CA}
     </section>
     <section class="intro-card" aria-labelledby="how-guide">
       <h2 id="how-guide"><span class="intro-card__heading-icon intro-card__heading-icon--secondary" aria-hidden="true"></span>How to use this guide</h2>
@@ -1156,6 +1167,7 @@ function renderRetention(block: RetentionBlock): HTMLElement {
   h3.textContent = 'Justices on the ballot';
   const note = el('p', 'retention__note');
   note.textContent =
+    block.note ??
     'Each vote asks only whether that justice should serve the term on the ballot—a sitting justice’s new 12-year term, or the rest of the term for a recent appointee. If “No” wins, the governor appoints someone else. No California appellate justice has lost a retention vote since 1986.';
   const table = el('table', 'retention__table');
   const thead = el('thead');
@@ -1517,6 +1529,14 @@ function partyMarkAriaLabel(party: string): string {
       return 'Libertarian';
     case 'NP':
       return 'No party preference';
+    case 'UNI':
+      return 'Unity Party';
+    case 'AV':
+      return 'Approval Voting Party';
+    case 'ACN':
+      return 'American Constitution Party';
+    case 'FWD':
+      return 'Forward Party';
     default:
       return party;
   }

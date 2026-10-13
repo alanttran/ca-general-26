@@ -3,6 +3,7 @@ import { SD_WAVE2_PROFILES } from './profiles-sd-wave2';
 import { SD_CITY_PROFILES } from './profiles-sd-city';
 import { ESCONDIDO_PROFILES } from './profiles-escondido';
 import { WAVE3_PROFILES } from './profiles-wave3';
+import { COLORADO_PROFILES } from './profiles-colorado';
 
 export const DEFAULT_BALLOT_ZIP = '92126';
 
@@ -23,6 +24,20 @@ export const BALLOT_CATEGORIES: BallotCategory[] = [
   { id: 'local-measures', label: 'Local measures' },
 ];
 
+/** Colorado prints federal races first, then state offices, legislature, judges and ballot questions. */
+export const COLORADO_CATEGORIES: BallotCategory[] = [
+  { id: 'federal', label: 'Federal' },
+  { id: 'statewide', label: 'State offices' },
+  { id: 'school', label: 'Schools' },
+  { id: 'state-leg', label: 'State Legislature' },
+  { id: 'county', label: 'County' },
+  { id: 'city', label: 'City' },
+  { id: 'district', label: 'Special districts' },
+  { id: 'judicial', label: 'Judicial retention' },
+  { id: 'state-props', label: 'Statewide amendments and propositions' },
+  { id: 'local-measures', label: 'Local measures' },
+];
+
 export interface BallotProfile {
   zip: string;
   /** Dropdown text and tab title area name, e.g. `Mira Mesa, San Diego`. */
@@ -37,6 +52,8 @@ export interface BallotProfile {
   localRaceIds: string[];
   /** Approximate % of residents voting in contests that cover only part of the ZIP (threshold set per profile file; smaller slivers go in the note). */
   partialShares?: Record<string, number>;
+  /** Out-of-state special case: its own statewide races live in `localRaceIds` and California’s are left out. */
+  state?: 'CO';
   /** True until this ZIP’s local research lands; shows a “local races coming” note. */
   localPending?: boolean;
 }
@@ -78,6 +95,7 @@ export const BALLOT_PROFILES: Record<string, BallotProfile> = {
   '94043': WAVE3_PROFILES['94043'],
   '92868': WAVE3_PROFILES['92868'],
   '92562': WAVE3_PROFILES['92562'],
+  ...COLORADO_PROFILES,
 };
 
 

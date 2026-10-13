@@ -33,6 +33,10 @@ import { RACES_SDC_SOUTH } from './sdc-south';
 import { RACES_SDC_NORTH } from './sdc-north';
 import { RACES_STATEWIDE_A } from './statewide-a';
 import { RACES_STATEWIDE_B } from './statewide-b';
+import { RACES_CO_STATEWIDE } from './co-statewide';
+import { RACES_CO_MEASURES } from './co-measures';
+import { RACES_CO_COURTS } from './co-courts';
+import { RACES_CO_DENVER } from './co-denver';
 
 import { RACES_D_NORTH_STATE } from './d-north-state';
 import { RACES_D_SACRAMENTO_DELTA } from './d-sacramento-delta';
@@ -106,4 +110,9 @@ export const LOCAL_RACES: Race[] = [
   ...RACES_OC_RIVERSIDE_DISTRICTS,
   ...RACES_OC_ORANGE,
   ...RACES_RIVCO_MURRIETA,
+  // Colorado one-off (80204): listed only by that profile.
+  ...RACES_CO_STATEWIDE,
+  ...RACES_CO_COURTS,
+  ...RACES_CO_DENVER,
+  ...RACES_CO_MEASURES,
 ];

@@ -3,7 +3,7 @@ import { BALLOT_META } from './meta';
 import { mergeRaceDerivedFields } from './merge-races';
 import { combinedCellFor, experienceCellFor } from './experience-views';
 import { maxSeverity, resolveCandidateForPick } from './red-flags';
-import { BALLOT_CATEGORIES, BALLOT_PROFILES, DEFAULT_BALLOT_ZIP, type BallotProfile } from './ballot-profiles';
+import { BALLOT_CATEGORIES, BALLOT_PROFILES, COLORADO_CATEGORIES, DEFAULT_BALLOT_ZIP, type BallotProfile } from './ballot-profiles';
 import { LOCAL_RACES, STATEWIDE_RACES } from './races';
 import { TYPOLOGIES } from './typologies-data';
 import { generatedProfile } from './zip-lookup';
@@ -17,7 +17,6 @@ export const ALL_LOCAL_RACES = mergeRaceDerivedFields(LOCAL_RACES);
 assertBallotDataValid([...ALL_STATEWIDE_RACES, ...ALL_LOCAL_RACES], Object.values(BALLOT_PROFILES));
 
 const LOCAL_BY_ID = new Map(ALL_LOCAL_RACES.map((r) => [r.id, r]));
-const CATEGORY_INDEX = new Map(BALLOT_CATEGORIES.map((c, i) => [c.id, i]));
 
 const KNOWN_LOCAL_IDS = new Set(LOCAL_BY_ID.keys());
 
@@ -51,13 +50,15 @@ function tldrRowFor(race: Race): TldrRow {
   };
 }
 
-/** Statewide races + this ZIP’s local races, sorted into official ballot order. */
+/** Statewide races + this ZIP’s local races, sorted into official ballot order. Out-of-state ZIPs skip California’s statewide races. */
 export function buildBallotData(zip: string): BallotData {
   const profile = getBallotProfile(zip);
+  const categories = profile.state === 'CO' ? COLORADO_CATEGORIES : BALLOT_CATEGORIES;
+  const categoryIndex = new Map(categories.map((c, i) => [c.id, i]));
   const local = profile.localRaceIds.map((id) => LOCAL_BY_ID.get(id)).filter((r): r is Race => Boolean(r));
-  const ordered = [...ALL_STATEWIDE_RACES, ...local]
+  const ordered = [...(profile.state ? [] : ALL_STATEWIDE_RACES), ...local]
     .map((race, i) => ({ race, i }))
-    .sort((a, b) => (CATEGORY_INDEX.get(a.race.categoryId) ?? 99) - (CATEGORY_INDEX.get(b.race.categoryId) ?? 99) || a.i - b.i)
+    .sort((a, b) => (categoryIndex.get(a.race.categoryId) ?? 99) - (categoryIndex.get(b.race.categoryId) ?? 99) || a.i - b.i)
     .map((x): ZipRace => {
       const share = profile.partialShares?.[x.race.id];
       return share !== undefined ? { ...x.race, zipSharePct: share } : x.race;
@@ -72,9 +73,11 @@ export function buildBallotData(zip: string): BallotData {
       verificationNote: profile.verificationNote,
       registrarLabel: profile.registrarLabel,
       registrarUrl: profile.registrarUrl,
+      state: profile.state ?? 'CA',
+      ...(profile.state === 'CO' ? { siteTitle: 'Unofficial 2026 Colorado general election voter guide' } : {}),
     },
     typologies: TYPOLOGIES,
-    categories: BALLOT_CATEGORIES.filter((c) => categoryIds.has(c.id)),
+    categories: categories.filter((c) => categoryIds.has(c.id)),
     tldrRows: ordered.map(tldrRowFor),
     races: ordered,
   };

@@ -16,6 +16,22 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'October 12, 2026',
+    lede: 'One out-of-state ZIP by request: Denver’s 80204 now has its full Colorado ballot.',
+    panels: [
+      {
+        summary: 'Denver, Colorado: 80204',
+        bullets: [
+          'West Denver (80204): U.S. Senate, the open CO-1 House seat, Governor, Secretary of State, Treasurer, Attorney General and State Board of Education District 1, built from Colorado’s certified candidate list.',
+          'State Senate 34 or 31 and State House 4 or 5 depending on your address, the special election for Denver City Council At-Large Seat B (10 candidates), and RTD District C.',
+          'Yes/no retention for the Colorado Supreme Court, Court of Appeals, and Denver District, Juvenile, Probate and County Court judges, with each judge’s Judicial Performance Commission finding.',
+          'All 14 statewide amendments and propositions (Amendments 81–87, Propositions NN and 132–137) from the Blue Book, plus Denver Measures 2H, 2I, 2J, 2K and 311 and DPS Measure 4A.',
+          'California’s statewide races and propositions don’t show for this ZIP; the page follows Colorado’s ballot order.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'October 8, 2026',
     lede: 'Type any California ZIP to see your statewide and district races: every House, State Senate, Assembly and appeals-court contest in the state is now covered. Full local ballots now include Los Angeles, Orange, Riverside, Placer, Alameda and Santa Clara counties alongside San Diego.',
     panels: [

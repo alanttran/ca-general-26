@@ -234,6 +234,8 @@ export interface RetentionJustice {
 
 export interface RetentionBlock {
   justices: RetentionJustice[];
+  /** How retention works for this court, shown above the table (defaults to the California appellate note). */
+  note?: string;
 }
 
 export type RaceKind = 'candidates' | 'measure' | 'retention';
@@ -283,6 +285,8 @@ export interface BallotMeta {
   verificationNote: string;
   registrarLabel: string;
   registrarUrl: string;
+  /** State whose ballot this is; the guide is California unless a profile says otherwise. */
+  state?: 'CA' | 'CO';
 }
 
 export interface TldrRow {
