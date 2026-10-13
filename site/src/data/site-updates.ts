@@ -16,6 +16,35 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'October 13, 2026',
+    lede: 'Each ballot now opens with your county’s key voting dates and where-to-vote links, and you can mark your own choice in every contest and print them. The site also loads much faster on phones.',
+    panels: [
+      {
+        summary: 'How and when to vote',
+        bullets: [
+          'A new box at the top lists your county’s key dates: when ballots went out, the Oct 19 registration deadline (and same-day registration after it), when vote centers open, and the Election Day rules. Past dates are dimmed and the next one is marked.',
+          'Links go to your county’s vote center and drop box lookups, ballot tracking and voter registration. San Diego, Los Angeles, Orange, Riverside, Placer, Alameda and Santa Clara have county-specific details. Other California ZIPs get the statewide rules and lookups.',
+          'Denver’s box warns that Colorado doesn’t count postmarks: ballots must reach a drop box or voter center by 7 p.m. Nov 3.',
+        ],
+      },
+      {
+        summary: 'Mark your own choices',
+        bullets: [
+          'At the bottom of every contest, a “Your choice” box lets you pick a candidate, Yes or No, or yes/no for each judge. Your choice then shows on the contest’s title bar even when it’s collapsed.',
+          'Pick “My own choices” next to Print my picks to print a one-page sheet of your own choices in ballot order.',
+          'Your choices are saved only in this browser, on this device. Nothing is sent anywhere.',
+        ],
+      },
+      {
+        summary: 'Faster and easier to read',
+        bullets: [
+          'The site used to download every local race in the guide; now each ZIP loads only its own. The first download is about a seventh of what it was.',
+          'Link and heading colors, the buttons and the viewpoint chips now meet the standard contrast level for readable text.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'October 12, 2026',
     lede: 'Every proposition and measure now says plainly what a Yes or No vote does, and links to the other measures it interacts with. Plus one out-of-state ZIP by request: Denver’s 80204.',
     panels: [

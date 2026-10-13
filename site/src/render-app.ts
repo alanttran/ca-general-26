@@ -17,7 +17,7 @@ import type {
 import { CONFIDENCE_LEVEL_ROWS, NO_PICK_TOKEN } from './data/confidence-levels';
 import { BALLOT_PROFILES, BALLOT_ZIP_OPTIONS, saveBallotZip } from './data/ballot-profiles';
 import { loadZipDistricts } from './data/zip-lookup';
-import { buildBallotData, getBallotProfile } from './data/build-ballot-data';
+import { buildBallotData, ensureLocalRaces, getBallotProfile } from './data/build-ballot-data';
 import {
   earlierSiteUpdateBuilds,
   siteUpdateBuildForDate,
@@ -58,6 +58,8 @@ import {
   STATUS_LABEL,
 } from './data/red-flags';
 import { COMBINED_LEVEL_GAP, combinedCellFor } from './data/experience-views';
+import { getChoice, retentionKey, setChoice } from './data/my-choices';
+import { votingInfoFor } from './data/voting-info';
 
 const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
 
@@ -411,6 +413,7 @@ function renderZipSelector(currentZip: string, appRoot: HTMLElement): HTMLElemen
     if (zip === currentZip) return;
     btn.disabled = true;
     if (!BALLOT_PROFILES[zip]) await loadZipDistricts();
+    await ensureLocalRaces(zip);
     const url = new URL(location.href);
     url.searchParams.set('zip', zip);
     url.hash = '';
@@ -472,6 +475,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
   for (const r of data.races) pendingRaceTitles.set(r.id, r.tldrLabel ?? r.title);
   const main = el('main', undefined, { id: 'main-content' });
   main.append(
+    renderHowToVote(data),
     renderIntroBlocks(data.meta.state === 'CO'),
     renderTypologyKey(data),
     renderMethodologySection(),
@@ -512,22 +516,68 @@ function renderPrintPicks(data: BallotData): HTMLElement {
   const label = el('label', 'print-picks__label', { for: 'print-typology' });
   label.textContent = 'Cheat sheet for';
   const select = el('select', 'print-picks__control', { id: 'print-typology' }) as HTMLSelectElement;
+  const mine = document.createElement('option');
+  mine.value = MINE;
+  mine.textContent = 'My own choices';
+  select.append(mine);
   for (const t of data.typologies) {
     const option = document.createElement('option');
     option.value = t.code;
     option.textContent = `${t.code} — ${t.name}`;
-    if (t.code === 'EL') option.selected = true;
     select.append(option);
   }
-  select.addEventListener('change', () => fillPrintSheet(data, select.value as TypologyCode));
+  select.value = countMarked(data) ? MINE : 'EL';
+  select.addEventListener('change', () => fillPrintSheet(data, select.value as PrintColumn));
   const btn = el('button', 'print-picks__button', { type: 'button' });
   btn.textContent = 'Print my picks';
   btn.addEventListener('click', () => {
-    fillPrintSheet(data, select.value as TypologyCode);
+    fillPrintSheet(data, select.value as PrintColumn);
     window.print();
   });
-  wrap.append(label, select, btn);
+  const progress = el('span', 'print-picks__progress', { role: 'status' });
+  const total = data.races.length;
+  const refresh = () => {
+    const n = countMarked(data);
+    progress.textContent = n
+      ? `You’ve marked ${n} of ${total} contests.`
+      : 'Mark your own choice at the bottom of each contest to print those instead.';
+  };
+  refresh();
+  document.addEventListener(CHOICES_CHANGED, refresh);
+  wrap.append(label, select, btn, progress);
   return wrap;
+}
+
+/** Print-sheet column: a typology, or the voter's own marks. */
+type PrintColumn = TypologyCode | typeof MINE;
+const MINE = 'MINE';
+const CHOICES_CHANGED = 'my-choices-changed';
+
+function countMarked(data: BallotData): number {
+  return data.races.filter((r) => choiceSummary(r)).length;
+}
+
+/** The voter's marks for one contest as print text, or undefined when nothing is marked. */
+function choiceSummary(race: Race, short = false): string | undefined {
+  if (race.kind === 'retention' && race.retention) {
+    const js = race.retention.justices;
+    const marks = js
+      .map((j) => ({ name: j.name, v: getChoice(retentionKey(race.id, j.name))[0] }))
+      .filter((m) => m.v);
+    if (!marks.length) return undefined;
+    const yes = marks.filter((m) => m.v === 'Yes').map((m) => m.name);
+    const no = marks.filter((m) => m.v === 'No').map((m) => m.name);
+    if (marks.length === js.length && !no.length) return 'Yes on all';
+    if (marks.length === js.length && !yes.length) return 'No on all';
+    if (short) return `${marks.length} of ${js.length} marked`;
+    const parts = [];
+    if (yes.length) parts.push(`Yes: ${yes.join(', ')}`);
+    if (no.length) parts.push(`No: ${no.join(', ')}`);
+    if (marks.length < js.length) parts.push(`${js.length - marks.length} not marked`);
+    return parts.join(' · ');
+  }
+  const v = getChoice(race.id);
+  return v.length ? v.join(', ') : undefined;
 }
 
 /** Container shown only in print (see `@media print`); filled for the chosen typology. */
@@ -535,10 +585,14 @@ function renderPrintSheet(): HTMLElement {
   return el('section', 'print-sheet', { id: 'print-sheet', 'aria-hidden': 'true' });
 }
 
-function fillPrintSheet(data: BallotData, code: TypologyCode): void {
+function fillPrintSheet(data: BallotData, code: PrintColumn): void {
   const sheet = document.getElementById('print-sheet');
   if (!sheet) return;
   sheet.replaceChildren();
+  if (code === MINE) {
+    fillMyChoicesSheet(sheet, data);
+    return;
+  }
   const ty = data.typologies.find((t) => t.code === code);
   const h = el('h2', 'print-sheet__title');
   h.textContent = `My picks — ${ty?.name ?? code} (${code})`;
@@ -593,10 +647,36 @@ function fillPrintSheet(data: BallotData, code: TypologyCode): void {
   sheet.append(legend);
 }
 
+function fillMyChoicesSheet(sheet: HTMLElement, data: BallotData): void {
+  const h = el('h2', 'print-sheet__title');
+  h.textContent = 'My choices';
+  const sub = el('p', 'print-sheet__sub');
+  sub.textContent = `Nov 3, 2026 · ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel}) · marked by me on an unofficial guide — check against your official ballot.`;
+  sheet.append(h, sub);
+  for (const cat of data.categories) {
+    const races = data.races.filter((r) => r.categoryId === cat.id);
+    if (!races.length) continue;
+    const ch = el('h3', 'print-sheet__cat');
+    ch.textContent = cat.label;
+    const tbl = el('table', 'print-sheet__table print-sheet__table--mine');
+    const tb = el('tbody');
+    for (const race of races) {
+      const tr = el('tr');
+      const th = el('th', undefined, { scope: 'row' });
+      th.textContent = race.tldrLabel ?? race.title;
+      const td = el('td');
+      td.textContent = choiceSummary(race) ?? '— (not marked)';
+      tr.append(th, td);
+      tb.append(tr);
+    }
+    tbl.append(tb);
+    sheet.append(ch, tbl);
+  }
+}
+
 const HOW_GENERAL_CA = `
       <h2 id="how-general"><span class="intro-card__heading-icon" aria-hidden="true"></span>How the November general works</h2>
       <p>Most contests on the <strong>November 3, 2026</strong> ballot are runoffs between the <strong>top two</strong> finishers from June’s primary—sometimes two candidates from the same party. Supreme Court and Court of Appeal justices appear as <strong>yes/no retention</strong> votes, and every Californian votes on the statewide <strong>propositions</strong>.</p>
-      <p>Mail ballots went out in early October. Return yours by mail (postmarked by Nov 3), at a drop box, or vote in person; same-day registration is available at vote centers.</p>
       <p><a href="https://www.sos.ca.gov/elections" target="_blank" rel="noopener noreferrer">SOS elections hub</a> ·
          <a href="https://voterguide.sos.ca.gov/" target="_blank" rel="noopener noreferrer">Official CA voter guide</a> ·
          <a href="https://california.ballottrax.net/voter/" target="_blank" rel="noopener noreferrer">Where’s My Ballot?</a></p>`;
@@ -604,10 +684,51 @@ const HOW_GENERAL_CA = `
 const HOW_GENERAL_CO = `
       <h2 id="how-general"><span class="intro-card__heading-icon" aria-hidden="true"></span>How Colorado’s November general works</h2>
       <p>Colorado holds party primaries, so most partisan contests on the <strong>November 3, 2026</strong> ballot pit each party’s nominee against each other, plus minor-party and unaffiliated candidates. Judges face <strong>yes/no retention</strong> votes, and every Coloradan votes on the statewide <strong>amendments and propositions</strong>; constitutional amendments need 55% to pass.</p>
-      <p>Every active voter is mailed a ballot about three weeks before Election Day. Return it to a drop box or voter service center by 7 p.m. on Nov 3 (postmarks don’t count), or vote in person; you can register and vote the same day.</p>
       <p><a href="https://www.coloradosos.gov/pubs/elections/main.html" target="_blank" rel="noopener noreferrer">Colorado SOS elections</a> ·
          <a href="https://leg.colorado.gov/bluebook" target="_blank" rel="noopener noreferrer">Blue Book</a> ·
          <a href="https://www.denvergov.org/elections" target="_blank" rel="noopener noreferrer">Denver Elections</a></p>`;
+
+/** Key dates and where-to-vote links for this ZIP’s county; past dates dim and the next one is marked. */
+function renderHowToVote(data: BallotData): HTMLElement {
+  const info = votingInfoFor(data.meta.state, data.meta.registrarLabel, data.meta.scopeLabel);
+  const sec = el('section', 'how-vote', { 'aria-labelledby': 'how-vote-title' });
+  const h2 = el('h2', 'how-vote__title', { id: 'how-vote-title' });
+  h2.textContent = `How and when to vote in ${info.where}`;
+  sec.append(h2);
+  if (info.heads) {
+    const p = el('p', 'how-vote__heads');
+    p.textContent = info.heads;
+    sec.append(p);
+  }
+  const today = new Date();
+  const todayIso = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+  const nextIso = info.dates.find((d) => d.iso >= todayIso)?.iso;
+  const ol = el('ol', 'how-vote__dates');
+  for (const d of info.dates) {
+    const state = d.iso < todayIso ? 'past' : d.iso === nextIso ? 'next' : 'later';
+    const li = el('li', `how-vote__date how-vote__date--${state}`);
+    const when = el('time', 'how-vote__when', { datetime: d.iso });
+    when.textContent = d.label;
+    li.append(when);
+    if (state === 'next') {
+      const tag = el('span', 'how-vote__next');
+      tag.textContent = d.iso === todayIso ? 'Today' : 'Next';
+      li.append(tag);
+    }
+    const text = el('span', 'how-vote__text');
+    text.textContent = d.text;
+    li.append(text);
+    ol.append(li);
+  }
+  const links = el('ul', 'how-vote__links');
+  for (const l of info.links) {
+    const li = el('li');
+    li.append(extLink(l.url, l.label, true));
+    links.append(li);
+  }
+  sec.append(ol, links);
+  return sec;
+}
 
 function renderIntroBlocks(colorado: boolean): HTMLElement {
   const wrap = el('section', 'intro-grid');
@@ -618,6 +739,7 @@ function renderIntroBlocks(colorado: boolean): HTMLElement {
       <h2 id="how-guide"><span class="intro-card__heading-icon intro-card__heading-icon--secondary" aria-hidden="true"></span>How to use this guide</h2>
       <p>Each race includes <strong>web-condensed</strong> backgrounds, scorecards where available, money and endorsement notes, red-flag callouts, and a <strong>cross-typology recommendation row</strong> with confidence icons (see legend under the TL;DR summary).</p>
       <p>Propositions and local measures get a Yes/No pick per column; judicial retention votes are grouped into one table per court. Use <strong>Print my picks</strong> in the header for a one-page cheat sheet in ballot order.</p>
+      <p>At the bottom of each contest you can <strong>mark your own choice</strong>. Marks stay in this browser only (nothing is sent anywhere), and the cheat sheet can print them.</p>
     </section>
   `;
   wrap.querySelector('#how-general .intro-card__heading-icon')?.append(iconBallot('icon icon--intro'));
@@ -1001,6 +1123,14 @@ function renderRace(race: ZipRace): HTMLElement {
     share.textContent = `~${Math.round(race.zipSharePct)}% of this ZIP`;
     sumText.append(document.createTextNode(' '), share);
   }
+  const mineBadge = el('span', 'race__mine');
+  const refreshBadge = () => {
+    const s = choiceSummary(race, true);
+    mineBadge.hidden = !s;
+    mineBadge.textContent = s ? `✓ ${s}` : '';
+  };
+  refreshBadge();
+  sumText.append(document.createTextNode(' '), mineBadge);
   summary.append(chev, sumText);
   details.append(summary);
 
@@ -1058,8 +1188,106 @@ function renderRace(race: ZipRace): HTMLElement {
     body.append(ul);
   }
 
+  body.append(
+    renderYourChoice(race, () => {
+      refreshBadge();
+      document.dispatchEvent(new Event(CHOICES_CHANGED));
+    }),
+  );
   details.append(body);
   return details;
+}
+
+/** “Your choice” controls at the end of a contest; marks are saved in this browser only. */
+function renderYourChoice(race: Race, onChange: () => void): HTMLElement {
+  const box = el('fieldset', 'your-choice');
+  const legend = el('legend', 'your-choice__legend');
+  legend.textContent = 'Your choice';
+  const hint = el('p', 'your-choice__hint');
+  hint.textContent = 'Saved in this browser only. Pick “My own choices” next to Print my picks to print them.';
+  box.append(legend, hint);
+
+  if (race.kind === 'retention' && race.retention) {
+    const list = el('div', 'your-choice__justices');
+    const radios: HTMLInputElement[] = [];
+    race.retention.justices.forEach((j, i) => {
+      const key = retentionKey(race.id, j.name);
+      const row = el('div', 'your-choice__justice', { role: 'radiogroup', 'aria-label': j.name });
+      const name = el('span', 'your-choice__justice-name');
+      name.textContent = j.name;
+      row.append(name);
+      for (const v of ['Yes', 'No']) {
+        const input = el('input', undefined, { type: 'radio', name: `mine-${race.id}-${i}`, value: v });
+        input.checked = getChoice(key)[0] === v;
+        input.dataset.key = key;
+        input.addEventListener('change', () => {
+          setChoice(key, [v]);
+          onChange();
+        });
+        radios.push(input);
+        const label = el('label', 'your-choice__option');
+        label.append(input, document.createTextNode(v));
+        row.append(label);
+      }
+      list.append(row);
+    });
+    const setAll = (v: string | null) => {
+      for (const r of radios) {
+        r.checked = v !== null && r.value === v;
+        setChoice(r.dataset.key!, v === null ? [] : [v]);
+      }
+      onChange();
+    };
+    const actions = el('div', 'your-choice__actions');
+    for (const [text, v] of [['Yes on all', 'Yes'], ['No on all', 'No'], ['Clear', null]] as const) {
+      const b = el('button', 'your-choice__button', { type: 'button' });
+      b.textContent = text;
+      b.addEventListener('click', () => setAll(v));
+      actions.append(b);
+    }
+    box.append(actions, list);
+    return box;
+  }
+
+  const values = race.kind === 'measure' ? ['Yes', 'No'] : race.candidates.map((c) => c.name);
+  const max = race.voteFor && race.voteFor > 1 ? race.voteFor : 1;
+  const inputs: HTMLInputElement[] = [];
+  const options = el('div', 'your-choice__options');
+  const sync = () => {
+    if (max === 1) return;
+    const full = inputs.filter((x) => x.checked).length >= max;
+    for (const x of inputs) x.disabled = full && !x.checked;
+  };
+  for (const v of values) {
+    const input = el('input', undefined, { type: max === 1 ? 'radio' : 'checkbox', name: `mine-${race.id}`, value: v });
+    input.checked = getChoice(race.id).includes(v);
+    input.addEventListener('change', () => {
+      setChoice(race.id, inputs.filter((x) => x.checked).map((x) => x.value));
+      sync();
+      onChange();
+    });
+    inputs.push(input);
+    const label = el('label', 'your-choice__option');
+    label.append(input, document.createTextNode(v));
+    options.append(label);
+  }
+  sync();
+  const clear = el('button', 'your-choice__button', { type: 'button' });
+  clear.textContent = 'Clear';
+  clear.addEventListener('click', () => {
+    for (const x of inputs) x.checked = false;
+    setChoice(race.id, []);
+    sync();
+    onChange();
+  });
+  if (max > 1) {
+    const note = el('p', 'your-choice__hint');
+    note.textContent = `Vote for up to ${max}.`;
+    box.append(note);
+  }
+  options.append(clear);
+  box.append(options);
+  return box;
 }
 
 function experienceBadge(level: CandidateQualification['level']): HTMLElement {
@@ -1402,7 +1630,7 @@ function renderMeasureOverview(m: MeasureBlock): HTMLElement {
   };
   const side = (mod: 'yes' | 'no', heading: string, args: string[], backers: string | undefined, backersLabel: string) => {
     const col = el('section', `measure__side measure__side--${mod}`);
-    const h = el('h4', 'measure__side-heading');
+    const h = el('h3', 'measure__side-heading');
     h.textContent = heading;
     col.append(h, bulletList(args));
     const want = mod === 'yes' ? 'Yes' : 'No';

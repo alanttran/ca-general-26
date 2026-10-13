@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run validate-typology && tsc && vite build",
+    "build": "npm run race-manifest && npm run validate-typology && tsc && vite build",
+    "race-manifest": "tsx scripts/build-race-manifest.ts",
     "validate-typology": "tsx scripts/validate-typology.ts",
     "audit-typology": "tsx scripts/audit-typology.ts",
     "preview": "vite preview",

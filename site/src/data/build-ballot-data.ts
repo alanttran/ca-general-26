@@ -4,7 +4,8 @@ import { mergeRaceDerivedFields } from './merge-races';
 import { combinedCellFor, experienceCellFor } from './experience-views';
 import { maxSeverity, resolveCandidateForPick } from './red-flags';
 import { BALLOT_CATEGORIES, BALLOT_PROFILES, COLORADO_CATEGORIES, DEFAULT_BALLOT_ZIP, type BallotProfile } from './ballot-profiles';
-import { LOCAL_RACES, STATEWIDE_RACES } from './races';
+import { BUNDLED_LOCAL_RACES, STATEWIDE_RACES } from './races/statewide';
+import { loadLocalRaces, ON_DEMAND_RACE_IDS } from './local-races';
 import { TYPOLOGIES } from './typologies-data';
 import { generatedProfile } from './zip-lookup';
 import { assertBallotDataValid } from './validate-typology-picks';
@@ -12,13 +13,18 @@ import { assertBallotDataValid } from './validate-typology-picks';
 const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
 
 export const ALL_STATEWIDE_RACES = mergeRaceDerivedFields(STATEWIDE_RACES);
-export const ALL_LOCAL_RACES = mergeRaceDerivedFields(LOCAL_RACES);
 
-assertBallotDataValid([...ALL_STATEWIDE_RACES, ...ALL_LOCAL_RACES], Object.values(BALLOT_PROFILES));
+// `npm run build` validates first; in the browser only the dev server re-checks, so visitors don't pay for it.
+if (import.meta.env.DEV) {
+  void import('./races').then(({ LOCAL_RACES }) =>
+    assertBallotDataValid([...ALL_STATEWIDE_RACES, ...mergeRaceDerivedFields(LOCAL_RACES)], Object.values(BALLOT_PROFILES)),
+  );
+}
 
-const LOCAL_BY_ID = new Map(ALL_LOCAL_RACES.map((r) => [r.id, r]));
+/** Local races loaded so far (appellate retention ships with the page; the rest arrive per ZIP). */
+const LOCAL_BY_ID = new Map(mergeRaceDerivedFields(BUNDLED_LOCAL_RACES).map((r) => [r.id, r]));
 
-const KNOWN_LOCAL_IDS = new Set(LOCAL_BY_ID.keys());
+const KNOWN_LOCAL_IDS = new Set([...LOCAL_BY_ID.keys(), ...ON_DEMAND_RACE_IDS]);
 
 /** Hand-built profile when we have one; otherwise districts looked up from the ZIP (call `loadZipDistricts` first). */
 export function getBallotProfile(zip: string): BallotProfile {
@@ -48,6 +54,13 @@ function tldrRowFor(race: Race): TldrRow {
     experience: experienceCellFor(race),
     combined,
   };
+}
+
+/** Fetches this ZIP’s local race files; call before `buildBallotData` (and after `loadZipDistricts` for unbuilt ZIPs). */
+export async function ensureLocalRaces(zip: string): Promise<void> {
+  const missing = getBallotProfile(zip).localRaceIds.filter((id) => !LOCAL_BY_ID.has(id));
+  if (!missing.length) return;
+  for (const r of mergeRaceDerivedFields(await loadLocalRaces(missing))) LOCAL_BY_ID.set(r.id, r);
 }
 
 /** Statewide races + this ZIP’s local races, sorted into official ballot order. Out-of-state ZIPs skip California’s statewide races. */

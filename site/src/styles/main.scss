@@ -14,8 +14,8 @@
   --rad-surface-elevated: #e8eef5;
   --rad-text: #0f172a;
   --rad-text-muted: #475569;
-  --rad-accent: #0d9488;
-  --rad-accent-dim: #0f766e;
+  --rad-accent: #0f766e;
+  --rad-accent-dim: #115e59;
   --rad-border: #cbd5e1;
   --rad-alert-bg: #fff1f2;
   --rad-alert-border: #f43f5e;
@@ -188,47 +188,47 @@ th {
 
 .typology-chip--PL {
   color: var(--typ-PL);
-  background: color-mix(in srgb, var(--typ-PL) 22%, var(--rad-surface));
+  background: color-mix(in srgb, var(--typ-PL) 12%, var(--rad-surface));
   border-color: color-mix(in srgb, var(--typ-PL) 50%, transparent);
 }
 .typology-chip--EL {
   color: var(--typ-EL);
-  background: color-mix(in srgb, var(--typ-EL) 22%, var(--rad-surface));
+  background: color-mix(in srgb, var(--typ-EL) 12%, var(--rad-surface));
   border-color: color-mix(in srgb, var(--typ-EL) 50%, transparent);
 }
 .typology-chip--DM {
   color: var(--typ-DM);
-  background: color-mix(in srgb, var(--typ-DM) 22%, var(--rad-surface));
+  background: color-mix(in srgb, var(--typ-DM) 12%, var(--rad-surface));
   border-color: color-mix(in srgb, var(--typ-DM) 50%, transparent);
 }
 .typology-chip--OL {
   color: var(--typ-OL);
-  background: color-mix(in srgb, var(--typ-OL) 22%, var(--rad-surface));
+  background: color-mix(in srgb, var(--typ-OL) 12%, var(--rad-surface));
   border-color: color-mix(in srgb, var(--typ-OL) 50%, transparent);
 }
 .typology-chip--SS {
   color: var(--typ-SS);
-  background: color-mix(in srgb, var(--typ-SS) 22%, var(--rad-surface));
+  background: color-mix(in srgb, var(--typ-SS) 12%, var(--rad-surface));
   border-color: color-mix(in srgb, var(--typ-SS) 50%, transparent);
 }
 .typology-chip--AR {
   color: var(--typ-AR);
-  background: color-mix(in srgb, var(--typ-AR) 22%, var(--rad-surface));
+  background: color-mix(in srgb, var(--typ-AR) 12%, var(--rad-surface));
   border-color: color-mix(in srgb, var(--typ-AR) 50%, transparent);
 }
 .typology-chip--PR {
   color: var(--typ-PR);
-  background: color-mix(in srgb, var(--typ-PR) 22%, var(--rad-surface));
+  background: color-mix(in srgb, var(--typ-PR) 12%, var(--rad-surface));
   border-color: color-mix(in srgb, var(--typ-PR) 50%, transparent);
 }
 .typology-chip--CC {
   color: var(--typ-CC);
-  background: color-mix(in srgb, var(--typ-CC) 22%, var(--rad-surface));
+  background: color-mix(in srgb, var(--typ-CC) 12%, var(--rad-surface));
   border-color: color-mix(in srgb, var(--typ-CC) 50%, transparent);
 }
 .typology-chip--FF {
   color: var(--typ-FF);
-  background: color-mix(in srgb, var(--typ-FF) 22%, var(--rad-surface));
+  background: color-mix(in srgb, var(--typ-FF) 12%, var(--rad-surface));
   border-color: color-mix(in srgb, var(--typ-FF) 50%, transparent);
 }
 
@@ -678,6 +678,92 @@ main {
   max-width: var(--rad-max-width);
   margin: 0 auto;
   padding: 2rem 2rem 4rem;
+}
+
+.how-vote {
+  margin-bottom: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--rad-surface);
+  border: 1px solid var(--rad-border);
+  border-top: 4px solid var(--rad-accent);
+  border-radius: var(--rad-radius);
+}
+
+.how-vote__title {
+  margin: 0 0 0.75rem;
+  font-size: var(--fs-lg);
+}
+
+.how-vote__heads {
+  margin: 0 0 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid var(--rad-warn);
+  background: color-mix(in srgb, var(--rad-warn) 8%, var(--rad-surface));
+  font-weight: 600;
+}
+
+.how-vote__dates {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.how-vote__date {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  column-gap: 0.75rem;
+  align-items: baseline;
+}
+
+.how-vote__when {
+  grid-row: span 2;
+  font-weight: 700;
+}
+
+.how-vote__text {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.how-vote__next {
+  grid-column: 2;
+  justify-self: start;
+  padding: 0 0.45rem;
+  border-radius: 999px;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: var(--rad-accent);
+}
+
+.how-vote__date--next .how-vote__when {
+  color: var(--rad-accent);
+}
+
+/* Past dates dim but stay readable: early voting and drop boxes that opened then are still open. */
+.how-vote__date--past {
+  color: var(--rad-text-muted);
+}
+
+.how-vote__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  margin: 0;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid var(--rad-border);
+  list-style: none;
+  font-size: var(--fs-sm);
+}
+
+@media (max-width: 719px) {
+  .how-vote {
+    padding: 1rem;
+  }
 }
 
 .intro-grid {
@@ -1509,7 +1595,8 @@ main {
 }
 
 .measure .measure__side-heading {
-  margin-top: 0;
+  margin: 0 0 0.25rem;
+  font-size: var(--fs-base);
 }
 
 .measure__backers {
@@ -2045,6 +2132,133 @@ button:focus-visible {
   font-size: var(--fs-sm);
 }
 
+.print-picks__progress {
+  flex-basis: 100%;
+}
+
+/* ---- Your own choice, end of each contest ---- */
+
+.race__mine {
+  display: inline-block;
+  padding: 0 0.45rem;
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--rad-accent-dim);
+  border: 1px solid var(--rad-accent);
+  background: color-mix(in srgb, var(--rad-accent) 8%, var(--rad-surface));
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.your-choice {
+  margin: 1.25rem 0 0;
+  padding: 0.75rem 1rem 1rem;
+  border: 2px solid var(--rad-accent);
+  border-radius: var(--rad-radius);
+  background: color-mix(in srgb, var(--rad-accent) 5%, var(--rad-surface));
+  min-width: 0;
+}
+
+.your-choice__legend {
+  padding: 0 0.35rem;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.your-choice__hint {
+  margin: 0 0 0.6rem;
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+}
+
+.your-choice__options,
+.your-choice__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.your-choice__actions {
+  margin-bottom: 0.6rem;
+}
+
+.your-choice__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--rad-border);
+  border-radius: 6px;
+  background: var(--rad-surface);
+  font-weight: 600;
+  cursor: pointer;
+
+  &:has(input:checked) {
+    border-color: var(--rad-accent-dim);
+    background: color-mix(in srgb, var(--rad-accent) 14%, var(--rad-surface));
+  }
+
+  &:has(input:disabled) {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  input {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin: 0;
+    accent-color: var(--rad-accent-dim);
+  }
+}
+
+.your-choice__button {
+  font: inherit;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--rad-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--rad-text);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--rad-surface-elevated);
+  }
+}
+
+.your-choice__justices {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.your-choice__justice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--rad-border);
+}
+
+.your-choice__justice-name {
+  flex: 1 1 12rem;
+  min-width: 0;
+  font-weight: 600;
+}
+
+@media (max-width: 479px) {
+  .your-choice__justice-name {
+    flex-basis: 100%;
+  }
+}
+
 /* Print cheat sheet: hidden on screen, the only thing printed. */
 .print-sheet {
   display: none;
@@ -2115,6 +2329,10 @@ button:focus-visible {
       font-weight: 400;
       color: #444;
     }
+  }
+
+  .print-sheet__table--mine td {
+    width: 50%;
   }
 
   @page {
