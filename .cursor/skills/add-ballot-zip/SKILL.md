@@ -167,5 +167,6 @@ Source ranking: official (SoS, LAO, county registrar, court sites, Cal-Access, F
 - [ ] Every candidate race: legalRequirements + 3–5 qualificationCriteria; every candidate has `qualification` (§5b)
 - [ ] Measures: question, type, threshold, fiscal impact, supporters/opponents, for/against, reading links
 - [ ] File registered in `races/index.ts`; local ids listed in each ZIP profile in ballot order
+- [ ] New ZIP added to its county/city group in `site/src/data/zip-areas.ts` (the build fails otherwise)
 - [ ] `cd site && npm run build` passes
 - [ ] Changelog entry (`site-updates.ts`) + `meta.ts` date

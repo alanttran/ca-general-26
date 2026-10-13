@@ -17,6 +17,7 @@ import type {
 import { CONFIDENCE_LEVEL_ROWS, NO_PICK_TOKEN } from './data/confidence-levels';
 import { BALLOT_PROFILES, BALLOT_ZIP_OPTIONS, saveBallotZip } from './data/ballot-profiles';
 import { loadZipDistricts } from './data/zip-lookup';
+import { ZIP_AREAS } from './data/zip-areas';
 import { buildBallotData, ensureLocalRaces, getBallotProfile } from './data/build-ballot-data';
 import {
   earlierSiteUpdateBuilds,
@@ -397,8 +398,7 @@ function renderZipSelector(currentZip: string, appRoot: HTMLElement): HTMLElemen
   const btn = el('button', 'zip-select__button', { type: 'submit' });
   btn.textContent = 'Show my ballot';
   const hint = el('p', 'zip-select__hint', { id: 'ballot-zip-hint', 'aria-live': 'polite' });
-  const caZips = BALLOT_ZIP_OPTIONS.filter((o) => !o.zip.startsWith('8'));
-  const defaultHint = `Any California ZIP shows your statewide and district races. City, school and local-district contests are also in for ${caZips.length} ZIPs: ${caZips.map((o) => o.zip).join(', ')}. One Colorado ZIP is in too: 80204 (Denver).`;
+  const defaultHint = `Any California ZIP shows your statewide and district races. ${BALLOT_ZIP_OPTIONS.length} ZIPs also have full local ballots with city, school and local-district contests.`;
   hint.textContent = defaultHint;
   input.addEventListener('focus', () => input.select());
   form.addEventListener('submit', async (e) => {
@@ -420,8 +420,65 @@ function renderZipSelector(currentZip: string, appRoot: HTMLElement): HTMLElemen
     history.pushState({}, '', url);
     renderApp(appRoot, zip);
   });
-  form.append(label, input, btn, hint);
+  const browse = renderZipAreas(currentZip, (zip) => {
+    input.value = zip;
+    form.requestSubmit();
+  });
+  form.append(label, input, btn, hint, browse);
   return form;
+}
+
+/** Neighborhood for a ZIP chip: its label minus the county/state suffix and the city already in the heading. */
+function zipPlaceLabel(scopeLabel: string, areaName: string): string {
+  // Under “City of San Diego” keep names like “UC San Diego” whole; elsewhere drop the repeated city name.
+  const city = areaName.startsWith('City of ') ? null : areaName;
+  const place = scopeLabel
+    .replace(/, (San Diego|[A-Za-z ]+ County|Colorado)$/, '')
+    .replace(/ campus$/, '')
+    .replace(city ? new RegExp(`(^|[\\s,(/])${city}(?=$|[\\s,)/])`, 'g') : /$^/, '$1')
+    .replace(/[()]/g, '')
+    .replace(/\s*,\s*$|^\s*[,/]\s*|\s*\/\s*$/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+  if (!place || place === areaName) return '';
+  return place[0].toUpperCase() + place.slice(1);
+}
+
+/** Collapsible list of the hand-built ZIPs, grouped by county and city; each ZIP loads its ballot. */
+function renderZipAreas(currentZip: string, choose: (zip: string) => void): HTMLDetailsElement {
+  const details = el('details', 'zip-areas');
+  const summary = el('summary', 'zip-areas__summary');
+  summary.textContent = `Browse the ${BALLOT_ZIP_OPTIONS.length} ZIPs with full local ballots`;
+  details.append(summary);
+  for (const g of ZIP_AREAS) {
+    const head = el('p', 'zip-areas__group');
+    head.textContent = g.group;
+    const dl = el('dl', 'zip-areas__list');
+    for (const area of g.areas) {
+      const dt = el('dt', 'zip-areas__area');
+      dt.textContent = area.name;
+      const dd = el('dd', 'zip-areas__zips');
+      for (const zip of area.zips) {
+        const p = BALLOT_PROFILES[zip];
+        const a = el('a', 'zip-areas__zip', { href: `?zip=${zip}` });
+        if (zip === currentZip) a.setAttribute('aria-current', 'true');
+        const code = el('strong');
+        code.textContent = zip;
+        a.append(code);
+        const place = zipPlaceLabel(p.scopeLabel, area.name);
+        if (place) a.append(document.createTextNode(` ${place}`));
+        a.addEventListener('click', (e) => {
+          if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+          e.preventDefault();
+          choose(zip);
+        });
+        dd.append(a);
+      }
+      dl.append(dt, dd);
+    }
+    details.append(head, dl);
+  }
+  return details;
 }
 
 /** ZIP-specific scope note (which districts we modeled) + link to the official sample ballot. */

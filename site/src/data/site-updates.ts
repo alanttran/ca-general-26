@@ -26,6 +26,7 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
           '34 new contests: mayor and council races in all six cities (plus La Mesa’s treasurer), school and college boards (Southwestern, Sweetwater, Grossmont, Cajon Valley, La Mesa-Spring Valley, Santee, Oceanside, Vista and San Marcos), and Helix, Padre Dam and Vista Irrigation water boards and Tri-City Healthcare.',
           '8 new measures: Oceanside R (prevailing wage and project labor agreements) and S (sales tax), Santee Y (sales tax), and school or college bonds G (Grossmont-Cuyamaca), AA (La Mesa-Spring Valley), BB (Santee), N (Vista Unified) and K (Fallbrook Elementary).',
           'Each ZIP’s contests were matched to the county’s ballot-type map and checked against all 75 of its official sample ballots; every one matched. Where district lines split a ZIP, the share of residents in each contest is shown.',
+          'The list of ZIPs with full local ballots, under the ZIP box, is now grouped by county and city with neighborhood names. Tap a ZIP to open its ballot.',
           '91911 now includes Southwestern College Trustee Area 1 (about 8% of the ZIP). 92019 and 92021 are only about 41–44% El Cajon, so they still show statewide, district and countywide races only.',
         ],
       },
