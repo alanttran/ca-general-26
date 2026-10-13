@@ -394,6 +394,8 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
     measure: {
       question:
         'Shall the measure amending Article II, Section 206 of the Placer County Charter to extend the deadline for filling a vacancy on the Board of Supervisors from 30 days to 60 days, providing additional time for the Board to make an appointment before the Governor fills the vacancy, and requiring vacancies occurring 130 days or more before a statewide direct primary election be filled temporarily by appointment and placed on the ballot at that election, be adopted?',
+      yesMeans: 'Gives supervisors 60 days instead of 30 to fill a vacancy before the governor appoints, and puts the seat on the next statewide primary ballot if it opens 130+ days before.',
+      noMeans: 'Keeps the 30-day deadline for supervisors to fill a vacancy before the governor appoints, and current rules on when appointees face voters.',
       measureType: 'County charter amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -455,6 +457,8 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
     measure: {
       question:
         'Shall the measure amending Article V, Section 502(a) of the Placer County Charter to allow alternative procedures for the removal of the County Executive Officer if specified in an employment agreement, providing greater flexibility in negotiating employment terms for recruitment and retention, while preserving Board of Supervisors’ oversight, be adopted?',
+      yesMeans: 'Lets the County Executive Officer’s employment agreement set different removal procedures; without such terms, three supervisors can still remove the CEO.',
+      noMeans: 'Keeps the charter rule that three supervisors can remove the County Executive Officer, with no option for a contract to set different procedures.',
       measureType: 'County charter amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -514,6 +518,8 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
     measure: {
       question:
         'To maintain Rocklin’s public safety, financial stability and core public services, including: rapid 911 emergency/medical response; police/fire protection; keeping public areas and parks healthy/safe/clean; preserving open space; preventing wildfires; shall the City of Rocklin’s measure establishing a half-cent sales tax, providing approximately $8 million annually for general revenue purposes, until ended by voters, keeping all funds local, with annual audits/public spending disclosure, be adopted?',
+      yesMeans: 'Raises Rocklin’s sales tax from 7.25% to 7.75% as early as April 2027, bringing about $8 million a year for any city service until voters end it.',
+      noMeans: 'Keeps Rocklin’s sales tax at 7.25%, and the city addresses projected long-term deficits without this revenue.',
       measureType: 'General tax (city transactions and use tax)',
       voteThreshold: 'Simple majority (the county’s amended notice corrected an earlier “2/3” misprint)',
       fiscalImpact:
@@ -578,6 +584,8 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
     measure: {
       question:
         'To upgrade, renovate, modernize and expand classrooms, schools, and career technical education buildings; repair/replace leaky roofs and outdated heating/cooling systems; and make safety/security improvements with no projected tax rate increase, shall Rocklin Unified School District’s measure authorizing $288,000,000 of bonds at legal rates be adopted, generating on average $15,800,000 annually while bonds are outstanding at approximate rates of $59 per $100,000 assessed value, with audits, citizens’ oversight, no money for salaries and funds staying local?',
+      yesMeans: 'Authorizes $288 million in school bonds for classroom, roof, HVAC and safety upgrades, repaid by property owners at about $59 per $100,000 of assessed value while bonds are outstanding.',
+      noMeans: 'Blocks the new bonds; existing school bond taxes continue until paid off, and repairs at the district’s 17 campuses would need other funding.',
       measureType: 'School facilities general obligation bond',
       voteThreshold: '55%',
       fiscalImpact:

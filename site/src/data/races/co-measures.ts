@@ -44,6 +44,8 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be an amendment to the Colorado Constitution requiring law enforcement to notify the Department of Homeland Security when a person is charged with either a violent crime or any crime if the person has a prior felony conviction, if law enforcement cannot determine that the person is lawfully present in the United States?',
+      yesMeans: 'Requires law enforcement to notify federal immigration authorities within 72 hours of charging someone with a violent crime, or any crime after a felony, if legal status is unconfirmed.',
+      noMeans: 'Keeps current law, which allows cooperation on federal criminal matters but limits state and local help with civil immigration enforcement and requires no such notification.',
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -119,6 +121,8 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be an amendment to the Colorado Constitution creating new law granting the right for consumers to purchase natural gas for cooking or heating in homes or businesses and for distributors and utilities to sell natural gas to consumers?',
+      yesMeans: 'Adds a constitutional right for consumers to buy natural gas for cooking and heating, and for utilities to sell it, which could limit state and local gas rules.',
+      noMeans: 'Keeps current law, under which the PUC, state air regulators and local building codes can regulate or restrict natural gas use and hookups.',
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -193,6 +197,8 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be an amendment to the Colorado Constitution creating a constitutional right to hunt, fish, and harvest fish and wildlife by traditional methods, except non-game, endangered, or federally protected species; establishing hunting and fishing as the preferred means of managing fish and wildlife populations; and preserving the state’s right to regulate hunting, fishing, and wildlife management if necessary for sound scientific conservation, public safety, or to preserve future hunting and fishing opportunities? (condensed)',
+      yesMeans: 'Creates a constitutional right to hunt and fish by traditional methods and makes them the preferred way to manage wildlife, while allowing science- and safety-based regulation.',
+      noMeans: 'Keeps hunting and fishing governed by existing state and federal law and Parks and Wildlife rules, with no constitutional right and no preferred management method.',
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -268,6 +274,8 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be an amendment to the Colorado Constitution requiring a voter to sign and include the last four digits of their Social Security number or their Colorado driver’s license or identification card number on the outside of their mail ballot for any federal or state election; allowing the voter to correct missing or incorrect information, including with alternative forms of identification; and prohibiting a county clerk from counting the mail ballot unless the problem is fixed?',
+      yesMeans: 'Requires mail voters in state and federal elections to add the last four digits of their SSN or Colorado ID number to the envelope; uncorrected ballots are not counted.',
+      noMeans: 'Keeps the current system, in which election judges verify mail ballots by matching the voter’s signature alone, with no ID number required on the envelope.',
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -344,6 +352,8 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be an amendment to the Colorado Constitution concerning ballot question language, requiring all state and local ballot questions to be written in plain language and at no more than an 8th grade reading level, and prohibiting a state statute from requiring language that conflicts with these requirements in ballot questions for citizen-initiated measures?',
+      yesMeans: 'Requires every state and local ballot question to be in plain language at no more than an 8th-grade reading level, and voids laws requiring conflicting language in initiative titles.',
+      noMeans: 'Keeps the current plain-language rule for ballot titles with no grade-level standard, along with required wording on the fiscal effects of tax-change initiatives.',
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact: 'Minimal added workload for the state Title Board to adopt and apply a reading-level standard (Blue Book).',
@@ -416,6 +426,8 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be an amendment to the Colorado Constitution concerning congressional redistricting, reenacting the current process in the constitution and prohibiting modifications to a final map unless at least three public meetings are held, the modifications do not divide communities of interest or purposefully favor one political party, and are approved by the congressional redistricting commission and the Colorado Supreme Court? (condensed)',
+      yesMeans: 'Requires approval by the independent commission and the Colorado Supreme Court, after three public hearings, for any change to Colorado’s congressional map between census redraws.',
+      noMeans: 'Keeps the current process, in which the independent commission redraws congressional districts after each census, with no specific rules for mid-decade changes.',
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -489,6 +501,11 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'SHALL STATE TAXES BE INCREASED $2.7 BILLION ANNUALLY, to increase or improve public services including K-12 education, health care, and early child care and education, by replacing the uniform state income tax rate with a graduated income tax structure for individuals, estates, trusts, and corporations, while keeping the 4.4% rate on income from the sale of a principal residence, and authorizing the state to retain and spend the increased revenue as a voter-approved revenue change? (condensed)',
+      yesMeans: 'Replaces the 4.4% flat income tax with rates of 3.7% to 8.4%, cutting taxes under about $500,000 of income and raising about $2 billion yearly for schools, health care and child care.',
+      noMeans: 'Keeps the constitutional requirement that all income be taxed at one flat rate, now 4.4%, with no new revenue for these programs.',
+      related: [
+        { raceId: 'co-prop-136', note: 'If both pass, Proposition 136’s 4.4% cap conflicts with this measure’s higher brackets; the one with more votes generally controls, but a court or the Legislature may have to decide.' },
+      ],
       measureType: 'Initiated constitutional amendment and statute (TABOR tax increase)',
       voteThreshold: 'Simple majority (Blue Book: limited to repealing constitutional language)',
       fiscalImpact:
@@ -570,6 +587,11 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall state investment in K-12 public education increase two percent each year for the next ten years, with investments used to increase teacher pay, improve teacher retention, lower class sizes, and increase access to career and technical courses, without raising taxes but instead funded by raising the annual limit on state fiscal year spending only by the amount spent on public K-12 education as a voter-approved revenue change, and requiring an annual publicly released, independent audit to show how the new investments are spent?',
+      yesMeans: 'Raises the state’s TABOR revenue limit by its peak K-12 spending, letting Colorado keep refunds (an estimated $330 million and $521 million in the first two years) for schools and children’s programs.',
+      noMeans: 'Keeps the current TABOR limit, so revenue above it is still refunded to taxpayers, and leaves K-12 and children’s program funding at levels the Legislature sets.',
+      related: [
+        { raceId: 'co-prop-137', note: 'If both pass, Proposition 137 takes sporting-goods sales tax out of TABOR-limited revenue, which reduces how much this measure actually lets the state keep.' },
+      ],
       measureType: 'Legislatively referred statute (TABOR voter-approved revenue change)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -651,6 +673,8 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be a change to the Colorado Revised Statutes concerning criminal penalties for fentanyl and certain synthetic opioids, increasing the felony classifications for distribution, manufacturing, dispensing, sale, or possession; creating mandated treatment for certain drug felonies based on possession amount; and narrowing or eliminating exemptions for crimes related to fentanyl and drug-related deaths? (condensed)',
+      yesMeans: 'Makes possessing any amount of fentanyl a felony, requires 8 to 32 years in prison for distributing any amount, and removes some options to reduce penalties.',
+      noMeans: 'Keeps possession of under 1 gram a misdemeanor, keeps distribution penalties tiered by amount, and keeps reductions for Good Samaritan cases and people unaware a drug contained fentanyl.',
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -725,6 +749,8 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be a change to the Colorado Revised Statutes modifying existing law concerning human trafficking of a minor for sexual servitude, expanding it to include knowingly trading anything of monetary value to buy or sell sexual activity with a minor and increasing the penalty to life in prison without parole or release?',
+      yesMeans: 'Makes child sex trafficking a class 1 felony with mandatory life without parole, and expands the crime to anyone who trades anything of value to buy or sell sex with a minor.',
+      noMeans: 'Keeps child sex trafficking a class 2 felony punishable by 8 to 48 years in prison plus five years of mandatory parole, with judges setting the sentence.',
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -800,6 +826,8 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be a change to the Colorado Revised Statutes restricting participation in all K-12 and collegiate school sports based on the participant’s biological sex; requiring each school or intramural team to be designated male, female, or coeducational; allowing females on male teams when no female team exists; barring complaints or penalties against schools for keeping separate female teams; and authorizing the commissioner of education to enforce it for K-12 districts? (condensed)',
+      yesMeans: 'Requires every K-12 and college team, including intramurals, to be designated male, female or coed by biological sex, and limits students to their sex’s teams or coed teams.',
+      noMeans: 'Lets schools, districts and athletic associations keep setting eligibility policies under current state and federal law, including Colorado’s anti-discrimination protections for gender identity.',
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -875,6 +903,8 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be a change to the Colorado Revised Statutes prohibiting any health-care professional or other person from knowingly performing, prescribing, administering, or providing any surgery to a minor for the purpose of altering the minor’s biological sex characteristics, and prohibiting the use of state or federal funds, Medicaid reimbursement, or insurance coverage to pay for this type of surgery? (condensed)',
+      yesMeans: 'Bans surgery on minors to alter biological sex characteristics in response to their perception of sex or gender, and bars public funds and insurance from paying for it.',
+      noMeans: 'Keeps Colorado law protecting access to these surgeries for minors when medically necessary and allowing public and private insurance to cover them.',
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -949,6 +979,11 @@ export const RACES_CO_MEASURES: Race[] = [
     ],
     measure: {
       question: 'Shall there be a change to the Colorado Revised Statutes capping the state income tax rate at 4.4% of federal taxable income for individuals and corporations?',
+      yesMeans: 'Sets today’s 4.4% rate as the maximum state income tax rate in statute starting in 2027, which would conflict with Amendment 87’s higher brackets if both pass.',
+      noMeans: 'Keeps the current 4.4% rate without a statutory cap; any future rate increase would still need voter approval under TABOR.',
+      related: [
+        { raceId: 'co-amendment-87', note: 'If both pass, this cap conflicts with Amendment 87’s rates above $500,000; the measure with more votes generally controls, though a court or the Legislature may have to decide.' },
+      ],
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'No fiscal impact: the cap equals the current rate (Blue Book).',
@@ -1019,6 +1054,11 @@ export const RACES_CO_MEASURES: Race[] = [
     measure: {
       question:
         'Shall there be a change to the Colorado Revised Statutes to increase water and land conservation funding without raising taxes, through a voter-approved revenue change allowing the state to keep and spend a portion of state sales tax revenue on sporting goods and equipment to conserve Colorado’s water, land, and forests, prevent wildfires, and support outdoor recreation, and reducing this funding if necessary to preserve certain tax credits? (condensed)',
+      yesMeans: 'Dedicates the state sales tax already collected on sporting goods, about $175 million a year, to conservation, wildfire prevention and outdoor recreation, and exempts it from the TABOR limit.',
+      noMeans: 'Keeps that sales tax money in the state’s general budget under the TABOR limit, where lawmakers spend it each year or it is refunded in surplus years.',
+      related: [
+        { raceId: 'co-prop-nn', note: 'If both pass, this measure takes sporting-goods sales tax out of TABOR-limited revenue, which reduces how much Proposition NN actually lets the state keep.' },
+      ],
       measureType: 'Initiated statute (TABOR voter-approved revenue change)',
       voteThreshold: 'Simple majority',
       fiscalImpact:

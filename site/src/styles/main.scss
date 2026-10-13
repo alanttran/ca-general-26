@@ -1423,6 +1423,46 @@ main {
   color: var(--rad-text-muted);
 }
 
+.measure__means {
+  margin: 0 0 0.75rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.measure__means-row {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: baseline;
+  line-height: var(--lh-body);
+
+  dt {
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  &--yes dt {
+    color: var(--rad-accent);
+  }
+
+  &--no dt {
+    color: var(--rad-warn);
+  }
+}
+
+.measure__related {
+  margin: 0 0 0.75rem;
+}
+
+.measure__related-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  line-height: var(--lh-body);
+}
+
 .measure__cost {
   margin: 0 0 1rem;
   padding: 0.65rem 0.85rem;

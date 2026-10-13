@@ -571,7 +571,9 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
     ],
     measure: {
       question:
-        'Shall Murrieta Valley Unified School District issue up to $359,000,000 of general obligation bonds to repair and modernize school facilities, with a citizens’ oversight committee and annual audits? (Summary based on the district’s description and the Registrar’s measure notice; see the notice for the exact printed text.)',
+        'Without increasing current tax rates, to fix deteriorating roofs, plumbing, HVAC, electrical, safety systems, and repair/upgrade aging classrooms, science labs, career technology and school facilities to support college/career readiness in math, science, technology, arts, engineering, and skilled trades, shall Murrieta Valley Unified School District’s measure be adopted authorizing $359,000,000 in bonds at legal rates, levying $60 per $100,000 assessed value ($22 million annually) while bonds are outstanding, with citizen oversight, audits and all money locally controlled?',
+      yesMeans: 'Authorizes $359 million in school bonds for roof, plumbing, HVAC and classroom repairs, repaid by a property tax of about $60 per $100,000 of assessed value while the bonds are outstanding.',
+      noMeans: 'Blocks the new bonds; existing bond taxes continue until older bonds are paid off, and the repairs would need other funding.',
       measureType: 'School facilities bond (general obligation, Prop 39)',
       voteThreshold: '55%',
       fiscalImpact:
@@ -637,6 +639,8 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
     measure: {
       question:
         'Riverside County Traffic Relief, Pothole/Road Repair Investment Renewal: shall the existing one-half percent transactions and use (sales) tax for transportation continue beyond its 2039 expiration until repealed by voters, with annual audits and an independent taxpayers oversight committee? (Summary; see the Registrar’s measure notice for the exact printed text.)',
+      yesMeans: 'Continues Riverside County’s existing half-cent transportation sales tax past its 2039 expiration until voters repeal it, about $280 million a year for highways, local roads and transit.',
+      noMeans: 'Keeps the current half-cent transportation tax until it expires in 2039, when it ends unless voters approve a renewal later.',
       measureType: 'Special tax (county transportation transactions and use tax), placed by the Riverside County Transportation Commission',
       voteThreshold: '2/3',
       fiscalImpact:

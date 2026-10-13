@@ -478,7 +478,9 @@ export const RACES_BURBANK: Race[] = [
     ],
     measure: {
       question:
-        'Condensed from city materials: to help maintain essential city services, shall Burbank’s hotel guest tax be increased from 10% to 12%, generating about $3,000,000 a year, until ended by voters?',
+        'To maintain services including fire, paramedic, police, 911 response; prepare for/respond to wildfires/other disasters; prevent property crimes; keep public areas/neighborhoods clean/safe; address homelessness; support youth programs, senior services, other general city services; shall the measure increasing Burbank’s transient occupancy tax, paid only by hotel/motel guests, from 10% to 12%, providing approximately $3,000,000 annually until ended by voters, requiring audits, spending disclosures, funds used locally, be adopted?',
+      yesMeans: 'Raises Burbank’s hotel guest tax from 10% to 12% starting Jan. 1, 2027, adding about $3 million a year to the general fund for any city purpose until voters end it.',
+      noMeans: 'Keeps Burbank’s hotel guest tax at 10%, and the city goes without the estimated $3 million a year in added general fund revenue.',
       measureType: 'City ordinance (general tax increase on hotel stays)',
       voteThreshold: 'Simple majority (general tax, per the City Attorney’s impartial analysis)',
       fiscalImpact: 'The city estimates about $3 million a year in added general fund revenue; the increase would take effect Jan. 1, 2027 if approved.',
@@ -541,7 +543,12 @@ export const RACES_BURBANK: Race[] = [
     ],
     measure: {
       question:
-        'Condensed from city materials: shall Burbank’s charter be amended to remove the requirement that City Council members be elected at large, so the method of electing Council members can be set by ordinance?',
+        'Shall the Burbank City Charter be amended to remove the requirement for at-large elections of City Council members and permit the City’s electoral system to be specified by ordinance adopted by the City Council or by the voters by initiative?',
+      yesMeans: 'Removes the charter’s at-large election requirement so the Council or voters can set the election system by ordinance; districts start only if Measure CD also passes.',
+      noMeans: 'Keeps the charter rule that all Council members are elected citywide, so Measure CD cannot take effect even if it wins a majority.',
+      related: [
+        { raceId: 'burbank-measure-cd', note: 'Measure CD adopts the district map, but it takes effect only if this charter amendment also passes, so voters who want districts need Yes on both.' },
+      ],
       measureType: 'Charter amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'The city says the amendment itself has no direct cost and could reduce the risk of costly future voting-rights litigation; see the City Attorney’s impartial analysis.',
@@ -603,7 +610,12 @@ export const RACES_BURBANK: Race[] = [
     ],
     measure: {
       question:
-        'Condensed from city materials: shall an ordinance be adopted changing City Council elections from at-large to by-district elections in single-member districts, taking effect only if Measure CC (the Charter amendment) also passes?',
+        'Shall the Ordinance be adopted adding Chapter 3 to Title 2 of the Municipal Code changing the City’s electoral system for City Council elections from at-large to by-district elections in the districts reflected in Map 130?',
+      yesMeans: 'Switches Council elections to five single-member districts under Map 130, starting with Districts 2 and 4 in 2028, but only if Measure CC also passes.',
+      noMeans: 'Keeps citywide at-large Council elections, in which every voter can vote for every seat, even if Measure CC passes.',
+      related: [
+        { raceId: 'burbank-measure-cc', note: 'This ordinance takes effect only if Measure CC, the charter amendment removing the at-large requirement, also passes.' },
+      ],
       measureType: 'City ordinance (conditional on Measure CC)',
       voteThreshold: 'Simple majority, but it cannot take effect unless Measure CC also passes',
       fiscalImpact: 'See the City Attorney’s impartial analysis; no dollar estimate was found in the materials reviewed.',

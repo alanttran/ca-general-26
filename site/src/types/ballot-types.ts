@@ -187,8 +187,21 @@ export interface MeasureReadingLink {
   debateBreakdown?: DebateBreakdown;
 }
 
+/** Another measure on the same ballot that interacts with this one (competing, conflicting or funding-linked). */
+export interface RelatedMeasure {
+  raceId: string;
+  /** One sentence on how the two interact, e.g. “If both pass, the one with more Yes votes controls.” */
+  note: string;
+}
+
 export interface MeasureBlock {
   question: string;
+  /** Plain-language effect of a Yes vote, one sentence starting with a verb (“Raises…”, “Keeps…”). */
+  yesMeans?: string;
+  /** Plain-language effect of a No vote, including what stays the same. */
+  noMeans?: string;
+  /** Measures to read alongside this one; listed both ways. Hidden when the other measure isn’t on this ZIP’s ballot. */
+  related?: RelatedMeasure[];
   /** e.g. `Legislative constitutional amendment`, `Initiative statute`, `Bond`, `Charter amendment`. */
   measureType?: string;
   /** Passing threshold when not a simple majority, e.g. `55%` (school bonds) or `2/3`. */

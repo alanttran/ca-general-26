@@ -47,6 +47,8 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
     measure: {
       question:
         'Shall an ordinance be adopted to provide a one-time exemption from the City’s special documentary transfer tax (Proposition ULA) for residential properties that were damaged or destroyed in the Palisades Fire and are sold within five years of the date of the Fire?',
+      yesMeans: 'Exempts or refunds the ULA tax on the first sale of a home damaged or destroyed in the Palisades Fire, if sold by its Jan. 7, 2025 owner by Jan. 6, 2030.',
+      noMeans: 'Keeps the 4% to 5.5% ULA tax on fire-damaged properties sold above about $5.4 million, with that money still going to affordable housing and tenant aid.',
       measureType: 'Ordinance (tax exemption; placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -126,6 +128,8 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
     measure: {
       question:
         'Shall the City Charter be amended to: establish a capital infrastructure plan and two-year budget cycle for the City; increase the authority of the Director of Public Works and allow for the elimination of or changes to the Board of Public Works; remove restrictions prohibiting the City from engaging in business enterprises and mortgaging City-owned property; and change certain contracting rules and procedures?',
+      yesMeans: 'Amends the Charter to add a two-year budget and a capital infrastructure plan, give the Public Works Director more power, allow mortgaging City property and business ventures, and change contracting rules.',
+      noMeans: 'Keeps the one-year budget, the full-time Board of Public Works, the bans on mortgaging City property and on commercial enterprises, and current contracting rules.',
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -193,6 +197,11 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
     measure: {
       question:
         'Shall the City Charter be amended to: establish a Neighborhood Appeals Commission to replace Area Planning Commissions and establish a process for City Council review of Neighborhood Appeals Commission and City Planning Commission decisions; change the timing and process for City Council action on certain planning decisions; grant the Planning Department the authority to investigate, hear, and determine applications for quasi-judicial review; and allow for changes to floor area regulations by ordinance?',
+      yesMeans: 'Amends the Charter to replace seven Area Planning Commissions with one citywide appeals body, set Council deadlines on land-use cases, and let the Council change the density cap by ordinance.',
+      noMeans: 'Keeps the seven Area Planning Commissions, current Council review of planning decisions, appeal rights in the Charter, and the floor area limit of 13 times buildable area.',
+      related: [
+        { raceId: 'la-measure-ee', note: 'Both rewrite Charter Section 245 on Council review of commission actions: EE replaces the general five-meeting-day window with 15 calendar days, and PL rewrites the planning-commission exception.' },
+      ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -265,6 +274,11 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
     measure: {
       question:
         'Shall the City Charter be amended to: increase the authority of the Police Department Inspector General and Fire Department Independent Assessor; prohibit Ethics Commissioners from running for certain elected offices for five years; increase penalties for campaign finance violations; require City Council to meet at least weekly rather than the currently required three days per week; increase referendum petition signature requirements; and make other changes regarding ethics, elections and governance?',
+      yesMeans: 'Strengthens police and fire watchdogs, raises campaign-finance penalties, bars ethics commissioners from running for five years, requires Council meetings weekly instead of three days a week, and raises referendum signatures to 15%.',
+      noMeans: 'Keeps current ethics penalties and watchdog rules, the three-day-a-week Council meeting requirement, and the 10% signature threshold for referendums.',
+      related: [
+        { raceId: 'la-measure-pl', note: 'Both rewrite Charter Section 245 on Council review of commission actions: EE sets the general window at 15 calendar days, and PL rewrites the exception for planning commissions.' },
+      ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -330,6 +344,11 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
     measure: {
       question:
         'Shall the City Charter be amended to increase the minimum budget allocated to the Department of Recreation and Parks, phased in over ten years until it is double the current minimum budget allocation, with exceptions for fiscal emergencies?',
+      yesMeans: 'Doubles the Charter’s minimum General Fund budget for Recreation and Parks over ten years, from 0.0325% to 0.065% of assessed property value, with no new tax, so other services get less.',
+      noMeans: 'Keeps the parks minimum at 0.0325% of assessed property value, leaving any added parks money to the Council’s yearly budget choices.',
+      related: [
+        { raceId: 'la-measure-fd', note: 'FD’s tax can be levied only if LAFD keeps its 10-year average share of discretionary General Fund money, and this measure’s larger parks set-aside draws on that same General Fund.' },
+      ],
       measureType: 'Charter amendment (budget set-aside; placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -405,6 +424,8 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
     measure: {
       question:
         'Shall the City Charter be amended to: require the Harbor Department to allocate funds for waterfront public access projects; require disclosure of workforce impacts for certain Harbor Department leases and agreements; increase maximum terms for certain leases; and change the composition requirement for the Airport Commission?',
+      yesMeans: 'Allows 66-year airport and DWP leases, requires five of seven airport commissioners from near LAX or Van Nuys, mandates Port waterfront spending, and requires workforce-impact disclosure for some Port projects.',
+      noMeans: 'Keeps the 50-year cap on airport and DWP leases, one commissioner each from near LAX and Van Nuys, and Port waterfront spending as a practice rather than a Charter rule.',
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -469,6 +490,8 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
     measure: {
       question:
         'Shall the Los Angeles City Charter be amended to clarify the campaign finance rules for Board of Education elections and allow for changes by ordinance?',
+      yesMeans: 'Removes the Charter’s separate campaign-finance section for LAUSD board races, applies the mayoral rules minus matching funds and contractor limits, and lets the Council change them by ordinance.',
+      noMeans: 'Keeps school board campaign-finance rules in their own Charter section, changeable only by a citywide Charter vote.',
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -533,6 +556,11 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
     measure: {
       question:
         'Shall an ordinance providing funding for the Los Angeles Fire Department, including for hiring firefighters, paramedics, and other staff, purchasing and maintaining vehicles and equipment, building and upgrading fire stations, and brush clearance; by imposing a one-half percent (0.5%) sales tax in the City of Los Angeles; with annual audits and a citizen’s oversight committee; generating approximately $345 million annually until ended by voters; be adopted?',
+      yesMeans: 'Adds a permanent half-cent City sales tax, raising the rate to 10.75% and about $345 million a year for Fire Department staffing, equipment, stations and brush clearance, with audits and oversight.',
+      noMeans: 'Keeps the City sales tax at 10.25%, and the Fire Department continues to rely on its share of the General Fund through the regular budget.',
+      related: [
+        { raceId: 'la-measure-prk', note: 'PRK would move a growing share of the General Fund to parks, which could make it harder to keep LAFD at the baseline share this tax requires before it can be levied.' },
+      ],
       measureType: 'Citizen initiative ordinance (special sales tax dedicated to the Fire Department)',
       voteThreshold: 'Simple majority',
       fiscalImpact:

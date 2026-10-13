@@ -13,4 +13,7 @@ async function mount(): Promise<void> {
 }
 
 void mount();
-window.addEventListener('popstate', () => void mount());
+// Back/forward between ZIPs re-renders; in-page #race links only change the hash, so the page (and open races) stays put.
+window.addEventListener('popstate', () => {
+  if (resolveBallotZip(location.search) !== root!.dataset.zip) void mount();
+});

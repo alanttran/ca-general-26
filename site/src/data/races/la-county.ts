@@ -268,6 +268,8 @@ export const RACES_LA_COUNTY: Race[] = [
     measure: {
       question:
         'Shall the Los Angeles County Charter be amended to prohibit strikes by district attorney investigators, medical examiners, lifeguards, their supervisors, and nonadministrative civilian employees of the Fire, Sheriff’s and Medical Examiner departments; reiterate good-faith bargaining requirements; and create impartial binding arbitration for certified public safety employee organizations?',
+      yesMeans: 'Bans strikes by certain county public safety workers and sends unresolved contract disputes for about 17,000 employees to a binding arbitration panel instead of letting supervisors impose terms.',
+      noMeans: 'Keeps the current process, in which the Board of Supervisors can impose its final offer when bargaining with public safety unions reaches an impasse.',
       measureType: 'Charter amendment (placed by Board of Supervisors)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -333,6 +335,8 @@ export const RACES_LA_COUNTY: Race[] = [
     measure: {
       question:
         'Shall the Los Angeles County Charter be amended to provide greater independence and structure for the County Ethics Commission, the Office of Ethics Compliance and the Ethics Compliance Officer, and to continue the County’s community investment and alternatives-to-incarceration commitment?',
+      yesMeans: 'Writes the Ethics Commission’s independence, structure and minimum budget into the County Charter and restores the 10% set-aside for community investment and alternatives to incarceration.',
+      noMeans: 'Leaves the Ethics Commission’s independence and funding to Board decisions, and leaves the Measure J set-aside out of the Charter after Measure G accidentally removed it.',
       measureType: 'Charter amendment (placed by Board of Supervisors)',
       voteThreshold: 'Simple majority',
       fiscalImpact:

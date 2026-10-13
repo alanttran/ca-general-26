@@ -954,6 +954,8 @@ export const RACES_CO_DENVER: Race[] = [
     measure: {
       question:
         'Shall the Charter of the City and County of Denver be amended to expressly clarify that the Auditor’s Office may continue to enforce wage laws, worker protection laws, and other workplace rights laws in accordance with ordinances passed by City Council?',
+      yesMeans: 'Adds a line to the city charter confirming that the Auditor’s Office enforces wage, worker-protection and workplace-rights laws as City Council sets by ordinance.',
+      noMeans: 'Leaves the charter unchanged; the Auditor’s Office keeps enforcing wage laws under existing ordinances, but that role stays unstated in the charter.',
       measureType: 'Charter amendment (referred by City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'Department of Finance: no anticipated fiscal impact, because the Auditor’s Office already performs this function.',
@@ -1021,6 +1023,8 @@ export const RACES_CO_DENVER: Race[] = [
     measure: {
       question:
         'Shall the Charter of the City and County of Denver be amended to adjust the City and County’s budget and appropriation process, and in connection therewith, allowing the City Council to adopt a two-year budget planning and adoption process and modernizing or repealing certain charter sections?',
+      yesMeans: 'Lets City Council switch to two-year budgets by ordinance, moves the mayor’s budget release to early September, and requires mid-year cut plans when revenue or spending misses forecasts.',
+      noMeans: 'Keeps Denver’s one-year budget, the Sept. 15 mayoral budget deadline, the July 1 preliminary estimate, and no charter triggers for mid-year shortfalls.',
       measureType: 'Charter amendment (referred by City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'About $50,000 one-time to reconfigure budget publishing ($20K) and development ($30K) systems; no cost from the earlier budget release date.',
@@ -1089,6 +1093,8 @@ export const RACES_CO_DENVER: Race[] = [
     measure: {
       question:
         'Shall the Charter of the City and County of Denver be amended to modernize the Civil Service Commission and Department of Safety by removing outdated language, giving City Council the ability to add duties via code, and providing for an extension of probation when required for medical, military, or other approved leave?',
+      yesMeans: 'Rewrites charter rules for the Civil Service Commission and police and fire hiring and discipline, dropping the commissioner citizenship rule and command-staff caps and letting council add duties by ordinance.',
+      noMeans: 'Keeps current charter rules, including the commissioner citizenship requirement, caps of 18 police and 7 fire command posts, and the 15-day disciplinary review window.',
       measureType: 'Charter amendment (referred by City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'Department of Finance: removing command-staff caps would have a de minimis impact if authorized strength does not change.',
@@ -1157,6 +1163,8 @@ export const RACES_CO_DENVER: Race[] = [
     measure: {
       question:
         'Shall the City and County of Denver approve the terms of a twenty-year franchise contract, starting January 1, 2027, with Public Service Company of Colorado (Xcel Energy) to continue its program for undergrounding overhead electrical lines, maintaining infrastructure safety, and partnering with the City for emergency management coordination, and to require that Xcel Energy continue to pay the City for reasonable use of public rights-of-way and other City property necessary to provide safe and reliable utility services for the benefit of the City, its residents, and its businesses?',
+      yesMeans: 'Approves a 20-year Xcel Energy franchise from 2027, keeping the 3% fee on Denver electric and gas revenues, Xcel-paid line relocations, and about $10 million a year for undergrounding.',
+      noMeans: 'Rejects this deal; the current franchise still expires at the end of 2026, and the city and Xcel would have to extend it or negotiate a new one.',
       measureType: 'Franchise approval (referred by City Council; Colo. Const. art. XX, § 4)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -1172,7 +1180,7 @@ export const RACES_CO_DENVER: Race[] = [
         '20-year term, 2027–2046; 3% fee on electric and gas revenues in Denver.',
         '1% of electric revenues (about $10 million a year) held by Xcel to bury lines at the city’s direction.',
         'Xcel covers major utility relocations for city construction (valued at about $150 million a year).',
-        'Companion agreement: $2.5 million upfront plus $3.3 million over 20 years in shareholder-funded affordability aid; $250,000 a year for energy navigators; audits every three years.',
+        'Companion agreement: $2.5 million upfront plus $125,000 a year (about $2.5 million over 20 years) in shareholder-funded affordability aid; $250,000 a year for energy navigators; audits every three years.',
         'If rejected, the city and Xcel could extend the old agreement while renegotiating.',
       ],
       argumentsFor: [
@@ -1230,6 +1238,8 @@ export const RACES_CO_DENVER: Race[] = [
     measure: {
       question:
         'Shall the voters of the City and County of Denver adopt an ordinance prohibiting the force-feeding of birds and, in connection therewith, prohibiting the sale of products derived from force-feeding birds, including foie gras?',
+      yesMeans: 'Bans force-feeding birds and selling products from force-fed birds, mainly foie gras, in Denver starting July 1, 2027, with fines up to $5,000.',
+      noMeans: 'Keeps foie gras and other products from force-fed birds legal to sell in Denver, with no city rule on force-feeding.',
       measureType: 'Initiated ordinance (citizen petition)',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'Department of Finance: no anticipated fiscal impact; public health workload would be minimal and absorbed.',
@@ -1298,6 +1308,8 @@ export const RACES_CO_DENVER: Race[] = [
     measure: {
       question:
         'Shall Denver Public Schools (School District No. 1) taxes be increased up to $44 million in 2026 (for collection in 2027) and annually thereafter for educational purposes, including increasing educator pay; offering more career and technical education courses in high-demand fields; and student mental health and special education, by a mill levy that, combined with other voter-approved overrides, equals the amount permitted by C.R.S. § 22-54-108(3)(b)(VI)? (condensed)',
+      yesMeans: 'Raises DPS property taxes by up to $44 million a year, with no end date, for $1,750 staff raises, career and technical education, mental health and special education.',
+      noMeans: 'Keeps DPS property taxes at current levels, with no new money for these raises and programs beyond the district’s existing budget and earlier voter-approved overrides.',
       measureType: 'School district mill levy override (TABOR tax increase; Colo. Const. art. X, § 20)',
       voteThreshold: 'Simple majority',
       fiscalImpact:

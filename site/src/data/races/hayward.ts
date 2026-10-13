@@ -954,6 +954,8 @@ export const RACES_HAYWARD: Race[] = [
     measure: {
       question:
         'HAYWARD BUSINESS LICENSE TAX MODERNIZATION: Shall the measure updating the Hayward Business License Tax for the first time since 1978, to support general city services, including neighborhood police protection, firefighting, 911 response, libraries, and pothole repair, generating an additional $12 million annually until repealed, with a minimum tax of $60 and rates from $.30 to $3.75 per $1,000 of gross receipts, with higher rates for higher-grossing businesses, as stated in the ordinance, be adopted?',
+      yesMeans: 'Replaces Hayward’s 1978 business license tax with a gross-receipts tax of $0.30 to $3.75 per $1,000 ($60 minimum) from January 2027, raising about $12 million a year for general services.',
+      noMeans: 'Keeps the 1978 business license fee schedule, so businesses pay what they do now and the city does not get the estimated $12 million a year.',
       measureType: 'City ordinance (general tax on businesses)',
       voteThreshold: 'Simple majority (50% + 1)',
       fiscalImpact:
@@ -1026,6 +1028,8 @@ export const RACES_HAYWARD: Race[] = [
     measure: {
       question:
         'To prevent major service cuts to BART and other transit, avoid increased traffic, and reduce pollution by: Preserving BART, Caltrain, VTA, SamTrans, AC Transit, Muni, other transit for everyone, including workers, students, seniors, persons with disabilities; Supporting transit safety, cleanliness, affordability, reliability; Repairing targeted roads/potholes; Requiring financial transparency, oversight, accountability; shall the measure enacting a 0.5% (Alameda, Contra Costa, San Mateo, Santa Clara counties), and 1% (San Francisco) sales tax for 14 years generating approximately $980,000,000 annually, be adopted?',
+      yesMeans: 'Adds a 0.5% sales tax in Alameda and Santa Clara counties (1% in San Francisco) for 14 years, raising about $980 million a year for BART, AC Transit, Caltrain, VTA and others.',
+      noMeans: 'Keeps current sales tax rates, and BART, AC Transit, Caltrain and other agencies must close projected deficits through service cuts or other funding.',
       measureType: 'Citizen initiative authorized by SB 63 (multi-county transit sales tax)',
       voteThreshold: 'Simple majority of the combined five-county vote',
       fiscalImpact:

@@ -34,6 +34,10 @@ export const RACES_PROPS_B: Race[] = [
     measure: {
       question:
         'Creates loan program for middle-income buyers of qualified new homes. Initiative statute. Authorizes $25 billion in bonds to offer eligible buyers fixed-rate mortgages for up to 17% of the price of a newly built home priced below about $1.5 million; buyers must be California residents, owner-occupants, within income limits, and put at least 3% down; bonds repaid by mortgage payments, not the State.',
+      yesMeans:
+        'Requires CalHFA to create a program, funded by up to $25 billion in borrower-repaid revenue bonds, lending middle-income buyers up to 17% of a new home’s price.',
+      noMeans:
+        'Leaves the state with no obligation to create this program; existing CalHFA down-payment help and current construction-defect claim rules stay the same.',
       measureType: 'Initiative statute (revenue bonds)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -137,12 +141,16 @@ export const RACES_PROPS_B: Race[] = [
     measure: {
       question:
         'Authorizes bonds for immunology medical research. Initiative statute. Authorizes $8.4 billion in general obligation bonds for immunology and immunotherapy research; half to a single University of California–affiliated nonprofit medical research institute, half to research grants.',
+      yesMeans:
+        'Lets the state borrow $8.4 billion for immunology research, half to one UC-affiliated institute and half to grants, costing $500–600 million a year for about 20 years.',
+      noMeans:
+        'Keeps the state from borrowing the $8.4 billion; immunology research continues with existing federal, university and private funding, and no new state debt payments.',
       measureType: 'Initiative statute (general obligation bond)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
         'LAO: Increased state cost of $500 million to $600 million annually for about 20 years to repay the research bond, with some or all of the cost offset if the funded research generates revenue. Interest makes the total about 10% more than paying cash, after adjusting for inflation.',
       supporters:
-        'Michael J. Fox Foundation; Alzheimer’s Los Angeles; Kidney Cancer Association; American Nurses Assoc\\CA',
+        'Michael J. Fox Foundation; Alzheimer’s Los Angeles; Kidney Cancer Association; American Nurses Association/California',
       opponents: 'Robert M. Kaplan, Ph.D.',
       voterConnection: [
         'Every taxpayer pays through the General Fund, which also funds schools, Medi-Cal, and prisons. The cost is about a quarter of one percent of that budget.',
@@ -247,6 +255,10 @@ export const RACES_PROPS_B: Race[] = [
     measure: {
       question:
         'Prohibits citizens from voting unless they present government-issued identification. Initiative constitutional amendment. Invalidates mail ballots without the last four digits of a designated government-issued identification number on the envelope; prohibits in-person voting without presenting government-issued identification.',
+      yesMeans:
+        'Requires government ID to vote in person and the last four digits of a designated ID number on every mail-ballot envelope, or the ballot isn’t counted; free state ID offered.',
+      noMeans:
+        'Keeps current rules: voters prove identity when registering, mail ballots are verified by signature match, and most in-person voters need no ID.',
       measureType: 'Initiative constitutional amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -373,8 +385,22 @@ export const RACES_PROPS_B: Race[] = [
     measure: {
       question:
         'Imposes one-time tax on certain taxpayers. Initiative constitutional amendment and statute. Imposes a 5% tax on certain taxpayers with assets over $1 billion; revenue primarily for health care; exempts revenue from constitutional school-funding and spending-limit requirements.',
+      yesMeans:
+        'Imposes a one-time 5% tax on the net worth of billionaires who lived in California on Jan. 1, 2026, due in 2027, with 90% of revenue going to health care.',
+      noMeans:
+        'Keeps California without a wealth tax; billionaires continue paying existing income and other taxes, and no new revenue goes to health care from this source.',
+      related: [
+        {
+          raceId: 'prop-41',
+          note: 'If both pass and Prop 41 gets more Yes votes, courts could find they conflict and void all of Prop 40, even with majority approval (LAO).',
+        },
+        {
+          raceId: 'prop-42',
+          note: 'If both pass and Prop 42 gets more Yes votes, courts could find they conflict and void all of Prop 40, even with majority approval (LAO).',
+        },
+      ],
       measureType: 'Initiative constitutional amendment and statute',
-      voteThreshold: 'Simple majority (but see Props 41 and 42: if either receives more Yes votes, Prop 40 is nullified)',
+      voteThreshold: 'Simple majority (but see Props 41 and 42: if either receives more Yes votes, courts could void Prop 40)',
       fiscalImpact:
         'LAO: Temporary revenue increase of tens of billions of dollars spread over several years from wealth tax on billionaires. Possible ongoing decrease of less than $1 billion per year in income tax revenue from billionaires (for example, if some leave California). Administration costs of tens of millions per year for several years, paid from the tax.',
       supporters: 'US Senator Bernie Sanders; SEIU United Healthcare Workers West',
@@ -383,7 +409,7 @@ export const RACES_PROPS_B: Race[] = [
       voterConnection: [
         'Unless your net worth is about $1 billion or more, you would not owe this tax.',
         'If you or your family rely on Medi-Cal, a community clinic, or a rural hospital, that is where most of the money goes.',
-        'Your votes on Props 40, 41, and 42 interact. Yes on 40 plus Yes on 41 or 42 helps the countermeasures; Prop 40 must get more Yes votes than both to take effect.',
+        'Your votes on Props 40, 41, and 42 interact. Yes on 40 plus Yes on 41 or 42 helps the countermeasures; if either outpolls Prop 40, courts could void it (LAO).',
       ],
       mechanismBullets: [
         'Who pays: individuals (a married couple counts as one) and certain trusts resident in California on January 1, 2026, worth $1 billion or more on December 31, 2026. Leaving after January 1 doesn’t avoid it.',
@@ -496,6 +522,20 @@ export const RACES_PROPS_B: Race[] = [
     measure: {
       question:
         'Prohibits new state taxes that exclude revenues from state spending limit; requires audits for new state special taxes. Initiative constitutional amendment. Nullifies state taxes enacted after January 1, 2026 that exempt their revenue from the voter-approved state spending limit; requires pre-election and recurring audits of programs funded by new special taxes.',
+      yesMeans:
+        'Bars new state taxes enacted since Jan. 1, 2026 from being exempt from the Gann spending limit, and requires State Auditor reviews of programs funded by new state special taxes.',
+      noMeans:
+        'Keeps current spending-limit rules, which let new taxes such as Prop 40 exclude their revenue, and leaves the State Auditor’s review duties unchanged.',
+      related: [
+        {
+          raceId: 'prop-40',
+          note: 'Written to cancel Prop 40: if both pass and Prop 41 gets more Yes votes, courts could void all of Prop 40 (LAO).',
+        },
+        {
+          raceId: 'prop-42',
+          note: 'Both are written to cancel Prop 40 if they outpoll it; neither conflicts with the other, so both can take effect.',
+        },
+      ],
       measureType: 'Initiative constitutional amendment',
       voteThreshold: 'Simple majority (conflict clause: if it outpolls Prop 40, Prop 40 is void)',
       fiscalImpact:

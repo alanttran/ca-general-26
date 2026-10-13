@@ -26,6 +26,20 @@ export const RACES_PROPS_C: Race[] = [
     measure: {
       question:
         'Prohibits new state personal property taxes and certain retroactive state taxes. Initiative constitutional amendment. Prohibits any new state tax on the ownership of personal property (everything other than real estate) or applied retroactively based on a taxpayer\'s past activities; nullifies conflicting taxes enacted after Jan 1, 2026.',
+      yesMeans:
+        'Bans new state taxes on owning personal property, such as stocks, retirement accounts and business stakes, and most new state taxes based on past conduct or residency.',
+      noMeans:
+        'Keeps the state’s option to create new taxes on owning financial assets or other personal property, and leaves retroactive-tax rules unchanged; no existing tax changes.',
+      related: [
+        {
+          raceId: 'prop-40',
+          note: 'Written to cancel Prop 40: if both pass and Prop 42 gets more Yes votes, courts could void all of Prop 40 (LAO).',
+        },
+        {
+          raceId: 'prop-41',
+          note: 'Both are written to cancel Prop 40 if they outpoll it; neither conflicts with the other, so both can take effect.',
+        },
+      ],
       measureType: 'Initiative constitutional amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -130,6 +144,10 @@ export const RACES_PROPS_C: Race[] = [
     measure: {
       question:
         'Limits voters\' ability to raise revenues for local government services. Legislative constitutional amendment. Raises the vote needed for voter-proposed (citizen initiative) local special taxes from a majority to two-thirds, beginning Jan 1, 2027.',
+      yesMeans:
+        'Requires two-thirds voter approval, from Jan. 1, 2027, for new, increased or extended citizen-initiative local special taxes, the same bar as taxes placed by local officials.',
+      noMeans:
+        'Keeps the current rule, set by court rulings since 2017, that citizen-initiative local special taxes pass by simple majority; taxes placed by local officials still need two-thirds.',
       measureType: 'Legislative constitutional amendment (ACA 22, Res. Ch. 132, Stats. 2026)',
       voteThreshold: 'Simple majority (to adopt Prop 43 itself)',
       fiscalImpact:
@@ -235,6 +253,10 @@ export const RACES_PROPS_C: Race[] = [
     measure: {
       question:
         'Requires community health clinics spend 90% of revenue on program services. Initiative statute. Penalizes nonprofit Federally Qualified Health Centers that spend less than 90% of revenue on "program services" advancing their charitable purpose, including patient services.',
+      yesMeans:
+        'Requires nonprofit community health centers (FQHCs) to spend at least 90% of revenue on program services such as patient care, or pay the shortfall into a state escrow account.',
+      noMeans:
+        'Keeps current rules: community health centers face no state spending-ratio requirement or new registration fee beyond existing federal and Medi-Cal rules.',
       measureType: 'Initiative statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -344,6 +366,10 @@ export const RACES_PROPS_C: Race[] = [
     measure: {
       question:
         'Modifies environmental review for certain projects. Initiative statute. Amends CEQA to expedite review for certain projects (most housing, transportation, water, health projects) by setting deadlines to complete review and resolve lawsuits.',
+      yesMeans:
+        'Lets housing, transit, water, energy, broadband and other “essential” projects opt into faster CEQA review with fixed deadlines, shorter comment periods, and lawsuits limited and resolved within 270 days.',
+      noMeans:
+        'Keeps current CEQA review and court-challenge procedures for all projects, including the 2025 housing and infill exemptions, with no new deadlines.',
       measureType: 'Initiative statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:

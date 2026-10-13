@@ -17,8 +17,17 @@ export interface SiteUpdateBuild {
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
     dateLabel: 'October 12, 2026',
-    lede: 'One out-of-state ZIP by request: Denver’s 80204 now has its full Colorado ballot.',
+    lede: 'Every proposition and measure now says plainly what a Yes or No vote does, and links to the other measures it interacts with. Plus one out-of-state ZIP by request: Denver’s 80204.',
     panels: [
+      {
+        summary: 'Clearer propositions and measures',
+        bullets: [
+          'Under the ballot question, “What your vote means” says in one sentence what a Yes vote does and what a No vote leaves in place, based on the official voter guide or impartial analysis.',
+          '“Read with” links measures that affect each other, such as Props 40, 41 and 42 (if 41 or 42 gets more votes, courts could throw out Prop 40), Colorado’s Amendment 87 and Proposition 136, and Los Angeles Measures PL and EE, which rewrite the same charter section.',
+          'Prop 40’s card now says courts could void it if Prop 41 or 42 gets more votes, matching the official analysis, rather than that it would be automatically nullified.',
+          'Following a link to another race no longer collapses the races you had open.',
+        ],
+      },
       {
         summary: 'Denver, Colorado: 80204',
         bullets: [

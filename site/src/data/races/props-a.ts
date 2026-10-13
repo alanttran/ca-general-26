@@ -33,6 +33,10 @@ export const RACES_PROPS_A: Race[] = [
     measure: {
       question:
         'Authorizes bonds for housing affordability programs. Legislative statute. Authorizes $11.25 billion in general obligation bonds for multifamily rental housing, veterans’ mortgages, supportive housing, preservation of existing affordable housing, and downpayment assistance.',
+      yesMeans:
+        'Lets the state borrow $11.25 billion for affordable rental housing, homebuyer help, farmworker and student housing, and veterans’ home loans, repaid over about 25 years.',
+      noMeans:
+        'Blocks the $11.25 billion borrowing; state housing and CalVet loan programs continue at current funding, with no new bond money and no added repayment costs.',
       measureType: 'Legislative statute (general obligation bond)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -140,6 +144,10 @@ export const RACES_PROPS_A: Race[] = [
     measure: {
       question:
         'Increases state’s Rainy Day Fund. Legislative constitutional amendment. Increases the Rainy Day Fund approved by voters in 2014 to provide funding for education, health care, public safety, and other services during economic downturns.',
+      yesMeans:
+        'Raises the Rainy Day Fund cap from 10% to 20% of General Fund taxes, exempts deposits from the Gann spending limit until spent, and extends extra debt payments to 2040.',
+      noMeans:
+        'Keeps the 10% reserve cap, the current Gann-limit treatment of reserve deposits, and the extra debt-payment requirement that ends in 2030.',
       measureType: 'Legislative constitutional amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -250,6 +258,10 @@ export const RACES_PROPS_A: Race[] = [
     measure: {
       question:
         'Provides permanent funding for schools and health care by extending existing tax on high incomes. Initiative constitutional amendment. Makes permanent existing voter-approved tax rates for individuals earning over $371,000 (adjusted for inflation); allocates revenue to public education.',
+      yesMeans:
+        'Makes permanent the 10.3%, 11.3% and 12.3% income-tax brackets on income above about $371,000 (single) or $742,000 (joint), keeping $5–15 billion a year for schools and other programs.',
+      noMeans:
+        'Lets the higher brackets expire in 2031 as scheduled, dropping the top regular rate to 9.3%; rates on lower incomes stay the same.',
       measureType: 'Initiative constitutional amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -368,6 +380,10 @@ export const RACES_PROPS_A: Race[] = [
     measure: {
       question:
         'Repeals prohibition against public funding of election campaigns. Legislative statute. Repeals ban on state and local governments offering public funding of candidate campaigns; programs may not use funds earmarked for education, transportation, or public safety.',
+      yesMeans:
+        'Lets the state and all local governments create public campaign funding programs for candidates, with spending limits and no use of money earmarked for education, transportation or public safety.',
+      noMeans:
+        'Keeps the 1988 ban on public campaign funding for the state and most local governments; charter cities such as Los Angeles and San Francisco keep their existing programs.',
       measureType: 'Legislative statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -479,6 +495,10 @@ export const RACES_PROPS_A: Race[] = [
     measure: {
       question:
         'Changes recall election process for statewide officers. Legislative constitutional amendment. Currently voters elect replacement candidates at the same time as the recall; this measure instead fills recall vacancies by subsequent special election or appointment.',
+      yesMeans:
+        'Removes the replacement-candidate question from state recall ballots; a recalled Governor is succeeded by the Lieutenant Governor, and other vacancies are filled by appointment or special election.',
+      noMeans:
+        'Keeps the two-part recall ballot, where voters decide whether to remove a state official and, on the same ballot, who replaces them by plurality vote.',
       measureType: 'Legislative constitutional amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:

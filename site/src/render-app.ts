@@ -430,6 +430,7 @@ function renderScopeNote(data: BallotData, localPending: boolean): HTMLElement {
 }
 
 export function renderApp(root: HTMLElement, zip: string): void {
+  root.dataset.zip = zip;
   const data = buildBallotData(zip);
   root.replaceChildren();
   const profile = getBallotProfile(zip);
@@ -467,6 +468,8 @@ export function renderApp(root: HTMLElement, zip: string): void {
   }
   nav.append(tocTitle, tocList);
 
+  pendingRaceTitles.clear();
+  for (const r of data.races) pendingRaceTitles.set(r.id, r.tldrLabel ?? r.title);
   const main = el('main', undefined, { id: 'main-content' });
   main.append(
     renderIntroBlocks(data.meta.state === 'CO'),
@@ -967,6 +970,9 @@ function renderRacesByCategory(data: BallotData): DocumentFragment {
   return frag;
 }
 
+/** Titles of the races on the ballot being rendered, so measures can link to related measures. */
+const pendingRaceTitles = new Map<string, string>();
+
 function renderRace(race: ZipRace): HTMLElement {
   const details = el('details', 'race');
   details.id = `race-${race.id}`;
@@ -1335,6 +1341,43 @@ function renderMeasureOverview(m: MeasureBlock): HTMLElement {
   label.textContent = 'On the ballot';
   pq.append(label, document.createTextNode(m.question));
   art.append(pq);
+
+  if (m.yesMeans && m.noMeans) {
+    const means = el('dl', 'measure__means');
+    const h = el('p', 'measure__label');
+    h.textContent = 'What your vote means';
+    for (const [mod, term, text] of [['yes', 'Yes', m.yesMeans], ['no', 'No', m.noMeans]] as const) {
+      const row = el('div', `measure__means-row measure__means-row--${mod}`);
+      const dt = el('dt');
+      dt.textContent = term;
+      const dd = el('dd');
+      dd.textContent = text;
+      row.append(dt, dd);
+      means.append(row);
+    }
+    art.append(h, means);
+  }
+
+  const related = (m.related ?? []).filter((r) => pendingRaceTitles.has(r.raceId));
+  if (related.length) {
+    const box = el('div', 'measure__related');
+    const h = el('p', 'measure__label');
+    h.textContent = 'Read with';
+    const ul = el('ul', 'measure__related-list');
+    for (const r of related) {
+      const li = el('li');
+      const a = el('a', undefined, { href: `#race-${r.raceId}` });
+      a.textContent = pendingRaceTitles.get(r.raceId)!;
+      a.addEventListener('click', () => {
+        const target = document.getElementById(`race-${r.raceId}`);
+        if (target instanceof HTMLDetailsElement) target.open = true;
+      });
+      li.append(a, document.createTextNode(`: ${r.note}`));
+      ul.append(li);
+    }
+    box.append(h, ul);
+    art.append(box);
+  }
 
   const threshold = (m.voteThreshold ?? 'Simple majority').replace(/^Simple majority/, 'a simple majority');
   const meta = el('p', 'measure__meta');

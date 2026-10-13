@@ -314,6 +314,8 @@ export const RACES_SD_LOCAL: Race[] = [
     measure: {
       question:
         'Shall the San Diego County Charter be amended to establish an Independent Ethics Commission, Independent Budget Analyst, Independent Program Auditor, confirmation of certain senior County leaders, and optional Board of Supervisors appointment of the Public Defender; increase term limits from two to three terms for Board of Supervisors members; require public disclosure of spending and performance data; clarify non-interference provisions; and update terminology and structure?',
+      yesMeans: 'Amends the County Charter to create independent ethics, budget and audit offices, let supervisors confirm senior leaders, require spending data, and allow supervisors three four-year terms instead of two.',
+      noMeans: 'Keeps supervisors’ two-term limit and the current charter, without the new ethics commission, budget analyst, program auditor or Board confirmation of senior staff.',
       measureType: 'Charter amendment (placed by Board of Supervisors)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -382,6 +384,8 @@ export const RACES_SD_LOCAL: Race[] = [
     measure: {
       question:
         'To clean up sewage pollution in Tijuana River Valley, improve wildfire prevention, emergency response, access to healthcare, food assistance, childhood development services, and authorized administrative expenses; shall the measure authorizing a half-cent sales tax raising an estimated $400,000,000 to $450,000,000 annually, requiring citizen oversight, public spending disclosure, and independent annual audits, and lasting until ended by voters, be adopted?',
+      yesMeans: 'Adds a half-cent countywide sales tax with no end date, about $400 million to $450 million a year for health care, child care, food aid, Tijuana River sewage and wildfire response.',
+      noMeans: 'Keeps the county sales tax rate as is, and these programs continue to depend on existing county, state and federal money.',
       measureType: 'Citizen initiative (countywide sales tax, with revenue dedicated to specified purposes)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -451,6 +455,8 @@ export const RACES_SD_LOCAL: Race[] = [
     measure: {
       question:
         'To repair/upgrade all public schools, help retain/attract teachers by repairing deteriorating roofs, plumbing, restrooms; providing safe drinking water; removing asbestos, lead paint, mold; upgrading outdated career/vocational, science, technology, engineering classrooms; shall SDUSD’s measure authorizing $3,500,000,000 in bonds at legal rates, levying $32 per $100,000 of assessed value, providing $204,000,000 annually while bonds are outstanding, requiring public spending disclosure, audits, citizens oversight, be adopted?',
+      yesMeans: 'Authorizes $3.5 billion in San Diego Unified bonds for school repairs, upgrades and educator housing, repaid by property owners at about $32 per $100,000 of assessed value while bonds are outstanding.',
+      noMeans: 'Blocks the new bonds; property owners keep paying for earlier bonds, a levy expected to fall as they are paid off, and repairs would need other funding.',
       measureType: 'School facilities bond (general obligation)',
       voteThreshold: '55%',
       fiscalImpact:

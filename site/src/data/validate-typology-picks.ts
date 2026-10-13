@@ -208,6 +208,22 @@ export function collectProfileIssues(races: Race[], profiles: BallotProfile[]): 
   return issues;
 }
 
+/** Every measure says what Yes and No mean; related-measure links point at real measures and run both ways. */
+export function collectMeasureIssues(races: Race[]): TypologyValidationIssue[] {
+  const measures = new Map(races.filter((r) => r.kind === 'measure' && r.measure).map((r) => [r.id, r.measure!]));
+  const issues: TypologyValidationIssue[] = [];
+  for (const [id, m] of measures) {
+    if (!m.yesMeans?.trim() || !m.noMeans?.trim()) issues.push({ raceId: id, message: 'measure needs yesMeans and noMeans' });
+    for (const r of m.related ?? []) {
+      const other = measures.get(r.raceId);
+      if (!other) issues.push({ raceId: id, message: `related measure "${r.raceId}" does not exist` });
+      else if (!other.related?.some((o) => o.raceId === id)) issues.push({ raceId: id, message: `related measure "${r.raceId}" does not link back` });
+      if (!r.note.trim()) issues.push({ raceId: id, message: `related measure "${r.raceId}" needs a note` });
+    }
+  }
+  return issues;
+}
+
 /** Throws on validation failure so `npm run build` catches mistakes. */
 /** Every pick the Fit + experience view switches needs its own written rationale, and only those. */
 export function collectExperienceRationaleIssues(races: Race[]): TypologyValidationIssue[] {
@@ -233,6 +249,7 @@ export function assertBallotDataValid(races: Race[], profiles: BallotProfile[]):
     ...collectQualificationIssues(races),
     ...collectProfileIssues(races, profiles),
     ...collectExperienceRationaleIssues(races),
+    ...collectMeasureIssues(races),
   ];
   if (issues.length === 0) return;
 

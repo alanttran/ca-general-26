@@ -269,6 +269,11 @@ export const RACES_OC_ORANGE: Race[] = [
     measure: {
       question:
         'To maintain City of Orange’s quality of life, such as 9-1-1 response; maintaining police/fire protection; preventing crimes/thefts; retaining/attracting well-trained police officers/firefighters; keeping public parks safe/clean; addressing homelessness; wildfire protection/prevention; repairing streets/potholes; critical infrastructure improvements; shall a measure establishing a 1¢ sales tax, providing approximately $37,000,000 annually for general revenue/government purposes, expiring after 13 years, with independent oversight committee, all funds benefiting Orange residents, be adopted?',
+      yesMeans: 'Adds a 1-cent city sales tax for 13 years, raising about $37 million a year for Orange’s general fund, usable for any city purpose and reviewed by an oversight committee.',
+      noMeans: 'Keeps Orange’s sales tax at its current rate, and the city must close a projected $27.6 million deficit without this revenue.',
+      related: [
+        { raceId: 'orange-measure-k', note: 'If Measure K’s charter also passes, the Council must give priority to using this tax’s new recurring revenue for pension debt, infrastructure, debt and reserves, though essential services remain allowed.' },
+      ],
       measureType: 'City Council-placed general transactions and use (sales) tax',
       voteThreshold: 'Simple majority (general tax)',
       fiscalImpact:
@@ -338,6 +343,11 @@ export const RACES_OC_ORANGE: Race[] = [
     measure: {
       question:
         'Shall the measure updating the City of Orange’s existing Transient Occupancy Tax, a tax on persons occupying hotel rooms by increasing the tax rate from 10% to 14% for hotels with 11 or more rooms and applying the tax to online and other travel companies, generating approximately $3,000,000 annually for general City purposes including police, fire and emergency response, parks, and street and infrastructure maintenance, until ended by voters, be adopted?',
+      yesMeans: 'Raises the hotel guest tax from 10% to 14% at hotels with 11+ rooms and applies it to online booking companies, adding about $3 million a year to the general fund.',
+      noMeans: 'Keeps the hotel guest tax at 10% for all hotels under the current 1993 rules, and the city goes without the added $3 million a year.',
+      related: [
+        { raceId: 'orange-measure-k', note: 'If Measure K’s charter also passes, the Council must give priority to using this tax’s new recurring revenue for pension debt, infrastructure, debt and reserves, though essential services remain allowed.' },
+      ],
       measureType: 'City Council-placed general tax (transient occupancy tax increase)',
       voteThreshold: 'Simple majority (general tax)',
       fiscalImpact:
@@ -403,6 +413,12 @@ export const RACES_OC_ORANGE: Race[] = [
     measure: {
       question:
         'Shall the proposed Charter for the City of Orange, establishing the City as a charter city under the California Constitution and providing the City’s governing document for municipal affairs, be adopted?',
+      yesMeans: 'Makes Orange a charter city, adding lifetime term limits counted from now, local control of contracting, an open-space reserve, a rent-control ban, and balanced-budget and audit rules.',
+      noMeans: 'Keeps Orange a general law city governed by state law, with its current term limits and state contracting and prevailing-wage rules.',
+      related: [
+        { raceId: 'orange-measure-i', note: 'This charter directs the Council to give priority to using new recurring general-fund money, such as Measure I’s sales tax, for pension debt, infrastructure, debt and reserves.' },
+        { raceId: 'orange-measure-j', note: 'This charter directs the Council to give priority to using new recurring general-fund money, such as Measure J’s hotel tax increase, for pension debt, infrastructure, debt and reserves.' },
+      ],
       measureType: 'Charter adoption (city council-placed)',
       voteThreshold: 'Simple majority',
       fiscalImpact:

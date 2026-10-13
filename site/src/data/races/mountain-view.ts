@@ -814,6 +814,8 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
     measure: {
       question:
         'Shall the Mountain View City Charter be amended to replace gender-specific terms with gender-neutral language, extend the time to fill a council vacancy from 30 to 60 days, eliminate the requirement to read ordinances and resolutions in full, allow the Council to set qualifications for boards, commissions and committees it creates, and make other clarifying updates?',
+      yesMeans: 'Amends the city charter to use gender-neutral language, give the council 60 days instead of 30 to fill a vacancy, end full reading of ordinances, and let it set advisory-body qualifications.',
+      noMeans: 'Keeps the charter as written, including the 30-day vacancy deadline, the requirement to read ordinances in full, and gender-specific language.',
       measureType: 'Charter amendment (city measure placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -880,6 +882,8 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
     measure: {
       question:
         'Shall the Mountain View measure to raise the City’s hotel and short-term rental tax from 10% to up to 15%, generating up to $5,200,000 annually for general City services such as street and sidewalk repair, police, fire and 911 response, affordable housing and new parks, until ended by voters, with independent audits, be adopted?',
+      yesMeans: 'Lets the council raise the hotel and short-term-rental tax from 10% to up to 15%, bringing up to $5.2 million a year for general city services until voters end it.',
+      noMeans: 'Keeps the hotel and short-term-rental tax at 10%, the rate since 1991, and the city goes without the added revenue.',
       measureType: 'General tax (transient occupancy tax increase placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -944,6 +948,8 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
     measure: {
       question:
         'Shall the measure amending the Bylaws of the El Camino Healthcare District to limit District Directors to four [consecutive] four-year terms be adopted?',
+      yesMeans: 'Limits El Camino Healthcare District directors to four four-year terms, counting only terms that begin on or after Dec. 1, 2026, so no one reaches the cap before 2042.',
+      noMeans: 'Keeps the district with no term limits, so directors can run for re-election indefinitely.',
       measureType: 'District bylaw amendment (Gov. Code § 53077 term-limits proposal placed by the district board)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
