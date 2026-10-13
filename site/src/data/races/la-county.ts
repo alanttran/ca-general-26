@@ -263,13 +263,34 @@ export const RACES_LA_COUNTY: Race[] = [
       'Measure A would let an arbitration panel, instead of the Board of Supervisors imposing its "best and final offer," settle contract impasses with certain public safety unions, and would ban strikes by those workers. Unions gain a neutral decision-maker; the elected Board loses the final say over their pay.',
     ],
     introParagraphs: [
-      'The Board of Supervisors voted 4-0 to place the measure on the ballot, with Supervisor Holly Mitchell abstaining; the backing unions had also begun a signature drive. Through mid-September, the deputies’ union had put in more than $2 million and the firefighters union and another sworn-employee union more than $1 million each (LAist).',
+      'The Board of Supervisors voted 4-0 to place the measure on the ballot, with Supervisor Holly Mitchell abstaining; the backing unions had also begun a signature drive. Through Sept. 19, the Yes on A committee had raised $6.2 million this year, led by the deputies’ union at about $2.8 million, and had $8.5 million in the bank; no committee has formed to oppose it.',
     ],
     measure: {
       question:
         'Shall the Los Angeles County Charter be amended to prohibit strikes by district attorney investigators, medical examiners, lifeguards, their supervisors, and nonadministrative civilian employees of the Fire, Sheriff’s and Medical Examiner departments; reiterate good-faith bargaining requirements; and create impartial binding arbitration for certified public safety employee organizations?',
       yesMeans: 'Bans strikes by certain county public safety workers and sends unresolved contract disputes for about 17,000 employees to a binding arbitration panel instead of letting supervisors impose terms.',
       noMeans: 'Keeps the current process, in which the Board of Supervisors can impose its final offer when bargaining with public safety unions reaches an impasse.',
+      funding: {
+        asOf: 'Sept. 19, 2026',
+        yes: {
+          raised: '$6.2 million (2026 so far)',
+          topDonors: [
+            'Association for Los Angeles Deputy Sheriffs ($2.8M)',
+            'LA County Professional Peace Officers Association committee ($1.5M)',
+            'LA County Firefighters Local 1014 IAFF Education Project ($1.0M)',
+            'LA County Firefighters Local 1014 Community Issues ($375K)',
+          ],
+        },
+        note: 'The Yes committee also began 2026 with $3.9 million in cash from earlier fundraising and had $8.5 million on hand as of Sept. 19. No committee has reported raising money against it.',
+        sources: [
+          { label: 'Yes on A – Safer Los Angeles County: Form 460, July 1–Sept. 19, 2026 (LA County Registrar)', url: 'https://netfile.com/api/public/sites/api/CampaignDocuments/download/217505726?aid=LACO&name=Yes_on_A&date=9_24_2026&form=FPPC_460' },
+          { label: 'LA County campaign finance portal: Measure A filings', url: 'https://netfile.com/public/LACO/campaign/filingsByMeasure/216589587' },
+          { label: 'CityHallPass: Measure A money summary (firefighters’ Education Project figure)', url: 'https://cityhallpass.com/election-2026/measures/county-measure-a' },
+        ],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.lacdp.org/ballotmeasures' },
+      ],
       measureType: 'Charter amendment (placed by Board of Supervisors)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -337,6 +358,18 @@ export const RACES_LA_COUNTY: Race[] = [
         'Shall the Los Angeles County Charter be amended to provide greater independence and structure for the County Ethics Commission, the Office of Ethics Compliance and the Ethics Compliance Officer, and to continue the County’s community investment and alternatives-to-incarceration commitment?',
       yesMeans: 'Writes the Ethics Commission’s independence, structure and minimum budget into the County Charter and restores the 10% set-aside for community investment and alternatives to incarceration.',
       noMeans: 'Leaves the Ethics Commission’s independence and funding to Board decisions, and leaves the Measure J set-aside out of the Charter after Measure G accidentally removed it.',
+      funding: {
+        asOf: 'Sept. 19, 2026',
+        note: 'A Yes committee sponsored by LA Forward (Communities for Good Government Supporting Yes on Measure E) has registered but had not reported raising money. No committee has registered against it.',
+        sources: [
+          { label: 'LA County campaign finance portal: Measure E filings', url: 'https://netfile.com/public/LACO/campaign/filingsByMeasure/217539436' },
+          { label: 'CityHallPass: Measure E committees and money', url: 'https://cityhallpass.com/election-2026/measures/county-measure-e' },
+        ],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.lacdp.org/ballotmeasures' },
+        { org: 'Los Angeles Daily News editorial board', kind: 'editorial', position: 'No', url: 'https://www.dailynews.com/2026/08/31/endorsement-vote-no-on-los-angeles-county-measure-e/' },
+      ],
       measureType: 'Charter amendment (placed by Board of Supervisors)',
       voteThreshold: 'Simple majority',
       fiscalImpact:

@@ -1,12 +1,74 @@
-import type { Race } from '../../types/ballot-types';
+import type { MeasureFunding, MeasurePosition, Race } from '../../types/ballot-types';
 import { ct } from './helpers';
 
 /**
  * State propositions 1–5 (the five legislative/early measures) — Nov 3, 2026 general election.
  * Ground truth for ballot labels: docs/sample-ballot-92126.md. Mechanics/fiscal: LAO analyses (July 2026).
  * Polling: PPIC Statewide Survey, Sept 4–10, 2026 (1,103 likely voters, ±3.8 pts).
- * Money: Secretary of State measure-contribution pages (data as of Aug 2, 2026) plus dated news reports.
+ * Money (`funding`, checked Oct 12, 2026): cumulative committee totals from KQED’s voter guide (Secretary of
+ * State data, updated Oct 9, 2026), cross-checked against CalMatters’ tracker (Sept 28), the SoS measure pages
+ * (through Oct 6) and the FPPC top-10 contributor lists. The SoS pages sum shared multi-measure committees and,
+ * for some 2025-formed committees, show less than one donor’s FPPC-reported total, so they are cited but not used
+ * as the headline number.
+ * Positions: party slates (CDP Aug 2, CAGOP, Green, Libertarian) and editorial boards checked Oct 12, 2026.
  */
+
+// ── Shared helpers for props-a/b/c `funding` and `positions` ──
+
+const SOS_MEASURE_BASE =
+  'https://www.sos.ca.gov/campaign-lobbying/helpful-resources/measure-contributions/2026-ballot-measure-contribution-totals/';
+
+/** Standard money sources for a state prop; `sosSlug` is the SoS measure page’s final path segment. */
+export function propFundingSources(prop: number, sosSlug: string, opts: { kqed?: boolean } = {}): MeasureFunding['sources'] {
+  const sources: MeasureFunding['sources'] = [];
+  if (opts.kqed !== false) {
+    sources.push({
+      label: 'KQED Voter Guide — fundraising (California Secretary of State data, updated Oct 9, 2026)',
+      url: `https://www.kqed.org/voterguide/california/proposition-${prop}`,
+    });
+  }
+  sources.push(
+    {
+      label: 'CalMatters — campaign finance tracker (updated Sept 28, 2026)',
+      url: `https://project-voter-guide-2026.interactives.calmatters.org/general/en/campaign-finance/prop/${prop}`,
+    },
+    { label: 'California Secretary of State — committee totals (Cal-Access, through Oct 6, 2026)', url: SOS_MEASURE_BASE + sosSlug },
+    {
+      label: 'FPPC — top 10 contributors, November 2026 ballot measures',
+      url: 'https://www.fppc.ca.gov/search-filings/top-10-contributors-list/november-2026-general-election/',
+    },
+  );
+  return sources;
+}
+
+type Stance = MeasurePosition['position'];
+
+const CDP_URL = 'https://cadem.org/wp-content/uploads/2026/08/FINAL-2026-General-Election-Endorsements.pdf';
+const CAGOP_URL = 'https://cagop.org/endorsements/';
+const GREEN_URL = 'https://www.cagreens.org/green-party-california-state-voter-guide-nov-2026';
+const LP_URL = 'https://ca.lp.org/ballot-propositions/';
+
+/** The four state parties’ official 2026 proposition slates, in a fixed order. */
+export function partyPositions(dem: Stance, gop: Stance, green: Stance, lib: Stance): MeasurePosition[] {
+  return [
+    { org: 'California Democratic Party', kind: 'party', position: dem, url: CDP_URL },
+    { org: 'California Republican Party', kind: 'party', position: gop, url: CAGOP_URL },
+    { org: 'Green Party of California', kind: 'party', position: green, url: GREEN_URL },
+    { org: 'Libertarian Party of California', kind: 'party', position: lib, url: LP_URL },
+  ];
+}
+
+export function editorial(org: string, position: Stance, url: string): MeasurePosition {
+  return { org, kind: 'editorial', position, url };
+}
+
+export const PAPER = {
+  lat: 'Los Angeles Times',
+  sfc: 'San Francisco Chronicle',
+  sdut: 'San Diego Union-Tribune',
+  sacbee: 'Sacramento Bee',
+  ocr: 'Orange County Register (Southern California News Group)',
+} as const;
 export const RACES_PROPS_A: Race[] = [
   // ───────────────────────────── Prop 1 ─────────────────────────────
   {
@@ -20,7 +82,7 @@ export const RACES_PROPS_A: Race[] = [
       'Prop 1 would borrow to subsidize tens of thousands of rent-restricted apartments and first-time home purchases, plus veterans’ home loans that veterans repay. The trade-off: more affordable housing now, versus a quarter-century of debt payments from a tight state budget while building costs remain very high.',
     ],
     introParagraphs: [
-      'The Legislature placed Prop 1 on the ballot through SB 417 (Limón), signed by Gov. Newsom in late June 2026. As of Aug 2, 2026, two Yes committees had reported about $2.07 million (top funders include carpenters’ unions and Airbnb); no No committee had registered.',
+      'The Legislature placed Prop 1 on the ballot through SB 417 (Limón), signed by Gov. Newsom in late June 2026.',
     ],
     polling: [
       {
@@ -37,6 +99,18 @@ export const RACES_PROPS_A: Race[] = [
         'Lets the state borrow $11.25 billion for affordable rental housing, homebuyer help, farmworker and student housing, and veterans’ home loans, repaid over about 25 years.',
       noMeans:
         'Blocks the $11.25 billion borrowing; state housing and CalVet loan programs continue at current funding, with no new bond money and no added repayment costs.',
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$12.1 million', topDonors: ['Airbnb ($1M)', 'Western States Regional Council of Carpenters ($1M)', 'North Coast States Regional Council of Carpenters ($1M)', 'Building a Better California, Sergey Brin’s committee ($1M)'] },
+        note: 'No committee has registered to oppose Prop 1.',
+        sources: propFundingSources(1, 'proposition-1-sb-417-limon-veterans-and-affordable-housing-bond-act-2026-ch-16-2026'),
+      },
+      positions: [
+        ...partyPositions('Yes', 'No position', 'No position', 'No'),
+        editorial(PAPER.sfc, 'Yes', 'https://www.sfchronicle.com/opinion/editorials/article/prop1-california-housing-vote-22442444.php'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/09/11/endorsement-no-on-prop-1-which-continues-failed-state-housing-policies/'),
+        editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/09/23/endorsement-no-on-prop-1-more-debt-wont-fix-californias-housing-shortage/'),
+      ],
       measureType: 'Legislative statute (general obligation bond)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -131,7 +205,7 @@ export const RACES_PROPS_A: Race[] = [
       'Prop 2 would let the state save more in boom years, when stock-market-driven income taxes surge. The fight is over the 1979 “Gann” spending limit: deposits would stop counting against it until spent. Supporters call that ending a penalty on saving; opponents call it a loophole that makes taxpayer rebates less likely.',
     ],
     introParagraphs: [
-      'The Legislature placed Prop 2 on the ballot as ACA 20 (Gabriel), branded the “Save for California’s Future Act” and announced by Gov. Newsom and legislative leaders on June 23, 2026. As of Aug 2, 2026, no Yes or No committee had registered.',
+      'The Legislature placed Prop 2 on the ballot as ACA 20 (Gabriel), branded the “Save for California’s Future Act” and announced by Gov. Newsom and legislative leaders on June 23, 2026.',
     ],
     polling: [
       {
@@ -148,6 +222,16 @@ export const RACES_PROPS_A: Race[] = [
         'Raises the Rainy Day Fund cap from 10% to 20% of General Fund taxes, exempts deposits from the Gann spending limit until spent, and extends extra debt payments to 2040.',
       noMeans:
         'Keeps the 10% reserve cap, the current Gann-limit treatment of reserve deposits, and the extra debt-payment requirement that ends in 2030.',
+      funding: {
+        asOf: 'Oct. 6, 2026',
+        note: 'No committee has registered to support or oppose Prop 2.',
+        sources: propFundingSources(2, 'proposition-2-aca-20-gabriel-save-californias-future-act-res-ch-130-2026', { kqed: false }),
+      },
+      positions: [
+        ...partyPositions('Yes', 'No', 'No position', 'No'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/10/02/endorsements-props-2-37-wouldnt-yield-saner-state-budgets-more-housing/'),
+        editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/10/07/endorsement-no-on-prop-2-california-needs-fiscal-discipline-not-accounting-tricks/'),
+      ],
       measureType: 'Legislative constitutional amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -245,7 +329,7 @@ export const RACES_PROPS_A: Race[] = [
       'Since 2012 the top 2% or so of earners have paid extra income-tax brackets due to expire in 2031; Prop 3 makes them permanent. The choice: keep this money for schools and health care, or let it lapse — a tax cut for high earners and a budget hole.',
     ],
     introParagraphs: [
-      'Prop 3 is sponsored by the California Teachers Association, which had committed about $33 million to the Yes campaign by late September 2026 (EdSource). The California Taxpayers Association formed a No committee, which reported $0 as of Aug 2, 2026. Prop 40, a separate one-time 5% tax on billionaires, is on the same ballot.',
+      'Prop 3 is sponsored by the California Teachers Association, by far its largest funder. The California Taxpayers Association formed a No committee, which has raised almost nothing. Prop 40, a separate one-time 5% tax on billionaires, is on the same ballot.',
     ],
     polling: [
       {
@@ -262,6 +346,19 @@ export const RACES_PROPS_A: Race[] = [
         'Makes permanent the 10.3%, 11.3% and 12.3% income-tax brackets on income above about $371,000 (single) or $742,000 (joint), keeping $5–15 billion a year for schools and other programs.',
       noMeans:
         'Lets the higher brackets expire in 2031 as scheduled, dropping the top regular rate to 9.3%; rates on lower incomes stay the same.',
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$50.2 million', topDonors: ['California Teachers Association ($33.2M)', 'National Education Association ($7.5M)', 'California School Employees Association ($2.6M)', 'California Federation of Teachers ($1.75M)'] },
+        no: { raised: '$5,500', topDonors: ['Family Business Association of California ($5,000)', 'Pacific Coast Companies ($500)'] },
+        note: 'The No committee is sponsored by the California Taxpayers Association.',
+        sources: propFundingSources(3, 'proposition-3-provides-permanent-funding-schools-and-healthcare-extending-existing-tax-high-incomes-initiative-constitutional-am'),
+      },
+      positions: [
+        ...partyPositions('Yes', 'No', 'Yes', 'No'),
+        editorial(PAPER.sfc, 'Yes', 'https://www.sfchronicle.com/opinion/editorials/article/california-taxes-proposition-3-22435509.php'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/09/18/why-voting-against-prop-3-is-a-vote-against-school-status-quo/'),
+        editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/09/02/endorsement-no-on-proposition-3-temporary-taxes-should-be-temporary/'),
+      ],
       measureType: 'Initiative constitutional amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -367,7 +464,7 @@ export const RACES_PROPS_A: Race[] = [
       'A 1988 voter-approved ban (Prop 73) bars the state and most local governments from funding candidates’ campaigns. Prop 4 creates no program; it lets governments create one. Supporters see a check on big donors; opponents see taxpayer money for politicians, with the design left to future officials.',
     ],
     introParagraphs: [
-      'The Legislature placed Prop 4 on the ballot through SB 42 (Umberg), signed in October 2025; a 2016 attempt to lift the ban without a vote was struck down in court. The California Clean Money Action Fund runs the Yes campaign with Common Cause and the League of Women Voters; as of Aug 2, 2026, no committee had reported contributions.',
+      'The Legislature placed Prop 4 on the ballot through SB 42 (Umberg), signed in October 2025; a 2016 attempt to lift the ban without a vote was struck down in court. The California Clean Money Action Fund runs the Yes campaign with Common Cause and the League of Women Voters.',
     ],
     polling: [
       {
@@ -384,6 +481,18 @@ export const RACES_PROPS_A: Race[] = [
         'Lets the state and all local governments create public campaign funding programs for candidates, with spending limits and no use of money earmarked for education, transportation or public safety.',
       noMeans:
         'Keeps the 1988 ban on public campaign funding for the state and most local governments; charter cities such as Los Angeles and San Francisco keep their existing programs.',
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$235,000', topDonors: ['Movement Voter PAC ($235K)'] },
+        note: 'The only Yes money reported is from Movement Voter PAC’s committee supporting Prop 4. No committee has registered to oppose it.',
+        sources: propFundingSources(4, 'proposition-4-sb-42-umberg-political-reform-act-1974-public-campaign-financing-california-fair-elections-act-2026-ch-245-2025'),
+      },
+      positions: [
+        ...partyPositions('Yes', 'No', 'Yes', 'No'),
+        editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/endorsement-prop-4-public-financing-22426379.php'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/09/04/endorsement-dont-buy-prop-4s-baloney-about-publicly-financed-campaigns/'),
+        editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/09/27/endorsement-no-on-proposition-4-california-doesnt-need-taxpayer-funded-campaigns/'),
+      ],
       measureType: 'Legislative statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -482,7 +591,7 @@ export const RACES_PROPS_A: Race[] = [
       'Today a recall ballot asks two questions: remove the official, and if so, who replaces them? The replacement winner needs only a plurality. Prop 5 keeps the removal vote but drops the replacement question, filling the seat like other vacancies. Supporters call it closing a minority-rule loophole; opponents say it hands voters’ choice to insiders.',
     ],
     introParagraphs: [
-      'The Legislature placed Prop 5 on the ballot as SCA 1 (Newman) after Secretary of State Shirley Weber proposed changes following the 2021 recall; Newman was recalled from the Senate in 2018 and later won back his seat. Nearly all legislative Republicans opposed it. As of Aug 2, 2026, no committee had registered. The Sacramento Bee editorial board (opinion) endorsed Yes, per CalMatters.',
+      'The Legislature placed Prop 5 on the ballot as SCA 1 (Newman) after Secretary of State Shirley Weber proposed changes following the 2021 recall; Newman was recalled from the Senate in 2018 and later won back his seat. Nearly all legislative Republicans opposed it.',
     ],
     polling: [
       {
@@ -499,6 +608,18 @@ export const RACES_PROPS_A: Race[] = [
         'Removes the replacement-candidate question from state recall ballots; a recalled Governor is succeeded by the Lieutenant Governor, and other vacancies are filled by appointment or special election.',
       noMeans:
         'Keeps the two-part recall ballot, where voters decide whether to remove a state official and, on the same ballot, who replaces them by plurality vote.',
+      funding: {
+        asOf: 'Oct. 6, 2026',
+        note: 'No committee has registered to support or oppose Prop 5.',
+        sources: propFundingSources(5, 'proposition-5-sca-1-newman-elections-recall-state-officers-res-ch-204-2024', { kqed: false }),
+      },
+      positions: [
+        ...partyPositions('Yes', 'No', 'No position', 'No position'),
+        editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/prop-5-recall-california-22458510.php'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/09/25/a-vote-against-prop-5-is-a-vote-against-the-california-status-quo/'),
+        editorial(PAPER.sacbee, 'Yes', 'https://www.sacbee.com/opinion/election-endorsements/article316911387.html'),
+        editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/08/12/endorsement-vote-no-on-proposition-5-an-attack-on-californias-recall-power/'),
+      ],
       measureType: 'Legislative constitutional amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:

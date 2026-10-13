@@ -956,6 +956,23 @@ export const RACES_HAYWARD: Race[] = [
         'HAYWARD BUSINESS LICENSE TAX MODERNIZATION: Shall the measure updating the Hayward Business License Tax for the first time since 1978, to support general city services, including neighborhood police protection, firefighting, 911 response, libraries, and pothole repair, generating an additional $12 million annually until repealed, with a minimum tax of $60 and rates from $.30 to $3.75 per $1,000 of gross receipts, with higher rates for higher-grossing businesses, as stated in the ordinance, be adopted?',
       yesMeans: 'Replaces Hayward’s 1978 business license tax with a gross-receipts tax of $0.30 to $3.75 per $1,000 ($60 minimum) from January 2027, raising about $12 million a year for general services.',
       noMeans: 'Keeps the 1978 business license fee schedule, so businesses pay what they do now and the city does not get the estimated $12 million a year.',
+      funding: {
+        asOf: 'Oct. 7, 2026',
+        yes: {
+          raised: '$89,425',
+          topDonors: [
+            'Hayward Firefighters PAC ($31,925, including $1,925 in printing)',
+            'Hayward Police Officers Association ($25,000)',
+            'SEIU Local 1021 ($20,000)',
+            'California Professional Firefighters ($10,000)',
+          ],
+        },
+        note: 'The yes committee is the Business Lic Tax Budget Committee Supporting Measure CC 2026. The total combines its Sept. 24 pre-election statement ($56,925 through Sept. 19) with late-contribution reports filed through Oct. 7. No committee has reported raising money against it.',
+        sources: [
+          { label: 'City of Hayward campaign finance portal (NetFile): Measure CC committee filings', url: 'https://netfile.com/public/HWD/campaign/measures' },
+        ],
+      },
+      positions: [],
       measureType: 'City ordinance (general tax on businesses)',
       voteThreshold: 'Simple majority (50% + 1)',
       fiscalImpact:
@@ -1030,6 +1047,37 @@ export const RACES_HAYWARD: Race[] = [
         'To prevent major service cuts to BART and other transit, avoid increased traffic, and reduce pollution by: Preserving BART, Caltrain, VTA, SamTrans, AC Transit, Muni, other transit for everyone, including workers, students, seniors, persons with disabilities; Supporting transit safety, cleanliness, affordability, reliability; Repairing targeted roads/potholes; Requiring financial transparency, oversight, accountability; shall the measure enacting a 0.5% (Alameda, Contra Costa, San Mateo, Santa Clara counties), and 1% (San Francisco) sales tax for 14 years generating approximately $980,000,000 annually, be adopted?',
       yesMeans: 'Adds a 0.5% sales tax in Alameda and Santa Clara counties (1% in San Francisco) for 14 years, raising about $980 million a year for BART, AC Transit, Caltrain, VTA and others.',
       noMeans: 'Keeps current sales tax rates, and BART, AC Transit, Caltrain and other agencies must close projected deficits through service cuts or other funding.',
+      funding: {
+        asOf: 'Oct. 13, 2026',
+        yes: {
+          raised: '$8.0 million',
+          topDonors: [
+            'SEIU Local 1021 ($594K, including in-kind)',
+            'Chris Larsen ($500K)',
+            'Salesforce ($500K)',
+            'TransitAmerica Services ($350K)',
+          ],
+        },
+        no: {
+          raised: '$20,175',
+          topDonors: [
+            'Contra Costa Taxpayers Association ($6,422)',
+            'Tom Rubin ($1,255)',
+            'Gregg Dieguez ($1,075)',
+            'Marc Joffe ($1,075)',
+          ],
+        },
+        note: 'Yes on RTM – Connect Bay Area Transit has raised money since 2025: $1.3 million in 2025, $5.5 million from January through Sept. 19 (pre-election statement, amended Oct. 12), and about $1.2 million in late contributions reported through Oct. 13. Other large donors include Anthropic, Meta, HNTB, ATU Local 1555, SEIU Local 521 and Nicholas Josefowitz ($250K each). The no committee, sponsored by the Contra Costa Taxpayers Association, reported $20,175 through Sept. 19.',
+        sources: [
+          { label: 'Santa Clara County campaign finance portal (NetFile): Regional Transit Measure committee filings', url: 'https://netfile.com/public/SCC/campaign/measures' },
+        ],
+      },
+      positions: [
+        { org: 'Santa Clara County Democratic Party', kind: 'party', position: 'Yes', url: 'https://sccdp.org/index.php/voter-resources/endorsements/2026-endorsements/' },
+        { org: 'Alameda County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.inglesidelight.com/measure-rtm-explained/' },
+        { org: 'San Francisco Chronicle', kind: 'editorial', position: 'Yes', url: 'https://www.sfchronicle.com/opinion/editorials/article/regional-transit-measure-bay-area-22424231.php' },
+        { org: 'Mercury News / East Bay Times', kind: 'editorial', position: 'No', url: 'https://www.mercurynews.com/2026/10/09/endorsement-no-on-measure-rtm-transit-tax-bart-manufactured-crisis-vta-doesnt-have-one/' },
+      ],
       measureType: 'Citizen initiative authorized by SB 63 (multi-county transit sales tax)',
       voteThreshold: 'Simple majority of the combined five-county vote',
       fiscalImpact:

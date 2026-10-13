@@ -396,6 +396,16 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         'Shall the measure amending Article II, Section 206 of the Placer County Charter to extend the deadline for filling a vacancy on the Board of Supervisors from 30 days to 60 days, providing additional time for the Board to make an appointment before the Governor fills the vacancy, and requiring vacancies occurring 130 days or more before a statewide direct primary election be filled temporarily by appointment and placed on the ballot at that election, be adopted?',
       yesMeans: 'Gives supervisors 60 days instead of 30 to fill a vacancy before the governor appoints, and puts the seat on the next statewide primary ballot if it opens 130+ days before.',
       noMeans: 'Keeps the 30-day deadline for supervisors to fill a vacancy before the governor appoints, and current rules on when appointees face voters.',
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'News coverage reports no campaign committee for or against it, but we couldn’t search the filings directly; check the source below for the latest.',
+        sources: [
+          { label: 'Placer County Elections: campaign finance disclosure', url: 'https://www.placercountyelections.gov/campaign-finance-disclosure/' },
+        ],
+      },
+      positions: [
+        { org: 'Placer County Republican Party', kind: 'party', position: 'No position', url: 'https://placergop.org/endorsements/' },
+      ],
       measureType: 'County charter amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -459,6 +469,16 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         'Shall the measure amending Article V, Section 502(a) of the Placer County Charter to allow alternative procedures for the removal of the County Executive Officer if specified in an employment agreement, providing greater flexibility in negotiating employment terms for recruitment and retention, while preserving Board of Supervisors’ oversight, be adopted?',
       yesMeans: 'Lets the County Executive Officer’s employment agreement set different removal procedures; without such terms, three supervisors can still remove the CEO.',
       noMeans: 'Keeps the charter rule that three supervisors can remove the County Executive Officer, with no option for a contract to set different procedures.',
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'News coverage reports no campaign committee for or against it, but we couldn’t search the filings directly; check the source below for the latest.',
+        sources: [
+          { label: 'Placer County Elections: campaign finance disclosure', url: 'https://www.placercountyelections.gov/campaign-finance-disclosure/' },
+        ],
+      },
+      positions: [
+        { org: 'Placer County Republican Party', kind: 'party', position: 'No position', url: 'https://placergop.org/endorsements/' },
+      ],
       measureType: 'County charter amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -520,12 +540,23 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         'To maintain Rocklin’s public safety, financial stability and core public services, including: rapid 911 emergency/medical response; police/fire protection; keeping public areas and parks healthy/safe/clean; preserving open space; preventing wildfires; shall the City of Rocklin’s measure establishing a half-cent sales tax, providing approximately $8 million annually for general revenue purposes, until ended by voters, keeping all funds local, with annual audits/public spending disclosure, be adopted?',
       yesMeans: 'Raises Rocklin’s sales tax from 7.25% to 7.75% as early as April 2027, bringing about $8 million a year for any city service until voters end it.',
       noMeans: 'Keeps Rocklin’s sales tax at 7.25%, and the city addresses projected long-term deficits without this revenue.',
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'News coverage reports no campaign committee for or against it, but we couldn’t search the filings directly; check the source below for the latest.',
+        sources: [
+          { label: 'City of Rocklin: campaign disclosure eRetrieval portal', url: 'https://www.southtechhosting.com/RocklinCity/CampaignDocsWebRetrieval/' },
+          { label: 'Sacramento Bee: guide to sales tax measures in Rocklin, Lincoln and Colfax (Oct. 2026)', url: 'https://www.yahoo.com/news/politics/articles/guide-sales-tax-measures-rocklin-164747231.html' },
+        ],
+      },
+      positions: [
+        { org: 'Placer County Republican Party', kind: 'party', position: 'No', url: 'https://placergop.org/endorsements/' },
+      ],
       measureType: 'General tax (city transactions and use tax)',
       voteThreshold: 'Simple majority (the county’s amended notice corrected an earlier “2/3” misprint)',
       fiscalImpact:
         'About $8 million a year for general revenue purposes (ballot label). A city FAQ from October 2025 had estimated about $9 million. Revenue goes to the general fund, so it can pay for any lawful city service. The state tax agency would administer it; it would take effect as early as April 1, 2027, and continue until repealed by voters.',
       supporters: 'City of Rocklin and the City Council, which placed it on the ballot. Printed ballot arguments were not retrieved.',
-      opponents: 'No organized opposition or printed opposing argument was found in the coverage reviewed.',
+      opponents: 'Placer County Republican Party. No argument against it was submitted for the ballot (Sacramento Bee), and no organized No campaign was found.',
       voterConnection: [
         'Shoppers pay an extra 5 cents on a $10 purchase of taxable goods in Rocklin; groceries and most prescription drugs are exempt under California law.',
         'It has no end date; only voters can repeal it.',
@@ -586,6 +617,16 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         'To upgrade, renovate, modernize and expand classrooms, schools, and career technical education buildings; repair/replace leaky roofs and outdated heating/cooling systems; and make safety/security improvements with no projected tax rate increase, shall Rocklin Unified School District’s measure authorizing $288,000,000 of bonds at legal rates be adopted, generating on average $15,800,000 annually while bonds are outstanding at approximate rates of $59 per $100,000 assessed value, with audits, citizens’ oversight, no money for salaries and funds staying local?',
       yesMeans: 'Authorizes $288 million in school bonds for classroom, roof, HVAC and safety upgrades, repaid by property owners at about $59 per $100,000 of assessed value while bonds are outstanding.',
       noMeans: 'Blocks the new bonds; existing school bond taxes continue until paid off, and repairs at the district’s 17 campuses would need other funding.',
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'News coverage reports no campaign committee for or against it, but we couldn’t search the filings directly; check the source below for the latest.',
+        sources: [
+          { label: 'Placer County Elections: campaign finance disclosure', url: 'https://www.placercountyelections.gov/campaign-finance-disclosure/' },
+        ],
+      },
+      positions: [
+        { org: 'Placer County Republican Party', kind: 'party', position: 'No position', url: 'https://placergop.org/endorsements/' },
+      ],
       measureType: 'School facilities general obligation bond',
       voteThreshold: '55%',
       fiscalImpact:

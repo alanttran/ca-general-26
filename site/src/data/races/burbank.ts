@@ -481,10 +481,20 @@ export const RACES_BURBANK: Race[] = [
         'To maintain services including fire, paramedic, police, 911 response; prepare for/respond to wildfires/other disasters; prevent property crimes; keep public areas/neighborhoods clean/safe; address homelessness; support youth programs, senior services, other general city services; shall the measure increasing Burbank’s transient occupancy tax, paid only by hotel/motel guests, from 10% to 12%, providing approximately $3,000,000 annually until ended by voters, requiring audits, spending disclosures, funds used locally, be adopted?',
       yesMeans: 'Raises Burbank’s hotel guest tax from 10% to 12% starting Jan. 1, 2027, adding about $3 million a year to the general fund for any city purpose until voters end it.',
       noMeans: 'Keeps Burbank’s hotel guest tax at 10%, and the city goes without the estimated $3 million a year in added general fund revenue.',
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'No committee has reported raising money for or against it.',
+        sources: [
+          { label: 'Burbank City Clerk eFile portal: campaign filings (Measure C has no committees listed)', url: 'https://efile.burbankca.gov/public/search/campaign' },
+        ],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.lacdp.org/ballotmeasures' },
+      ],
       measureType: 'City ordinance (general tax increase on hotel stays)',
       voteThreshold: 'Simple majority (general tax, per the City Attorney’s impartial analysis)',
       fiscalImpact: 'The city estimates about $3 million a year in added general fund revenue; the increase would take effect Jan. 1, 2027 if approved.',
-      supporters: 'Burbank City Council placed the measure on the ballot; Council candidate David Donahue has urged a Yes vote.',
+      supporters: 'Burbank City Council placed the measure on the ballot; Los Angeles County Democratic Party; Council candidate David Donahue has urged a Yes vote.',
       opponents: 'No organized opposition was found.',
       voterConnection: [
         'Residents pay it only if they book a Burbank hotel; on a $200 night it adds $4.',
@@ -549,11 +559,21 @@ export const RACES_BURBANK: Race[] = [
       related: [
         { raceId: 'burbank-measure-cd', note: 'Measure CD adopts the district map, but it takes effect only if this charter amendment also passes, so voters who want districts need Yes on both.' },
       ],
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'No committee has reported raising money for or against it.',
+        sources: [
+          { label: 'Burbank City Clerk eFile portal: campaign filings (Measure CC has no committees listed)', url: 'https://efile.burbankca.gov/public/search/campaign' },
+        ],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'No', url: 'https://www.lacdp.org/ballotmeasures' },
+      ],
       measureType: 'Charter amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'The city says the amendment itself has no direct cost and could reduce the risk of costly future voting-rights litigation; see the City Attorney’s impartial analysis.',
       supporters: 'Burbank City Council (unanimous vote to place on ballot).',
-      opponents: 'Green Party of Los Angeles County.',
+      opponents: 'Green Party of Los Angeles County; Los Angeles County Democratic Party.',
       voterConnection: [
         'A Yes vote alone does not change how you vote; it allows a different system to be adopted.',
         'If CD also passes, you would vote only for your own district’s Council seat; a No vote keeps citywide elections.',
@@ -616,11 +636,21 @@ export const RACES_BURBANK: Race[] = [
       related: [
         { raceId: 'burbank-measure-cc', note: 'This ordinance takes effect only if Measure CC, the charter amendment removing the at-large requirement, also passes.' },
       ],
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'No committee has reported raising money for or against it.',
+        sources: [
+          { label: 'Burbank City Clerk eFile portal: campaign filings (Measure CD has no committees listed)', url: 'https://efile.burbankca.gov/public/search/campaign' },
+        ],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'No', url: 'https://www.lacdp.org/ballotmeasures' },
+      ],
       measureType: 'City ordinance (conditional on Measure CC)',
       voteThreshold: 'Simple majority, but it cannot take effect unless Measure CC also passes',
       fiscalImpact: 'See the City Attorney’s impartial analysis; no dollar estimate was found in the materials reviewed.',
       supporters: 'Burbank City Council (unanimous vote to place on ballot).',
-      opponents: 'Green Party of Los Angeles County.',
+      opponents: 'Green Party of Los Angeles County; Los Angeles County Democratic Party.',
       voterConnection: [
         'The 2026 election is still at large for the three seats on this ballot.',
         'Voters who want districts must vote Yes on both CC and CD.',

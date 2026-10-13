@@ -316,6 +316,18 @@ export const RACES_SD_LOCAL: Race[] = [
         'Shall the San Diego County Charter be amended to establish an Independent Ethics Commission, Independent Budget Analyst, Independent Program Auditor, confirmation of certain senior County leaders, and optional Board of Supervisors appointment of the Public Defender; increase term limits from two to three terms for Board of Supervisors members; require public disclosure of spending and performance data; clarify non-interference provisions; and update terminology and structure?',
       yesMeans: 'Amends the County Charter to create independent ethics, budget and audit offices, let supervisors confirm senior leaders, require spending data, and allow supervisors three four-year terms instead of two.',
       noMeans: 'Keeps supervisors’ two-term limit and the current charter, without the new ethics commission, budget analyst, program auditor or Board confirmation of senior staff.',
+      funding: {
+        asOf: 'Sept. 21, 2026',
+        yes: { raised: '$45,000' },
+        note: 'Opponents had reported raising no money. Donor names were not reported.',
+        sources: [
+          { label: 'KPBS: Measure A explainer, citing the county campaign disclosure portal (Sept. 30, 2026)', url: 'https://www.kpbs.org/news/politics/2026/09/30/measure-a-extending-supervisor-term-limits-and-other-county-charter-reforms' },
+          { label: 'San Diego County Registrar of Voters: campaign finance public portal', url: 'https://www.southtechhosting.com/SanDiegoCounty/CampaignDocsWebRetrieval/' },
+        ],
+      },
+      positions: [
+        { org: 'San Diego County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.sddemocrats.org/propositions--ballot-measures.html' },
+      ],
       measureType: 'Charter amendment (placed by Board of Supervisors)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -386,6 +398,20 @@ export const RACES_SD_LOCAL: Race[] = [
         'To clean up sewage pollution in Tijuana River Valley, improve wildfire prevention, emergency response, access to healthcare, food assistance, childhood development services, and authorized administrative expenses; shall the measure authorizing a half-cent sales tax raising an estimated $400,000,000 to $450,000,000 annually, requiring citizen oversight, public spending disclosure, and independent annual audits, and lasting until ended by voters, be adopted?',
       yesMeans: 'Adds a half-cent countywide sales tax with no end date, about $400 million to $450 million a year for health care, child care, food aid, Tijuana River sewage and wildfire response.',
       noMeans: 'Keeps the county sales tax rate as is, and these programs continue to depend on existing county, state and federal money.',
+      funding: {
+        asOf: 'Sept. 24, 2026',
+        yes: { raised: '$2.3 million' },
+        no: { raised: '$149,000' },
+        note: 'Top donors were not reported in the coverage reviewed.',
+        sources: [
+          { label: 'KPBS: Measure B explainer, fundraising totals (Oct. 1, 2026)', url: 'https://www.kpbs.org/news/politics/2026/10/01/measure-b-san-diego-county-health-safety-act' },
+          { label: 'San Diego County Registrar of Voters: campaign finance public portal', url: 'https://www.southtechhosting.com/SanDiegoCounty/CampaignDocsWebRetrieval/' },
+        ],
+      },
+      positions: [
+        { org: 'San Diego County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.sddemocrats.org/propositions--ballot-measures.html' },
+        { org: 'Republican Party of San Diego County', kind: 'party', position: 'No', url: 'https://www.sandiegorepublicans.org/voter-guides/san-diego' },
+      ],
       measureType: 'Citizen initiative (countywide sales tax, with revenue dedicated to specified purposes)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -450,19 +476,31 @@ export const RACES_SD_LOCAL: Race[] = [
       'Measure M would let San Diego Unified borrow for school repairs, safety upgrades, classroom modernization, and educator housing, repaid by property owners in the district. The question is whether those needs justify keeping today’s bond tax rate in place for decades more.',
     ],
     introParagraphs: [
-      'It would be the district’s fifth voter-approved bond since 2008, bringing total approved bond funding to roughly $15 billion. School bonds need 55%, not two-thirds. No organized No campaign has formed (KPBS), and no money totals were on public record.',
+      'It would be the district’s fifth voter-approved bond since 2008, bringing total approved bond funding to roughly $15 billion. School bonds need 55%, not two-thirds. No organized No campaign has formed (KPBS), and no fundraising totals for either side were reported in the coverage reviewed.',
     ],
     measure: {
       question:
         'To repair/upgrade all public schools, help retain/attract teachers by repairing deteriorating roofs, plumbing, restrooms; providing safe drinking water; removing asbestos, lead paint, mold; upgrading outdated career/vocational, science, technology, engineering classrooms; shall SDUSD’s measure authorizing $3,500,000,000 in bonds at legal rates, levying $32 per $100,000 of assessed value, providing $204,000,000 annually while bonds are outstanding, requiring public spending disclosure, audits, citizens oversight, be adopted?',
       yesMeans: 'Authorizes $3.5 billion in San Diego Unified bonds for school repairs, upgrades and educator housing, repaid by property owners at about $32 per $100,000 of assessed value while bonds are outstanding.',
       noMeans: 'Blocks the new bonds; property owners keep paying for earlier bonds, a levy expected to fall as they are paid off, and repairs would need other funding.',
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'News coverage reports no fundraising totals and no organized No campaign (KPBS), but we couldn’t search the county’s filings directly; check the source below for the latest.',
+        sources: [
+          { label: 'KPBS: San Diego County school bond measures guide (Oct. 2, 2026)', url: 'https://www.kpbs.org/news/politics/2026/10/02/your-guide-to-all-san-diego-county-school-bond-measures' },
+          { label: 'San Diego County Registrar of Voters: campaign finance public portal', url: 'https://www.southtechhosting.com/SanDiegoCounty/CampaignDocsWebRetrieval/' },
+        ],
+      },
+      positions: [
+        { org: 'San Diego County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.sddemocrats.org/propositions--ballot-measures.html' },
+        { org: 'Republican Party of San Diego County', kind: 'party', position: 'No', url: 'https://www.sandiegorepublicans.org/voter-guides/san-diego' },
+      ],
       measureType: 'School facilities bond (general obligation)',
       voteThreshold: '55%',
       fiscalImpact:
         '$32 per $100,000 of assessed value, raising about $204 million a year while bonds are outstanding. District estimates about $8.1 billion in total debt service (KPBS). The district says the rate matches the current levy; independent reviews note that without the bond the rate would likely fall as old bonds retire.',
       supporters: 'San Diego Education Association; San Diego County Taxpayers Association; San Diego County Democratic Party; SanDiego350.',
-      opponents: 'None organized found; San Diego County Republican Party recommends No (KPBS endorsement guide).',
+      opponents: 'None organized found; the Republican Party of San Diego County recommends No.',
       voterConnection: [
         'Property owners pay, residential or commercial; renters pay indirectly if landlords pass it through.',
         'The ballot’s "No Tax Rate Increase" works by issuing new bonds as older ones are paid off, so the rate stays about the same instead of falling (KPBS).',

@@ -194,6 +194,33 @@ export interface RelatedMeasure {
   note: string;
 }
 
+/** Money raised by one side’s committees. */
+export interface MeasureMoney {
+  /** Total raised by that side’s committees, e.g. `$48.2 million`. */
+  raised: string;
+  /** Biggest donors with amounts, e.g. `SEIU California ($9.1M)`; up to 4. */
+  topDonors?: string[];
+}
+
+/** Campaign money for and against a measure, from the official filings. */
+export interface MeasureFunding {
+  /** Date the totals run through, e.g. `Sept. 30, 2026`. */
+  asOf: string;
+  yes?: MeasureMoney;
+  no?: MeasureMoney;
+  /** e.g. `No committee has reported raising money against it.` */
+  note?: string;
+  sources: { label: string; url: string }[];
+}
+
+/** A political party’s or newspaper editorial board’s position on a measure. */
+export interface MeasurePosition {
+  org: string;
+  kind: 'party' | 'editorial';
+  position: 'Yes' | 'No' | 'No position';
+  url?: string;
+}
+
 export interface MeasureBlock {
   question: string;
   /** Plain-language effect of a Yes vote, one sentence starting with a verb (“Raises…”, “Keeps…”). */
@@ -202,6 +229,9 @@ export interface MeasureBlock {
   noMeans?: string;
   /** Measures to read alongside this one; listed both ways. Hidden when the other measure isn’t on this ZIP’s ballot. */
   related?: RelatedMeasure[];
+  funding?: MeasureFunding;
+  /** Major parties’ and newspaper editorial boards’ positions; `No position` when a party or paper checked in without taking one. */
+  positions?: MeasurePosition[];
   /** e.g. `Legislative constitutional amendment`, `Initiative statute`, `Bond`, `Charter amendment`. */
   measureType?: string;
   /** Passing threshold when not a simple majority, e.g. `55%` (school bonds) or `2/3`. */

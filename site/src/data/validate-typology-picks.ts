@@ -214,6 +214,10 @@ export function collectMeasureIssues(races: Race[]): TypologyValidationIssue[] {
   const issues: TypologyValidationIssue[] = [];
   for (const [id, m] of measures) {
     if (!m.yesMeans?.trim() || !m.noMeans?.trim()) issues.push({ raceId: id, message: 'measure needs yesMeans and noMeans' });
+    if (!m.funding) issues.push({ raceId: id, message: 'measure needs funding (use a note when no committee reported money)' });
+    else if (!m.funding.sources.length || !m.funding.asOf.trim()) issues.push({ raceId: id, message: 'funding needs asOf and at least one source' });
+    else if (!m.funding.yes && !m.funding.no && !m.funding.note?.trim()) issues.push({ raceId: id, message: 'funding has no totals and no note' });
+    if (!m.positions) issues.push({ raceId: id, message: 'measure needs positions (an empty list means none were found)' });
     for (const r of m.related ?? []) {
       const other = measures.get(r.raceId);
       if (!other) issues.push({ raceId: id, message: `related measure "${r.raceId}" does not exist` });

@@ -1453,6 +1453,12 @@ main {
   }
 }
 
+.measure__money-note {
+  margin: 0.6rem 0 0;
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+}
+
 .measure__related {
   margin: 0 0 0.75rem;
 }

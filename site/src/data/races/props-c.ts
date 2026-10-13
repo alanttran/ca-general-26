@@ -1,10 +1,12 @@
 import type { Race } from '../../types/ballot-types';
 import { ct } from './helpers';
+import { PAPER, editorial, partyPositions, propFundingSources } from './props-a';
 
 /**
  * Nov 3, 2026 statewide propositions 42–45.
  * Sources checked Oct 7, 2026: SoS Official Voter Information Guide (title/summary, LAO analysis,
- * arguments, text of proposed laws), SoS ballot-measure contribution totals (through Aug 2, 2026),
+ * arguments, text of proposed laws), SoS ballot-measure contribution totals; `funding` and `positions`
+ * checked Oct 12, 2026 (see props-a.ts header),
  * PPIC Statewide Survey (Sept 4–10, 2026, likely voters), CalMatters, LAist, KQED, KPBS.
  */
 export const RACES_PROPS_C: Race[] = [
@@ -20,7 +22,7 @@ export const RACES_PROPS_C: Race[] = [
       'Prop 42 would permanently bar new state taxes on owning personal property (stocks, retirement accounts, business stakes, crypto, art; not real estate) and most new taxes reaching back to past conduct, income, or residency. That rules out a state wealth tax, starting with Prop 40, the billionaire tax on the same ballot.',
     ],
     introParagraphs: [
-      'A citizen initiative from billionaire-tax opponents. Google co-founder Sergey Brin is the main funder of Building a Better California, the group behind Props 41 and 42. Its Yes committee had raised about $49.3 million by Aug 2, 2026, with no opposition committee filed; NPR reported in August that Brin had put over $100 million into the overall fight.',
+      'A citizen initiative from billionaire-tax opponents. Google co-founder Sergey Brin is the main funder of Building a Better California, the group behind Props 41 and 42. NPR reported in August that Brin had put over $100 million into the overall fight.',
       'PPIC\'s Sept 4–10 likely-voter survey had Prop 42 at 54% yes, 43% no (Republicans 74% and independents 61% yes; Democrats 39–56) and Prop 40 at 52% yes. Both could pass, leaving the conflict clause to decide.',
     ],
     measure: {
@@ -39,6 +41,19 @@ export const RACES_PROPS_C: Race[] = [
           raceId: 'prop-41',
           note: 'Both are written to cancel Prop 40 if they outpoll it; neither conflicts with the other, so both can take effect.',
         },
+      ],
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$97.8 million', topDonors: ['Building a Better California, Sergey Brin’s committee ($97.8M)', 'Reform California ($23K)'] },
+        no: { raised: '$365,000', topDonors: ['Alan Davis ($250K)', 'Excessive Wealth ($40K)', 'John Esler ($25K)', 'William Connell ($25K)'] },
+        note: 'No total is CalMatters’ tracker figure through Sept. 28. SEIU-UHW’s “Yes on 40 – No on 41 & 42” committee also campaigns against Prop 42; its money is counted under Prop 40.',
+        sources: propFundingSources(42, 'proposition-42-prohibits-new-state-personal-property-taxes-and-certain-retroactive-state-taxes-initiative-constitutional-amendme'),
+      },
+      positions: [
+        ...partyPositions('No', 'Yes', 'No', 'Yes'),
+        editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/california-proposition-42-taxes-22449389.php'),
+        editorial(PAPER.sdut, 'Yes', 'https://www.sandiegouniontribune.com/2026/09/21/endorsement-yes-on-proposition-41-and-42-to-limit-taxation-in-california/'),
+        editorial(PAPER.ocr, 'Yes', 'https://www.ocregister.com/2026/09/21/endorsement-yes-on-proposition-41-and-42-to-limit-taxation-in-california/'),
       ],
       measureType: 'Initiative constitutional amendment',
       voteThreshold: 'Simple majority',
@@ -139,7 +154,7 @@ export const RACES_PROPS_C: Race[] = [
     ],
     introParagraphs: [
       'A legislative constitutional amendment (ACA 22) from a late-June 2026 deal: the Howard Jarvis Taxpayers Association withdrew its broader "Local Taxpayer Protection Act" initiative, which also targeted transfer taxes like LA\'s Measure ULA, and lawmakers placed this narrower rule on the ballot and dropped ACA 13. It passed 35–1 in the Senate and 68–2 in the Assembly.',
-      'Through Aug 2, 2026: about $14.2 million in support, almost all from the committee formerly tied to HJTA\'s initiative, versus $500,000 opposed. PPIC\'s Sept 4–10 likely-voter survey had it trailing, 43% yes to 51% no.',
+      'PPIC\'s Sept 4–10 likely-voter survey had it trailing, 43% yes to 51% no.',
     ],
     measure: {
       question:
@@ -148,6 +163,18 @@ export const RACES_PROPS_C: Race[] = [
         'Requires two-thirds voter approval, from Jan. 1, 2027, for new, increased or extended citizen-initiative local special taxes, the same bar as taxes placed by local officials.',
       noMeans:
         'Keeps the current rule, set by court rulings since 2017, that citizen-initiative local special taxes pass by simple majority; taxes placed by local officials still need two-thirds.',
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$14.8 million', topDonors: ['California Business Roundtable ($9.9M)', 'Howard Jarvis Taxpayers Association’s Protect Prop. 13 committee ($1.5M)', 'Kilroy Realty ($1M)', 'Douglas Emmett Properties ($1M)'] },
+        no: { raised: '$7.6 million', topDonors: ['SEIU California ($1.5M)', 'SEIU Local 1021 ($500K)', 'SEIU Local 721 ($500K)', 'Western States Regional Council of Carpenters ($500K)'] },
+        sources: propFundingSources(43, 'proposition-43-aca-22-wicks-local-taxes-limitation-res-ch-132-2026'),
+      },
+      positions: [
+        ...partyPositions('No', 'Yes', 'No', 'Yes'),
+        editorial(PAPER.sdut, 'Yes', 'https://www.sandiegouniontribune.com/2026/09/04/vote-yes-on-prop-43-to-block-state-supreme-courts-rewrite-of-tax-laws/'),
+        editorial(PAPER.sacbee, 'No', 'https://www.sacbee.com/opinion/election-endorsements/article316956235.html'),
+        editorial(PAPER.ocr, 'Yes', 'https://www.ocregister.com/2026/08/09/endorsement-yes-on-proposition-43-to-make-it-harder-to-raise-taxes/'),
+      ],
       measureType: 'Legislative constitutional amendment (ACA 22, Res. Ch. 132, Stats. 2026)',
       voteThreshold: 'Simple majority (to adopt Prop 43 itself)',
       fiscalImpact:
@@ -248,7 +275,7 @@ export const RACES_PROPS_C: Race[] = [
     ],
     introParagraphs: [
       'A citizen initiative from SEIU-United Healthcare Workers West after a similar bill failed in the Legislature. The California Primary Care Association lost an April 2026 federal suit to keep it off the ballot. In September it and five health centers sued SEIU-UHW and its president Dave Regan for racketeering, alleging he offered to drop Prop 44 if clinics backed unionizing about 25,000 workers. The union calls the unproven claims false.',
-      'Through Aug 2, 2026, the No side (CPCA Advocates) had raised about $34.9 million and the Yes side about $16.9 million. PPIC\'s Sept 4–10 survey found 34% yes, 61% no among likely voters, with majorities opposed across parties. The ballot argument in favor is signed by the proponent and a clinic worker.',
+      'The No side, led by CPCA Advocates and individual clinics, has raised more than twice as much as SEIU-UHW\'s Yes side. PPIC\'s Sept 4–10 survey found 34% yes, 61% no among likely voters, with majorities opposed across parties. The ballot argument in favor is signed by the proponent and a clinic worker.',
     ],
     measure: {
       question:
@@ -257,6 +284,18 @@ export const RACES_PROPS_C: Race[] = [
         'Requires nonprofit community health centers (FQHCs) to spend at least 90% of revenue on program services such as patient care, or pay the shortfall into a state escrow account.',
       noMeans:
         'Keeps current rules: community health centers face no state spending-ratio requirement or new registration fee beyond existing federal and Medi-Cal rules.',
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$16.9 million', topDonors: ['SEIU-United Healthcare Workers West ($16.9M)'] },
+        no: { raised: '$38.3 million', topDonors: ['AltaMed Health Services ($5.5M)', 'California Primary Care Association Advocates ($2M)', 'Family Health Centers of San Diego ($1.5M)', 'North East Medical Services ($1.5M)'] },
+        sources: propFundingSources(44, 'proposition-44-requires-community-health-clinics-spend-90-percent-revenue-program-services-initiative-statute'),
+      },
+      positions: [
+        ...partyPositions('No', 'No', 'Yes', 'No'),
+        editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/prop-44-california-health-clinic-22433656.php'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/08/28/vote-no-on-prop-44-the-seius-attempt-to-shake-down-community-clinics/'),
+        editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/09/08/endorsement-no-on-proposition-44-a-cynical-attack-on-community-health-clinics/'),
+      ],
       measureType: 'Initiative statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -361,7 +400,7 @@ export const RACES_PROPS_C: Race[] = [
     ],
     introParagraphs: [
       'A citizen initiative sponsored by the California Chamber of Commerce. It goes much further than 2025\'s budget-trailer bills AB 130 and SB 131, which exempted much infill housing from CEQA and loosened it for some other projects. Business groups said those didn\'t go far enough; environmental groups back SB 954 in 2026 to narrow SB 131.',
-      'Through Aug 2, 2026, Yes committees raised about $18.4 million and No about $9.2 million. Support has fallen: CalChamber cited 73% in PPIC\'s July survey, but PPIC\'s Sept 4–10 ballot-label poll found 49% yes, 46% no among likely voters. KQED reports the data-center argument has hurt the Yes side.',
+      'Support has fallen: CalChamber cited 73% in PPIC\'s July survey, but PPIC\'s Sept 4–10 ballot-label poll found 49% yes, 46% no among likely voters. KQED reports the data-center argument has hurt the Yes side.',
     ],
     measure: {
       question:
@@ -370,6 +409,17 @@ export const RACES_PROPS_C: Race[] = [
         'Lets housing, transit, water, energy, broadband and other “essential” projects opt into faster CEQA review with fixed deadlines, shorter comment periods, and lawsuits limited and resolved within 270 days.',
       noMeans:
         'Keeps current CEQA review and court-challenge procedures for all projects, including the 2025 housing and infill exemptions, with no new deadlines.',
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$40.5 million', topDonors: ['Building a Better California, Sergey Brin’s committee ($10M)', 'California Building Industry Association ($7.8M)', 'CalChamber ($2M)', 'Edison International ($2M)'] },
+        no: { raised: '$21.1 million', topDonors: ['Wendy Schmidt ($10M)', 'Clean and Healthy California, an environmental groups’ committee ($7.1M)', 'State Building and Construction Trades Council ($2M)', 'California State Council of Laborers ($1.5M)'] },
+        sources: propFundingSources(45, 'proposition-45-modifies-environmental-review-certain-projects-initiative-statute'),
+      },
+      positions: [
+        ...partyPositions('No', 'Yes', 'No', 'No position'),
+        editorial(PAPER.sdut, 'Yes', 'https://www.sandiegouniontribune.com/2026/09/11/endorsement-yes-on-prop-45-to-reform-ceqa-limit-state-dysfunction/'),
+        editorial(PAPER.ocr, 'Yes', 'https://www.ocregister.com/2026/09/09/endorsement-yes-on-prop-45-to-reform-ceqa/'),
+      ],
       measureType: 'Initiative statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:

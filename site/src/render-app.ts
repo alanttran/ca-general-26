@@ -1393,17 +1393,26 @@ function renderMeasureOverview(m: MeasureBlock): HTMLElement {
   }
 
   const sides = el('div', 'measure__sides');
+  const labelled = (label: string, text: string) => {
+    const p = el('p', 'measure__backers');
+    const strong = el('strong');
+    strong.textContent = `${label}: `;
+    p.append(strong, document.createTextNode(text));
+    return p;
+  };
   const side = (mod: 'yes' | 'no', heading: string, args: string[], backers: string | undefined, backersLabel: string) => {
     const col = el('section', `measure__side measure__side--${mod}`);
     const h = el('h4', 'measure__side-heading');
     h.textContent = heading;
     col.append(h, bulletList(args));
-    if (backers?.trim()) {
-      const p = el('p', 'measure__backers');
-      const strong = el('strong');
-      strong.textContent = `${backersLabel}: `;
-      p.append(strong, document.createTextNode(backers));
-      col.append(p);
+    const want = mod === 'yes' ? 'Yes' : 'No';
+    const endorsers = (m.positions ?? []).filter((p) => p.position === want).map((p) => p.org);
+    if (endorsers.length) col.append(labelled('Parties and papers', endorsers.join('; ')));
+    if (backers?.trim()) col.append(labelled(backersLabel, backers));
+    const money = m.funding?.[mod];
+    if (money) {
+      col.append(labelled('Raised', money.raised));
+      if (money.topDonors?.length) col.append(labelled('Top donors', money.topDonors.join('; ')));
     }
     return col;
   };
@@ -1412,6 +1421,24 @@ function renderMeasureOverview(m: MeasureBlock): HTMLElement {
     side('no', m.argumentsAgainstHeading ?? 'Reasons to vote No', m.argumentsAgainst, m.opponents, 'Opponents'),
   );
   art.append(sides);
+
+  const footnotes: Node[] = [];
+  const neutral = (m.positions ?? []).filter((p) => p.position === 'No position').map((p) => p.org);
+  if (neutral.length) footnotes.push(document.createTextNode(`No position: ${neutral.join('; ')}. `));
+  if (m.funding) {
+    if (m.funding.note) footnotes.push(document.createTextNode(`${m.funding.note} `));
+    footnotes.push(document.createTextNode(`Money through ${m.funding.asOf} (`));
+    m.funding.sources.forEach((src, i) => {
+      if (i) footnotes.push(document.createTextNode(', '));
+      footnotes.push(extLink(src.url, src.label));
+    });
+    footnotes.push(document.createTextNode(').'));
+  }
+  if (footnotes.length) {
+    const p = el('p', 'measure__money-note');
+    p.append(...footnotes);
+    art.append(p);
+  }
   return art;
 }
 

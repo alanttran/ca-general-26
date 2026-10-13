@@ -33,6 +33,22 @@ const BOOKLET_LINK = {
 const TABOR_URL =
   'https://www.denvergov.org/files/assets/public/v/2/clerk-and-recorder/documents/elections-division/2026/documents/26-general-election/tabor_eng-text.pdf';
 
+// ───────────────────────────── Measure money and positions shared ─────────────────────────────
+// City measures: Denver Clerk and Recorder’s SearchLight Denver portal (September monthly reports, period
+// ending Sept. 30, filed Oct. 4–5, 2026). DPS 4A: Colorado TRACER (school-district committees file with the state).
+// Positions: Denver Democrats (Central Committee) and Denver Republican Party ballot guides, read Oct. 12, 2026.
+// The Denver Post editorial board’s 2026 picks could not be read (denverpost.com blocks automated access); only its
+// No on DPS 4A (Sept. 13, 2026 editorial, as reported and linked by Chalkbeat) is included.
+const DENVER_MONEY_AS_OF = 'Sept. 30, 2026';
+const DENVER_CF_SOURCE = {
+  label: 'Denver Clerk and Recorder — SearchLight Denver campaign finance (September reports)',
+  url: 'https://denver.maplight.com/public',
+};
+const DENVER_DEMS_URL = 'https://www.denverdemocrats.org/vote';
+const DENVER_GOP_URL = 'https://www.denvergop.org/';
+const denverDems = (position: 'Yes' | 'No' | 'No position') => ({ org: 'Denver Democratic Party', kind: 'party' as const, position, url: DENVER_DEMS_URL });
+const denverGop = (position: 'Yes' | 'No' | 'No position') => ({ org: 'Denver Republican Party', kind: 'party' as const, position, url: DENVER_GOP_URL });
+
 // ───────────────────────────── Legislature shared ─────────────────────────────
 
 const LEGAL_SENATE =
@@ -956,6 +972,12 @@ export const RACES_CO_DENVER: Race[] = [
         'Shall the Charter of the City and County of Denver be amended to expressly clarify that the Auditor’s Office may continue to enforce wage laws, worker protection laws, and other workplace rights laws in accordance with ordinances passed by City Council?',
       yesMeans: 'Adds a line to the city charter confirming that the Auditor’s Office enforces wage, worker-protection and workplace-rights laws as City Council sets by ordinance.',
       noMeans: 'Leaves the charter unchanged; the Auditor’s Office keeps enforcing wage laws under existing ordinances, but that role stays unstated in the charter.',
+      funding: {
+        asOf: DENVER_MONEY_AS_OF,
+        note: 'No committee has registered with the Denver Clerk and Recorder to support or oppose 2H.',
+        sources: [DENVER_CF_SOURCE],
+      },
+      positions: [denverDems('Yes'), denverGop('Yes')],
       measureType: 'Charter amendment (referred by City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'Department of Finance: no anticipated fiscal impact, because the Auditor’s Office already performs this function.',
@@ -1025,6 +1047,12 @@ export const RACES_CO_DENVER: Race[] = [
         'Shall the Charter of the City and County of Denver be amended to adjust the City and County’s budget and appropriation process, and in connection therewith, allowing the City Council to adopt a two-year budget planning and adoption process and modernizing or repealing certain charter sections?',
       yesMeans: 'Lets City Council switch to two-year budgets by ordinance, moves the mayor’s budget release to early September, and requires mid-year cut plans when revenue or spending misses forecasts.',
       noMeans: 'Keeps Denver’s one-year budget, the Sept. 15 mayoral budget deadline, the July 1 preliminary estimate, and no charter triggers for mid-year shortfalls.',
+      funding: {
+        asOf: DENVER_MONEY_AS_OF,
+        note: 'No committee has registered with the Denver Clerk and Recorder to support or oppose 2I.',
+        sources: [DENVER_CF_SOURCE],
+      },
+      positions: [denverDems('Yes'), denverGop('No')],
       measureType: 'Charter amendment (referred by City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'About $50,000 one-time to reconfigure budget publishing ($20K) and development ($30K) systems; no cost from the earlier budget release date.',
@@ -1089,12 +1117,18 @@ export const RACES_CO_DENVER: Race[] = [
       '2J rewrites the charter sections on the Civil Service Commission and the hiring, probation and discipline of Denver police and firefighters. Many changes are technical; some are substantive: no citizenship requirement for commissioners, no charter caps on command staff (18 police, 7 fire), and a longer window for the safety manager to review discipline.',
       'Several details would move from the charter into ordinance, so council could change them later without a citywide vote.',
     ],
-    introParagraphs: ['Council referred 2J unanimously in August after a year of review with city agencies, unions and a charter task force led by Councilmember Jamie Torres. Police and fire leaders support it; no opposition campaign or money was reported (Denverite).'],
+    introParagraphs: ['Council referred 2J unanimously in August after a year of review with city agencies, unions and a charter task force led by Councilmember Jamie Torres. Police and fire leaders support it. One committee, United Safety Workers of Denver, has registered to oppose it but had reported no money through Sept. 30; no committee supports it (Denverite; Denver campaign-finance filings).'],
     measure: {
       question:
         'Shall the Charter of the City and County of Denver be amended to modernize the Civil Service Commission and Department of Safety by removing outdated language, giving City Council the ability to add duties via code, and providing for an extension of probation when required for medical, military, or other approved leave?',
       yesMeans: 'Rewrites charter rules for the Civil Service Commission and police and fire hiring and discipline, dropping the commissioner citizenship rule and command-staff caps and letting council add duties by ordinance.',
       noMeans: 'Keeps current charter rules, including the commissioner citizenship requirement, caps of 18 police and 7 fire command posts, and the 15-day disciplinary review window.',
+      funding: {
+        asOf: DENVER_MONEY_AS_OF,
+        note: 'No money reported on either side. One committee, United Safety Workers of Denver, registered to oppose 2J but had filed no contribution reports; no committee registered in support.',
+        sources: [DENVER_CF_SOURCE],
+      },
+      positions: [denverDems('Yes'), denverGop('No')],
       measureType: 'Charter amendment (referred by City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'Department of Finance: removing command-staff caps would have a de minimis impact if authorized strength does not change.',
@@ -1159,12 +1193,19 @@ export const RACES_CO_DENVER: Race[] = [
       'Xcel Energy needs a franchise to run power and gas lines in Denver streets. The current one expires at the end of 2026. 2K approves a new 20-year deal starting Jan. 1, 2027, keeping the 3% franchise fee (about $34 million a year), Xcel-paid utility relocations for city projects (about $150 million a year in value), and about $10 million a year for undergrounding lines.',
       'Council rejected an earlier version in 2025. The renegotiated deal adds a companion Energy Partnership Agreement with shareholder-funded bill assistance, independent audits and more reporting. Critics say Denver still undersold the value of its right-of-way.',
     ],
-    introParagraphs: ['Council referred 2K 10-2 in July after rejecting the first deal 7-6 in August 2025. Colorado Constitution art. XX, § 4 requires a public vote before Denver grants a franchise. The Yes campaign had raised about $454,000 by Aug. 31; no opposition money was reported (Denverite; Brownstein).'],
+    introParagraphs: ['Council referred 2K 10-2 in July after rejecting the first deal 7-6 in August 2025. Colorado Constitution art. XX, § 4 requires a public vote before Denver grants a franchise. The Yes committee, Safe and Reliable Energy Denver, had raised about $2.06 million through Sept. 30, nearly all of it from Xcel Energy itself; no committee has registered against it (Denver campaign-finance filings; Denverite; Brownstein).'],
     measure: {
       question:
         'Shall the City and County of Denver approve the terms of a twenty-year franchise contract, starting January 1, 2027, with Public Service Company of Colorado (Xcel Energy) to continue its program for undergrounding overhead electrical lines, maintaining infrastructure safety, and partnering with the City for emergency management coordination, and to require that Xcel Energy continue to pay the City for reasonable use of public rights-of-way and other City property necessary to provide safe and reliable utility services for the benefit of the City, its residents, and its businesses?',
       yesMeans: 'Approves a 20-year Xcel Energy franchise from 2027, keeping the 3% fee on Denver electric and gas revenues, Xcel-paid line relocations, and about $10 million a year for undergrounding.',
       noMeans: 'Rejects this deal; the current franchise still expires at the end of 2026, and the city and Xcel would have to extend it or negotiate a new one.',
+      funding: {
+        asOf: DENVER_MONEY_AS_OF,
+        yes: { raised: '$2.06 million', topDonors: ['Xcel Energy ($2,064,184)'] },
+        note: 'Safe and Reliable Energy Denver is funded almost entirely by Xcel Energy, the utility that would receive the franchise. No committee has registered to oppose 2K.',
+        sources: [DENVER_CF_SOURCE],
+      },
+      positions: [denverDems('Yes'), denverGop('No position')],
       measureType: 'Franchise approval (referred by City Council; Colo. Const. art. XX, § 4)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -1234,17 +1275,25 @@ export const RACES_CO_DENVER: Race[] = [
       'Initiated Ordinance 311 would ban force-feeding birds in Denver and ban selling products from force-fed birds, mainly foie gras, starting July 1, 2027. It would remove foie gras from roughly 15 to 24 restaurant menus; violators could face fines up to $5,000 or license action.',
       'It does not ban owning or eating foie gras or selling foie gras made without force-feeding. Supporters call force-feeding cruel; restaurant groups oppose government bans on specific foods.',
     ],
-    introParagraphs: ['Pro-Animal Colorado, whose fur-sales and slaughterhouse bans failed in 2024, qualified 311 with about 11,000 valid signatures and had raised about $138,000 by Aug. 31. No opposition campaign formed, but the Colorado Restaurant Association opposes product bans (Denverite).'],
+    introParagraphs: ['Pro-Animal Colorado, whose fur-sales and slaughterhouse bans failed in 2024, qualified 311 with about 11,000 valid signatures and had raised about $159,000 through Sept. 30, half of it from the Karuna Foundation. A No on 311 committee registered in September and reported $10,000 from two donors; the Colorado Restaurant Association also opposes product bans (Denverite; Denver campaign-finance filings).'],
     measure: {
       question:
         'Shall the voters of the City and County of Denver adopt an ordinance prohibiting the force-feeding of birds and, in connection therewith, prohibiting the sale of products derived from force-feeding birds, including foie gras?',
       yesMeans: 'Bans force-feeding birds and selling products from force-fed birds, mainly foie gras, in Denver starting July 1, 2027, with fines up to $5,000.',
+      funding: {
+        asOf: DENVER_MONEY_AS_OF,
+        yes: { raised: '$159,000', topDonors: ['Karuna Foundation ($79,302)', 'Max Thomas ($10,800)', 'Justin Clark ($9,327)'] },
+        no: { raised: '$10,000', topDonors: ['David Dean ($5,000)', 'Pat Shaw ($5,000)'] },
+        note: 'Yes: Pro-Animal Colorado. No: the NO ON 311 issue committee.',
+        sources: [DENVER_CF_SOURCE],
+      },
+      positions: [denverDems('Yes'), denverGop('No')],
       noMeans: 'Keeps foie gras and other products from force-fed birds legal to sell in Denver, with no city rule on force-feeding.',
       measureType: 'Initiated ordinance (citizen petition)',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'Department of Finance: no anticipated fiscal impact; public health workload would be minimal and absorbed.',
       supporters: 'Written comments for filed (Ballot Information Booklet); Pro-Animal Colorado.',
-      opponents: 'No comments against filed. Colorado Restaurant Association opposes product bans (statement to Denverite).',
+      opponents: 'No comments against filed. NO ON 311 (registered issue committee); Colorado Restaurant Association opposes product bans (statement to Denverite).',
       voterConnection: [
         'Most Denverites never buy foie gras; the direct effect falls on a few high-end restaurants.',
         'Sets a precedent for banning specific foods by ballot.',
@@ -1304,12 +1353,22 @@ export const RACES_CO_DENVER: Race[] = [
       '4A raises Denver property taxes by up to $44 million a year, with no end date, for Denver Public Schools: a $1,750 raise for every full-time employee, career and technical education, student mental health and special education.',
       'DPS says declining enrollment is squeezing its budget. Supporters cite teacher retention in a competitive metro market; critics of tax increases argue the district should find efficiencies first.',
     ],
-    introParagraphs: ['The DPS board voted unanimously in August to refer 4A. No opposition campaign formed and no comments against were filed by the deadline (Denverite; Ballot Issue Notice).'],
+    introParagraphs: ['The DPS board voted unanimously in August to refer 4A. No opposition campaign formed and no comments against were filed by the deadline, though the Denver Post editorial board urged a No vote, citing school-board infighting. The Yes committee, Denver Together for Kids, had not yet filed a money report as of Oct. 12 (Denverite; Ballot Issue Notice; Chalkbeat; TRACER).'],
     measure: {
       question:
         'Shall Denver Public Schools (School District No. 1) taxes be increased up to $44 million in 2026 (for collection in 2027) and annually thereafter for educational purposes, including increasing educator pay; offering more career and technical education courses in high-demand fields; and student mental health and special education, by a mill levy that, combined with other voter-approved overrides, equals the amount permitted by C.R.S. § 22-54-108(3)(b)(VI)? (condensed)',
       yesMeans: 'Raises DPS property taxes by up to $44 million a year, with no end date, for $1,750 staff raises, career and technical education, mental health and special education.',
       noMeans: 'Keeps DPS property taxes at current levels, with no new money for these raises and programs beyond the district’s existing budget and earlier voter-approved overrides.',
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'No money reported yet. The Yes committee, Denver Together for Kids, registered with the Secretary of State on Aug. 18; its first report, covering through Oct. 8, is due Oct. 13. No committee opposing 4A was found on TRACER.',
+        sources: [{ label: 'Colorado TRACER — Denver Together for Kids', url: 'https://tracer.sos.colorado.gov/PublicSite/SearchPages/CommitteeDetail.aspx?OrgID=52357' }],
+      },
+      positions: [
+        denverDems('Yes'),
+        denverGop('No'),
+        { org: 'The Denver Post editorial board', kind: 'editorial', position: 'No', url: 'https://www.denverpost.com/2026/09/13/denver-public-schools-mill-levy-override-property-tax-increase/' },
+      ],
       measureType: 'School district mill levy override (TABOR tax increase; Colo. Const. art. X, § 20)',
       voteThreshold: 'Simple majority',
       fiscalImpact:

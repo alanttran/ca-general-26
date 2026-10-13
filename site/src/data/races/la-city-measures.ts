@@ -49,6 +49,14 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
         'Shall an ordinance be adopted to provide a one-time exemption from the City’s special documentary transfer tax (Proposition ULA) for residential properties that were damaged or destroyed in the Palisades Fire and are sold within five years of the date of the Fire?',
       yesMeans: 'Exempts or refunds the ULA tax on the first sale of a home damaged or destroyed in the Palisades Fire, if sold by its Jan. 7, 2025 owner by Jan. 6, 2030.',
       noMeans: 'Keeps the 4% to 5.5% ULA tax on fire-damaged properties sold above about $5.4 million, with that money still going to affordable housing and tenant aid.',
+      funding: {
+        asOf: 'Oct. 13, 2026',
+        note: 'No committee has reported raising money for or against it. One group, AAPI Equity Alliance, reported $329.97 in independent spending urging a Yes vote (Oct. 9).',
+        sources: [{ label: 'LA City Ethics Commission, 2026 ballot measure totals', url: 'https://ethics.lacity.gov/cfcs/Display/DisplayPanels.cfc?method=ElectionTotalsResults&useBS4Tabs=yes&showdates=yes&election_id=76' }],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.lacdp.org/ballotmeasures' },
+      ],
       measureType: 'Ordinance (tax exemption; placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -130,6 +138,14 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
         'Shall the City Charter be amended to: establish a capital infrastructure plan and two-year budget cycle for the City; increase the authority of the Director of Public Works and allow for the elimination of or changes to the Board of Public Works; remove restrictions prohibiting the City from engaging in business enterprises and mortgaging City-owned property; and change certain contracting rules and procedures?',
       yesMeans: 'Amends the Charter to add a two-year budget and a capital infrastructure plan, give the Public Works Director more power, allow mortgaging City property and business ventures, and change contracting rules.',
       noMeans: 'Keeps the one-year budget, the full-time Board of Public Works, the bans on mortgaging City property and on commercial enterprises, and current contracting rules.',
+      funding: {
+        asOf: 'Oct. 13, 2026',
+        note: 'No committee has reported raising money for or against it. One group, AAPI Equity Alliance, reported $379.97 in independent spending urging a Yes vote (Oct. 9).',
+        sources: [{ label: 'LA City Ethics Commission, 2026 ballot measure totals', url: 'https://ethics.lacity.gov/cfcs/Display/DisplayPanels.cfc?method=ElectionTotalsResults&useBS4Tabs=yes&showdates=yes&election_id=76' }],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'No', url: 'https://www.lacdp.org/ballotmeasures' },
+      ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -201,6 +217,14 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       noMeans: 'Keeps the seven Area Planning Commissions, current Council review of planning decisions, appeal rights in the Charter, and the floor area limit of 13 times buildable area.',
       related: [
         { raceId: 'la-measure-ee', note: 'Both rewrite Charter Section 245 on Council review of commission actions: EE replaces the general five-meeting-day window with 15 calendar days, and PL rewrites the planning-commission exception.' },
+      ],
+      funding: {
+        asOf: 'Oct. 13, 2026',
+        note: 'No committee has reported raising money for or against it.',
+        sources: [{ label: 'LA City Ethics Commission, 2026 ballot measure totals', url: 'https://ethics.lacity.gov/cfcs/Display/DisplayPanels.cfc?method=ElectionTotalsResults&useBS4Tabs=yes&showdates=yes&election_id=76' }],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'No position', url: 'https://www.lacdp.org/ballotmeasures' },
       ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
@@ -279,6 +303,14 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       related: [
         { raceId: 'la-measure-pl', note: 'Both rewrite Charter Section 245 on Council review of commission actions: EE sets the general window at 15 calendar days, and PL rewrites the exception for planning commissions.' },
       ],
+      funding: {
+        asOf: 'Oct. 13, 2026',
+        note: 'No committee has reported raising money for or against it. One group, AAPI Equity Alliance, reported $379.97 in independent spending urging a Yes vote (Oct. 9).',
+        sources: [{ label: 'LA City Ethics Commission, 2026 ballot measure totals', url: 'https://ethics.lacity.gov/cfcs/Display/DisplayPanels.cfc?method=ElectionTotalsResults&useBS4Tabs=yes&showdates=yes&election_id=76' }],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'No', url: 'https://www.lacdp.org/ballotmeasures' },
+      ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -348,6 +380,18 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       noMeans: 'Keeps the parks minimum at 0.0325% of assessed property value, leaving any added parks money to the Council’s yearly budget choices.',
       related: [
         { raceId: 'la-measure-fd', note: 'FD’s tax can be levied only if LAFD keeps its 10-year average share of discretionary General Fund money, and this measure’s larger parks set-aside draws on that same General Fund.' },
+      ],
+      funding: {
+        asOf: 'Sept. 19, 2026',
+        yes: { raised: '$5,000', topDonors: ['Los Angeles Neighborhood Land Trust ($5,000)'] },
+        note: 'The Yes committee is a project of the Trust for Public Land. No committee has reported raising money against it. Teachers unions and AAPI Equity Alliance reported about $700 in independent spending for it.',
+        sources: [
+          { label: 'LA City Ethics Commission, 2026 ballot measure totals', url: 'https://ethics.lacity.gov/cfcs/Display/DisplayPanels.cfc?method=ElectionTotalsResults&useBS4Tabs=yes&showdates=yes&election_id=76' },
+          { label: 'LA City open data, campaign contributions (Yes on PRK, statement through Sept. 19)', url: 'https://data.lacity.org/d/m6g2-gc6c' },
+        ],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.lacdp.org/ballotmeasures' },
       ],
       measureType: 'Charter amendment (budget set-aside; placed by the City Council)',
       voteThreshold: 'Simple majority',
@@ -426,6 +470,14 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
         'Shall the City Charter be amended to: require the Harbor Department to allocate funds for waterfront public access projects; require disclosure of workforce impacts for certain Harbor Department leases and agreements; increase maximum terms for certain leases; and change the composition requirement for the Airport Commission?',
       yesMeans: 'Allows 66-year airport and DWP leases, requires five of seven airport commissioners from near LAX or Van Nuys, mandates Port waterfront spending, and requires workforce-impact disclosure for some Port projects.',
       noMeans: 'Keeps the 50-year cap on airport and DWP leases, one commissioner each from near LAX and Van Nuys, and Port waterfront spending as a practice rather than a Charter rule.',
+      funding: {
+        asOf: 'Oct. 13, 2026',
+        note: 'No committee has reported raising money for or against it. One group, AAPI Equity Alliance, reported $379.97 in independent spending urging a Yes vote (Oct. 9).',
+        sources: [{ label: 'LA City Ethics Commission, 2026 ballot measure totals', url: 'https://ethics.lacity.gov/cfcs/Display/DisplayPanels.cfc?method=ElectionTotalsResults&useBS4Tabs=yes&showdates=yes&election_id=76' }],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.lacdp.org/ballotmeasures' },
+      ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -492,6 +544,14 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
         'Shall the Los Angeles City Charter be amended to clarify the campaign finance rules for Board of Education elections and allow for changes by ordinance?',
       yesMeans: 'Removes the Charter’s separate campaign-finance section for LAUSD board races, applies the mayoral rules minus matching funds and contractor limits, and lets the Council change them by ordinance.',
       noMeans: 'Keeps school board campaign-finance rules in their own Charter section, changeable only by a citywide Charter vote.',
+      funding: {
+        asOf: 'Oct. 13, 2026',
+        note: 'No committee has reported raising money for or against it. One group, AAPI Equity Alliance, reported $329.97 in independent spending urging a Yes vote (Oct. 9).',
+        sources: [{ label: 'LA City Ethics Commission, 2026 ballot measure totals', url: 'https://ethics.lacity.gov/cfcs/Display/DisplayPanels.cfc?method=ElectionTotalsResults&useBS4Tabs=yes&showdates=yes&election_id=76' }],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'No position', url: 'https://www.lacdp.org/ballotmeasures' },
+      ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -550,7 +610,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       'Measure FD is a permanent sales tax dedicated to the Fire Department, a large expansion of an LAFD budget of about $900 million this year (LAist). The fight is over whether an earmarked sales tax is the right fix for slow response times or whether City Hall should reprioritize the existing budget.',
     ],
     introParagraphs: [
-      'A citizen initiative written by the firefighters’ union, which submitted more than 225,000 signatures; the Council then voted 14-0 in June to place it on the ballot (LAist). The Police Protective League plans to spend several million dollars against it (NBC Los Angeles). No public poll has been found.',
+      'A citizen initiative written by the firefighters’ union, which submitted more than 225,000 signatures; the Council then voted 14-0 in June to place it on the ballot (LAist). The firefighters’ committee has raised about $4.4 million since 2025, through Sept. 19 filings. The Police Protective League plans to spend several million dollars against it (NBC Los Angeles), but no spending against it had been reported to the City Ethics Commission. No public poll has been found.',
       'Earlier sales-tax increases: County Measure A (2024) and Measure ER (June 2026). Prop 43 on this ballot would require two-thirds for citizen-initiated special taxes from Jan. 1, 2027, but not for this vote.',
     ],
     measure: {
@@ -560,6 +620,27 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       noMeans: 'Keeps the City sales tax at 10.25%, and the Fire Department continues to rely on its share of the General Fund through the regular budget.',
       related: [
         { raceId: 'la-measure-prk', note: 'PRK would move a growing share of the General Fund to parks, which could make it harder to keep LAFD at the baseline share this tax requires before it can be levied.' },
+      ],
+      funding: {
+        asOf: 'Sept. 19, 2026',
+        yes: {
+          raised: '$4.4 million',
+          topDonors: [
+            'United Firefighters of Los Angeles City Local 112 ($1.8M)',
+            'California Community Foundation ($400,000)',
+            'McNicholas & McNicholas LLP ($300,000)',
+            'Western States Regional Council of Carpenters ($250,000)',
+          ],
+        },
+        note: 'Totals since January 2025, including the signature drive. No committee has reported raising money against it; the Police Protective League has said it will spend millions to oppose it, but no such spending had been reported.',
+        sources: [
+          { label: 'LA City Ethics Commission, 2026 ballot measure totals (through June 30)', url: 'https://ethics.lacity.gov/cfcs/Display/DisplayPanels.cfc?method=ElectionTotalsResults&useBS4Tabs=yes&showdates=yes&election_id=76' },
+          { label: 'LA City open data, campaign contributions (Fund LA Fire, July 1 to Sept. 19)', url: 'https://data.lacity.org/d/m6g2-gc6c' },
+          { label: 'CityHallPass, Measure FD money summary (cumulative totals and top donors)', url: 'https://cityhallpass.com/election-2026/measures/measure-fd' },
+        ],
+      },
+      positions: [
+        { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.lacdp.org/ballotmeasures' },
       ],
       measureType: 'Citizen initiative ordinance (special sales tax dedicated to the Fire Department)',
       voteThreshold: 'Simple majority',

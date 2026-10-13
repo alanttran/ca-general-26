@@ -1,11 +1,12 @@
 import type { Race } from '../../types/ballot-types';
 import { ct } from './helpers';
+import { PAPER, editorial, partyPositions, propFundingSources } from './props-a';
 
 /**
  * State propositions 37–41 (Nov 3, 2026 general election).
  * Sources checked Oct 7, 2026: LAO ballot analyses, SoS Voter Information Guide (text of proposed laws,
- * arguments), SoS measure-contribution pages (through Aug 2, 2026), FPPC top-10 contributor lists
- * (page modified Oct 6, 2026), PPIC Statewide Survey (Sept 4–10, 2026), CalMatters / KPBS explainers.
+ * arguments), SoS measure-contribution pages, FPPC top-10 contributor lists
+ * (page modified Oct 6, 2026); `funding` and `positions` checked Oct 12, 2026 (see props-a.ts header), PPIC Statewide Survey (Sept 4–10, 2026), CalMatters / KPBS explainers.
  */
 export const RACES_PROPS_B: Race[] = [
   // ───────────────────────────── PROP 37 ─────────────────────────────
@@ -20,7 +21,7 @@ export const RACES_PROPS_B: Race[] = [
       'The biggest hurdle to a first home is often the down payment. Prop 37 would have the state lend most of it to middle-income buyers of new homes, financed by private investors rather than taxes. Critics question a state agency becoming a major mortgage lender and say it adds debt instead of lowering prices.',
     ],
     introParagraphs: [
-      'Prop 37 is a citizen initiative backed by the California Association of Realtors and carpenters’ unions. Per the FPPC top-contributor list (updated Oct 6, 2026), the Realtors’ “Homeownership for Families” committee gave $14.85M, Building a Better California (the billionaire-funded group fighting Prop 40) $6M, and carpenters’ councils about $1.7M. No opposition committee made the list, and no argument against was filed.',
+      'Prop 37 is a citizen initiative backed by the California Association of Realtors and carpenters’ unions; Building a Better California, the billionaire-funded group fighting Prop 40, is also a major donor. No opposition committee has registered, and no argument against was filed.',
       'The California Democratic Party supports it. Reform California and the League of Women Voters oppose it.',
     ],
     polling: [
@@ -38,6 +39,19 @@ export const RACES_PROPS_B: Race[] = [
         'Requires CalHFA to create a program, funded by up to $25 billion in borrower-repaid revenue bonds, lending middle-income buyers up to 17% of a new home’s price.',
       noMeans:
         'Leaves the state with no obligation to create this program; existing CalHFA down-payment help and current construction-defect claim rules stay the same.',
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$23.8 million', topDonors: ['California Association of Realtors ($14.8M)', 'Building a Better California, Sergey Brin’s committee ($6M)', 'National Association of Realtors ($1.25M)', 'United Brotherhood of Carpenters ($800K)'] },
+        note: 'No committee has registered to oppose Prop 37.',
+        sources: propFundingSources(37, 'proposition-37-creates-loan-program-middle-income-buyers-qualified-new-homes-initiative-statute'),
+      },
+      positions: [
+        ...partyPositions('Yes', 'No position', 'No', 'No'),
+        editorial(PAPER.sfc, 'Yes', 'https://www.sfchronicle.com/opinion/editorials/article/prop-37-housing-home-loans-22422795.php'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/10/02/endorsements-props-2-37-wouldnt-yield-saner-state-budgets-more-housing/'),
+        editorial(PAPER.sacbee, 'Yes', 'https://www.sacbee.com/opinion/election-endorsements/article317470188.html'),
+        editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/09/20/endorsement-no-on-proposition-37-a-risky-25-billion-housing-experiment/'),
+      ],
       measureType: 'Initiative statute (revenue bonds)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -127,7 +141,7 @@ export const RACES_PROPS_B: Race[] = [
       'Prop 38 would add two decades of General Fund debt payments to fund immune-system research on major diseases. The fight is over who gets the money: half goes to one institute whose criteria, per CalMatters and UCLA, fit only the chief funder’s own. Supporters say the criteria simply require a proven, accountable institution.',
     ],
     introParagraphs: [
-      'Prop 38 is a citizen initiative from philanthropist and medical inventor Gary Michelson, co-founder of the California Institute for Immunology and Immunotherapy. Per the FPPC top-contributor list (updated Oct 6, 2026), Yes on 38 has $25M from Michelson, $21.2M from his Michelson Center for Public Policy, and $5M from institute co-founder Meyer Luskin. No opposing committee appears on the list.',
+      'Prop 38 is a citizen initiative from philanthropist and medical inventor Gary Michelson, co-founder of the California Institute for Immunology and Immunotherapy. Michelson, directly and through his Michelson Center for Public Policy, has supplied nearly all of the Yes money, with institute co-founder Meyer Luskin the other major donor. The only No committee has raised a few thousand dollars.',
       'Supporters also include the American Association of Immunologists and the California Democratic Party. Opponents include Stanford scholar and former NIH associate director Robert M. Kaplan, the League of Women Voters, and the Orange County Register editorial board.',
     ],
     polling: [
@@ -145,6 +159,18 @@ export const RACES_PROPS_B: Race[] = [
         'Lets the state borrow $8.4 billion for immunology research, half to one UC-affiliated institute and half to grants, costing $500–600 million a year for about 20 years.',
       noMeans:
         'Keeps the state from borrowing the $8.4 billion; immunology research continues with existing federal, university and private funding, and no new state debt payments.',
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$51.2 million', topDonors: ['Gary Michelson, directly and through his Michelson Center for Public Policy ($46.2M)', 'Meyer Luskin ($5M)'] },
+        no: { raised: '$3,800', topDonors: ['Robert M. Kaplan ($3,100)'] },
+        sources: propFundingSources(38, 'proposition-38-authorizes-bonds-immunology-research-initiative-statut'),
+      },
+      positions: [
+        ...partyPositions('Yes', 'Yes', 'No', 'No'),
+        editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/prop-38-money-california-22453646.php'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/09/18/no-on-prop-38-an-8-4-billion-wolf-in-sheeps-clothing/'),
+        editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/08/23/endorsement-no-on-proposition-38-an-8-4-billion-money-grab/'),
+      ],
       measureType: 'Initiative statute (general obligation bond)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -235,7 +261,7 @@ export const RACES_PROPS_B: Race[] = [
       'Today, California voters prove identity at registration, then by signature. Prop 39 would write into the Constitution an ID requirement at the polls and an ID-number match on every mail ballot. The debate is confidence versus access: a visible check that builds trust, or a new way for eligible voters’ ballots to be rejected.',
     ],
     introParagraphs: [
-      'Prop 39 was placed on the ballot by Assemblymember Carl DeMaio’s Reform California and is backed by the California Republican Party. Illinois businessman Richard Uihlein has given $17M of the roughly $22M on the FPPC top-contributor list (updated Oct 6, 2026). No committees, funded by the California Democratic Party, unions, Reed Hastings, Patty Quillin, Quinn Delaney, the ACLU, and others, list about $19M (net of a $2M transfer between them).',
+      'Prop 39 was placed on the ballot by Assemblymember Carl DeMaio’s Reform California and is backed by the California Republican Party. Illinois businessman Richard Uihlein is its largest donor, and Airbnb co-founder Joe Gebbia added $8M on Oct. 7, 2026. The No committees are funded by the California Democratic Party, unions, tribes, Reed Hastings, Patty Quillin, Quinn Delaney, the ACLU, and others.',
       'In August, Sacramento judges upheld the Attorney General’s ballot title and ordered supporters to revise pamphlet claims that it would make voting easier and save money, finding them false or misleading. PPIC’s poll split sharply by party (Democrats 19% Yes, Republicans 85%, independents 43%); an April Berkeley IGS poll found majority support when asked without political context.',
     ],
     polling: [
@@ -259,6 +285,18 @@ export const RACES_PROPS_B: Race[] = [
         'Requires government ID to vote in person and the last four digits of a designated ID number on every mail-ballot envelope, or the ballot isn’t counted; free state ID offered.',
       noMeans:
         'Keeps current rules: voters prove identity when registering, mail ballots are verified by signature match, and most in-person voters need no ID.',
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: 'More than $36 million', topDonors: ['Richard Uihlein ($17M)', 'Joe Gebbia ($8M)', 'Steven Bray ($3.35M, mostly loans)', 'Reform California ($3.1M)'] },
+        no: { raised: '$23.3 million', topDonors: ['California Democratic Party ($5.5M)', 'Federated Indians of Graton Rancheria ($2M)', 'Patty Quillin ($1.5M)', 'M. Quinn Delaney ($1.5M)'] },
+        note: 'Yes total as reported by CalMatters on Oct. 9, 2026, after Gebbia’s Oct. 7 gift; the No total is CalMatters’ tracker figure through Sept. 28.',
+        sources: [{ label: 'CalMatters — Why are out-of-state billionaires funding a California voter ID measure? (Oct 9, 2026)', url: 'https://calmatters.org/politics/2026/10/california-election-voter-id-proposition-39/' }, ...propFundingSources(39, 'proposition-39-establishes-additional-voter-identification-and-citizenship-verification-requirements-initiative-constitutional-a', { kqed: false })],
+      },
+      positions: [
+        ...partyPositions('No', 'Yes', 'No', 'No'),
+        editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/endorsement-proposition-39-voter-fraud-california-22463918.php'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/10/02/endorsement-vote-no-on-prop-39-and-its-unworkable-voter-registration-rule/'),
+      ],
       measureType: 'Initiative constitutional amendment',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -365,7 +403,7 @@ export const RACES_PROPS_B: Race[] = [
       'Prop 40 would tax roughly 200 California billionaires once, mostly to backfill federal Medi-Cal cuts. Supporters see a rare chance to tax huge unrealized gains. Opponents, including Gov. Newsom and Democratic nominee Xavier Becerra, warn billionaires will leave, permanently shrinking income taxes, and expect years of litigation over a residency date set before the vote.',
     ],
     introParagraphs: [
-      'SEIU-United Healthcare Workers West placed Prop 40 on the ballot and funds nearly all of the Yes side (about $32M; FPPC list updated Oct 6, 2026). The No side is far larger: Building a Better California, the vehicle for Sergey Brin and other billionaires, has put $88.5M into No on 40 and $58.35M into Yes on 41, and Chris Larsen and Ripple Labs gave $10M to a second No committee.',
+      'SEIU-United Healthcare Workers West placed Prop 40 on the ballot and funds nearly all of the Yes side. The No side has raised about three times as much: most comes from Building a Better California, the vehicle for Sergey Brin and other billionaires, which is also funding Yes on 41 and 42, and Chris Larsen and Ripple Labs fund a second No committee.',
       'The California Democratic Party endorsed Prop 40 by a narrow 61.7% executive-board vote, splitting with Gov. Newsom. PPIC also found 51% Yes on Prop 41 and 54% on Prop 42, the measures that would cancel it; PPIC’s Mark Baldassare told CalMatters many voters don’t realize they are countermeasures.',
     ],
     polling: [
@@ -398,6 +436,18 @@ export const RACES_PROPS_B: Race[] = [
           raceId: 'prop-42',
           note: 'If both pass and Prop 42 gets more Yes votes, courts could find they conflict and void all of Prop 40, even with majority approval (LAO).',
         },
+      ],
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$32.7 million', topDonors: ['SEIU-United Healthcare Workers West and its committees ($31.8M)', 'Alan Davis ($275K)', 'Saikat Chakrabarti ($201K)', 'Ross Boucher ($200K)'] },
+        no: { raised: '$99.8 million', topDonors: ['Building a Better California, Sergey Brin’s committee ($88.5M)', 'Chris Larsen ($5M)', 'Ripple Labs ($5M)', 'California Business Roundtable ($695K)'] },
+        sources: propFundingSources(40, 'proposition-40-imposes-one-time-tax-certain-individuals-and-trusts-initiative-constitutional-amendment-and-statute'),
+      },
+      positions: [
+        ...partyPositions('Yes', 'No', 'Yes', 'No'),
+        editorial(PAPER.lat, 'No', 'https://www.latimes.com/opinion/story/2026-09-06/editorial-vote-no-on-proposition-40'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/10/02/the-u-t-editorial-boards-endorsements/'),
+        editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/09/13/endorsement-no-on-proposition-40s-reckless-wealth-tax/'),
       ],
       measureType: 'Initiative constitutional amendment and statute',
       voteThreshold: 'Simple majority (but see Props 41 and 42: if either receives more Yes votes, courts could void Prop 40)',
@@ -508,7 +558,7 @@ export const RACES_PROPS_B: Race[] = [
       'Prop 41 would count new state taxes under the 1979 Gann spending limit and require State Auditor reviews of programs funded by new special taxes. It is aimed at Prop 40, which exempts its revenue from that limit: if 41 gets more Yes votes, Prop 40 is void even if it passes. It would also constrain future voter-approved taxes.',
     ],
     introParagraphs: [
-      'Prop 41 was placed on the ballot by opponents of the billionaire tax. Building a Better California, funded by Sergey Brin and other billionaires, has given $58.35M to Yes on 41 (FPPC list updated Oct 6, 2026), and CalMatters reported $131M raised for Props 41 and 42 combined. CalMatters also lists Reform California and Stewart Resnick as backers. SEIU-UHW’s “Yes on 40 – No on 41 & 42” committee and the California Democratic Party lead the opposition.',
+      'Prop 41 was placed on the ballot by opponents of the billionaire tax. Building a Better California, funded by Sergey Brin and other billionaires, is the Yes campaign’s only major donor and is also funding Yes on 42. CalMatters also lists Reform California and Stewart Resnick as backers. SEIU-UHW’s “Yes on 40 – No on 41 & 42” committee and the California Democratic Party lead the opposition.',
       'PPIC’s September poll has Prop 41 nearly even with Prop 40 (52% Yes), so the vote-count showdown is a real possibility. Democrats were 38% Yes, Republicans 74%, independents 51%.',
     ],
     polling: [
@@ -535,6 +585,19 @@ export const RACES_PROPS_B: Race[] = [
           raceId: 'prop-42',
           note: 'Both are written to cancel Prop 40 if they outpoll it; neither conflicts with the other, so both can take effect.',
         },
+      ],
+      funding: {
+        asOf: 'Oct. 9, 2026',
+        yes: { raised: '$58.3 million', topDonors: ['Building a Better California, Sergey Brin’s committee ($58.35M)', 'Reform California ($22K)'] },
+        no: { raised: '$365,000', topDonors: ['Alan Davis ($250K)', 'Excessive Wealth ($40K)', 'John Esler ($25K)', 'William Connell ($25K)'] },
+        note: 'No total is CalMatters’ tracker figure through Sept. 28. SEIU-UHW’s “Yes on 40 – No on 41 & 42” committee also campaigns against Prop 41; its money is counted under Prop 40.',
+        sources: propFundingSources(41, 'proposition-41-requires-audits-programs-funded-new-state-special-taxes-prohibits-new-state-taxes-are-excluded-existing-voter-app'),
+      },
+      positions: [
+        ...partyPositions('No', 'Yes', 'No', 'Yes'),
+        editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/endorsement-california-prop-41-taxes-22445889.php'),
+        editorial(PAPER.sdut, 'Yes', 'https://www.sandiegouniontribune.com/2026/09/21/endorsement-yes-on-proposition-41-and-42-to-limit-taxation-in-california/'),
+        editorial(PAPER.ocr, 'Yes', 'https://www.ocregister.com/2026/09/21/endorsement-yes-on-proposition-41-and-42-to-limit-taxation-in-california/'),
       ],
       measureType: 'Initiative constitutional amendment',
       voteThreshold: 'Simple majority (conflict clause: if it outpolls Prop 40, Prop 40 is void)',

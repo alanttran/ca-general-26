@@ -274,6 +274,21 @@ export const RACES_OC_ORANGE: Race[] = [
       related: [
         { raceId: 'orange-measure-k', note: 'If Measure K’s charter also passes, the Council must give priority to using this tax’s new recurring revenue for pension debt, infrastructure, debt and reserves, though essential services remain allowed.' },
       ],
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        no: {
+          raised: '$8,868',
+          topDonors: ['Fred Whitaker and Whitaker Professional Corp. ($6,450)', 'Michael Alvarez ($2,418)'],
+        },
+        note: 'No committee has formed to support it. The opposing committee, No More Taxes Orange, reports mostly in-kind help from its two founders. Outside groups have spent for a Yes vote on their own: the Orange City Firefighter PAC reported about $17,000 (signs, a mailer and a poll; some sign costs were also counted toward Measure J), and the City of Orange Police Association’s issues committee about $1,400.',
+        sources: [
+          { label: 'City of Orange campaign filings (NetFile): No More Taxes Orange Form 460 through Sept. 19 and Form 497; Form 496 independent-spending reports', url: 'https://netfile.com/public/COO/campaign' },
+        ],
+      },
+      positions: [
+        { org: 'Democratic Party of Orange County', kind: 'party', position: 'Yes', url: 'https://orangecountydemocrats.com/oc-endorsements-2' },
+        { org: 'Republican Party of Orange County', kind: 'party', position: 'No', url: 'https://www.ocgop.org/endorsements' },
+      ],
       measureType: 'City Council-placed general transactions and use (sales) tax',
       voteThreshold: 'Simple majority (general tax)',
       fiscalImpact:
@@ -348,6 +363,16 @@ export const RACES_OC_ORANGE: Race[] = [
       related: [
         { raceId: 'orange-measure-k', note: 'If Measure K’s charter also passes, the Council must give priority to using this tax’s new recurring revenue for pension debt, infrastructure, debt and reserves, though essential services remain allowed.' },
       ],
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'No committee has reported raising money for or against it. Outside groups have spent for a Yes vote on their own: the Orange City Firefighter PAC reported about $12,000 (signs and a mailer shared with Measure I), and the City of Orange Police Association’s issues committee about $1,400.',
+        sources: [
+          { label: 'City of Orange campaign filings (NetFile): Form 496 independent-spending reports', url: 'https://netfile.com/public/COO/campaign' },
+        ],
+      },
+      positions: [
+        { org: 'Democratic Party of Orange County', kind: 'party', position: 'Yes', url: 'https://orangecountydemocrats.com/oc-endorsements-2' },
+      ],
       measureType: 'City Council-placed general tax (transient occupancy tax increase)',
       voteThreshold: 'Simple majority (general tax)',
       fiscalImpact:
@@ -418,6 +443,16 @@ export const RACES_OC_ORANGE: Race[] = [
       related: [
         { raceId: 'orange-measure-i', note: 'This charter directs the Council to give priority to using new recurring general-fund money, such as Measure I’s sales tax, for pension debt, infrastructure, debt and reserves.' },
         { raceId: 'orange-measure-j', note: 'This charter directs the Council to give priority to using new recurring general-fund money, such as Measure J’s hotel tax increase, for pension debt, infrastructure, debt and reserves.' },
+      ],
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        note: 'No committee has reported raising money for it. An opposing committee, Protect Orange – Committee to Defeat Measure K, registered on Sept. 22 but has not reported any contributions. The City of Orange Police Association’s issues committee reported about $2,800 in its own spending against it (walk cards and signs).',
+        sources: [
+          { label: 'City of Orange campaign filings (NetFile): Protect Orange Form 410; Form 496 independent-spending reports', url: 'https://netfile.com/public/COO/campaign' },
+        ],
+      },
+      positions: [
+        { org: 'Democratic Party of Orange County', kind: 'party', position: 'No', url: 'https://orangecountydemocrats.com/oc-endorsements-2' },
       ],
       measureType: 'Charter adoption (city council-placed)',
       voteThreshold: 'Simple majority',

@@ -574,12 +574,24 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
         'Without increasing current tax rates, to fix deteriorating roofs, plumbing, HVAC, electrical, safety systems, and repair/upgrade aging classrooms, science labs, career technology and school facilities to support college/career readiness in math, science, technology, arts, engineering, and skilled trades, shall Murrieta Valley Unified School District’s measure be adopted authorizing $359,000,000 in bonds at legal rates, levying $60 per $100,000 assessed value ($22 million annually) while bonds are outstanding, with citizen oversight, audits and all money locally controlled?',
       yesMeans: 'Authorizes $359 million in school bonds for roof, plumbing, HVAC and classroom repairs, repaid by a property tax of about $60 per $100,000 of assessed value while the bonds are outstanding.',
       noMeans: 'Blocks the new bonds; existing bond taxes continue until older bonds are paid off, and the repairs would need other funding.',
+      funding: {
+        asOf: 'Oct. 12, 2026',
+        yes: {
+          raised: 'About $233,000',
+          topDonors: ['DLR Group ($25,000)', 'Erickson Hall Construction ($25,000)', 'Studio W Architects ($20,000)', 'Barnhart-Reese ($20,000)'],
+        },
+        note: 'Most money for Yes comes from architecture, engineering and construction firms. No committee has reported raising money against it.',
+        sources: [
+          { label: 'Riverside County campaign filings (NetFile): Murrieta Community for Strong Schools, Yes on M, Form 460 through Sept. 19 plus late-contribution reports', url: 'https://netfile.com/public/CTRIV/campaign' },
+        ],
+      },
+      positions: [],
       measureType: 'School facilities bond (general obligation, Prop 39)',
       voteThreshold: '55%',
       fiscalImpact:
         'Up to $359 million in bonds, repaid by a property tax of no more than $60 per $100,000 of assessed value, raising about $22 million a year per the Registrar’s measure notice. The district says the rate would stay at the current level as older bonds are retired; it does not state a term or total repayment cost on its pages.',
-      supporters: 'Murrieta Valley Unified Board of Education (unanimous vote, May 12, 2026). No campaign committee found as of Oct 8, 2026.',
-      opponents: 'Republican activists Bob Kowell and Jack Guerrero spoke against the ballot language at the board meeting (Riverside Record). No organized opposition committee found as of Oct 8, 2026.',
+      supporters: 'Murrieta Valley Unified Board of Education (unanimous vote, May 12, 2026). Campaign committee: Murrieta Community for Strong Schools, Yes on M.',
+      opponents: 'Republican activists Bob Kowell and Jack Guerrero spoke against the ballot language at the board meeting (Riverside Record). No opposition committee has filed as of Oct. 12, 2026.',
       voterConnection: [
         'Property owners pay through their property tax bill; renters may pay indirectly if landlords pass costs through.',
         'Bond money funds buildings and repairs, not teacher or administrator salaries or pensions.',
@@ -641,12 +653,24 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
         'Riverside County Traffic Relief, Pothole/Road Repair Investment Renewal: shall the existing one-half percent transactions and use (sales) tax for transportation continue beyond its 2039 expiration until repealed by voters, with annual audits and an independent taxpayers oversight committee? (Summary; see the Registrar’s measure notice for the exact printed text.)',
       yesMeans: 'Continues Riverside County’s existing half-cent transportation sales tax past its 2039 expiration until voters repeal it, about $280 million a year for highways, local roads and transit.',
       noMeans: 'Keeps the current half-cent transportation tax until it expires in 2039, when it ends unless voters approve a renewal later.',
+      funding: {
+        asOf: 'Oct. 7, 2026',
+        yes: {
+          raised: 'About $1.1 million',
+          topDonors: ['Rebuild SoCal (Southern California Partnership for Jobs) ($250,000)', 'Southern California District Council of Laborers Issues PAC ($100,000)', 'Auto Club Enterprises ($75,000)', 'Jacobs Engineering Group ($75,000)'],
+        },
+        note: 'The Yes committee began raising money in 2025, mostly from construction and engineering firms and building-trades groups. No committee has reported raising money against it; Reform California, Carl DeMaio’s ballot measure committee, reported about $23,000 in its own spending against it, including a slate mailer.',
+        sources: [
+          { label: 'Riverside County campaign filings (NetFile): Yes on A, Riverside County Citizens for Traffic Relief and Local Jobs, Form 460s through Sept. 19 plus late-contribution reports; Reform California Form 496', url: 'https://netfile.com/public/CTRIV/campaign' },
+        ],
+      },
+      positions: [],
       measureType: 'Special tax (county transportation transactions and use tax), placed by the Riverside County Transportation Commission',
       voteThreshold: '2/3',
       fiscalImpact:
         'About $280 million a year (RCTC estimate). The tax rate stays at one-half percent; under the ordinance the new tax is set at 0% until April 1, 2039, when the current tax would otherwise end, and 0.5% afterward. The existing tax has raised more than $3.1 billion so far.',
-      supporters: 'Riverside County Transportation Commission (Ordinance No. 26-001, RCTC chair Raymond Gregory). No formal campaign committee reviewed as of Oct 8, 2026.',
-      opponents: 'No organized opposition found as of Oct 8, 2026; Supervisors Washington and Perez voted against the July 14, 2026 resolution ordering the election (County Board submittal).',
+      supporters: 'Riverside County Transportation Commission (Ordinance No. 26-001, RCTC chair Raymond Gregory). Campaign committee: Yes on A, Riverside County Citizens for Traffic Relief and Local Jobs, sponsored by Rebuild SoCal.',
+      opponents: 'No opposition committee has filed as of Oct. 12, 2026; Reform California (Carl DeMaio) has spent against it on its own. Supervisors Washington and Perez voted against the July 14, 2026 resolution ordering the election (County Board submittal).',
       voterConnection: [
         'Everyone who buys taxable goods in Riverside County already pays the half-cent; the rate would not change.',
         'Money returns in proportion to what each area (Western Riverside, Coachella Valley, Palo Verde Valley) generates.',

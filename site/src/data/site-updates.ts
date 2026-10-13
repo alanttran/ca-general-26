@@ -25,6 +25,8 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
           'Under the ballot question, “What your vote means” says in one sentence what a Yes vote does and what a No vote leaves in place, based on the official voter guide or impartial analysis.',
           '“Read with” links measures that affect each other, such as Props 40, 41 and 42 (if 41 or 42 gets more votes, courts could throw out Prop 40), Colorado’s Amendment 87 and Proposition 136, and Los Angeles Measures PL and EE, which rewrite the same charter section.',
           'Prop 40’s card now says courts could void it if Prop 41 or 42 gets more votes, matching the official analysis, rather than that it would be automatically nullified.',
+          'Each side of a measure now shows which parties and newspaper editorial boards back it, how much its campaign has raised and its top donors, from state and local campaign-finance filings. A footnote gives the date the money runs through and the source.',
+          'Where a measure has no campaign committee, or funders don’t disclose their donors, the card says so.',
           'Following a link to another race no longer collapses the races you had open.',
         ],
       },
