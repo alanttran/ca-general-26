@@ -28,6 +28,11 @@ import { RACES_SD_DISTRICTS } from './sd-districts';
 import { RACES_SD_LOCAL } from './sd-local';
 import { RACES_SDC_SOUTH } from './sdc-south';
 import { RACES_SDC_NORTH } from './sdc-north';
+import { RACES_SDC_SOUTH_EAST } from './sdc-south-east';
+import { RACES_LA_MESA } from './la-mesa';
+import { RACES_SANTEE } from './santee';
+import { RACES_OCEANSIDE } from './oceanside';
+import { RACES_VISTA } from './vista';
 import { RACES_CO_STATEWIDE } from './co-statewide';
 import { RACES_CO_MEASURES } from './co-measures';
 import { RACES_CO_COURTS } from './co-courts';
@@ -83,6 +88,12 @@ export const LOCAL_RACES: Race[] = [
   ...RACES_NORTH_COASTAL,
   ...RACES_ESCONDIDO,
   ...RACES_ESCONDIDO_B,
+  // Chula Vista, El Cajon, La Mesa, Santee, Oceanside and Vista (docs/sd-cities-scope.md).
+  ...RACES_SDC_SOUTH_EAST,
+  ...RACES_LA_MESA,
+  ...RACES_SANTEE,
+  ...RACES_OCEANSIDE,
+  ...RACES_VISTA,
   ...RACES_LA_DISTRICTS_A,
   ...RACES_LA_DISTRICTS_B,
   ...RACES_LA_COURTS,

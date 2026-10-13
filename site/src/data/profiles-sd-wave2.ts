@@ -15,19 +15,20 @@ const SD_REGISTRAR = {
 const SD_COUNTYWIDE = ['boe-d4', 'retention-dca4', 'sd-county-assessor', 'sd-county-treasurer', 'sd-measure-a', 'sd-measure-b'];
 
 export function sd(zip: string, scopeLabel: string, verificationNote: string, localRaceIds: string[], partialShares?: Record<string, number>): BallotProfile {
-  // County measures print before school-district measures (e.g. SDUSD Measure M).
-  const schoolMeasures = localRaceIds.filter((id) => id === 'sdusd-measure-m');
-  const rest = localRaceIds.filter((id) => id !== 'sdusd-measure-m');
-  return { zip, scopeLabel, verificationNote, ...SD_REGISTRAR, localRaceIds: [...rest, ...SD_COUNTYWIDE, ...schoolMeasures], partialShares };
+  // County Measures A and B print first; city, college and school measures (e.g. SDUSD Measure M) follow in the order given.
+  const isMeasure = (id: string) => id.includes('-measure-');
+  const localMeasures = localRaceIds.filter(isMeasure);
+  const rest = localRaceIds.filter((id) => !isMeasure(id));
+  return { zip, scopeLabel, verificationNote, ...SD_REGISTRAR, localRaceIds: [...rest, ...SD_COUNTYWIDE, ...localMeasures], partialShares };
 }
 
 export const SD_WAVE2_PROFILES: Record<string, BallotProfile> = {
   '91911': sd(
     '91911',
     'Chula Vista, San Diego',
-    'Built from the county’s sample ballots for this ZIP: CA-52, Senate 18, Assembly 80, Chula Vista Mayor and City Attorney, and Chula Vista Elementary seats 1, 3 and 5. Smaller parts of the ZIP also vote on Southwestern College Trustee Area 1 (~8%), Chula Vista Council District 2 (~7%) or Sweetwater Union High Trustee Area 1 (~4%), which we don’t cover. Trust your official sample ballot over us.',
-    ['us-rep-ca52', 'senate-sd18', 'assembly-ad80', 'cvesd-seat-1', 'cvesd-seat-3', 'cvesd-seat-5', 'swc-trustee-area-4', 'chula-vista-mayor', 'chula-vista-city-attorney'],
-    { 'swc-trustee-area-4': 25 },
+    'Built from the county’s sample ballots for this ZIP: CA-52, Senate 18, Assembly 80, Chula Vista Mayor and City Attorney, and Chula Vista Elementary seats 1, 3 and 5. About 8% also vote for Southwestern College Trustee Area 1. Smaller parts of the ZIP vote on Chula Vista Council District 2 (~7%) or Sweetwater Union High Trustee Area 1 (~4%), which we don’t list here. Trust your official sample ballot over us.',
+    ['us-rep-ca52', 'senate-sd18', 'assembly-ad80', 'swc-trustee-area-1', 'cvesd-seat-1', 'cvesd-seat-3', 'cvesd-seat-5', 'swc-trustee-area-4', 'chula-vista-mayor', 'chula-vista-city-attorney'],
+    { 'swc-trustee-area-1': 8, 'swc-trustee-area-4': 25 },
   ),
   '91914': sd(
     '91914',

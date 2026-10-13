@@ -2,6 +2,7 @@ import type { BallotCategory } from '../types/ballot-types';
 import { SD_WAVE2_PROFILES } from './profiles-sd-wave2';
 import { SD_CITY_PROFILES } from './profiles-sd-city';
 import { ESCONDIDO_PROFILES } from './profiles-escondido';
+import { SD_CITIES_PROFILES } from './profiles-sd-cities';
 import { WAVE3_PROFILES } from './profiles-wave3';
 import { COLORADO_PROFILES } from './profiles-colorado';
 
@@ -88,6 +89,7 @@ export const BALLOT_PROFILES: Record<string, BallotProfile> = {
   ...SD_WAVE2_PROFILES,
   ...SD_CITY_PROFILES,
   ...ESCONDIDO_PROFILES,
+  ...SD_CITIES_PROFILES,
   '90028': WAVE3_PROFILES['90028'],
   '91501': WAVE3_PROFILES['91501'],
   '95765': WAVE3_PROFILES['95765'],

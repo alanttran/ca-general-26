@@ -17,8 +17,18 @@ export interface SiteUpdateBuild {
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
     dateLabel: 'October 13, 2026',
-    lede: 'Each ballot now opens with your county’s key voting dates and where-to-vote links, and you can mark your own choice in every contest and print them. The site also loads much faster on phones.',
+    lede: 'Full local ballots for 14 more San Diego County ZIPs in Chula Vista, Oceanside, El Cajon, La Mesa, Santee and Vista. Each ballot also opens with your county’s key voting dates, you can mark and print your own choices, and the site loads much faster on phones.',
     panels: [
+      {
+        summary: 'Chula Vista, Oceanside, El Cajon, La Mesa, Santee and Vista',
+        bullets: [
+          'Full local ballots for 91910, 91913 and 91915 (Chula Vista); 92054, 92056, 92057 and 92058 (Oceanside); 92020 (El Cajon); 91941 and 91942 (La Mesa); 92071 (Santee); and 92081, 92083 and 92084 (Vista).',
+          '34 new contests: mayor and council races in all six cities (plus La Mesa’s treasurer), school and college boards (Southwestern, Sweetwater, Grossmont, Cajon Valley, La Mesa-Spring Valley, Santee, Oceanside, Vista and San Marcos), and Helix, Padre Dam and Vista Irrigation water boards and Tri-City Healthcare.',
+          '8 new measures: Oceanside R (prevailing wage and project labor agreements) and S (sales tax), Santee Y (sales tax), and school or college bonds G (Grossmont-Cuyamaca), AA (La Mesa-Spring Valley), BB (Santee), N (Vista Unified) and K (Fallbrook Elementary).',
+          'Each ZIP’s contests were matched to the county’s ballot-type map and checked against all 75 of its official sample ballots; every one matched. Where district lines split a ZIP, the share of residents in each contest is shown.',
+          '91911 now includes Southwestern College Trustee Area 1 (about 8% of the ZIP). 92019 and 92021 are only about 41–44% El Cajon, so they still show statewide, district and countywide races only.',
+        ],
+      },
       {
         summary: 'How and when to vote',
         bullets: [
