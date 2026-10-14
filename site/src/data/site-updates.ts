@@ -16,6 +16,20 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'October 14, 2026',
+    lede: 'Full local ballots for Temecula: ZIPs 92590, 92591 and 92592.',
+    panels: [
+      {
+        summary: 'Temecula',
+        bullets: [
+          'Temecula City Council District 5 (four candidates), Temecula Valley Unified Trustee Areas 2 and 4, Mt. San Jacinto College Trustee Area 3, and Temecula Valley Unified’s $215 million school bond, Measure S.',
+          'Also on these ballots, already in the guide: Rancho California Water District, Riverside Superior Court Office 10 and countywide transportation Measure A. The unincorporated west side of 92590 votes on Murrieta Valley Unified Measure M instead of Measure S.',
+          'Contests were placed using the Riverside County Registrar’s own November district map and its final candidate list. Riverside doesn’t publish per-precinct sample ballots, so these weren’t checked against printed ballots the way San Diego’s were.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'October 13, 2026',
     lede: 'Full local ballots for 14 more San Diego County ZIPs in Chula Vista, Oceanside, El Cajon, La Mesa, Santee and Vista. Each ballot also opens with your county’s key voting dates, you can mark and print your own choices, and the site loads much faster on phones.',
     panels: [

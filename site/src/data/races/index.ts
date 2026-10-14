@@ -33,6 +33,7 @@ import { RACES_LA_MESA } from './la-mesa';
 import { RACES_SANTEE } from './santee';
 import { RACES_OCEANSIDE } from './oceanside';
 import { RACES_VISTA } from './vista';
+import { RACES_TEMECULA } from './temecula';
 import { RACES_CO_STATEWIDE } from './co-statewide';
 import { RACES_CO_MEASURES } from './co-measures';
 import { RACES_CO_COURTS } from './co-courts';
@@ -110,6 +111,7 @@ export const LOCAL_RACES: Race[] = [
   ...RACES_OC_RIVERSIDE_DISTRICTS,
   ...RACES_OC_ORANGE,
   ...RACES_RIVCO_MURRIETA,
+  ...RACES_TEMECULA,
   // Colorado one-off (80204): listed only by that profile.
   ...RACES_CO_STATEWIDE,
   ...RACES_CO_COURTS,

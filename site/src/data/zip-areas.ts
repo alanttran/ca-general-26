@@ -35,7 +35,7 @@ export const ZIP_AREAS: ZipAreaGroup[] = [
     areas: [
       { name: 'Los Angeles County', zips: ['90028', '91501'] },
       { name: 'Orange County', zips: ['92868'] },
-      { name: 'Riverside County', zips: ['92562'] },
+      { name: 'Riverside County', zips: ['92562', '92590', '92591', '92592'] },
       { name: 'Placer County', zips: ['95765'] },
       { name: 'Alameda County', zips: ['94544'] },
       { name: 'Santa Clara County', zips: ['94043'] },

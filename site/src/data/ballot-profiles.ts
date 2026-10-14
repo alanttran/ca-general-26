@@ -3,6 +3,7 @@ import { SD_WAVE2_PROFILES } from './profiles-sd-wave2';
 import { SD_CITY_PROFILES } from './profiles-sd-city';
 import { ESCONDIDO_PROFILES } from './profiles-escondido';
 import { SD_CITIES_PROFILES } from './profiles-sd-cities';
+import { TEMECULA_PROFILES } from './profiles-temecula';
 import { WAVE3_PROFILES } from './profiles-wave3';
 import { COLORADO_PROFILES } from './profiles-colorado';
 
@@ -97,6 +98,7 @@ export const BALLOT_PROFILES: Record<string, BallotProfile> = {
   '94043': WAVE3_PROFILES['94043'],
   '92868': WAVE3_PROFILES['92868'],
   '92562': WAVE3_PROFILES['92562'],
+  ...TEMECULA_PROFILES,
   ...COLORADO_PROFILES,
 };
 
