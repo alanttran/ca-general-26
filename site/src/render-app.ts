@@ -1019,13 +1019,22 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
       name.textContent = race.tldrLabel ?? race.title;
       const pick = el('span', 'quick-list__pick');
       const noPick = !row?.pick || row.pick === '—';
-      pick.textContent = noPick ? 'No pick' : `${row.pick} ${row.confidence}`.trim();
-      if (noPick) pick.classList.add('quick-list__pick--none');
-      const flag = race.kind === 'candidates' && row ? maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags) : undefined;
-      if (flag === 'severe' || flag === 'serious') {
-        const f = el('span', 'quick-list__flag', { title: `${SEVERITY_LABEL[flag]} red flag` });
-        f.textContent = ' ⚑';
-        pick.append(f);
+      if (noPick) {
+        pick.textContent = 'No pick';
+        pick.classList.add('quick-list__pick--none');
+      } else {
+        pick.textContent = row.pick;
+        const flag = race.kind === 'candidates' ? maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags) : undefined;
+        if (flag === 'severe' || flag === 'serious') pick.append(pickFlagMarker(flag));
+        // Same SVG confidence icons as the picks tables (the ● glyph renders smaller than ◐/○ in most fonts).
+        const ic = row.confidence ? confidenceIconFromChar(row.confidence) : null;
+        if (ic) {
+          const badge = el('span', 'pick-cell__confidence');
+          const sr = el('span', 'visually-hidden');
+          sr.textContent = ` ${srConfidenceLabel(row.confidence)}`;
+          badge.append(sr, ic);
+          pick.append(document.createTextNode(' '), badge);
+        }
       }
       const mine = el('span', 'quick-list__mine');
       const refresh = () => {
