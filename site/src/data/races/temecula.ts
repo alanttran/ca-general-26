@@ -259,7 +259,7 @@ export const RACES_TEMECULA: Race[] = [
         endorsements: 'Republican Party of Riverside County endorsed him in 2024 (2024 RPRC list). No 2026 endorsements found as of Oct 14, 2026.',
         redFlags: [
           {
-            severity: 'serious',
+            severity: 'notable',
             status: 'official-finding',
             text: 'In April 2026 the TVUSD board voted 3-2 to censure Barham under its Code of Ethics bylaw, finding that remarks at a December 2025 meeting about wanting to “go after” another trustee’s spouse were reasonably perceived as retaliatory. The resolution directs him to avoid intimidation, harassment and uninvited confrontations; it does not limit his vote. Barham and Schwartz voted no, and Barham has denied threatening Anderson; he did not respond to Valley News before publication.',
             whyItMatters: 'A trustee must work with four colleagues and district staff, and a formal ethics censure bears on whether he can do that.',

@@ -42,3 +42,41 @@ export function setChoice(key: string, values: string[]): void {
   else delete all[key];
   save();
 }
+
+/**
+ * “Send to my phone” link: the marks for the given keys, packed into a URL fragment (never sent to a server).
+ * Format: base64url of JSON `[[key, [values]], …]`.
+ */
+export function encodeChoices(keys: string[]): string {
+  const all = load();
+  const pairs = keys.filter((k) => all[k]?.length).map((k) => [k, all[k]]);
+  const bytes = new TextEncoder().encode(JSON.stringify(pairs));
+  let bin = '';
+  for (const b of bytes) bin += String.fromCharCode(b);
+  return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+/** Unpacks a link made by `encodeChoices`; anything malformed yields an empty object. */
+export function decodeChoices(packed: string): Choices {
+  try {
+    const bin = atob(packed.replace(/-/g, '+').replace(/_/g, '/'));
+    const json = new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0)));
+    const pairs: unknown = JSON.parse(json);
+    const out: Choices = {};
+    if (!Array.isArray(pairs)) return out;
+    for (const p of pairs) {
+      if (!Array.isArray(p) || typeof p[0] !== 'string' || !Array.isArray(p[1])) continue;
+      const vals = (p[1] as unknown[]).filter((v): v is string => typeof v === 'string' && v.length < 200);
+      if (vals.length && p[0].length < 200) out[p[0]] = vals;
+    }
+    return out;
+  } catch {
+    return {};
+  }
+}
+
+/** Saves every mark in `incoming`, replacing any mark already kept for those contests. */
+export function importChoices(incoming: Choices): void {
+  Object.assign(load(), incoming);
+  save();
+}

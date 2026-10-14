@@ -30,6 +30,17 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
           'Quick view keeps each contest short: your type’s pick and why, the candidates (or what a Yes and a No vote do), a warning if the pick has a serious red flag, and your choice box. Everything else is one tap away under “Full details.”',
           'Race-by-race view puts your type’s pick first in each contest, folds the nine-viewpoint table away, and counts how many contests you’ve marked.',
           'In both simpler views, the voting dates fold into one line showing the next deadline, the ballot-source note folds under “Is this exactly my ballot?”, and the header’s print row and changelog step aside.',
+          'The site’s color follows the view you pick: teal for quick, indigo for race by race, slate for everything.',
+        ],
+      },
+      {
+        summary: 'Easier to get through your ballot',
+        bullets: [
+          'Quick view opens with a one-screen cheat sheet: every contest and your type’s pick, with your own marks shown as you make them. Tap a row to open that contest.',
+          'Race-by-race view has a bar at the bottom of the screen with your progress and a button to the next contest you haven’t marked. Sections in “Jump to section” get a check once every contest in them is marked.',
+          '“Send to my phone” makes a link with your marked choices and view, so you can research on a computer and vote with your phone. The choices ride in the part of the link that is never sent to any server, and nothing loads until you tap “Load my choices.”',
+          'The voting-dates box can add the remaining deadlines to your calendar.',
+          'Shorter header in the simpler views: the ZIP box folds to one line, and the how-to steps fold once you start marking.',
         ],
       },
       {

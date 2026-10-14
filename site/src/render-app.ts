@@ -62,7 +62,7 @@ import {
   STATUS_LABEL,
 } from './data/red-flags';
 import { COMBINED_LEVEL_GAP, combinedCellFor } from './data/experience-views';
-import { getChoice, retentionKey, setChoice } from './data/my-choices';
+import { decodeChoices, encodeChoices, getChoice, importChoices, retentionKey, setChoice } from './data/my-choices';
 import { votingInfoFor } from './data/voting-info';
 import { getViewPrefs, setViewPrefs, TYPOLOGY_PLAIN, type ViewMode, type ViewPrefs } from './data/view-prefs';
 
@@ -502,6 +502,8 @@ function renderScopeNote(data: BallotData, localPending: boolean): HTMLElement {
 export function renderApp(root: HTMLElement, zip: string): void {
   root.dataset.zip = zip;
   const data = buildBallotData(zip);
+  renderAbort.abort();
+  renderAbort = new AbortController();
   root.replaceChildren();
   const prefs = getViewPrefs();
   root.dataset.view = prefs.mode && (prefs.mode === 'full' || prefs.typology) ? prefs.mode : 'full';
@@ -511,6 +513,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
   viewTypology = prefs.mode && prefs.mode !== 'full' ? prefs.typology : undefined;
   highlightTypology = prefs.typology;
   viewMode = prefs.mode && prefs.typology ? prefs.mode : 'full';
+  setThemeColor(root.dataset.theme);
   const profile = getBallotProfile(zip);
   document.title = `Unofficial 2026 ${data.meta.state === 'CO' ? 'CO' : 'CA'} general election guide — ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel})`;
 
@@ -522,15 +525,18 @@ export function renderApp(root: HTMLElement, zip: string): void {
   const brand = el('div', 'site-header__brand');
   const brandIcon = el('div', 'site-header__brand-icon');
   brandIcon.append(iconBallot());
-  const h1 = el('h1', 'site-header__title');
+  const h1 = el('h1', 'site-header__title', { tabindex: '-1' });
   h1.textContent = data.meta.siteTitle;
   brand.append(brandIcon, h1);
   const sub = el('p', 'site-header__subtitle');
   sub.textContent = `November 3, 2026 ${data.meta.state === 'CO' ? 'Colorado' : 'California'} general election · ZIP ${data.meta.scopeZip} ballot · unofficial independent research — not the government, not legal advice.`;
+  const zipSelector = renderZipSelector(zip, root);
+  const imported = renderImportBanner(data, rerender);
   header.append(
     brand,
     sub,
-    renderZipSelector(zip, root),
+    viewMode === 'full' ? zipSelector : foldZipSelector(zipSelector, data),
+    ...(imported ? [imported] : []),
     prefs.mode ? renderViewBar(data, prefs, rerender) : renderWelcome(prefs, rerender),
     renderScopeNote(data, Boolean(profile.localPending)),
     renderPrintPicks(data, prefs.typology),
@@ -556,6 +562,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
   const main = el('main', undefined, { id: 'main-content' });
   main.append(
     renderHowToVote(data),
+    ...(viewMode === 'quick' && viewTypology ? [renderQuickList(data, viewTypology)] : []),
     renderIntroBlocks(data.meta.state === 'CO'),
     renderTypologyKey(data),
     renderMethodologySection(),
@@ -586,7 +593,8 @@ export function renderApp(root: HTMLElement, zip: string): void {
   );
   footer.append(fp, fp2);
 
-  root.append(header, nav, main, footer, renderPrintSheet());
+  root.append(header, nav, main, footer, renderDock(data, header), renderPrintSheet());
+  markTocProgress(data, tocList);
   const printSelect = document.getElementById('print-typology') as HTMLSelectElement | null;
   fillPrintSheet(data, (printSelect?.value as PrintColumn | undefined) ?? 'EL');
 }
@@ -802,7 +810,9 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
       fillPrintSheet(data, MINE);
       window.print();
     });
-    steps.push([printBtn, ` your choices, with ${ty.code} picks filling any you skip.`]);
+    steps.push([`Print your cheat sheet or send it to your phone (buttons below). It lists your choices, with ${ty.code} picks filling any you skip.`]);
+    const tools = el('div', 'view-bar__tools');
+    tools.append(printBtn, renderShareButton(data, prefs));
     for (const parts of steps) {
       const li = el('li');
       li.append(...parts);
@@ -816,8 +826,15 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
       progress.hidden = mode === 'quick' && !n;
     };
     refresh();
-    document.addEventListener(CHOICES_CHANGED, refresh);
-    bar.append(ol, progress);
+    document.addEventListener(CHOICES_CHANGED, refresh, { signal: renderAbort.signal });
+    // Once they've started marking, the steps fold to one line so the contests sit higher on phones.
+    const how = el('details', 'view-bar__how');
+    // Quick view's cheat-sheet list explains itself, so its steps start folded.
+    how.open = mode === 'guided' && countMarked(data) === 0;
+    const howSum = el('summary', 'view-bar__how-summary');
+    howSum.textContent = 'How this works';
+    how.append(howSum, ol);
+    bar.append(how, tools, progress);
   }
   return bar;
 }
@@ -855,9 +872,290 @@ function renderPrintPicks(data: BallotData, typology?: TypologyCode): HTMLElemen
       : 'Mark your own choice at the bottom of each contest to print those instead.';
   };
   refresh();
-  document.addEventListener(CHOICES_CHANGED, refresh);
-  wrap.append(label, select, btn, progress);
+  document.addEventListener(CHOICES_CHANGED, refresh, { signal: renderAbort.signal });
+  wrap.append(label, select, btn, renderShareButton(data, getViewPrefs()), progress);
   return wrap;
+}
+
+/** Cleared on every render so listeners added for the previous ballot (choices, scroll) go away with it. */
+let renderAbort = new AbortController();
+
+/** Browser toolbar color on phones, matching the view's theme. */
+const THEME_COLOR: Record<string, string> = { quick: '#0f766e', guided: '#4f46e5', full: '#475569' };
+function setThemeColor(theme: string | undefined): void {
+  let meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+  if (!meta) {
+    meta = el('meta', undefined, { name: 'theme-color' });
+    document.head.append(meta);
+  }
+  meta.content = THEME_COLOR[theme ?? 'quick'];
+}
+
+/** Simple views: the ZIP box shrinks to one line (“ZIP 92126 · Mira Mesa · Change”) until opened. */
+function foldZipSelector(form: HTMLElement, data: BallotData): HTMLDetailsElement {
+  const d = el('details', 'zip-fold');
+  const s = el('summary', 'zip-fold__summary');
+  const zip = el('strong');
+  zip.textContent = `ZIP ${data.meta.scopeZip}`;
+  const place = el('span', 'zip-fold__place');
+  place.textContent = ` · ${data.meta.scopeLabel}`;
+  const change = el('span', 'zip-fold__change');
+  change.textContent = 'Change';
+  s.append(zip, place, change);
+  d.append(s, form);
+  d.addEventListener('toggle', () => {
+    if (d.open) form.querySelector<HTMLInputElement>('input')?.focus();
+  });
+  return d;
+}
+
+const SHARE_PREFIX = '#mine=';
+
+/** Every storage key this ballot's marks live under (race ids, plus one per justice in retention races). */
+function choiceKeys(data: BallotData): string[] {
+  return data.races.flatMap((r) =>
+    r.kind === 'retention' && r.retention ? r.retention.justices.map((j) => retentionKey(r.id, j.name)) : [r.id],
+  );
+}
+
+/** “Send to my phone”: a link carrying this ballot's marks and view in the URL fragment, which never reaches a server. */
+function renderShareButton(data: BallotData, prefs: ViewPrefs): HTMLElement {
+  const wrap = el('span', 'share-mine');
+  const btn = el('button', 'share-mine__button', { type: 'button' });
+  btn.textContent = 'Send to my phone';
+  const status = el('span', 'share-mine__status', { role: 'status' });
+  btn.addEventListener('click', async () => {
+    const url = new URL(location.href);
+    url.searchParams.set('zip', data.meta.scopeZip);
+    const view = prefs.mode ? `&v=${prefs.mode}${prefs.typology ? `.${prefs.typology}` : ''}` : '';
+    url.hash = `${SHARE_PREFIX.slice(1)}${encodeChoices(choiceKeys(data))}${view}`;
+    const link = url.toString();
+    const n = countMarked(data);
+    const what = n ? `your ${n} marked ${n === 1 ? 'choice' : 'choices'}` : 'this ballot and view';
+    try {
+      if (navigator.share && matchMedia('(pointer: coarse)').matches) {
+        await navigator.share({ title: 'My ballot choices', url: link });
+        return;
+      }
+      await navigator.clipboard.writeText(link);
+      status.textContent = `Link copied with ${what}. Text or email it to yourself and open it on your phone.`;
+    } catch (e) {
+      if ((e as Error).name === 'AbortError') return;
+      status.textContent = '';
+      const field = el('input', 'share-mine__field', { type: 'text', readonly: '', 'aria-label': 'Link to your choices' }) as HTMLInputElement;
+      field.value = link;
+      status.append(document.createTextNode('Copy this link: '), field);
+      field.select();
+    }
+  });
+  wrap.append(btn, status);
+  return wrap;
+}
+
+/** Opening a “Send to my phone” link: offer to load the marks it carries (nothing loads without a tap). */
+function renderImportBanner(data: BallotData, rerender: () => void): HTMLElement | null {
+  if (!location.hash.startsWith(SHARE_PREFIX)) return null;
+  const params = new URLSearchParams(location.hash.slice(1));
+  const incoming = decodeChoices(params.get('mine') ?? '');
+  const view = params.get('v')?.split('.');
+  const clearHash = () => history.replaceState(history.state, '', location.pathname + location.search);
+  const keys = new Set(choiceKeys(data));
+  const count = data.races.filter((r) =>
+    r.kind === 'retention' && r.retention
+      ? r.retention.justices.some((j) => incoming[retentionKey(r.id, j.name)])
+      : incoming[r.id],
+  ).length;
+  const box = el('section', 'import-banner', { 'aria-label': 'Choices from a link' });
+  const p = el('p', 'import-banner__text');
+  p.textContent = count
+    ? `This link carries ${count} marked ${count === 1 ? 'contest' : 'contests'} for ZIP ${data.meta.scopeZip}. Load them on this device? Any marks you already have for those contests will be replaced.`
+    : 'This link opens your ballot and view. It has no marked choices to load.';
+  const actions = el('div', 'import-banner__actions');
+  const load = el('button', 'import-banner__load', { type: 'button' });
+  load.textContent = count ? 'Load my choices' : 'Use this view';
+  load.addEventListener('click', () => {
+    importChoices(Object.fromEntries(Object.entries(incoming).filter(([k]) => keys.has(k))));
+    const [mode, typology] = view ?? [];
+    const cur = getViewPrefs();
+    const next = { ...cur };
+    if (mode === 'quick' || mode === 'guided' || mode === 'full') next.mode = mode;
+    if (typology && TYPOLOGY_PLAIN[typology as TypologyCode]) next.typology = typology as TypologyCode;
+    setViewPrefs(next);
+    clearHash();
+    rerender();
+  });
+  const skip = el('button', 'import-banner__skip', { type: 'button' });
+  skip.textContent = 'Ignore';
+  skip.addEventListener('click', () => {
+    clearHash();
+    box.remove();
+  });
+  actions.append(load, skip);
+  box.append(p, actions);
+  return box;
+}
+
+/** Quick view: every contest and the voter type's pick on one screen; tap a row to open that contest. */
+function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
+  const sec = el('section', 'quick-list', { 'aria-labelledby': 'quick-list-title' });
+  const h2 = el('h2', 'quick-list__title', { id: 'quick-list-title', tabindex: '-1' });
+  const ty = data.typologies.find((t) => t.code === code);
+  h2.append(typologyChip(code, { title: ty?.name ?? code }), document.createTextNode(` Your cheat sheet: ${data.races.length} contests`));
+  const lede = el('p', 'quick-list__lede');
+  lede.textContent = `The ${ty?.name ?? code} pick for each contest. Tap one to see why, or to mark a different choice.`;
+  sec.append(h2, lede);
+  const refreshers: (() => void)[] = [];
+  for (const cat of data.categories) {
+    const races = data.races.filter((r) => r.categoryId === cat.id);
+    if (!races.length) continue;
+    const ch = el('h3', 'quick-list__cat');
+    ch.textContent = cat.label;
+    const ul = el('ul', 'quick-list__rows');
+    for (const race of races) {
+      const row = race.crossTypology.find((r) => r.typology === code);
+      const li = el('li');
+      const a = el('a', 'quick-list__row', { href: `#race-${race.id}` });
+      const name = el('span', 'quick-list__name');
+      name.textContent = race.tldrLabel ?? race.title;
+      const pick = el('span', 'quick-list__pick');
+      const noPick = !row?.pick || row.pick === '—';
+      pick.textContent = noPick ? 'No pick' : `${row.pick} ${row.confidence}`.trim();
+      if (noPick) pick.classList.add('quick-list__pick--none');
+      const flag = race.kind === 'candidates' && row ? maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags) : undefined;
+      if (flag === 'severe' || flag === 'serious') {
+        const f = el('span', 'quick-list__flag', { title: `${SEVERITY_LABEL[flag]} red flag` });
+        f.textContent = ' ⚑';
+        pick.append(f);
+      }
+      const mine = el('span', 'quick-list__mine');
+      const refresh = () => {
+        const s = choiceSummary(race, true);
+        mine.hidden = !s;
+        mine.textContent = s ? `✓ You: ${s}` : '';
+      };
+      refresh();
+      refreshers.push(refresh);
+      a.append(name, pick, mine);
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        openRace(race.id);
+      });
+      li.append(a);
+      ul.append(li);
+    }
+    sec.append(ch, ul);
+  }
+  document.addEventListener(CHOICES_CHANGED, () => refreshers.forEach((f) => f()), { signal: renderAbort.signal });
+  return sec;
+}
+
+/** Opens a contest, scrolls it to the top and moves focus to its summary. */
+function openRace(id: string): void {
+  const d = document.getElementById(`race-${id}`) as HTMLDetailsElement | null;
+  if (!d) return;
+  d.open = true;
+  history.replaceState(history.state, '', `#race-${id}`);
+  d.scrollIntoView({ block: 'start' });
+  d.querySelector('summary')?.focus({ preventScroll: true });
+}
+
+/**
+ * Bottom dock, shown once the header scrolls away: “Top” on every view, plus (race by race) progress and a
+ * button to the next unmarked contest below where they are.
+ */
+function renderDock(data: BallotData, header: HTMLElement): HTMLElement {
+  const dock = el('div', 'dock', { role: 'region', 'aria-label': 'Ballot shortcuts' });
+  dock.hidden = true;
+  const top = el('button', 'dock__top', { type: 'button' });
+  // Quick view's home base is the cheat-sheet list; elsewhere it's the top (ZIP box and view bar).
+  const toList = viewMode === 'quick' && Boolean(viewTypology);
+  top.textContent = toList ? '↑ Cheat sheet' : '↑ Top';
+  top.addEventListener('click', () => {
+    const target = toList ? document.getElementById('quick-list-title') : document.querySelector<HTMLElement>('.site-header__title');
+    if (toList) target?.scrollIntoView({ block: 'start' });
+    else window.scrollTo({ top: 0 });
+    target?.focus({ preventScroll: true });
+  });
+  dock.append(top);
+  let onShow: (() => void) | undefined;
+  if (viewMode === 'guided') {
+    const progress = el('span', 'dock__progress', { 'aria-live': 'polite' });
+    const next = el('button', 'dock__next', { type: 'button' });
+    const total = data.races.length;
+    const nextUnmarked = (): Race | undefined => {
+      const unmarked = data.races.filter((r) => !choiceSummary(r));
+      // First unmarked contest starting below the one at the top of the screen (an opened contest sits
+      // ~5rem down, under the scroll padding), else the first one left.
+      const line = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop || '0') + 48;
+      return (
+        unmarked.find((r) => (document.getElementById(`race-${r.id}`)?.getBoundingClientRect().top ?? -1) > line) ??
+        unmarked[0]
+      );
+    };
+    const refresh = () => {
+      const n = countMarked(data);
+      progress.textContent = `${n} of ${total} marked`;
+      const r = nextUnmarked();
+      next.textContent = r ? `Next: ${r.tldrLabel ?? r.title} →` : 'All marked · Print';
+    };
+    next.addEventListener('click', () => {
+      const r = nextUnmarked();
+      if (r) openRace(r.id);
+      else {
+        fillPrintSheet(data, MINE);
+        window.print();
+      }
+    });
+    refresh();
+    document.addEventListener(CHOICES_CHANGED, refresh, { signal: renderAbort.signal });
+    let ticking = false;
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          refresh();
+        });
+      },
+      { passive: true, signal: renderAbort.signal },
+    );
+    dock.classList.add('dock--guided');
+    dock.append(progress, next);
+    onShow = refresh;
+  }
+  const io = new IntersectionObserver(([e]) => {
+    dock.hidden = e.isIntersecting;
+    if (!dock.hidden) onShow?.();
+  });
+  io.observe(header);
+  renderAbort.signal.addEventListener('abort', () => io.disconnect());
+  return dock;
+}
+
+/** Jump-to-section links get a check once every contest in that section is marked. */
+function markTocProgress(data: BallotData, list: HTMLElement): void {
+  const links = Array.from(list.querySelectorAll<HTMLAnchorElement>('.toc-nav__link'));
+  const refresh = () => {
+    for (const a of links) {
+      const catId = a.getAttribute('href')!.slice('#cat-'.length);
+      const races = data.races.filter((r) => r.categoryId === catId);
+      const done = races.length > 0 && races.every((r) => choiceSummary(r));
+      a.classList.toggle('toc-nav__link--done', done);
+      a.querySelector('.toc-nav__done')?.remove();
+      if (done) {
+        const tick = el('span', 'toc-nav__done');
+        tick.textContent = ' ✓';
+        const sr = el('span', 'visually-hidden');
+        sr.textContent = ' (all marked)';
+        tick.append(sr);
+        a.append(tick);
+      }
+    }
+  };
+  refresh();
+  document.addEventListener(CHOICES_CHANGED, refresh, { signal: renderAbort.signal });
 }
 
 /** Print-sheet column: a typology, or the voter's own marks. */
@@ -1044,6 +1342,13 @@ function renderHowToVote(data: BallotData): HTMLElement {
     links.append(li);
   }
   sec.append(ol, links);
+  const upcoming = info.dates.filter((d) => d.iso >= todayIso);
+  if (upcoming.length) {
+    const cal = el('button', 'how-vote__calendar', { type: 'button' });
+    cal.textContent = `Add ${upcoming.length === 1 ? 'this date' : `these ${upcoming.length} dates`} to my calendar`;
+    cal.addEventListener('click', () => downloadCalendar(upcoming, info.where));
+    sec.append(cal);
+  }
   if (viewMode === 'full') return sec;
   // Simple views: one line with the next deadline; tap for all dates and where-to-vote links.
   const next = info.dates.find((d) => d.iso === nextIso);
@@ -1061,6 +1366,42 @@ function renderHowToVote(data: BallotData): HTMLElement {
   h2.className = 'visually-hidden';
   wrap.append(summary, sec);
   return wrap;
+}
+
+/** All-day calendar events (.ics) for the remaining voting dates, built in the browser and saved by the visitor. */
+function downloadCalendar(dates: { iso: string; label: string; text: string }[], where: string): void {
+  const esc = (s: string) => s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+  // Fold lines at 75 octets-ish (RFC 5545); 70 characters keeps multi-byte text safely under.
+  const fold = (line: string) => line.match(/.{1,70}/gu)!.join('\r\n ');
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+  const nextDay = (iso: string) => {
+    const d = new Date(`${iso}T12:00:00Z`);
+    d.setUTCDate(d.getUTCDate() + 1);
+    return d.toISOString().slice(0, 10).replace(/-/g, '');
+  };
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ca-general-26//voter guide//EN', 'CALSCALE:GREGORIAN'];
+  for (const d of dates) {
+    // First sentence: split at “. ” before a capital, so “7 a.m.–8 p.m. Drop boxes” keeps its “p.m.”.
+    const first = d.text.split(/(?<=\.) (?=[A-Z])/)[0].replace(/(?<![ap]\.m)\.$/, '');
+    lines.push(
+      'BEGIN:VEVENT',
+      `UID:${d.iso}-${where.replace(/\W+/g, '-').toLowerCase()}@ca-general-26`,
+      `DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${d.iso.replace(/-/g, '')}`,
+      `DTEND;VALUE=DATE:${nextDay(d.iso)}`,
+      fold(`SUMMARY:${esc(`Vote: ${first}`)}`),
+      fold(`DESCRIPTION:${esc(`${d.text}\n\n${where}. Unofficial guide: ${location.origin}${location.pathname}`)}`),
+      'TRANSP:TRANSPARENT',
+      'END:VEVENT',
+    );
+  }
+  lines.push('END:VCALENDAR');
+  const blob = new Blob([lines.join('\r\n') + '\r\n'], { type: 'text/calendar' });
+  const a = el('a', undefined, { href: URL.createObjectURL(blob), download: 'voting-dates-nov-2026.ics' });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
 function renderIntroBlocks(colorado: boolean): HTMLElement {

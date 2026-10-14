@@ -3386,3 +3386,352 @@ button:focus-visible {
     padding: 0 1.25rem 1.1rem;
   }
 }
+
+/* ---------- Simple views: shorter header on phones ---------- */
+#app[data-view='quick'],
+#app[data-view='guided'] {
+  .site-header {
+    padding-top: 1.25rem;
+  }
+
+  .site-header__subtitle {
+    display: none;
+  }
+
+  .site-header__title {
+    font-size: var(--fs-xl);
+  }
+
+  .site-header__brand-icon .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+.site-header__title:focus {
+  outline: none;
+}
+
+/* ZIP box folded to one line in simple views. */
+.zip-fold {
+  max-width: var(--rad-max-width);
+  margin: 0 auto 0.75rem;
+
+  > .zip-select {
+    margin-top: 0.5rem;
+    padding-left: 0;
+  }
+}
+
+.zip-fold__summary {
+  cursor: pointer;
+  width: fit-content;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.zip-fold__place {
+  color: var(--rad-text-muted);
+}
+
+.zip-fold__change {
+  margin-left: 0.6rem;
+  color: var(--rad-accent);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.zip-fold[open] .zip-fold__change {
+  display: none;
+}
+
+/* View bar: steps fold once they've started marking; print and send stay visible. */
+.view-bar__how {
+  margin-top: 0.6rem;
+
+  > .view-bar__steps {
+    margin-top: 0.4rem;
+  }
+}
+
+.view-bar__how-summary {
+  cursor: pointer;
+  width: fit-content;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--rad-accent);
+}
+
+.view-bar__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: 0.75rem;
+}
+
+/* “Send to my phone” */
+.share-mine {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+}
+
+.share-mine__button,
+.how-vote__calendar,
+.import-banner__skip {
+  font: inherit;
+  font-weight: 600;
+  min-height: 2.25rem;
+  padding: 0.2rem 0.8rem;
+  border: 1px solid var(--rad-accent);
+  border-radius: 6px;
+  background: var(--rad-surface);
+  color: var(--rad-accent-dim);
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: color-mix(in srgb, var(--rad-accent) 10%, var(--rad-surface));
+  }
+}
+
+.share-mine__status {
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.share-mine__field {
+  font: inherit;
+  width: min(22rem, 100%);
+  padding: 0.2rem 0.4rem;
+}
+
+.print-picks .share-mine {
+  flex-basis: auto;
+}
+
+.how-vote__calendar {
+  margin-top: 0.75rem;
+}
+
+/* Opening a “Send to my phone” link. */
+.import-banner {
+  max-width: var(--rad-max-width);
+  margin: 0 auto 1rem;
+  padding: 0.85rem 1.25rem;
+  background: color-mix(in srgb, var(--rad-accent) 9%, var(--rad-surface));
+  border: 2px solid var(--rad-accent);
+  border-radius: var(--rad-radius);
+}
+
+.import-banner__text {
+  margin: 0 0 0.6rem;
+  font-weight: 600;
+}
+
+.import-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.import-banner__load {
+  font: inherit;
+  font-weight: 700;
+  min-height: 2.25rem;
+  padding: 0.2rem 0.9rem;
+  border: 1px solid var(--rad-accent-dim);
+  border-radius: 6px;
+  background: var(--rad-accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Quick view: the whole ballot on one screen. */
+.quick-list {
+  max-width: var(--rad-max-width);
+  margin: 0 auto 1.5rem;
+  padding: 1rem 1.25rem 1.25rem;
+  background: var(--rad-surface);
+  border: 1px solid var(--rad-border);
+  border-top: 4px solid var(--rad-accent);
+  border-radius: var(--rad-radius);
+}
+
+.quick-list__title {
+  margin: 0;
+  font-size: var(--fs-xl);
+  scroll-margin-top: 1rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.quick-list__lede {
+  margin: 0.25rem 0 0.5rem;
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+}
+
+.quick-list__cat {
+  margin: 1rem 0 0.25rem;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--rad-accent-dim);
+}
+
+.quick-list__rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li + li {
+    border-top: 1px solid var(--rad-border);
+  }
+}
+
+.quick-list__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.1rem 1rem;
+  align-items: baseline;
+  padding: 0.5rem 0.25rem;
+  color: var(--rad-text);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background: color-mix(in srgb, var(--rad-accent) 7%, var(--rad-surface));
+  }
+}
+
+.quick-list__name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.quick-list__pick {
+  font-weight: 700;
+  text-align: right;
+  color: var(--rad-accent-dim);
+}
+
+.quick-list__pick--none {
+  font-weight: 400;
+  color: var(--rad-text-muted);
+}
+
+.quick-list__flag {
+  color: var(--flag-severe);
+}
+
+.quick-list__mine {
+  grid-column: 1 / -1;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--topic-support);
+}
+
+@media (max-width: 479px) {
+  .quick-list {
+    padding: 0.85rem 1rem 1rem;
+  }
+
+  .quick-list__row {
+    gap: 0.1rem 0.6rem;
+  }
+}
+
+/* Bottom dock: back to top, and (race by race) next unmarked contest. */
+.dock {
+  position: fixed;
+  z-index: 20;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: calc(100vw - 2rem);
+  padding: 0.4rem;
+  background: var(--rad-surface);
+  border: 1px solid var(--rad-border);
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgb(15 23 42 / 18%);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.dock__top,
+.dock__next {
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  min-height: 2.5rem;
+  padding: 0.2rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dock__top {
+  border: 1px solid var(--rad-border);
+  background: var(--rad-surface);
+  color: var(--rad-accent-dim);
+}
+
+.dock__next {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid var(--rad-accent-dim);
+  background: var(--rad-accent);
+  color: #fff;
+}
+
+.dock__progress {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--rad-text-muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 719px) {
+  .dock--guided {
+    left: max(0.75rem, env(safe-area-inset-left));
+    right: max(0.75rem, env(safe-area-inset-right));
+    max-width: none;
+  }
+
+  .dock--guided .dock__next {
+    flex: 1;
+  }
+}
+
+/* Room so the dock never covers the footer's last line. */
+#app {
+  padding-bottom: 4.5rem;
+}
+
+.toc-nav__done {
+  color: var(--topic-support);
+  font-weight: 700;
+}
+
+/* Quick view: the cheat-sheet list already links every contest, so the section bar steps aside. */
+#app[data-view='quick'] .toc-nav {
+  display: none;
+}
