@@ -99,6 +99,19 @@ body {
   --rad-stakes-surface-tint: #64748b;
 }
 
+/* Page background (set on <html>) gets a faint tint of the same color. */
+html:has(#app[data-theme='quick']) {
+  --rad-page-bg: #ecf5f3;
+}
+
+html:has(#app[data-theme='guided']) {
+  --rad-page-bg: #eff0fb;
+}
+
+html:has(#app[data-theme='full']) {
+  --rad-page-bg: #eef0f2;
+}
+
 /* Base type: every heading and bold run sits on the shared scale (component rules below may refine size). */
 h1,
 h2,
@@ -425,7 +438,7 @@ th {
 
 .site-header {
   padding: 2.5rem 2rem 1.5rem;
-  background: linear-gradient(165deg, #e0f2f1 0%, var(--rad-page-bg) 55%);
+  background: linear-gradient(165deg, color-mix(in srgb, var(--rad-accent) 13%, #fff) 0%, var(--rad-page-bg) 55%);
   border-bottom: 1px solid var(--rad-border);
 }
 
