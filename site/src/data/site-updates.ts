@@ -17,8 +17,18 @@ export interface SiteUpdateBuild {
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
     dateLabel: 'October 14, 2026',
-    lede: 'Full local ballots for Temecula: ZIPs 92590, 92591 and 92592.',
+    lede: 'A new welcome wizard helps first-time visitors find their voter type and get a simple cheat sheet. Plus full local ballots for Temecula: ZIPs 92590, 92591 and 92592.',
     panels: [
+      {
+        summary: 'Welcome wizard: three ways to use the guide',
+        bullets: [
+          'First-time visitors are asked how they want to use the guide: “Just help me vote, fast,” “Help me decide, race by race,” or “Show me everything.”',
+          'The first two then ask which kind of voter you are, with a link to Pew’s official typology quiz and a plain-language description of all nine types to pick from.',
+          'Quick and race-by-race views show your type’s pick on every contest’s title bar and at the top of each contest, and fold away the methodology, the nine-column summary table and the typology key. “Show me everything” is the full page as before.',
+          'Your printed cheat sheet uses your own choices where you marked them and your type’s pick everywhere else.',
+          'A bar under the ZIP box shows how you’re viewing the guide, with links to change your type or view. Your choice stays on this device only.',
+        ],
+      },
       {
         summary: 'Temecula',
         bullets: [

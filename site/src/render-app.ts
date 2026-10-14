@@ -61,6 +61,7 @@ import {
 import { COMBINED_LEVEL_GAP, combinedCellFor } from './data/experience-views';
 import { getChoice, retentionKey, setChoice } from './data/my-choices';
 import { votingInfoFor } from './data/voting-info';
+import { getViewPrefs, setViewPrefs, TYPOLOGY_PLAIN, type ViewMode, type ViewPrefs } from './data/view-prefs';
 
 const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
 
@@ -493,9 +494,17 @@ export function renderApp(root: HTMLElement, zip: string): void {
   root.dataset.zip = zip;
   const data = buildBallotData(zip);
   root.replaceChildren();
+  const prefs = getViewPrefs();
+  root.dataset.view = prefs.mode ?? 'full';
+  viewTypology = prefs.mode && prefs.mode !== 'full' ? prefs.typology : undefined;
+  highlightTypology = prefs.typology;
   const profile = getBallotProfile(zip);
   document.title = `Unofficial 2026 ${data.meta.state === 'CO' ? 'CO' : 'CA'} general election guide — ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel})`;
 
+  const rerender = () => {
+    renderApp(root, zip);
+    document.querySelector('.view-bar')?.scrollIntoView({ block: 'start' });
+  };
   const header = el('header', 'site-header');
   const brand = el('div', 'site-header__brand');
   const brandIcon = el('div', 'site-header__brand-icon');
@@ -509,8 +518,9 @@ export function renderApp(root: HTMLElement, zip: string): void {
     brand,
     sub,
     renderZipSelector(zip, root),
+    prefs.mode ? renderViewBar(data, prefs, rerender) : renderWelcome(prefs, rerender),
     renderScopeNote(data, Boolean(profile.localPending)),
-    renderPrintPicks(data),
+    renderPrintPicks(data, prefs.typology),
     renderSiteUpdatesSection(data.meta.lastContentUpdated),
   );
 
@@ -564,11 +574,168 @@ export function renderApp(root: HTMLElement, zip: string): void {
   footer.append(fp, fp2);
 
   root.append(header, nav, main, footer, renderPrintSheet());
-  fillPrintSheet(data, 'EL');
+  const printSelect = document.getElementById('print-typology') as HTMLSelectElement | null;
+  fillPrintSheet(data, (printSelect?.value as PrintColumn | undefined) ?? 'EL');
+}
+
+/** The voter's own typology in Quick and Guided views (undefined in Full view or before they pick). */
+let viewTypology: TypologyCode | undefined;
+/** Their type, if they've picked one: its row is outlined in every picks table, in any view. */
+let highlightTypology: TypologyCode | undefined;
+
+const VIEW_LABEL: Record<ViewMode, string> = { quick: 'Quick', guided: 'Race by race', full: 'Everything' };
+
+/** First-visit wizard: how they want to use the guide, then (for Quick/Guided) which voter type fits. */
+function renderWelcome(prefs: ViewPrefs, done: () => void, startAt: 1 | 2 = 1): HTMLElement {
+  const sec = el('section', 'welcome', { 'aria-labelledby': 'welcome-title' });
+  let mode: ViewMode | undefined = prefs.mode;
+
+  const stepOne = () => {
+    sec.replaceChildren();
+    const h2 = el('h2', 'welcome__title', { id: 'welcome-title' });
+    h2.textContent = 'Welcome! How do you want to use this guide?';
+    const lede = el('p', 'welcome__lede');
+    lede.textContent = 'Pick one to start. You can change it anytime, and nothing you choose leaves this device.';
+    const opts = el('div', 'welcome__options');
+    const choices: [ViewMode, string, string][] = [
+      ['quick', 'Just help me vote, fast', 'New voter or short on time? Find your voter type, see its pick for every contest on your ballot, print a one-page cheat sheet, and know when and where to vote.'],
+      ['guided', 'Help me decide, race by race', 'See your type’s pick and the reasons on every contest, read the details you care about, mark your own choices, then print them.'],
+      ['full', 'Show me everything', 'All nine viewpoints side by side, scorecards, money, red flags and how we make picks. For experienced voters and researchers.'],
+    ];
+    for (const [m, title, text] of choices) {
+      const b = el('button', `welcome__option welcome__option--${m}`, { type: 'button' });
+      const t = el('strong', 'welcome__option-title');
+      t.textContent = title;
+      const d = el('span', 'welcome__option-text');
+      d.textContent = text;
+      b.append(t, d);
+      b.addEventListener('click', () => {
+        mode = m;
+        if (m === 'full') {
+          setViewPrefs({ ...prefs, mode: 'full' });
+          done();
+        } else {
+          stepTwo();
+        }
+      });
+      opts.append(b);
+    }
+    sec.append(h2, lede, opts);
+  };
+
+  const stepTwo = () => {
+    sec.replaceChildren();
+    const h2 = el('h2', 'welcome__title', { id: 'welcome-title' });
+    h2.textContent = 'Which kind of voter sounds most like you?';
+    const quiz = el('p', 'welcome__quiz');
+    quiz.append(
+      document.createTextNode('Most accurate: take the Pew Research Center’s '),
+      extLink('https://www.pewresearch.org/politics/quiz/political-typology', 'political typology quiz', true),
+      document.createTextNode(' (about 5 minutes, opens in a new tab), then come back and pick your result. Or just pick the one closest to you below.'),
+    );
+    const form = el('form', 'welcome__types');
+    const fs = el('fieldset', 'welcome__fieldset');
+    const legend = el('legend', 'visually-hidden');
+    legend.textContent = 'Your voter type';
+    fs.append(legend);
+    const go = el('button', 'welcome__go', { type: 'submit' });
+    go.textContent = mode === 'quick' ? 'Show my cheat sheet' : 'Show my ballot';
+    go.disabled = !prefs.typology;
+    for (const t of TYPOLOGIES) {
+      const label = el('label', 'welcome__type');
+      const input = el('input', undefined, { type: 'radio', name: 'welcome-type', value: t.code });
+      input.checked = prefs.typology === t.code;
+      input.addEventListener('change', () => {
+        go.disabled = false;
+      });
+      const text = el('span', 'welcome__type-text');
+      const name = el('strong');
+      name.textContent = t.name;
+      text.append(typologyChip(t.code, { title: t.name }), document.createTextNode(' '), name, el('br'), document.createTextNode(TYPOLOGY_PLAIN[t.code]));
+      label.append(input, text);
+      fs.append(label);
+    }
+    const actions = el('div', 'welcome__actions');
+    const back = el('button', 'welcome__back', { type: 'button' });
+    back.textContent = 'Back';
+    back.addEventListener('click', stepOne);
+    actions.append(go, back);
+    form.append(fs, actions);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const picked = form.querySelector<HTMLInputElement>('input[name="welcome-type"]:checked');
+      if (!picked) return;
+      setViewPrefs({ mode: mode ?? 'quick', typology: picked.value as TypologyCode });
+      done();
+    });
+    const note = el('p', 'welcome__note');
+    note.textContent = 'Picks are our reading of what each group values, not advice. You can always switch types or see all nine.';
+    sec.append(h2, quiz, form, note);
+  };
+
+  if (startAt === 2 && prefs.mode && prefs.mode !== 'full') stepTwo();
+  else stepOne();
+  return sec;
+}
+
+/** After the wizard: who they're viewing as, how to change it, and (Quick) the three steps. */
+function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void): HTMLElement {
+  const bar = el('section', `view-bar view-bar--${prefs.mode}`, { 'aria-label': 'How you’re using this guide' });
+  const line = el('p', 'view-bar__line');
+  const ty = prefs.typology ? data.typologies.find((t) => t.code === prefs.typology) : undefined;
+  const mode = prefs.mode ?? 'full';
+  if (mode !== 'full' && ty) {
+    line.append(document.createTextNode('Viewing as '), typologyChip(ty.code, { title: ty.name }), document.createTextNode(' '));
+    const strong = el('strong');
+    strong.textContent = ty.name;
+    line.append(strong, document.createTextNode(` · ${VIEW_LABEL[mode]} view`));
+  } else {
+    line.append(document.createTextNode('Showing everything: all nine viewpoints and full details.'));
+  }
+  const actions = el('span', 'view-bar__actions');
+  const link = (text: string, onClick: () => void) => {
+    const b = el('button', 'view-bar__link', { type: 'button' });
+    b.textContent = text;
+    b.addEventListener('click', onClick);
+    actions.append(b);
+  };
+  const reopen = (step: 1 | 2) => bar.replaceWith(renderWelcome(prefs, rerender, step));
+  if (mode !== 'full') link('Change voter type', () => reopen(2));
+  link('Change how I’m using this', () => reopen(1));
+  if (mode !== 'full') {
+    link('Show everything', () => {
+      setViewPrefs({ ...prefs, mode: 'full' });
+      rerender();
+    });
+  }
+  line.append(' ', actions);
+  bar.append(line);
+
+  if (mode === 'quick' && ty) {
+    const ol = el('ol', 'view-bar__steps');
+    const steps: (string | Node)[][] = [
+      ['Check when and where to vote in the box below.'],
+      [`Look over the ${ty.name} pick on each contest further down. Tap a contest for the full story, or mark your own choice at the bottom of it.`],
+    ];
+    const printBtn = el('button', 'view-bar__print', { type: 'button' });
+    printBtn.textContent = 'Print my cheat sheet';
+    printBtn.addEventListener('click', () => {
+      fillPrintSheet(data, countMarked(data) ? MINE : ty.code);
+      window.print();
+    });
+    steps.push([printBtn, ` and take it with you, or keep this page open when you vote. It lists your own choices where you marked them and the ${ty.name} pick everywhere else.`]);
+    for (const parts of steps) {
+      const li = el('li');
+      li.append(...parts);
+      ol.append(li);
+    }
+    bar.append(ol);
+  }
+  return bar;
 }
 
 /** Header control: pick your typology column, then print a one-page cheat sheet of those picks. */
-function renderPrintPicks(data: BallotData): HTMLElement {
+function renderPrintPicks(data: BallotData, typology?: TypologyCode): HTMLElement {
   const wrap = el('div', 'print-picks');
   const label = el('label', 'print-picks__label', { for: 'print-typology' });
   label.textContent = 'Cheat sheet for';
@@ -583,7 +750,7 @@ function renderPrintPicks(data: BallotData): HTMLElement {
     option.textContent = `${t.code} — ${t.name}`;
     select.append(option);
   }
-  select.value = countMarked(data) ? MINE : 'EL';
+  select.value = countMarked(data) ? MINE : (typology ?? 'EL');
   select.addEventListener('change', () => fillPrintSheet(data, select.value as PrintColumn));
   const btn = el('button', 'print-picks__button', { type: 'button' });
   btn.textContent = 'Print my picks';
@@ -647,7 +814,7 @@ function fillPrintSheet(data: BallotData, code: PrintColumn): void {
   if (!sheet) return;
   sheet.replaceChildren();
   if (code === MINE) {
-    fillMyChoicesSheet(sheet, data);
+    fillMyChoicesSheet(sheet, data, viewTypology);
     return;
   }
   const ty = data.typologies.find((t) => t.code === code);
@@ -704,11 +871,14 @@ function fillPrintSheet(data: BallotData, code: PrintColumn): void {
   sheet.append(legend);
 }
 
-function fillMyChoicesSheet(sheet: HTMLElement, data: BallotData): void {
+/** The voter's marks in ballot order; with `fallback`, unmarked contests show that type's pick instead. */
+function fillMyChoicesSheet(sheet: HTMLElement, data: BallotData, fallback?: TypologyCode): void {
   const h = el('h2', 'print-sheet__title');
   h.textContent = 'My choices';
   const sub = el('p', 'print-sheet__sub');
-  sub.textContent = `Nov 3, 2026 · ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel}) · marked by me on an unofficial guide — check against your official ballot.`;
+  sub.textContent = fallback
+    ? `Nov 3, 2026 · ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel}) · my marks, and the ${fallback} pick where I didn’t mark one · unofficial guide — check against your official ballot.`
+    : `Nov 3, 2026 · ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel}) · marked by me on an unofficial guide — check against your official ballot.`;
   sheet.append(h, sub);
   for (const cat of data.categories) {
     const races = data.races.filter((r) => r.categoryId === cat.id);
@@ -722,7 +892,9 @@ function fillMyChoicesSheet(sheet: HTMLElement, data: BallotData): void {
       const th = el('th', undefined, { scope: 'row' });
       th.textContent = race.tldrLabel ?? race.title;
       const td = el('td');
-      td.textContent = choiceSummary(race) ?? '— (not marked)';
+      const fb = fallback ? race.crossTypology.find((r) => r.typology === fallback) : undefined;
+      const fbText = fb && fb.pick && fb.pick !== '—' ? `${fb.pick} ${fb.confidence} (${fallback} pick)`.trim() : undefined;
+      td.textContent = choiceSummary(race) ?? fbText ?? '— (not marked)';
       tr.append(th, td);
       tb.append(tr);
     }
@@ -796,6 +968,7 @@ function renderIntroBlocks(colorado: boolean): HTMLElement {
       <h2 id="how-guide"><span class="intro-card__heading-icon intro-card__heading-icon--secondary" aria-hidden="true"></span>How to use this guide</h2>
       <p>Each race includes <strong>web-condensed</strong> backgrounds, scorecards where available, money and endorsement notes, red-flag callouts, and a <strong>cross-typology recommendation row</strong> with confidence icons (see legend under the TL;DR summary).</p>
       <p>Propositions and local measures get a Yes/No pick per column; judicial retention votes are grouped into one table per court. Use <strong>Print my picks</strong> in the header for a one-page cheat sheet in ballot order.</p>
+      <p>Want a simpler view? Use <strong>Change how I’m using this</strong> under the ZIP box to switch to a quick cheat sheet or a race-by-race view for your voter type.</p>
       <p>At the bottom of each contest you can <strong>mark your own choice</strong>. Marks stay in this browser only (nothing is sent anywhere), and the cheat sheet can print them.</p>
     </section>
   `;
@@ -1180,6 +1353,13 @@ function renderRace(race: ZipRace): HTMLElement {
     share.textContent = `~${Math.round(race.zipSharePct)}% of this ZIP`;
     sumText.append(document.createTextNode(' '), share);
   }
+  const typeRow = viewTypology ? race.crossTypology.find((r) => r.typology === viewTypology) : undefined;
+  if (typeRow) {
+    const pick = el('span', 'race__typick');
+    const noPick = !typeRow.pick || typeRow.pick === '—';
+    pick.textContent = noPick ? `${typeRow.typology}: no pick` : `${typeRow.typology}: ${typeRow.pick} ${typeRow.confidence}`.trim();
+    sumText.append(document.createTextNode(' '), pick);
+  }
   const mineBadge = el('span', 'race__mine');
   const refreshBadge = () => {
     const s = choiceSummary(race, true);
@@ -1192,6 +1372,7 @@ function renderRace(race: ZipRace): HTMLElement {
   details.append(summary);
 
   const body = el('div', 'race__body');
+  if (typeRow) body.append(renderYourTypePick(race, typeRow));
   if (race.kind === 'measure' && race.measure) {
     // Measures lead with what the vote decides and the case each way; background folds away.
     body.append(renderMeasureOverview(race.measure));
@@ -1253,6 +1434,36 @@ function renderRace(race: ZipRace): HTMLElement {
   );
   details.append(body);
   return details;
+}
+
+/** Quick/Guided: the voter's own type's pick and reason, at the top of each contest. */
+function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTMLElement {
+  const box = el('div', 'your-type');
+  const head = el('p', 'your-type__head');
+  head.append(typologyChip(row.typology, { title: typologyNameForChip(row.typology) }), document.createTextNode(' '));
+  const label = el('strong');
+  const noPick = !row.pick || row.pick === '—';
+  label.textContent = noPick ? `${typologyNameForChip(row.typology)}: no pick` : `${typologyNameForChip(row.typology)} pick: ${row.pick}`;
+  head.append(label);
+  if (!noPick) {
+    const conf = el('span', 'your-type__conf');
+    conf.textContent = ` ${row.confidence} ${srConfidenceLabel(row.confidence).toLowerCase()}`;
+    head.append(conf);
+  }
+  const why = el('p', 'your-type__why');
+  why.textContent = row.rationale;
+  box.append(head, why);
+  if (race.kind === 'candidates') {
+    const c = combinedCellFor(race, row.pick, row.confidence);
+    if (c.reason) {
+      const alt = el('p', 'your-type__alt');
+      const strong = el('strong');
+      strong.textContent = `If experience matters most to you: ${c.cell.replace(/\s*[●◐○]\s*$/, '')}. `;
+      alt.append(strong, document.createTextNode(row.experienceRationale ?? c.reason));
+      box.append(alt);
+    }
+  }
+  return box;
 }
 
 /** “Your choice” controls at the end of a contest; marks are saved in this browser only. */
@@ -1533,7 +1744,7 @@ function renderCrossTable(race: Race): HTMLElement {
   thead.append(trh);
   const tb = el('tbody');
   for (const row of race.crossTypology) {
-    const tr = el('tr');
+    const tr = el('tr', row.typology === highlightTypology ? 'cross__row--mine' : undefined);
     const th = el('th', 'cross__ty', { scope: 'row' });
     th.append(typologyChip(row.typology, { title: typologyNameForChip(row.typology) }));
     const c =

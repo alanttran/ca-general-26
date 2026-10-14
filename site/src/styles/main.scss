@@ -2888,3 +2888,259 @@ button:focus-visible {
     white-space: normal;
   }
 }
+
+/* ---- Welcome wizard and view modes ---- */
+
+/* Quick and race-by-race views fold away the reference material; “Everything” shows it all. */
+#app[data-view='quick'],
+#app[data-view='guided'] {
+  .intro-grid,
+  .typology-key,
+  .methodology,
+  .tldr {
+    display: none;
+  }
+}
+
+.welcome,
+.view-bar {
+  max-width: var(--rad-max-width);
+  margin: 0 auto 1rem;
+  scroll-margin-top: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--rad-surface);
+  border: 2px solid var(--rad-accent);
+  border-radius: var(--rad-radius);
+}
+
+.welcome__title {
+  margin: 0 0 0.35rem;
+  font-size: var(--fs-xl);
+}
+
+.welcome__lede,
+.welcome__quiz,
+.welcome__note {
+  margin: 0 0 1rem;
+  color: var(--rad-text-muted);
+}
+
+.welcome__note {
+  margin: 0.75rem 0 0;
+  font-size: var(--fs-sm);
+}
+
+.welcome__options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.75rem;
+}
+
+.welcome__option {
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+  padding: 1rem;
+  text-align: left;
+  font: inherit;
+  color: var(--rad-text);
+  background: var(--rad-page-bg);
+  border: 1px solid var(--rad-border);
+  border-radius: var(--rad-radius);
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--rad-accent);
+    background: color-mix(in srgb, var(--rad-accent) 8%, var(--rad-surface));
+  }
+}
+
+.welcome__option--quick {
+  border-color: var(--rad-accent);
+}
+
+.welcome__option-title {
+  font-size: var(--fs-lg);
+  color: var(--rad-accent-dim);
+}
+
+.welcome__option-text {
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+}
+
+.welcome__fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.welcome__type {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--rad-border);
+  border-radius: 8px;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+
+  input {
+    margin-top: 0.3rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: none;
+    accent-color: var(--rad-accent-dim);
+  }
+
+  &:has(input:checked) {
+    border-color: var(--rad-accent-dim);
+    background: color-mix(in srgb, var(--rad-accent) 10%, var(--rad-surface));
+  }
+}
+
+.welcome__type-text {
+  min-width: 0;
+}
+
+.welcome__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.welcome__go,
+.view-bar__print {
+  font: inherit;
+  font-weight: 700;
+  min-height: 2.75rem;
+  padding: 0.4rem 1.1rem;
+  border: 1px solid var(--rad-accent-dim);
+  border-radius: 6px;
+  background: var(--rad-accent);
+  color: #fff;
+  cursor: pointer;
+
+  &:hover:not(:disabled),
+  &:focus-visible {
+    background: var(--rad-accent-dim);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.welcome__back,
+.view-bar__link {
+  font: inherit;
+  padding: 0.25rem 0.1rem;
+  border: 0;
+  background: none;
+  color: var(--rad-accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.view-bar {
+  padding: 0.85rem 1.25rem;
+  border-width: 1px;
+  border-left-width: 4px;
+}
+
+.view-bar__line {
+  margin: 0;
+}
+
+.view-bar__actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0 1rem;
+  font-size: var(--fs-sm);
+}
+
+.view-bar__steps {
+  margin: 0.75rem 0 0;
+  padding-left: 1.4rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.view-bar__print {
+  min-height: 2.25rem;
+  padding: 0.2rem 0.8rem;
+}
+
+/* Their type's pick on the race title bar and at the top of the race. */
+.race__typick {
+  display: inline-block;
+  padding: 0 0.45rem;
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  background: var(--rad-surface-elevated);
+  border: 1px solid var(--rad-border);
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.your-type {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--rad-accent);
+  background: color-mix(in srgb, var(--rad-accent) 6%, var(--rad-surface));
+  border-radius: 0 var(--rad-radius) var(--rad-radius) 0;
+}
+
+.your-type__head,
+.your-type__why,
+.your-type__alt {
+  margin: 0;
+}
+
+.your-type__why,
+.your-type__alt {
+  margin-top: 0.35rem;
+  font-size: var(--fs-sm);
+}
+
+.your-type__conf {
+  color: var(--rad-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.cross-table .cross__row--mine {
+  outline: 2px solid var(--rad-accent);
+  outline-offset: -2px;
+  background: color-mix(in srgb, var(--rad-accent) 8%, var(--rad-surface));
+}
+
+@media (max-width: 719px) {
+  .welcome,
+  .view-bar {
+    padding: 1rem;
+  }
+}
+
+/* In the header, line the wizard up with the ZIP box and title text. */
+@media (min-width: 720px) {
+  .site-header .welcome,
+  .site-header .view-bar {
+    max-width: var(--rad-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    border-left-width: 4px;
+    box-sizing: border-box;
+  }
+
+  .site-header .welcome {
+    border-width: 2px;
+  }
+}
