@@ -2287,9 +2287,90 @@ button:focus-visible {
   }
 }
 
-/* Print cheat sheet: hidden on screen, the only thing printed. */
+/*
+ * Print cheat sheet: hidden on screen, the only thing printed. Sizes are in em of --print-fs, which
+ * fitPrintSheet() picks (with one or two columns) so the sheet fits one page. `--measure` lays it out
+ * off-screen at page width for that check.
+ */
 .print-sheet {
   display: none;
+  font-size: var(--print-fs, 10.5pt);
+  line-height: 1.25;
+  color: #000;
+  background: #fff;
+}
+
+.print-sheet--measure {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -10000px;
+  visibility: hidden;
+}
+
+.print-sheet__title {
+  margin: 0 0 0.15em;
+  font-size: 1.4em;
+}
+
+.print-sheet__sub {
+  margin: 0 0 0.45em;
+  font-size: 0.85em;
+}
+
+.print-sheet__group + .print-sheet__group {
+  margin-top: 0.5em;
+}
+
+.print-sheet__table thead th.print-sheet__cat {
+  padding: 0 0 0.1em;
+  font-size: 1.05em;
+  font-style: normal;
+  font-weight: 700;
+  border-bottom: 1px solid #000;
+}
+
+.print-sheet__table {
+  width: 100%;
+  border-collapse: collapse;
+  /* Fixed layout so a section's lead table and its continuation line up column for column. */
+  table-layout: fixed;
+
+  tr {
+    break-inside: avoid;
+  }
+
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.08em 0.3em;
+    border-bottom: 1px dotted #999;
+  }
+
+  tbody th {
+    font-weight: 400;
+  }
+
+  td {
+    font-weight: 700;
+  }
+}
+
+.print-sheet__fit {
+  font-weight: 400;
+  color: #444;
+}
+
+.print-sheet__table--lead {
+  break-inside: avoid;
+}
+
+/* Long ballots: two columns, contests flowing top to bottom then across. */
+.print-sheet--two-col .print-sheet__body {
+  columns: 2;
+  column-gap: 0.3in;
+  column-rule: 1px solid #ccc;
 }
 
 @media print {
@@ -2298,69 +2379,19 @@ button:focus-visible {
     display: none !important;
   }
 
-  body {
-    background: #fff;
+  html,
+  body,
+  #app {
+    background: #fff !important;
+  }
+
+  #app {
+    min-height: 0;
+    padding-bottom: 0;
   }
 
   .print-sheet {
     display: block;
-    font-size: 10.5pt;
-    color: #000;
-  }
-
-  .print-sheet__title {
-    margin: 0 0 0.2rem;
-    font-size: 15pt;
-  }
-
-  .print-sheet__sub {
-    margin: 0 0 0.5rem;
-    font-size: 9pt;
-  }
-
-  .print-sheet__cat {
-    margin: 0.6rem 0 0.15rem;
-    font-size: 11pt;
-    border-bottom: 1px solid #000;
-  }
-
-  .print-sheet__table {
-    width: 100%;
-    border-collapse: collapse;
-
-    th,
-    td {
-      text-align: left;
-      padding: 0.1rem 0.3rem;
-      border-bottom: 1px dotted #999;
-    }
-
-    tbody th {
-      font-weight: 400;
-      width: 50%;
-    }
-
-    thead th {
-      padding-top: 0;
-      font-size: 8pt;
-      font-weight: 400;
-      font-style: italic;
-      border-bottom: none;
-    }
-
-    td {
-      width: 25%;
-      font-weight: 700;
-    }
-
-    td + td {
-      font-weight: 400;
-      color: #444;
-    }
-  }
-
-  .print-sheet__table--mine td {
-    width: 50%;
   }
 
   @page {

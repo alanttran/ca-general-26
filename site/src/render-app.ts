@@ -1212,6 +1212,37 @@ function renderPrintSheet(): HTMLElement {
   return el('section', 'print-sheet', { id: 'print-sheet', 'aria-hidden': 'true' });
 }
 
+/** Printable area at 0.5in margins that fits both Letter (shorter) and A4 (narrower), in CSS px. */
+const PRINT_AREA = { width: 7.25 * 96, height: 9.85 * 96 };
+/** Layouts to try, largest type first (one column, then two, at each size): [columns, font size in pt]. */
+const PRINT_FITS: [1 | 2, number][] = [12, 11.5, 11, 10.5, 10, 9.5, 9, 8.5, 8, 7.5, 7].flatMap((pt): [1 | 2, number][] => [
+  [1, pt],
+  [2, pt],
+]);
+
+/**
+ * Just before printing, lay the sheet out off-screen at page width and keep the roomiest layout that fits
+ * one page. Very long ballots get the smallest layout and may still run onto a second page.
+ */
+function fitPrintSheet(): void {
+  const sheet = document.getElementById('print-sheet');
+  if (!sheet?.childElementCount) return;
+  const apply = ([cols, pt]: [1 | 2, number]) => {
+    sheet.style.setProperty('--print-fs', `${pt}pt`);
+    sheet.classList.toggle('print-sheet--two-col', cols === 2);
+  };
+  sheet.classList.add('print-sheet--measure');
+  sheet.style.width = `${PRINT_AREA.width}px`;
+  const fit = PRINT_FITS.find((f) => {
+    apply(f);
+    return sheet.offsetHeight <= PRINT_AREA.height;
+  });
+  apply(fit ?? PRINT_FITS[PRINT_FITS.length - 1]);
+  sheet.classList.remove('print-sheet--measure');
+  sheet.style.width = '';
+}
+window.addEventListener('beforeprint', fitPrintSheet);
+
 function fillPrintSheet(data: BallotData, code: PrintColumn): void {
   const sheet = document.getElementById('print-sheet');
   if (!sheet) return;
@@ -1225,24 +1256,16 @@ function fillPrintSheet(data: BallotData, code: PrintColumn): void {
   h.textContent = `My picks — ${ty?.name ?? code} (${code})`;
   const sub = el('p', 'print-sheet__sub');
   sub.textContent = `Nov 3, 2026 · ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel}) · unofficial guide — check against your official ballot.`;
-  sheet.append(h, sub);
+  const body = el('div', 'print-sheet__body');
+  sheet.append(h, sub, body);
   for (const cat of data.categories) {
     const races = data.races.filter((r) => r.categoryId === cat.id);
     if (!races.length) continue;
-    const ch = el('h3', 'print-sheet__cat');
-    ch.textContent = cat.label;
     const tbl = el('table', 'print-sheet__table');
     const thead = el('thead');
-    const trh = el('tr');
-    for (const label of ['', 'Fit + experience', 'Typology fit']) {
-      const th = el('th', undefined, { scope: 'col' });
-      th.textContent = label;
-      trh.append(th);
-    }
-    thead.append(trh);
+    thead.append(printCatRow(cat.label, 2));
     const tb = el('tbody');
-    const flagMark = (flag: 'severe' | 'serious' | undefined) =>
-      flag ? ` ⚑ ${SEVERITY_LABEL[flag].toLowerCase()} red flag` : '';
+    const flagMark = (flag: 'severe' | 'serious' | undefined) => (flag ? ' ⚑' : '');
     const cellText = (cell: string, flag: 'severe' | 'serious' | undefined) =>
       !cell || cell.trim().endsWith('—') ? '— (no pick)' : `${cell}${flagMark(flag)}`;
     for (const race of races) {
@@ -1256,22 +1279,64 @@ function fillPrintSheet(data: BallotData, code: PrintColumn): void {
       const fitCell = row ? `${row.pick} ${row.confidence}`.trim() : '';
       const combined =
         row && race.kind === 'candidates' ? combinedCellFor(race, row.pick, row.confidence) : undefined;
-      const tdCombined = el('td');
-      tdCombined.textContent = combined?.reason
-        ? `⇄ ${cellText(combined.cell, combined.flag)}`
-        : cellText(fitCell, fitFlag);
-      const tdFit = el('td');
-      tdFit.textContent = cellText(fitCell, fitFlag);
-      tr.append(th, tdCombined, tdFit);
+      // One pick column; when weighing experience changes the pick, the plain typology fit follows in brackets.
+      const td = el('td');
+      if (combined?.reason) {
+        td.append(`⇄ ${cellText(combined.cell, combined.flag)} `);
+        const fit = el('span', 'print-sheet__fit');
+        fit.textContent = `(type fit: ${cellText(fitCell, fitFlag)})`;
+        td.append(fit);
+      } else {
+        td.textContent = cellText(fitCell, fitFlag);
+      }
+      tr.append(th, td);
       tb.append(tr);
     }
     tbl.append(thead, tb);
-    sheet.append(ch, tbl);
+    body.append(printGroup(tbl));
   }
   const legend = el('p', 'print-sheet__sub');
   legend.textContent =
-    '● high confidence · ◐ medium · ○ low · — skip / no pick · ⇄ switched for experience · ⚑ candidate has a Severe or Serious red flag';
+    '● high confidence · ◐ medium · ○ low · — skip / no pick · ⇄ pick changes when experience is weighed (plain type fit in brackets) · ⚑ candidate has a Severe or Serious red flag';
   sheet.append(legend);
+}
+
+/**
+ * One section of the print sheet. The heading and first two contests form a block that can't split, so a
+ * heading never sits alone at the bottom of a column; the rest go in a second table that can flow on.
+ */
+function printGroup(tbl: HTMLTableElement): HTMLElement {
+  const group = el('div', 'print-sheet__group');
+  const rows = Array.from(tbl.tBodies[0].rows);
+  const widths = ['52%', '48%'];
+  const cols = () => {
+    const cg = el('colgroup');
+    for (const w of widths) cg.append(el('col', undefined, { style: `width:${w}` }));
+    return cg;
+  };
+  const head = tbl.cloneNode(false) as HTMLTableElement;
+  const headBody = el('tbody');
+  headBody.append(...rows.slice(0, 2));
+  head.append(cols(), tbl.tHead!, headBody);
+  head.classList.add('print-sheet__table--lead');
+  group.append(head);
+  if (rows.length > 2) {
+    const rest = tbl.cloneNode(false) as HTMLTableElement;
+    const restBody = el('tbody');
+    restBody.append(...rows.slice(2));
+    rest.append(cols(), restBody);
+    group.append(rest);
+  }
+  return group;
+}
+
+/** Section heading as the first header row, so it never ends up alone at the bottom of a column. */
+function printCatRow(label: string, span: number): HTMLTableRowElement {
+  const tr = el('tr', 'print-sheet__cat-row');
+  const th = el('th', 'print-sheet__cat', { colspan: String(span), scope: 'colgroup' });
+  th.textContent = label;
+  tr.append(th);
+  return tr;
 }
 
 /** The voter's marks in ballot order; with `fallback`, unmarked contests show that type's pick instead. */
@@ -1282,13 +1347,14 @@ function fillMyChoicesSheet(sheet: HTMLElement, data: BallotData, fallback?: Typ
   sub.textContent = fallback
     ? `Nov 3, 2026 · ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel}) · my marks, and the ${fallback} pick where I didn’t mark one · unofficial guide — check against your official ballot.`
     : `Nov 3, 2026 · ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel}) · marked by me on an unofficial guide — check against your official ballot.`;
-  sheet.append(h, sub);
+  const body = el('div', 'print-sheet__body');
+  sheet.append(h, sub, body);
   for (const cat of data.categories) {
     const races = data.races.filter((r) => r.categoryId === cat.id);
     if (!races.length) continue;
-    const ch = el('h3', 'print-sheet__cat');
-    ch.textContent = cat.label;
     const tbl = el('table', 'print-sheet__table print-sheet__table--mine');
+    const thead = el('thead');
+    thead.append(printCatRow(cat.label, 2));
     const tb = el('tbody');
     for (const race of races) {
       const tr = el('tr');
@@ -1301,8 +1367,8 @@ function fillMyChoicesSheet(sheet: HTMLElement, data: BallotData, fallback?: Typ
       tr.append(th, td);
       tb.append(tr);
     }
-    tbl.append(tb);
-    sheet.append(ch, tbl);
+    tbl.append(thead, tb);
+    body.append(printGroup(tbl));
   }
 }
 
