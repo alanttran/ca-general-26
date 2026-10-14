@@ -505,6 +505,9 @@ export function renderApp(root: HTMLElement, zip: string): void {
   root.replaceChildren();
   const prefs = getViewPrefs();
   root.dataset.view = prefs.mode && (prefs.mode === 'full' || prefs.typology) ? prefs.mode : 'full';
+  // Site color follows the wizard choice; before one is made (or mid-wizard) the default teal stays.
+  if (prefs.mode && (prefs.mode === 'full' || prefs.typology)) root.dataset.theme = prefs.mode;
+  else delete root.dataset.theme;
   viewTypology = prefs.mode && prefs.mode !== 'full' ? prefs.typology : undefined;
   highlightTypology = prefs.typology;
   viewMode = prefs.mode && prefs.typology ? prefs.mode : 'full';

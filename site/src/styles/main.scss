@@ -86,6 +86,19 @@ body {
   min-height: 100vh;
 }
 
+/* Site color follows the view picked in the welcome wizard (matches the wizard cards). Quick keeps the default teal. */
+#app[data-theme='guided'] {
+  --rad-accent: #4f46e5;
+  --rad-accent-dim: #3730a3;
+  --rad-stakes-surface-tint: #6366f1;
+}
+
+#app[data-theme='full'] {
+  --rad-accent: #475569;
+  --rad-accent-dim: #1e293b;
+  --rad-stakes-surface-tint: #64748b;
+}
+
 /* Base type: every heading and bold run sits on the shared scale (component rules below may refine size). */
 h1,
 h2,
