@@ -364,6 +364,8 @@ th {
 .pick-cell__confidence {
   display: inline-flex;
   align-items: center;
+  /* Inline in text (badges, cheat sheet), sit on the text's middle rather than its baseline; flex parents ignore this. */
+  vertical-align: -0.1em;
 }
 
 .icon--red-flag {
