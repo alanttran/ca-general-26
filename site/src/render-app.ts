@@ -150,6 +150,20 @@ function fillPickCell(
   td.append(inner);
 }
 
+/**
+ * Confidence as the SVG icon plus screen-reader text. Use this instead of the ●◐○ characters on screen:
+ * fonts draw ● smaller than ◐ and ○.
+ */
+function confidenceBadge(confidence: string, srText = ` ${srConfidenceLabel(confidence)}`): HTMLElement | null {
+  const ic = confidence ? confidenceIconFromChar(confidence) : null;
+  if (!ic) return null;
+  const badge = el('span', 'pick-cell__confidence');
+  const sr = el('span', 'visually-hidden');
+  sr.textContent = srText;
+  badge.append(sr, ic);
+  return badge;
+}
+
 /** Small flag after a pick whose candidate has a Severe or Serious red flag. */
 function pickFlagMarker(tier: 'severe' | 'serious'): HTMLElement {
   const wrap = el('span', `pick-flag pick-flag--${tier}`, {
@@ -1027,14 +1041,8 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
         const flag = race.kind === 'candidates' ? maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags) : undefined;
         if (flag === 'severe' || flag === 'serious') pick.append(pickFlagMarker(flag));
         // Same SVG confidence icons as the picks tables (the ● glyph renders smaller than ◐/○ in most fonts).
-        const ic = row.confidence ? confidenceIconFromChar(row.confidence) : null;
-        if (ic) {
-          const badge = el('span', 'pick-cell__confidence');
-          const sr = el('span', 'visually-hidden');
-          sr.textContent = ` ${srConfidenceLabel(row.confidence)}`;
-          badge.append(sr, ic);
-          pick.append(document.createTextNode(' '), badge);
-        }
+        const badge = confidenceBadge(row.confidence);
+        if (badge) pick.append(document.createTextNode(' '), badge);
       }
       const mine = el('span', 'quick-list__mine');
       const refresh = () => {
@@ -1811,7 +1819,9 @@ function renderRace(race: ZipRace): HTMLElement {
   if (typeRow) {
     const pick = el('span', 'race__typick');
     const noPick = !typeRow.pick || typeRow.pick === '—';
-    pick.textContent = noPick ? `${typeRow.typology}: no pick` : `${typeRow.typology}: ${typeRow.pick} ${typeRow.confidence}`.trim();
+    pick.textContent = noPick ? `${typeRow.typology}: no pick` : `${typeRow.typology}: ${typeRow.pick}`;
+    const badge = noPick ? null : confidenceBadge(typeRow.confidence);
+    if (badge) pick.append(document.createTextNode(' '), badge);
     sumText.append(document.createTextNode(' '), pick);
   }
   const mineBadge = el('span', 'race__mine');
@@ -1921,7 +1931,8 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
   head.append(label);
   if (!noPick) {
     const conf = el('span', 'your-type__conf');
-    conf.textContent = ` ${row.confidence} ${srConfidenceLabel(row.confidence).toLowerCase()}`;
+    const icon = confidenceBadge(row.confidence, '');
+    conf.append(document.createTextNode(' '), ...(icon ? [icon] : []), document.createTextNode(` ${srConfidenceLabel(row.confidence).toLowerCase()}`));
     head.append(conf);
   }
   const why = el('p', 'your-type__why');
