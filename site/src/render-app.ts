@@ -487,7 +487,13 @@ function renderScopeNote(data: BallotData, localPending: boolean): HTMLElement {
   const p = el('p', localPending ? 'scope-note scope-note--pending' : 'scope-note');
   p.append(document.createTextNode(`${data.meta.verificationNote} `));
   p.append(extLink(data.meta.registrarUrl, data.meta.registrarLabel, true));
-  return p;
+  if (localPending || viewMode === 'full') return p;
+  const d = el('details', 'scope-note scope-note--folded');
+  const s = el('summary', 'scope-note__summary');
+  s.textContent = 'Is this exactly my ballot?';
+  p.className = 'scope-note__text';
+  d.append(s, p);
+  return d;
 }
 
 export function renderApp(root: HTMLElement, zip: string): void {
@@ -495,9 +501,10 @@ export function renderApp(root: HTMLElement, zip: string): void {
   const data = buildBallotData(zip);
   root.replaceChildren();
   const prefs = getViewPrefs();
-  root.dataset.view = prefs.mode ?? 'full';
+  root.dataset.view = prefs.mode && (prefs.mode === 'full' || prefs.typology) ? prefs.mode : 'full';
   viewTypology = prefs.mode && prefs.mode !== 'full' ? prefs.typology : undefined;
   highlightTypology = prefs.typology;
+  viewMode = prefs.mode && prefs.typology ? prefs.mode : 'full';
   const profile = getBallotProfile(zip);
   document.title = `Unofficial 2026 ${data.meta.state === 'CO' ? 'CO' : 'CA'} general election guide — ZIP ${data.meta.scopeZip} (${data.meta.scopeLabel})`;
 
@@ -580,6 +587,8 @@ export function renderApp(root: HTMLElement, zip: string): void {
 
 /** The voter's own typology in Quick and Guided views (undefined in Full view or before they pick). */
 let viewTypology: TypologyCode | undefined;
+/** Effective view: Quick and Guided need a chosen type, so without one the page renders in full. */
+let viewMode: ViewMode = 'full';
 /** Their type, if they've picked one: its row is outlined in every picks table, in any view. */
 let highlightTypology: TypologyCode | undefined;
 
@@ -700,8 +709,8 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
     actions.append(b);
   };
   const reopen = (step: 1 | 2) => bar.replaceWith(renderWelcome(prefs, rerender, step));
-  if (mode !== 'full') link('Change voter type', () => reopen(2));
-  link('Change how I’m using this', () => reopen(1));
+  if (mode !== 'full') link('Change type', () => reopen(2));
+  link(mode === 'full' ? 'Switch to a simpler view' : 'Change view', () => reopen(1));
   if (mode !== 'full') {
     link('Show everything', () => {
       setViewPrefs({ ...prefs, mode: 'full' });
@@ -711,25 +720,40 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
   line.append(' ', actions);
   bar.append(line);
 
-  if (mode === 'quick' && ty) {
+  if (mode !== 'full' && ty) {
     const ol = el('ol', 'view-bar__steps');
-    const steps: (string | Node)[][] = [
-      ['Check when and where to vote in the box below.'],
-      [`Look over the ${ty.name} pick on each contest further down. Tap a contest for the full story, or mark your own choice at the bottom of it.`],
-    ];
+    const steps: (string | Node)[][] =
+      mode === 'quick'
+        ? [
+            ['Check when and where to vote (just below).'],
+            [`Review the ${ty.name} pick on each contest. Tap one to see why or to choose differently.`],
+          ]
+        : [
+            [`Open each contest below: the ${ty.name} pick and why come first, then the full details.`],
+            ['Mark your own choice at the bottom of each one.'],
+          ];
     const printBtn = el('button', 'view-bar__print', { type: 'button' });
     printBtn.textContent = 'Print my cheat sheet';
     printBtn.addEventListener('click', () => {
-      fillPrintSheet(data, countMarked(data) ? MINE : ty.code);
+      fillPrintSheet(data, MINE);
       window.print();
     });
-    steps.push([printBtn, ` and take it with you, or keep this page open when you vote. It lists your own choices where you marked them and the ${ty.name} pick everywhere else.`]);
+    steps.push([printBtn, ` your choices, with ${ty.code} picks filling any you skip.`]);
     for (const parts of steps) {
       const li = el('li');
       li.append(...parts);
       ol.append(li);
     }
-    bar.append(ol);
+    const progress = el('p', 'view-bar__progress', { role: 'status' });
+    const total = data.races.length;
+    const refresh = () => {
+      const n = countMarked(data);
+      progress.textContent = n ? `You’ve marked ${n} of ${total} contests.` : `${total} contests on your ballot. None marked yet.`;
+      progress.hidden = mode === 'quick' && !n;
+    };
+    refresh();
+    document.addEventListener(CHOICES_CHANGED, refresh);
+    bar.append(ol, progress);
   }
   return bar;
 }
@@ -956,7 +980,23 @@ function renderHowToVote(data: BallotData): HTMLElement {
     links.append(li);
   }
   sec.append(ol, links);
-  return sec;
+  if (viewMode === 'full') return sec;
+  // Simple views: one line with the next deadline; tap for all dates and where-to-vote links.
+  const next = info.dates.find((d) => d.iso === nextIso);
+  const wrap = el('details', 'how-vote how-vote--folded');
+  const summary = el('summary', 'how-vote__summary');
+  const title = el('strong', 'how-vote__summary-title');
+  title.textContent = `When and where to vote in ${info.where}`;
+  summary.append(title);
+  if (next) {
+    const nextLine = el('span', 'how-vote__summary-next');
+    nextLine.textContent = `Next: ${next.label}. ${next.text.split('. ')[0].replace(/\.$/, '')}.`;
+    summary.append(nextLine);
+  }
+  sec.className = 'how-vote__inner';
+  h2.className = 'visually-hidden';
+  wrap.append(summary, sec);
+  return wrap;
 }
 
 function renderIntroBlocks(colorado: boolean): HTMLElement {
@@ -968,7 +1008,7 @@ function renderIntroBlocks(colorado: boolean): HTMLElement {
       <h2 id="how-guide"><span class="intro-card__heading-icon intro-card__heading-icon--secondary" aria-hidden="true"></span>How to use this guide</h2>
       <p>Each race includes <strong>web-condensed</strong> backgrounds, scorecards where available, money and endorsement notes, red-flag callouts, and a <strong>cross-typology recommendation row</strong> with confidence icons (see legend under the TL;DR summary).</p>
       <p>Propositions and local measures get a Yes/No pick per column; judicial retention votes are grouped into one table per court. Use <strong>Print my picks</strong> in the header for a one-page cheat sheet in ballot order.</p>
-      <p>Want a simpler view? Use <strong>Change how I’m using this</strong> under the ZIP box to switch to a quick cheat sheet or a race-by-race view for your voter type.</p>
+      <p>Want a simpler view? Use <strong>Switch to a simpler view</strong> under the ZIP box to switch to a quick cheat sheet or a race-by-race view for your voter type.</p>
       <p>At the bottom of each contest you can <strong>mark your own choice</strong>. Marks stay in this browser only (nothing is sent anywhere), and the cheat sheet can print them.</p>
     </section>
   `;
@@ -1426,14 +1466,34 @@ function renderRace(race: ZipRace): HTMLElement {
     body.append(ul);
   }
 
-  body.append(
-    renderYourChoice(race, () => {
-      refreshBadge();
-      document.dispatchEvent(new Event(CHOICES_CHANGED));
-    }),
-  );
+  const choice = renderYourChoice(race, () => {
+    refreshBadge();
+    document.dispatchEvent(new Event(CHOICES_CHANGED));
+  });
+  body.append(choice);
+
+  if (viewMode === 'quick' && typeRow) {
+    // Quick: the pick, the vote, and everything else one tap away.
+    const callout = body.firstElementChild!;
+    const rest = Array.from(body.children).filter((n) => n !== callout && n !== choice);
+    body.replaceChildren(callout, choice, moreDetails(quickDetailsLabel(race), ...rest));
+  } else if (viewMode === 'guided') {
+    // Race by race: the voter's own type is called out up top, so the nine-column table folds away.
+    const cross = body.querySelector(':scope > .race__cross');
+    if (cross) {
+      const fold = moreDetails('How all nine voter types would vote');
+      cross.replaceWith(fold);
+      fold.querySelector('.race__more-body')?.append(cross);
+    }
+  }
   details.append(body);
   return details;
+}
+
+function quickDetailsLabel(race: Race): string {
+  if (race.kind === 'measure') return 'Full details: what it does, the case for and against, money and endorsements';
+  if (race.kind === 'retention') return 'Full details: each judge’s background and record';
+  return 'Full details: candidates, experience, money, endorsements and red flags';
 }
 
 /** Quick/Guided: the voter's own type's pick and reason, at the top of each contest. */
@@ -1453,6 +1513,30 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
   const why = el('p', 'your-type__why');
   why.textContent = row.rationale;
   box.append(head, why);
+  if (race.kind === 'candidates' && race.candidates.length) {
+    const who = el('p', 'your-type__cands');
+    const strong = el('strong');
+    strong.textContent = race.candidates.length === 1 ? 'Candidate: ' : 'Candidates: ';
+    who.append(strong, document.createTextNode(race.candidates.map((c) => (c.party && c.party !== 'NP' ? `${c.name} (${c.party})` : c.name)).join(' · ')));
+    box.append(who);
+    const flag = maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags);
+    if (flag === 'severe' || flag === 'serious') {
+      const warn = el('p', 'your-type__flag');
+      warn.textContent = `⚑ This pick has a ${SEVERITY_LABEL[flag].toLowerCase()} red flag. Open the full details to read it before you decide.`;
+      box.append(warn);
+    }
+  }
+  if (race.kind === 'measure' && race.measure?.yesMeans && race.measure.noMeans) {
+    const dl = el('dl', 'your-type__means');
+    for (const [term, text] of [['Yes', race.measure.yesMeans], ['No', race.measure.noMeans]] as const) {
+      const dt = el('dt');
+      dt.textContent = `${term}:`;
+      const dd = el('dd');
+      dd.textContent = text;
+      dl.append(dt, dd);
+    }
+    box.append(dl);
+  }
   if (race.kind === 'candidates') {
     const c = combinedCellFor(race, row.pick, row.confidence);
     if (c.reason) {
@@ -1472,7 +1556,10 @@ function renderYourChoice(race: Race, onChange: () => void): HTMLElement {
   const legend = el('legend', 'your-choice__legend');
   legend.textContent = 'Your choice';
   const hint = el('p', 'your-choice__hint');
-  hint.textContent = 'Saved in this browser only. Pick “My own choices” next to Print my picks to print them.';
+  hint.textContent =
+    viewMode === 'full'
+      ? 'Saved in this browser only. Pick “My own choices” next to Print my picks to print them.'
+      : 'Saved on this device only. Your marks go on your printed cheat sheet.';
   box.append(legend, hint);
 
   if (race.kind === 'retention' && race.retention) {

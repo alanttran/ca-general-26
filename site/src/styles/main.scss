@@ -3144,3 +3144,101 @@ button:focus-visible {
     border-width: 2px;
   }
 }
+
+/* Simple views: the view bar carries print and progress, so the header's print row and changelog step aside. */
+#app[data-view='quick'],
+#app[data-view='guided'] {
+  .print-picks,
+  .site-updates {
+    display: none;
+  }
+}
+
+.scope-note--folded {
+  .scope-note__summary {
+    cursor: pointer;
+    width: fit-content;
+    color: var(--rad-accent);
+    font-weight: 600;
+  }
+
+  .scope-note__text {
+    margin: 0.4rem 0 0;
+  }
+}
+
+.your-type__cands,
+.your-type__flag,
+.your-type__means {
+  margin: 0.45rem 0 0;
+  font-size: var(--fs-sm);
+}
+
+.your-type__flag {
+  padding: 0.35rem 0.6rem;
+  border-left: 3px solid var(--flag-severe);
+  background: var(--rad-alert-bg);
+  color: var(--rad-text);
+  font-weight: 600;
+}
+
+.your-type__means {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.2rem 0.5rem;
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.view-bar__progress {
+  margin: 0.6rem 0 0;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--rad-accent-dim);
+}
+
+/* In Quick view the “Your choice” box sits right under the pick, so keep it compact. */
+#app[data-view='quick'] .your-choice {
+  margin-top: 0.75rem;
+}
+
+/* Simple views fold the dates box to one line with the next deadline. */
+.how-vote--folded {
+  padding: 0;
+
+  .how-vote__summary {
+    display: list-item;
+    padding: 0.85rem 1.25rem;
+    cursor: pointer;
+    list-style-position: inside;
+  }
+
+  .how-vote__summary-next {
+    display: block;
+    margin-left: 1.1rem;
+  }
+
+  .how-vote__summary::marker {
+    color: var(--rad-accent);
+  }
+
+  .how-vote__summary-title {
+    font-size: var(--fs-lg);
+  }
+
+  .how-vote__summary-next {
+    font-size: var(--fs-sm);
+    color: var(--rad-accent-dim);
+    font-weight: 600;
+  }
+
+  .how-vote__inner {
+    padding: 0 1.25rem 1.1rem;
+  }
+}

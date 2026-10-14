@@ -27,6 +27,9 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
           'Quick and race-by-race views show your type’s pick on every contest’s title bar and at the top of each contest, and fold away the methodology, the nine-column summary table and the typology key. “Show me everything” is the full page as before.',
           'Your printed cheat sheet uses your own choices where you marked them and your type’s pick everywhere else.',
           'A bar under the ZIP box shows how you’re viewing the guide, with links to change your type or view. Your choice stays on this device only.',
+          'Quick view keeps each contest short: your type’s pick and why, the candidates (or what a Yes and a No vote do), a warning if the pick has a serious red flag, and your choice box. Everything else is one tap away under “Full details.”',
+          'Race-by-race view puts your type’s pick first in each contest, folds the nine-viewpoint table away, and counts how many contests you’ve marked.',
+          'In both simpler views, the voting dates fold into one line showing the next deadline, the ballot-source note folds under “Is this exactly my ballot?”, and the header’s print row and changelog step aside.',
         ],
       },
       {
