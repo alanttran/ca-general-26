@@ -29,6 +29,9 @@ import {
   categoryIcon,
   confidenceIconFromChar,
   iconBallot,
+  iconBolt,
+  iconChecklist,
+  iconLayers,
   iconBook,
   iconChevron,
   iconExternal,
@@ -606,18 +609,76 @@ function renderWelcome(prefs: ViewPrefs, done: () => void, startAt: 1 | 2 = 1): 
     const lede = el('p', 'welcome__lede');
     lede.textContent = 'Pick one to start. You can change it anytime, and nothing you choose leaves this device.';
     const opts = el('div', 'welcome__options');
-    const choices: [ViewMode, string, string][] = [
-      ['quick', 'Just help me vote, fast', 'New voter or short on time? Find your voter type, see its pick for every contest on your ballot, print a one-page cheat sheet, and know when and where to vote.'],
-      ['guided', 'Help me decide, race by race', 'See your type’s pick and the reasons on every contest, read the details you care about, mark your own choices, then print them.'],
-      ['full', 'Show me everything', 'All nine viewpoints side by side, scorecards, money, red flags and how we make picks. For experienced voters and researchers.'],
+    const choices: {
+      mode: ViewMode;
+      icon: (className?: string) => SVGElement;
+      badge?: string;
+      title: string;
+      text: string;
+      level: 1 | 2 | 3;
+      levelLabel: string;
+      time: string;
+      cta: string;
+    }[] = [
+      {
+        mode: 'quick',
+        icon: iconBolt,
+        badge: 'Best for first-time voters',
+        title: 'Just help me vote, fast',
+        text: 'New voter or short on time? Find your voter type, see its pick for every contest on your ballot, print a one-page cheat sheet, and know when and where to vote.',
+        level: 1,
+        levelLabel: 'Least reading',
+        time: 'About 5 minutes',
+        cta: 'Start quick',
+      },
+      {
+        mode: 'guided',
+        icon: iconChecklist,
+        title: 'Help me decide, race by race',
+        text: 'See your type’s pick and the reasons on every contest, read the details you care about, mark your own choices, then print them.',
+        level: 2,
+        levelLabel: 'Some reading',
+        time: 'About 30 minutes',
+        cta: 'Go race by race',
+      },
+      {
+        mode: 'full',
+        icon: iconLayers,
+        title: 'Show me everything',
+        text: 'All nine viewpoints side by side, scorecards, money, red flags and how we make picks. For experienced voters and researchers.',
+        level: 3,
+        levelLabel: 'Full detail',
+        time: 'As long as you like',
+        cta: 'See everything',
+      },
     ];
-    for (const [m, title, text] of choices) {
+    for (const c of choices) {
+      const m = c.mode;
       const b = el('button', `welcome__option welcome__option--${m}`, { type: 'button' });
+      const top = el('span', 'welcome__option-top');
+      const ic = el('span', 'welcome__option-icon');
+      ic.append(c.icon('icon welcome__icon'));
+      top.append(ic);
+      if (c.badge) {
+        const badge = el('span', 'welcome__option-badge');
+        badge.textContent = c.badge;
+        top.append(badge);
+      }
       const t = el('strong', 'welcome__option-title');
-      t.textContent = title;
+      t.textContent = c.title;
       const d = el('span', 'welcome__option-text');
-      d.textContent = text;
-      b.append(t, d);
+      d.textContent = c.text;
+      const meta = el('span', 'welcome__option-meta');
+      const meter = el('span', 'welcome__meter', { 'aria-hidden': 'true' });
+      for (let i = 1; i <= 3; i++) meter.append(el('span', i <= c.level ? 'welcome__meter-bar is-on' : 'welcome__meter-bar'));
+      const lvl = el('span', 'welcome__option-level');
+      lvl.textContent = c.levelLabel;
+      const time = el('span', 'welcome__option-time');
+      time.textContent = c.time;
+      meta.append(meter, lvl, document.createTextNode(' · '), time);
+      const cta = el('span', 'welcome__option-cta');
+      cta.textContent = `${c.cta} →`;
+      b.append(top, t, d, meta, cta);
       b.addEventListener('click', () => {
         mode = m;
         if (m === 'full') {

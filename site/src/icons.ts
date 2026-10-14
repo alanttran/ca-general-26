@@ -22,6 +22,29 @@ export function iconBallot(className = 'icon icon--lg'): SVGElement {
   );
 }
 
+/** Welcome wizard: Quick view (lightning bolt). */
+export function iconBolt(className = 'icon icon--lg'): SVGElement {
+  return svgIcon('0 0 24 24', '<path fill="currentColor" d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/>', className);
+}
+
+/** Welcome wizard: race-by-race view (checklist). */
+export function iconChecklist(className = 'icon icon--lg'): SVGElement {
+  return svgIcon(
+    '0 0 24 24',
+    '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m3 6 2 2 3-3M3 13l2 2 3-3M3 20h5M12 6h9M12 13h9M12 20h9"/>',
+    className,
+  );
+}
+
+/** Welcome wizard: full view (stacked layers). */
+export function iconLayers(className = 'icon icon--lg'): SVGElement {
+  return svgIcon(
+    '0 0 24 24',
+    '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m12 3 9 5-9 5-9-5 9-5zM3 12.5l9 5 9-5M3 17l9 5 9-5"/>',
+    className,
+  );
+}
+
 export function iconChevron(className = 'icon icon--chevron'): SVGElement {
   return svgIcon(
     '0 0 24 24',
