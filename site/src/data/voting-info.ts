@@ -17,7 +17,12 @@ export interface VotingInfo {
   /** One-line warning that matters most for this place. */
   heads?: string;
   /** “Mail it or drop it off?”: short points on returning a ballot safely this year, with sources. */
-  returning?: { points: string[]; sources: { label: string; url: string }[] };
+  returning?: {
+    points: string[];
+    /** Ballot-tracking sign-up, shown as a button under the points. */
+    track: { label: string; url: string; why: string };
+    sources: { label: string; url: string }[];
+  };
 }
 
 /*
@@ -44,8 +49,13 @@ const CA_RETURNING: VotingInfo['returning'] = {
     'Mailing on Nov 3 anyway? Skip the blue box. Hand it to a clerk at a post office counter and ask for a hand-stamped postmark.',
     'Dropping it off? Use an official county drop box (see the links below). They’re locked, emptied by election workers, and take ballots until 8 p.m. on Nov 3. Any vote center takes your ballot too.',
     `${NOT_AFFECTED} In June the Supreme Court also ruled (Watson v. RNC) that states may count ballots that arrive after Election Day, so California’s seven-day window stands.`,
-    'Either way: sign the envelope, then sign up for Where’s My Ballot? to get a text when it’s received and counted. If your signature is missing or doesn’t match, the county contacts you so you can fix it.',
+    'Either way, sign the envelope. If your signature is missing or doesn’t match, the county contacts you so you can fix it.',
   ],
+  track: {
+    label: 'Sign up for Where’s My Ballot?',
+    url: 'https://california.ballottrax.net/voter/',
+    why: 'Get a text, email or call when your ballot is mailed to you, received and counted, so you know your vote counted, or hear in time to fix a problem.',
+  },
   sources: [
     { label: 'CA Secretary of State: Nov 3 election', url: 'https://www.sos.ca.gov/elections/upcoming-elections/general-election-november-3-2026' },
     ...RETURN_SOURCES,
@@ -55,7 +65,7 @@ const CA_RETURNING: VotingInfo['returning'] = {
 
 const CA_REGISTER = { label: 'Register to vote or update your address', url: 'https://registertovote.ca.gov/' };
 const CA_STATUS = { label: 'Check your registration status', url: 'https://voterstatus.sos.ca.gov/' };
-const CA_TRACK = { label: 'Track your ballot (Where’s My Ballot?)', url: 'https://wheresmyballot.sos.ca.gov/' };
+const CA_TRACK = { label: 'Track your ballot (Where’s My Ballot?)', url: 'https://california.ballottrax.net/voter/' };
 
 const caDates = (opts: { early: string; centers?: [string, string] }): VoteDate[] => [
   {
@@ -240,8 +250,13 @@ const DENVER: VotingInfo = {
       'Mailing? Mail it by Mon, Oct 26. After that, use one of Denver’s 24-hour drop boxes or a voter center instead.',
       `${USPS_POSTMARK} Mail can also take longer than it used to, so give it a full week.`,
       `${NOT_AFFECTED}`,
-      'Either way: sign the envelope, then sign up for BallotTrax to get a text when it’s received and counted. If there’s a signature problem, the clerk contacts you so you can fix it.',
+      'Either way, sign the envelope. If there’s a signature problem, the clerk contacts you so you can fix it.',
     ],
+    track: {
+      label: 'Sign up for BallotTrax',
+      url: 'https://denver.ballottrax.net',
+      why: 'Get a text or email when your ballot is mailed to you, received and counted, so you know your vote counted, or hear in time to fix a problem.',
+    },
     sources: [{ label: 'Denver Elections', url: 'https://www.denvergov.org/elections' }, ...RETURN_SOURCES],
   },
   links: [

@@ -825,6 +825,8 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
       window.print();
     });
     steps.push([`Print your cheat sheet or send it to your phone (buttons below). It lists your choices, with ${ty.code} picks filling any you skip.`]);
+    const track = votingInfoFor(data.meta.state, data.meta.registrarLabel, data.meta.scopeLabel).returning?.track;
+    if (track) steps.push([extLink(track.url, track.label, true), ' to get a text when your ballot is received and counted.']);
     const tools = el('div', 'view-bar__tools');
     tools.append(printBtn, renderShareButton(data, prefs));
     for (const parts of steps) {
@@ -1464,13 +1466,21 @@ function renderReturning(r: NonNullable<VotingInfo['returning']>): HTMLDetailsEl
     li.textContent = p;
     ul.append(li);
   }
+  const track = el('div', 'how-vote__track');
+  const why = el('p', 'how-vote__track-why');
+  const strong = el('strong');
+  strong.textContent = 'Track your ballot. ';
+  why.append(strong, r.track.why);
+  const go = extLink(r.track.url, `${r.track.label} →`);
+  go.className = 'how-vote__track-link';
+  track.append(why, go);
   const src = el('p', 'how-vote__returning-sources');
   src.append('Sources: ');
   r.sources.forEach((x, i) => {
     if (i) src.append(' · ');
     src.append(extLink(x.url, x.label));
   });
-  d.append(s, ul, src);
+  d.append(s, ul, track, src);
   return d;
 }
 

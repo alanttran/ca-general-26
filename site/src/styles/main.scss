@@ -3793,3 +3793,30 @@ button:focus-visible {
   font-size: var(--fs-xs);
   color: var(--rad-text-muted);
 }
+
+.how-vote__track {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--rad-surface);
+  border: 1px solid color-mix(in srgb, var(--rad-accent) 40%, var(--rad-border));
+  border-radius: var(--rad-radius);
+}
+
+.how-vote__track-why {
+  margin: 0 0 0.5rem;
+}
+
+.how-vote__track-link {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--rad-accent);
+  border-radius: 6px;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--rad-accent-dim);
+  }
+}

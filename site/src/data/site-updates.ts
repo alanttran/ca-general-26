@@ -24,6 +24,7 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         bullets: [
           'A new note in the voting-dates box covers this year’s Postal Service postmark change, what it means for mailed ballots, and why mailing by Oct 27 (Oct 26 in Denver) or using a drop box is safest. Sources are linked.',
           'California timelines now show Oct 27 as the last day to mail a ballot, following the Secretary of State’s advice to mail at least a week early.',
+          'A sign-up button for ballot tracking (Where’s My Ballot? in California, BallotTrax in Denver), so you get a text when your ballot is received and counted. It’s also a step in the quick and race-by-race views.',
         ],
       },
       {
