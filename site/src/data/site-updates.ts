@@ -16,6 +16,26 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'October 15, 2026',
+    lede: 'Mail your ballot or drop it off? The voting-dates box now explains what’s safest this year, and the printed cheat sheet fits on one page.',
+    panels: [
+      {
+        summary: 'Mail it or drop it off?',
+        bullets: [
+          'A new note in the voting-dates box covers this year’s Postal Service postmark change, what it means for mailed ballots, and why mailing by Oct 27 (Oct 26 in Denver) or using a drop box is safest. Sources are linked.',
+          'California timelines now show Oct 27 as the last day to mail a ballot, following the Secretary of State’s advice to mail at least a week early.',
+        ],
+      },
+      {
+        summary: 'One-page cheat sheet',
+        bullets: [
+          'The printed cheat sheet picks the largest type that fits one page, in one or two columns. Section headings stay with their contests.',
+          'The type-picks sheet shows one pick per contest; when weighing experience changes it, the plain type fit follows in brackets.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'October 14, 2026',
     lede: 'A new welcome wizard helps first-time visitors find their voter type and get a simple cheat sheet. Plus full local ballots for Temecula: ZIPs 92590, 92591 and 92592.',
     panels: [

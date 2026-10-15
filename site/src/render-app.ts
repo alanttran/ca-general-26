@@ -63,7 +63,7 @@ import {
 } from './data/red-flags';
 import { COMBINED_LEVEL_GAP, combinedCellFor } from './data/experience-views';
 import { decodeChoices, encodeChoices, getChoice, importChoices, retentionKey, setChoice } from './data/my-choices';
-import { votingInfoFor } from './data/voting-info';
+import { votingInfoFor, type VotingInfo } from './data/voting-info';
 import { getViewPrefs, setViewPrefs, TYPOLOGY_PLAIN, type ViewMode, type ViewPrefs } from './data/view-prefs';
 
 const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
@@ -1424,7 +1424,9 @@ function renderHowToVote(data: BallotData): HTMLElement {
     li.append(extLink(l.url, l.label, true));
     links.append(li);
   }
-  sec.append(ol, links);
+  sec.append(ol);
+  if (info.returning) sec.append(renderReturning(info.returning));
+  sec.append(links);
   const upcoming = info.dates.filter((d) => d.iso >= todayIso);
   if (upcoming.length) {
     const cal = el('button', 'how-vote__calendar', { type: 'button' });
@@ -1449,6 +1451,27 @@ function renderHowToVote(data: BallotData): HTMLElement {
   h2.className = 'visually-hidden';
   wrap.append(summary, sec);
   return wrap;
+}
+
+/** “Mail it or drop it off?”: a fold in the dates box with this year's ballot-return advice and sources. */
+function renderReturning(r: NonNullable<VotingInfo['returning']>): HTMLDetailsElement {
+  const d = el('details', 'how-vote__returning');
+  const s = el('summary', 'how-vote__returning-summary');
+  s.textContent = 'Mail it or drop it off? What’s safest this year';
+  const ul = el('ul', 'how-vote__returning-points');
+  for (const p of r.points) {
+    const li = el('li');
+    li.textContent = p;
+    ul.append(li);
+  }
+  const src = el('p', 'how-vote__returning-sources');
+  src.append('Sources: ');
+  r.sources.forEach((x, i) => {
+    if (i) src.append(' · ');
+    src.append(extLink(x.url, x.label));
+  });
+  d.append(s, ul, src);
+  return d;
 }
 
 /** All-day calendar events (.ics) for the remaining voting dates, built in the browser and saved by the visitor. */
