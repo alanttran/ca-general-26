@@ -871,6 +871,7 @@ export const RACES_OCEANSIDE: Race[] = [
         { label: 'Yes on R Oceanside', url: 'https://yesonroceanside.org/', summary: 'Supporters’ campaign site.' },
         { label: 'Patch: Oceanside voter guide 2026', url: 'https://patch.com/california/oceanside-camppendleton/oceanside-voter-guide-2026-whats-ballot-voting-more', summary: 'Short summaries of R, S and the council races.' },
       ],
+      explainerUrl: 'https://thecoastnews.com/oceanside-voters-to-decide-prevailing-wage-charter-amendment/',
     },
     crossTypology: ct([
       ['PL', 'Yes', '●', 'Progressive Left voters value prevailing wages, apprenticeships and union labor standards on public projects.'],
@@ -906,6 +907,7 @@ export const RACES_OCEANSIDE: Race[] = [
       'The San Diego County Taxpayers Association, the Oceanside Firefighters Association and the county Democratic Party support S; the county GOP, Reform California and SanDiego350 oppose it. If county Measure B also passes, Oceanside’s rate would be 9.25%.',
     ],
     measure: {
+      explainerUrl: 'https://voiceofsandiego.org/2026/10/07/oceanside-voters-to-decide-on-another-sales-tax-measure/',
       question:
         'To provide locally-controlled funding for Oceanside services and infrastructure, such as keeping streets, sidewalks, parks, and public facilities safe, clean, and well-maintained; fixing potholes; improving traffic; restoring/protecting local beaches; modernizing public safety/emergency facilities to improve 911 emergency response/community safety; and repairing aging infrastructure, shall City of Oceanside’s ordinance establishing a 1/2 cent sales tax be adopted, providing $20,000,000 annually for general government use for 10 years, with independent audits and citizen oversight?',
       yesMeans:

@@ -570,6 +570,7 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
       'The school board voted unanimously on May 12, 2026 to place the bond on the Nov. 3 ballot. School bonds can only be placed on statewide election dates.',
     ],
     measure: {
+      explainerUrl: 'https://riversiderecord.org/murrieta-valley-unified-359-million-bond-november-election-set/',
       question:
         'Without increasing current tax rates, to fix deteriorating roofs, plumbing, HVAC, electrical, safety systems, and repair/upgrade aging classrooms, science labs, career technology and school facilities to support college/career readiness in math, science, technology, arts, engineering, and skilled trades, shall Murrieta Valley Unified School District’s measure be adopted authorizing $359,000,000 in bonds at legal rates, levying $60 per $100,000 assessed value ($22 million annually) while bonds are outstanding, with citizen oversight, audits and all money locally controlled?',
       yesMeans: 'Authorizes $359 million in school bonds for roof, plumbing, HVAC and classroom repairs, repaid by a property tax of about $60 per $100,000 of assessed value while the bonds are outstanding.',
@@ -701,6 +702,7 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
         { label: 'Inland Empire Business Daily: voters will determine if Measure A stays', url: 'https://iebusinessdaily.com/riverside-county-voters-will-determine-if-measure-a-stays-on-the-books/', summary: 'History, allocations since 2009 and the new oversight committee.' },
         { label: 'Riverside Registrar: Measure A notice', url: 'https://voteinfo.net/sites/g/files/aldnop371/files/2026-08/Measure%20A%20-%20Riverside%20County%20Transportation%20Commission.pdf', summary: 'Official measure notice for the Nov. 3 ballot.' },
       ],
+      explainerUrl: 'https://iebusinessdaily.com/riverside-county-voters-will-determine-if-measure-a-stays-on-the-books/',
     },
     crossTypology: ct([
       ['PL', 'Yes', '◐', 'Progressive Left voters value dedicated public-transit and road-repair funding, weighing the regressive sales tax against the service benefits.'],

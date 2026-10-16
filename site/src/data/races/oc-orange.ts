@@ -323,6 +323,7 @@ export const RACES_OC_ORANGE: Race[] = [
         { label: 'Voice of OC: Orange places 1% sales tax on ballot (June 2026)', url: 'https://voiceofoc.org/2026/06/inaction-orange-officials-cant-agree-on-sales-tax-measure/', summary: 'Council votes and the debate over 10, 12, 13 and 15 years.' },
         { label: 'Voice of OC: What if the tax fails? (Sept 2026)', url: 'https://voiceofoc.org/2026/09/orange-explores-what-to-do-if-sales-tax-proposal-fails-in-november/', summary: 'Deficit figures and staff’s list of possible cuts.' },
       ],
+      explainerUrl: 'https://voiceofoc.org/2026/09/orange-explores-what-to-do-if-sales-tax-proposal-fails-in-november/',
     },
     crossTypology: ct([
       ['PL', 'Yes', '◐', 'Progressive Left voters value funding for city services and oversight, but weigh that a sales tax falls hardest on lower-income shoppers.'],
@@ -401,7 +402,9 @@ export const RACES_OC_ORANGE: Race[] = [
         { label: 'OC Registrar: Measure J text, analysis and argument (PDF)', url: 'https://ocvote.gov/sites/default/files/2026-09/J-ORAN%20TOT%20-%20LAYOUT%20(1).pdf', summary: 'Full ordinance, City Attorney impartial analysis and the argument in favor.' },
         { label: 'City of Orange: Measures I & J', url: 'https://www.cityoforange.org/our-city/revenue-measures', summary: 'City’s informational page on the deficit and revenue measures.' },
         { label: 'Voice of OC: Orange inches closer to tax increase ballot measures (May 2026)', url: 'https://voiceofoc.org/2026/05/orange-inches-closer-to-tax-increase-ballot-measures/', summary: 'Council debate over the hotel tax rate and current revenue.' },
+        { label: 'Voice of OC: Orange explores what to do if sales tax fails (Sep 14)', url: 'https://voiceofoc.org/2026/09/orange-explores-what-to-do-if-sales-tax-proposal-fails-in-november/', summary: 'Covers the 1% sales tax and the hotel tax increase from 10% to 14%, what each would raise, the deficit, and a council critic’s view of the city’s finances.' },
       ],
+      explainerUrl: 'https://voiceofoc.org/2026/09/orange-explores-what-to-do-if-sales-tax-proposal-fails-in-november/',
     },
     crossTypology: ct([
       ['PL', 'Yes', '●', 'Progressive Left voters favor taxing visitors and online travel companies to fund city services rather than residents’ everyday purchases.'],
@@ -489,7 +492,9 @@ export const RACES_OC_ORANGE: Race[] = [
         { label: 'City of Orange: Charter measure', url: 'https://www.cityoforange.org/our-city/city-charter-measure', summary: 'City’s page on the proposed charter.' },
         { label: 'Hoodline: Orange puts its future to a charter vote (July 2026)', url: 'https://hoodline.com/2026/07/broke-and-on-the-brink-orange-puts-its-future-to-a-charter-vote-7037432/', summary: 'The 4-3 council vote and critics’ concerns.' },
         { label: 'Voice of OC: Orange inches closer to tax increase ballot measures (May 2026)', url: 'https://voiceofoc.org/2026/05/orange-inches-closer-to-tax-increase-ballot-measures/', summary: 'Council’s 6-1 vote to begin the charter process.' },
+        { label: 'LAist: Will becoming a charter city solve Orange’s financial struggles? (Jul 27)', url: 'https://laist.com/news/politics/charter-city-solve-orange-financial-struggles-voters-will-decide', summary: 'What a charter would and would not change, why supporters want it and why dissenting council members questioned the timing.' },
       ],
+      explainerUrl: 'https://laist.com/news/politics/charter-city-solve-orange-financial-struggles-voters-will-decide',
     },
     crossTypology: ct([
       ['PL', 'No', '◐', 'Progressive Left voters distrust giving cities exemptions from state contracting and prevailing-wage rules and a ban on rent control, and object to a charter written without a citizens’ commission.'],

@@ -521,7 +521,9 @@ export const RACES_BURBANK: Race[] = [
         { label: 'City Attorney’s impartial analysis of Measure C', url: 'https://www.burbankca.gov/documents/d/guest/city-of-burbank-city-services-measure-city-attorneys-impartial-analysis', summary: 'Official analysis, including the general-tax classification.' },
         { label: 'Measure C fact sheet', url: 'https://www.burbankca.gov/documents/d/guest/city-of-burbank-measure-c-fact-sheet-english-2-', summary: 'City fact sheet.' },
         { label: 'City Clerk: Nov 3, 2026 election', url: CITY_CLERK_URL, summary: 'Measure text and ballot information.' },
+        { label: 'Burbank Leader: Voters to see tax hike, election measures in November (Aug 1)', url: 'https://outlooknewspapers.com/burbankleader/voters-to-see-tax-hike-election-measures-in-november/article_636f9af5-f657-4687-8f71-6014ee06e4bc.html', summary: 'Report on the three November measures (hotel tax, charter amendment, by-district elections), the projected deficit behind the tax, and the voting-rights settlement behind the election measures.' },
       ],
+      explainerUrl: 'https://outlooknewspapers.com/burbankleader/voters-to-see-tax-hike-election-measures-in-november/article_636f9af5-f657-4687-8f71-6014ee06e4bc.html',
     },
     crossTypology: ct([
       ['PL', 'Yes', '●', 'Progressive Left voters favor funding city services with a tax that falls mainly on visitors rather than residents.'],
@@ -598,7 +600,9 @@ export const RACES_BURBANK: Race[] = [
         { label: 'City of Burbank: election measures', url: 'https://www.burbankca.gov/election-measures', summary: 'City page for the three measures.' },
         { label: 'City news release: measures follow CVRA settlement', url: 'https://www.burbankca.gov/newsroom/-/newsdetail/20124/burbank-to-place-council-election-measures-on-november-2026-ballot-following-cvra-settlement', summary: 'Background on the settlement.' },
         { label: 'Green Party of LA County voter guide', url: 'https://losangeles.cagreens.org/voter-guide-november-2026', summary: 'Opposition argument and ranked-choice alternative.' },
+        { label: 'Burbank Leader: Voters to see tax hike, election measures in November (Aug 1)', url: 'https://outlooknewspapers.com/burbankleader/voters-to-see-tax-hike-election-measures-in-november/article_636f9af5-f657-4687-8f71-6014ee06e4bc.html', summary: 'Report on the three November measures (hotel tax, charter amendment, by-district elections), the projected deficit behind the tax, and the voting-rights settlement behind the election measures.' },
       ],
+      explainerUrl: 'https://outlooknewspapers.com/burbankleader/voters-to-see-tax-hike-election-measures-in-november/article_636f9af5-f657-4687-8f71-6014ee06e4bc.html',
     },
     crossTypology: ct([
       ['PL', 'Yes', '●', 'Progressive Left voters favor changes that make local representation more inclusive and respond to voting-rights concerns.'],
@@ -675,7 +679,9 @@ export const RACES_BURBANK: Race[] = [
         { label: 'City of Burbank: election measures', url: 'https://www.burbankca.gov/election-measures', summary: 'City page for the three measures.' },
         { label: 'City news release: measures follow CVRA settlement', url: 'https://www.burbankca.gov/newsroom/-/newsdetail/20124/burbank-to-place-council-election-measures-on-november-2026-ballot-following-cvra-settlement', summary: 'Background on the settlement.' },
         { label: 'myBurbank: public hearing on overhauling the electoral system', url: 'https://myburbank.com/city-council-to-hold-publioc-hearing-on-overhauling-its-electoral-system/', summary: 'Council hearing on the rollout.' },
+        { label: 'Burbank Leader: Voters to see tax hike, election measures in November (Aug 1)', url: 'https://outlooknewspapers.com/burbankleader/voters-to-see-tax-hike-election-measures-in-november/article_636f9af5-f657-4687-8f71-6014ee06e4bc.html', summary: 'Report on the three November measures (hotel tax, charter amendment, by-district elections), the projected deficit behind the tax, and the voting-rights settlement behind the election measures.' },
       ],
+      explainerUrl: 'https://outlooknewspapers.com/burbankleader/voters-to-see-tax-hike-election-measures-in-november/article_636f9af5-f657-4687-8f71-6014ee06e4bc.html',
     },
     crossTypology: ct([
       ['PL', 'Yes', '●', 'Progressive Left voters favor district elections as a way to increase representation for historically underrepresented neighborhoods.'],

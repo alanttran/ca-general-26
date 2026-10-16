@@ -45,6 +45,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       'Because voters adopted ULA, the City Attorney concluded the Council could not exempt anyone on its own. Councilmember Traci Park, whose district includes the Palisades, led the effort; the Council vote was 13-1, with Curren Price absent (LAist, Aug. 4, 2026).',
     ],
     measure: {
+      explainerUrl: 'https://laist.com/news/politics/voter-guides/laist-los-angeles-city-voter-game-plan-prop-te',
       question:
         'Shall an ordinance be adopted to provide a one-time exemption from the City’s special documentary transfer tax (Proposition ULA) for residential properties that were damaged or destroyed in the Palisades Fire and are sold within five years of the date of the Fire?',
       yesMeans: 'Exempts or refunds the ULA tax on the first sale of a home damaged or destroyed in the Palisades Fire, if sold by its Jan. 7, 2025 owner by Jan. 6, 2030.',
@@ -88,6 +89,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
         'One carve-out invites more that could erode the voter-approved tax.',
       ],
       readingLinks: [
+        { label: 'LAist: What to know about Prop TE, suspending the “mansion tax” for fire victims', url: 'https://laist.com/news/politics/voter-guides/laist-los-angeles-city-voter-game-plan-prop-te', summary: 'Who qualifies, the 2030 cutoff, the lone council vote against, and the Housing Department’s revenue estimate.' },
         PAMPHLET_LINK,
         {
           label: 'LAist: council sends Palisades ULA exemption to voters (Aug. 4, 2026)',
@@ -178,7 +180,13 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
         'Mortgages and business ventures add financial risk the City’s own analyst cannot estimate.',
         'Bidding exceptions, even for “critical infrastructure,” can be stretched and invite favoritism.',
       ],
-      readingLinks: [PAMPHLET_LINK, LAPP_GUIDE, CHARTER_COMMISSION_LINK],
+      readingLinks: [
+        PAMPHLET_LINK,
+        LAPP_GUIDE,
+        CHARTER_COMMISSION_LINK,
+        { label: 'LAist: What you need to know to vote on Charter Amendment LA (Sep 29)', url: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-los-angeles-charter-amendment-la', summary: 'Voter guide on the two-year budget, Public Works changes and contracting rules, with what supporters and Councilmember Monica Rodriguez say.' },
+      ],
+      explainerUrl: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-los-angeles-charter-amendment-la',
     },
     crossTypology: ct([
       ['PL', 'Yes', '◐', 'Progressive Left voters value the street-safety and transit groups and the Controller backing it, and long-range planning for neglected infrastructure, while noting the loss of a public board.'],
@@ -264,7 +272,9 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
         LAPP_GUIDE,
         CHARTER_COMMISSION_LINK,
         { label: 'La Defensa voter guide (advocacy group; recommends No)', url: 'https://ladefensa.org/2026-voter-guide-8/', summary: 'A progressive advocacy group’s recommendations on the City measures; opinion.' },
+        { label: 'LAist: Charter Amendment PL, streamlining the city’s planning process (Oct 14)', url: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-city-charter-amendment-pl-planning-process', summary: 'Voter guide on the single Neighborhood Appeals Commission and new planning deadlines, with who supports it and the lack of filed opposition.' },
       ],
+      explainerUrl: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-city-charter-amendment-pl-planning-process',
     },
     crossTypology: ct([
       ['PL', 'Yes', '○', 'Progressive Left voters who prioritize faster housing approvals lean Yes, while those wary of weaker community voice (as La Defensa is) may not.'],
@@ -343,7 +353,13 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
         'A higher signature bar makes it harder to challenge laws the Council passes.',
         'Popular ethics provisions are bundled with cuts to public access in one Yes/No vote.',
       ],
-      readingLinks: [PAMPHLET_LINK, LAPP_GUIDE, CHARTER_COMMISSION_LINK],
+      readingLinks: [
+        PAMPHLET_LINK,
+        LAPP_GUIDE,
+        CHARTER_COMMISSION_LINK,
+        { label: 'LAist: Charter Amendment EE, making politicians more accountable? (Oct 14)', url: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-city-charter-amendment-ee', summary: 'Voter guide on the weekly Council meeting change, ethics and oversight provisions, with supporters’ and opponents’ arguments.' },
+      ],
+      explainerUrl: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-city-charter-amendment-ee',
     },
     crossTypology: ct([
       ['PL', 'Yes', '●', 'Progressive Left voters value independent police oversight and tougher campaign-finance enforcement.'],
@@ -377,6 +393,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       'Placed on the ballot by the City Council as part of the charter package. No argument against was submitted, but LAist reports the City’s fiscal analysts recommended against doubling the budget without new revenue.',
     ],
     measure: {
+      explainerUrl: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-charter-amendment-prk',
       question:
         'Shall the City Charter be amended to increase the minimum budget allocated to the Department of Recreation and Parks, phased in over ten years until it is double the current minimum budget allocation, with exceptions for fiscal emergencies?',
       yesMeans: 'Doubles the Charter’s minimum General Fund budget for Recreation and Parks over ten years, from 0.0325% to 0.065% of assessed property value, with no new tax, so other services get less.',
@@ -511,7 +528,12 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
         '66-year leases commit public land long past today’s officials.',
         'Workforce disclosure adds paperwork for Port tenants and could be used to slow automation or projects.',
       ],
-      readingLinks: [PAMPHLET_LINK, LAPP_GUIDE],
+      readingLinks: [
+        PAMPHLET_LINK,
+        LAPP_GUIDE,
+        { label: 'LAist: Charter Amendment PRT, what you need to know before voting (Oct 14)', url: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-charter-amendment-prt-guide', summary: 'Voter guide on airport commission residency, longer leases and Harbor workforce disclosure, with supporters and the Chamber of Commerce’s opposition.' },
+      ],
+      explainerUrl: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-charter-amendment-prt-guide',
     },
     crossTypology: ct([
       ['PL', 'Yes', '◐', 'Progressive Left voters value workforce disclosure at the Port and community investment in harbor neighborhoods.'],
@@ -584,7 +606,12 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
         'School board candidates are not covered by the contractor and lobbyist limits or public matching funds that apply to City races.',
         'The practical benefit is modest, while the ordinance power is a lasting shift.',
       ],
-      readingLinks: [PAMPHLET_LINK, LAPP_GUIDE],
+      readingLinks: [
+        PAMPHLET_LINK,
+        LAPP_GUIDE,
+        { label: 'LAist: Charter Amendment SC, what you need to know (Oct 14)', url: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-city-charter-amendment-sc-guide', summary: 'Voter guide on aligning LAUSD board campaign-finance rules with the mayoral race, with supporters’ case and a critic’s concern about ordinance changes.' },
+      ],
+      explainerUrl: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-city-charter-amendment-sc-guide',
     },
     crossTypology: ct([
       ['PL', 'Yes', '◐', 'Progressive Left voters follow Common Cause and the League of Women Voters on clearer campaign-finance enforcement.'],
@@ -619,6 +646,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       'Earlier sales-tax increases: County Measure A (2024) and Measure ER (June 2026). Prop 43 on this ballot would require two-thirds for citizen-initiated special taxes from Jan. 1, 2027, but not for this vote.',
     ],
     measure: {
+      explainerUrl: 'https://laist.com/news/politics/voter-guides/2026-election-general-los-angeles-measure-fd-sales-tax',
       question:
         'Shall an ordinance providing funding for the Los Angeles Fire Department, including for hiring firefighters, paramedics, and other staff, purchasing and maintaining vehicles and equipment, building and upgrading fire stations, and brush clearance; by imposing a one-half percent (0.5%) sales tax in the City of Los Angeles; with annual audits and a citizen’s oversight committee; generating approximately $345 million annually until ended by voters; be adopted?',
       yesMeans: 'Adds a permanent half-cent City sales tax, raising the rate to 10.75% and about $345 million a year for Fire Department staffing, equipment, stations and brush clearance, with audits and oversight.',
