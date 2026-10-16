@@ -266,6 +266,7 @@ export const RACES_LA_COUNTY: Race[] = [
       'The Board of Supervisors voted 4-0 to place the measure on the ballot, with Supervisor Holly Mitchell abstaining; the backing unions had also begun a signature drive. Through Sept. 19, the Yes on A committee had raised $6.2 million this year, led by the deputies’ union at about $2.8 million, and had $8.5 million in the bank; no committee has formed to oppose it.',
     ],
     measure: {
+      explainerUrl: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-your-la-county-measure-a-binding-arbitration',
       question:
         'Shall the Los Angeles County Charter be amended to prohibit strikes by district attorney investigators, medical examiners, lifeguards, their supervisors, and nonadministrative civilian employees of the Fire, Sheriff’s and Medical Examiner departments; reiterate good-faith bargaining requirements; and create impartial binding arbitration for certified public safety employee organizations?',
       yesMeans: 'Bans strikes by certain county public safety workers and sends unresolved contract disputes for about 17,000 employees to a binding arbitration panel instead of letting supervisors impose terms.',
@@ -355,6 +356,7 @@ export const RACES_LA_COUNTY: Race[] = [
       'Voters created the Ethics Commission through Measure G in 2024; a task force recommended putting its independence in the charter, which requires a public vote. Voters approved the set-aside as Measure J in 2020, but county officials accidentally let Measure G undo it (LAist).',
     ],
     measure: {
+      explainerUrl: 'https://laist.com/news/politics/voter-guides/2026-election-california-general-la-county-measure-e-ethics-comission-measure-j',
       question:
         'Shall the Los Angeles County Charter be amended to provide greater independence and structure for the County Ethics Commission, the Office of Ethics Compliance and the Ethics Compliance Officer, and to continue the County’s community investment and alternatives-to-incarceration commitment?',
       yesMeans: 'Writes the Ethics Commission’s independence, structure and minimum budget into the County Charter and restores the 10% set-aside for community investment and alternatives to incarceration.',

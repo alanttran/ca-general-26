@@ -782,6 +782,7 @@ export const RACES_VISTA: Race[] = [
       'The school board voted 5-0 on April 23, 2026 to place the bond on the ballot (district page). It needs 55% to pass. The county Democratic Party, the San Diego County Taxpayers Association and the Building Trades support it; the county Republican Party and Reform California oppose it (KPBS).',
     ],
     measure: {
+      explainerUrl: 'https://www.kpbs.org/news/politics/2026/10/02/your-guide-to-all-san-diego-county-school-bond-measures',
       question:
         'Without increasing current tax rates, to repair and upgrade aging classrooms, science labs, school facilities, and instructional technology to support college/career readiness in math, science, technology, engineering, arts, and skilled trades and fix deteriorating roofs, plumbing, sewer, and electrical systems shall Vista Unified School District’s measure be adopted authorizing $543,000,000 in bonds at legal rates, levying $58 per $100,000 assessed value ($31,000,000 annually) while bonds are outstanding, with citizen oversight, independent audits, and all money locally-controlled?',
       yesMeans: 'Authorizes $543 million in Vista Unified bonds for school repairs and upgrades, repaid by property owners at about $58 per $100,000 of assessed value through 2062–63.',
@@ -868,6 +869,7 @@ export const RACES_VISTA: Race[] = [
       'The board placed the measure on the ballot unanimously. It needs 55%. No argument against it was filed. The San Diego County Taxpayers Association and the county Democratic Party support it; Reform California and the county Republican Party oppose it (KPBS; sample ballot).',
     ],
     measure: {
+      explainerUrl: 'https://www.kpbs.org/news/politics/2026/10/02/your-guide-to-all-san-diego-county-school-bond-measures',
       question:
         'To update local elementary and middle schools without increasing tax rates; replace failing roofs, plumbing and electrical systems; improve school safety; construct/repair/acquire classrooms, labs, facilities, equipment, and sites; and qualify for State matching funds; shall Fallbrook Union Elementary School District’s measure be adopted, authorizing $76,000,000 in bonds at legal rates, levying a projected $30 per $100,000 assessed value while bonds are outstanding, generating $5,000,000 annually, with public oversight, audits, no funds for administrators, all funds staying local?',
       yesMeans: 'Authorizes $76 million in Fallbrook Union Elementary bonds for school repairs and upgrades, repaid by property owners at a projected $30 per $100,000 of assessed value through 2062–63.',

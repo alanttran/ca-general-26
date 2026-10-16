@@ -84,6 +84,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'A citizen initiative from Advance Colorado, a conservative nonprofit that does not disclose its donors, backed by the Brighter Colorado issue committee, which had raised $2.61 million for its six-measure slate through Sept. 30 (Common Sense America, which also does not disclose donors, gave $250,000 in August). The main No committee, Colorado Communities First, had raised about $243,000, largely from the Colorado Immigrant Rights Coalition and the ACLU of Colorado (Colorado Sun; TRACER). As a constitutional amendment it needs 55% to pass.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/09/29/amendment-81-explained-colorado-immigration/',
       question:
         'Shall there be an amendment to the Colorado Constitution requiring law enforcement to notify the Department of Homeland Security when a person is charged with either a violent crime or any crime if the person has a prior felony conviction, if law enforcement cannot determine that the person is lawfully present in the United States?',
       yesMeans: 'Requires law enforcement to notify federal immigration authorities within 72 hours of charging someone with a violent crime, or any crime after a felony, if legal status is unconfirmed.',
@@ -168,6 +169,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'A citizen initiative sponsored by Advance Colorado (president Michael Fields). Brighter Colorado, which backs six Advance Colorado measures, had raised $2.61 million through Sept. 30; No Pollution in the Constitution (Conservation Colorado and Western Resource Advocates) had raised $1.86 million. The Yes-only committee, Energy Freedom Alliance of the Rockies, reported nothing (TRACER; Colorado Sun). Democratic lawmakers floated, then dropped, a May bill to blunt it. Needs 55%.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/09/30/amendment-82-explained-colorado-natural-gas/',
       question:
         'Shall there be an amendment to the Colorado Constitution creating new law granting the right for consumers to purchase natural gas for cooking or heating in homes or businesses and for distributors and utilities to sell natural gas to consumers?',
       yesMeans: 'Adds a constitutional right for consumers to buy natural gas for cooking and heating, and for utilities to sell it, which could limit state and local gas rules.',
@@ -251,6 +253,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'A citizen initiative largely funded by the Theodore Roosevelt Conservation Alliance (at least $1.5 million), with Safari Club International, Farrell-Roeh Capital ($150,000) and others (Colorado Sun). Yes committees had raised about $2.01 million through Sept. 30; opposition committees (Protect Colorado’s Constitution, Colorado Hunters and Anglers for Sensible Wildlife Conservation, Stop the Constitutional Power Grab) about $170,000. Twenty-four states have similar amendments. Needs 55%.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/10/01/amendment-83-explained-colorado-right-hunt-fish/',
       question:
         'Shall there be an amendment to the Colorado Constitution creating a constitutional right to hunt, fish, and harvest fish and wildlife by traditional methods, except non-game, endangered, or federally protected species; establishing hunting and fishing as the preferred means of managing fish and wildlife populations; and preserving the state’s right to regulate hunting, fishing, and wildlife management if necessary for sound scientific conservation, public safety, or to preserve future hunting and fishing opportunities? (condensed)',
       yesMeans: 'Creates a constitutional right to hunt and fish by traditional methods and makes them the preferred way to manage wildlife, while allowing science- and safety-based regulation.',
@@ -339,6 +342,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'Filed by Suzanne Taheri (former deputy secretary of state, West Group) and Chuck Broerman (Republican former El Paso County clerk). The Yes committee, Colorado Voter Trust Initiative, raised $4.2 million through Sept. 30, all from three nonprofits using shipping-store addresses that do not disclose donors, so the ultimate funders are unknown (Colorado Sun; TRACER). Opponents include the League of Women Voters and Common Cause; the No committee, Defend Our Ballots, had raised $171,000. Needs 55%.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/10/03/amendment-84-explained-ballot-id-numbers/',
       question:
         'Shall there be an amendment to the Colorado Constitution requiring a voter to sign and include the last four digits of their Social Security number or their Colorado driver’s license or identification card number on the outside of their mail ballot for any federal or state election; allowing the voter to correct missing or incorrect information, including with alternative forms of identification; and prohibiting a county clerk from counting the mail ballot unless the problem is fixed?',
       yesMeans: 'Requires mail voters in state and federal elections to add the last four digits of their SSN or Colorado ID number to the envelope; uncorrected ballots are not counted.',
@@ -428,6 +432,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'Filed by Advance Colorado (designated representatives Suzanne Taheri and Michael Fields); Common Sense America spent $500,000 on its signature drive. Supporters also include former Denver elections official Amber McReynolds (unaffiliated). The Bell Policy Center and the liberal Vote Common Sense coalition oppose it, noting lawmakers passed an “accessible language” ballot-title law this year (Colorado Sun). Needs 55%.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/10/03/amendment-85-explained-plain-ballot-language/',
       question:
         'Shall there be an amendment to the Colorado Constitution concerning ballot question language, requiring all state and local ballot questions to be written in plain language and at no more than an 8th grade reading level, and prohibiting a state statute from requiring language that conflicts with these requirements in ballot questions for citizen-initiated measures?',
       yesMeans: 'Requires every state and local ballot question to be in plain language at no more than an 8th-grade reading level, and voids laws requiring conflicting language in initiative titles.',
@@ -508,6 +513,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'Republican-aligned Advance Colorado launched it after Democrats pursued a 2028 redraw initiative that could have cost Republicans up to three of their five seats; the state Supreme Court unanimously struck that measure in June 2026 on single-subject grounds. Fair Redistricting Colorado received $250,000 from American Revival PAC, created by House Speaker Mike Johnson (Colorado Sun). No committee has registered against it or reported money. Needs 55%.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/09/29/amendment-86-explained-colorado-redistricting/',
       question:
         'Shall there be an amendment to the Colorado Constitution concerning congressional redistricting, reenacting the current process in the constitution and prohibiting modifications to a final map unless at least three public meetings are held, the modifications do not divide communities of interest or purposefully favor one political party, and are approved by the congressional redistricting commission and the Colorado Supreme Court? (condensed)',
       yesMeans: 'Requires approval by the independent commission and the Colorado Supreme Court, after three public hearings, for any change to Colorado’s congressional map between census redraws.',
@@ -590,6 +596,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'Placed on the ballot by liberal groups including the Bell Policy Center, Colorado Fiscal Institute and Colorado Center on Law and Policy; Protect Colorado’s Future had raised $1.18 million in cash through Sept. 30, while No committees had raised about $1.34 million, led by Don’t Price Us Out ($1.06 million) and Americans for Prosperity Colorado (TRACER). Gov. Jared Polis (D) opposes it, calling it “absolutely devastating” to the economy, as do the Colorado Chamber, NFIB and conservative groups (Colorado Sun). Proposition 136 is a competing 4.4% cap. Blue Book: passes with a simple majority.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/10/02/amendment-87-graduated-income-tax-colorado-voters-guide/',
       question:
         'SHALL STATE TAXES BE INCREASED $2.7 BILLION ANNUALLY, to increase or improve public services including K-12 education, health care, and early child care and education, by replacing the uniform state income tax rate with a graduated income tax structure for individuals, estates, trusts, and corporations, while keeping the 4.4% rate on income from the sale of a principal residence, and authorizing the state to retain and spend the increased revenue as a voter-approved revenue change? (condensed)',
       yesMeans: 'Replaces the 4.4% flat income tax with rates of 3.7% to 8.4%, cutting taxes under about $500,000 of income and raising about $2 billion yearly for schools, health care and child care.',
@@ -687,6 +694,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'The Legislature referred NN through SB26-135 on a party-line vote, at the urging of the Colorado Education Association. Yes for Colorado Kids (about 70 groups) had raised $5.12 million through Sept. 30, including $1 million from Gary Advocacy LLC and $950,000 from the CEA’s fund; opponents’ money is mostly Brighter Colorado’s multi-measure fund (TRACER). Opponents include Your Family’s Future Alliance and Brighter Colorado (Colorado Sun; Chalkbeat). Simple majority.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/10/03/proposition-nn-colorado-tabor-refunds-would-be-diverted-to-k-12-education/',
       question:
         'Shall state investment in K-12 public education increase two percent each year for the next ten years, with investments used to increase teacher pay, improve teacher retention, lower class sizes, and increase access to career and technical courses, without raising taxes but instead funded by raising the annual limit on state fiscal year spending only by the amount spent on public K-12 education as a voter-approved revenue change, and requiring an annual publicly released, independent audit to show how the new investments are spent?',
       yesMeans: 'Raises the state’s TABOR revenue limit by its peak K-12 spending, letting Colorado keep refunds (an estimated $330 million and $521 million in the first two years) for schools and children’s programs.',
@@ -783,6 +791,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'A citizen initiative from Advance Colorado, supported by Brighter Colorado and by Republican District Attorney George Brauchler. The main opposition, Coloradans for Real Safety Solutions, had raised $1.11 million through Sept. 30, led by Democratic philanthropist Lynn Schusterman ($500,000), the ACLU of Colorado and Signal Behavioral Health Network (Colorado Sun; TRACER). Takes effect in 2027 if passed. Simple majority.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/10/02/proposition-132-explained-colorado-fentanyl/',
       question:
         'Shall there be a change to the Colorado Revised Statutes concerning criminal penalties for fentanyl and certain synthetic opioids, increasing the felony classifications for distribution, manufacturing, dispensing, sale, or possession; creating mandated treatment for certain drug felonies based on possession amount; and narrowing or eliminating exemptions for crimes related to fentanyl and drug-related deaths? (condensed)',
       yesMeans: 'Makes possessing any amount of fentanyl a felony, requires 8 to 32 years in prison for distributing any amount, and removes some options to reduce penalties.',
@@ -869,6 +878,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'A citizen initiative from Protect Kids Colorado (executive director Erin Lee), which gathered signatures with more than 3,000 volunteers and had raised about $133,500 for its three measures through Sept. 30; Colorado’s Catholic bishops support it. The Colorado Coalition Against Sexual Assault and the Colorado Organization for Victim Assistance oppose it (Colorado Sun). Simple majority.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/10/01/proposition-133-child-sex-trafficking-colorado/',
       question:
         'Shall there be a change to the Colorado Revised Statutes modifying existing law concerning human trafficking of a minor for sexual servitude, expanding it to include knowingly trading anything of monetary value to buy or sell sexual activity with a minor and increasing the penalty to life in prison without parole or release?',
       yesMeans: 'Makes child sex trafficking a class 1 felony with mandatory life without parole, and expands the crime to anyone who trades anything of value to buy or sell sex with a minor.',
@@ -953,6 +963,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'A citizen initiative from Protect Kids Colorado (co-founder Erin Lee), backed by the Catholic Conference; it had raised about $133,500 for its three measures through Sept. 30. Families Not Politics, the main opposition committee (One Colorado and allied groups), had raised $1.66 million, more than 12 times as much (TRACER; Colorado Sun). Simple majority.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/10/01/proposition-134-explaine-colorado-transgender-kids-sports/',
       question:
         'Shall there be a change to the Colorado Revised Statutes restricting participation in all K-12 and collegiate school sports based on the participant’s biological sex; requiring each school or intramural team to be designated male, female, or coeducational; allowing females on male teams when no female team exists; barring complaints or penalties against schools for keeping separate female teams; and authorizing the commissioner of education to enforce it for K-12 districts? (condensed)',
       yesMeans: 'Requires every K-12 and college team, including intramurals, to be designated male, female or coed by biological sex, and limits students to their sex’s teams or coed teams.',
@@ -1041,6 +1052,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'A citizen initiative from Protect Kids Colorado (spokesperson Erin Lee). Opponents — Families Not Politics, The People’s No and Vote Common Sense, funded by One Colorado, the ACLU, Cobalt and Planned Parenthood — had raised more than $2.5 million across their committees through Sept. 30, against about $133,500 for Protect Kids Colorado (TRACER; Colorado Sun). Twenty-seven states restrict such surgeries for transgender minors (KFF via Colorado Sun). Simple majority.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/10/04/proposition-135-colorado-transgender-surgeries-kids/',
       question:
         'Shall there be a change to the Colorado Revised Statutes prohibiting any health-care professional or other person from knowingly performing, prescribing, administering, or providing any surgery to a minor for the purpose of altering the minor’s biological sex characteristics, and prohibiting the use of state or federal funds, Medicaid reimbursement, or insurance coverage to pay for this type of surgery? (condensed)',
       yesMeans: 'Bans surgery on minors to alter biological sex characteristics in response to their perception of sex or gender, and bars public funds and insurance from paying for it.',
@@ -1129,6 +1141,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'A citizen initiative from Advance Colorado, supported by the Colorado Chamber of Commerce. Brighter Colorado (funded mainly by Common Sense America and Advance Colorado, which do not disclose donors) had raised $2.61 million for its slate through Sept. 30; Amendment 87’s campaign, Protect Colorado’s Future, opposes it (Colorado Sun; TRACER). Simple majority.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/10/02/proposition-136-income-tax-limit-explained-voter-guide/',
       question: 'Shall there be a change to the Colorado Revised Statutes capping the state income tax rate at 4.4% of federal taxable income for individuals and corporations?',
       yesMeans: 'Sets today’s 4.4% rate as the maximum state income tax rate in statute starting in 2027, which would conflict with Amendment 87’s higher brackets if both pass.',
       noMeans: 'Keeps the current 4.4% rate without a statutory cap; any future rate increase would still need voter approval under TABOR.',
@@ -1209,6 +1222,7 @@ export const RACES_CO_MEASURES: Race[] = [
       'Filed by Conservation Colorado, The Nature Conservancy, Trust for Public Land and Western Resource Advocates; the Yes committee had raised $4.25 million through Sept. 30 (more than $2 million from The Nature Conservancy), against $4,679 for the No committee. Attorney General Phil Weiser endorsed it. The Colorado Democratic Party, League of Women Voters and some environmental groups oppose it over budget control and logging concerns (Colorado Sun). Simple majority.',
     ],
     measure: {
+      explainerUrl: 'https://coloradosun.com/2026/09/30/proposition-137-colorado-conservation-wildfire-funding/',
       question:
         'Shall there be a change to the Colorado Revised Statutes to increase water and land conservation funding without raising taxes, through a voter-approved revenue change allowing the state to keep and spend a portion of state sales tax revenue on sporting goods and equipment to conserve Colorado’s water, land, and forests, prevent wildfires, and support outdoor recreation, and reducing this funding if necessary to preserve certain tax credits? (condensed)',
       yesMeans: 'Dedicates the state sales tax already collected on sporting goods, about $175 million a year, to conservation, wildfire prevention and outdoor recreation, and exempts it from the TABOR limit.',

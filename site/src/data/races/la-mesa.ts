@@ -991,6 +991,7 @@ export const RACES_LA_MESA: Race[] = [
       'The board placed AA on the ballot in June 2026. The San Diego County Taxpayers Association, the teachers’ association, the classified employees’ chapter and La Mesa Mayor Mark Arapostathis signed the ballot argument for it; no argument against was filed. Reform California and the county Republican Party oppose it (KPBS).',
     ],
     measure: {
+      explainerUrl: 'https://www.kpbs.org/news/politics/2026/10/02/your-guide-to-all-san-diego-county-school-bond-measures',
       question:
         'La Mesa Spring Valley School District Classroom Repair & Upgrade Extension Measure. To repair/upgrade deteriorating roofs, plumbing, electrical systems; install air conditioning/shade structures to protect students from extreme heat; remove asbestos/lead pipes; and upgrade schools to current health/building safety/disability access standards, shall La Mesa Spring Valley School District’s measure be adopted, authorizing $131,000,000 in bonds at legal rates (without increasing current tax rates), levying $22 per $100,000 assessed value ($9,000,000 annually) while bonds are outstanding, with independent oversight and audits?',
       yesMeans:
@@ -1075,6 +1076,7 @@ export const RACES_LA_MESA: Race[] = [
       'The governing board voted unanimously in July 2026 to place G on the ballot. The ballot argument for it is signed by the San Diego County Taxpayers Association, Sycuan Tribal Chairman Cody Martinez, La Mesa Mayor Mark Arapostathis, the faculty union president and a nurse; no argument against was filed. Reform California and the county Republican Party oppose it (KPBS).',
     ],
     measure: {
+      explainerUrl: 'https://www.kpbs.org/news/politics/2026/10/02/your-guide-to-all-san-diego-county-school-bond-measures',
       question:
         'Grossmont-Cuyamaca Community College District Fire Safety, Job Training, College Affordability, No Tax Rate Increase. With funds that cannot be taken by the State and spent elsewhere and NO tax rate increase, shall Grossmont-Cuyamaca Community College District’s measure to improve/expand career training classrooms; remove asbestos/mold; reduce wildfire threats; maintain college affordability be adopted, authorizing $624 million of bonds with legal rates, levies below $25/$100,000 assessed valuation while outstanding ($45 million annually), audits, taxpayer oversight, full disclosure of all spending?',
       yesMeans:

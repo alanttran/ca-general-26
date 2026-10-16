@@ -254,6 +254,11 @@ export interface MeasureBlock {
   argumentsAgainstHeading?: string;
   /** News explainers, official fiscal analysis, and major campaign / opposition filings */
   readingLinks?: MeasureReadingLink[];
+  /**
+   * The one neutral news explainer to feature up front (“Local reporting”): must equal the `url` of an entry in
+   * `readingLinks`. Prefer nonprofit or public-media newsrooms; never an editorial or column.
+   */
+  explainerUrl?: string;
 }
 
 /** One justice up for a yes/no retention vote. */

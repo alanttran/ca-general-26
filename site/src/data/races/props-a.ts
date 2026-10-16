@@ -94,6 +94,7 @@ export const RACES_PROPS_A: Race[] = [
       },
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-1-housing-bond/',
       question:
         'Authorizes bonds for housing affordability programs. Legislative statute. Authorizes $11.25 billion in general obligation bonds for multifamily rental housing, veterans’ mortgages, supportive housing, preservation of existing affordable housing, and downpayment assistance.',
       yesMeans:
@@ -217,6 +218,7 @@ export const RACES_PROPS_A: Race[] = [
       },
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-2-rainy-day-fund/',
       question:
         'Increases state’s Rainy Day Fund. Legislative constitutional amendment. Increases the Rainy Day Fund approved by voters in 2014 to provide funding for education, health care, public safety, and other services during economic downturns.',
       yesMeans:
@@ -342,6 +344,7 @@ export const RACES_PROPS_A: Race[] = [
       },
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-3-high-income-tax/',
       question:
         'Provides permanent funding for schools and health care by extending existing tax on high incomes. Initiative constitutional amendment. Makes permanent existing voter-approved tax rates for individuals earning over $371,000 (adjusted for inflation); allocates revenue to public education.',
       yesMeans:
@@ -478,6 +481,7 @@ export const RACES_PROPS_A: Race[] = [
       },
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-4-public-fundraising/',
       question:
         'Repeals prohibition against public funding of election campaigns. Legislative statute. Repeals ban on state and local governments offering public funding of candidate campaigns; programs may not use funds earmarked for education, transportation, or public safety.',
       yesMeans:
@@ -606,6 +610,7 @@ export const RACES_PROPS_A: Race[] = [
       },
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-5-recall-reform/',
       question:
         'Changes recall election process for statewide officers. Legislative constitutional amendment. Currently voters elect replacement candidates at the same time as the recall; this measure instead fills recall vacancies by subsequent special election or appointment.',
       yesMeans:

@@ -26,6 +26,7 @@ export const RACES_PROPS_C: Race[] = [
       'PPIC\'s Sept 4–10 likely-voter survey had Prop 42 at 54% yes, 43% no (Republicans 74% and independents 61% yes; Democrats 39–56) and Prop 40 at 52% yes. Both could pass, leaving the conflict clause to decide.',
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-42-property-taxes/',
       question:
         'Prohibits new state personal property taxes and certain retroactive state taxes. Initiative constitutional amendment. Prohibits any new state tax on the ownership of personal property (everything other than real estate) or applied retroactively based on a taxpayer\'s past activities; nullifies conflicting taxes enacted after Jan 1, 2026.',
       yesMeans:
@@ -158,6 +159,7 @@ export const RACES_PROPS_C: Race[] = [
       'PPIC\'s Sept 4–10 likely-voter survey had it trailing, 43% yes to 51% no.',
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-43-tax-threshold/',
       question:
         'Limits voters\' ability to raise revenues for local government services. Legislative constitutional amendment. Raises the vote needed for voter-proposed (citizen initiative) local special taxes from a majority to two-thirds, beginning Jan 1, 2027.',
       yesMeans:
@@ -279,6 +281,7 @@ export const RACES_PROPS_C: Race[] = [
       'The No side, led by CPCA Advocates and individual clinics, has raised more than twice as much as SEIU-UHW\'s Yes side. PPIC\'s Sept 4–10 survey found 34% yes, 61% no among likely voters, with majorities opposed across parties. The ballot argument in favor is signed by the proponent and a clinic worker.',
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-44-clinic-funding/',
       question:
         'Requires community health clinics spend 90% of revenue on program services. Initiative statute. Penalizes nonprofit Federally Qualified Health Centers that spend less than 90% of revenue on "program services" advancing their charitable purpose, including patient services.',
       yesMeans:
@@ -406,6 +409,7 @@ export const RACES_PROPS_C: Race[] = [
       'Support has fallen: CalChamber cited 73% in PPIC\'s July survey, but PPIC\'s Sept 4–10 ballot-label poll found 49% yes, 46% no among likely voters. KQED reports the data-center argument has hurt the Yes side.',
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-45-environmental-review/',
       question:
         'Modifies environmental review for certain projects. Initiative statute. Amends CEQA to expedite review for certain projects (most housing, transportation, water, health projects) by setting deadlines to complete review and resolve lawsuits.',
       yesMeans:

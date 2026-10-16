@@ -2061,6 +2061,17 @@ function renderPaperLine(label: string, papers: MeasurePosition[], className = '
   return p;
 }
 
+/** “News explainer: <outlet: headline>”: the measure's featured neutral news piece (`explainerUrl`), if set. */
+function renderExplainerLine(m: MeasureBlock, className: string): HTMLElement | null {
+  const link = m.explainerUrl ? m.readingLinks?.find((l) => l.url === m.explainerUrl) : undefined;
+  if (!link) return null;
+  const p = el('p', className);
+  const strong = el('strong');
+  strong.textContent = 'News explainer: ';
+  p.append(strong, extLink(link.url, link.label, true));
+  return p;
+}
+
 /** Quick/Guided measure callout: which newspaper editorial boards say Yes and which say No. */
 function renderPapersAtAGlance(m: MeasureBlock): HTMLElement | null {
   const eds = (m.positions ?? []).filter((p) => p.kind === 'editorial' && p.position !== 'No position');
@@ -2118,6 +2129,8 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
   if (race.kind === 'measure' && race.measure) {
     const papers = renderPapersAtAGlance(race.measure);
     if (papers) box.append(papers);
+    const explainer = renderExplainerLine(race.measure, 'your-type__explainer');
+    if (explainer) box.append(explainer);
   }
   if (race.kind === 'candidates') {
     const c = combinedCellFor(race, row.pick, row.confidence);
@@ -2522,6 +2535,8 @@ function renderMeasureOverview(m: MeasureBlock): HTMLElement {
     }
     art.append(h, means);
   }
+  const explainer = renderExplainerLine(m, 'measure__explainer');
+  if (explainer) art.append(explainer);
 
   const related = (m.related ?? []).filter((r) => pendingRaceTitles.has(r.raceId));
   if (related.length) {

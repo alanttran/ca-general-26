@@ -33,6 +33,7 @@ export const RACES_PROPS_B: Race[] = [
       },
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-37-homebuyers-loan/',
       question:
         'Creates loan program for middle-income buyers of qualified new homes. Initiative statute. Authorizes $25 billion in bonds to offer eligible buyers fixed-rate mortgages for up to 17% of the price of a newly built home priced below about $1.5 million; buyers must be California residents, owner-occupants, within income limits, and put at least 3% down; bonds repaid by mortgage payments, not the State.',
       yesMeans:
@@ -153,6 +154,7 @@ export const RACES_PROPS_B: Race[] = [
       },
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-38-research-bond/',
       question:
         'Authorizes bonds for immunology medical research. Initiative statute. Authorizes $8.4 billion in general obligation bonds for immunology and immunotherapy research; half to a single University of California–affiliated nonprofit medical research institute, half to research grants.',
       yesMeans:
@@ -281,6 +283,7 @@ export const RACES_PROPS_B: Race[] = [
       },
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-39-voter-id/',
       question:
         'Prohibits citizens from voting unless they present government-issued identification. Initiative constitutional amendment. Invalidates mail ballots without the last four digits of a designated government-issued identification number on the envelope; prohibits in-person voting without presenting government-issued identification.',
       yesMeans:
@@ -426,6 +429,7 @@ export const RACES_PROPS_B: Race[] = [
       },
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-40-billionaire-tax/',
       question:
         'Imposes one-time tax on certain taxpayers. Initiative constitutional amendment and statute. Imposes a 5% tax on certain taxpayers with assets over $1 billion; revenue primarily for health care; exempts revenue from constitutional school-funding and spending-limit requirements.',
       yesMeans:
@@ -576,6 +580,7 @@ export const RACES_PROPS_B: Race[] = [
       },
     ],
     measure: {
+      explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-41-tax-audits/',
       question:
         'Prohibits new state taxes that exclude revenues from state spending limit; requires audits for new state special taxes. Initiative constitutional amendment. Nullifies state taxes enacted after January 1, 2026 that exempt their revenue from the voter-approved state spending limit; requires pre-election and recurring audits of programs funded by new special taxes.',
       yesMeans:

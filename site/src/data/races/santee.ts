@@ -636,6 +636,7 @@ export const RACES_SANTEE: Race[] = [
       'The council placed it on the ballot 4–1 on June 24, 2026, with Vice Mayor Ronn Hall voting no; he said the city had studied a half cent (East County Magazine; KPBS). In 2024 voters rejected Measure S, a firefighter-led half-cent tax for fire stations, with about 52% voting no. The San Diego County Taxpayers Association, which opposed Measure S, supports Measure Y; the county Republican Party and Reform California oppose it, and the county Democratic Party took no position. No public polling or committee fundraising totals were found.',
     ],
     measure: {
+      explainerUrl: 'https://www.kpbs.org/news/politics/2026/09/25/santee-voters-to-weigh-in-on-1-general-sales-tax-increase-this-november',
       question:
         'To provide funding for City of Santee services and infrastructure, such as fixing streets and potholes; keeping streets, sidewalks, parks and public facilities safe, clean, and well-maintained; repairing/replacing aging infrastructure and stormdrains; local traffic management; fire protection, paramedic, crime prevention, and 911 emergency response, shall City of Santee’s measure establishing a one cent sales tax be adopted, providing approximately $14,000,000 annually for city services for 10 years, with independent audits, citizens’ committee oversight, and all funds locally controlled?',
       yesMeans: 'Adds a 1% city sales tax in Santee from April 2027 to March 2037, raising about $14 million a year for any city purpose, with a citizens’ committee reviewing spending.',
@@ -723,6 +724,7 @@ export const RACES_SANTEE: Race[] = [
       'The board placed it on the ballot in June; trustee Tracie Thill voted no, citing voters’ 2024 rejection of a similar bond (Measure NN, $30.62 million), soft costs and fiscal restraint (KPBS). The district’s 2006 and 2018 bond money has been spent, per the Taxpayers Association, which supports BB. No argument against was filed. The county Republican Party and Reform California oppose it; the Democratic Party took no position.',
     ],
     measure: {
+      explainerUrl: 'https://www.kpbs.org/news/politics/2026/10/02/your-guide-to-all-san-diego-county-school-bond-measures',
       question:
         'With funds that cannot be taken by the State and spent elsewhere, and no increase in tax rates, shall Santee Elementary School District’s measure: repairing leaky roofs, plumbing, sewer systems; updating inefficient heating, ventilation, air-conditioning systems; building multipurpose instruction classrooms; repairing aging schools, classrooms be adopted authorizing $30 million of bonds with legal rates, average levies below $13 per $100,000 of assessed valuation ($2.2 million annually) while outstanding, audits, independent oversight, and full public disclosure of all spending?',
       yesMeans: 'Authorizes $30 million in Santee School District bonds for repairs and upgrades, repaid by property owners at an estimated average of $12.62 per $100,000 of assessed value through 2049–50.',

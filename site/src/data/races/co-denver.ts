@@ -970,6 +970,7 @@ export const RACES_CO_DENVER: Race[] = [
     ],
     introParagraphs: ['City Council referred 2H without opposition (two members absent). Auditor Timothy O’Brien supports it. No argument against was filed and no opposition campaign exists (Denverite; Ballot Information Booklet).'],
     measure: {
+      explainerUrl: 'https://denverite.com/2026/09/25/vg-2026-referred-question-2h-auditors-office-voter-guide',
       question:
         'Shall the Charter of the City and County of Denver be amended to expressly clarify that the Auditor’s Office may continue to enforce wage laws, worker protection laws, and other workplace rights laws in accordance with ordinances passed by City Council?',
       yesMeans: 'Adds a line to the city charter confirming that the Auditor’s Office enforces wage, worker-protection and workplace-rights laws as City Council sets by ordinance.',
@@ -1045,6 +1046,7 @@ export const RACES_CO_DENVER: Race[] = [
       'Council referred 2I 10-2 (Kevin Flynn and Flor Alvidrez opposed), sponsored by Shontel Lewis, Amanda Sawyer and Stacie Gilmore. Neither side had an organized campaign as of Sept. 14 (Denverite).',
     ],
     measure: {
+      explainerUrl: 'https://denverite.com/2026/09/25/vg-2026-referred-question-2i-biennial-budgeting-voter-guide',
       question:
         'Shall the Charter of the City and County of Denver be amended to adjust the City and County’s budget and appropriation process, and in connection therewith, allowing the City Council to adopt a two-year budget planning and adoption process and modernizing or repealing certain charter sections?',
       yesMeans: 'Lets City Council switch to two-year budgets by ordinance, moves the mayor’s budget release to early September, and requires mid-year cut plans when revenue or spending misses forecasts.',
@@ -1121,6 +1123,7 @@ export const RACES_CO_DENVER: Race[] = [
     ],
     introParagraphs: ['Council referred 2J unanimously in August after a year of review with city agencies, unions and a charter task force led by Councilmember Jamie Torres. Police and fire leaders support it. One committee, United Safety Workers of Denver, has registered to oppose it but had reported no money through Sept. 30; no committee supports it (Denverite; Denver campaign-finance filings).'],
     measure: {
+      explainerUrl: 'https://denverite.com/2026/09/25/vg-2026-referred-question-2j-police-fire-employees-voter-guide',
       question:
         'Shall the Charter of the City and County of Denver be amended to modernize the Civil Service Commission and Department of Safety by removing outdated language, giving City Council the ability to add duties via code, and providing for an extension of probation when required for medical, military, or other approved leave?',
       yesMeans: 'Rewrites charter rules for the Civil Service Commission and police and fire hiring and discipline, dropping the commissioner citizenship rule and command-staff caps and letting council add duties by ordinance.',
@@ -1197,6 +1200,7 @@ export const RACES_CO_DENVER: Race[] = [
     ],
     introParagraphs: ['Council referred 2K 10-2 in July after rejecting the first deal 7-6 in August 2025. Colorado Constitution art. XX, § 4 requires a public vote before Denver grants a franchise. The Yes committee, Safe and Reliable Energy Denver, had raised about $2.06 million through Sept. 30, nearly all of it from Xcel Energy itself; no committee has registered against it (Denver campaign-finance filings; Denverite; Brownstein).'],
     measure: {
+      explainerUrl: 'https://denverite.com/2026/09/25/vg-2026-referred-question-2k-xcel-energy-franchise-agreement-voter-guide',
       question:
         'Shall the City and County of Denver approve the terms of a twenty-year franchise contract, starting January 1, 2027, with Public Service Company of Colorado (Xcel Energy) to continue its program for undergrounding overhead electrical lines, maintaining infrastructure safety, and partnering with the City for emergency management coordination, and to require that Xcel Energy continue to pay the City for reasonable use of public rights-of-way and other City property necessary to provide safe and reliable utility services for the benefit of the City, its residents, and its businesses?',
       yesMeans: 'Approves a 20-year Xcel Energy franchise from 2027, keeping the 3% fee on Denver electric and gas revenues, Xcel-paid line relocations, and about $10 million a year for undergrounding.',
@@ -1279,6 +1283,7 @@ export const RACES_CO_DENVER: Race[] = [
     ],
     introParagraphs: ['Pro-Animal Colorado, whose fur-sales and slaughterhouse bans failed in 2024, qualified 311 with about 11,000 valid signatures and had raised about $159,000 through Sept. 30, half of it from the Karuna Foundation. A No on 311 committee registered in September and reported $10,000 from two donors; the Colorado Restaurant Association also opposes product bans (Denverite; Denver campaign-finance filings).'],
     measure: {
+      explainerUrl: 'https://denverite.com/2026/09/25/vg-2026-initiated-ordinance-311-force-feeding-birds-ban-voter-guide/',
       question:
         'Shall the voters of the City and County of Denver adopt an ordinance prohibiting the force-feeding of birds and, in connection therewith, prohibiting the sale of products derived from force-feeding birds, including foie gras?',
       yesMeans: 'Bans force-feeding birds and selling products from force-fed birds, mainly foie gras, in Denver starting July 1, 2027, with fines up to $5,000.',
@@ -1357,6 +1362,7 @@ export const RACES_CO_DENVER: Race[] = [
     ],
     introParagraphs: ['The DPS board voted unanimously in August to refer 4A. No opposition campaign formed and no comments against were filed by the deadline, though the Denver Post and Denver Gazette editorial boards urged a No vote, citing school-board infighting and mistrust of the district. The Yes committee, Denver Together for Kids, had not yet filed a money report as of Oct. 12 (Denverite; Ballot Issue Notice; Chalkbeat; TRACER).'],
     measure: {
+      explainerUrl: 'https://denverite.com/2026/09/25/vg-2026-ballot-issue-4a-denver-public-schools-mill-levy-voter-guide',
       question:
         'Shall Denver Public Schools (School District No. 1) taxes be increased up to $44 million in 2026 (for collection in 2027) and annually thereafter for educational purposes, including increasing educator pay; offering more career and technical education courses in high-demand fields; and student mental health and special education, by a mill levy that, combined with other voter-approved overrides, equals the amount permitted by C.R.S. § 22-54-108(3)(b)(VI)? (condensed)',
       yesMeans: 'Raises DPS property taxes by up to $44 million a year, with no end date, for $1,750 staff raises, career and technical education, mental health and special education.',

@@ -312,6 +312,7 @@ export const RACES_SD_LOCAL: Race[] = [
       'The Board of Supervisors voted 3-2 in May 2026 to place the package on the ballot, with Paloma Aguirre, Terra Lawson-Remer, and Monica Montgomery Steppe in favor and Joel Anderson and Jim Desmond opposed (KPBS). Supporters had raised $45,000 and opponents $0 as of Sept. 21, 2026 (KPBS).',
     ],
     measure: {
+      explainerUrl: 'https://www.kpbs.org/news/politics/2026/09/30/measure-a-extending-supervisor-term-limits-and-other-county-charter-reforms',
       question:
         'Shall the San Diego County Charter be amended to establish an Independent Ethics Commission, Independent Budget Analyst, Independent Program Auditor, confirmation of certain senior County leaders, and optional Board of Supervisors appointment of the Public Defender; increase term limits from two to three terms for Board of Supervisors members; require public disclosure of spending and performance data; clarify non-interference provisions; and update terminology and structure?',
       yesMeans: 'Amends the County Charter to create independent ethics, budget and audit offices, let supervisors confirm senior leaders, require spending data, and allow supervisors three four-year terms instead of two.',
@@ -395,6 +396,7 @@ export const RACES_SD_LOCAL: Race[] = [
       'In 2024 the county’s similar half-cent Measure G (focused on transportation) and the city’s Measure E both failed by under 1 point. Prop 43’s two-thirds rule starts Jan. 1, 2027, so it doesn’t apply here.',
     ],
     measure: {
+      explainerUrl: 'https://www.kpbs.org/news/politics/2026/10/01/measure-b-san-diego-county-health-safety-act',
       question:
         'To clean up sewage pollution in Tijuana River Valley, improve wildfire prevention, emergency response, access to healthcare, food assistance, childhood development services, and authorized administrative expenses; shall the measure authorizing a half-cent sales tax raising an estimated $400,000,000 to $450,000,000 annually, requiring citizen oversight, public spending disclosure, and independent annual audits, and lasting until ended by voters, be adopted?',
       yesMeans: 'Adds a half-cent countywide sales tax with no end date, about $400 million to $450 million a year for health care, child care, food aid, Tijuana River sewage and wildfire response.',
@@ -481,6 +483,7 @@ export const RACES_SD_LOCAL: Race[] = [
       'It would be the district’s fifth voter-approved bond since 2008, bringing total approved bond funding to roughly $15 billion. School bonds need 55%, not two-thirds. No organized No campaign has formed (KPBS), and no fundraising totals for either side were reported in the coverage reviewed.',
     ],
     measure: {
+      explainerUrl: 'https://www.kpbs.org/news/politics/2026/10/02/your-guide-to-all-san-diego-county-school-bond-measures',
       question:
         'To repair/upgrade all public schools, help retain/attract teachers by repairing deteriorating roofs, plumbing, restrooms; providing safe drinking water; removing asbestos, lead paint, mold; upgrading outdated career/vocational, science, technology, engineering classrooms; shall SDUSD’s measure authorizing $3,500,000,000 in bonds at legal rates, levying $32 per $100,000 of assessed value, providing $204,000,000 annually while bonds are outstanding, requiring public spending disclosure, audits, citizens oversight, be adopted?',
       yesMeans: 'Authorizes $3.5 billion in San Diego Unified bonds for school repairs, upgrades and educator housing, repaid by property owners at about $32 per $100,000 of assessed value while bonds are outstanding.',
