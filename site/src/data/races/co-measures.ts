@@ -34,8 +34,17 @@ const sosCommitteesLink = {
 // filing) and can trail the totals. Multi-measure committees (Brighter Colorado, Vote Common Sense, The People’s No)
 // are named in notes rather than added to a single measure’s total.
 // Positions: the Colorado Democratic Party’s State Central Committee slate. No official Colorado Republican Party
-// slate was found (only county parties’ guides), and the Denver Post editorial board’s 2026 picks could not be read
-// (denverpost.com blocks automated access; no secondary report of them was found), so both are omitted.
+// slate was found (only county parties’ guides), so it is omitted.
+// Editorials (checked Oct. 15, 2026): The Denver Gazette editorial board’s picks for all 14 measures come from its
+// Nov. 3 recommendations page, with the measure’s own endorsement editorial linked where one was found. The Denver
+// Post editorial board: Amendments 81–85 from its own editorials (read in a browser Oct. 15; 81, 82 and 83 say “vote
+// no” outright, 85 “yes”, and 84 argues against the amendment throughout); Amendment 87 No from its Oct. 11 editorial
+// as reported by Complete Colorado (Oct. 14). Its roundup page is paywalled, so its other picks aren’t listed yet.
+// No Boulder Daily Camera or Colorado Sun board endorsements were found.
+const GAZETTE_ORG = 'The Denver Gazette editorial board';
+const GAZETTE_GUIDE_URL = 'https://www.denvergazette.com/2026/10/12/denver-gazette-editorial-board-recommendations-nov-3-ballot/';
+const gazette = (position: 'Yes' | 'No', url: string = GAZETTE_GUIDE_URL) => ({ org: GAZETTE_ORG, kind: 'editorial' as const, position, url });
+const post = (position: 'Yes' | 'No', url: string) => ({ org: 'The Denver Post editorial board', kind: 'editorial' as const, position, url });
 const MONEY_AS_OF = 'Sept. 30, 2026';
 const tracer = (name: string, orgId: number) => ({
   label: `Colorado TRACER — ${name}`,
@@ -85,7 +94,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'No measure-specific Yes committee has reported money (Eagle County Republican Women Club: $0). ' + BRIGHTER_NOTE + ' No total is Colorado Communities First; The People’s No ($200,000, against 81, 132, 134 and 135) and ' + VCS_NOTE,
         sources: [tracer('Colorado Communities First', 52247), BRIGHTER, VOTE_COMMON_SENSE, RMV_MONEY],
       },
-      positions: [coDems('No')],
+      positions: [coDems('No'), post('No', 'https://www.denverpost.com/2026/10/02/amendment-81-ice-colorado-arrests-criminal-police/'), gazette('Yes', 'https://www.denvergazette.com/2026/10/13/editorial-another-reason-to-vote-for-amendment-81/')],
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -169,7 +178,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'No total is No Pollution in the Constitution; its donor amounts are from filings through Oct. 4, when it had raised $355,210. Energy Freedom Alliance of the Rockies (Yes) reported $0. ' + BRIGHTER_NOTE + ' ' + VCS_NOTE,
         sources: [tracer('No Pollution in the Constitution', 52097), tracer('Energy Freedom Alliance of the Rockies', 52471), BRIGHTER, RMV_MONEY],
       },
-      positions: [coDems('No')],
+      positions: [coDems('No'), post('No', 'https://www.denverpost.com/2026/09/21/amendment-82-natural-gas-guarantee-home-heating/'), gazette('Yes', 'https://www.denvergazette.com/2026/09/30/endorsement-yes-on-amendments-82-83-84/')],
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -256,7 +265,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes: Vote Yes on 83 ($1.89 million) and Colorado’s Wildlife Deserve Better ($128,520). No: Colorado Hunters and Anglers for Sensible Wildlife Conservation ($161,905), Protect Colorado’s Constitution ($6,825) and Stop the Constitutional Power Grab ($1,025).',
         sources: [tracer('Vote Yes on 83', 52051), tracer('Colorado Hunters and Anglers for Sensible Wildlife Conservation', 52338), RMV_MONEY],
       },
-      positions: [coDemsNoPosition],
+      positions: [coDemsNoPosition, post('No', 'https://www.denverpost.com/2026/09/24/amendment-83-hunting-fishing-right-constitution/'), gazette('Yes', 'https://www.denvergazette.com/2026/09/30/endorsement-yes-on-amendments-82-83-84/')],
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -344,7 +353,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'All three Yes donors are nonprofits registered at shipping-store mailbox addresses that do not disclose their own donors, so the measure’s ultimate funders are unknown. No total is Defend Our Ballots Issue Committee, whose donors were not reported in news coverage; ' + VCS_NOTE,
         sources: [tracer('Colorado Voter Trust Initiative', 52101), tracer('Defend Our Ballots Issue Committee', 52411), CP_MONEY],
       },
-      positions: [coDems('No')],
+      positions: [coDems('No'), post('No', 'https://www.denverpost.com/2026/10/07/endorsement-amendment-84-ballot-social-security-number/'), gazette('Yes', 'https://www.denvergazette.com/2026/09/30/endorsement-yes-on-amendments-82-83-84/')],
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -428,7 +437,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'No committee raises money for 85 alone. ' + BRIGHTER_NOTE + ' Common Sense America also reported spending $500,000 on 85’s signature drive. ' + VCS_NOTE,
         sources: [BRIGHTER, VOTE_COMMON_SENSE, { label: 'Colorado Sun — Amendment 85 explained (Oct. 3, 2026)', url: 'https://coloradosun.com/2026/10/03/amendment-85-explained-plain-ballot-language/' }],
       },
-      positions: [coDems('No')],
+      positions: [coDems('No'), post('Yes', 'https://www.denverpost.com/2026/10/03/amendment-85-ballot-language-simple-8th-grade/'), gazette('Yes', 'https://www.denvergazette.com/2026/09/23/endorsement-to-put-it-plainly-yes-on-amendment-85-5/')],
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact: 'Minimal added workload for the state Title Board to adopt and apply a reading-level standard (Blue Book).',
@@ -509,7 +518,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes total is Fair Redistricting Colorado; American Revival PAC was created by House Speaker Mike Johnson, and Advance Colorado does not disclose its donors. ' + BRIGHTER_NOTE + ' No committee has registered against 86; Colorado Draws the Line, which says it will oppose it, reported $0.',
         sources: [tracer('Fair Redistricting Colorado', 52246), tracer('Colorado Draws the Line', 51540), BRIGHTER, RMV_MONEY],
       },
-      positions: [coDems('No')],
+      positions: [coDems('No'), gazette('Yes', 'https://www.denvergazette.com/2026/09/29/endorsement-yes-on-136-86-two-safeguards-for-colorado/')],
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -598,7 +607,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes: Protect Colorado’s Future Coalition ($1.18 million, plus $351,935 in-kind) and Great Education Colorado Action ($48,717), which also gave to the coalition. No: Don’t Price Us Out ($1.06 million; donors not yet reported in news coverage), Americans for Prosperity Colorado ($266,476) and Your Family’s Future Alliance ($15,938); Keep Colorado Affordable, Let’s Go Colorado and Affordable Colorado reported no cash. ' + BRIGHTER_NOTE,
         sources: [tracer('Protect Colorado’s Future Coalition', 51642), tracer('Don’t Price Us Out', 52410), tracer('Americans for Prosperity Colorado Issue Committee', 52340), BRIGHTER, RMV_MONEY],
       },
-      positions: [coDems('Yes')],
+      positions: [coDems('Yes'), { org: 'The Denver Post editorial board', kind: 'editorial', position: 'No', url: 'https://www.denverpost.com/2026/10/11/amendment-87-graduated-income-tax-colorado-endorsement/' }, gazette('No')],
       measureType: 'Initiated constitutional amendment and statute (TABOR tax increase)',
       voteThreshold: 'Simple majority (Blue Book: limited to repealing constitutional language)',
       fiscalImpact:
@@ -694,7 +703,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes total is Yes for Colorado Kids; its donor amounts are from filings through mid-September, when it had raised about $2.06 million. No measure-specific No committee reported cash; ' + BRIGHTER_NOTE + ' Your Family’s Future Alliance ($15,938) also campaigns for TABOR.',
         sources: [tracer('Yes for Colorado Kids', 52137), BRIGHTER, RMV_MONEY],
       },
-      positions: [coDems('Yes')],
+      positions: [coDems('Yes'), gazette('No')],
       measureType: 'Legislatively referred statute (TABOR voter-approved revenue change)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -787,7 +796,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'No measure-specific Yes committee has reported money (Eagle County Republican Women Club: $0). ' + BRIGHTER_NOTE + ' No total is Coloradans for Real Safety Solutions; The People’s No ($200,000, against 81, 132, 134 and 135) and ' + VCS_NOTE,
         sources: [tracer('Coloradans for Real Safety Solutions', 51430), BRIGHTER, RMV_MONEY],
       },
-      positions: [coDems('No')],
+      positions: [coDems('No'), gazette('Yes', 'https://www.denvergazette.com/2026/10/14/editorial-yes-on-132-no-to-the-harm-reduction-myth/')],
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -870,7 +879,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes: Protect Kids Colorado, which campaigns for 133, 134 and 135 together; Protect Our Children reported no money. No committee targets 133 alone; ' + VCS_NOTE,
         sources: [tracer('Protect Kids Colorado – Issue Committee', 47398), VOTE_COMMON_SENSE, RMV_MONEY],
       },
-      positions: [coDemsNoPosition],
+      positions: [coDemsNoPosition, gazette('Yes')],
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -958,7 +967,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes: Protect Kids Colorado. No: Families Not Politics ($1.66 million, plus $335,892 in-kind) and No on 134 and 135 ($10,788), both fighting 134 and 135 together; The People’s No ($200,000) and ' + VCS_NOTE,
         sources: [tracer('Families Not Politics', 51677), tracer('Protect Kids Colorado – Issue Committee', 47398), tracer('No on 134 and 135', 52230), RMV_MONEY],
       },
-      positions: [coDems('No')],
+      positions: [coDems('No'), gazette('Yes')],
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -1046,7 +1055,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes: Protect Kids Colorado. No: Families Not Politics ($1.66 million, plus $335,892 in-kind) and No on 134 and 135 ($10,788), both fighting 134 and 135 together; The People’s No ($200,000) and ' + VCS_NOTE,
         sources: [tracer('Families Not Politics', 51677), tracer('Protect Kids Colorado – Issue Committee', 47398), tracer('No on 134 and 135', 52230), RMV_MONEY],
       },
-      positions: [coDems('No')],
+      positions: [coDems('No'), gazette('Yes')],
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -1131,7 +1140,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'No committee raises money for 136 alone (Keep Colorado Affordable, which backs 136 and opposes 87, reported $0). ' + BRIGHTER_NOTE + ' ' + VCS_NOTE + ' Protect Colorado’s Future, Amendment 87’s campaign ($1.18 million), also opposes 136.',
         sources: [BRIGHTER, VOTE_COMMON_SENSE, tracer('Keep Colorado Affordable', 52269), RMV_MONEY],
       },
-      positions: [coDems('No')],
+      positions: [coDems('No'), gazette('Yes', 'https://www.denvergazette.com/2026/09/29/endorsement-yes-on-136-86-two-safeguards-for-colorado/')],
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact: 'No fiscal impact: the cap equals the current rate (Blue Book).',
@@ -1221,7 +1230,7 @@ export const RACES_CO_MEASURES: Race[] = [
           { label: 'Aspen Times — Prop 137 money (Oct. 8, 2026)', url: 'https://aspentimes.com/news/prop-137-ballot-measure' },
         ],
       },
-      positions: [coDems('No')],
+      positions: [coDems('No'), gazette('No', 'https://www.denvergazette.com/2026/09/18/editorial-no-on-137-the-wrong-way-to-care-for-forests/')],
       measureType: 'Initiated statute (TABOR voter-approved revenue change)',
       voteThreshold: 'Simple majority',
       fiscalImpact:

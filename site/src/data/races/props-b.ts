@@ -142,7 +142,7 @@ export const RACES_PROPS_B: Race[] = [
     ],
     introParagraphs: [
       'Prop 38 is a citizen initiative from philanthropist and medical inventor Gary Michelson, co-founder of the California Institute for Immunology and Immunotherapy. Michelson, directly and through his Michelson Center for Public Policy, has supplied nearly all of the Yes money, with institute co-founder Meyer Luskin the other major donor. The only No committee has raised a few thousand dollars.',
-      'Supporters also include the American Association of Immunologists and the California Democratic Party. Opponents include Stanford scholar and former NIH associate director Robert M. Kaplan, the League of Women Voters, and the Orange County Register editorial board.',
+      'Supporters also include the American Association of Immunologists and the California Democratic Party. Opponents include Stanford scholar and former NIH associate director Robert M. Kaplan, the League of Women Voters, and the editorial boards of the Chronicle, Union-Tribune, Sacramento Bee, Mercury News / East Bay Times and Orange County Register.',
     ],
     polling: [
       {
@@ -169,6 +169,8 @@ export const RACES_PROPS_B: Race[] = [
         ...partyPositions('Yes', 'Yes', 'No', 'No'),
         editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/prop-38-money-california-22453646.php'),
         editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/09/18/no-on-prop-38-an-8-4-billion-wolf-in-sheeps-clothing/'),
+        editorial(PAPER.sacbee, 'No', 'https://www.sacbee.com/opinion/election-endorsements/article317166634.html'),
+        editorial(PAPER.bang, 'No', 'https://www.mercurynews.com/2026/10/13/endorsement-no-on-california-proposition-38-an-8-4-billion-money-grab-immunotherapy-ucla-research-ballot-measure/'),
         editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/08/23/endorsement-no-on-proposition-38-an-8-4-billion-money-grab/'),
       ],
       measureType: 'Initiative statute (general obligation bond)',
@@ -296,6 +298,9 @@ export const RACES_PROPS_B: Race[] = [
         ...partyPositions('No', 'Yes', 'No', 'No'),
         editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/endorsement-proposition-39-voter-fraud-california-22463918.php'),
         editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/10/02/endorsement-vote-no-on-prop-39-and-its-unworkable-voter-registration-rule/'),
+        editorial(PAPER.sacbee, 'No', 'https://www.sacbee.com/opinion/article317017898.html'),
+        editorial(PAPER.bang, 'No', 'https://www.mercurynews.com/2026/10/15/endorsement-reject-proposition-39-voter-id-fraud-ballot-measure/'),
+        editorial(PAPER.ocr, 'Yes', 'https://www.ocregister.com/2026/10/15/endorsement-yes-on-proposition-39/'),
       ],
       measureType: 'Initiative constitutional amendment',
       voteThreshold: 'Simple majority',
@@ -446,7 +451,8 @@ export const RACES_PROPS_B: Race[] = [
       positions: [
         ...partyPositions('Yes', 'No', 'Yes', 'No'),
         editorial(PAPER.lat, 'No', 'https://www.latimes.com/opinion/story/2026-09-06/editorial-vote-no-on-proposition-40'),
-        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/10/02/the-u-t-editorial-boards-endorsements/'),
+        editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/08/28/vote-no-on-billionaires-tax-to-prevent-economic-chaos-preserve-jobs/'),
+        editorial(PAPER.sacbee, 'Yes', 'https://www.sacbee.com/opinion/election-endorsements/article317269166.html'),
         editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/09/13/endorsement-no-on-proposition-40s-reckless-wealth-tax/'),
       ],
       measureType: 'Initiative constitutional amendment and statute',
@@ -597,6 +603,7 @@ export const RACES_PROPS_B: Race[] = [
         ...partyPositions('No', 'Yes', 'No', 'Yes'),
         editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/endorsement-california-prop-41-taxes-22445889.php'),
         editorial(PAPER.sdut, 'Yes', 'https://www.sandiegouniontribune.com/2026/09/21/endorsement-yes-on-proposition-41-and-42-to-limit-taxation-in-california/'),
+        editorial(PAPER.sacbee, 'No', 'https://www.sacbee.com/opinion/election-endorsements/article317122476.html'),
         editorial(PAPER.ocr, 'Yes', 'https://www.ocregister.com/2026/09/21/endorsement-yes-on-proposition-41-and-42-to-limit-taxation-in-california/'),
       ],
       measureType: 'Initiative constitutional amendment',

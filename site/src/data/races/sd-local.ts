@@ -327,6 +327,7 @@ export const RACES_SD_LOCAL: Race[] = [
       },
       positions: [
         { org: 'San Diego County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.sddemocrats.org/propositions--ballot-measures.html' },
+        { org: 'San Diego Union-Tribune', kind: 'editorial', position: 'No', url: 'https://www.sandiegouniontribune.com/2026/10/08/endorsement-why-we-strongly-oppose-both-county-measure-a-and-measure-b/' },
       ],
       measureType: 'Charter amendment (placed by Board of Supervisors)',
       voteThreshold: 'Simple majority',
@@ -411,6 +412,7 @@ export const RACES_SD_LOCAL: Race[] = [
       positions: [
         { org: 'San Diego County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.sddemocrats.org/propositions--ballot-measures.html' },
         { org: 'Republican Party of San Diego County', kind: 'party', position: 'No', url: 'https://www.sandiegorepublicans.org/voter-guides/san-diego' },
+        { org: 'San Diego Union-Tribune', kind: 'editorial', position: 'No', url: 'https://www.sandiegouniontribune.com/2026/10/08/endorsement-why-we-strongly-oppose-both-county-measure-a-and-measure-b/' },
       ],
       measureType: 'Citizen initiative (countywide sales tax, with revenue dedicated to specified purposes)',
       voteThreshold: 'Simple majority',
@@ -494,6 +496,7 @@ export const RACES_SD_LOCAL: Race[] = [
       positions: [
         { org: 'San Diego County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.sddemocrats.org/propositions--ballot-measures.html' },
         { org: 'Republican Party of San Diego County', kind: 'party', position: 'No', url: 'https://www.sandiegorepublicans.org/voter-guides/san-diego' },
+        { org: 'San Diego Union-Tribune', kind: 'editorial', position: 'No', url: 'https://www.sandiegouniontribune.com/2026/10/02/the-u-t-editorial-boards-endorsements/' },
       ],
       measureType: 'School facilities bond (general obligation)',
       voteThreshold: '55%',

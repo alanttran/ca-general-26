@@ -145,6 +145,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       },
       positions: [
         { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'No', url: 'https://www.lacdp.org/ballotmeasures' },
+        { org: 'Los Angeles Daily News editorial board', kind: 'editorial', position: 'No', url: 'https://www.dailynews.com/2026/10/10/endorsement-no-on-los-angeles-charter-amendments-la-ee-prk-prt-yes-on-pl/' },
       ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
@@ -225,6 +226,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       },
       positions: [
         { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'No position', url: 'https://www.lacdp.org/ballotmeasures' },
+        { org: 'Los Angeles Daily News editorial board', kind: 'editorial', position: 'Yes', url: 'https://www.dailynews.com/2026/10/10/endorsement-no-on-los-angeles-charter-amendments-la-ee-prk-prt-yes-on-pl/' },
       ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
@@ -310,6 +312,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       },
       positions: [
         { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'No', url: 'https://www.lacdp.org/ballotmeasures' },
+        { org: 'Los Angeles Daily News editorial board', kind: 'editorial', position: 'No', url: 'https://www.dailynews.com/2026/10/10/endorsement-no-on-los-angeles-charter-amendments-la-ee-prk-prt-yes-on-pl/' },
       ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',
@@ -392,6 +395,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       },
       positions: [
         { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.lacdp.org/ballotmeasures' },
+        { org: 'Los Angeles Daily News editorial board', kind: 'editorial', position: 'No', url: 'https://www.dailynews.com/2026/10/10/endorsement-no-on-los-angeles-charter-amendments-la-ee-prk-prt-yes-on-pl/' },
       ],
       measureType: 'Charter amendment (budget set-aside; placed by the City Council)',
       voteThreshold: 'Simple majority',
@@ -477,6 +481,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       },
       positions: [
         { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.lacdp.org/ballotmeasures' },
+        { org: 'Los Angeles Daily News editorial board', kind: 'editorial', position: 'No', url: 'https://www.dailynews.com/2026/10/10/endorsement-no-on-los-angeles-charter-amendments-la-ee-prk-prt-yes-on-pl/' },
       ],
       measureType: 'Charter amendment (placed by the City Council)',
       voteThreshold: 'Simple majority',

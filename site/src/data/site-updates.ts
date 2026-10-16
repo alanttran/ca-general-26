@@ -28,6 +28,13 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         ],
       },
       {
+        summary: 'Newspaper endorsements on measures',
+        bullets: [
+          'Props and local measures now show where major newspaper editorial boards stand, each linked to its editorial: the LA Times, SF Chronicle, San Diego Union-Tribune, Sacramento Bee, Mercury News / East Bay Times, Orange County Register, LA Daily News, Denver Post and Denver Gazette.',
+          'Quick and race-by-race views show the papers for Yes and for No at the top of each measure. Many papers are still publishing, so more will be added.',
+        ],
+      },
+      {
         summary: 'One-page cheat sheet',
         bullets: [
           'The printed cheat sheet picks the largest type that fits one page, in one or two columns. Section headings stay with their contests.',

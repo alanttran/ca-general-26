@@ -67,6 +67,7 @@ export const PAPER = {
   sfc: 'San Francisco Chronicle',
   sdut: 'San Diego Union-Tribune',
   sacbee: 'Sacramento Bee',
+  bang: 'Mercury News / East Bay Times (Bay Area News Group)',
   ocr: 'Orange County Register (Southern California News Group)',
 } as const;
 export const RACES_PROPS_A: Race[] = [
@@ -230,6 +231,7 @@ export const RACES_PROPS_A: Race[] = [
       positions: [
         ...partyPositions('Yes', 'No', 'No position', 'No'),
         editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/10/02/endorsements-props-2-37-wouldnt-yield-saner-state-budgets-more-housing/'),
+        editorial(PAPER.sacbee, 'Yes', 'https://www.sacbee.com/opinion/article317091637.html'),
         editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/10/07/endorsement-no-on-prop-2-california-needs-fiscal-discipline-not-accounting-tricks/'),
       ],
       measureType: 'Legislative constitutional amendment',
@@ -357,6 +359,7 @@ export const RACES_PROPS_A: Race[] = [
         ...partyPositions('Yes', 'No', 'Yes', 'No'),
         editorial(PAPER.sfc, 'Yes', 'https://www.sfchronicle.com/opinion/editorials/article/california-taxes-proposition-3-22435509.php'),
         editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/09/18/why-voting-against-prop-3-is-a-vote-against-school-status-quo/'),
+        editorial(PAPER.sacbee, 'Yes', 'https://www.sacbee.com/opinion/election-endorsements/article317445836.html'),
         editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/09/02/endorsement-no-on-proposition-3-temporary-taxes-should-be-temporary/'),
       ],
       measureType: 'Initiative constitutional amendment',
@@ -491,6 +494,7 @@ export const RACES_PROPS_A: Race[] = [
         ...partyPositions('Yes', 'No', 'Yes', 'No'),
         editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/endorsement-prop-4-public-financing-22426379.php'),
         editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/09/04/endorsement-dont-buy-prop-4s-baloney-about-publicly-financed-campaigns/'),
+        editorial(PAPER.sacbee, 'Yes', 'https://www.sacbee.com/opinion/election-endorsements/article317448027.html'),
         editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/09/27/endorsement-no-on-proposition-4-california-doesnt-need-taxpayer-funded-campaigns/'),
       ],
       measureType: 'Legislative statute',

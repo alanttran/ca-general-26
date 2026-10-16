@@ -827,7 +827,10 @@ export const RACES_OCEANSIDE: Race[] = [
           { label: 'City of Oceanside campaign filings (NetFile portal)', url: NETFILE_OCEANSIDE },
         ],
       },
-      positions: [{ org: 'San Diego County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.sddemocrats.org/propositions--ballot-measures.html' }],
+      positions: [
+        { org: 'San Diego County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.sddemocrats.org/propositions--ballot-measures.html' },
+        { org: 'San Diego Union-Tribune', kind: 'editorial', position: 'No', url: 'https://www.sandiegouniontribune.com/2026/10/02/the-u-t-editorial-boards-endorsements/' },
+      ],
       measureType: 'Charter amendment (placed by City Council)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -922,6 +925,7 @@ export const RACES_OCEANSIDE: Race[] = [
       positions: [
         { org: 'San Diego County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.sddemocrats.org/propositions--ballot-measures.html' },
         { org: 'Republican Party of San Diego County', kind: 'party', position: 'No', url: SDGOP_GUIDE },
+        { org: 'San Diego Union-Tribune', kind: 'editorial', position: 'No', url: 'https://www.sandiegouniontribune.com/2026/10/02/the-u-t-editorial-boards-endorsements/' },
       ],
       measureType: 'General tax ordinance (placed by City Council)',
       voteThreshold: 'Simple majority',

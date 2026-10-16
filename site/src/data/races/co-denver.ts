@@ -38,7 +38,9 @@ const TABOR_URL =
 // ending Sept. 30, filed Oct. 4–5, 2026). DPS 4A: Colorado TRACER (school-district committees file with the state).
 // Positions: Denver Democrats (Central Committee) and Denver Republican Party ballot guides, read Oct. 12, 2026.
 // The Denver Post editorial board’s 2026 picks could not be read (denverpost.com blocks automated access); only its
-// No on DPS 4A (Sept. 13, 2026 editorial, as reported and linked by Chalkbeat) is included.
+// No on DPS 4A (Sept. 13, 2026 editorial, as reported and linked by Chalkbeat, rechecked Oct. 15) is included.
+// The Denver Gazette editorial board’s Nov. 3 recommendations (checked Oct. 15) cover 4A (No) but none of the city
+// measures 2H–2K or 311; no Post or Gazette editorial on those was found.
 const DENVER_MONEY_AS_OF = 'Sept. 30, 2026';
 const DENVER_CF_SOURCE = {
   label: 'Denver Clerk and Recorder — SearchLight Denver campaign finance (September reports)',
@@ -1353,7 +1355,7 @@ export const RACES_CO_DENVER: Race[] = [
       '4A raises Denver property taxes by up to $44 million a year, with no end date, for Denver Public Schools: a $1,750 raise for every full-time employee, career and technical education, student mental health and special education.',
       'DPS says declining enrollment is squeezing its budget. Supporters cite teacher retention in a competitive metro market; critics of tax increases argue the district should find efficiencies first.',
     ],
-    introParagraphs: ['The DPS board voted unanimously in August to refer 4A. No opposition campaign formed and no comments against were filed by the deadline, though the Denver Post editorial board urged a No vote, citing school-board infighting. The Yes committee, Denver Together for Kids, had not yet filed a money report as of Oct. 12 (Denverite; Ballot Issue Notice; Chalkbeat; TRACER).'],
+    introParagraphs: ['The DPS board voted unanimously in August to refer 4A. No opposition campaign formed and no comments against were filed by the deadline, though the Denver Post and Denver Gazette editorial boards urged a No vote, citing school-board infighting and mistrust of the district. The Yes committee, Denver Together for Kids, had not yet filed a money report as of Oct. 12 (Denverite; Ballot Issue Notice; Chalkbeat; TRACER).'],
     measure: {
       question:
         'Shall Denver Public Schools (School District No. 1) taxes be increased up to $44 million in 2026 (for collection in 2027) and annually thereafter for educational purposes, including increasing educator pay; offering more career and technical education courses in high-demand fields; and student mental health and special education, by a mill levy that, combined with other voter-approved overrides, equals the amount permitted by C.R.S. § 22-54-108(3)(b)(VI)? (condensed)',
@@ -1368,6 +1370,7 @@ export const RACES_CO_DENVER: Race[] = [
         denverDems('Yes'),
         denverGop('No'),
         { org: 'The Denver Post editorial board', kind: 'editorial', position: 'No', url: 'https://www.denverpost.com/2026/09/13/denver-public-schools-mill-levy-override-property-tax-increase/' },
+        { org: 'The Denver Gazette editorial board', kind: 'editorial', position: 'No', url: 'https://www.denvergazette.com/2026/10/02/editorial-no-on-denvers-4a-dps-has-sown-only-mistrust/' },
       ],
       measureType: 'School district mill levy override (TABOR tax increase; Colo. Const. art. X, § 20)',
       voteThreshold: 'Simple majority',

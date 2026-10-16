@@ -290,6 +290,7 @@ export const RACES_LA_COUNTY: Race[] = [
       },
       positions: [
         { org: 'Los Angeles County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.lacdp.org/ballotmeasures' },
+        { org: 'Los Angeles Daily News editorial board', kind: 'editorial', position: 'No', url: 'https://www.dailynews.com/2026/10/08/endorsement-no-on-los-angeles-countys-measure-a/' },
       ],
       measureType: 'Charter amendment (placed by Board of Supervisors)',
       voteThreshold: 'Simple majority',
