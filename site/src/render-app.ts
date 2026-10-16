@@ -4,6 +4,7 @@ import type {
   CandidateQualification,
   ExternalRating,
   MeasureBlock,
+  MeasurePosition,
   DebateBreakdown,
   MeasureReadingLink,
   Race,
@@ -2019,6 +2020,31 @@ function quickDetailsLabel(race: Race): string {
   return 'Full details: candidates, experience, money, endorsements and red flags';
 }
 
+/** “Label: Paper A; Paper B” with each paper linked to its editorial when we have the URL. */
+function renderPaperLine(label: string, papers: MeasurePosition[], className = 'measure__backers'): HTMLElement {
+  const p = el('p', className);
+  const strong = el('strong');
+  strong.textContent = `${label}: `;
+  p.append(strong);
+  papers.forEach((x, i) => {
+    if (i) p.append('; ');
+    p.append(x.url ? extLink(x.url, x.org) : x.org);
+  });
+  return p;
+}
+
+/** Quick/Guided measure callout: which newspaper editorial boards say Yes and which say No. */
+function renderPapersAtAGlance(m: MeasureBlock): HTMLElement | null {
+  const eds = (m.positions ?? []).filter((p) => p.kind === 'editorial' && p.position !== 'No position');
+  if (!eds.length) return null;
+  const wrap = el('div', 'your-type__papers');
+  for (const side of ['Yes', 'No'] as const) {
+    const list = eds.filter((p) => p.position === side);
+    if (list.length) wrap.append(renderPaperLine(`Papers for ${side}`, list, 'your-type__papers-line'));
+  }
+  return wrap;
+}
+
 /** Quick/Guided: the voter's own type's pick and reason, at the top of each contest. */
 function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTMLElement {
   const box = el('div', 'your-type');
@@ -2060,6 +2086,10 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
       dl.append(dt, dd);
     }
     box.append(dl);
+  }
+  if (race.kind === 'measure' && race.measure) {
+    const papers = renderPapersAtAGlance(race.measure);
+    if (papers) box.append(papers);
   }
   if (race.kind === 'candidates') {
     const c = combinedCellFor(race, row.pick, row.confidence);
@@ -2513,8 +2543,10 @@ function renderMeasureOverview(m: MeasureBlock): HTMLElement {
     h.textContent = heading;
     col.append(h, bulletList(args));
     const want = mod === 'yes' ? 'Yes' : 'No';
-    const endorsers = (m.positions ?? []).filter((p) => p.position === want).map((p) => p.org);
-    if (endorsers.length) col.append(labelled('Parties and papers', endorsers.join('; ')));
+    const parties = (m.positions ?? []).filter((p) => p.kind === 'party' && p.position === want).map((p) => p.org);
+    if (parties.length) col.append(labelled('Parties', parties.join('; ')));
+    const papers = (m.positions ?? []).filter((p) => p.kind === 'editorial' && p.position === want);
+    if (papers.length) col.append(renderPaperLine('Newspaper editorials', papers));
     if (backers?.trim()) col.append(labelled(backersLabel, backers));
     const money = m.funding?.[mod];
     if (money) {

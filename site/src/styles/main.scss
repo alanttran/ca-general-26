@@ -3820,3 +3820,13 @@ button:focus-visible {
     background: var(--rad-accent-dim);
   }
 }
+
+/* Quick/Guided measure callout: newspaper editorials at a glance. */
+.your-type__papers {
+  margin-top: 0.45rem;
+  font-size: var(--fs-sm);
+}
+
+.your-type__papers-line {
+  margin: 0.15rem 0 0;
+}
