@@ -1006,7 +1006,9 @@ export const RACES_HAYWARD: Race[] = [
         { label: 'City of Hayward: Measure CC explained', url: 'https://hayward-ca.gov/discover/news/sep26/hayward-measure-cc-explained', summary: 'Plain-language summary of the change.' },
         { label: 'City of Hayward: General Fund Budget FAQ', url: 'https://hayward-ca.gov/content/general-fund-budget-faq', summary: 'Why the city says it needs revenue.' },
         { label: 'Hoodline: Hayward mayoral race tests budget choices and Measure CC', url: 'https://hoodline.com/2026/10/hayward-mayoral-race-tests-budget-choices-and-measure-cc/', summary: 'Who supports the measure and how the deficit arose.' },
+        { label: 'Bay City News (Local News Matters): Voters asked to approve new business taxes in Hayward and Emeryville (Sep 21) (free sign-in to read)', url: 'https://localnewsmatters.org/2026/09/21/voters-asked-to-approve-new-business-taxes-this-november-in-hayward-and-emeryville/', summary: 'News report on the Hayward and Emeryville business tax measures on the Nov. 3 ballot and why the cities placed them there.' },
       ],
+      explainerUrl: 'https://localnewsmatters.org/2026/09/21/voters-asked-to-approve-new-business-taxes-this-november-in-hayward-and-emeryville/',
     },
     crossTypology: ct([
       ['PL', 'Yes', '●', 'Progressive Left voters value a tax that asks bigger, higher-grossing businesses to pay more to protect libraries, 911, and city services.'],
@@ -1043,6 +1045,7 @@ export const RACES_HAYWARD: Race[] = [
       'As a citizen initiative it needs only a simple majority. Opponents say that route avoids the two-thirds vote a government-placed special tax would need, which supporters acknowledge it never reached (Fleischman, opinion).',
     ],
     measure: {
+      explainerUrl: 'https://www.kqed.org/voterguide/california/regional-measure-rtm',
       question:
         'To prevent major service cuts to BART and other transit, avoid increased traffic, and reduce pollution by: Preserving BART, Caltrain, VTA, SamTrans, AC Transit, Muni, other transit for everyone, including workers, students, seniors, persons with disabilities; Supporting transit safety, cleanliness, affordability, reliability; Repairing targeted roads/potholes; Requiring financial transparency, oversight, accountability; shall the measure enacting a 0.5% (Alameda, Contra Costa, San Mateo, Santa Clara counties), and 1% (San Francisco) sales tax for 14 years generating approximately $980,000,000 annually, be adopted?',
       yesMeans: 'Adds a 0.5% sales tax in Alameda and Santa Clara counties (1% in San Francisco) for 14 years, raising about $980 million a year for BART, AC Transit, Caltrain, VTA and others.',

@@ -812,6 +812,7 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
       'The council voted unanimously on June 9, 2026 to place the measure on the Nov. 3 ballot (Mountain View Voice).',
     ],
     measure: {
+      explainerUrl: 'https://www.mv-voice.com/news/2026/09/10/voter-guide-what-to-know-about-mountain-views-measure-e-charter-update/',
       question:
         'Shall the Mountain View City Charter be amended to replace gender-specific terms with gender-neutral language, extend the time to fill a council vacancy from 30 to 60 days, eliminate the requirement to read ordinances and resolutions in full, allow the Council to set qualifications for boards, commissions and committees it creates, and make other clarifying updates?',
       yesMeans: 'Amends the city charter to use gender-neutral language, give the council 60 days instead of 30 to fill a vacancy, end full reading of ordinances, and let it set advisory-body qualifications.',
@@ -861,6 +862,7 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
         'Bundling several changes keeps voters from approving some and rejecting others.',
       ],
       readingLinks: [
+        { label: 'Mountain View Voice: What to know about Measure E, the charter update (Sept. 10)', url: 'https://www.mv-voice.com/news/2026/09/10/voter-guide-what-to-know-about-mountain-views-measure-e-charter-update/', summary: 'Measure Guide: the charter fixes, the longer window to fill council vacancies, and that no argument against was filed.' },
         { label: 'Mountain View Voice: charter update heads to November ballot (June 11, 2026)', url: 'https://www.mv-voice.com/news/2026/06/11/mountain-view-city-charter-update-heads-to-november-ballot/', summary: 'What the measure changes and the council vote.' },
         { label: 'Mountain View Voice: non-controversial charter update (Feb. 12, 2026)', url: 'https://www.mv-voice.com/city-government/2026/02/12/mountain-view-looks-to-place-non-controversial-city-charter-update-on-november-ballot/', summary: 'Early staff proposal and council debate.' },
         { label: 'Local News Matters: Santa Clara County Nov. 3, 2026 ballot', url: 'https://localnewsmatters.org/santa-clara-november-3-2026/', summary: 'Ballot-label summary of the measure.' },
@@ -897,6 +899,7 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
       'The council voted unanimously on June 23, 2026 to place the measure on the ballot after scrapping a planned bond when polling showed 52% support, short of the two-thirds a bond requires (Mountain View Voice). All eight council candidates backed it at the Aug. 27 business forum; no hotel-industry position was found.',
     ],
     measure: {
+      explainerUrl: 'https://www.mv-voice.com/election/2026/10/06/measure-f-hotel-tax/',
       question:
         'Shall the Mountain View measure to raise the City’s hotel and short-term rental tax from 10% to up to 15%, generating up to $5,200,000 annually for general City services such as street and sidewalk repair, police, fire and 911 response, affordable housing and new parks, until ended by voters, with independent audits, be adopted?',
       yesMeans: 'Lets the council raise the hotel and short-term-rental tax from 10% to up to 15%, bringing up to $5.2 million a year for general city services until voters end it.',
@@ -943,6 +946,7 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
         'About $5 million a year is modest against city needs and may lead to other tax proposals.',
       ],
       readingLinks: [
+        { label: 'Mountain View Voice: What to know about Measure F, the hotel tax (Oct. 6)', url: 'https://www.mv-voice.com/election/2026/10/06/measure-f-hotel-tax/', summary: 'Measure Guide: the 10% to 15% hotel tax ceiling, the city’s $5.2 million estimate, and that no argument against was filed.' },
         { label: 'Mountain View Voice: city scraps bond plans, opts for hotel tax (June 24, 2026)', url: 'https://www.mv-voice.com/election/2026/06/24/mountain-view-scraps-bond-plans-opts-for-hotel-tax-measure-instead/', summary: 'Rate, revenue, exemptions and why the bond was dropped.' },
         { label: 'Mountain View Voice: bond plans dropped as polls showed support falling (July 24, 2026)', url: 'https://www.mv-voice.com/election/2026/07/24/mountain-view-ditched-bond-plans-as-polls-showed-support-dropping-records-show/', summary: 'Polling that led the council to choose a tax measure.' },
         { label: 'Local News Matters: Santa Clara County Nov. 3, 2026 ballot', url: 'https://localnewsmatters.org/santa-clara-november-3-2026/', summary: 'Ballot-label summary of the measure.' },
@@ -1023,7 +1027,9 @@ export const RACES_MOUNTAIN_VIEW: Race[] = [
         { label: 'ECHD board packet, May 19, 2026 (term-limits memo and draft Resolution 2026-06)', url: 'https://www.elcaminohealthcaredistrict.org/sites/default/files/2026-05/packet_dbod2_051926.pdf', summary: 'Four bylaw options, ballot question text and the March 10 draft minutes.' },
         { label: 'Local News Matters: Santa Clara County Nov. 3, 2026 ballot', url: 'https://localnewsmatters.org/santa-clara-november-3-2026/', summary: 'Ballot-label summary of the measure.' },
         { label: 'Santa Clara County Registrar of Voters: El Camino Healthcare District', url: 'https://vote.santaclaracounty.gov/el-camino-healthcare-district', summary: 'County page for the district’s 2026 contests.' },
+        { label: 'Mountain View Voice: What to know about El Camino Healthcare’s Measure S (Oct 8)', url: 'https://www.mv-voice.com/election/2026/10/08/el-camino-healthcare-measure-s-term-limits/', summary: 'Explains the four-term cap, which terms count, the board’s 3-2 vote, and the case made for and against it.' },
       ],
+      explainerUrl: 'https://www.mv-voice.com/election/2026/10/08/el-camino-healthcare-measure-s-term-limits/',
     },
     crossTypology: ct([
       ['PL', 'Yes', '◐', 'Progressive Left voters support renewing public boards and curbing entrenchment, though the 16-year limit is generous.'],

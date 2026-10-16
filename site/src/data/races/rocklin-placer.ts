@@ -434,7 +434,9 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         { label: 'Placer County: charter amendments approved to go before voters', url: 'https://www.placer.ca.gov/10984/Charter-amendments', summary: 'County explanation of the vacancy and CEO-removal amendments.' },
         { label: 'Placer County Elections: Measures to Appear on Ballot', url: MEASURES_PDF, summary: 'Official ballot text for Measures G and H.' },
         { label: 'Hoodline: Placer supes put pay overhaul and power rules on 2026 ballot', url: 'https://hoodline.com/2026/07/placer-supes-put-pay-overhaul-and-power-rules-on-2026-ballot/', summary: 'July 2026 summary of the 5-0 vote.' },
+        { label: 'Sacramento Bee: Your guide to Placer County Measures H and G and Roseville Measure A (Oct 14)', url: 'https://www.yahoo.com/news/politics/articles/guide-placer-county-measures-h-160739474.html', summary: 'Explains the vacancy deadline change, when a vacancy goes to voters, and notes that no official arguments were filed.' },
       ],
+      explainerUrl: 'https://www.yahoo.com/news/politics/articles/guide-placer-county-measures-h-160739474.html',
     },
     crossTypology: ct([
       ['PL', 'Yes', '○', 'Progressive Left voters generally favor clearer, more open procedures, and the amendment adds a ballot placement rule for some vacancies.'],
@@ -505,7 +507,9 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         { label: 'Placer County: charter amendments approved to go before voters', url: 'https://www.placer.ca.gov/10984/Charter-amendments', summary: 'County explanation of the amendments.' },
         { label: 'Placer County Elections: Measures to Appear on Ballot', url: MEASURES_PDF, summary: 'Official ballot text for Measures G and H.' },
         { label: 'Hoodline: Placer supes put pay overhaul and power rules on 2026 ballot', url: 'https://hoodline.com/2026/07/placer-supes-put-pay-overhaul-and-power-rules-on-2026-ballot/', summary: 'July 2026 summary of the 5-0 vote.' },
+        { label: 'Sacramento Bee: Your guide to Placer County Measures H and G and Roseville Measure A (Oct 14)', url: 'https://www.yahoo.com/news/politics/articles/guide-placer-county-measures-h-160739474.html', summary: 'Explains how CEO contracts could set different removal procedures, and notes that no official arguments were filed.' },
       ],
+      explainerUrl: 'https://www.yahoo.com/news/politics/articles/guide-placer-county-measures-h-160739474.html',
     },
     crossTypology: ct([
       ['PL', '—', '—', 'Progressive Left voters have no clear stake in contract terms for a county executive.'],
@@ -581,7 +585,9 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         { label: 'Placer County: amended notice of election (majority vote correction)', url: AMENDED_NOTICE, summary: 'Official correction of the vote requirement for Measure C.' },
         { label: 'Sacramento Bee: Rocklin voters may decide on half-cent sales tax (June 2026)', url: 'https://www.yahoo.com/news/politics/articles/rocklin-voters-may-decide-half-142738960.html', summary: 'Compares sales tax rates across Placer County cities.' },
         { label: 'Sacramento Bee: Rocklin City Council to vote on adding a sales-tax increase (June 2026)', url: 'https://www.yahoo.com/news/politics/articles/rocklin-city-council-vote-adding-210459170.html', summary: 'Council action and city rationale.' },
+        { label: 'Sacramento Bee: Your guide to sales tax measures in Rocklin, Lincoln and Colfax (Oct 12)', url: 'https://www.yahoo.com/news/politics/articles/guide-sales-tax-measures-rocklin-164747231.html', summary: 'Explains the rate change, expected revenue and duration, and who signed the ballot arguments (none were filed against).' },
       ],
+      explainerUrl: 'https://www.yahoo.com/news/politics/articles/guide-sales-tax-measures-rocklin-164747231.html',
     },
     crossTypology: ct([
       ['PL', 'Yes', '◐', 'Progressive Left voters support public safety, parks and city services, but sales taxes are regressive and the money is not earmarked.'],
@@ -658,7 +664,9 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         { label: 'RUSD: facilities planning', url: 'https://www.rocklinusd.org/Departments/Business-Services/Facilities-Maintenance--Operations/Facilities-Planning/', summary: 'District page on the proposed bond (district-sponsored).' },
         { label: 'The Abridged: Rocklin schools eye $288M bond (May 2026)', url: 'https://www.abridged.org/news/rocklin-school-district-proposed-bond/', summary: 'Pre-vote reporting on needs, cost and the May town hall.' },
         { label: 'CapRadio: Rocklin school board races (Sept 14, 2026)', url: CAPRADIO_BOARD, summary: 'Notes trustee support for Measure D.' },
+        { label: 'Gold Mountain California News (Gold Country Media): Rocklin Measures C and D: What voters need to know (Oct 7)', url: 'https://goldmountaincanews.com/news/373118/rocklin-measures-c-and-d-what-voters-need-to-know/', summary: 'Voter guide to the Rocklin sales tax and the Rocklin Unified school bond.' },
       ],
+      explainerUrl: 'https://goldmountaincanews.com/news/373118/rocklin-measures-c-and-d-what-voters-need-to-know/',
     },
     crossTypology: ct([
       ['PL', 'Yes', '●', 'Progressive Left voters support public investment in school buildings and shift the cost to property owners rather than classrooms.'],
