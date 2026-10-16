@@ -223,6 +223,16 @@ export interface MeasurePosition {
 
 export interface MeasureBlock {
   question: string;
+  /**
+   * “What it means for you”: one plain sentence each, shown first with the Yes/No meanings (the ballot wording then
+   * folds). Built only from facts already in `fiscalImpact` / `voterConnection`. Required for CA statewide props.
+   */
+  forYou?: {
+    /** Does it cost the reader anything directly? e.g. “No new tax. The state repays …” */
+    wallet: string;
+    /** Who it affects most, in plain words. */
+    who: string;
+  };
   /** Plain-language effect of a Yes vote, one sentence starting with a verb (“Raises…”, “Keeps…”). */
   yesMeans?: string;
   /** Plain-language effect of a No vote, including what stays the same. */

@@ -3840,3 +3840,82 @@ button:focus-visible {
   margin: 0.45rem 0 0;
   font-size: var(--fs-sm);
 }
+
+/* Props: “What it means for you” card, shown before the (folded) ballot wording. */
+.for-you {
+  margin: 0 0 0.75rem;
+  padding: 0.85rem 1rem;
+  background: color-mix(in srgb, var(--rad-accent) 6%, var(--rad-surface));
+  border: 1px solid color-mix(in srgb, var(--rad-accent) 30%, var(--rad-border));
+  border-radius: var(--rad-radius);
+}
+
+.for-you__title {
+  margin: 0 0 0.5rem;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--rad-accent-dim);
+}
+
+.for-you__list {
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.for-you__row {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: baseline;
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  &--yes dt {
+    color: var(--rad-accent);
+  }
+
+  &--no dt {
+    color: var(--rad-warn);
+  }
+}
+
+@media (max-width: 559px) {
+  .for-you__row {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+}
+
+.measure__wording {
+  margin: 0 0 0.75rem;
+
+  .measure__question {
+    margin: 0.4rem 0 0;
+  }
+}
+
+.measure__wording-summary {
+  cursor: pointer;
+  width: fit-content;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--rad-accent);
+}
+
+@media (max-width: 559px) {
+  .your-type__means {
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    dd + dt {
+      margin-top: 0.35rem;
+    }
+  }
+}

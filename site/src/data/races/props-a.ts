@@ -94,6 +94,10 @@ export const RACES_PROPS_A: Race[] = [
       },
     ],
     measure: {
+      forYou: {
+        wallet: 'No new tax. The state would repay about $500–600 million a year for 25 years out of the same budget that pays for schools and Medi-Cal.',
+        who: 'Lower-income renters, first-time buyers, farmworkers, college students and about 2,100 veterans. Homeowners and market-rate renters get nothing directly.',
+      },
       explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-1-housing-bond/',
       question:
         'Authorizes bonds for housing affordability programs. Legislative statute. Authorizes $11.25 billion in general obligation bonds for multifamily rental housing, veterans’ mortgages, supportive housing, preservation of existing affordable housing, and downpayment assistance.',
@@ -218,6 +222,10 @@ export const RACES_PROPS_A: Race[] = [
       },
     ],
     measure: {
+      forYou: {
+        wallet: 'No new tax. It changes how much of the state’s existing money is saved in good years instead of spent right away.',
+        who: 'People who rely on state services such as Medi-Cal and public schools, which a bigger reserve helps protect in a recession.',
+      },
       explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-2-rainy-day-fund/',
       question:
         'Increases state’s Rainy Day Fund. Legislative constitutional amendment. Increases the Rainy Day Fund approved by voters in 2014 to provide funding for education, health care, public safety, and other services during economic downturns.',
@@ -344,6 +352,10 @@ export const RACES_PROPS_A: Race[] = [
       },
     ],
     measure: {
+      forYou: {
+        wallet: 'Your taxes change only if your taxable income is above about $371,000 (single) or $742,000 (joint). Everyone else pays the same either way.',
+        who: 'Public schools, community colleges and Medi-Cal, which get the $5–15 billion a year these tax brackets raise.',
+      },
       explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-3-high-income-tax/',
       question:
         'Provides permanent funding for schools and health care by extending existing tax on high incomes. Initiative constitutional amendment. Makes permanent existing voter-approved tax rates for individuals earning over $371,000 (adjusted for inflation); allocates revenue to public education.',
@@ -481,6 +493,10 @@ export const RACES_PROPS_A: Race[] = [
       },
     ],
     measure: {
+      forYou: {
+        wallet: 'Nothing directly. Money is spent only if your city, county or the state later chooses to create a public campaign funding program.',
+        who: 'Candidates and voters in places that decide to create a program. Charter cities such as Los Angeles already have one.',
+      },
       explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-4-public-fundraising/',
       question:
         'Repeals prohibition against public funding of election campaigns. Legislative statute. Repeals ban on state and local governments offering public funding of candidate campaigns; programs may not use funds earmarked for education, transportation, or public safety.',
@@ -610,6 +626,10 @@ export const RACES_PROPS_A: Race[] = [
       },
     ],
     measure: {
+      forYou: {
+        wallet: 'No direct cost. A future recall election could cost more or less to run, depending on the office.',
+        who: 'Every voter in a future state recall: you would still vote on removing the official, but the successor would be chosen another way.',
+      },
       explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-5-recall-reform/',
       question:
         'Changes recall election process for statewide officers. Legislative constitutional amendment. Currently voters elect replacement candidates at the same time as the recall; this measure instead fills recall vacancies by subsequent special election or appointment.',

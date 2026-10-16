@@ -218,6 +218,9 @@ export function collectMeasureIssues(races: Race[]): TypologyValidationIssue[] {
     else if (!m.funding.sources.length || !m.funding.asOf.trim()) issues.push({ raceId: id, message: 'funding needs asOf and at least one source' });
     else if (!m.funding.yes && !m.funding.no && !m.funding.note?.trim()) issues.push({ raceId: id, message: 'funding has no totals and no note' });
     if (!m.positions) issues.push({ raceId: id, message: 'measure needs positions (an empty list means none were found)' });
+    if (/^prop-\d+$/.test(id) && (!m.forYou?.wallet.trim() || !m.forYou.who.trim())) {
+      issues.push({ raceId: id, message: 'CA props need forYou.wallet and forYou.who (“What it means for you”)' });
+    }
     if (m.explainerUrl && !m.readingLinks?.some((l) => l.url === m.explainerUrl)) {
       issues.push({ raceId: id, message: 'explainerUrl must match the url of one of its readingLinks' });
     }

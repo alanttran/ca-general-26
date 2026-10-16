@@ -2061,6 +2061,31 @@ function renderPaperLine(label: string, papers: MeasurePosition[], className = '
   return p;
 }
 
+/** “What it means for you”: wallet, who it affects, then what a Yes and a No win would do. */
+function renderForYou(f: NonNullable<MeasureBlock['forYou']>, yes: string, no: string): HTMLElement {
+  const box = el('section', 'for-you', { 'aria-label': 'What it means for you' });
+  const h = el('p', 'for-you__title');
+  h.textContent = 'What it means for you';
+  const dl = el('dl', 'for-you__list');
+  const rows: [string, string, string][] = [
+    ['wallet', 'Your wallet', f.wallet],
+    ['who', 'Who it affects most', f.who],
+    ['yes', 'If Yes wins', yes],
+    ['no', 'If No wins', no],
+  ];
+  for (const [mod, term, text] of rows) {
+    const row = el('div', `for-you__row for-you__row--${mod}`);
+    const dt = el('dt');
+    dt.textContent = term;
+    const dd = el('dd');
+    dd.textContent = text;
+    row.append(dt, dd);
+    dl.append(row);
+  }
+  box.append(h, dl);
+  return box;
+}
+
 /** “News explainer: <outlet: headline>”: the measure's featured neutral news piece (`explainerUrl`), if set. */
 function renderExplainerLine(m: MeasureBlock, className: string): HTMLElement | null {
   const link = m.explainerUrl ? m.readingLinks?.find((l) => l.url === m.explainerUrl) : undefined;
@@ -2117,7 +2142,9 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
   }
   if (race.kind === 'measure' && race.measure?.yesMeans && race.measure.noMeans) {
     const dl = el('dl', 'your-type__means');
-    for (const [term, text] of [['Yes', race.measure.yesMeans], ['No', race.measure.noMeans]] as const) {
+    const rows: [string, string][] = [['Yes', race.measure.yesMeans], ['No', race.measure.noMeans]];
+    if (race.measure.forYou) rows.unshift(['Your wallet', race.measure.forYou.wallet]);
+    for (const [term, text] of rows) {
       const dt = el('dt');
       dt.textContent = `${term}:`;
       const dd = el('dd');
@@ -2518,9 +2545,19 @@ function renderMeasureOverview(m: MeasureBlock): HTMLElement {
   const label = el('span', 'measure__label');
   label.textContent = 'On the ballot';
   pq.append(label, document.createTextNode(m.question));
-  art.append(pq);
 
-  if (m.yesMeans && m.noMeans) {
+  if (m.forYou && m.yesMeans && m.noMeans) {
+    // Props: plain-language impact first; the official (long, legal) ballot wording folds beneath it.
+    art.append(renderForYou(m.forYou, m.yesMeans, m.noMeans));
+    const wording = el('details', 'measure__wording');
+    const s = el('summary', 'measure__wording-summary');
+    s.textContent = 'Exact ballot wording';
+    label.remove();
+    wording.append(s, pq);
+    art.append(wording);
+  } else art.append(pq);
+
+  if (!m.forYou && m.yesMeans && m.noMeans) {
     const means = el('dl', 'measure__means');
     const h = el('p', 'measure__label');
     h.textContent = 'What your vote means';
@@ -2638,7 +2675,7 @@ function renderMeasureMore(race: Race, m: MeasureBlock): HTMLElement {
     return p;
   });
   if (paras.length) section('Background', ...paras);
-  if (m.voterConnection?.length) section('How it affects you', bulletList(m.voterConnection));
+  if (m.voterConnection?.length) section(m.forYou ? 'More on who it affects' : 'How it affects you', bulletList(m.voterConnection));
   if (m.mechanismBullets.length) section('The details', bulletList(m.mechanismBullets));
   if (m.readingLinks?.length) {
     const ul = el('ul', 'measure__reading-list');

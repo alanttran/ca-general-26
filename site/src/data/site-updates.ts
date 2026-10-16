@@ -28,6 +28,13 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         ],
       },
       {
+        summary: 'Props: what it means for you',
+        bullets: [
+          'Each state proposition now opens with “What it means for you”: whether it costs you anything, who it affects most, and what happens if Yes or No wins. The exact ballot wording is one tap away.',
+          'Quick view adds the “Your wallet” line above the Yes and No meanings.',
+        ],
+      },
+      {
         summary: 'Newspaper endorsements on measures',
         bullets: [
           'Props and local measures now show where major newspaper editorial boards stand, each linked to its editorial: the LA Times, SF Chronicle, San Diego Union-Tribune, Sacramento Bee, Mercury News / East Bay Times, Orange County Register, LA Daily News, Denver Post and Denver Gazette.',

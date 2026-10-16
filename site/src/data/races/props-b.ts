@@ -33,6 +33,10 @@ export const RACES_PROPS_B: Race[] = [
       },
     ],
     measure: {
+      forYou: {
+        wallet: 'No cost to taxpayers. Homebuyers’ loan payments repay the bonds, and private investors carry the risk.',
+        who: 'Middle-income buyers of brand-new homes, who could borrow up to 17% of the price. Buyers of existing homes don’t qualify.',
+      },
       explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-37-homebuyers-loan/',
       question:
         'Creates loan program for middle-income buyers of qualified new homes. Initiative statute. Authorizes $25 billion in bonds to offer eligible buyers fixed-rate mortgages for up to 17% of the price of a newly built home priced below about $1.5 million; buyers must be California residents, owner-occupants, within income limits, and put at least 3% down; bonds repaid by mortgage payments, not the State.',
@@ -154,6 +158,10 @@ export const RACES_PROPS_B: Race[] = [
       },
     ],
     measure: {
+      forYou: {
+        wallet: 'No new tax. The state would repay about $500–600 million a year for 20 years out of the same budget that pays for schools and Medi-Cal.',
+        who: 'Immunology researchers and, supporters say, patients with diseases like cancer. Half the money goes to one UC-affiliated institute.',
+      },
       explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-38-research-bond/',
       question:
         'Authorizes bonds for immunology medical research. Initiative statute. Authorizes $8.4 billion in general obligation bonds for immunology and immunotherapy research; half to a single University of California–affiliated nonprofit medical research institute, half to research grants.',
@@ -283,6 +291,10 @@ export const RACES_PROPS_B: Race[] = [
       },
     ],
     measure: {
+      forYou: {
+        wallet: 'No direct cost to you, and a free state voter ID card is available. The state would spend tens of millions to low hundreds of millions a year.',
+        who: 'Every voter. Mail voters would write the last four digits of an ID number on each ballot envelope, and in-person voters would show ID.',
+      },
       explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-39-voter-id/',
       question:
         'Prohibits citizens from voting unless they present government-issued identification. Initiative constitutional amendment. Invalidates mail ballots without the last four digits of a designated government-issued identification number on the envelope; prohibits in-person voting without presenting government-issued identification.',
@@ -429,6 +441,10 @@ export const RACES_PROPS_B: Race[] = [
       },
     ],
     measure: {
+      forYou: {
+        wallet: 'Your taxes change only if your net worth is about $1 billion or more.',
+        who: 'Medi-Cal patients, community clinics and rural hospitals, which get most of the money. Your votes on Props 41 and 42 can cancel it.',
+      },
       explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-40-billionaire-tax/',
       question:
         'Imposes one-time tax on certain taxpayers. Initiative constitutional amendment and statute. Imposes a 5% tax on certain taxpayers with assets over $1 billion; revenue primarily for health care; exempts revenue from constitutional school-funding and spending-limit requirements.',
@@ -580,6 +596,10 @@ export const RACES_PROPS_B: Race[] = [
       },
     ],
     measure: {
+      forYou: {
+        wallet: 'No direct cost. New state taxes passed since 2026 would face tighter spending-limit rules and State Auditor reviews.',
+        who: 'Anyone with a view on Prop 40: if Prop 41 gets more Yes votes than Prop 40, the billionaire tax is wiped out.',
+      },
       explainerUrl: 'https://calmatters.org/california-voter-guide-2026/proposition-41-tax-audits/',
       question:
         'Prohibits new state taxes that exclude revenues from state spending limit; requires audits for new state special taxes. Initiative constitutional amendment. Nullifies state taxes enacted after January 1, 2026 that exempt their revenue from the voter-approved state spending limit; requires pre-election and recurring audits of programs funded by new special taxes.',
