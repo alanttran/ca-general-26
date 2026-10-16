@@ -2010,8 +2010,36 @@ function renderRace(race: ZipRace): HTMLElement {
       fold.querySelector('.race__more-body')?.append(cross);
     }
   }
+  // Props: every “LAO” in the text links to that measure's Legislative Analyst's Office analysis.
+  const lao = race.measure?.readingLinks?.find((l) => l.url.includes('lao.ca.gov'));
+  if (lao) linkAcronym(body, 'LAO', lao.url, `Legislative Analyst’s Office: ${lao.label.replace(/^LAO\s*[—-]\s*/, '')}`);
   details.append(body);
   return details;
+}
+
+/** Wraps each whole-word `word` in `root`'s text (outside existing links) in a link to `url`, titled `title`. */
+function linkAcronym(root: HTMLElement, word: string, url: string, title: string): void {
+  const re = new RegExp(`\\b${word}\\b`);
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) =>
+      re.test(n.nodeValue ?? '') && !n.parentElement?.closest('a, summary, button, label') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
+  });
+  const nodes: Text[] = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode as Text);
+  for (const node of nodes) {
+    const parts = (node.nodeValue ?? '').split(new RegExp(`\\b(${word})\\b`));
+    const frag = document.createDocumentFragment();
+    parts.forEach((part, i) => {
+      if (i % 2 === 0) {
+        if (part) frag.append(part);
+      } else {
+        const a = el('a', 'acronym-link', { href: url, target: '_blank', rel: 'noopener noreferrer', title });
+        a.textContent = part;
+        frag.append(a);
+      }
+    });
+    node.replaceWith(frag);
+  }
 }
 
 function quickDetailsLabel(race: Race): string {
