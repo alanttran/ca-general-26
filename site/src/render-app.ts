@@ -2129,8 +2129,9 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
   const why = el('p', 'your-type__why');
   why.textContent = row.rationale;
   box.append(head, why);
+  // Measures: facts (what each outcome does) come before the trade-off; candidates have no such block.
   const trade = renderTradeoff(race, row.typology, 'your-type__tradeoff');
-  if (trade) box.append(trade);
+  if (trade && race.kind !== 'measure') box.append(trade);
   if (race.kind === 'candidates' && race.candidates.length) {
     const who = el('p', 'your-type__cands');
     const strong = el('strong');
@@ -2145,18 +2146,24 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
     }
   }
   if (race.kind === 'measure' && race.measure?.yesMeans && race.measure.noMeans) {
+    const title = el('p', 'your-type__section');
+    title.textContent = 'What your vote does';
     const dl = el('dl', 'your-type__means');
-    const rows: [string, string][] = [['Yes', race.measure.yesMeans], ['No', race.measure.noMeans]];
-    if (race.measure.forYou) rows.unshift(['Your wallet', race.measure.forYou.wallet]);
-    for (const [term, text] of rows) {
-      const dt = el('dt');
-      dt.textContent = `${term}:`;
+    const rows: [string, string, string][] = [
+      ['yes', 'If Yes wins', race.measure.yesMeans],
+      ['no', 'If No wins', race.measure.noMeans],
+    ];
+    if (race.measure.forYou) rows.unshift(['wallet', 'Your wallet', race.measure.forYou.wallet]);
+    for (const [mod, term, text] of rows) {
+      const dt = el('dt', `your-type__means-term your-type__means-term--${mod}`);
+      dt.textContent = term;
       const dd = el('dd');
       dd.textContent = text;
       dl.append(dt, dd);
     }
-    box.append(dl);
+    box.append(title, dl);
   }
+  if (trade && race.kind === 'measure') box.append(trade);
   if (race.kind === 'measure' && race.measure) {
     const papers = renderPapersAtAGlance(race.measure);
     if (papers) box.append(papers);
@@ -2534,8 +2541,8 @@ function renderTradeoff(race: Race, code: TypologyCode, className: string): HTML
     title.textContent = 'Hinges on';
     const dl = el('dl', 'hinge__list');
     for (const [mod, label, text] of [
-      ['yes', 'Yes if', sides[1]],
-      ['no', 'No if', sides[2]],
+      ['yes', 'Vote Yes if', sides[1]],
+      ['no', 'Vote No if', sides[2]],
     ] as const) {
       const row = el('div', `hinge__row hinge__row--${mod}`);
       const dt = el('dt');
