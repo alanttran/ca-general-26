@@ -4106,3 +4106,15 @@ button.quick-list__row {
   padding: 0;
   max-width: none;
 }
+
+/* Quick/Guided callout when experience changed the pick: the fit-only pick and reason, quieter. */
+.your-type__fit {
+  margin: 0.35rem 0 0;
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+}
+
+.pick-changed--inline {
+  color: var(--rad-accent-dim);
+  font-weight: 700;
+}

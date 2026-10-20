@@ -165,6 +165,17 @@ function confidenceBadge(confidence: string, srText = ` ${srConfidenceLabel(conf
   return badge;
 }
 
+/** “⇄” before a pick that experience changed (the table and print sheet use the same mark). */
+function switchedMark(): HTMLElement {
+  const m = el('span', 'pick-changed pick-changed--inline', { title: 'Switched for experience' });
+  const sr = el('span', 'visually-hidden');
+  sr.textContent = 'Switched for experience: ';
+  const g = el('span', undefined, { 'aria-hidden': 'true' });
+  g.textContent = '⇄ ';
+  m.append(sr, g);
+  return m;
+}
+
 /** Small flag after a pick whose candidate has a Severe or Serious red flag. */
 function pickFlagMarker(tier: 'severe' | 'serious'): HTMLElement {
   const wrap = el('span', `pick-flag pick-flag--${tier}`, {
@@ -622,7 +633,8 @@ export function renderApp(root: HTMLElement, zip: string): void {
   root.append(header, nav, main, footer, renderDock(data, header), renderPrintSheet());
   markTocProgress(data, tocList);
   const printSelect = document.getElementById('print-typology') as HTMLSelectElement | null;
-  fillPrintSheet(data, (printSelect?.value as PrintColumn | undefined) ?? 'EL');
+  // Simple views have no print select: Ctrl+P prints the same sheet as their Print button (my choices, type fills gaps).
+  fillPrintSheet(data, (printSelect?.value as PrintColumn | undefined) ?? (viewTypology ? MINE : 'EL'));
 }
 
 /** Full view's reference material, folded so the ballot comes first; links into it open the fold. */
@@ -1080,16 +1092,16 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
       const name = el('span', 'quick-list__name');
       name.textContent = race.tldrLabel ?? race.title;
       const pick = el('span', 'quick-list__pick');
-      const noPick = !row?.pick || row.pick === '—';
-      if (noPick) {
+      const tp = row ? typePick(race, row) : undefined;
+      if (!tp || tp.none) {
         pick.textContent = 'No pick';
         pick.classList.add('quick-list__pick--none');
       } else {
-        pick.textContent = row.pick;
-        const flag = race.kind === 'candidates' ? maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags) : undefined;
-        if (flag === 'severe' || flag === 'serious') pick.append(pickFlagMarker(flag));
+        if (tp.switched) pick.append(switchedMark());
+        pick.append(tp.pick);
+        if (tp.flag) pick.append(pickFlagMarker(tp.flag));
         // Same SVG confidence icons as the picks tables (the ● glyph renders smaller than ◐/○ in most fonts).
-        const badge = confidenceBadge(row.confidence);
+        const badge = confidenceBadge(tp.confidence);
         if (badge) pick.append(document.createTextNode(' '), badge);
       }
       const mine = el('span', 'quick-list__mine');
@@ -1417,13 +1429,19 @@ function fillMyChoicesSheet(sheet: HTMLElement, data: BallotData, fallback?: Typ
       th.textContent = race.tldrLabel ?? race.title;
       const td = el('td');
       const fb = fallback ? race.crossTypology.find((r) => r.typology === fallback) : undefined;
-      const fbText = fb && fb.pick && fb.pick !== '—' ? `${fb.pick} ${fb.confidence} (${fallback} pick)`.trim() : undefined;
+      const fbp = fb ? typePick(race, fb) : undefined;
+      const fbText = fbp && !fbp.none ? `${fbp.switched ? '⇄ ' : ''}${fbp.pick} ${fbp.confidence} (${fallback} pick)`.replace(/\s+/g, ' ') : undefined;
       td.textContent = choiceSummary(race) ?? fbText ?? '— (not marked)';
       tr.append(th, td);
       tb.append(tr);
     }
     tbl.append(thead, tb);
     body.append(printGroup(tbl));
+  }
+  if (fallback) {
+    const legend = el('p', 'print-sheet__sub');
+    legend.textContent = `${fallback} picks: ● high confidence · ◐ medium · ○ low · ⇄ pick changes when experience is weighed`;
+    sheet.append(legend);
   }
 }
 
@@ -1970,9 +1988,11 @@ function renderRace(race: ZipRace): HTMLElement {
   const typeRow = viewTypology ? race.crossTypology.find((r) => r.typology === viewTypology) : undefined;
   if (typeRow) {
     const pick = el('span', 'race__typick');
-    const noPick = !typeRow.pick || typeRow.pick === '—';
-    pick.textContent = noPick ? `${typeRow.typology}: no pick` : `${typeRow.typology}: ${typeRow.pick}`;
-    const badge = noPick ? null : confidenceBadge(typeRow.confidence);
+    const tp = typePick(race, typeRow);
+    pick.append(`${typeRow.typology}: `);
+    if (!tp.none && tp.switched) pick.append(switchedMark());
+    pick.append(tp.none ? 'no pick' : tp.pick);
+    const badge = tp.none ? null : confidenceBadge(tp.confidence);
     if (badge) pick.append(document.createTextNode(' '), badge);
     sumText.append(document.createTextNode(' '), pick);
   }
@@ -2163,24 +2183,67 @@ function renderPapersAtAGlance(m: MeasureBlock): HTMLElement | null {
   return wrap;
 }
 
+/**
+ * The pick shown for a typology outside the full table: fit + experience, exactly like the table's Pick column
+ * and the printed type-picks sheet. `switched` means experience changed it.
+ */
+function typePick(race: Race, row: Race['crossTypology'][number]): {
+  pick: string;
+  confidence: string;
+  none: boolean;
+  switched: boolean;
+  reason?: string;
+  flag?: 'severe' | 'serious';
+} {
+  const c = combinedCellFor(race, row.pick, row.confidence);
+  const { label, confidence } = parsePickCell(c.cell);
+  const switched = Boolean(c.reason);
+  const pick = switched ? label : row.pick;
+  const conf = switched ? confidence : row.confidence;
+  const tier = race.kind === 'candidates' ? maxSeverity(resolveCandidateForPick(pick, race.candidates)?.redFlags) : undefined;
+  return {
+    pick,
+    confidence: conf,
+    none: !pick || pick === '—',
+    switched,
+    reason: switched ? (row.experienceRationale ?? c.reason) : undefined,
+    flag: tier === 'severe' || tier === 'serious' ? tier : undefined,
+  };
+}
+
 /** Quick/Guided: the voter's own type's pick and reason, at the top of each contest. */
 function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTMLElement {
   const box = el('div', 'your-type');
   const head = el('p', 'your-type__head');
   head.append(typologyChip(row.typology, { title: typologyNameForChip(row.typology) }), document.createTextNode(' '));
+  const tp = typePick(race, row);
   const label = el('strong');
-  const noPick = !row.pick || row.pick === '—';
-  label.textContent = noPick ? `${typologyNameForChip(row.typology)}: no pick` : `${typologyNameForChip(row.typology)} pick: ${row.pick}`;
+  label.textContent = tp.none ? `${typologyNameForChip(row.typology)}: no pick` : `${typologyNameForChip(row.typology)} pick: ${tp.pick}`;
   head.append(label);
-  if (!noPick) {
+  if (!tp.none) {
     const conf = el('span', 'your-type__conf');
-    const icon = confidenceBadge(row.confidence, '');
-    conf.append(document.createTextNode(' '), ...(icon ? [icon] : []), document.createTextNode(` ${srConfidenceLabel(row.confidence).toLowerCase()}`));
+    const icon = confidenceBadge(tp.confidence, '');
+    conf.append(document.createTextNode(' '), ...(icon ? [icon] : []), document.createTextNode(` ${srConfidenceLabel(tp.confidence).toLowerCase()}`));
     head.append(conf);
   }
   const why = el('p', 'your-type__why');
-  why.textContent = row.rationale;
-  box.append(head, why);
+  if (tp.switched) {
+    // Same as the picks table: experience changed this pick, so lead with why, then the fit-only pick.
+    const lead = el('strong');
+    lead.textContent = 'Switched for experience. ';
+    why.append(lead, tp.reason ?? '');
+    const fit = el('p', 'your-type__fit');
+    const fitLabel = el('strong');
+    const fitNone = !row.pick || row.pick === '—';
+    fitLabel.textContent = `On fit alone: ${fitNone ? 'no pick' : row.pick}`;
+    const fitIcon = fitNone ? null : confidenceBadge(row.confidence);
+    fitLabel.append(...(fitIcon ? [' ', fitIcon] : []), '. ');
+    fit.append(fitLabel, row.rationale);
+    box.append(head, why, fit);
+  } else {
+    why.textContent = row.rationale;
+    box.append(head, why);
+  }
   // Measures: facts (what each outcome does) come before the trade-off; candidates have no such block.
   const trade = renderTradeoff(race, row.typology, 'your-type__tradeoff');
   if (trade && race.kind !== 'measure') box.append(trade);
@@ -2190,10 +2253,9 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
     strong.textContent = race.candidates.length === 1 ? 'Candidate: ' : 'Candidates: ';
     who.append(strong, document.createTextNode(race.candidates.map((c) => (c.party && c.party !== 'NP' ? `${c.name} (${c.party})` : c.name)).join(' · ')));
     box.append(who);
-    const flag = maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags);
-    if (flag === 'severe' || flag === 'serious') {
+    if (tp.flag) {
       const warn = el('p', 'your-type__flag');
-      warn.textContent = `⚑ This pick has a ${SEVERITY_LABEL[flag].toLowerCase()} red flag. Open the full details to read it before you decide.`;
+      warn.textContent = `⚑ This pick has a ${SEVERITY_LABEL[tp.flag].toLowerCase()} red flag. Open the full details to read it before you decide.`;
       box.append(warn);
     }
   }
@@ -2222,16 +2284,6 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
     if (papers) box.append(papers);
     const explainer = renderExplainerLine(race.measure, 'your-type__explainer');
     if (explainer) box.append(explainer);
-  }
-  if (race.kind === 'candidates') {
-    const c = combinedCellFor(race, row.pick, row.confidence);
-    if (c.reason) {
-      const alt = el('p', 'your-type__alt');
-      const strong = el('strong');
-      strong.textContent = `If experience matters most to you: ${c.cell.replace(/\s*[●◐○]\s*$/, '')}. `;
-      alt.append(strong, document.createTextNode(row.experienceRationale ?? c.reason));
-      box.append(alt);
-    }
   }
   return box;
 }
