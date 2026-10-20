@@ -3919,3 +3919,20 @@ button:focus-visible {
     }
   }
 }
+
+/* Trade-off line under a typology's reasoning (“Hinges on: …” or a counter-argument). */
+.cross__tradeoff,
+.your-type__tradeoff {
+  margin: 0.4rem 0 0;
+  padding: 0.3rem 0.55rem;
+  font-size: var(--fs-sm);
+  background: color-mix(in srgb, var(--rad-accent) 7%, var(--rad-surface));
+  border-left: 3px solid color-mix(in srgb, var(--rad-accent) 55%, transparent);
+  border-radius: 0 4px 4px 0;
+}
+
+.cross__tradeoff--counter,
+.your-type__tradeoff--counter {
+  border-left-color: var(--rad-border);
+  background: var(--rad-surface-elevated);
+}

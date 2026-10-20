@@ -158,6 +158,13 @@ export interface CrossTypologyRow {
   experienceRationale?: string;
 }
 
+/**
+ * “Hinges on”: for one typology, the trade-off that decides its vote, written as both sides of the choice
+ * (“Yes if …. No if ….” for measures; “<Candidate> if …. <Other> if ….” for candidates). Shown in that
+ * typology's row of the picks table and in its Quick/Guided callout. One or two sentences per side.
+ */
+export type TypologyHinges = Partial<Record<TypologyCode, string>>;
+
 export interface DebateTopicBreakdown {
   topic: string;
   bullets: string[];
@@ -325,6 +332,12 @@ export interface Race {
   /** Cited head-to-head general-election polls (newest first). */
   polling?: RacePoll[];
   crossTypology: CrossTypologyRow[];
+  /** Per-typology trade-offs (“Hinges on”). Required for every row of CA statewide props. */
+  hinges?: TypologyHinges;
+  /**
+   * “PL (Yes ◐): But consider …” lines. Each is shown in the matching typology rows of the picks table (unless that
+   * row has a hinge); lines that match no row are listed under the table.
+   */
   counterArguments?: string[];
   /** Debates, forums, and neutral explainers (shown after race context). */
   readingLinks?: MeasureReadingLink[];

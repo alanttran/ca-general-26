@@ -1977,12 +1977,14 @@ function renderRace(race: ZipRace): HTMLElement {
     }
   }
 
-  if (race.counterArguments?.length) {
+  // Counter-arguments now sit in their typology's row of the picks table; only lines that match no row stay here.
+  const unmatchedCounters = (race.counterArguments ?? []).filter((l) => !parseCounter(l));
+  if (unmatchedCounters.length) {
     const h3 = el('h3', 'race__subhead');
     h3.textContent = 'Counter-arguments';
     body.append(h3);
     const ul = el('ul', 'race__counter');
-    for (const line of race.counterArguments) {
+    for (const line of unmatchedCounters) {
       const li = el('li');
       appendCounterArgumentRich(li, line);
       ul.append(li);
@@ -2127,6 +2129,8 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
   const why = el('p', 'your-type__why');
   why.textContent = row.rationale;
   box.append(head, why);
+  const trade = renderTradeoff(race, row.typology, 'your-type__tradeoff');
+  if (trade) box.append(trade);
   if (race.kind === 'candidates' && race.candidates.length) {
     const who = el('p', 'your-type__cands');
     const strong = el('strong');
@@ -2487,6 +2491,8 @@ function renderCrossTable(race: Race): HTMLElement {
     } else {
       tdWhy.textContent = row.rationale;
     }
+    const trade = renderTradeoff(race, row.typology, 'cross__tradeoff');
+    if (trade) tdWhy.append(trade);
     tr.append(th, tdPick, tdWhy);
     tb.append(tr);
   }
@@ -2496,6 +2502,35 @@ function renderCrossTable(race: Race): HTMLElement {
   const wrap = el('div', 'race__cross');
   wrap.append(h3, scroll);
   return wrap;
+}
+
+/** “PL/EL (Yes ◐): But consider …” → the typology codes and the text after the colon; undefined if not that shape. */
+function parseCounter(line: string): { codes: TypologyCode[]; text: string } | undefined {
+  const m = /^((?:PL|EL|DM|OL|SS|AR|PR|CC|FF)(?:\/(?:PL|EL|DM|OL|SS|AR|PR|CC|FF))*)\s*\([^)]*\):\s*([\s\S]+)$/.exec(line.trim());
+  return m ? { codes: m[1].split('/') as TypologyCode[], text: m[2] } : undefined;
+}
+
+/**
+ * The trade-off for one typology: its “Hinges on” line if written, else any counter-argument aimed at it
+ * (“But consider …”). Undefined when neither exists.
+ */
+function renderTradeoff(race: Race, code: TypologyCode, className: string): HTMLElement | null {
+  const hinge = race.hinges?.[code];
+  const p = el('p', className);
+  if (hinge) {
+    const strong = el('strong');
+    strong.textContent = 'Hinges on: ';
+    p.append(strong, hinge);
+    return p;
+  }
+  const counters = (race.counterArguments ?? []).map(parseCounter).filter((c) => c?.codes.includes(code));
+  if (!counters.length) return null;
+  p.classList.add(`${className}--counter`);
+  counters.forEach((c, i) => {
+    if (i) p.append(' ');
+    appendCounterArgumentRich(p, c!.text);
+  });
+  return p;
 }
 
 function bulletList(items: string[], className?: string): HTMLUListElement {

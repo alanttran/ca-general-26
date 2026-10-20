@@ -28,6 +28,13 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         ],
       },
       {
+        summary: 'What each pick hinges on',
+        bullets: [
+          'Every voter type’s pick on each state proposition now says what the vote hinges on, as both sides: “Yes if … No if ….” Quick view shows your own type’s line right under its pick.',
+          'Counter-arguments for candidates and local measures now appear in the matching voter type’s row of the picks table instead of a separate list.',
+        ],
+      },
+      {
         summary: 'Props: what it means for you',
         bullets: [
           'Each state proposition now opens with “What it means for you”: whether it costs you anything, who it affects most, and what happens if Yes or No wins. The exact ballot wording is one tap away.',

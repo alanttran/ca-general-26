@@ -218,6 +218,11 @@ export function collectMeasureIssues(races: Race[]): TypologyValidationIssue[] {
     else if (!m.funding.sources.length || !m.funding.asOf.trim()) issues.push({ raceId: id, message: 'funding needs asOf and at least one source' });
     else if (!m.funding.yes && !m.funding.no && !m.funding.note?.trim()) issues.push({ raceId: id, message: 'funding has no totals and no note' });
     if (!m.positions) issues.push({ raceId: id, message: 'measure needs positions (an empty list means none were found)' });
+    if (/^prop-\d+$/.test(id)) {
+      const race = races.find((r) => r.id === id)!;
+      const missing = race.crossTypology.filter((row) => !race.hinges?.[row.typology]?.trim()).map((row) => row.typology);
+      if (missing.length) issues.push({ raceId: id, message: `CA props need a hinge for every typology; missing ${missing.join(', ')}` });
+    }
     if (/^prop-\d+$/.test(id) && (!m.forYou?.wallet.trim() || !m.forYou.who.trim())) {
       issues.push({ raceId: id, message: 'CA props need forYou.wallet and forYou.who (“What it means for you”)' });
     }
