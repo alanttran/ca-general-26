@@ -131,7 +131,7 @@ export const RACES_PROPS_B: Race[] = [
     hinges: {
       PL: 'Yes if widening homeownership, with building-trades labor standards attached, is worth backing. No if you think public housing help should go to renters and lower-income households, not buyers earning up to twice the median.',
       EL: 'Yes if a borrower-repaid program with no direct state cost, per the LAO, is the kind of market tool you favor. No if a state agency becoming a very large mortgage lender, with buyers carrying two loans, looks like too much risk.',
-      DM: 'Yes if middle-class homeownership comes first and you follow the party, labor and Treasurer Ma, who all back it. No if you worry more buyers chasing the same new homes will push prices up instead of fixing supply.',
+      DM: 'Yes if middle-class homeownership comes first and you give weight to the party, labor and Treasurer Ma, who all back it. No if you worry more buyers chasing the same new homes will push prices up instead of fixing supply.',
       OL: 'Yes if a 3%-down path to owning a home is a real opening for renters like you. No if a measure written and funded mainly by real-estate interests, aimed at new homes near $1.5 million, isn’t the help you need.',
       SS: 'Yes if concrete help for working families buying a home, with no new taxes, is what matters to you. No if new homes priced near the program cap are out of reach anyway, so it wouldn’t help you.',
       AR: 'Yes if homeownership and no taxpayer risk outweigh your unease about the state lending money. No if a government agency expanding into private mortgage lending is a line you’d rather not cross.',
@@ -269,7 +269,7 @@ export const RACES_PROPS_B: Race[] = [
     hinges: {
       PL: 'Yes if you trust the UC-affiliated institute to spend its half well and want state money to fill federal research cuts. No if half pre-assigned to the chief donor’s own institute is a deal-breaker; you’d want all of it awarded competitively.',
       EL: 'Yes if you trust this institute and the patient groups behind it, and see research as worth borrowing for. No if a ballot-box earmark for one institution, plus $500–600 million a year in debt, outweighs the research case.',
-      DM: 'Yes if cures research and patient discounts matter most and you follow the party’s endorsement. No if 20 years of debt payments during budget deficits worry you more than this research focus.',
+      DM: 'Yes if cures research and patient discounts matter most and you give weight to the party’s endorsement. No if 20 years of debt payments during budget deficits worry you more than this research focus.',
       OL: 'Yes if more public research money and patient discounts are worth it even with the carve-out. No if the half reserved for one billionaire-backed institute looks like insider dealing.',
       SS: 'Yes if hope for cures for diseases your family faces outweighs the cost. No if you’d rather that $500–600 million a year stay available for services you use now.',
       AR: 'Yes if you see a 20-year bond with royalty payback and patient discounts as a reasonable investment. No if you object to new state debt for a program steered to one institution.',
@@ -603,7 +603,7 @@ export const RACES_PROPS_B: Race[] = [
     hinges: {
       PL: 'Yes if taxing extreme wealth to backfill federal Medi-Cal cuts is a core fairness issue; to keep it alive, you’d also vote No on 41 and 42. No if lawsuits and billionaires leaving would cost more in lost income taxes than the one-time money brings.',
       EL: 'Yes if a one-time tax on about 200 billionaires is a fair way to backfill federal Medi-Cal cuts. No if the LAO’s warning of permanent income-tax losses and the legal risk of a pre-vote residency date outweigh a one-time windfall.',
-      DM: 'Yes if you follow the state party and want clinics and rural hospitals backfilled, voting No on 41 and 42 so it survives. No if you side with Newsom and Becerra that departures and litigation make it self-defeating.',
+      DM: 'Yes if you want clinics and rural hospitals backfilled and give weight to the state party’s support, voting No on 41 and 42 so it survives. No if you side with Newsom and Becerra that departures and litigation make it self-defeating.',
       OL: 'Yes if taxing concentrated wealth directly matters most, knowing a Yes on 41 or 42 could cancel it. No if a tax that could be tied up in court for years, and that health and school groups say lacks spending safeguards, isn’t worth backing.',
       SS: 'Yes if a tax only billionaires pay, funding health coverage your family may rely on, sounds right to you. No if the very uncertain revenue and years of possible court delays mean it won’t fix long-term health funding.',
       AR: 'Yes if you think federal Medi-Cal cuts will close clinics and hospitals near you and only about 200 people would pay. No if you doubt a one-time, retroactive wealth tax will survive in court or keep taxpayers from leaving.',
@@ -757,7 +757,7 @@ export const RACES_PROPS_B: Race[] = [
     hinges: {
       PL: 'Yes if independent audits of new special taxes matter more to you than keeping Prop 40 alive. No if you see it as a billionaire-funded way to cancel the wealth tax and cap future public revenue under a 1979 limit.',
       EL: 'Yes if you oppose Prop 40 and also value independent audits of new special taxes before they reach voters. No if counting every future special tax, for wildfire, transit or health care, under a 1979 cap goes too far, whatever you think of Prop 40.',
-      DM: 'Yes if you want Prop 40 stopped and like the idea of audits before new taxes pass. No if you follow the party and health-care unions, since a Yes here that outpolls Prop 40 wipes out the billionaire tax.',
+      DM: 'Yes if you want Prop 40 stopped and like the idea of audits before new taxes pass. No if you want the billionaire tax to survive, as the party and health-care unions do, since a Yes here that outpolls Prop 40 wipes it out.',
       OL: 'Yes if exposing waste in tax-funded programs matters more to you than whether Prop 40 survives. No if a measure bankrolled by the very billionaires Prop 40 would tax, written to cancel it, is a deal-breaker.',
       SS: 'Yes if “audit new taxes first” matches your distrust of how Sacramento spends, knowing it can also cancel Prop 40. No if you would rather judge each future tax on its merits than count it under a 1979 cap that could trigger cuts elsewhere.',
       AR: 'Yes if audits and spending restraint are a reasonable condition for new taxes, and you want a second way to stop Prop 40. No if you’d rather Prop 40 stand or fall on its own vote than be voided by a countermeasure.',

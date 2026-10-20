@@ -656,6 +656,17 @@ export const RACES_TEMECULA: Race[] = [
       ['CC', 'No', '◐', 'Committed Conservatives object to roughly doubling the cost through interest and to a ballot question that omits the term and total cost.'],
       ['FF', 'No', '○', 'Faith and Flag Conservatives lean against new school debt, weakly because the measure is about repairs rather than curriculum.'],
     ]),
+    hinges: {
+      PL: 'Yes if safe roofs, working plumbing and fewer portables are basic equity for students that local money should fund. No if total payments near double the amount borrowed, stacked on Measure Y until 2047, outweigh the repairs.',
+      EL: 'Yes if the required oversight committee and audits, plus a chance at state matching funds, make this a sound investment. No if a ballot question that leaves out the term and total cost falls short of the transparency you expect.',
+      DM: 'Yes if fixing roofs, plumbing and classrooms with local money is a basic responsibility you want to support. No if a new tax for about 30 years on top of the Measure Y levy is more than you’d add.',
+      OL: 'Yes if school repairs matter more to you than your distrust of long-term debt. No if interest that board president Joseph Komrosky estimates brings total payments to about $383 million for $215 million borrowed is too costly.',
+      SS: 'Yes if about $100 a year on a $500,000 assessed home seems worth it for repaired schools. No if any new line on your property tax bill, on top of Measure Y, strains a budget already stretched.',
+      AR: 'Yes if a modest rate, oversight and possible state matching funds make this a reasonable repair bond. No if you want the term and total cost stated plainly on the ballot before you agree to borrow.',
+      PR: 'Yes if the money being limited to buildings, with state matching funds at stake, eases your doubts. No if a decades-long tax on top of an existing bond, run by a board known for internal conflict, is one you won’t trust.',
+      CC: 'Yes if a modest rate, buildings-only spending and state matching funds that would otherwise go elsewhere outweigh the interest. No if roughly doubling the cost through interest, on a ballot that omits the term and total, is a deal-breaker.',
+      FF: 'Yes if repairing aging local schools matters more to you than avoiding new debt. No if you’d rather not add decades of new school debt on top of a bond that already runs to 2047.',
+    },
     counterArguments: [
       'PR/CC (No ◐): But the rate is modest, the money can only fund buildings, and passing it can bring in state matching funds that would otherwise go elsewhere.',
       'PL/EL/DM (Yes ●): But total payments may be close to double the amount borrowed, and the tax stacks on the Measure Y levy that runs to 2047.',

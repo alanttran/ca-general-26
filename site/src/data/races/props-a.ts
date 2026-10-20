@@ -196,7 +196,7 @@ export const RACES_PROPS_A: Race[] = [
     hinges: {
       PL: 'Yes if direct public spending on subsidized housing and homelessness, with no new tax, is your priority. No if you think tying up $500–600 million a year for 25 years buys too few homes, since even 40,000 units barely dents the shortfall.',
       EL: 'Yes if borrowing over 25 years for buildings that last 55 or more is a sensible use of debt at about 0.25% of the budget. No if you’d want prior housing bonds spent and construction costs fixed before borrowing $10 billion more.',
-      DM: 'Yes if help for renters, first-time buyers and veterans matters most and you follow the governor and party. No if 25 years of debt payments from the budget that funds schools and Medi-Cal worries you more.',
+      DM: 'Yes if help for renters, first-time buyers and veterans matters most and you give weight to the governor’s and party’s backing. No if 25 years of debt payments from the budget that funds schools and Medi-Cal worries you more.',
       OL: 'Yes if some new subsidized homes beat none, even though the bond is smaller than you’d like. No if high per-unit costs and developer middlemen make you doubt the money will deliver enough homes.',
       SS: 'Yes if state help with housing costs matters to you, even with doubts about Sacramento. No if you’d rather that $500–600 million a year stay available for services you use now.',
       AR: 'Yes if the CalVet loans and homeownership help matter most, since the veterans portion has historically cost taxpayers nothing. No if you’d rather grow market supply than add 25 years of General Fund debt for subsidies.',
@@ -338,7 +338,7 @@ export const RACES_PROPS_A: Race[] = [
     hinges: {
       PL: 'Yes if protecting Medi-Cal, schools and other safety-net programs from recession cuts matters most. No if you think locking up to 20% of revenue in reserves will justify cuts or delay programs you see as urgent now.',
       EL: 'Yes if you see bigger reserves, counted under the Gann limit only when spent, as responsible budgeting. No if lawmakers suspending over $5 billion in required deposits makes you doubt a bigger fund will be kept intact.',
-      DM: 'Yes if shielding schools and health care from boom-and-bust cuts is your priority and you follow the governor’s lead. No if money set aside, sometimes $1 billion or more a year, would do more good spent on needs now.',
+      DM: 'Yes if shielding schools and health care from boom-and-bust cuts is your priority and you give weight to the governor’s support. No if money set aside, sometimes $1 billion or more a year, would do more good spent on needs now.',
       OL: 'Yes if protecting services in a downturn is worth saving more in good years. No if you’d rather surplus revenue go to pressing needs now than sit in a reserve.',
       SS: 'Yes if saving in good years for hard times makes sense to you, as it would for a household. No if you doubt Sacramento will leave the money alone, since it can withdraw in a declared budget emergency.',
       AR: 'Yes if more saving and extra debt paydown through 2040 matter most to you. No if preserving taxpayer rebates under the 1979 Gann limit matters more than a bigger reserve.',
@@ -636,7 +636,7 @@ export const RACES_PROPS_A: Race[] = [
     hinges: {
       PL: 'Yes if matching small donations to give ordinary residents more weight against big donors is your priority. No if you think public financing does little against independent expenditures, where most big-money spending now happens.',
       EL: 'Yes if you back the League of Women Voters’ and Common Cause’s reform and like that each community chooses whether to opt in. No if leaving costs, caps and funding sources to the officials who benefit is too open-ended.',
-      DM: 'Yes if curbing big-donor influence matters most and you follow the party’s endorsement. No if you want any program’s cost and funding source spelled out before the ban is lifted, with services already feeling squeezed.',
+      DM: 'Yes if curbing big-donor influence matters most and you give weight to the party’s endorsement. No if you want any program’s cost and funding source spelled out before the ban is lifted, with services already feeling squeezed.',
       OL: 'Yes if lower fundraising barriers could help insurgent candidates without wealthy networks run. No if you expect incumbents to design programs that protect themselves rather than challengers.',
       SS: 'Yes if big donors frustrate you more than public money for campaigns, since nothing is spent unless your community opts in. No if tax money going to politicians’ campaigns, including ones you oppose, is a non-starter.',
       AR: 'Yes if local choice and small-donor matching seem a fair check on big money. No if an open-ended new spending category, with its design left to officials, is worse than keeping the current ban.',
@@ -773,7 +773,7 @@ export const RACES_PROPS_A: Race[] = [
     hinges: {
       PL: 'Yes if a replacement chosen by a small plurality, after a partisan recall push like 2021’s, looks like minority rule to you. No if limiting voters’ direct choice of a replacement goes too far, even to fix that.',
       EL: 'Yes if succession by the elected Lieutenant Governor offers more stability than a 46- or 135-person plurality race. No if a recall that leaves the same party’s Lieutenant Governor in charge gives voters too little real change for the effort.',
-      DM: 'Yes if you follow the party and want recalls focused on misconduct, not a rerun of the last election. No if choosing who replaces a removed official is a voter power you don’t want to give up.',
+      DM: 'Yes if you want recalls focused on misconduct, not a rerun of the last election, and give weight to the party’s endorsement. No if choosing who replaces a removed official is a voter power you don’t want to give up.',
       OL: 'Yes if you saw the 2021 recall as a partisan end-run and want plurality winners stopped. No if moving the replacement choice to appointments and party succession puts too much power with insiders.',
       SS: 'Yes if you think costly recall elections have become a partisan rerun rather than a response to wrongdoing. No if it reads as taking a choice away from voters and handing it to politicians.',
       AR: 'Yes if a narrowly removed official being replaced by someone with far less support troubles you. No if the recall-and-replace system is a working check that once delivered a Republican governor.',

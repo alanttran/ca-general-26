@@ -332,7 +332,7 @@ export interface Race {
   /** Cited head-to-head general-election polls (newest first). */
   polling?: RacePoll[];
   crossTypology: CrossTypologyRow[];
-  /** Per-typology trade-offs (“Hinges on”). Required for every row of CA statewide props. */
+  /** Per-typology trade-offs (“Hinges on”). Required for every row of every measure (enforced by the validator). */
   hinges?: TypologyHinges;
   /**
    * “PL (Yes ◐): But consider …” lines. Each is shown in the matching typology rows of the picks table (unless that

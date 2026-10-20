@@ -40,6 +40,7 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         summary: 'What each pick hinges on',
         bullets: [
           'Every voter type’s pick on each state proposition now says what the vote hinges on, as both sides: “Yes if … No if ….” Quick view shows your own type’s line right under its pick.',
+          'Local measures and Colorado’s statewide measures now have the same “Vote Yes if / Vote No if” lines for every voter type.',
           'Counter-arguments for candidates and local measures now appear in the matching voter type’s row of the picks table instead of a separate list.',
         ],
       },
