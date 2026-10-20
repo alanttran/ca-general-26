@@ -3936,3 +3936,63 @@ button:focus-visible {
   border-left-color: var(--rad-border);
   background: var(--rad-surface-elevated);
 }
+
+/* “Hinges on” as two labeled lines (Yes if / No if), colored like the Yes/No meanings. */
+.hinge {
+  padding: 0.45rem 0.65rem;
+}
+
+.hinge__title {
+  margin: 0 0 0.3rem;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rad-text-muted);
+}
+
+.hinge__list {
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.hinge__row {
+  display: grid;
+  grid-template-columns: 4.25rem minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: baseline;
+
+  dt {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  &--yes dt {
+    color: var(--rad-accent-dim);
+  }
+
+  &--no dt {
+    color: var(--rad-warn);
+  }
+}
+
+@media (max-width: 559px) {
+  /* Phones: “Yes if” leads its sentence inline instead of taking a column. */
+  .hinge__row {
+    display: block;
+
+    dt,
+    dd {
+      display: inline;
+    }
+
+    dt::after {
+      content: ' ';
+    }
+  }
+}

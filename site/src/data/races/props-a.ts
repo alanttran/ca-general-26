@@ -636,7 +636,7 @@ export const RACES_PROPS_A: Race[] = [
     hinges: {
       PL: 'Yes if matching small donations to give ordinary residents more weight against big donors is your priority. No if you think public financing does little against independent expenditures, where most big-money spending now happens.',
       EL: 'Yes if you back the League of Women Voters’ and Common Cause’s reform and like that each community chooses whether to opt in. No if leaving costs, caps and funding sources to the officials who benefit is too open-ended.',
-      DM: 'Yes if curbing big-donor influence matters most and you follow the party’s endorsement. No if, with services feeling squeezed, you want any program’s cost and funding source spelled out before the ban is lifted.',
+      DM: 'Yes if curbing big-donor influence matters most and you follow the party’s endorsement. No if you want any program’s cost and funding source spelled out before the ban is lifted, with services already feeling squeezed.',
       OL: 'Yes if lower fundraising barriers could help insurgent candidates without wealthy networks run. No if you expect incumbents to design programs that protect themselves rather than challengers.',
       SS: 'Yes if big donors frustrate you more than public money for campaigns, since nothing is spent unless your community opts in. No if tax money going to politicians’ campaigns, including ones you oppose, is a non-starter.',
       AR: 'Yes if local choice and small-donor matching seem a fair check on big money. No if an open-ended new spending category, with its design left to officials, is worse than keeping the current ban.',

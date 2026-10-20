@@ -2504,6 +2504,9 @@ function renderCrossTable(race: Race): HTMLElement {
   return wrap;
 }
 
+/** A hinge written “Yes if <a>. No if <b>.” → [, a, b]. Kept in sync with the validator’s check. */
+const HINGE_SIDES = /^Yes if ([\s\S]+?)\s+No if ([\s\S]+)$/;
+
 /** “PL/EL (Yes ◐): But consider …” → the typology codes and the text after the colon; undefined if not that shape. */
 function parseCounter(line: string): { codes: TypologyCode[]; text: string } | undefined {
   const m = /^((?:PL|EL|DM|OL|SS|AR|PR|CC|FF)(?:\/(?:PL|EL|DM|OL|SS|AR|PR|CC|FF))*)\s*\([^)]*\):\s*([\s\S]+)$/.exec(line.trim());
@@ -2518,10 +2521,32 @@ function renderTradeoff(race: Race, code: TypologyCode, className: string): HTML
   const hinge = race.hinges?.[code];
   const p = el('p', className);
   if (hinge) {
-    const strong = el('strong');
-    strong.textContent = 'Hinges on: ';
-    p.append(strong, hinge);
-    return p;
+    // “Yes if … No if …” reads best as two labeled lines; anything else falls back to one paragraph.
+    const sides = HINGE_SIDES.exec(hinge);
+    if (!sides) {
+      const strong = el('strong');
+      strong.textContent = 'Hinges on: ';
+      p.append(strong, hinge);
+      return p;
+    }
+    const box = el('div', `${className} hinge`);
+    const title = el('p', 'hinge__title');
+    title.textContent = 'Hinges on';
+    const dl = el('dl', 'hinge__list');
+    for (const [mod, label, text] of [
+      ['yes', 'Yes if', sides[1]],
+      ['no', 'No if', sides[2]],
+    ] as const) {
+      const row = el('div', `hinge__row hinge__row--${mod}`);
+      const dt = el('dt');
+      dt.textContent = label;
+      const dd = el('dd');
+      dd.textContent = text;
+      row.append(dt, dd);
+      dl.append(row);
+    }
+    box.append(title, dl);
+    return box;
   }
   const counters = (race.counterArguments ?? []).map(parseCounter).filter((c) => c?.codes.includes(code));
   if (!counters.length) return null;

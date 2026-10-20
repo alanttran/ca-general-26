@@ -222,6 +222,9 @@ export function collectMeasureIssues(races: Race[]): TypologyValidationIssue[] {
       const race = races.find((r) => r.id === id)!;
       const missing = race.crossTypology.filter((row) => !race.hinges?.[row.typology]?.trim()).map((row) => row.typology);
       if (missing.length) issues.push({ raceId: id, message: `CA props need a hinge for every typology; missing ${missing.join(', ')}` });
+      for (const [code, h] of Object.entries(race.hinges ?? {})) {
+        if (!/^Yes if [\s\S]+?\s+No if [^,]/.test(h ?? '')) issues.push({ raceId: id, message: `hinge ${code} must read “Yes if …. No if ….” (No side not starting with a comma)` });
+      }
     }
     if (/^prop-\d+$/.test(id) && (!m.forYou?.wallet.trim() || !m.forYou.who.trim())) {
       issues.push({ raceId: id, message: 'CA props need forYou.wallet and forYou.who (“What it means for you”)' });
