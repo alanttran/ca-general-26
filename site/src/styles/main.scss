@@ -4022,3 +4022,87 @@ button:focus-visible {
 .hinge__row {
   grid-template-columns: 6.25rem minmax(0, 1fr);
 }
+
+/* Full view: reference material folded below the dates box. */
+.ref-fold {
+  max-width: var(--rad-max-width);
+  margin: 0 auto 1rem;
+  background: var(--rad-surface);
+  border: 1px solid var(--rad-border);
+  border-radius: var(--rad-radius);
+}
+
+.ref-fold__summary {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.85rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.ref-fold__title {
+  font-size: var(--fs-lg);
+  color: var(--rad-accent-dim);
+
+  &::before {
+    content: '▸ ';
+  }
+}
+
+.ref-fold[open] .ref-fold__title::before {
+  content: '▾ ';
+}
+
+.ref-fold__hint {
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+}
+
+.ref-fold__body {
+  padding: 0 1rem 1rem;
+}
+
+/* Simple views skip the reference folds entirely (same as before: they hid this material). */
+#app[data-view='quick'],
+#app[data-view='guided'] {
+  .ref-fold {
+    display: none;
+  }
+}
+
+/* Quick view: contests open in place under their cheat-sheet row. */
+button.quick-list__row {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.quick-list__rows li.is-open > .quick-list__row {
+  background: color-mix(in srgb, var(--rad-accent) 9%, var(--rad-surface));
+}
+
+.quick-list__race {
+  padding: 0.25rem 0 0.75rem;
+
+  > details.race {
+    margin: 0;
+  }
+
+  .race__summary {
+    display: none;
+  }
+}
+
+/* Full view: print controls sit inside the view bar. */
+.view-bar .print-picks {
+  margin: 0.6rem 0 0;
+  padding: 0;
+  max-width: none;
+}

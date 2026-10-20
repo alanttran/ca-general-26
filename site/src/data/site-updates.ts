@@ -28,6 +28,15 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         ],
       },
       {
+        summary: 'Tidier pages in every view',
+        bullets: [
+          'Everything view: the guide’s background, the nine voter types, the methodology and the all-picks table now fold away, so the ballot starts about 5,000 pixels sooner. Links into them still open the right section.',
+          'Quick view: the cheat sheet is now the contest list. Tap a row to open that contest right under it, instead of scrolling to a second copy below.',
+          'Race-by-race view: your type’s box keeps the pick, the reason and what it hinges on; the measure’s facts appear once, in the card right after.',
+          'The print controls moved into the bar under the ZIP box, and “What changed” moved to the bottom of the page.',
+        ],
+      },
+      {
         summary: 'What each pick hinges on',
         bullets: [
           'Every voter type’s pick on each state proposition now says what the vote hinges on, as both sides: “Yes if … No if ….” Quick view shows your own type’s line right under its pick.',

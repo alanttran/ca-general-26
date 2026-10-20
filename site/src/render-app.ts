@@ -554,8 +554,8 @@ export function renderApp(root: HTMLElement, zip: string): void {
     ...(imported ? [imported] : []),
     prefs.mode ? renderViewBar(data, prefs, rerender) : renderWelcome(prefs, rerender),
     renderScopeNote(data, Boolean(profile.localPending)),
-    renderPrintPicks(data, prefs.typology),
-    renderSiteUpdatesSection(data.meta.lastContentUpdated),
+    // With a view chosen, the print controls live in the view bar; the changelog sits in the footer.
+    ...(prefs.mode ? [] : [renderPrintPicks(data, prefs.typology)]),
   );
 
   const nav = el('nav', 'toc-nav', { 'aria-label': 'On this page' });
@@ -578,11 +578,22 @@ export function renderApp(root: HTMLElement, zip: string): void {
   main.append(
     renderHowToVote(data),
     ...(viewMode === 'quick' && viewTypology ? [renderQuickList(data, viewTypology)] : []),
-    renderIntroBlocks(data.meta.state === 'CO'),
-    renderTypologyKey(data),
-    renderMethodologySection(),
-    renderTldr(data),
-    renderRacesByCategory(data),
+    referenceFold(
+      'about-guide',
+      'About this guide and how picks are made',
+      'How the general works, the nine voter types, methodology, and how experience and red flags are judged.',
+      renderIntroBlocks(data.meta.state === 'CO'),
+      renderTypologyKey(data),
+      renderMethodologySection(),
+    ),
+    referenceFold(
+      'all-picks',
+      'All picks at a glance',
+      `Every contest on this ballot with all nine voter types’ picks, in one table.`,
+      renderTldr(data),
+    ),
+    // Quick view: the cheat sheet above is the contest list (each row opens its contest in place).
+    ...(viewMode === 'quick' && viewTypology ? [] : [renderRacesByCategory(data)]),
   );
 
   const footer = el('footer', 'site-footer');
@@ -606,13 +617,45 @@ export function renderApp(root: HTMLElement, zip: string): void {
     extLink('https://alanttran.github.io/ca-primary-26/', 'June 2 primary edition', true),
     document.createTextNode('.'),
   );
-  footer.append(fp, fp2);
+  footer.append(renderSiteUpdatesSection(data.meta.lastContentUpdated), fp, fp2);
 
   root.append(header, nav, main, footer, renderDock(data, header), renderPrintSheet());
   markTocProgress(data, tocList);
   const printSelect = document.getElementById('print-typology') as HTMLSelectElement | null;
   fillPrintSheet(data, (printSelect?.value as PrintColumn | undefined) ?? 'EL');
 }
+
+/** Full view's reference material, folded so the ballot comes first; links into it open the fold. */
+function referenceFold(id: string, title: string, hint: string, ...children: HTMLElement[]): HTMLDetailsElement {
+  const d = el('details', 'ref-fold', { id });
+  const s = el('summary', 'ref-fold__summary');
+  const t = el('strong', 'ref-fold__title');
+  t.textContent = title;
+  const h = el('span', 'ref-fold__hint');
+  h.textContent = hint;
+  s.append(t, h);
+  const body = el('div', 'ref-fold__body');
+  body.append(...children);
+  d.append(s, body);
+  return d;
+}
+
+/** In-page links (“#methodology”, “#red-flag-rubric”, “#race-…”) open any folds around their target first. */
+function openFoldsAround(target: Element | null): void {
+  for (let n = target?.parentElement; n; n = n.parentElement) {
+    if (n instanceof HTMLDetailsElement) n.open = true;
+    if (n.hidden && n.classList.contains('quick-list__race')) {
+      n.hidden = false;
+      document.querySelector(`[aria-controls="${n.id}"]`)?.setAttribute('aria-expanded', 'true');
+      n.parentElement?.classList.add('is-open');
+    }
+  }
+}
+document.addEventListener('click', (e) => {
+  const a = (e.target as Element | null)?.closest?.('a[href^="#"]');
+  const id = a?.getAttribute('href')?.slice(1);
+  if (id) openFoldsAround(document.getElementById(id));
+});
 
 /** The voter's own typology in Quick and Guided views (undefined in Full view or before they pick). */
 let viewTypology: TypologyCode | undefined;
@@ -806,6 +849,7 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
   }
   line.append(' ', actions);
   bar.append(line);
+  if (mode === 'full') bar.append(renderPrintPicks(data, prefs.typology));
 
   if (mode !== 'full' && ty) {
     const ol = el('ol', 'view-bar__steps');
@@ -1031,7 +1075,8 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
     for (const race of races) {
       const row = race.crossTypology.find((r) => r.typology === code);
       const li = el('li');
-      const a = el('a', 'quick-list__row', { href: `#race-${race.id}` });
+      // A toggle, not a link: the contest opens right under its row.
+      const a = el('button', 'quick-list__row', { type: 'button', 'aria-expanded': 'false', 'aria-controls': `quick-race-${race.id}` });
       const name = el('span', 'quick-list__name');
       name.textContent = race.tldrLabel ?? race.title;
       const pick = el('span', 'quick-list__pick');
@@ -1056,11 +1101,17 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
       refresh();
       refreshers.push(refresh);
       a.append(name, pick, mine);
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        openRace(race.id);
+      const holder = el('div', 'quick-list__race', { id: `quick-race-${race.id}` });
+      holder.hidden = true;
+      const details = renderRace(race) as HTMLDetailsElement;
+      details.open = true;
+      holder.append(details);
+      a.addEventListener('click', () => {
+        holder.hidden = !holder.hidden;
+        a.setAttribute('aria-expanded', String(!holder.hidden));
+        li.classList.toggle('is-open', !holder.hidden);
       });
-      li.append(a);
+      li.append(a, holder);
       ul.append(li);
     }
     sec.append(ch, ul);
@@ -1073,6 +1124,7 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
 function openRace(id: string): void {
   const d = document.getElementById(`race-${id}`) as HTMLDetailsElement | null;
   if (!d) return;
+  openFoldsAround(d);
   d.open = true;
   history.replaceState(history.state, '', `#race-${id}`);
   d.scrollIntoView({ block: 'start' });
@@ -2145,7 +2197,8 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
       box.append(warn);
     }
   }
-  if (race.kind === 'measure' && race.measure?.yesMeans && race.measure.noMeans) {
+  // Race by race shows the measure's own “What it means for you” card right below, so the facts aren't repeated here.
+  if (race.kind === 'measure' && race.measure?.yesMeans && race.measure.noMeans && viewMode !== 'guided') {
     const title = el('p', 'your-type__section');
     title.textContent = 'What your vote does';
     const dl = el('dl', 'your-type__means');
