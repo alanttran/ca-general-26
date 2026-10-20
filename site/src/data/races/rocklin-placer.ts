@@ -435,8 +435,9 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         { label: 'Placer County Elections: Measures to Appear on Ballot', url: MEASURES_PDF, summary: 'Official ballot text for Measures G and H.' },
         { label: 'Hoodline: Placer supes put pay overhaul and power rules on 2026 ballot', url: 'https://hoodline.com/2026/07/placer-supes-put-pay-overhaul-and-power-rules-on-2026-ballot/', summary: 'July 2026 summary of the 5-0 vote.' },
         { label: 'Sacramento Bee: Your guide to Placer County Measures H and G and Roseville Measure A (Oct 14)', url: 'https://www.yahoo.com/news/politics/articles/guide-placer-county-measures-h-160739474.html', summary: 'Explains the vacancy deadline change, when a vacancy goes to voters, and notes that no official arguments were filed.' },
+        { label: 'Sacramento Bee: Placer County Measures H, G and A: 2026 voter guide (Oct 14)', url: 'https://www.sacbee.com/news/politics-government/election/voter-guide/article317117935.html', summary: 'Original Bee voter guide explaining the vacancy deadline change and when a vacancy goes to voters.' },
       ],
-      explainerUrl: 'https://www.yahoo.com/news/politics/articles/guide-placer-county-measures-h-160739474.html',
+      explainerUrl: 'https://www.sacbee.com/news/politics-government/election/voter-guide/article317117935.html',
     },
     crossTypology: ct([
       ['PL', 'Yes', '○', 'Progressive Left voters generally favor clearer, more open procedures, and the amendment adds a ballot placement rule for some vacancies.'],
@@ -508,8 +509,9 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         { label: 'Placer County Elections: Measures to Appear on Ballot', url: MEASURES_PDF, summary: 'Official ballot text for Measures G and H.' },
         { label: 'Hoodline: Placer supes put pay overhaul and power rules on 2026 ballot', url: 'https://hoodline.com/2026/07/placer-supes-put-pay-overhaul-and-power-rules-on-2026-ballot/', summary: 'July 2026 summary of the 5-0 vote.' },
         { label: 'Sacramento Bee: Your guide to Placer County Measures H and G and Roseville Measure A (Oct 14)', url: 'https://www.yahoo.com/news/politics/articles/guide-placer-county-measures-h-160739474.html', summary: 'Explains how CEO contracts could set different removal procedures, and notes that no official arguments were filed.' },
+        { label: 'Sacramento Bee: Placer County Measures H, G and A: 2026 voter guide (Oct 14)', url: 'https://www.sacbee.com/news/politics-government/election/voter-guide/article317117935.html', summary: 'Original Bee voter guide explaining how CEO contracts could set different removal procedures.' },
       ],
-      explainerUrl: 'https://www.yahoo.com/news/politics/articles/guide-placer-county-measures-h-160739474.html',
+      explainerUrl: 'https://www.sacbee.com/news/politics-government/election/voter-guide/article317117935.html',
     },
     crossTypology: ct([
       ['PL', '—', '—', 'Progressive Left voters have no clear stake in contract terms for a county executive.'],

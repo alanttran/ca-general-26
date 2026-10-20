@@ -39,6 +39,8 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         bullets: [
           'Props and local measures now show where major newspaper editorial boards stand, each linked to its editorial: the LA Times, SF Chronicle, San Diego Union-Tribune, Sacramento Bee, Mercury News / East Bay Times, Orange County Register, LA Daily News, Denver Post and Denver Gazette.',
           'Quick and race-by-race views show the papers for Yes and for No at the top of each measure. Many papers are still publishing, so more will be added.',
+          'More newspaper endorsements: the Mercury News / East Bay Times on Props 1, 2, 3, 4, 5, 37, 40, 41, 42, 43 and 45.',
+          'New news explainers: Placer County Measures G and H now link the Sacramento Bee’s own voter guide.',
         ],
       },
       {
