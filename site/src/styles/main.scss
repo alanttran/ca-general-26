@@ -23,6 +23,9 @@
   --flag-serious: #c2410c;
   --flag-notable: #a16207;
   --rad-warn: #c2410c;
+  /* Yes/No labels stay neutral: green/amber/gray mean confidence, red/orange/yellow mean red flags. */
+  --vote-label: var(--rad-text);
+  --vote-rule: #64748b;
   --rad-font: 'Segoe UI', system-ui, -apple-system, sans-serif;
   --rad-max-width: 72rem;
   --rad-radius: 10px;
@@ -1559,11 +1562,11 @@ main {
   }
 
   &--yes dt {
-    color: var(--rad-accent);
+    color: var(--vote-label);
   }
 
   &--no dt {
-    color: var(--rad-warn);
+    color: var(--vote-label);
   }
 }
 
@@ -1610,11 +1613,11 @@ main {
   background: var(--rad-surface);
 
   &--yes {
-    border-top-color: var(--rad-accent);
+    border-top-color: var(--vote-rule);
   }
 
   &--no {
-    border-top-color: var(--rad-warn);
+    border-top-color: var(--vote-rule);
   }
 
   ul {
@@ -3878,11 +3881,11 @@ button:focus-visible {
   }
 
   &--yes dt {
-    color: var(--rad-accent);
+    color: var(--vote-label);
   }
 
   &--no dt {
-    color: var(--rad-warn);
+    color: var(--vote-label);
   }
 }
 
@@ -3973,11 +3976,11 @@ button:focus-visible {
   }
 
   &--yes dt {
-    color: var(--rad-accent-dim);
+    color: var(--vote-label);
   }
 
   &--no dt {
-    color: var(--rad-warn);
+    color: var(--vote-label);
   }
 }
 
@@ -4012,11 +4015,11 @@ button:focus-visible {
 }
 
 .your-type__means-term--yes {
-  color: var(--rad-accent-dim);
+  color: var(--vote-label);
 }
 
 .your-type__means-term--no {
-  color: var(--rad-warn);
+  color: var(--vote-label);
 }
 
 .hinge__row {
