@@ -252,6 +252,7 @@ export const RACES_PROPS_A: Race[] = [
       },
       positions: [
         ...partyPositions('Yes', 'No', 'No position', 'No'),
+        editorial(PAPER.sfc, 'Yes', 'https://www.sfchronicle.com/opinion/editorials/article/prop-2-money-california-22468892.php'),
         editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/10/02/endorsements-props-2-37-wouldnt-yield-saner-state-budgets-more-housing/'),
         editorial(PAPER.sacbee, 'Yes', 'https://www.sacbee.com/opinion/article317091637.html'),
         editorial(PAPER.bang, 'Yes', 'https://www.mercurynews.com/2026/10/13/bay-area-news-group-california-election-endorsements-november-2026/'),
@@ -695,7 +696,7 @@ export const RACES_PROPS_A: Race[] = [
         editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/prop-5-recall-california-22458510.php'),
         editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/09/25/a-vote-against-prop-5-is-a-vote-against-the-california-status-quo/'),
         editorial(PAPER.sacbee, 'Yes', 'https://www.sacbee.com/opinion/election-endorsements/article316911387.html'),
-        editorial(PAPER.bang, 'No', 'https://www.mercurynews.com/2026/10/13/bay-area-news-group-california-election-endorsements-november-2026/'),
+        editorial(PAPER.bang, 'No', 'https://www.mercurynews.com/2026/10/20/endorsement-no-on-prop-5-a-bad-idea-that-protects-the-status-quo-and-silences-independent-minded-challengers/'),
         editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/08/12/endorsement-vote-no-on-proposition-5-an-attack-on-californias-recall-power/'),
       ],
       measureType: 'Legislative constitutional amendment',

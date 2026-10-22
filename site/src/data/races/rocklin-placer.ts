@@ -610,8 +610,9 @@ export const RACES_ROCKLIN_PLACER: Race[] = [
         { label: 'Sacramento Bee: Rocklin voters may decide on half-cent sales tax (June 2026)', url: 'https://www.yahoo.com/news/politics/articles/rocklin-voters-may-decide-half-142738960.html', summary: 'Compares sales tax rates across Placer County cities.' },
         { label: 'Sacramento Bee: Rocklin City Council to vote on adding a sales-tax increase (June 2026)', url: 'https://www.yahoo.com/news/politics/articles/rocklin-city-council-vote-adding-210459170.html', summary: 'Council action and city rationale.' },
         { label: 'Sacramento Bee: Your guide to sales tax measures in Rocklin, Lincoln and Colfax (Oct 12)', url: 'https://www.yahoo.com/news/politics/articles/guide-sales-tax-measures-rocklin-164747231.html', summary: 'Explains the rate change, expected revenue and duration, and who signed the ballot arguments (none were filed against).' },
+        { label: 'Sacramento Bee: Rocklin, Lincoln and Colfax sales tax measures explained (Oct 12)', url: 'https://www.sacbee.com/news/politics-government/election/voter-guide/article317117942.html', summary: 'Original Bee voter guide explaining the half-cent rate change, where the money goes, and who signed the ballot arguments.' },
       ],
-      explainerUrl: 'https://www.yahoo.com/news/politics/articles/guide-sales-tax-measures-rocklin-164747231.html',
+      explainerUrl: 'https://www.sacbee.com/news/politics-government/election/voter-guide/article317117942.html',
     },
     crossTypology: ct([
       ['PL', 'Yes', '◐', 'Progressive Left voters support public safety, parks and city services, but sales taxes are regressive and the money is not earmarked.'],

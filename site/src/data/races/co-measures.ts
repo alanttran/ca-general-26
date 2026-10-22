@@ -788,7 +788,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes total is Yes for Colorado Kids; its donor amounts are from filings through mid-September, when it had raised about $2.06 million. No measure-specific No committee reported cash; ' + BRIGHTER_NOTE + ' Your Family’s Future Alliance ($15,938) also campaigns for TABOR.',
         sources: [tracer('Yes for Colorado Kids', 52137), BRIGHTER, RMV_MONEY],
       },
-      positions: [coDems('Yes'), gazette('No')],
+      positions: [coDems('Yes'), gazette('No', 'https://www.denvergazette.com/2026/10/21/editorial-prop-nn-would-bloat-states-budget-and-end-tabor-refunds/')],
       measureType: 'Legislatively referred statute (TABOR voter-approved revenue change)',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -1088,7 +1088,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes: Protect Kids Colorado. No: Families Not Politics ($1.66 million, plus $335,892 in-kind) and No on 134 and 135 ($10,788), both fighting 134 and 135 together; The People’s No ($200,000) and ' + VCS_NOTE,
         sources: [tracer('Families Not Politics', 51677), tracer('Protect Kids Colorado – Issue Committee', 47398), tracer('No on 134 and 135', 52230), RMV_MONEY],
       },
-      positions: [coDems('No'), gazette('Yes')],
+      positions: [coDems('No'), gazette('Yes', 'https://www.denvergazette.com/2026/10/20/editorial-the-latest-case-for-a-yes-vote-on-proposition-134/')],
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:

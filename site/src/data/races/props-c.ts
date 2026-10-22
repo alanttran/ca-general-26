@@ -59,7 +59,7 @@ export const RACES_PROPS_C: Race[] = [
         editorial(PAPER.sfc, 'No', 'https://www.sfchronicle.com/opinion/editorials/article/california-proposition-42-taxes-22449389.php'),
         editorial(PAPER.sdut, 'Yes', 'https://www.sandiegouniontribune.com/2026/09/21/endorsement-yes-on-proposition-41-and-42-to-limit-taxation-in-california/'),
         editorial(PAPER.sacbee, 'No', 'https://www.sacbee.com/opinion/election-endorsements/article317166989.html'),
-        editorial(PAPER.bang, 'No', 'https://www.mercurynews.com/2026/10/13/bay-area-news-group-california-election-endorsements-november-2026/'),
+        editorial(PAPER.bang, 'No', 'https://www.mercurynews.com/2026/10/21/endorsement-reject-california-ballot-propositions-40-41-42-billionaires-tax-ai-inequality/'),
         editorial(PAPER.ocr, 'Yes', 'https://www.ocregister.com/2026/09/21/endorsement-yes-on-proposition-41-and-42-to-limit-taxation-in-california/'),
       ],
       measureType: 'Initiative constitutional amendment',

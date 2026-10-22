@@ -58,6 +58,8 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
           'Quick and race-by-race views show the papers for Yes and for No at the top of each measure. Many papers are still publishing, so more will be added.',
           'More newspaper endorsements: the Mercury News / East Bay Times on Props 1, 2, 3, 4, 5, 37, 40, 41, 42, 43 and 45.',
           'New news explainers: Placer County Measures G and H now link the Sacramento Bee’s own voter guide.',
+          'More newspaper endorsements: the San Francisco Chronicle on Prop 2; links to the papers’ own editorials for the Mercury News on Props 5, 40, 41 and 42, the Union-Tribune on Oceanside Measures R and S, and the Denver Gazette on Props NN and 134.',
+          'New news explainers: Rocklin Measure C now links the Sacramento Bee’s own voter guide.',
         ],
       },
       {
