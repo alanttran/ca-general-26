@@ -65,6 +65,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
     candidates: [
       {
         id: 'john-hickenlooper',
+        photoSlug: 'john-hickenlooper',
         name: 'John Hickenlooper',
         party: 'D',
         role: 'U.S. Senator',
@@ -111,6 +112,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
       },
       {
         id: 'mark-baisley',
+        photoSlug: 'mark-baisley',
         name: 'Mark Baisley',
         party: 'R',
         role: 'State Senator',
@@ -312,6 +314,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
     candidates: [
       {
         id: 'melat-kiros',
+        photoSlug: 'melat-kiros',
         name: 'Melat Kiros',
         party: 'D',
         role: 'Attorney and public-policy doctoral student',
@@ -520,6 +523,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
     candidates: [
       {
         id: 'phil-weiser',
+        photoSlug: 'phil-weiser',
         name: 'Phil Weiser',
         party: 'D',
         role: 'Colorado Attorney General',
@@ -551,6 +555,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
       },
       {
         id: 'victor-marx',
+        photoSlug: 'victor-marx',
         name: 'Victor Marx',
         party: 'R',
         role: 'Founder, All Things Possible Ministries',
@@ -705,6 +710,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
       },
       {
         id: 'greg-lopez',
+        photoSlug: 'greg-lopez',
         name: 'Greg Lopez',
         party: 'NP',
         role: 'Former U.S. Representative',
@@ -997,6 +1003,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
     candidates: [
       {
         id: 'jeff-bridges',
+        photoSlug: 'jeff-bridges',
         name: 'Jeff Bridges',
         party: 'D',
         role: 'State Senator; chair, Joint Budget Committee',
@@ -1024,6 +1031,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
       },
       {
         id: 'kevin-grantham',
+        photoSlug: 'kevin-grantham',
         name: 'Kevin Grantham',
         party: 'R',
         role: 'Fremont County Commissioner; former Senate President',
@@ -1159,6 +1167,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
     candidates: [
       {
         id: 'michael-allen',
+        photoSlug: 'michael-allen',
         name: 'Michael J. Allen',
         party: 'R',
         role: 'District Attorney, 4th Judicial District',
@@ -1189,6 +1198,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
       },
       {
         id: 'jena-griswold',
+        photoSlug: 'jena-griswold',
         name: 'Jena Griswold',
         party: 'D',
         role: 'Colorado Secretary of State',

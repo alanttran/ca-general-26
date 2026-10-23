@@ -265,6 +265,7 @@ export const RACES_CO_DENVER: Race[] = [
     candidates: [
       {
         id: 'matt-ball',
+        photoSlug: 'matt-ball',
         name: 'Matt Ball',
         party: 'D',
         role: 'State Senator, District 31',

@@ -176,6 +176,7 @@ export const RACES_SDC_SOUTH_EAST: Race[] = [
     candidates: [
       {
         id: 'mary-salas',
+        photoSlug: 'mary-salas',
         name: 'Mary Salas',
         party: 'NP',
         role: 'Retired Mayor Chula Vista',

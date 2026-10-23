@@ -75,6 +75,7 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
     candidates: [
       {
         id: 'salud-carbajal',
+        photoSlug: 'salud-carbajal',
         name: 'Salud Carbajal',
         party: 'D',
         role: 'Member of Congress',
@@ -188,6 +189,7 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
     candidates: [
       {
         id: 'jacqui-irwin',
+        photoSlug: 'jacqui-irwin',
         name: 'Jacqui Irwin',
         party: 'D',
         role: 'California State Assemblymember',
@@ -296,6 +298,7 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
     candidates: [
       {
         id: 'brad-sherman',
+        photoSlug: 'brad-sherman',
         name: 'Brad Sherman',
         party: 'D',
         role: 'United States Congressman/Dad',
@@ -405,6 +408,7 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
     candidates: [
       {
         id: 'dawn-addis',
+        photoSlug: 'dawn-addis',
         name: 'Dawn Addis',
         party: 'D',
         role: 'State Assemblymember/Teacher',
@@ -517,6 +521,7 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
     candidates: [
       {
         id: 'gregg-hart',
+        photoSlug: 'gregg-hart',
         name: 'Gregg Hart',
         party: 'D',
         role: 'State Assemblymember',
@@ -624,6 +629,7 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
     candidates: [
       {
         id: 'steve-bennett',
+        photoSlug: 'steve-bennett',
         name: 'Steve Bennett',
         party: 'D',
         role: 'Member of the Assembly, 38th District',

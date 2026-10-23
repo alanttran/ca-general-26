@@ -155,6 +155,7 @@ export const RACES_D_INLAND_B: Race[] = [
     candidates: [
       {
         id: 'james-ramos',
+        photoSlug: 'james-ramos',
         name: 'James C. Ramos',
         party: 'D',
         role: 'Assemblymember/Business Owner',
@@ -255,6 +256,7 @@ export const RACES_D_INLAND_B: Race[] = [
     candidates: [
       {
         id: 'greg-wallis',
+        photoSlug: 'greg-wallis',
         name: 'Greg Wallis',
         party: 'R',
         role: 'Member of the State Assembly',
@@ -356,6 +358,7 @@ export const RACES_D_INLAND_B: Race[] = [
     candidates: [
       {
         id: 'robert-garcia-ad50',
+        photoSlug: 'robert-garcia-ad50',
         name: 'Robert Garcia',
         party: 'D',
         role: 'State Assemblymember/Educator',
@@ -451,6 +454,7 @@ export const RACES_D_INLAND_B: Race[] = [
     candidates: [
       {
         id: 'michelle-rodriguez',
+        photoSlug: 'michelle-rodriguez',
         name: 'Michelle Rodriguez',
         party: 'D',
         role: 'Assemblymember/Mom',
@@ -547,6 +551,7 @@ export const RACES_D_INLAND_B: Race[] = [
     candidates: [
       {
         id: 'leticia-castillo',
+        photoSlug: 'leticia-castillo',
         name: 'Leticia Castillo',
         party: 'R',
         role: 'Assemblywoman/Licensed Psychotherapist',
@@ -649,6 +654,7 @@ export const RACES_D_INLAND_B: Race[] = [
     candidates: [
       {
         id: 'corey-jackson',
+        photoSlug: 'corey-jackson',
         name: 'Corey A. Jackson',
         party: 'D',
         role: 'State Assembly Member',
@@ -750,6 +756,7 @@ export const RACES_D_INLAND_B: Race[] = [
     candidates: [
       {
         id: 'natasha-johnson',
+        photoSlug: 'natasha-johnson',
         name: 'Natasha Johnson',
         party: 'R',
         role: 'Assemblywoman/Business Owner',

@@ -77,6 +77,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'george-whitesides',
+        photoSlug: 'george-whitesides',
         name: 'George Whitesides',
         party: 'D',
         role: 'U.S. Representative/Father',
@@ -186,6 +187,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'judy-chu',
+        photoSlug: 'judy-chu',
         name: 'Judy Chu',
         party: 'D',
         role: 'United States Representative',
@@ -304,6 +306,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'luz-rivas',
+        photoSlug: 'luz-rivas',
         name: 'Luz Maria Rivas',
         party: 'D',
         role: 'Congresswoman',
@@ -412,6 +415,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'gil-cisneros',
+        photoSlug: 'gil-cisneros',
         name: 'Gil Cisneros',
         party: 'D',
         role: 'U.S. Congressman',
@@ -528,6 +532,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'jimmy-gomez',
+        photoSlug: 'jimmy-gomez',
         name: 'Jimmy Gomez',
         party: 'D',
         role: 'U.S. Representative/Parent',
@@ -648,6 +653,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'susan-rubio',
+        photoSlug: 'susan-rubio',
         name: 'Susan Rubio',
         party: 'D',
         role: 'State Senator/Teacher',
@@ -777,6 +783,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'lola-smallwood-cuevas',
+        photoSlug: 'lola-smallwood-cuevas',
         name: 'Lola Smallwood-Cuevas',
         party: 'D',
         role: 'State Senator',
@@ -886,6 +893,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'juan-carrillo',
+        photoSlug: 'juan-carrillo',
         name: 'Juan Carrillo',
         party: 'D',
         role: 'State Assemblymember',
@@ -995,6 +1003,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'pilar-schiavo',
+        photoSlug: 'pilar-schiavo',
         name: 'Pilar Schiavo',
         party: 'D',
         role: 'Assemblymember',
@@ -1105,6 +1114,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'john-harabedian',
+        photoSlug: 'john-harabedian',
         name: 'John Harabedian',
         party: 'D',
         role: 'California State Assemblymember',
@@ -1209,6 +1219,7 @@ export const RACES_D_LA_A: Race[] = [
     candidates: [
       {
         id: 'celeste-rodriguez',
+        photoSlug: 'celeste-rodriguez',
         name: 'Celeste Rodriguez',
         party: 'D',
         role: 'Assemblymember',

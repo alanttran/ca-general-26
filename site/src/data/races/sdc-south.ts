@@ -666,6 +666,7 @@ export const RACES_SDC_SOUTH: Race[] = [
       },
       {
         id: 'terry-gaasterland',
+        photoSlug: 'terry-gaasterland',
         name: 'Terry Gaasterland',
         party: 'NP',
         role: 'City Councilmember/Professor',

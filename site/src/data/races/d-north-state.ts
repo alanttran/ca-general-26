@@ -74,6 +74,7 @@ export const RACES_D_NORTH_STATE: Race[] = [
     candidates: [
       {
         id: 'james-gallagher',
+        photoSlug: 'james-gallagher',
         name: 'James Gallagher',
         party: 'R',
         role: 'United States Representative/Farmer',
@@ -110,6 +111,7 @@ export const RACES_D_NORTH_STATE: Race[] = [
       },
       {
         id: 'mike-mcguire',
+        photoSlug: 'mike-mcguire',
         name: 'Mike McGuire',
         party: 'D',
         role: 'California State Senator',
@@ -195,6 +197,7 @@ export const RACES_D_NORTH_STATE: Race[] = [
     candidates: [
       {
         id: 'jared-huffman',
+        photoSlug: 'jared-huffman',
         name: 'Jared Huffman',
         party: 'D',
         role: 'U.S. Representative',
@@ -308,6 +311,7 @@ export const RACES_D_NORTH_STATE: Race[] = [
     candidates: [
       {
         id: 'ami-bera',
+        photoSlug: 'ami-bera',
         name: 'Ami Bera',
         party: 'D',
         role: 'United States Congressman',
@@ -421,6 +425,7 @@ export const RACES_D_NORTH_STATE: Race[] = [
     candidates: [
       {
         id: 'mike-thompson',
+        photoSlug: 'mike-thompson',
         name: 'Mike Thompson',
         party: 'D',
         role: 'Member of Congress',
@@ -532,6 +537,7 @@ export const RACES_D_NORTH_STATE: Race[] = [
     candidates: [
       {
         id: 'damon-connolly',
+        photoSlug: 'damon-connolly',
         name: 'Damon Connolly',
         party: 'D',
         role: 'California State Assemblymember',
@@ -753,6 +759,7 @@ export const RACES_D_NORTH_STATE: Race[] = [
     candidates: [
       {
         id: 'heather-hadwick',
+        photoSlug: 'heather-hadwick',
         name: 'Heather Hadwick',
         party: 'R',
         role: 'Farmer/Assemblywoman',
@@ -863,6 +870,7 @@ export const RACES_D_NORTH_STATE: Race[] = [
     candidates: [
       {
         id: 'chris-rogers',
+        photoSlug: 'chris-rogers',
         name: 'Chris Rogers',
         party: 'D',
         role: 'Assemblymember',
@@ -1082,6 +1090,7 @@ export const RACES_D_NORTH_STATE: Race[] = [
     candidates: [
       {
         id: 'cecilia-aguiar-curry',
+        photoSlug: 'cecilia-aguiar-curry',
         name: 'Cecilia Aguiar-Curry',
         party: 'D',
         role: 'State Assemblymember',

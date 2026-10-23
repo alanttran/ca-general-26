@@ -47,6 +47,7 @@ export const RACES_D_LA_C: Race[] = [
     candidates: [
       {
         id: 'lisa-calderon',
+        photoSlug: 'lisa-calderon',
         name: 'Lisa Calderon',
         party: 'D',
         role: 'Assembly Member/Mom',
@@ -149,6 +150,7 @@ export const RACES_D_LA_C: Race[] = [
     candidates: [
       {
         id: 'sade-elhawary',
+        photoSlug: 'sade-elhawary',
         name: 'Sade Elhawary',
         party: 'D',
         role: 'California State Assemblymember',
@@ -244,6 +246,7 @@ export const RACES_D_LA_C: Race[] = [
     candidates: [
       {
         id: 'tina-mckinnor',
+        photoSlug: 'tina-mckinnor',
         name: 'Tina McKinnor',
         party: 'D',
         role: 'State Assemblymember',
@@ -342,6 +345,7 @@ export const RACES_D_LA_C: Race[] = [
     candidates: [
       {
         id: 'jose-luis-solache',
+        photoSlug: 'jose-luis-solache',
         name: 'José Luis Solache',
         party: 'D',
         role: 'California State Assemblymember',
@@ -436,6 +440,7 @@ export const RACES_D_LA_C: Race[] = [
     candidates: [
       {
         id: 'blanca-pacheco',
+        photoSlug: 'blanca-pacheco',
         name: 'Blanca Pacheco',
         party: 'D',
         role: 'Assemblywoman',
@@ -731,6 +736,7 @@ export const RACES_D_LA_C: Race[] = [
     candidates: [
       {
         id: 'josh-lowenthal',
+        photoSlug: 'josh-lowenthal',
         name: 'Josh Lowenthal',
         party: 'D',
         role: 'Business Owner/Assemblymember',

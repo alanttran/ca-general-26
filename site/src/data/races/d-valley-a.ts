@@ -71,6 +71,7 @@ export const RACES_D_VALLEY_A: Race[] = [
     candidates: [
       {
         id: 'tom-mcclintock',
+        photoSlug: 'tom-mcclintock',
         name: 'Tom McClintock',
         party: 'R',
         role: 'United States Representative',
@@ -189,6 +190,7 @@ export const RACES_D_VALLEY_A: Race[] = [
     candidates: [
       {
         id: 'adam-gray',
+        photoSlug: 'adam-gray',
         name: 'Adam Gray',
         party: 'D',
         role: 'United States Representative/Educator',
@@ -222,6 +224,7 @@ export const RACES_D_VALLEY_A: Race[] = [
       },
       {
         id: 'kevin-lincoln',
+        photoSlug: 'kevin-lincoln',
         name: 'Kevin Lincoln',
         party: 'R',
         role: 'Small Business Owner',
@@ -297,6 +300,7 @@ export const RACES_D_VALLEY_A: Race[] = [
     candidates: [
       {
         id: 'jim-costa',
+        photoSlug: 'jim-costa',
         name: 'Jim Costa',
         party: 'D',
         role: 'Farmer/Representative',
@@ -428,6 +432,7 @@ export const RACES_D_VALLEY_A: Race[] = [
     candidates: [
       {
         id: 'david-valadao',
+        photoSlug: 'david-valadao',
         name: 'David Valadao',
         party: 'R',
         role: 'Congressman/Dairy Farmer',
@@ -550,6 +555,7 @@ export const RACES_D_VALLEY_A: Race[] = [
     candidates: [
       {
         id: 'esmeralda-soria',
+        photoSlug: 'esmeralda-soria',
         name: 'Esmeralda Soria',
         party: 'D',
         role: 'State Assemblymember',
@@ -676,6 +682,7 @@ export const RACES_D_VALLEY_A: Race[] = [
     candidates: [
       {
         id: 'melissa-hurtado',
+        photoSlug: 'melissa-hurtado',
         name: 'Melissa Hurtado',
         party: 'D',
         role: 'State Senator',
@@ -789,6 +796,7 @@ export const RACES_D_VALLEY_A: Race[] = [
     candidates: [
       {
         id: 'juan-alanis',
+        photoSlug: 'juan-alanis',
         name: 'Juan Alanis',
         party: 'R',
         role: 'Assemblyman',

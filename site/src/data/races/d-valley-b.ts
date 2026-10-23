@@ -74,6 +74,7 @@ export const RACES_D_VALLEY_B: Race[] = [
     candidates: [
       {
         id: 'vince-fong',
+        photoSlug: 'vince-fong',
         name: 'Vince Fong',
         party: 'R',
         role: 'United States Representative',
@@ -285,6 +286,7 @@ export const RACES_D_VALLEY_B: Race[] = [
     candidates: [
       {
         id: 'david-tangipa',
+        photoSlug: 'david-tangipa',
         name: 'David Tangipa',
         party: 'R',
         role: 'State Assemblymember',
@@ -509,6 +511,7 @@ export const RACES_D_VALLEY_B: Race[] = [
     candidates: [
       {
         id: 'alexandra-macedo',
+        photoSlug: 'alexandra-macedo',
         name: 'Alexandra Macedo',
         party: 'R',
         role: 'Cattlewoman/Business Owner',

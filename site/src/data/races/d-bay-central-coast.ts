@@ -69,6 +69,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
     candidates: [
       {
         id: 'kevin-mullin',
+        photoSlug: 'kevin-mullin',
         name: 'Kevin Mullin',
         party: 'D',
         role: 'U.S. Representative',
@@ -181,6 +182,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
     candidates: [
       {
         id: 'ro-khanna',
+        photoSlug: 'ro-khanna',
         name: 'Ro Khanna',
         party: 'D',
         role: 'United States Congressmember',
@@ -296,6 +298,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
     candidates: [
       {
         id: 'zoe-lofgren',
+        photoSlug: 'zoe-lofgren',
         name: 'Zoe Lofgren',
         party: 'D',
         role: 'Congresswoman',
@@ -404,6 +407,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
     candidates: [
       {
         id: 'jimmy-panetta',
+        photoSlug: 'jimmy-panetta',
         name: 'Jimmy Panetta',
         party: 'D',
         role: 'United States Representative',
@@ -622,6 +626,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
     candidates: [
       {
         id: 'diane-papan',
+        photoSlug: 'diane-papan',
         name: 'Diane Papan',
         party: 'D',
         role: 'California State Assemblymember',
@@ -728,6 +733,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
     candidates: [
       {
         id: 'alex-lee',
+        photoSlug: 'alex-lee',
         name: 'Alex Lee',
         party: 'D',
         role: 'State Assemblymember',
@@ -836,6 +842,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
     candidates: [
       {
         id: 'ash-kalra',
+        photoSlug: 'ash-kalra',
         name: 'Ash Kalra',
         party: 'D',
         role: 'State Assemblymember',
@@ -950,6 +957,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
     candidates: [
       {
         id: 'patrick-ahrens',
+        photoSlug: 'patrick-ahrens',
         name: 'Patrick Ahrens',
         party: 'D',
         role: 'State Assemblymember',
@@ -1051,6 +1059,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
     candidates: [
       {
         id: 'gail-pellerin',
+        photoSlug: 'gail-pellerin',
         name: 'Gail Pellerin',
         party: 'D',
         role: 'State Assemblymember',
@@ -1157,6 +1166,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
     candidates: [
       {
         id: 'robert-rivas',
+        photoSlug: 'robert-rivas',
         name: 'Robert Rivas',
         party: 'D',
         role: 'California Assembly Speaker',

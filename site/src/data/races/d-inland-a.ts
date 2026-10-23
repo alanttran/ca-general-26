@@ -64,6 +64,7 @@ export const RACES_D_INLAND_A: Race[] = [
     candidates: [
       {
         id: 'jay-obernolte',
+        photoSlug: 'jay-obernolte',
         name: 'Jay Obernolte',
         party: 'R',
         role: 'Congressman/Business Owner',
@@ -183,6 +184,7 @@ export const RACES_D_INLAND_A: Race[] = [
     candidates: [
       {
         id: 'raul-ruiz',
+        photoSlug: 'raul-ruiz',
         name: 'Raul Ruiz',
         party: 'D',
         role: 'Emergency Physician/Congressman',
@@ -298,6 +300,7 @@ export const RACES_D_INLAND_A: Race[] = [
     candidates: [
       {
         id: 'pete-aguilar',
+        photoSlug: 'pete-aguilar',
         name: 'Pete Aguilar',
         party: 'D',
         role: 'United States Representative',
@@ -410,6 +413,7 @@ export const RACES_D_INLAND_A: Race[] = [
     candidates: [
       {
         id: 'norma-torres',
+        photoSlug: 'norma-torres',
         name: 'Norma J. Torres',
         party: 'D',
         role: 'U.S. Representative',
@@ -527,6 +531,7 @@ export const RACES_D_INLAND_A: Race[] = [
     candidates: [
       {
         id: 'mark-takano',
+        photoSlug: 'mark-takano',
         name: 'Mark Takano',
         party: 'D',
         role: 'U.S. Congressman',
@@ -642,6 +647,7 @@ export const RACES_D_INLAND_A: Race[] = [
     candidates: [
       {
         id: 'jeff-gonzalez',
+        photoSlug: 'jeff-gonzalez',
         name: 'Jeff Gonzalez',
         party: 'R',
         role: 'Assemblymember/Father',

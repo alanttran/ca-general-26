@@ -76,6 +76,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
     candidates: [
       {
         id: 'doris-matsui',
+        photoSlug: 'doris-matsui',
         name: 'Doris Matsui',
         party: 'D',
         role: 'U.S. Representative',
@@ -113,6 +114,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
       },
       {
         id: 'mai-vang',
+        photoSlug: 'mai-vang',
         name: 'Mai Vang',
         party: 'D',
         role: 'Teacher/City Councilmember',
@@ -197,6 +199,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
     candidates: [
       {
         id: 'john-garamendi',
+        photoSlug: 'john-garamendi',
         name: 'John Garamendi',
         party: 'D',
         role: 'Member of Congress',
@@ -324,6 +327,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
     candidates: [
       {
         id: 'josh-harder',
+        photoSlug: 'josh-harder',
         name: 'Josh Harder',
         party: 'D',
         role: 'Father/Representative',
@@ -440,6 +444,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
     candidates: [
       {
         id: 'angelique-ashby',
+        photoSlug: 'angelique-ashby',
         name: 'Angelique Ashby',
         party: 'D',
         role: 'California State Senator',
@@ -548,6 +553,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
     candidates: [
       {
         id: 'maggy-krell',
+        photoSlug: 'maggy-krell',
         name: 'Maggy Krell',
         party: 'D',
         role: 'Constitutional Attorney/Assemblywoman',
@@ -660,6 +666,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
     candidates: [
       {
         id: 'josh-hoover',
+        photoSlug: 'josh-hoover',
         name: 'Josh Hoover',
         party: 'R',
         role: 'Member of the State Assembly, 7th District',
@@ -778,6 +785,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
     candidates: [
       {
         id: 'heath-flora',
+        photoSlug: 'heath-flora',
         name: 'Heath Flora',
         party: 'R',
         role: 'Father/Farmer/Assemblyman',
@@ -910,6 +918,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
     candidates: [
       {
         id: 'stephanie-nguyen',
+        photoSlug: 'stephanie-nguyen',
         name: 'Stephanie Nguyen',
         party: 'D',
         role: 'State Assemblymember',
@@ -1025,6 +1034,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
     candidates: [
       {
         id: 'lori-wilson',
+        photoSlug: 'lori-wilson',
         name: 'Lori Wilson',
         party: 'D',
         role: 'Assemblymember, 11th District',
@@ -1128,6 +1138,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
     candidates: [
       {
         id: 'rhodesia-ransom',
+        photoSlug: 'rhodesia-ransom',
         name: 'Rhodesia Ransom',
         party: 'D',
         role: 'State Assemblymember',
@@ -1158,6 +1169,7 @@ export const RACES_D_SACRAMENTO_DELTA: Race[] = [
       },
       {
         id: 'tom-patti',
+        photoSlug: 'tom-patti',
         name: 'Tom Patti',
         party: 'R',
         role: 'Businessman/Father',

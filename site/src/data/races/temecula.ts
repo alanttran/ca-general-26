@@ -151,6 +151,7 @@ export const RACES_TEMECULA: Race[] = [
       },
       {
         id: 'zak-schwank',
+        photoSlug: 'zak-schwank',
         name: 'Zak Schwank',
         party: 'NP',
         role: 'Temecula Council Member',

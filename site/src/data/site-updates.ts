@@ -28,6 +28,12 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
         ],
       },
       {
+        summary: 'More candidate photos',
+        bullets: [
+          '125 more candidate portraits, mostly members of Congress and state legislators, for 181 in all. Each is the lead photo of the person’s Wikipedia article, matched by office and district, with credits in ATTRIBUTION.md.',
+        ],
+      },
+      {
         summary: 'Tidier pages in every view',
         bullets: [
           'Everything view: the guide’s background, the nine voter types, the methodology and the all-picks table now fold away, so the ballot starts about 5,000 pixels sooner. Links into them still open the right section.',

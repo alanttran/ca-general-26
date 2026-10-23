@@ -87,6 +87,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'ted-lieu',
+        photoSlug: 'ted-lieu',
         name: 'Ted W. Lieu',
         party: 'D',
         role: 'United States Representative, 36th District',
@@ -192,6 +193,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'sydney-kamlager-dove',
+        photoSlug: 'sydney-kamlager-dove',
         name: 'Sydney Kamlager-Dove',
         party: 'D',
         role: 'U.S. Representative, 37th District',
@@ -303,6 +305,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'hilda-solis',
+        photoSlug: 'hilda-solis',
         name: 'Hilda Solis',
         party: 'D',
         role: 'County Supervisor',
@@ -413,6 +416,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'linda-sanchez',
+        photoSlug: 'linda-sanchez',
         name: 'Linda Sánchez',
         party: 'D',
         role: 'Congresswoman/Mom',
@@ -513,6 +517,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'maxine-waters',
+        photoSlug: 'maxine-waters',
         name: 'Maxine Waters',
         party: 'D',
         role: 'United States Congresswoman',
@@ -625,6 +630,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'nanette-barragan',
+        photoSlug: 'nanette-barragan',
         name: 'Nanette Diaz Barragán',
         party: 'D',
         role: 'U.S. Representative, 44th District',
@@ -728,6 +734,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'bob-archuleta',
+        photoSlug: 'bob-archuleta',
         name: 'Bob J. Archuleta',
         party: 'D',
         role: 'State Senator',
@@ -840,6 +847,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'jesse-gabriel',
+        photoSlug: 'jesse-gabriel',
         name: 'Jesse Gabriel',
         party: 'D',
         role: 'Member of the State Assembly, 46th District',
@@ -945,6 +953,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'blanca-rubio',
+        photoSlug: 'blanca-rubio',
         name: 'Blanca Rubio',
         party: 'D',
         role: 'State Assemblymember/Teacher',
@@ -1048,6 +1057,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'mike-fong',
+        photoSlug: 'mike-fong',
         name: 'Mike Fong',
         party: 'D',
         role: 'California State Assemblymember',
@@ -1152,6 +1162,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'jessica-caloza',
+        photoSlug: 'jessica-caloza',
         name: 'Jessica Caloza',
         party: 'D',
         role: 'California State Assemblymember',
@@ -1257,6 +1268,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'mark-gonzalez',
+        photoSlug: 'mark-gonzalez',
         name: 'Mark Gonzalez',
         party: 'D',
         role: 'Member of the State Assembly',
@@ -1359,6 +1371,7 @@ export const RACES_D_LA_B: Race[] = [
     candidates: [
       {
         id: 'isaac-bryan',
+        photoSlug: 'isaac-bryan',
         name: 'Isaac G. Bryan',
         party: 'D',
         role: 'State Assemblymember',

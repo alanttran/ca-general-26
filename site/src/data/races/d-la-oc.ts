@@ -67,6 +67,7 @@ export const RACES_D_LA_OC: Race[] = [
     candidates: [
       {
         id: 'robert-garcia',
+        photoSlug: 'robert-garcia',
         name: 'Robert Garcia',
         party: 'D',
         role: 'United States Congressman',
@@ -172,6 +173,7 @@ export const RACES_D_LA_OC: Race[] = [
     candidates: [
       {
         id: 'derek-tran',
+        photoSlug: 'derek-tran',
         name: 'Derek Tran',
         party: 'D',
         role: 'Representative/Business Owner',
@@ -277,6 +279,7 @@ export const RACES_D_LA_OC: Race[] = [
     candidates: [
       {
         id: 'dave-min',
+        photoSlug: 'dave-min',
         name: 'Dave Min',
         party: 'D',
         role: 'United States Representative/Father',
@@ -394,6 +397,7 @@ export const RACES_D_LA_OC: Race[] = [
     candidates: [
       {
         id: 'tony-strickland',
+        photoSlug: 'tony-strickland',
         name: 'Tony Strickland',
         party: 'R',
         role: 'State Senator/Businessman',
@@ -508,6 +512,7 @@ export const RACES_D_LA_OC: Race[] = [
     candidates: [
       {
         id: 'phillip-chen',
+        photoSlug: 'phillip-chen',
         name: 'Phillip Chen',
         party: 'R',
         role: 'Assemblyman/Business Owner',
@@ -606,6 +611,7 @@ export const RACES_D_LA_OC: Race[] = [
     candidates: [
       {
         id: 'mark-pulido',
+        photoSlug: 'mark-pulido',
         name: 'Mark Pulido',
         party: 'D',
         role: 'City Councilmember',
@@ -705,6 +711,7 @@ export const RACES_D_LA_OC: Race[] = [
     candidates: [
       {
         id: 'tri-ta',
+        photoSlug: 'tri-ta',
         name: 'Tri Ta',
         party: 'R',
         role: 'California Assemblyman/Businessman',
@@ -805,6 +812,7 @@ export const RACES_D_LA_OC: Race[] = [
     candidates: [
       {
         id: 'chris-kluwe',
+        photoSlug: 'chris-kluwe',
         name: 'Chris Kluwe',
         party: 'D',
         role: 'Businessman/Coach/Father',
@@ -916,6 +924,7 @@ export const RACES_D_LA_OC: Race[] = [
     candidates: [
       {
         id: 'cottie-petrie-norris',
+        photoSlug: 'cottie-petrie-norris',
         name: 'Cottie Petrie-Norris',
         party: 'D',
         role: 'California State Assemblymember',
@@ -1013,6 +1022,7 @@ export const RACES_D_LA_OC: Race[] = [
     candidates: [
       {
         id: 'laurie-davies',
+        photoSlug: 'laurie-davies',
         name: 'Laurie Davies',
         party: 'R',
         role: 'Assemblywoman/Business Owner',

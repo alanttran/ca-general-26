@@ -69,6 +69,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
     candidates: [
       {
         id: 'mark-desaulnier',
+        photoSlug: 'mark-desaulnier',
         name: 'Mark DeSaulnier',
         party: 'D',
         role: 'United States Congressman',
@@ -185,6 +186,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
     candidates: [
       {
         id: 'scott-wiener',
+        photoSlug: 'scott-wiener',
         name: 'Scott Wiener',
         party: 'D',
         role: 'State Senator',
@@ -216,6 +218,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
       },
       {
         id: 'connie-chan',
+        photoSlug: 'connie-chan',
         name: 'Connie Chan',
         party: 'D',
         role: 'San Francisco Supervisor',
@@ -289,6 +292,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
     candidates: [
       {
         id: 'lateefah-simon',
+        photoSlug: 'lateefah-simon',
         name: 'Lateefah Simon',
         party: 'D',
         role: 'U.S. Representative',
@@ -399,6 +403,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
     candidates: [
       {
         id: 'buffy-wicks',
+        photoSlug: 'buffy-wicks',
         name: 'Buffy Wicks',
         party: 'D',
         role: 'Assemblymember/Mom',
@@ -500,6 +505,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
     candidates: [
       {
         id: 'anamarie-avila-farias',
+        photoSlug: 'anamarie-avila-farias',
         name: 'Anamarie Ávila Farías',
         party: 'D',
         role: 'Member of the State Assembly, District 15',
@@ -603,6 +609,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
     candidates: [
       {
         id: 'rebecca-bauer-kahan',
+        photoSlug: 'rebecca-bauer-kahan',
         name: 'Rebecca Bauer-Kahan',
         party: 'D',
         role: 'Assemblymember/Mother',
@@ -704,6 +711,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
     candidates: [
       {
         id: 'matt-haney',
+        photoSlug: 'matt-haney',
         name: 'Matt Haney',
         party: 'D',
         role: 'Assemblymember',
@@ -799,6 +807,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
     candidates: [
       {
         id: 'mia-bonta',
+        photoSlug: 'mia-bonta',
         name: 'Mia Bonta',
         party: 'D',
         role: 'California State Assemblymember, Assembly District 18',
@@ -900,6 +909,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
     candidates: [
       {
         id: 'catherine-stefani',
+        photoSlug: 'catherine-stefani',
         name: 'Catherine Stefani',
         party: 'D',
         role: 'Assemblymember',
