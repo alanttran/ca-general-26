@@ -140,7 +140,7 @@ export const RACES_D_VALLEY_B: Race[] = [
     ],
     crossTypology: ct([
       ['PL', 'Van Scotter', '●', 'Progressive Left voters back the Democrat who centers health-care access over an incumbent who voted for deep federal Medicaid cuts.'],
-      ['EL', 'Van Scotter', '◐', 'Establishment Liberals share her party and health-care priorities but notice she has no governing record against a seasoned incumbent.', 'Establishment Liberals who weigh experience heavily could back Fong, an eight-year Assembly veteran on the House infrastructure committee who brings water money home, though they give up a vote against Medicaid cuts and the Republican majority.'],
+      ['EL', 'Van Scotter', '◐', 'Establishment Liberals share Van Scotter’s party and health-care priorities but notice she has no governing record against a seasoned incumbent.', 'Establishment Liberals who weigh experience heavily could back Fong, an eight-year Assembly veteran on the House infrastructure committee who brings water money home, though they give up a vote against Medicaid cuts and the Republican majority.'],
       ['DM', 'Van Scotter', '●', 'Democratic Mainstays follow the party and prioritize protecting Medicaid, which many Valley families rely on.'],
       ['OL', 'Van Scotter', '●', 'Outsider Left voters like a first-time, non-career candidate focused on health care and access to her representative.'],
       ['SS', 'Fong', '○', 'Stressed Sideliners pay little attention to politics; the incumbent’s name recognition and water funding give a slight edge despite their reliance on safety-net programs.'],
@@ -574,7 +574,7 @@ export const RACES_D_VALLEY_B: Race[] = [
     ],
     crossTypology: ct([
       ['PL', 'Cerros', '●', 'Progressive Left voters back the Democrat focused on small-town infrastructure over the Republican leader.'],
-      ['EL', 'Cerros', '○', 'Establishment Liberals share his party, though his removal as mayor and thin record weaken the case.', 'Establishment Liberals who prize experience could back Macedo, a sitting member now leading her caucus in budget talks, but they give up a Democratic vote and back a high-speed rail opponent.'],
+      ['EL', 'Cerros', '○', 'Establishment Liberals share Cerros’s party, though his removal as mayor and thin record weaken the case.', 'Establishment Liberals who prize experience could back Macedo, a sitting member now leading her caucus in budget talks, but they give up a Democratic vote and back a high-speed rail opponent.'],
       ['DM', 'Cerros', '●', 'Democratic Mainstays back the Democratic nominee for a seat in the majority caucus.'],
       ['OL', 'Cerros', '●', 'Outsider Left voters like a young, first-generation local leader running against the Republican establishment.'],
       ['SS', 'Macedo', '○', 'Stressed Sideliners lean to the well-known incumbent from a local farm family.'],

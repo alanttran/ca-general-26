@@ -183,6 +183,7 @@ export const WIKI_BY_CANDIDATE_ID = {
   'vince-fong': 'Vince_Fong',
   'zak-schwank': 'Zak_Schwank',
   'zoe-lofgren': 'Zoe_Lofgren',
+  'larry-thompson': 'Larry_A._Thompson',
 };
 
 export function wikiSummaryUrl(title) {

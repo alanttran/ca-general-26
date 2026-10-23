@@ -108,9 +108,9 @@ export const RACES_ESCONDIDO_B: Race[] = [
     ],
     crossTypology: ct([
       ['PL', 'Haines', '◐', 'Progressive Left voters follow the Democratic Party endorsement to Haines over an incumbent backed by Reform California.', 'Progressive Left voters who weigh experience could keep Weller, a trustee since 2022 who says he led teacher raises, though that means passing on the Democratic-endorsed challenger.'],
-      ['EL', 'Haines', '○', 'Establishment Liberals lean to the Democratic-endorsed candidate, though weakly because she has no school record.', 'Establishment Liberals who prize a track record could back Weller, who has four years on this board and cites score gains and higher teacher pay, giving up the party-endorsed newcomer.'],
+      ['EL', 'Haines', '○', 'Establishment Liberals lean to the Democratic-endorsed candidate, though weakly because Haines has no school record.', 'Establishment Liberals who prize a track record could back Weller, who has four years on this board and cites score gains and higher teacher pay, giving up the party-endorsed newcomer.'],
       ['DM', 'Haines', '◐', 'Democratic Mainstays back the candidate the county Democratic Party endorsed.', 'Democratic Mainstays focused on steady schools might stay with Weller’s four years of board votes and teacher raises, setting aside the party endorsement for Haines.'],
-      ['OL', 'Haines', '○', 'Outsider Left voters lean to the challenger, but her platform is thin.', 'Outsider Left voters could accept Weller, who backed wellness centers and teacher pay, since Haines has no record to test, though he is the establishment pick.'],
+      ['OL', 'Haines', '○', 'Outsider Left voters lean to the challenger, but Haines’s platform is thin.', 'Outsider Left voters could accept Weller, who backed wellness centers and teacher pay, since Haines has no record to test, though he is the establishment pick.'],
       ['SS', 'Weller', '○', 'Stressed Sideliners may stick with the incumbent who can point to higher scores and teacher pay.'],
       ['AR', 'Weller', '◐', 'Ambivalent Right voters favor an incumbent business owner with a record over a newcomer.'],
       ['PR', 'Weller', '◐', 'Populist Right voters lean to the Reform California–endorsed incumbent against a Democratic-endorsed challenger.'],
@@ -425,7 +425,7 @@ export const RACES_ESCONDIDO_B: Race[] = [
     ],
     crossTypology: ct([
       ['PL', 'Telahun', '◐', 'Progressive Left voters prefer a frontline nurse to a Republican-endorsed incumbent.', 'Progressive Left voters who weigh experience could keep Edwards-Tate, a director since 2018 who knows the UCSD deal, though she is Republican-endorsed.'],
-      ['EL', 'Telahun', '○', 'Establishment Liberals lean to the nurse’s clinical expertise, though she has no governing record.', 'Establishment Liberals who value institutional knowledge could back Edwards-Tate’s eight years on the board during the UCSD transition, giving up a nurse’s bedside view.'],
+      ['EL', 'Telahun', '○', 'Establishment Liberals lean to the nurse’s clinical expertise, though Telahun has no governing record.', 'Establishment Liberals who value institutional knowledge could back Edwards-Tate’s eight years on the board during the UCSD transition, giving up a nurse’s bedside view.'],
       ['DM', 'Telahun', '○', 'Democratic Mainstays lean away from the Republican-endorsed incumbent toward a Navy veteran nurse.', 'Democratic Mainstays who want steady hands could keep Edwards-Tate, who has served since 2018, though she is Republican- and Lincoln Club–endorsed.'],
       ['OL', 'Telahun', '◐', 'Outsider Left voters like a working nurse challenging a long-serving director as the district’s finances struggle.', 'Outsider Left voters could accept Edwards-Tate’s experience, including her lawsuit defending a director’s right to criticize the district, though she is the incumbent.'],
       ['SS', 'Telahun', '○', 'Stressed Sideliners may relate to a working nurse and mother, though few will know either candidate.', 'Stressed Sideliners who want a known quantity could keep Edwards-Tate, who has served since 2018, though Telahun knows patient care firsthand.'],

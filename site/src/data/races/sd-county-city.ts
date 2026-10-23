@@ -428,7 +428,7 @@ export const RACES_SD_COUNTY_CITY: Race[] = [
       ['AR', 'Muñoz', '○', 'Ambivalent Right voters often prefer experienced hands on low-profile nonpartisan boards, and the challenger has published no platform.'],
       ['PR', 'Brown', '◐', 'Populist Right voters can back the Reform California-endorsed challenger as a parent outsider against a 12-year incumbent.', 'Populist Right voters who weigh experience could stick with Muñoz, a former college dean who has led the board, rather than a challenger with no statement or record; the cost is keeping a Democratic- and labor-backed incumbent.'],
       ['CC', 'Brown', '◐', 'Committed Conservatives can follow the county Republican Party’s endorsement of Brown to shift the board’s direction.', 'Committed Conservatives who put experience first could pick Muñoz, who has run board meetings and reviewed budgets since 2015, while accepting that she is the Democratic Party’s endorsed candidate and Brown has no public record.'],
-      ['FF', 'Brown', '◐', 'Faith and Flag Conservatives can back the Republican-endorsed parent as the more conservative option, though he has stated no curriculum positions.', 'Faith and Flag Conservatives who put experience first could pick Muñoz for her decade on the board and long college career, giving up a Republican-endorsed parent whose views are not on the public record.'],
+      ['FF', 'Brown', '◐', 'Faith and Flag Conservatives can back the Republican-endorsed parent as the more conservative option, though Brown has stated no curriculum positions.', 'Faith and Flag Conservatives who put experience first could pick Muñoz for her decade on the board and long college career, giving up a Republican-endorsed parent whose views are not on the public record.'],
     ]),
     counterArguments: [
       'PR/CC/FF (Brown ◐): But Brown filed no voter-guide statement and has no public platform, so a vote for him rests on endorsements alone.',
@@ -525,7 +525,7 @@ export const RACES_SD_COUNTY_CITY: Race[] = [
       ['FF', '—', '—', 'Faith and Flag Conservatives have no public stance from either candidate on the campus issues they care about, so skipping is reasonable.', 'Neither candidate has said anything on the campus issues Faith and Flag Conservatives weigh, so experience decides: Nieto Senour is a former teacher and counselor with a Ph.D. and decades on the board, though her diversity-and-equity role is not a natural fit for them.'],
     ]),
     counterArguments: [
-      'PR/CC (—): But 35 years in office is a long tenure; a voter who values term limits and fresh oversight of district spending may reasonably choose the newcomer, though little is verifiable about him.',
+      'PR/CC (—): But 35 years in office is a long tenure; a voter who values term limits and fresh oversight of district spending may reasonably choose the newcomer, though little is verifiable about Brown.',
     ],
   },
 
@@ -619,7 +619,7 @@ export const RACES_SD_COUNTY_CITY: Race[] = [
       ['FF', '—', '—', 'Faith and Flag Conservatives have no public stance from either candidate on the campus issues they care about, so skipping is reasonable.', 'Faith and Flag Conservatives see no stance from either candidate on campus issues, so experience tips it to Milgrim, a longtime college professor and the board’s executive vice president, though his focus on equity and LGBTQ+ programs may not match their priorities.'],
     ]),
     counterArguments: [
-      'PR/CC (—): But a voter wary of the incumbent’s support for the countywide sales-tax measure and of district spending may reasonably choose the newcomer, though nothing about her platform is verifiable.',
+      'PR/CC (—): But a voter wary of the incumbent’s support for the countywide sales-tax measure and of district spending may reasonably choose the newcomer, though nothing about Ely’s platform is verifiable.',
     ],
   },
 

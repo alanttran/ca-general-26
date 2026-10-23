@@ -334,6 +334,7 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
       },
       {
         id: 'larry-thompson',
+        photoSlug: 'larry-thompson',
         name: 'Larry Thompson',
         party: 'R',
         role: 'Attorney/Film Producer',
@@ -369,7 +370,7 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
       ['DM', 'Sherman', '●', 'Democratic Mainstays back the longtime Democratic incumbent in a safe seat.'],
       ['OL', 'Sherman', '◐', 'Outsider Left voters who backed Levine’s generational challenge are left with Sherman as the only Democrat.'],
       ['SS', 'Sherman', '○', 'Stressed Sideliners get a tax-and-finance expert, though Thompson’s rebuilding pitch may appeal to fire-affected voters.'],
-      ['AR', 'Thompson', '○', 'Ambivalent Right voters may like a Reagan-era Republican pitching bipartisanship and crypto, though his plan is thin.', 'Ambivalent Right voters who value experience could back Sherman, a CPA and three-decade member who leads Democrats on capital markets, giving up a Republican vote and Thompson’s pro-crypto stance.'],
+      ['AR', 'Thompson', '○', 'Ambivalent Right voters may like a Reagan-era Republican pitching bipartisanship and crypto, though Thompson’s plan is thin.', 'Ambivalent Right voters who value experience could back Sherman, a CPA and three-decade member who leads Democrats on capital markets, giving up a Republican vote and Thompson’s pro-crypto stance.'],
       ['PR', 'Thompson', '●', 'Populist Right voters favor the challenger running against “one-party rule” and 30 years of incumbency.'],
       ['CC', 'Thompson', '●', 'Committed Conservatives back the party-endorsed Republican who opposes “open borders” and high taxes.'],
       ['FF', 'Thompson', '◐', 'Faith and Flag Conservatives prefer the Republican, though Thompson’s Hollywood-centered campaign says little about faith or patriotism.', 'Faith and Flag Conservatives who value experience could back Sherman, a senior Foreign Affairs member, giving up a Republican vote.'],

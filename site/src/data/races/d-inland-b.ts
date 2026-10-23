@@ -819,7 +819,7 @@ export const RACES_D_INLAND_B: Race[] = [
       ['PL', 'Akin', '●', 'Progressive Left voters, with no Democrat on the ballot, fit Akin’s universal health care, free college and no-corporate-money platform; he is far to Johnson’s left.'],
       ['EL', '—', '—', 'Establishment Liberals have no Democrat to support and little reason to back either a Republican or a minor-party socialist.', 'Experience-first Establishment Liberals could back Johnson, a former three-time mayor now on two Assembly committees as vice chair; they give up any liberal vote on climate or social policy.'],
       ['DM', '—', '—', 'Democratic Mainstays have no Democratic nominee; many will skip the race or write in a name.', 'Experience-first Democratic Mainstays could back Johnson for her 13 years of local government and current seat; they accept a Republican vote in Sacramento.'],
-      ['OL', 'Akin', '◐', 'Outsider Left voters like a union tradesman outside both major parties, though his chances are minimal.', 'Experience-first Outsider Left voters could back Johnson, the only finalist with government experience; they give up Akin’s working-class platform.'],
+      ['OL', 'Akin', '◐', 'Outsider Left voters like a union tradesman outside both major parties, though Akin’s chances are minimal.', 'Experience-first Outsider Left voters could back Johnson, the only finalist with government experience; they give up Akin’s working-class platform.'],
       ['SS', 'Johnson', '○', 'Stressed Sideliners lean to the known incumbent focused on living costs.'],
       ['AR', 'Johnson', '●', 'Ambivalent Right voters back a pragmatic local-government Republican.'],
       ['PR', 'Johnson', '●', 'Populist Right voters favor her law-enforcement and anti-sanctuary record.'],

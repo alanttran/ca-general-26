@@ -530,7 +530,7 @@ export const RACES_LA_COUNTY: Race[] = [
     ]),
     counterArguments: [
       'EL/DM (Veres ◐): But he is a 15-year incumbent, and enrollment remains below pre-pandemic levels, so voters wanting change have reasons to look elsewhere.',
-      'PL/OL (Cabrera): But she has no experience governing a large district or overseeing a $5.3 billion construction program.',
+      'PL/OL (Cabrera): But Cabrera has no experience governing a large district or overseeing a $5.3 billion construction program.',
     ],
     readingLinks: [
       { label: 'LA Times voter guide: LACCD Seat 2 (via Yahoo)', url: 'https://www.yahoo.com/news/politics/articles/guide-los-angeles-community-college-100000114.html', summary: 'Candidate questionnaire answers.' },
@@ -628,7 +628,7 @@ export const RACES_LA_COUNTY: Race[] = [
     ]),
     counterArguments: [
       'EL (Pearlman ◐): But she left the board in 2017, and voters seeking new leadership may prefer a candidate without a past record.',
-      'PL/DM (Harris): But he has no board or budget experience and teaches outside LACCD.',
+      'PL/DM (Harris): But Harris has no board or budget experience and teaches outside LACCD.',
     ],
     readingLinks: [
       { label: 'LA Times voter guide: LACCD Seat 4 (via Yahoo)', url: 'https://www.yahoo.com/news/politics/articles/guide-los-angeles-community-college-100000834.html', summary: 'Candidate questionnaire answers.' },
@@ -722,8 +722,8 @@ export const RACES_LA_COUNTY: Race[] = [
       ['FF', 'Arey', '○', 'Faith and Flag Conservatives lean toward the realtor and small-business candidate who stresses campus safety, with little other information.', 'Faith and Flag Conservatives who weigh experience might choose Buelna, a sitting trustee and university instructor, though his priorities on immigrant students and aggressive student-housing spending differ from Arey’s emphasis on campus safety.'],
     ]),
     counterArguments: [
-      'PR/CC (Arey ◐): But she lists no education or governing experience, and the guide reports no specific allegations behind her distrust of trustees.',
-      'EL/AR (Winston): But a sitting deputy mayor would hold a city job while overseeing a separate district, and he has not served on a college board.',
+      'PR/CC (Arey ◐): But Arey lists no education or governing experience, and the guide reports no specific allegations behind her distrust of trustees.',
+      'EL/AR (Winston): But a sitting deputy mayor would hold a city job while overseeing a separate district, and Winston has not served on a college board.',
     ],
     readingLinks: [
       { label: 'LA Times voter guide: LACCD Seat 6 (via Yahoo)', url: 'https://www.yahoo.com/news/politics/articles/guide-los-angeles-community-college-100000715.html', summary: 'Candidate questionnaire answers.' },

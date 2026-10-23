@@ -255,7 +255,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
       ['DM', 'Khanna', '●', 'Democratic Mainstays back the Democratic incumbent in a seat that counts toward House control.'],
       ['OL', 'Khanna', '●', 'Outsider Left voters like that Khanna took on tech billionaires and party leadership on the Epstein files.'],
       ['SS', 'Khanna', '○', 'Stressed Sideliners get an incumbent pitching taxes on the very rich to fund health care, though they pay little attention to either candidate.'],
-      ['AR', 'Tandon', '○', 'Ambivalent Right voters wary of a wealth tax and regulation may lean to the Republican engineer, though his platform is thin.', 'Ambivalent Right voters who want proven effectiveness could back Khanna, who passed a bipartisan transparency law with a Republican, accepting his support for a billionaire tax.'],
+      ['AR', 'Tandon', '○', 'Ambivalent Right voters wary of a wealth tax and regulation may lean to the Republican engineer, though Tandon’s platform is thin.', 'Ambivalent Right voters who want proven effectiveness could back Khanna, who passed a bipartisan transparency law with a Republican, accepting his support for a billionaire tax.'],
       ['PR', 'Tandon', '◐', 'Populist Right voters favor the Republican who opposes abolishing ICE, though Khanna’s anti-elite, Epstein-files stance has some cross-party pull.', 'Populist Right voters who value Khanna’s fight to release the Epstein files with Rep. Massie could back the five-term incumbent, giving up a Republican vote and accepting his Medicare for All and wealth-tax positions.'],
       ['CC', 'Tandon', '●', 'Committed Conservatives back the Republican who opposes tax-the-rich financing and wants lighter regulation.'],
       ['FF', 'Tandon', '●', 'Faith and Flag Conservatives support the Republican who backs police and opposes abolishing ICE.'],
@@ -696,13 +696,13 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
       ['DM', 'Papan', '●', 'Democratic Mainstays back the Democratic incumbent in a safe seat.'],
       ['OL', 'Papan', '◐', 'Outsider Left voters prefer the Democrat though she is a conventional, establishment legislator.'],
       ['SS', 'Papan', '○', 'Stressed Sideliners have little information on either candidate and default to the incumbent with a record.'],
-      ['AR', 'Muhawieh', '○', 'Ambivalent Right voters may like a small-business tax professional promising taxpayer accountability, though his platform is thin.', 'Ambivalent Right voters who want competence could back Papan, a former San Mateo mayor who now chairs the Water, Parks and Wildlife Committee, accepting a Democrat for a seat with real leverage.'],
+      ['AR', 'Muhawieh', '○', 'Ambivalent Right voters may like a small-business tax professional promising taxpayer accountability, though Muhawieh’s platform is thin.', 'Ambivalent Right voters who want competence could back Papan, a former San Mateo mayor who now chairs the Water, Parks and Wildlife Committee, accepting a Democrat for a seat with real leverage.'],
       ['PR', 'Muhawieh', '●', 'Populist Right voters back the Republican outsider over a Sacramento incumbent.'],
       ['CC', 'Muhawieh', '●', 'Committed Conservatives support the Republican tax professional focused on taxpayer accountability.'],
       ['FF', 'Muhawieh', '●', 'Faith and Flag Conservatives favor the Republican over a Democrat pushing a reproductive-rights amendment.'],
     ]),
     counterArguments: [
-      'AR (Muhawieh ○): But consider that he has no public record or detailed plan, while Papan’s committee oversees water and wildfire issues that affect Peninsula homeowners.',
+      'AR (Muhawieh ○): But consider that Muhawieh has no public record or detailed plan, while Papan’s committee oversees water and wildfire issues that affect Peninsula homeowners.',
     ],
   },
 
@@ -1028,7 +1028,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
       ['FF', 'Gorsulowsky', '●', 'Faith and Flag Conservatives favor the Republican on public safety.'],
     ]),
     counterArguments: [
-      'AR (Gorsulowsky ○): But consider that he has no campaign website or detailed platform, while Ahrens already chairs a committee.',
+      'AR (Gorsulowsky ○): But consider that Gorsulowsky has no campaign website or detailed platform, while Ahrens already chairs a committee.',
     ],
   },
 

@@ -89,6 +89,7 @@
     "kevin-kiley",
     "kevin-lincoln",
     "kevin-mullin",
+    "larry-thompson",
     "lashae-sharp-collins",
     "lateefah-simon",
     "laura-friedman",
@@ -806,6 +807,13 @@
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Kevin_Mullin",
       "thumbnailSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Rep._Kevin_Mullin_official_portrait%2C_118th_Congress_%281%29.jpg/330px-Rep._Kevin_Mullin_official_portrait%2C_118th_Congress_%281%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
       "originalImage": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Rep._Kevin_Mullin_official_portrait%2C_118th_Congress_%281%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+    },
+    {
+      "photoSlug": "larry-thompson",
+      "wikipediaTitle": "Larry A. Thompson",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Larry_A._Thompson",
+      "thumbnailSource": "https://upload.wikimedia.org/wikipedia/commons/5/52/Larry_A._Thompson%2C_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "originalImage": "https://upload.wikimedia.org/wikipedia/commons/5/52/Larry_A._Thompson%2C_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
     },
     {
       "photoSlug": "lashae-sharp-collins",

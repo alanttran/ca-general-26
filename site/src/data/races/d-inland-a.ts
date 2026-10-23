@@ -141,7 +141,7 @@ export const RACES_D_INLAND_A: Race[] = [
         'OL',
         'Hodge',
         '◐',
-        'Outsider Left voters like her “People over Party” pitch and non-politician background, though a long-shot race may not move them.',
+        'Outsider Left voters like Hodge’s “People over Party” pitch and non-politician background, though a long-shot race may not move them.',
         'An experience-first Outsider Left voter could note Obernolte’s bipartisan AI work and Respect for Marriage Act vote; choosing him gives up a Democratic vote and accepts his Jan 6 objection votes.',
       ],
       ['SS', 'Obernolte', '○', 'Stressed Sideliners who rarely engage may default to the familiar incumbent with local roots and seniority, though Hodge’s cost-of-living message speaks to them.'],

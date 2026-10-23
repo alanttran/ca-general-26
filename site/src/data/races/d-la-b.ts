@@ -1337,8 +1337,8 @@ export const RACES_D_LA_B: Race[] = [
       ['OL', 'Gonzalez', '◐', 'Outsider Left voters may see a party insider, but the only alternative is an unknown Republican write-in.'],
       ['SS', 'Gonzalez', '○', 'Stressed Sideliners have only one visible campaign to judge.'],
       ['AR', 'Gonzalez', '○', 'Ambivalent Right voters may prefer a known legislator focused on metal theft and abandoned RVs over a candidate with no platform.'],
-      ['PR', 'Briseno', '○', 'Populist Right voters may cast a protest vote for the only Republican, despite knowing nothing of her views.', 'Populist Right voters who want effective representation could back Gonzalez, whose bills target metal theft and abandoned RVs; they give up a protest vote.'],
-      ['CC', 'Briseno', '○', 'Committed Conservatives may back the Republican label, though she has no stated platform.', 'Committed Conservatives who value competence could back Gonzalez, an experienced legislator; they accept his progressive priorities.'],
+      ['PR', 'Briseno', '○', 'Populist Right voters may cast a protest vote for the only Republican, despite knowing nothing of Briseno’s views.', 'Populist Right voters who want effective representation could back Gonzalez, whose bills target metal theft and abandoned RVs; they give up a protest vote.'],
+      ['CC', 'Briseno', '○', 'Committed Conservatives may back the Republican label, though Briseno has no stated platform.', 'Committed Conservatives who value competence could back Gonzalez, an experienced legislator; they accept his progressive priorities.'],
       ['FF', '—', '—', 'Faith and Flag Conservatives have no information on which to judge the Republican write-in.', 'Faith and Flag Conservatives who value experience could back Gonzalez, a seasoned legislator, while accepting his Democratic positions.'],
     ]),
     counterArguments: [

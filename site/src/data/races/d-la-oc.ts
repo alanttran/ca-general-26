@@ -989,7 +989,7 @@ export const RACES_D_LA_OC: Race[] = [
       ['OL', 'Petrie-Norris', '◐', 'Outsider Left voters prefer the Democrat but are cool on her business-group ties.'],
       ['SS', 'Petrie-Norris', '○', 'Stressed Sideliners have no information on Russell and lean to the known incumbent.'],
       ['AR', 'Russell', '○', 'Ambivalent Right voters may default to the Republican, but with no platform it is a weak lean.', 'Ambivalent Right voters who want competence could back Petrie-Norris, a business-friendly committee chair, giving up a Republican vote for a candidate whose views are unknown.'],
-      ['PR', 'Russell', '◐', 'Populist Right voters back the Republican as an outsider, though he has published nothing.', 'Populist Right voters who want someone able to deliver could back Petrie-Norris, an experienced chair, accepting a Democrat in exchange for clout on energy costs.'],
+      ['PR', 'Russell', '◐', 'Populist Right voters back the Republican as an outsider, though Russell has published nothing.', 'Populist Right voters who want someone able to deliver could back Petrie-Norris, an experienced chair, accepting a Democrat in exchange for clout on energy costs.'],
       ['CC', 'Russell', '●', 'Committed Conservatives back the Republican nominee on party principle.'],
       ['FF', 'Russell', '●', 'Faith and Flag Conservatives back the Republican nominee over a Democrat.'],
     ]),
