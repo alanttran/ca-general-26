@@ -457,10 +457,16 @@ export const RACES_D_INLAND_A: Race[] = [
         ],
         money: 'Raised $4,759 with $2,873 cash on hand as of June 30, 2026 (FEC).',
         endorsements: 'No 2026 endorsement list found as of Oct 9, 2026. In 2020 the California Republican Party removed its endorsement from its website after reports on his posts (LA Magazine).',
-        redFlags: [],
-        notes: [
-          'In 2020 Media Matters reported that his social-media accounts carried racist and anti-LGBTQ memes, and his Twitter bio used the QAnon slogan #WWG1WGA; the state GOP then quietly removed its endorsement. He did not respond to LA Magazine (July 2020) — https://lamag.com/politics/mike-cargile-qanon',
+        redFlags: [
+          {
+            severity: 'notable',
+            status: 'documented',
+            text: 'In 2020 Media Matters reported that his social-media accounts carried racist and anti-LGBTQ memes and that his Twitter bio used the QAnon slogan #WWG1WGA. The state Republican Party then quietly withdrew its endorsement. He did not respond to LA Magazine’s request for comment.',
+            whyItMatters: 'A member of Congress represents everyone in a district this diverse, and promoting QAnon and racist content raises questions about judgment and about who he would serve.',
+            sources: [{ label: 'LA Magazine (July 2020)', url: 'https://lamag.com/politics/mike-cargile-qanon' }],
+          },
         ],
+        notes: [],
       },
     ],
     crossTypology: ct([
