@@ -625,12 +625,11 @@ export const RACES_LA_COUNTY: Race[] = [
       ['PP', 'Pearlman', '◐', 'Pragmatic and Polite Right voters value experience and fiscal care, and Nancy Pearlman pairs 16 years as a trustee with pledges to stop excess spending and keep construction on budget.'],
       ['UR', 'Alaniz', '○', 'Unconventional Right voters lean toward Elaine Alaniz, an outsider who would review administration and low-enrollment programs, with little else to go on.', 'Unconventional Right voters weighing experience could pick Pearlman, who wants to stop excess spending and keep construction on budget, though she is a former board insider rather than the outsider Alaniz offers.'],
       ['FC', 'Pearlman', '○', 'Faith First Conservatives find no candidate speaking to their priorities, and lean weakly to Nancy Pearlman’s pledge to stop excess spending and compare administrator pay with faculty pay.'],
-      ['NA', 'Aula', '○', 'No Apologies Right voters may favor Jason Aula, the only candidate who puts U.S. citizens first and proposed a moratorium on noncitizens attending, though the LA Times said much of his questionnaire contained unsubstantiated accusations.', 'No Apologies Right voters who want competence could choose Pearlman, a 16-year trustee who wants to stop excess spending, giving up Aula’s citizens-first stance for a candidate with a long record governing the district.'],
+      ['NA', 'Pearlman / Aula', '=', 'No Apologies Right voters weigh a citizens-first stance against competence: if putting U.S. citizens first matters most, Aula, the only candidate who proposed a moratorium on noncitizens attending, though he has no education or governing record and the LA Times said much of his questionnaire contained unsubstantiated accusations; if a long record governing the district matters more, Pearlman, a 16-year trustee who wants to stop excess spending.'],
     ]),
     counterArguments: [
       'LL (Pearlman ◐): But consider Harris if you want new leadership, because Pearlman left the board in 2017 and Harris brings recent government experience as an aide to Rep. Kamlager-Dove and then-Rep. Bass.',
       'LP (Harris ○): But consider Pearlman, because Harris has no board or budget experience and teaches outside LACCD.',
-      'NA (Aula ○): But consider Pearlman, because Aula has no education or governing record and the LA Times declined to publish much of his answers as unsubstantiated.',
     ],
     readingLinks: [
       { label: 'LA Times voter guide: LACCD Seat 4 (via Yahoo)', url: 'https://www.yahoo.com/news/politics/articles/guide-los-angeles-community-college-100000834.html', summary: 'Candidate questionnaire answers.' },

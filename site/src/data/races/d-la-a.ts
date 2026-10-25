@@ -364,12 +364,11 @@ export const RACES_D_LA_A: Race[] = [
       ['TM', 'Rivas', '○', 'Tuned-Out Middle voters tune out ideological fights and lean to Rivas, the known incumbent, over a repeat activist candidate.'],
       ['PP', 'Rivas', '●', 'Pragmatic and Polite Right voters reward Rivas’s experience and incremental style over Dueñas, who has never held office and backs sweeping changes.'],
       ['UR', 'Rivas', '◐', 'Unconventional Right voters pick Rivas, the finalist to Dueñas’s right, because Dueñas would abolish ICE and give legal status to all.'],
-      ['FC', 'Rivas', '○', 'Faith First Conservatives find Rivas less far left than Dueñas, though Rivas sought limits on church housing in the Assembly.'],
-      ['NA', 'Rivas', '○', 'No Apologies Right voters dislike both, but Rivas is the lesser evil against a candidate who would abolish ICE.'],
+      ['FC', 'Rivas / Dueñas', '=', 'Faith First Conservatives face two Democrats far from their views: if keeping the further-left finalist, who would abolish ICE and give legal status to all, out of Congress matters most, Rivas; if religious liberty weighs more, Dueñas, since Rivas sought limits on church-built housing in the Assembly.'],
+      ['NA', 'Rivas / Dueñas', '=', 'No Apologies Right voters dislike both Democrats: if stopping a candidate who would abolish ICE matters most, Rivas, the more mainstream finalist; if denying the seat to a sitting Progressive Caucus member with six Assembly years and a record of passed bills matters more, Dueñas, who has run five times without holding office.'],
     ]),
     counterArguments: [
       'LP (Dueñas ●): But consider that Dueñas has run five times without holding elected office, because Rivas already belongs to the Progressive Caucus and has passed bills.',
-      'FC (Rivas ○): But consider that Rivas sought limits on church-built housing in the Assembly, because that cuts against religious liberty.',
     ],
   },
 
@@ -589,9 +588,9 @@ export const RACES_D_LA_A: Race[] = [
       ['OO', 'Gomez', '◐', 'Order and Opportunity Left voters prefer Gomez, the more mainstream finalist and founder of the Renters Caucus, though the ethics investigation of Gomez troubles them.'],
       ['TM', 'Gonzales-Torres', '○', 'Tuned-Out Middle voters want direct help and plain trustworthiness, and Gonzales-Torres offers guaranteed housing vouchers while Gomez faces an ethics probe.', 'Experience-first Tuned-Out Middle voters could back Gomez, a nine-year member on Ways and Means; they accept an open House Ethics investigation into sexual-misconduct allegations against Gomez.'],
       ['PP', 'Gomez / Gonzales-Torres', '=', 'Pragmatic and Polite Right voters prefer incremental change but penalize misconduct: if avoiding a wealth tax and a data-center moratorium matters most, Gomez as the more incremental choice; if the open House Ethics probe of Gomez weighs more, Gonzales-Torres.'],
-      ['UR', 'Gomez', '○', 'Unconventional Right voters dislike both, but Gomez is less far left than a candidate who would abolish ICE.'],
+      ['UR', 'Gomez / Gonzales-Torres', '=', 'Unconventional Right voters dislike both Democrats: if stopping a democratic socialist who would abolish ICE and impose a wealth tax matters most, Gomez; if rejecting an insider backed by AIPAC, crypto and AI-industry PACs and facing an open House Ethics probe matters more, Gonzales-Torres.'],
       ['FC', '—', '—', 'Faith First Conservatives see a democratic socialist on one side and an incumbent under investigation for sexual misconduct on the other, and many will skip the race.', 'Experience-first Faith First Conservatives could back Gomez, the finalist with years in Congress, as less far left than his rival; they accept an open sexual-misconduct investigation.'],
-      ['NA', 'Gomez', '○', 'No Apologies Right voters dislike both, but Gomez is the lesser evil against a democratic socialist who would abolish ICE.'],
+      ['NA', 'Gomez / Gonzales-Torres', '=', 'No Apologies Right voters dislike both Democrats: if keeping a democratic socialist who would abolish ICE out of Congress matters most, Gomez; if refusing to reelect an incumbent under House Ethics investigation for sexual-misconduct allegations matters more, Gonzales-Torres.'],
     ]),
     counterArguments: [
       'LL (Gomez ◐): But consider that the House Ethics Committee is investigating allegations that Gomez had inappropriate sexual contact with a House staffer, because they weigh ethics findings seriously; Gomez says his conduct was consensual and an inquiry is not a finding.',

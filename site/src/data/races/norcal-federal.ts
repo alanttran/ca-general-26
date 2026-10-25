@@ -442,7 +442,7 @@ export const RACES_NORCAL_FEDERAL: Race[] = [
       ['TM', 'Pan', '○', 'Tuned-Out Middle voters support government health coverage and dislike party fights, so Pan’s defense of Medicaid edges Kiley’s independent label and gas-tax attacks, a weak lean.'],
       ['PP', 'Kiley', '●', 'Pragmatic and Polite Right voters reward independence and caution, and Kiley left the party label, voted against Trump’s Canada-tariff emergency, signed the Ukraine aid petition and co-wrote a bipartisan health-credit bill.'],
       ['UR', 'Kiley', '◐', 'Unconventional Right voters are lukewarm on party loyalty and want smaller government, and Kiley blames Sacramento for high costs and opposes vaccine mandates, though his tariff and Ukraine votes are less to their taste.'],
-      ['FC', 'Kiley', '●', 'Faith First Conservatives prize religious liberty, and Pan wrote the law that ended religious exemptions from school vaccines, while Kiley wants to bar state and local vaccine mandates.'],
+      ['FC', 'Pan / Kiley', '=', 'Faith First Conservatives weigh religious liberty against help for struggling families: if religious liberty matters most, Kiley, who wants to bar state and local vaccine mandates while Pan wrote the law that ended religious exemptions from school vaccines; if protecting Medicaid matters more, Pan, who opposes the federal Medicaid cuts Kiley voted for, and Kiley says he will stop caucusing with Republicans.'],
       ['NA', 'Kiley', '◐', 'No Apologies Right voters want Trump allies, and Kiley left the Republican Party and voted against Trump’s tariff emergency, but he voted for the 2025 budget law and opposes Pan’s vaccine mandates.'],
     ]),
     counterArguments: [

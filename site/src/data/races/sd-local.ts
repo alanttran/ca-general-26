@@ -170,7 +170,7 @@ export const RACES_SD_LOCAL: Race[] = [
     ],
     crossTypology: ct([
       ['LP', 'Cohen', '◐', 'Leftward Progressives want help aimed at people with less, and Cohen proposes expanding property-tax relief for seniors, veterans and low-income homeowners, though the office does not set tax policy.'],
-      ['LL', 'Cohen', '◐', 'Loyal Liberals give weight to the Democratic Party, the Sheriff and most of the county’s elected officials backing Cohen, though their trust in expertise also favors Nakawatase’s CPA credential in a money-handling office.'],
+      ['LL', 'Cohen / Nakawatase', '=', 'Loyal Liberals weigh broad institutional backing against professional credentials: if the Democratic Party, the Sheriff and most of the county’s elected officials backing the incumbent matter most, Cohen; if trust in expertise matters more in an office that invests billions of public dollars, Nakawatase, a CPA with four decades of tax and accounting work.'],
       ['LO', 'Cohen', '◐', 'Left-Out Left voters want relief for struggling homeowners, which Cohen offers, though Cohen is a party-backed appointee and former congressional chief of staff, the kind of insider they distrust.'],
       ['OO', 'Cohen', '◐', 'Order and Opportunity Left voters want practical help with costs and protection from fraud, and Cohen pairs expanded tax relief with a focus on protecting seniors from scams.'],
       ['TM', 'Cohen', '○', 'Tuned-Out Middle voters are pocketbook-first, and Cohen’s promise of expanded relief programs is more concrete help than Nakawatase’s emphasis on taxpayer education.'],
@@ -181,7 +181,7 @@ export const RACES_SD_LOCAL: Race[] = [
     ]),
     counterArguments: [
       'FC/NA (Nakawatase ●): But consider that a Treasurer does not set tax policy and Cohen has already run the office for about a year, because what matters most is whether collections and investments run smoothly.',
-      'LL/LO (Cohen ◐): But consider Nakawatase’s 40 years as a CPA, because the credential case arguably fits an office that invests billions of public dollars better than a policy background.',
+      'LO (Cohen ◐): But consider Nakawatase’s 40 years as a CPA, because the credential case arguably fits an office that invests billions of public dollars better than a policy background.',
     ],
     readingLinks: [
       { label: 'Voice of San Diego 2026 voter guide', url: 'https://voiceofsandiego.org/2026/10/05/voice-of-san-diegos-no-bs-2026-voter-guide/', summary: 'Neutral profiles of both candidates.' },

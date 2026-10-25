@@ -121,7 +121,7 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
     ],
     crossTypology: ct([
       ['LP', 'Garcia', '●', 'Leftward Progressives are the group most skeptical of police and most focused on defendants’ rights, so they favor Garcia, a public defender who built an immigration unit, over a career prosecutor backed by the District Attorney and Sheriff.'],
-      ['LL', 'Paradise', '◐', 'Loyal Liberals trust institutions and expert judgment, and Paradise’s endorsements from the presiding judge, many sitting judges and even the county Public Defender, plus her better-documented trial record, outweigh their sympathy for Garcia’s due-process focus.'],
+      ['LL', 'Paradise / Garcia', '=', 'Loyal Liberals weigh institutional trust against due process: if expert judgment and endorsements from the presiding judge, many sitting judges and even the county Public Defender, plus a better-documented trial record, matter most, Paradise; if adding a defense lawyer’s view of due process to a bench drawn heavily from prosecutors matters more, Garcia, whom the county Democratic Party backed.'],
       ['LO', 'Garcia', '◐', 'Left-Out Left voters oppose deportation drives and are wary of insiders, so they lean to Garcia, an immigration-law specialist outside the county power structure, over Paradise, a former assistant county executive.'],
       ['OO', 'Paradise', '◐', 'Order and Opportunity Left voters worry about violent crime and trust police, which favors Paradise’s long record prosecuting child-abuse, sex-crime and homicide cases, though their moderate immigration views give Garcia some appeal.'],
       ['TM', 'Paradise', '○', 'Tuned-Out Middle voters pay little attention to judicial races, but most trust police and see violent crime as a big problem, which gives Paradise, the longtime prosecutor, a weak edge.'],
@@ -132,7 +132,6 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
     ]),
     counterArguments: [
       'PP/UR/FC/NA (Paradise ●): But consider Garcia, because a judge must be neutral, nearly 20 years of defense and immigration work is real courtroom experience, and neither candidate has served as a judge.',
-      'LL (Paradise ◐): But consider Garcia, because a bench drawn heavily from prosecutors gains from a defense lawyer’s view of due process, and the county Democratic Party backed her.',
       'LP/LO (Garcia ●/◐): But consider Paradise, because her trial volume and management roles are the best-documented experience either candidate has published, and the county Public Defender himself endorsed her.',
     ],
   },

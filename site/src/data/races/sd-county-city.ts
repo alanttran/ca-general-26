@@ -895,9 +895,9 @@ export const RACES_SD_COUNTY_CITY: Race[] = [
       },
     ],
     crossTypology: ct([
-      ['LP', 'Abraham', '◐', 'Leftward Progressives favor the more left, less establishment option, and Abraham, backed by the Sierra Club and the nurses’ union and focused on environmental justice and housing equity, is that candidate, though Foster also has Working Families Party support.', 'Leftward Progressives who put experience first could back Foster, who chairs the council budget committee and has Working Families Party support, giving up Abraham’s environmental-justice focus and outsider stance.'],
+      ['LP', 'Foster / Abraham', '=', 'Leftward Progressives weigh two Democrats with progressive backing: if environmental justice, housing equity and an outsider’s challenge to City Hall matter most, Abraham, backed by the Sierra Club and the nurses’ union; if a proven progressive ally who chairs the council budget committee and has Working Families Party support matters more, Foster.'],
       ['LL', 'Foster', '●', 'Loyal Liberals value institutional experience and party backing, and Foster chairs the budget committee with the county Democratic Party, labor and many local officials behind him.'],
-      ['LO', 'Abraham', '●', 'Left-Out Left voters distrust City Hall insiders and want cost-of-living relief, and Abraham, a nurse born in a refugee camp who opposes new fees, is challenging the former chief of staff who inherited the seat’s network.'],
+      ['LO', 'Foster / Abraham', '=', 'Left-Out Left voters want cost-of-living relief from leaders who deliver: if distrust of City Hall insiders and new fees matters most, Abraham, a nurse born in a refugee camp who opposes the Balboa Park parking fees; if knowing the budget matters more, Foster, who redirected millions to flood repairs, since Abraham has no government experience and floated a $100 million flood bond without a cost plan.'],
       ['OO', 'Foster', '◐', 'Order and Opportunity Left voters want steady, competent leaders who deliver basic services, and Foster has steered flood-repair money and lists public safety as a priority, though Abraham’s opposition to fees speaks to their budgets.'],
       ['TM', 'Abraham', '○', 'Tuned-Out Middle voters feel fees directly, and Abraham opposes the Balboa Park parking fees Foster supported, though neither name is well known.', 'Tuned-Out Middle voters who want someone who already knows the job could back Foster, who redirected millions to flood repairs and says he secured federal money, giving up Abraham’s opposition to the parking fees.'],
       ['PP', 'Foster', '●', 'Pragmatic and Polite Right voters value competence and incremental governing, and Foster runs the budget committee while Abraham’s $100 million flood-bond idea has no cost plan.'],
@@ -906,7 +906,6 @@ export const RACES_SD_COUNTY_CITY: Race[] = [
       ['NA', 'Abraham', '○', 'No Apologies Right voters want to punish City Hall for fees and a deficit, and Abraham attacks both, though Abraham’s environmental-justice platform is far from theirs.', 'No Apologies Right voters who still want a known record could choose Foster, the councilmember since 2024 and budget committee chair, while accepting the incumbent who voted for the fees they oppose.'],
     ]),
     counterArguments: [
-      'LO (Abraham ●): But consider that Abraham has no government experience, raised far less money, and floated a flood bond without a cost plan, because Abraham would learn the city budget on the job.',
       'LL/PP (Foster ●): But consider that Foster led the primary by only 12 votes and supported fees that many residents oppose, because voters may reasonably want a council member more skeptical of City Hall spending.',
     ],
   },

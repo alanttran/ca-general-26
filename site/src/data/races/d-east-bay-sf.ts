@@ -256,9 +256,9 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
       ['OO', 'Wiener', '○', 'Order and Opportunity Left voters want a path to homeownership, and Wiener, the more moderate finalist, has pushed hardest to build more housing.'],
       ['TM', 'Wiener / Chan', '=', 'Tuned-Out Middle voters squeezed by living costs weigh rent against family bills: if rent matters most, Wiener, who has pushed hardest to build more housing; if child-care and health costs matter more, Chan, who pledges to lower them.'],
       ['PP', 'Wiener', '◐', 'Pragmatic and Polite Right voters prefer Wiener, the more moderate and experienced lawmaker who commits to working within his party’s leadership.'],
-      ['UR', 'Wiener', '○', 'Unconventional Right voters who want less red tape lean to Wiener’s housing deregulation, a weak fit between two progressive Democrats.'],
+      ['UR', 'Wiener / Chan', '=', 'Unconventional Right voters, facing two progressive Democrats, weigh red tape against local control: if cutting building rules matters most, Wiener, whose SB 79 overrides local zoning; if keeping decisions with neighborhoods matters more, Chan, who opposed SB 79 unless amended to keep local control.'],
       ['FC', 'Chan', '○', 'Faith First Conservatives who prize neighborhood stability may lean to Chan’s local-control approach, a weak fit between two progressive Democrats.'],
-      ['NA', 'Wiener', '○', 'No Apologies Right voters dislike both but may prefer Wiener’s cuts to local building rules over Chan’s labor-backed agenda.'],
+      ['NA', 'Wiener / Chan', '=', 'No Apologies Right voters dislike both and weigh deregulation against a state mandate: if cutting local building rules matters most, Wiener; if resisting Sacramento overriding neighborhoods matters more, Chan, who opposed SB 79 unless amended, accepting her labor-backed agenda.'],
     ]),
     counterArguments: [
       'LP (Chan ◐): But consider that Wiener has passed far more state law, including transit and clean-energy bills, because housing advocates criticize Chan’s opposition to upzoning as limiting supply.',

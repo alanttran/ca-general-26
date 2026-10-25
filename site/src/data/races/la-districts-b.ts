@@ -385,7 +385,7 @@ export const RACES_LA_DISTRICTS_B: Race[] = [
       },
     ],
     crossTypology: ct([
-      ['LP', 'Hernandez', '◐', 'Leftward Progressives are skeptical of corporate-funded Democrats, and Hernandez refuses corporate PAC money and backs Medicare for All and universal childcare, though Zbur is also a Progressive Caucus member.', 'Leftward Progressives who want a seasoned hand could back Zbur, a Progressive Caucus member who led Equality California and has passed climate and housing bills, though he takes corporate PAC money and fought SB 79.'],
+      ['LP', 'Zbur / Hernandez', '=', 'Leftward Progressives weigh a proven progressive record against a cleaner, further-left challenge: if passed climate and housing bills from a Progressive Caucus member who led Equality California matter most, Zbur, though he takes corporate PAC money and fought SB 79; if refusing corporate money and backing Medicare for All and universal childcare matter more, Hernandez, though he has no office held, no campaign website and no bill-level plans.'],
       ['LL', 'Zbur', '●', 'Loyal Liberals value expertise and institutional leadership, and Zbur is a longtime environmental attorney who led Equality California and has a record of passed bills.'],
       ['LO', 'Hernandez', '◐', 'Left-Out Left voters distrust politicians funded by corporations, and Hernandez is a working-class challenger refusing that money, though he has no record or website.', 'Left-Out Left voters who want a seasoned hand could accept Zbur, who has authored electrification and college-housing bills, though it means backing an incumbent who takes corporate PAC money.'],
       ['OO', 'Zbur', '◐', 'Order and Opportunity Left voters see gun violence as a big problem and want steady leadership, and Zbur has passed gun-safety bills and pairs public-safety reform with addiction services, though Hernandez’s health-care plan also appeals.'],
@@ -396,7 +396,6 @@ export const RACES_LA_DISTRICTS_B: Race[] = [
       ['NA', 'Zbur', '○', 'No Apologies Right voters oppose both platforms and weakly prefer Zbur over a challenger pushing large new government programs.'],
     ]),
     counterArguments: [
-      'LP (Hernandez ◐): But consider that Hernandez has no campaign website, no office held and no bill-level plans, so refusing corporate money is the main difference from a Progressive Caucus incumbent.',
       'PP (Zbur ●): But consider that Zbur led Assembly opposition to SB 79, which passed anyway, and his acceptance of corporate PAC money is the core of Hernandez’s challenge.',
     ],
   },

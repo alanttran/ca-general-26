@@ -515,7 +515,7 @@ export const RACES_LA_MESA: Race[] = [
     ],
     crossTypology: ct([
       ['LP', 'Tweedle', '◐', 'Leftward Progressives follow the teachers’ association to Tweedle, who pledges competitive staff pay and mental-health support.', 'Leftward Progressives who weigh experience could keep Reed, a 20-year special-education teacher already on the board, giving up the union and party endorsement.'],
-      ['LL', 'Tweedle', '◐', 'Loyal Liberals weigh the Democratic Party and teachers’ association endorsing Tweedle and her evidence-backed approach, though Reed’s classroom expertise is real.', 'Loyal Liberals who value expertise could back Reed, who already sits on the board and has taught special education for nearly 20 years, setting aside the party and union endorsements.'],
+      ['LL', 'Reed / Tweedle', '=', 'Loyal Liberals weigh expertise against their usual institutional allies: if classroom and board experience matter most, Reed, who already sits on the board and has taught special education for nearly 20 years; if the Democratic Party and teachers’ association endorsements and an evidence-backed approach matter more, Tweedle.'],
       ['LO', 'Tweedle', '○', 'Left-Out Left voters like a parent volunteer focused on staff pay over a board appointee, weakly since both are new to voters.', 'Left-Out Left voters could back Reed, a working teacher with two years on the board, giving up Tweedle’s union-backed focus on staff pay.'],
       ['OO', 'Reed', '◐', 'Order and Opportunity Left voters value Reed’s focus on raising kind, hardworking, service-oriented students and her long classroom career.'],
       ['TM', 'Reed', '○', 'Tuned-Out Middle voters may default to Reed, the sitting trustee who is also a longtime local teacher.'],
@@ -525,7 +525,7 @@ export const RACES_LA_MESA: Race[] = [
       ['NA', 'Reed', '○', 'No Apologies Right voters lean to Reed as the candidate not backed by the teachers’ union and the Democratic Party.'],
     ]),
     counterArguments: [
-      'LP/LL (Tweedle ◐): But consider that Reed is a working special-education teacher who already knows the board’s budget, because union backing is not the same as experience.',
+      'LP (Tweedle ◐): But consider that Reed is a working special-education teacher who already knows the board’s budget, because union backing is not the same as experience.',
       'OO/PP/FC (Reed ◐): But consider that Reed was appointed rather than elected and has published no positions on pay or Measure AA, because voters have little record to judge.',
     ],
   },
@@ -641,7 +641,7 @@ export const RACES_LA_MESA: Race[] = [
     ],
     crossTypology: ct([
       ['LP', 'Littig', '◐', 'Leftward Progressives follow the teachers’ association to Littig, a classroom teacher focused on retaining teachers and classified staff.', 'Leftward Progressives could keep McRae, an eight-year trustee, board president and teacher the union backed in 2022, giving up the current union and party endorsement.'],
-      ['LL', 'Littig', '◐', 'Loyal Liberals follow the Democratic Party and teachers’ association, which endorse Littig this year, though McRae’s institutional experience gives them pause.', 'Loyal Liberals who value steady institutions could back McRae, the board president with eight years of service whom the party endorsed in 2022.'],
+      ['LL', 'Littig / McRae', '=', 'Loyal Liberals weigh this year’s endorsements against steady institutional experience: if following the Democratic Party and teachers’ association, which now back a 23-year public school teacher, matters most, Littig; if eight years of service and the board presidency matter more, McRae, whom the party endorsed in 2022 and whose loss of that backing has not been publicly explained.'],
       ['LO', 'Littig', '◐', 'Left-Out Left voters like a working teacher challenging a long-serving board president.', 'Left-Out Left voters who want a steady hand could back McRae, who has eight years on the board and teaches elementary school, giving up a fresh voice for staff.'],
       ['OO', 'McRae', '◐', 'Order and Opportunity Left voters value McRae’s steady leadership, safe-schools priority and fiscal responsibility as board president.'],
       ['TM', 'McRae', '○', 'Tuned-Out Middle voters who don’t follow the board may default to McRae, the incumbent teacher.'],
@@ -651,7 +651,7 @@ export const RACES_LA_MESA: Race[] = [
       ['NA', 'Moody', '●', 'No Apologies Right voters back Moody, the Republican-endorsed challenger, against the union and the board establishment.'],
     ]),
     counterArguments: [
-      'LP/LL/LO (Littig ◐): But consider that McRae has eight years on the board and the party backed her last time, because the endorsement switch has not been publicly explained.',
+      'LP/LO (Littig ◐): But consider that McRae has eight years on the board and the party backed her last time, because the endorsement switch has not been publicly explained.',
       'NA/UR (Moody ●/◐): But consider that Moody lost this seat by 14 points in 2022, because a trustee is one vote of five and her academic goals need board allies.',
     ],
   },

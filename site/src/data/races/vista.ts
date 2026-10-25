@@ -628,7 +628,7 @@ export const RACES_VISTA: Race[] = [
       ['LP', 'Baker', '◐', 'Leftward Progressives prefer Baker’s focus on student mental health and a voice for teachers and staff over a rival who wants school resource officers on campus.'],
       ['LL', 'Baker', '◐', 'Loyal Liberals like Baker’s pledge to use data and listen to educators, though Baker has a thin public record.'],
       ['LO', 'Baker', '○', 'Left-Out Left voters, wary of officials who profit from their posts, lean to Baker over Davis, whose employer sells the campus security systems Davis wants to expand.'],
-      ['OO', 'Davis', '○', 'Order and Opportunity Left voters who put safety first may lean to Davis’s plan for fencing, access control and resource officers, though his employer’s business in that field needs watching.'],
+      ['OO', 'Davis / Baker', '=', 'Order and Opportunity Left voters weigh campus security against student well-being and clean governance: if hardened campuses come first, Davis, with his plan for fencing, access control and resource officers; if mental health, support for teachers and avoiding a possible conflict with Davis’s employer, which sells campus security systems, matter more, Baker.'],
       ['TM', '—', '—', 'Tuned-Out Middle voters have little to separate two first-time parent candidates whose short statements say nothing about family costs.'],
       ['PP', 'Davis', '○', 'Pragmatic and Polite Right voters may like Davis’s finance background and promise of responsible long-term decisions, but lean only weakly given the possible conflict with his employer’s security business.'],
       ['UR', 'Davis', '◐', 'Unconventional Right voters back Davis, who wants hardened campuses and school resource officers and is endorsed by Reform California.'],

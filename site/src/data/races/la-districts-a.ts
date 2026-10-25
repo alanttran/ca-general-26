@@ -142,7 +142,7 @@ export const RACES_LA_DISTRICTS_A: Race[] = [
     ],
     crossTypology: ct([
       ['LP', 'Sukaton', '●', 'Leftward Progressives want the most progressive option, and Sukaton is the Working Families Party-backed former Sanders organizer who takes no corporate or real-estate money and raises split-roll property-tax reform.'],
-      ['LL', 'Sukaton', '○', 'Loyal Liberals usually follow the party and labor backing Gipson holds, but they weigh ethics findings seriously, and Gipson’s FPPC fine and disputed service claims tip them weakly to Sukaton’s detailed plan for assessor oversight.'],
+      ['LL', 'Gipson / Sukaton', '=', 'Loyal Liberals weigh party and labor loyalty against ethics: if following the California Democratic Party, Labor Federation and Teachers Association backing Gipson matters most, Gipson; if Gipson’s FPPC fine and disputed police-service claims weigh more, Sukaton and his detailed plan for assessor oversight.'],
       ['LO', 'Sukaton', '●', 'Left-Out Left voters distrust insiders and political money, and Sukaton is a grassroots organizer refusing corporate donors while Gipson, the establishment pick, was fined for late disclosure of payments he solicited.'],
       ['OO', 'Gipson / Sukaton', '=', 'Order and Opportunity Left voters prefer steady, mainstream candidates and value honest dealing: if wariness of property-tax changes on homeowners matters most, Gipson over the Sanders-aligned Sukaton; if Gipson’s FPPC fine and overstated police service weigh more, Sukaton.'],
       ['TM', 'Sukaton', '○', 'Tuned-Out Middle voters distrust insiders and want direct relief, and Sukaton backs tax exemptions for veterans, seniors and low-income homeowners while Gipson has published no plan for the Board.'],

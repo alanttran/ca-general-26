@@ -480,14 +480,11 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
       ['LO', 'Addis', '◐', 'Left-Out Left voters want the lower drug prices Addis stresses, though Addis is now an Assembly insider.'],
       ['OO', 'Addis / Kessler', '=', 'Order and Opportunity Left voters weigh economic help against public-safety and social views: if health costs matter most, Addis, who chairs the health budget subcommittee and works on drug prices; if backing police and limiting girls’ sports by sex at birth matter more, Kessler, who pledges both.'],
       ['TM', 'Addis / Kessler', '=', 'Tuned-Out Middle voters weigh health costs against housing costs and school sports: if health costs matter most, Addis, whose drug-price and medical-school work targets them; if housing costs and girls’ sports matter more, Kessler, who blames regulations for housing costs and shares their view on sports, though she has no detailed cost plan.'],
-      ['PP', 'Kessler', '○', 'Pragmatic and Polite Right voters share Kessler’s support for police and sex-based school sports, though Kessler’s activist group is more combative than they like.', 'Pragmatic and Polite Right voters who put experience first could back Addis, who chairs the health budget subcommittee and founded a Central Coast caucus, giving up Kessler’s pro-oil and parental-notification agenda.'],
+      ['PP', 'Addis / Kessler', '=', 'Pragmatic and Polite Right voters weigh shared values against proven competence: if backing police and sex-based school sports matters most, Kessler, though her activist group is more combative than they like and she has no legislative experience; if steady experience matters more, Addis, who chairs the health budget subcommittee and founded a Central Coast caucus.'],
       ['UR', 'Kessler', '●', 'Unconventional Right voters back the Republican who would expand oil production, cut regulation and back police.'],
       ['FC', 'Kessler', '●', 'Faith First Conservatives back the candidate championing parental notification and sex-based school sports against a former Planned Parenthood board member.'],
       ['NA', 'Kessler', '●', 'No Apologies Right voters back the Republican who would expand oil production and fight transgender participation in girls’ sports.'],
     ]),
-    counterArguments: [
-      'PP (Kessler ○): But consider that Kessler has no legislative experience, because Addis controls a key budget subcommittee for the region.',
-    ],
   },
 
   // ───────────────────────────── AD-37 ─────────────────────────────
