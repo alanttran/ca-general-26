@@ -765,7 +765,7 @@ export const RACES_PROPS_A: Race[] = [
       ['LO', 'No', '◐', 'Left-Out Left voters distrust insiders and dislike moving the replacement choice to party succession and appointments, especially in a measure written by a senator who was himself recalled.'],
       ['OO', 'No', '○', 'Order and Opportunity Left voters value stable government, but they are wary of taking a choice away from voters, and most Democrats in PPIC’s poll opposed it.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters already feel voting gives them little say and would read this as taking another choice away and handing it to politicians.'],
-      ['PP', 'No', '○', 'Pragmatic and Polite Right voters like stability but distrust changes that let the same party or administration keep control after a recall, and four of the five editorial boards listed here urge No.'],
+      ['PP', 'Yes / No', '=', 'Pragmatic and Polite Right voters value stability, and it cuts both ways here: if continuity from an elected Lieutenant Governor taking over after a recall matters most, Yes; if letting the same party or administration keep control after voters remove a governor worries them more, No, as four of the five editorial boards listed here urge.'],
       ['UR', 'No', '●', 'Unconventional Right voters value a direct voter check on Sacramento and see this as protecting entrenched incumbents.'],
       ['FC', 'No', '●', 'Faith First Conservatives see the recall as one of the few tools conservatives have to override one-party state leadership and oppose weakening it.'],
       ['NA', 'No', '●', 'No Apologies Right voters see the recall-and-replace system as a fight-back tool against Democratic control and reject anything that blunts it.'],
@@ -782,7 +782,6 @@ export const RACES_PROPS_A: Race[] = [
       NA: 'Yes if you’d accept a weaker recall in exchange for majority support behind whoever governs. No if the recall-and-replace system is a check on one-party rule that delivered a Republican governor in 2003.',
     },
     counterArguments: [
-      'PP (No ○): But consider Yes if stability matters most to you, because the elected Lieutenant Governor offers continuity, and supporters say the 2021 front-runner would have won with about 28% of recall voters.',
       'LL (Yes ◐): But consider No if you want recalls to mean real change, because a recalled governor would be succeeded by a Lieutenant Governor usually of the same party.',
       'UR (No ●): But consider Yes if you object to minority rule, because under today’s rules a replacement can take office with far less support than the official who was removed.',
     ],

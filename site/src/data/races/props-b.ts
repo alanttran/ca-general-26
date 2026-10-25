@@ -256,7 +256,7 @@ export const RACES_PROPS_B: Race[] = [
     },
     crossTypology: ct([
       ['LP', 'No', '◐', 'Leftward Progressives want public science funding to offset federal cuts, but steering about $4.2 billion to an institute co-founded by the billionaire funding the campaign clashes with their opposition to wealthy interests shaping policy.'],
-      ['LL', 'No', '○', 'Loyal Liberals trust scientists and the patient groups behind it, and the state party says Yes, but every editorial board listed here and the League of Women Voters object to a ballot-box earmark for one institution, and they take good-government concerns seriously.'],
+      ['LL', 'Yes / No', '=', 'Loyal Liberals trust scientists but take good-government concerns seriously: if the scientific case matters most (immunologists, patient groups such as the Michael J. Fox Foundation, half the money in competitive grants, and the state party’s Yes), Yes; if a ballot-box earmark for one institution, opposed by every editorial board listed here and the League of Women Voters, matters more, No.'],
       ['LO', 'No', '●', 'Left-Out Left voters are the most alert to self-dealing, and criteria that CalMatters and UCLA say fit only the chief funder’s own institute look like insiders writing public spending for themselves.'],
       ['OO', 'Yes / No', '=', 'Order and Opportunity Left voters are drawn to research on cancer, heart disease and Alzheimer’s plus a 20% patient discount, but $500–600 million a year in debt payments and the single-institute carve-out pull the other way; if hope for cures and the discount matter most, Yes; if the debt and good-government concerns matter more, No.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters are wary of 20 years of state debt for research with a distant, uncertain payoff, though hope for cures could move them.'],
@@ -277,7 +277,6 @@ export const RACES_PROPS_B: Race[] = [
       NA: 'Yes if you see a time-limited bond with royalty payback as better than ongoing program spending. No if research should be left to private industry, not new state debt chosen by insiders.',
     },
     counterArguments: [
-      'LL (No ○): But consider Yes if you trust the scientific case, because the American Association of Immunologists and patient groups like the Michael J. Fox Foundation back it and half the money is awarded through competitive grants.',
       'OO (Toss-up): But consider No if good-government concerns weigh on you, because CalMatters and UCLA found that only the chief funder’s institute meets the criteria for about $4.2 billion.',
       'FC (No ◐): But consider Yes if you weigh the state Republican Party’s endorsement and the 20% patient discount, because the bond also returns 10% of discovery revenue to the General Fund until it is repaid.',
     ],
@@ -418,7 +417,7 @@ export const RACES_PROPS_B: Race[] = [
     crossTypology: ct([
       ['LP', 'No', '●', 'Leftward Progressives prioritize ballot access and see a constitutional rule that throws out mail ballots with missing or mismatched ID digits as falling hardest on low-income, disabled and young voters.'],
       ['LL', 'No', '●', 'Loyal Liberals trust California’s election administration and signature checks, weigh the rarity of documented fraud, and note a judge found the campaign’s “easier voting” claims false or misleading.'],
-      ['LO', 'No', '○', 'Left-Out Left voters mostly favor photo ID in principle, but as renters who move often they are the most exposed to ballots rejected over ID mismatches, in a measure whose largest donor is an out-of-state billionaire.'],
+      ['LO', 'Yes / No', '=', 'Left-Out Left voters mostly favor photo ID but are among the most exposed to rejected ballots: if showing ID to vote matters most, with a free state ID card and vote-by-mail kept, Yes; if the risk of ballots rejected over ID mismatches for renters who move often matters more, in a measure whose largest donor is an out-of-state billionaire, No.'],
       ['OO', 'Yes', '◐', 'Order and Opportunity Left voters strongly back photo ID to vote (84%) and see it as basic order, though many also value no-excuse mail voting, which the mail-ballot number rule complicates.'],
       ['TM', 'Yes', '○', 'Tuned-Out Middle voters mostly see showing ID as common sense, though they are among the voters most likely to lack a current ID or to have moved recently.'],
       ['PP', 'Yes', '◐', 'Pragmatic and Polite Right voters overwhelmingly favor photo ID and like a free state card, though leaving cure rules to the Legislature in a hard-to-fix constitutional amendment, and the campaign’s misleading claims, give them pause.'],
@@ -438,7 +437,6 @@ export const RACES_PROPS_B: Race[] = [
       NA: 'Yes if you want a visible check on California’s mail-ballot system plus audits and the right to sue to enforce it. No if you’d rather not leave accepted IDs and cure rules for Sacramento lawmakers to define.',
     },
     counterArguments: [
-      'LO (No ○): But consider Yes if you favor photo ID to vote, as most Left-Out Left voters do, because the measure guarantees a free state ID card and keeps universal vote-by-mail.',
       'OO (Yes ◐): But consider No if you vote by mail, because in Texas’s first election under a similar rule thousands of mail ballots were flagged or rejected, mostly over missing or mismatched numbers.',
       'PP (Yes ◐): But consider No if careful drafting matters to you, because cure procedures and accepted IDs are left to future legislation and a judge found several of the campaign’s claims false or misleading.',
     ],

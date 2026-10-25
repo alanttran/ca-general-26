@@ -557,7 +557,7 @@ export const RACES_PROPS_C: Race[] = [
     },
     crossTypology: ct([
       ['LP', 'No', '●', 'Leftward Progressives put environmental protection, community input and labor standards first, and see a CalChamber- and Brin-funded rollback that caps comment and weakens prevailing wage as the wrong way to build.'],
-      ['LL', 'No', '○', 'Loyal Liberals want housing and clean energy built faster and all four editorial boards listed here back it, but the state party, League of Women Voters, Sierra Club and Labor Federation oppose, and they prefer the Legislature’s targeted 2025 reforms.'],
+      ['LL', 'Yes / No', '=', 'Loyal Liberals want housing and clean energy built faster but listen to their usual allies: if speed matters most, as all four editorial boards listed here argue, Yes; if the preference of the state party, League of Women Voters, Sierra Club and Labor Federation for the Legislature’s targeted 2025 reforms matters more, No.'],
       ['LO', 'No', '○', 'Left-Out Left voters need cheaper housing, but nothing in this business-written measure requires lower rents, and its possible reach to data centers reads to them as a giveaway to developers.'],
       ['OO', 'No', '○', 'Order and Opportunity Left voters want more homes and jobs, but as pro-worker voters they side with building trades, nurses and the Labor Federation, who warn of weaker wage rules and more pollution near homes and schools.'],
       ['TM', 'Yes', '○', 'Tuned-Out Middle voters are focused on costs and may accept the promise of cheaper housing and sooner grid and water projects, though nothing guarantees lower rents or bills.'],
@@ -578,7 +578,6 @@ export const RACES_PROPS_C: Race[] = [
       NA: 'Yes if you’ve long wanted CEQA cut back to curb regulation and lawsuits used to block building. No if you’re wary of a broad statute that also fast-tracks clean-energy and transmission projects and gives neighbors less say.',
     },
     counterArguments: [
-      'LL (No ○): But consider Yes if building more housing and clean energy is your priority, because every editorial board listed here backs it, review is still required, and it extends 2025’s housing reforms to transit, water and transmission.',
       'OO (No ○): But consider Yes if housing costs are your biggest worry, because supporters cite permitting delays adding over $75,000 to a new home’s cost and deadlines would force agencies to decide.',
       'PP (Yes ◐): But consider No if you value correctable, incremental reform, because the measure freezes references to other laws as of 2025 and the Legislature could amend it only by two-thirds.',
     ],
