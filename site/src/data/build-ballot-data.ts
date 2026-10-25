@@ -1,5 +1,6 @@
 import type { BallotData, Race, TldrRow, TypologyCode, ZipRace } from '../types/ballot-types';
 import { BALLOT_META } from './meta';
+import { TY_CODES } from './typologies-data';
 import { mergeRaceDerivedFields } from './merge-races';
 import { combinedCellFor, experienceCellFor } from './experience-views';
 import { maxSeverity, resolveCandidateForPick } from './red-flags';
@@ -10,7 +11,6 @@ import { TYPOLOGIES } from './typologies-data';
 import { generatedProfile } from './zip-lookup';
 import { assertBallotDataValid } from './validate-typology-picks';
 
-const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
 
 export const ALL_STATEWIDE_RACES = mergeRaceDerivedFields(STATEWIDE_RACES);
 

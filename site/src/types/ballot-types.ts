@@ -1,5 +1,6 @@
 /** Pew-derived typology codes used in the guide */
-export type TypologyCode = 'PL' | 'EL' | 'DM' | 'OL' | 'SS' | 'AR' | 'PR' | 'CC' | 'FF';
+/** Pew 2026 political typology groups, left to right (see `data/typologies-data.ts`). */
+export type TypologyCode = 'LP' | 'LL' | 'LO' | 'OO' | 'TM' | 'PP' | 'UR' | 'FC' | 'NA';
 
 /** TL;DR / cross-table confidence glyph (matches legend SVGs). */
 export type ConfidenceSymbol = '●' | '◐' | '○' | '—';
@@ -335,7 +336,7 @@ export interface Race {
   /** Per-typology trade-offs (“Hinges on”). Required for every row of every measure (enforced by the validator). */
   hinges?: TypologyHinges;
   /**
-   * “PL (Yes ◐): But consider …” lines. Each is shown in the matching typology rows of the picks table (unless that
+   * “LP (Yes ◐): But consider …” lines. Each is shown in the matching typology rows of the picks table (unless that
    * row has a hinge); lines that match no row are listed under the table.
    */
   counterArguments?: string[];

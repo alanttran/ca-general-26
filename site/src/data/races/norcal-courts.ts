@@ -52,21 +52,21 @@ const PICKS_NOTE = 'no sourced misconduct, Commission on Judicial Performance di
 
 const typology = (extra: string) =>
   ct([
-    ['PL', 'Yes on all', '◐', 'Progressive Left voters generally support retaining appointees of a Democratic governor, and several justices here have public-defender, civil-rights or public-interest backgrounds; with no sourced misconduct, nothing supports a No.'],
-    ['EL', 'Yes on all', '●', `Establishment Liberals treat retention as a fitness check on a credentialed, vetted bench, and ${PICKS_NOTE}.`],
-    ['DM', 'Yes on all', '●', 'Democratic Mainstays defer to the court system and to the governors who appointed these justices, and no discipline or organized opposition is on record.'],
-    ['OL', 'Yes on all', '○', 'Outsider Left voters are wary of the legal establishment and of prosecutor or big-firm résumés, but absent documented problems a Yes is the defensible default.'],
-    ['SS', 'Yes on all', '○', 'Stressed Sideliners rarely have information on appellate judges; nothing distinguishes these justices, so the default is that retention is about fitness and no fitness problem is on record.'],
-    ['AR', 'Yes on all', '○', `Ambivalent Right voters are wary of politics but see no scandal here. ${extra}`],
-    ['PR', 'No on all', '○', 'Populist Right voters distrust unelected, governor-appointed officials and may cast a protest No, though no misconduct or specific ruling is alleged against these justices.'],
-    ['CC', 'Yes on all', '○', 'Committed Conservatives value stable courts and many justices have prosecutor or government-lawyer backgrounds; nothing sourced shows misconduct, so many would retain absent a ruling they object to.'],
-    ['FF', 'No on all', '○', 'Faith and Flag Conservatives may see a bench appointed mostly by Democratic governors as aligned with a progressive agenda, so a protest No is plausible; this is a lean, not a finding about any justice.'],
+    ['LP', 'Yes on all', '◐', 'Leftward Progressives want an independent bench, and several justices here have public-defender, civil-rights or public-interest backgrounds; with no sourced misconduct, nothing on the record supports a No, though this police-skeptical group will notice the former prosecutors too.'],
+    ['LL', 'Yes on all', '●', `Loyal Liberals trust expert vetting and treat retention as a fitness check on a credentialed bench, and ${PICKS_NOTE}.`],
+    ['LO', 'Yes on all', '○', 'Left-Out Left voters are wary of the legal establishment and of big-firm and government-insider résumés, but nothing on the record shows misconduct or self-dealing, so a Yes is the defensible default.'],
+    ['OO', 'Yes on all', '◐', `Order and Opportunity Left voters value public safety and respect for authority, and no discipline or organized opposition is on record. ${extra}`],
+    ['TM', 'Yes on all', '○', 'Tuned-Out Middle voters rarely have information on appellate judges and nothing here touches their costs, so with no fitness problem on record the low-effort default is to retain.'],
+    ['PP', 'Yes on all', '●', 'Pragmatic and Polite Right voters value the rule of law and experienced judges, and with no discipline or organized opposition on record, this cautious group sees no reason for a protest No.'],
+    ['UR', 'Yes on all', '○', 'Unconventional Right voters are wary of politics in the courts but see no scandal here, and a No would only let the governor choose a replacement, so retaining is the low-risk choice.'],
+    ['FC', 'Yes on all', '○', 'Faith First Conservatives may distrust a bench appointed mostly by Democratic governors, but no ruling by these justices on this group\'s faith or family priorities is on record here, and a No would only hand the governor new appointments.'],
+    ['NA', 'No on all', '○', 'No Apologies Right voters distrust institutional authority, and most of these justices were appointed by Democratic governors, so a protest No is plausible; this is a lean, not a finding about any justice.'],
   ]);
 
 const counters = (newNames: string): string[] => [
-  'PR/FF (No on all): But a No vote only hands the governor a vacancy to fill, and almost no appellate justice is ever removed, so a blanket No rarely changes the bench and could remove qualified justices.',
-  'PL/OL (Yes on all): But voters who care about criminal-justice reform could look at individual justices\' prosecutor backgrounds and vote line by line; no sourced evidence of bias was found.',
-  `SS/AR (Yes on all): But ${newNames} have little or no appellate record yet, so a voter wanting more evidence could reasonably skip those lines.`,
+  'NA (No on all ○): But consider that a No vote only hands the governor a vacancy to fill, because almost no appellate justice is ever removed and a blanket No would fall on qualified justices without any finding against them.',
+  'LP (Yes on all ◐): But consider voting line by line on justices with prosecution or government-lawyer careers, because voters focused on criminal-justice reform may weigh those backgrounds, though no sourced evidence of bias was found.',
+  `TM (Yes on all ○): But consider that ${newNames} have little or no appellate record yet, because a voter wanting more evidence could reasonably skip those lines.`,
 ];
 
 export const RACES_NORCAL_COURTS: Race[] = [

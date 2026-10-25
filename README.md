@@ -5,7 +5,7 @@ An unofficial, research-backed voter guide for the **November 3, 2026 California
 **Live site (GitHub Pages):** [https://alanttran.github.io/ca-general-26/](https://alanttran.github.io/ca-general-26/)
 **June primary edition:** [https://alanttran.github.io/ca-primary-26/](https://alanttran.github.io/ca-primary-26/)
 
-The guide is built around the **nine [Pew Research political typologies](https://www.pewresearch.org/politics/2021/political-typology/)** (Progressive Left through Faith and Flag Conservatives). It helps friends and neighbors **compare recommendations across worldviews**, not present a single “correct” slate.
+The guide is built around the **nine [Pew Research 2026 political typology groups](https://www.pewresearch.org/politics/2026/06/10/beyond-red-vs-blue-the-political-typology/)** (Leftward Progressives through No Apologies Right). It helps friends and neighbors **compare recommendations across worldviews**, not present a single “correct” slate.
 
 ## What’s in the repo
 

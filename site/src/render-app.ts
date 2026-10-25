@@ -25,7 +25,7 @@ import {
   siteUpdateBuildForDate,
   type SiteUpdatePanel,
 } from './data/site-updates';
-import { TYPOLOGIES } from './data/typologies-data';
+import { PEW_TYPOLOGY_URL, TY_CODES, TYPOLOGIES } from './data/typologies-data';
 import {
   categoryIcon,
   confidenceIconFromChar,
@@ -67,11 +67,11 @@ import { decodeChoices, encodeChoices, getChoice, importChoices, retentionKey, s
 import { votingInfoFor, type VotingInfo } from './data/voting-info';
 import { getViewPrefs, setViewPrefs, TYPOLOGY_PLAIN, type ViewMode, type ViewPrefs } from './data/view-prefs';
 
-const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
+/** Alternation of the nine codes for counter-argument prefixes such as `LL (` or `UR/FC (`. */
+const TY_ALT = TY_CODES.join('|');
 
-/** Leading typology token in counter-argument lines, e.g. `EL (` or `AR/FF (` */
-const COUNTER_ARG_TY_PREFIX =
-  /^((?:PL|EL|DM|OL|SS|AR|PR|CC|FF)(?:\/(?:PL|EL|DM|OL|SS|AR|PR|CC|FF))*)\s+\(/;
+/** Leading typology token in counter-argument lines, e.g. `LL (` or `UR/FC (` */
+const COUNTER_ARG_TY_PREFIX = new RegExp(String.raw`^((?:${TY_ALT})(?:\/(?:${TY_ALT}))*)\s+\(`);
 
 function typologyNameForChip(code: TypologyCode): string | undefined {
   return TYPOLOGIES.find((t) => t.code === code)?.name;
@@ -256,7 +256,7 @@ function el<K extends keyof HTMLElementTagNameMap>(
 }
 
 /**
- * Renders counter-argument prose: leading `PL` / `AR/FF` tokens use matrix typology chips; `(Name ●)` confidence markers use matrix SVG icons.
+ * Renders counter-argument prose: leading `LP` / `UR/FC` tokens use matrix typology chips; `(Name ●)` confidence markers use matrix SVG icons.
  */
 function appendCounterArgumentRich(li: HTMLElement, line: string): void {
   const pm = line.match(COUNTER_ARG_TY_PREFIX);
@@ -563,7 +563,10 @@ export function renderApp(root: HTMLElement, zip: string): void {
     sub,
     viewMode === 'full' ? zipSelector : foldZipSelector(zipSelector, data),
     ...(imported ? [imported] : []),
-    prefs.mode ? renderViewBar(data, prefs, rerender) : renderWelcome(prefs, rerender),
+    // A type saved under Pew’s 2021 groups was cleared: reopen the type step with a notice.
+    prefs.mode && !(prefs.legacyTypology && prefs.mode !== 'full')
+      ? renderViewBar(data, prefs, rerender)
+      : renderWelcome(prefs, rerender, prefs.legacyTypology ? 2 : 1),
     renderScopeNote(data, Boolean(profile.localPending)),
     // With a view chosen, the print controls live in the view bar; the changelog sits in the footer.
     ...(prefs.mode ? [] : [renderPrintPicks(data, prefs.typology)]),
@@ -614,8 +617,8 @@ export function renderApp(root: HTMLElement, zip: string): void {
       `Not affiliated with the ${data.meta.state === 'CO' ? 'Colorado' : 'California'} Secretary of State, any county ${data.meta.state === 'CO' ? 'clerk' : 'registrar'}, or any candidate committee. Cross-typology picks are `,
     ),
     extLink(
-      'https://www.pewresearch.org/politics/2021/political-typology/',
-      'inferences from Pew typology descriptions',
+      PEW_TYPOLOGY_URL,
+      'inferences from Pew’s 2026 typology descriptions',
       true,
     ),
     document.createTextNode(
@@ -634,7 +637,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
   markTocProgress(data, tocList);
   const printSelect = document.getElementById('print-typology') as HTMLSelectElement | null;
   // Simple views have no print select: Ctrl+P prints the same sheet as their Print button (my choices, type fills gaps).
-  fillPrintSheet(data, (printSelect?.value as PrintColumn | undefined) ?? (viewTypology ? MINE : 'EL'));
+  fillPrintSheet(data, (printSelect?.value as PrintColumn | undefined) ?? (viewTypology ? MINE : 'LL'));
 }
 
 /** Full view's reference material, folded so the ballot comes first; links into it open the fold. */
@@ -778,6 +781,8 @@ function renderWelcome(prefs: ViewPrefs, done: () => void, startAt: 1 | 2 = 1): 
     sec.replaceChildren();
     const h2 = el('h2', 'welcome__title', { id: 'welcome-title' });
     h2.textContent = 'Which kind of voter sounds most like you?';
+    const notice = el('p', 'welcome__notice', { role: 'status' });
+    notice.textContent = 'Pew updated its political typology in June 2026 with nine new groups, so please pick your type again. Your marked choices are kept.';
     const quiz = el('p', 'welcome__quiz');
     quiz.append(
       document.createTextNode('Most accurate: take the Pew Research Center’s '),
@@ -821,7 +826,7 @@ function renderWelcome(prefs: ViewPrefs, done: () => void, startAt: 1 | 2 = 1): 
     });
     const note = el('p', 'welcome__note');
     note.textContent = 'Picks are our reading of what each group values, not advice. You can always switch types or see all nine.';
-    sec.append(h2, quiz, form, note);
+    sec.append(h2, ...(prefs.legacyTypology ? [notice] : []), quiz, form, note);
   };
 
   if (startAt === 2 && prefs.mode && prefs.mode !== 'full') stepTwo();
@@ -928,7 +933,7 @@ function renderPrintPicks(data: BallotData, typology?: TypologyCode): HTMLElemen
     option.textContent = `${t.code} — ${t.name}`;
     select.append(option);
   }
-  select.value = countMarked(data) ? MINE : (typology ?? 'EL');
+  select.value = countMarked(data) ? MINE : (typology ?? 'LL');
   select.addEventListener('change', () => fillPrintSheet(data, select.value as PrintColumn));
   const btn = el('button', 'print-picks__button', { type: 'button' });
   btn.textContent = 'Print my picks';
@@ -1753,11 +1758,9 @@ function renderMethodologySection(): HTMLElement {
 
   const pPew = el('p', 'methodology__text');
   pPew.append(
-    document.createTextNode('Pew built the nine groups from national survey clustering (see '),
-    extLink('https://www.pewresearch.org/politics/2021/11/09/political-typology-appendix-a/', 'Appendix A', true),
-    document.createTextNode(' and '),
-    extLink('https://www.pewresearch.org/politics/2021/11/09/political-typology-appendix-b/', 'Appendix B', true),
-    document.createTextNode('); our mapping of candidates to them is heuristic. Treat picks as shortcuts, and check your official ballot.'),
+    document.createTextNode('Pew built the nine groups in its '),
+    extLink(PEW_TYPOLOGY_URL, '2026 political typology', true),
+    document.createTextNode(' (June 2026) by clustering 10,357 adults’ answers to 30 values questions; our mapping of candidates to them is heuristic. Treat picks as shortcuts, and check your official ballot.'),
   );
   block('About Pew’s groups', undefined, pPew);
 
@@ -2619,9 +2622,9 @@ function renderCrossTable(race: Race): HTMLElement {
 /** A hinge written “Yes if <a>. No if <b>.” → [, a, b]. Kept in sync with the validator’s check. */
 const HINGE_SIDES = /^Yes if ([\s\S]+?)\s+No if ([\s\S]+)$/;
 
-/** “PL/EL (Yes ◐): But consider …” → the typology codes and the text after the colon; undefined if not that shape. */
+/** “LP/LL (Yes ◐): But consider …” → the typology codes and the text after the colon; undefined if not that shape. */
 function parseCounter(line: string): { codes: TypologyCode[]; text: string } | undefined {
-  const m = /^((?:PL|EL|DM|OL|SS|AR|PR|CC|FF)(?:\/(?:PL|EL|DM|OL|SS|AR|PR|CC|FF))*)\s*\([^)]*\):\s*([\s\S]+)$/.exec(line.trim());
+  const m = new RegExp(String.raw`^((?:${TY_ALT})(?:\/(?:${TY_ALT}))*)\s*\([^)]*\):\s*([\s\S]+)$`).exec(line.trim());
   return m ? { codes: m[1].split('/') as TypologyCode[], text: m[2] } : undefined;
 }
 

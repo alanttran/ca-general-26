@@ -16,6 +16,20 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'October 25, 2026',
+    lede: 'Picks now use Pew’s new 2026 political typology: nine new voter groups, with every pick rewritten from scratch.',
+    panels: [
+      {
+        summary: 'Nine new voter types',
+        bullets: [
+          'Pew Research Center released a new political typology in June 2026. Its nine groups, from Leftward Progressives to No Apologies Right, replace the 2021 groups this guide used before. They are new clusters, not renamed old ones.',
+          'Every pick, reason, counter-argument and “Vote Yes if / Vote No if” line, about 3,500 in all across 385 contests, was rewritten for the new groups. Picks are based on each group’s values first, with party only as a tiebreaker, so the mixed groups (Left-Out Left, Order and Opportunity Left, Tuned-Out Middle, Pragmatic and Polite Right, Unconventional Right) cross party lines more often.',
+          'If you picked a type before, the guide asks you to pick again; your marked choices are kept. Pew’s quiz now places you in a 2026 group.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'October 15, 2026',
     lede: 'Mail your ballot or drop it off? The voting-dates box now explains what’s safest this year, and the printed cheat sheet fits on one page.',
     panels: [

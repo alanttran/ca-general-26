@@ -30,20 +30,20 @@
   --rad-max-width: 72rem;
   --rad-radius: 10px;
 
-  /* Pew columns — PL→FF as a linear blue→red ramp (OKLCH mix); chips match spectrum */
+  /* Pew columns — LP→NA (2026 typology, left→right) as a linear blue→red ramp (OKLCH mix); chips match spectrum */
   --typ-spectrum-blue: oklch(0.52 0.19 264);
   --typ-spectrum-red: oklch(0.52 0.19 32);
-  --typ-PL: var(--typ-spectrum-blue);
-  --typ-EL: color-mix(in oklch, var(--typ-spectrum-blue) 87.5%, var(--typ-spectrum-red) 12.5%);
-  --typ-DM: color-mix(in oklch, var(--typ-spectrum-blue) 75%, var(--typ-spectrum-red) 25%);
-  --typ-OL: color-mix(in oklch, var(--typ-spectrum-blue) 62.5%, var(--typ-spectrum-red) 37.5%);
-  --typ-SS: color-mix(in oklch, var(--typ-spectrum-blue) 50%, var(--typ-spectrum-red) 50%);
-  --typ-AR: color-mix(in oklch, var(--typ-spectrum-blue) 37.5%, var(--typ-spectrum-red) 62.5%);
-  --typ-PR: color-mix(in oklch, var(--typ-spectrum-blue) 25%, var(--typ-spectrum-red) 75%);
-  --typ-CC: color-mix(in oklch, var(--typ-spectrum-blue) 12.5%, var(--typ-spectrum-red) 87.5%);
-  --typ-FF: var(--typ-spectrum-red);
+  --typ-LP: var(--typ-spectrum-blue);
+  --typ-LL: color-mix(in oklch, var(--typ-spectrum-blue) 87.5%, var(--typ-spectrum-red) 12.5%);
+  --typ-LO: color-mix(in oklch, var(--typ-spectrum-blue) 75%, var(--typ-spectrum-red) 25%);
+  --typ-OO: color-mix(in oklch, var(--typ-spectrum-blue) 62.5%, var(--typ-spectrum-red) 37.5%);
+  --typ-TM: color-mix(in oklch, var(--typ-spectrum-blue) 50%, var(--typ-spectrum-red) 50%);
+  --typ-PP: color-mix(in oklch, var(--typ-spectrum-blue) 37.5%, var(--typ-spectrum-red) 62.5%);
+  --typ-UR: color-mix(in oklch, var(--typ-spectrum-blue) 25%, var(--typ-spectrum-red) 75%);
+  --typ-FC: color-mix(in oklch, var(--typ-spectrum-blue) 12.5%, var(--typ-spectrum-red) 87.5%);
+  --typ-NA: var(--typ-spectrum-red);
 
-  /* Pre-spectrum typology OL (teal) — “what’s at stake” callout background tint */
+  /* Pre-spectrum teal — “what’s at stake” callout background tint */
   --rad-stakes-surface-tint: #0d9488;
 
   /* Confidence icon colors */
@@ -215,50 +215,50 @@ th {
   border: 1px solid transparent;
 }
 
-.typology-chip--PL {
-  color: var(--typ-PL);
-  background: color-mix(in srgb, var(--typ-PL) 12%, var(--rad-surface));
-  border-color: color-mix(in srgb, var(--typ-PL) 50%, transparent);
+.typology-chip--LP {
+  color: var(--typ-LP);
+  background: color-mix(in srgb, var(--typ-LP) 12%, var(--rad-surface));
+  border-color: color-mix(in srgb, var(--typ-LP) 50%, transparent);
 }
-.typology-chip--EL {
-  color: var(--typ-EL);
-  background: color-mix(in srgb, var(--typ-EL) 12%, var(--rad-surface));
-  border-color: color-mix(in srgb, var(--typ-EL) 50%, transparent);
+.typology-chip--LL {
+  color: var(--typ-LL);
+  background: color-mix(in srgb, var(--typ-LL) 12%, var(--rad-surface));
+  border-color: color-mix(in srgb, var(--typ-LL) 50%, transparent);
 }
-.typology-chip--DM {
-  color: var(--typ-DM);
-  background: color-mix(in srgb, var(--typ-DM) 12%, var(--rad-surface));
-  border-color: color-mix(in srgb, var(--typ-DM) 50%, transparent);
+.typology-chip--LO {
+  color: var(--typ-LO);
+  background: color-mix(in srgb, var(--typ-LO) 12%, var(--rad-surface));
+  border-color: color-mix(in srgb, var(--typ-LO) 50%, transparent);
 }
-.typology-chip--OL {
-  color: var(--typ-OL);
-  background: color-mix(in srgb, var(--typ-OL) 12%, var(--rad-surface));
-  border-color: color-mix(in srgb, var(--typ-OL) 50%, transparent);
+.typology-chip--OO {
+  color: var(--typ-OO);
+  background: color-mix(in srgb, var(--typ-OO) 12%, var(--rad-surface));
+  border-color: color-mix(in srgb, var(--typ-OO) 50%, transparent);
 }
-.typology-chip--SS {
-  color: var(--typ-SS);
-  background: color-mix(in srgb, var(--typ-SS) 12%, var(--rad-surface));
-  border-color: color-mix(in srgb, var(--typ-SS) 50%, transparent);
+.typology-chip--TM {
+  color: var(--typ-TM);
+  background: color-mix(in srgb, var(--typ-TM) 12%, var(--rad-surface));
+  border-color: color-mix(in srgb, var(--typ-TM) 50%, transparent);
 }
-.typology-chip--AR {
-  color: var(--typ-AR);
-  background: color-mix(in srgb, var(--typ-AR) 12%, var(--rad-surface));
-  border-color: color-mix(in srgb, var(--typ-AR) 50%, transparent);
+.typology-chip--PP {
+  color: var(--typ-PP);
+  background: color-mix(in srgb, var(--typ-PP) 12%, var(--rad-surface));
+  border-color: color-mix(in srgb, var(--typ-PP) 50%, transparent);
 }
-.typology-chip--PR {
-  color: var(--typ-PR);
-  background: color-mix(in srgb, var(--typ-PR) 12%, var(--rad-surface));
-  border-color: color-mix(in srgb, var(--typ-PR) 50%, transparent);
+.typology-chip--UR {
+  color: var(--typ-UR);
+  background: color-mix(in srgb, var(--typ-UR) 12%, var(--rad-surface));
+  border-color: color-mix(in srgb, var(--typ-UR) 50%, transparent);
 }
-.typology-chip--CC {
-  color: var(--typ-CC);
-  background: color-mix(in srgb, var(--typ-CC) 12%, var(--rad-surface));
-  border-color: color-mix(in srgb, var(--typ-CC) 50%, transparent);
+.typology-chip--FC {
+  color: var(--typ-FC);
+  background: color-mix(in srgb, var(--typ-FC) 12%, var(--rad-surface));
+  border-color: color-mix(in srgb, var(--typ-FC) 50%, transparent);
 }
-.typology-chip--FF {
-  color: var(--typ-FF);
-  background: color-mix(in srgb, var(--typ-FF) 12%, var(--rad-surface));
-  border-color: color-mix(in srgb, var(--typ-FF) 50%, transparent);
+.typology-chip--NA {
+  color: var(--typ-NA);
+  background: color-mix(in srgb, var(--typ-NA) 12%, var(--rad-surface));
+  border-color: color-mix(in srgb, var(--typ-NA) 50%, transparent);
 }
 
 .typology-spectrum {
@@ -276,15 +276,15 @@ th {
   border-radius: 999px;
   background: linear-gradient(
     90deg,
-    var(--typ-PL) 0%,
-    var(--typ-EL) 12.5%,
-    var(--typ-DM) 25%,
-    var(--typ-OL) 37.5%,
-    var(--typ-SS) 50%,
-    var(--typ-AR) 62.5%,
-    var(--typ-PR) 75%,
-    var(--typ-CC) 87.5%,
-    var(--typ-FF) 100%
+    var(--typ-LP) 0%,
+    var(--typ-LL) 12.5%,
+    var(--typ-LO) 25%,
+    var(--typ-OO) 37.5%,
+    var(--typ-TM) 50%,
+    var(--typ-PP) 62.5%,
+    var(--typ-UR) 75%,
+    var(--typ-FC) 87.5%,
+    var(--typ-NA) 100%
   );
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--rad-text) 12%, transparent);
 }
@@ -700,7 +700,7 @@ th {
     }
 
     svg {
-      color: color-mix(in srgb, var(--rad-accent) 75%, var(--typ-PL));
+      color: color-mix(in srgb, var(--rad-accent) 75%, var(--typ-LP));
     }
   }
 }
@@ -825,7 +825,7 @@ main {
   }
 
   .intro-card__heading-icon--secondary {
-    color: color-mix(in srgb, var(--typ-EL) 65%, var(--rad-accent));
+    color: color-mix(in srgb, var(--typ-LL) 65%, var(--rad-accent));
   }
 
   p {
@@ -1021,32 +1021,32 @@ main {
     font-size: var(--fs-sm);
   }
 
-  thead th.matrix-col--PL {
-    background: color-mix(in srgb, var(--typ-PL) 18%, var(--rad-surface-elevated));
+  thead th.matrix-col--LP {
+    background: color-mix(in srgb, var(--typ-LP) 18%, var(--rad-surface-elevated));
   }
-  thead th.matrix-col--EL {
-    background: color-mix(in srgb, var(--typ-EL) 18%, var(--rad-surface-elevated));
+  thead th.matrix-col--LL {
+    background: color-mix(in srgb, var(--typ-LL) 18%, var(--rad-surface-elevated));
   }
-  thead th.matrix-col--DM {
-    background: color-mix(in srgb, var(--typ-DM) 18%, var(--rad-surface-elevated));
+  thead th.matrix-col--LO {
+    background: color-mix(in srgb, var(--typ-LO) 18%, var(--rad-surface-elevated));
   }
-  thead th.matrix-col--OL {
-    background: color-mix(in srgb, var(--typ-OL) 18%, var(--rad-surface-elevated));
+  thead th.matrix-col--OO {
+    background: color-mix(in srgb, var(--typ-OO) 18%, var(--rad-surface-elevated));
   }
-  thead th.matrix-col--SS {
-    background: color-mix(in srgb, var(--typ-SS) 18%, var(--rad-surface-elevated));
+  thead th.matrix-col--TM {
+    background: color-mix(in srgb, var(--typ-TM) 18%, var(--rad-surface-elevated));
   }
-  thead th.matrix-col--AR {
-    background: color-mix(in srgb, var(--typ-AR) 18%, var(--rad-surface-elevated));
+  thead th.matrix-col--PP {
+    background: color-mix(in srgb, var(--typ-PP) 18%, var(--rad-surface-elevated));
   }
-  thead th.matrix-col--PR {
-    background: color-mix(in srgb, var(--typ-PR) 18%, var(--rad-surface-elevated));
+  thead th.matrix-col--UR {
+    background: color-mix(in srgb, var(--typ-UR) 18%, var(--rad-surface-elevated));
   }
-  thead th.matrix-col--CC {
-    background: color-mix(in srgb, var(--typ-CC) 18%, var(--rad-surface-elevated));
+  thead th.matrix-col--FC {
+    background: color-mix(in srgb, var(--typ-FC) 18%, var(--rad-surface-elevated));
   }
-  thead th.matrix-col--FF {
-    background: color-mix(in srgb, var(--typ-FF) 18%, var(--rad-surface-elevated));
+  thead th.matrix-col--NA {
+    background: color-mix(in srgb, var(--typ-NA) 18%, var(--rad-surface-elevated));
   }
 
   tbody th.matrix-col--race {
@@ -1059,38 +1059,38 @@ main {
       text-decoration: none;
 
       &:hover {
-        color: var(--typ-PL);
+        color: var(--typ-LP);
         text-decoration: underline;
       }
     }
   }
 
-  tbody td.matrix-col--PL {
-    background: color-mix(in srgb, var(--typ-PL) 9%, var(--rad-surface));
+  tbody td.matrix-col--LP {
+    background: color-mix(in srgb, var(--typ-LP) 9%, var(--rad-surface));
   }
-  tbody td.matrix-col--EL {
-    background: color-mix(in srgb, var(--typ-EL) 9%, var(--rad-surface));
+  tbody td.matrix-col--LL {
+    background: color-mix(in srgb, var(--typ-LL) 9%, var(--rad-surface));
   }
-  tbody td.matrix-col--DM {
-    background: color-mix(in srgb, var(--typ-DM) 9%, var(--rad-surface));
+  tbody td.matrix-col--LO {
+    background: color-mix(in srgb, var(--typ-LO) 9%, var(--rad-surface));
   }
-  tbody td.matrix-col--OL {
-    background: color-mix(in srgb, var(--typ-OL) 9%, var(--rad-surface));
+  tbody td.matrix-col--OO {
+    background: color-mix(in srgb, var(--typ-OO) 9%, var(--rad-surface));
   }
-  tbody td.matrix-col--SS {
-    background: color-mix(in srgb, var(--typ-SS) 9%, var(--rad-surface));
+  tbody td.matrix-col--TM {
+    background: color-mix(in srgb, var(--typ-TM) 9%, var(--rad-surface));
   }
-  tbody td.matrix-col--AR {
-    background: color-mix(in srgb, var(--typ-AR) 9%, var(--rad-surface));
+  tbody td.matrix-col--PP {
+    background: color-mix(in srgb, var(--typ-PP) 9%, var(--rad-surface));
   }
-  tbody td.matrix-col--PR {
-    background: color-mix(in srgb, var(--typ-PR) 9%, var(--rad-surface));
+  tbody td.matrix-col--UR {
+    background: color-mix(in srgb, var(--typ-UR) 9%, var(--rad-surface));
   }
-  tbody td.matrix-col--CC {
-    background: color-mix(in srgb, var(--typ-CC) 9%, var(--rad-surface));
+  tbody td.matrix-col--FC {
+    background: color-mix(in srgb, var(--typ-FC) 9%, var(--rad-surface));
   }
-  tbody td.matrix-col--FF {
-    background: color-mix(in srgb, var(--typ-FF) 9%, var(--rad-surface));
+  tbody td.matrix-col--NA {
+    background: color-mix(in srgb, var(--typ-NA) 9%, var(--rad-surface));
   }
 
   &--compact {
@@ -1130,22 +1130,22 @@ main {
     border-radius: 2px;
     background: linear-gradient(
       90deg,
-      var(--typ-PL) 0%,
-      var(--typ-EL) 12.5%,
-      var(--typ-DM) 25%,
-      var(--typ-OL) 37.5%,
-      var(--typ-SS) 50%,
-      var(--typ-AR) 62.5%,
-      var(--typ-PR) 75%,
-      var(--typ-CC) 87.5%,
-      var(--typ-FF) 100%
+      var(--typ-LP) 0%,
+      var(--typ-LL) 12.5%,
+      var(--typ-LO) 25%,
+      var(--typ-OO) 37.5%,
+      var(--typ-TM) 50%,
+      var(--typ-PP) 62.5%,
+      var(--typ-UR) 75%,
+      var(--typ-FC) 87.5%,
+      var(--typ-NA) 100%
     );
   }
 }
 
 .race-category__icon {
   display: inline-flex;
-  color: color-mix(in srgb, var(--rad-accent) 55%, var(--typ-PL));
+  color: color-mix(in srgb, var(--rad-accent) 55%, var(--typ-LP));
 }
 
 .race {
@@ -2985,6 +2985,14 @@ button:focus-visible {
 .welcome__note {
   margin: 0 0 1rem;
   color: var(--rad-text-muted);
+}
+
+.welcome__notice {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.8rem;
+  border-left: 4px solid var(--rad-accent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--rad-accent) 8%, var(--rad-surface));
 }
 
 .welcome__note {

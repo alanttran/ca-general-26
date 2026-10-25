@@ -3,10 +3,10 @@ import { BALLOT_CATEGORIES, type BallotProfile } from './ballot-profiles';
 import { combinedCellFor } from './experience-views';
 import { resolveCandidateForPick, SEVERITY_ORDER, STATUS_LABEL } from './red-flags';
 
-const TY_CODES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL', 'SS', 'AR', 'PR', 'CC', 'FF'];
+import { TY_CODES } from './typologies-data';
 
 /** Pew columns that should not recommend Republicans in a Democrat-vs-Republican race. */
-const LIBERAL_TYPOLOGIES: TypologyCode[] = ['PL', 'EL', 'DM', 'OL'];
+const LIBERAL_TYPOLOGIES: TypologyCode[] = ['LP', 'LL'];
 
 const LEFT_PARTIES = new Set(['D', 'Green', 'PF']);
 const SKIP_PICKS = new Set(['—', '–', '-']);
@@ -261,6 +261,19 @@ export function collectExperienceRationaleIssues(races: Race[]): TypologyValidat
   return issues;
 }
 
+/** Pew’s 2021 group names (capitalized, so quoted phrases like “the progressive left” pass); use the 2026 groups instead. */
+const LEGACY_TYPOLOGY_NAMES =
+  /Progressive Left|Establishment Liberals?|Democratic Mainstays?|Outsider Left|Stressed Sideliners?|Ambivalent Right|Populist Right|Committed Conservatives?|Faith[- ]and[- ]Flag/;
+
+export function collectLegacyTypologyIssues(races: Race[]): TypologyValidationIssue[] {
+  const issues: TypologyValidationIssue[] = [];
+  for (const race of races) {
+    const m = LEGACY_TYPOLOGY_NAMES.exec(JSON.stringify(race));
+    if (m) issues.push({ raceId: race.id, message: `mentions the 2021 Pew group “${m[0]}”; use the 2026 groups` });
+  }
+  return issues;
+}
+
 export function assertBallotDataValid(races: Race[], profiles: BallotProfile[]): void {
   const issues = [
     ...collectTypologyValidationIssues(races),
@@ -269,6 +282,7 @@ export function assertBallotDataValid(races: Race[], profiles: BallotProfile[]):
     ...collectProfileIssues(races, profiles),
     ...collectExperienceRationaleIssues(races),
     ...collectMeasureIssues(races),
+    ...collectLegacyTypologyIssues(races),
   ];
   if (issues.length === 0) return;
 

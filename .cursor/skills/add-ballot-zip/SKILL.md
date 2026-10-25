@@ -49,8 +49,8 @@ Candidate ids must be **globally unique** — use `firstname-lastname` (e.g. `st
   readingLinks: [{ label: 'KPBS debate (Oct 2026)', url: 'https://…', summary: '…' }], // debates/forums/explainers, optional
   polling: [{ resultDisplay: 'Peters 54%, Cohen 37%', pollsterCredit: '…', fieldDatesLabel: 'Sep 2026', sourceUrl: 'https://…' }], // only real, cited polls
   candidates: [ /* §5 */ ],
-  crossTypology: ct([ ['PL','Ward','●','…'], …9 rows… ]),
-  counterArguments: ['EL (Ward ●): But consider … because …'],  // 1–3
+  crossTypology: ct([ ['LP','Ward','●','…'], …9 rows… ]),
+  counterArguments: ['LL (Ward ●): But consider … because …'],  // 1–3
 }
 ```
 
@@ -108,7 +108,7 @@ One race per court group: `retention-supreme` (statewide, `categoryId: 'judicial
 { id: 'retention-dca4', categoryId: 'judicial', title: 'Court of Appeal, 4th District — retention', tldrLabel: 'Appeals Court (4th Dist.)',
   kind: 'retention', candidates: [], stakesParagraphs: [2], introParagraphs: [1],
   retention: { justices: [{ name, court, title: 'Associate Justice', appointedBy: 'Newsom (2023)', notes: ['…'], redFlags?: [...], sources: [{label:'Court bio', url}] }] },
-  crossTypology: ct([['PL','Yes on all','●','…'], …]),   // picks start with Yes/No; e.g. 'Yes on all', 'Yes on all but Smith'
+  crossTypology: ct([['LP','Yes on all','●','…'], …]),   // picks start with Yes/No; e.g. 'Yes on all', 'Yes on all but Smith'
 }
 ```
 
@@ -116,13 +116,15 @@ Notes: prior job, appointing governor, notable opinions (with links), prior rete
 
 ## 8. Cross-typology picks (9 Pew columns)
 
-PL Progressive Left · EL Establishment Liberals · DM Democratic Mainstays · OL Outsider Left · SS Stressed Sideliners · AR Ambivalent Right · PR Populist Right · CC Committed Conservatives · FF Faith and Flag Conservatives. Pew chapters: https://www.pewresearch.org/politics/2021/11/09/beyond-red-vs-blue-the-political-typology-2/
+Pew’s **2026** typology (June 10, 2026), left → right: LP Leftward Progressives · LL Loyal Liberals · LO Left-Out Left · OO Order and Opportunity Left · TM Tuned-Out Middle · PP Pragmatic and Polite Right · UR Unconventional Right · FC Faith First Conservatives · NA No Apologies Right. **Read [typology-2026.md](typology-2026.md) before writing any pick**: it has each group’s issue positions, style and how it weighs a ballot choice. Never use the retired 2021 group names (the build fails on them).
 
 - Each race has exactly **one row per code**. Confidence: `●` clear fit, `◐` defensible trade-off, `○` weak lean, `—` skip (pick `—`).
-- **D vs R race:** PL/EL/DM/OL must pick the Democrat (build fails otherwise; rationales under those columns must not read conservative). PR/CC/FF usually the Republican. SS and AR are judgment calls — explain.
+- Rows go in the order LP, LL, LO, OO, TM, PP, UR, FC, NA (same for `hinges` keys).
+- **Values first, party as tiebreak.** Derive each pick from the group’s 2026 values and style; party lean breaks only near-ties. Mixed groups (LO, OO, TM, PP, UR) may cross party lines; say why.
+- **D vs R race:** LP and LL must pick the Democrat (build fails otherwise). No other column is forced; FC and NA usually pick the Republican, the rest are judged on values — explain.
 - **Same-party race (D vs D / R vs R):** pick on ideology — say *in the rationale* which finalist is further left/right, more establishment/outsider, and why that fits the column.
 - **Measures:** Yes/No by what that typology values (taxes, spending, regulation, social issues, institutional trust). Explain the value, not the outcome you prefer.
-- Rationales are third person about the voter group (“Establishment Liberals value…”), one sentence, specific to this race.
+- Rationales are third person about the voter group (“Loyal Liberals value…”), one sentence, specific to this race.
 - **Fit + experience switches:** when the combined view switches a pick (a ◐/○ pick whose rival is 2+ experience levels higher, or a `—` cell with a clear most-experienced candidate), add a 5th `ct()` element: one or two sentences (≤55 words) on why an experience-first voter in that group could back the switched-to candidate, and what they give up. Name red flags and cross-party votes plainly. The build fails if a switched pick lacks one, or an unswitched pick has one.
 
 ## 5b. Experience for the job (every candidate race)
