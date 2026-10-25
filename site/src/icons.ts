@@ -240,10 +240,19 @@ export function iconConfidenceSkip(className = 'icon-confidence icon-confidence-
   );
 }
 
+/** Toss-up — circle split down the middle: either side fits about equally (=). */
+export function iconConfidenceTossUp(className = 'icon-confidence icon-confidence--tossup'): SVGElement {
+  return svgIcon(
+    '0 0 16 16',
+    '<circle cx="8" cy="8" r="5.35" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="2.65" x2="8" y2="13.35" stroke="currentColor" stroke-width="1.5"/>',
+    className,
+  );
+}
+
 function confidenceIconClass(base: string, ch: string): string | null {
   const c = ch.trim();
   const tier =
-    c === '●' ? 'high' : c === '◐' ? 'med' : c === '○' ? 'low' : c === '—' ? 'skip' : null;
+    c === '●' ? 'high' : c === '◐' ? 'med' : c === '○' ? 'low' : c === '—' ? 'skip' : c === '=' ? 'tossup' : null;
   if (!tier) return null;
   return `${base} ${base}--${tier}`;
 }
@@ -261,6 +270,8 @@ export function confidenceIconFromChar(c: string, baseClass = 'icon-confidence')
       return iconConfidenceLow(cls);
     case '—':
       return iconConfidenceSkip(cls);
+    case '=':
+      return iconConfidenceTossUp(cls);
     default:
       return null;
   }

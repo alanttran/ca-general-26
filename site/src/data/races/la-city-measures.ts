@@ -206,7 +206,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
       ['LO', 'No', '◐', 'Left-Out Left voters distrust City Hall insiders and see moving contract approvals away from an open-meeting board as the wrong move after the corruption cases.'],
       ['OO', 'Yes', '○', 'Order and Opportunity Left voters want working streets, sidewalks and streetlights and lean toward a plan meant to fix them sooner, weakly, given the bundled risks.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters get no tax relief or direct help here and distrust a complex shift of contracting power at City Hall, a weak lean against.'],
-      ['PP', 'No', '○', 'Pragmatic and Polite Right voters like two-year budgets but prefer cautious, incremental change, and mortgaging City property and running businesses add risks the City’s own analyst cannot estimate.'],
+      ['PP', 'Yes / No', '=', 'Pragmatic and Polite Right voters like two-year budgets but prefer cautious, incremental change: if multi-year budgeting and a real plan for City infrastructure matter most, Yes; if the risks of mortgaging City property and running businesses, which the City’s own analyst cannot estimate, weigh more, No.'],
       ['UR', 'No', '◐', 'Unconventional Right voters want smaller government and oppose letting the City mortgage public property, run commercial ventures and loosen bidding rules.'],
       ['FC', 'No', '○', 'Faith First Conservatives favor limited government and lean against expanding City Hall’s financial powers, though multi-year budgeting appeals to them.'],
       ['NA', 'No', '◐', 'No Apologies Right voters distrust City Hall and oppose giving it new powers to borrow against property, run businesses and skip competitive bidding.'],
@@ -398,7 +398,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
     crossTypology: ct([
       ['LP', 'Yes', '◐', 'Leftward Progressives want independent police oversight that commissions cannot stop and tougher campaign-finance penalties, though a higher referendum bar cuts against grassroots challenges.'],
       ['LL', 'Yes', '◐', 'Loyal Liberals value stronger ethics institutions and watchdogs, weighing the cut in public meetings and the county Democratic Party’s opposition.'],
-      ['LO', 'No', '○', 'Left-Out Left voters like tougher ethics penalties but already feel unheard, and fewer required Council meetings plus 50% more signatures for a referendum cut their access further.'],
+      ['LO', 'Yes / No', '=', 'Left-Out Left voters like tougher ethics penalties but already feel unheard at City Hall: if punishing corruption by insiders matters most, Yes; if keeping their access matters more, No, since fewer required Council meetings and 50% more signatures for a referendum cut it further.'],
       ['OO', 'Yes', '○', 'Order and Opportunity Left voters like stronger ethics rules and a predictable schedule, weakly, since they also trust police and may not want commissions sidelined.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters distrust officials and lean against changes that give the public fewer chances to be heard at City Hall.'],
       ['PP', 'Yes', '○', 'Pragmatic and Polite Right voters value ethics and rule of law and a less chaotic Council schedule, a weak lean given their trust in police commissions.'],
@@ -807,7 +807,7 @@ export const RACES_LA_CITY_MEASURES: Race[] = [
     crossTypology: ct([
       ['LP', 'Yes', '◐', 'Leftward Progressives value well-staffed public emergency services and union-backed wildfire preparation, though a permanent sales tax falls hardest on lower-income shoppers.'],
       ['LL', 'Yes', '◐', 'Loyal Liberals follow the Mayor, Fire Chief and county Democratic Party on wildfire readiness and value the audits and oversight, while disliking a permanent earmark.'],
-      ['LO', 'Yes', '○', 'Left-Out Left voters want faster paramedics in working neighborhoods and value the audits and maintenance-of-effort rule, but another regressive sales tax keeps the lean weak.'],
+      ['LO', 'Yes / No', '=', 'Left-Out Left voters want faster paramedics in working neighborhoods but object to taxes that fall hardest on people like them: if faster emergency response, backed by audits and a maintenance-of-effort rule, matters most, Yes; if another regressive sales tax weighs more, No.'],
       ['OO', 'Yes', '◐', 'Order and Opportunity Left voters put public safety first and support more firefighters and faster medical response, despite the added cost at the register.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters are the most financially strained and lean against a third sales-tax increase in two years, though faster 911 response matters to them.'],
       ['PP', 'No', '○', 'Pragmatic and Polite Right voters back first responders and like the audit guardrails, but a permanent tax with no sunset, when the City could reprioritize its General Fund, fails their prudence test.'],

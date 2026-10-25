@@ -526,7 +526,7 @@ export const RACES_CO_DENVER: Race[] = [
       ['LL', 'Sandoval', '●', 'Loyal Liberals favor a party-rooted Democrat with deep campaign experience, including as DeGette’s political director, who wants Democrats to stop in-fighting.'],
       ['LO', 'Sandoval', '◐', 'Left-Out Left voters like Sandoval’s movement roots and housing focus, though she is closely tied to the party establishment.'],
       ['OO', 'Sandoval', '◐', 'Order and Opportunity Left voters want housing and transit that working families can use, which Sandoval lists as her top priorities, though she has not said much on public safety.'],
-      ['TM', 'Sandoval', '○', 'Tuned-Out Middle voters lean to the candidate with a stated housing and transit agenda, though Johnson’s opposition to tax increases also speaks to their budgets.'],
+      ['TM', 'Sandoval / Johnson', '=', 'Tuned-Out Middle voters weigh Sandoval’s stated housing and transit agenda against Johnson’s opposition to tax increases; if help with housing and transit matters most, Sandoval; if keeping taxes down matters more, Johnson.'],
       ['PP', 'Johnson', '○', 'Pragmatic and Polite Right voters lean toward lower taxes and away from activist politics, so Johnson’s anti-tax stance edges it, though Johnson has lost twice and published no plan.'],
       ['UR', 'Johnson', '○', 'Unconventional Right voters want lower taxes and smaller government, which Johnson stresses, though they care less about abortion than other right-leaning groups.'],
       ['FC', 'Johnson', '●', 'Faith First Conservatives put abortion first and will choose the conservative Republican over the field director of the amendment that put abortion rights in the state constitution.'],
@@ -1195,7 +1195,7 @@ export const RACES_CO_DENVER: Race[] = [
       ],
     },
     crossTypology: ct([
-      ['LP', 'Yes', '○', 'Leftward Progressives support opening the commission to non-citizen residents, but are wary of a longer disciplinary review and more flexibility for police command staff.'],
+      ['LP', 'Yes / No', '=', 'Leftward Progressives support opening the commission to non-citizen residents but are wary of a longer disciplinary review and more flexibility for police command staff; if including non-citizen residents matters most, Yes; if police accountability matters more, No.'],
       ['LL', 'Yes', '●', 'Loyal Liberals value a consensus modernization built with unions, agencies and a charter task force and approved unanimously by council.'],
       ['LO', 'Yes', '○', 'Left-Out Left voters like dropping the citizenship rule for commissioners, though they are skeptical of giving police leadership more room.'],
       ['OO', 'Yes', '●', 'Order and Opportunity Left voters respect police and fire leaders, who back this update, and also favor fair treatment of immigrants and recruits on military leave.'],
@@ -1218,7 +1218,7 @@ export const RACES_CO_DENVER: Race[] = [
     },
     counterArguments: [
       'UR (No ◐): But consider that voters already dropped citizenship requirements for officers themselves, because the police and fire departments support the full package.',
-      'LP (Yes ○): But consider that the longer disciplinary review window and moving rules out of the charter could weaken accountability, because reform advocates fought for those charter protections.',
+      'LP (Toss-up): But consider that the longer disciplinary review window and moving rules out of the charter could weaken accountability, because reform advocates fought for those charter protections.',
     ],
   },
 
@@ -1477,7 +1477,7 @@ export const RACES_CO_DENVER: Race[] = [
       ['LL', 'Yes', '◐', 'Loyal Liberals see public-school investment as core to the city’s future, though both Denver editorial boards they often trust urged a No over district mistrust.'],
       ['LO', 'Yes', '◐', 'Left-Out Left voters back a raise for bus drivers, custodians and teachers, though their low trust that money will be spent as promised makes the missing sunset a concern.'],
       ['OO', 'Yes', '◐', 'Order and Opportunity Left voters want career and technical education and student mental-health help, though many are pinched and wary of a permanent tax.'],
-      ['TM', 'Yes', '○', 'Tuned-Out Middle voters with kids in DPS gain counselors and career training, but a tax that landlords may pass on to renters cuts against their wariness of new costs.'],
+      ['TM', 'Yes / No', '=', 'Tuned-Out Middle voters with kids in DPS gain counselors and career training, but a tax that landlords may pass on to renters cuts against their wariness of new costs; if those school services matter most, Yes; if avoiding new costs matters more, No.'],
       ['PP', 'No', '○', 'Pragmatic and Polite Right voters want fiscal prudence, and a permanent tax with no sunset for a district with declining enrollment and board infighting is hard to back, though the cost is modest.'],
       ['UR', 'No', '◐', 'Unconventional Right voters want lower taxes and leaner government and oppose higher property taxes for a district losing students.'],
       ['FC', 'No', '◐', 'Faith First Conservatives oppose tax increases and want the district to cut and consolidate before asking for more.'],

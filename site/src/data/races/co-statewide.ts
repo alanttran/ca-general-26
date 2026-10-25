@@ -463,7 +463,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
       ['LP', 'Kiros', '●', 'Leftward Progressives are Kiros’s base: a democratic socialist backing Medicare for All, abolishing ICE and an arms embargo on Israel who refuses corporate PAC money.'],
       ['LL', 'Kiros', '◐', 'Loyal Liberals share Kiros’s health-care and child-care goals and back the Democratic nominee, but many preferred DeGette’s experience and are uneasy with Kiros’s comments on Oct. 7 and the Boulder attack.'],
       ['LO', 'Kiros', '●', 'Left-Out Left voters want an outsider who serves working people rather than donors, and Kiros beat a 30-year incumbent while refusing corporate PAC money.'],
-      ['OO', 'Kiros', '○', 'Order and Opportunity Left voters want Kiros’s Medicare for All and universal child care, but abolishing ICE and her Oct. 7 comments sit poorly with their respect for order, so Blau’s similar economic goals are a close alternative.'],
+      ['OO', 'Kiros / Blau', '=', 'Order and Opportunity Left voters want Kiros’s Medicare for All and universal child care, but abolishing ICE and her Oct. 7 comments sit poorly with their respect for order, and Blau, an unaffiliated Denver physician, backs universal health care and free child care without calling to abolish ICE; if a member with a party caucus and leverage in the House matters most, Kiros; if public order matters more, Blau.'],
       ['TM', 'Kiros', '○', 'Tuned-Out Middle voters care most about bills, and Kiros’s health-care and child-care plans promise the most direct help, though few of them follow this race.'],
       ['PP', 'Blau', '◐', 'Pragmatic and Polite Right voters reject heated rhetoric on both sides and may prefer Blau, a fiscally conservative independent physician, over Kiros’s polarizing statements and Peterson’s talk of “chemtrails” and ending mail ballots.'],
       ['UR', 'Peterson', '○', 'Unconventional Right voters share Peterson’s secure-the-border, no-new-taxes platform, though her campaign had raised nothing as of July.'],
@@ -471,7 +471,6 @@ export const RACES_CO_STATEWIDE: Race[] = [
       ['NA', 'Peterson', '●', 'No Apologies Right voters like Peterson’s combative stand against “communist socialism,” her call to end mail-in ballots and her support for freeing Tina Peters.'],
     ]),
     counterArguments: [
-      'OO (Kiros ○): But consider Blau, an unaffiliated Denver physician who backs universal health care and free child care without calling to abolish ICE, because Order and Opportunity Left voters want economic help paired with public order.',
       'PP (Blau ◐): But consider that an unaffiliated House member has no caucus, no committee slots from leadership and little leverage, because House power runs through the parties.',
       'NA (Peterson ●): But consider that Peterson reported zero campaign receipts and wants to end the mail voting nearly all Coloradans use, because a vote for her is a protest in a Solid Democratic seat.',
     ],
@@ -1242,7 +1241,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
       ['LP', 'Griswold', '●', 'Leftward Progressives want an attorney general who keeps suing the Trump administration and goes after corporate landlords, monopolies and junk fees, which Griswold promises.'],
       ['LL', 'Griswold', '◐', 'Loyal Liberals back continuing Weiser’s litigation and protecting abortion and voting rights, but note that Griswold has less courtroom experience than Allen and two data lapses in her current office.'],
       ['LO', 'Griswold', '◐', 'Left-Out Left voters like Griswold’s focus on price gouging, junk fees, predatory lending and workers’ rights, though they see her as a party insider.'],
-      ['OO', 'Allen', '○', 'Order and Opportunity Left voters put violent crime and car theft high on their list, so Allen, a career prosecutor who would still prosecute ICE officers who break the law, is a defensible cross-party fit, though Griswold’s price-gouging agenda also speaks to them.'],
+      ['OO', 'Allen / Griswold', '=', 'Order and Opportunity Left voters put violent crime and car theft high on their list, which suits Allen, a career prosecutor who would still prosecute ICE officers who break the law, while Griswold would pursue price gouging in housing, groceries and health care and protect abortion access, which this squeezed, mostly pro-choice group also wants; if public safety matters most, Allen; if costs and abortion access matter more, Griswold.'],
       ['TM', 'Griswold', '○', 'Tuned-Out Middle voters are pocketbook-first, and Griswold’s promise to fight price gouging, junk fees and predatory lending is the most direct help on their bills.'],
       ['PP', 'Allen', '●', 'Pragmatic and Polite Right voters want a measured, experienced law-enforcement leader who follows the rule of law, and Allen would keep “legitimate” suits while dropping political ones.'],
       ['UR', 'Allen', '●', 'Unconventional Right voters want tougher action on crime and cartels and fewer fights with Washington, which Allen offers.'],
@@ -1251,7 +1250,6 @@ export const RACES_CO_STATEWIDE: Race[] = [
     ]),
     counterArguments: [
       'LL (Griswold ◐): But consider Allen’s argument that an office that exposed 133,000 confidential voter profiles needs better management, because the attorney general’s office handles even more sensitive criminal and civil records.',
-      'OO (Allen ○): But consider that Griswold would protect abortion access and pursue price gouging in housing, groceries and health care, because Order and Opportunity Left voters mostly support legal abortion and are squeezed by those costs.',
       'PP (Allen ●): But consider that Allen declined to say whether he agrees with any of Weiser’s 80-plus suits against the federal government, because some of those cases have returned food-assistance and clean-energy money to Colorado.',
     ],
   },

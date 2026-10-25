@@ -3,7 +3,8 @@
 export type TypologyCode = 'LP' | 'LL' | 'LO' | 'OO' | 'TM' | 'PP' | 'UR' | 'FC' | 'NA';
 
 /** TL;DR / cross-table confidence glyph (matches legend SVGs). */
-export type ConfidenceSymbol = '●' | '◐' | '○' | '—';
+/** ● high · ◐ medium · ○ low · — skip · = toss-up (pick is “A / B”, see `data/toss-up.ts`). */
+export type ConfidenceSymbol = '●' | '◐' | '○' | '—' | '=';
 
 export interface TypologyDefinition {
   code: TypologyCode;

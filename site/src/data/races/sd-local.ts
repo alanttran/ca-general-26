@@ -368,7 +368,7 @@ export const RACES_SD_LOCAL: Race[] = [
       ['LP', 'Yes', '◐', 'Leftward Progressives want stronger ethics and spending transparency in county government, which the commission, auditor and disclosure rules add, though letting supervisors extend their own terms is a real trade-off.'],
       ['LL', 'Yes', '●', 'Loyal Liberals trust expert, professional oversight, and an independent budget analyst, program auditor and ethics commission build exactly that capacity.'],
       ['LO', 'No', '◐', 'Left-Out Left voters distrust officials’ motives, and a package that gives supervisors a third term and power over senior staff looks like insiders protecting themselves, despite the ethics reforms.'],
-      ['OO', 'Yes', '○', 'Order and Opportunity Left voters respect orderly, accountable institutions, and the new auditor and spending disclosure add accountability, though the term-limit change makes the lean weak.'],
+      ['OO', 'Yes / No', '=', 'Order and Opportunity Left voters respect orderly, accountable institutions: if the new auditor and spending disclosure matter most, Yes; if letting supervisors lengthen their own term limits matters more, No.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters distrust officials and tune out complex reforms, and a package that lengthens supervisors’ terms gives them little reason for a Yes.'],
       ['PP', 'No', '◐', 'Pragmatic and Polite Right voters like ethics oversight but value the rule of law and dislike officials changing rules for their own benefit, and watchdogs reporting to the Board they check weaken the case.'],
       ['UR', 'No', '●', 'Unconventional Right voters are anti-establishment and small-government, and supervisors voting themselves a third term while taking more power over staff is what they oppose.'],
@@ -466,7 +466,7 @@ export const RACES_SD_LOCAL: Race[] = [
     crossTypology: ct([
       ['LP', 'Yes', '◐', 'Leftward Progressives want an expansive safety net and would fund health care, child care and food aid, though they would rather tax the wealthy and corporations than use a regressive sales tax.'],
       ['LL', 'Yes', '●', 'Loyal Liberals accept taxes for public services and value the citizen oversight, annual audits and spending bans written into the measure.'],
-      ['LO', 'Yes', '○', 'Left-Out Left voters want government to guarantee health care and help families, but a sales tax hits stretched budgets and they doubt promises on spending, so the lean is weak.'],
+      ['LO', 'Yes / No', '=', 'Left-Out Left voters want government to guarantee health care and help families: if that help matters most, Yes; if a sales tax on stretched budgets and doubts that spending promises will be kept matter more, No.'],
       ['OO', 'Yes', '◐', 'Order and Opportunity Left voters want both economic help and public safety, and the measure funds health care and child care alongside wildfire and emergency response, though the tax adds to their costs.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters are financially strained and wary of taxes that hit them, and a permanent sales tax on everyday purchases outweighs benefits they may not see directly.'],
       ['PP', 'No', '◐', 'Pragmatic and Polite Right voters prefer cautious, well-defined spending, and a permanent tax with no sunset and no yearly performance targets is not incremental, though they may support the sewage response.'],

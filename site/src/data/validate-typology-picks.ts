@@ -3,6 +3,7 @@ import { BALLOT_CATEGORIES, type BallotProfile } from './ballot-profiles';
 import { combinedCellFor } from './experience-views';
 import { resolveCandidateForPick, SEVERITY_ORDER, STATUS_LABEL } from './red-flags';
 
+import { isTossUp, tossUpOptions } from './toss-up';
 import { TY_CODES } from './typologies-data';
 
 /** Pew columns that should not recommend Republicans in a Democrat-vs-Republican race. */
@@ -62,6 +63,11 @@ export function collectTypologyValidationIssues(races: Race[]): TypologyValidati
       const skip = row.confidence === '—' || SKIP_PICKS.has(row.pick.trim());
       if (skip) continue;
 
+      if (isTossUp(row)) {
+        issues.push(...tossUpIssues(race, row));
+        continue;
+      }
+
       if (race.kind === 'measure' || race.kind === 'retention') {
         if (!MEASURE_PICK_RE.test(row.pick.trim())) {
           issues.push({ raceId: race.id, typology: row.typology, pick: row.pick, message: 'measure/retention pick must start with Yes or No' });
@@ -112,6 +118,31 @@ export function collectTypologyValidationIssues(races: Race[]): TypologyValidati
   return issues;
 }
 
+/**
+ * Toss-up rules: exactly two options; measures are “Yes / No”; candidates are two different people in a
+ * single-seat race, neither with a Severe flag (that should break the tie); LP/LL can’t toss up a D-vs-R race;
+ * no experienceRationale (the experience tiebreaker is computed).
+ */
+function tossUpIssues(race: Race, row: Race['crossTypology'][number]): TypologyValidationIssue[] {
+  const issue = (message: string): TypologyValidationIssue => ({ raceId: race.id, typology: row.typology, pick: row.pick, message });
+  const opts = tossUpOptions(row.pick);
+  if (opts.length !== 2) return [issue('toss-up pick must be two options separated by " / "')];
+  if (row.experienceRationale) return [issue('toss-ups take no experienceRationale')];
+  if (race.kind === 'measure') return /^yes$/i.test(opts[0]) && /^no$/i.test(opts[1]) ? [] : [issue('measure toss-up pick must be "Yes / No"')];
+  if (race.kind !== 'candidates') return [issue('toss-ups are only for candidate races and measures')];
+  if ((race.voteFor ?? 1) > 1) return [issue('toss-ups are not used in multi-seat races')];
+  const [a, b] = opts.map((o) => resolveCandidateForPick(o, race.candidates));
+  if (!a || !b || a === b) return [issue('toss-up options must name two different candidates in the race')];
+  const out: TypologyValidationIssue[] = [];
+  for (const c of [a, b]) {
+    if (c.redFlags?.some((f) => f.severity === 'severe')) out.push(issue(`${c.name} has a Severe red flag, which should break the tie: pick a side`));
+  }
+  if (LIBERAL_TYPOLOGIES.includes(row.typology) && isCrossPartyRace(race.candidates)) {
+    out.push(issue(`${row.typology} must pick the left-of-center candidate in a D-vs-R race, not a toss-up`));
+  }
+  return out;
+}
+
 function flagIssues(raceId: string, who: string, flags: RedFlag[] | undefined): TypologyValidationIssue[] {
   const issues: TypologyValidationIssue[] = [];
   for (const f of flags ?? []) {
@@ -139,15 +170,18 @@ export function collectRedFlagIssues(races: Race[]): TypologyValidationIssue[] {
 
     const counter = (race.counterArguments ?? []).join(' ').toLowerCase();
     for (const row of race.crossTypology) {
-      const picked = resolveCandidateForPick(row.pick, race.candidates);
-      const tiers = new Set(picked?.redFlags?.map((f) => f.severity));
-      if (!picked) continue;
-      if (tiers.has('severe') && row.confidence === '●') {
-        issues.push({ raceId: race.id, typology: row.typology, pick: row.pick, message: `${picked.name} has a Severe red flag — cap confidence at ◐ and name the flag in the rationale` });
-      }
-      const last = picked.name.split(/\s+/).pop()?.toLowerCase() ?? '';
-      if ((tiers.has('severe') || tiers.has('serious')) && !counter.includes(last)) {
-        issues.push({ raceId: race.id, typology: row.typology, pick: row.pick, message: `${picked.name} has a Severe/Serious red flag — address it in counterArguments` });
+      // A toss-up picks both of its options, so each one's flags count.
+      const names = isTossUp(row) ? tossUpOptions(row.pick) : [row.pick];
+      for (const picked of names.map((n) => resolveCandidateForPick(n, race.candidates))) {
+        if (!picked) continue;
+        const tiers = new Set(picked.redFlags?.map((f) => f.severity));
+        if (tiers.has('severe') && row.confidence === '●') {
+          issues.push({ raceId: race.id, typology: row.typology, pick: row.pick, message: `${picked.name} has a Severe red flag — cap confidence at ◐ and name the flag in the rationale` });
+        }
+        const last = picked.name.split(/\s+/).pop()?.toLowerCase() ?? '';
+        if ((tiers.has('severe') || tiers.has('serious')) && !counter.includes(last)) {
+          issues.push({ raceId: race.id, typology: row.typology, pick: row.pick, message: `${picked.name} has a Severe/Serious red flag — address it in counterArguments` });
+        }
       }
     }
   }

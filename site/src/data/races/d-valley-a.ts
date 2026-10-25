@@ -273,7 +273,7 @@ export const RACES_D_VALLEY_A: Race[] = [
       ['LO', 'Gray', '◐', 'Left-Out Left voters find little to excite them in a Blue Dog, but Gray voted against Medicaid cuts in a district where two-thirds rely on it, which matters more to them than a Trump-endorsed alternative.'],
       ['OO', 'Gray', '◐', 'Order and Opportunity Left voters like Lincoln’s crime focus and Marine service but want a steady moderate who protects health coverage, and Gray voted against the 2025 Medicaid cuts.'],
       ['TM', 'Gray', '○', 'Tuned-Out Middle voters in a district where most rely on Medi-Cal or ACA coverage may lean to the incumbent who voted to protect Medicaid, though Lincoln’s grocery and gas-price message also lands.'],
-      ['PP', 'Gray', '○', 'Pragmatic and Polite Right voters reward bipartisan, incremental members and may cross party lines for a Blue Dog who voted with Republicans to end the shutdown, though Lincoln is a mainstream former mayor.'],
+      ['PP', 'Gray / Lincoln', '=', 'Pragmatic and Polite Right voters weigh bipartisanship against their usual party lean: if rewarding a bipartisan, incremental member matters most, Gray, a Blue Dog who voted with Republicans to end the shutdown; if a mainstream Republican matters more, Lincoln, who ran a city of 320,000 without a record of combative politics.'],
       ['UR', 'Lincoln', '◐', 'Unconventional Right voters like Lincoln’s focus on crime, homelessness and costs, though Gray’s cross-party votes and their own cooling on Trump give some reason to hesitate.'],
       ['FC', 'Lincoln', '●', 'Faith First Conservatives favor a pastor and Marine veteran endorsed by President Trump.'],
       ['NA', 'Lincoln', '●', 'No Apologies Right voters back the Trump- and Johnson-endorsed Republican who would protect the House majority and the 2025 tax cuts.'],
@@ -281,7 +281,6 @@ export const RACES_D_VALLEY_A: Race[] = [
     counterArguments: [
       'NA (Lincoln ●): But consider that Gray is one of the few Democrats who has crossed party lines on key votes, and Lincoln has no record in state or federal office.',
       'LL (Gray ●): But consider that Lincoln ran the district’s largest city for four years and argues that Stockton voters, newly added, deserve a member from their city.',
-      'PP (Gray ○): But consider that Lincoln ran a city of 320,000 without a record of combative politics, and a mainstream Republican is this group’s usual pick.',
     ],
   },
 

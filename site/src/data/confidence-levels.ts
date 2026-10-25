@@ -40,4 +40,11 @@ export const CONFIDENCE_LEVEL_ROWS: ConfidenceLevelRow[] = [
     methodologyDetail:
       'no pick: neither side is a reasonable fit.',
   },
+  {
+    symbol: '=',
+    title: 'Toss-up',
+    legendDetail: 'Either fits; see what tips it',
+    methodologyDetail:
+      'both options fit the group about equally. The reason says what would tip it, and for groups that value experience (Loyal Liberals, Order and Opportunity Left, Pragmatic and Polite Right) the more experienced candidate is noted as a tiebreaker.',
+  },
 ];

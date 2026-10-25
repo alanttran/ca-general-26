@@ -123,7 +123,7 @@ export const RACES_PROPS_B: Race[] = [
       ['LO', 'Yes', '○', 'Left-Out Left voters are often young renters shut out of ownership, so a 3%-down path has real appeal, but they distrust a Realtor-funded measure whose help reaches incomes up to twice the median.'],
       ['OO', 'Yes', '●', 'Order and Opportunity Left voters prize homeownership as a path to opportunity, and a borrower-repaid loan for middle-income buyers, with carpenters’ and nurses’ unions backing it, fits that goal without taxpayer cost.'],
       ['TM', 'Yes', '○', 'Tuned-Out Middle voters welcome help with housing costs that raises no taxes, though few of them can afford even a new home near the program’s price cap.'],
-      ['PP', 'No', '○', 'Pragmatic and Polite Right voters like that taxpayers carry no risk but prefer incremental fixes, and a new $25 billion state lending program with looser defect rules is a large, untested step.'],
+      ['PP', 'Yes / No', '=', 'Pragmatic and Polite Right voters like that taxpayers carry no risk but prefer incremental fixes; if taxpayer exposure is the main test, Yes, since the LAO finds no direct state or local cost and private bond investors carry the risk; if caution about a large, untested $25 billion state lending program with looser defect rules matters more, No.'],
       ['UR', 'No', '○', 'Unconventional Right voters want smaller government and doubt a state agency should become a major mortgage lender, though help for younger buyers with no taxpayer cost has some pull.'],
       ['FC', 'No', '○', 'Faith First Conservatives value family homeownership but want state government smaller, and see subsidizing buyers as a reason prices stay high.'],
       ['NA', 'No', '●', 'No Apologies Right voters believe government should not be in the mortgage business and that boosting demand inflates prices instead of cutting the regulations that limit supply.'],
@@ -142,7 +142,6 @@ export const RACES_PROPS_B: Race[] = [
     counterArguments: [
       'OO (Yes ●): But consider No if you hope to buy an existing home or rent, because only brand-new homes qualify and critics warn more eligible buyers could push new-home prices up.',
       'LP (No ◐): But consider Yes if labor standards matter most to you, because builders who choose the qualified-builder track accept liability for subcontractors’ wage and workers’ comp violations.',
-      'PP (No ○): But consider Yes if taxpayer exposure is your main test, because the LAO finds no direct state or local cost and private bond investors carry the risk.',
     ],
   },
 
@@ -259,7 +258,7 @@ export const RACES_PROPS_B: Race[] = [
       ['LP', 'No', '◐', 'Leftward Progressives want public science funding to offset federal cuts, but steering about $4.2 billion to an institute co-founded by the billionaire funding the campaign clashes with their opposition to wealthy interests shaping policy.'],
       ['LL', 'No', '○', 'Loyal Liberals trust scientists and the patient groups behind it, and the state party says Yes, but every editorial board listed here and the League of Women Voters object to a ballot-box earmark for one institution, and they take good-government concerns seriously.'],
       ['LO', 'No', '●', 'Left-Out Left voters are the most alert to self-dealing, and criteria that CalMatters and UCLA say fit only the chief funder’s own institute look like insiders writing public spending for themselves.'],
-      ['OO', 'Yes', '○', 'Order and Opportunity Left voters are drawn to research on cancer, heart disease and Alzheimer’s plus a 20% patient discount, though $500–600 million a year in debt payments and the single-institute carve-out make this a weak lean.'],
+      ['OO', 'Yes / No', '=', 'Order and Opportunity Left voters are drawn to research on cancer, heart disease and Alzheimer’s plus a 20% patient discount, but $500–600 million a year in debt payments and the single-institute carve-out pull the other way; if hope for cures and the discount matter most, Yes; if the debt and good-government concerns matter more, No.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters are wary of 20 years of state debt for research with a distant, uncertain payoff, though hope for cures could move them.'],
       ['PP', 'No', '●', 'Pragmatic and Polite Right voters value competent, careful public spending, and a $8.4 billion bond with half pre-assigned to one donor-linked institute fails that test, as all five editorial boards listed here conclude.'],
       ['UR', 'No', '◐', 'Unconventional Right voters want smaller government and less debt, and object to state borrowing that benefits one well-connected institution, though medical research is less divisive for them.'],
@@ -279,7 +278,7 @@ export const RACES_PROPS_B: Race[] = [
     },
     counterArguments: [
       'LL (No ○): But consider Yes if you trust the scientific case, because the American Association of Immunologists and patient groups like the Michael J. Fox Foundation back it and half the money is awarded through competitive grants.',
-      'OO (Yes ○): But consider No if good-government concerns weigh on you, because CalMatters and UCLA found that only the chief funder’s institute meets the criteria for about $4.2 billion.',
+      'OO (Toss-up): But consider No if good-government concerns weigh on you, because CalMatters and UCLA found that only the chief funder’s institute meets the criteria for about $4.2 billion.',
       'FC (No ◐): But consider Yes if you weigh the state Republican Party’s endorsement and the 20% patient discount, because the bond also returns 10% of discovery revenue to the General Fund until it is repaid.',
     ],
   },

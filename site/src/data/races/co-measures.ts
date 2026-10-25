@@ -141,7 +141,7 @@ export const RACES_CO_MEASURES: Race[] = [
       ['LP', 'No', '●', 'Leftward Progressives are the most skeptical of police and immigration enforcement and see reporting people to Homeland Security at the charging stage, before any conviction, as a due-process violation.'],
       ['LL', 'No', '●', 'Loyal Liberals value the presumption of innocence and favor more legal immigration, and object to undefined terms like “lawful presence” being locked into the constitution.'],
       ['LO', 'No', '◐', 'Left-Out Left voters oppose detention and deportation drives and have only middling trust in police, so status checks that could rest on language or appearance worry them, though violent crime is a real concern.'],
-      ['OO', 'Yes', '○', 'Order and Opportunity Left voters oppose mass deportation but take violent crime seriously and respect authority, so flagging people charged with violent crimes is a narrow lean toward order, despite the risk of profiling.'],
+      ['OO', 'Yes / No', '=', 'Order and Opportunity Left voters take violent crime seriously and respect authority but oppose mass deportation; if reporting people charged with violent crimes matters most, Yes; if the risk of profiling, and of victims and witnesses in immigrant neighborhoods not reporting crimes when the duty starts at charging, before trial, matters more, No.'],
       ['TM', 'Yes', '○', 'Tuned-Out Middle voters want both border security and a path to legal status, and the “violent offenders only” framing reads as basic public safety to them, a loose lean.'],
       ['PP', 'Yes', '◐', 'Pragmatic and Polite Right voters oppose mass deportation but back border security and trust police, so targeting violent and repeat offenders fits them, though they are wary of undefined terms in the constitution.'],
       ['UR', 'Yes', '●', 'Unconventional Right voters put immigration enforcement first and want local limits on cooperating with federal authorities overridden for people charged with serious crimes.'],
@@ -161,7 +161,6 @@ export const RACES_CO_MEASURES: Race[] = [
     },
     counterArguments: [
       'PP (Yes ◐): But consider No, because putting an operational police mandate with undefined terms into the constitution means courts, not legislators, will shape it, and only another statewide vote could fix mistakes.',
-      'OO (Yes ○): But consider No, because the duty starts at charging, before trial, and opponents warn that fear of immigration consequences may keep victims and witnesses in immigrant neighborhoods from reporting crimes.',
       'LO (No ◐): But consider Yes, because the measure covers only people charged with violent crimes or with a prior felony, not law-abiding immigrants.',
     ],
   },
@@ -844,7 +843,7 @@ export const RACES_CO_MEASURES: Race[] = [
       ['LL', 'Yes', '●', 'Loyal Liberals back expert-studied school investment with independent audits, using revenue the state already collects.'],
       ['LO', 'Yes', '◐', 'Left-Out Left voters want government to guarantee good K-12 schools, though they would rather tax the wealthy than keep refunds from everyone and want proof the money is spent as promised.'],
       ['OO', 'Yes', '◐', 'Order and Opportunity Left voters value teacher pay, smaller classes and career-technical courses, and the refund at stake is about $28 to $56 for a typical filer.'],
-      ['TM', 'No', '○', 'Tuned-Out Middle voters are struggling with bills and distrust government, so even a modest refund check counts, though better schools also help their families.'],
+      ['TM', 'Yes / No', '=', 'Tuned-Out Middle voters are struggling with bills and distrust government, so even a modest refund check counts, but better schools also help their families; if teacher pay and class sizes in their children’s schools matter most, Yes; if keeping the refund matters more, No.'],
       ['PP', 'No', '○', 'Pragmatic and Polite Right voters want fiscal prudence and dislike a permanent cap increase whose education rules mostly lapse after ten years, though the audits and school focus appeal.'],
       ['UR', 'No', '◐', 'Unconventional Right voters want smaller government and resist a permanent TABOR change that lets the state keep refunds.'],
       ['FC', 'No', '●', 'Faith First Conservatives want government spending reduced and defend TABOR refunds.'],
@@ -863,7 +862,7 @@ export const RACES_CO_MEASURES: Race[] = [
     },
     counterArguments: [
       'LL (Yes ●): But consider No, because the higher revenue cap is permanent while most of the school-spending rules expire after ten years.',
-      'TM (No ○): But consider Yes, because the 2027 refund at stake is about $28 for a single filer at $100,000 and the money goes to teacher pay and class sizes in every district.',
+      'TM (Toss-up): But consider Yes, because the 2027 refund at stake is about $28 for a single filer at $100,000 and the money goes to teacher pay and class sizes in every district.',
     ],
   },
 
@@ -1333,7 +1332,7 @@ export const RACES_CO_MEASURES: Race[] = [
       ['LO', 'No', '◐', 'Left-Out Left voters want the rich to pay their share and would lose 87’s small tax cut for working households if 136 wins out.'],
       ['OO', 'No', '○', 'Order and Opportunity Left voters favor taxing the wealthy, and 136 could erase 87’s cut for most filers, though it changes no rate on its own.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters’ own rate does not change either way, but 136 would erase the small cut 87 offers them if both pass.'],
-      ['PP', 'Yes', '○', 'Pragmatic and Polite Right voters lean against 87’s big tax change and may want a backstop, though setting up a court fight between two measures is not the orderly path they prefer.'],
+      ['PP', 'Yes / No', '=', 'Pragmatic and Polite Right voters lean against Amendment 87’s big tax change but prefer an orderly path; if a backstop in case 87 passes matters most, Yes; if avoiding a court fight between two measures matters more, No.'],
       ['UR', 'Yes', '◐', 'Unconventional Right voters want lower taxes and smaller government and see the cap as a second way to stop a graduated income tax.'],
       ['FC', 'Yes', '●', 'Faith First Conservatives oppose tax increases and want the 4.4% rate locked in.'],
       ['NA', 'Yes', '●', 'No Apologies Right voters want to block any income-tax increase on earners and businesses.'],

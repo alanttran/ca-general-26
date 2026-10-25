@@ -588,7 +588,7 @@ export const RACES_D_LA_A: Race[] = [
       ['LO', 'Gonzales-Torres', '◐', 'Left-Out Left voters distrust insiders funded by industry PACs and weigh the ethics probe of Gomez, though few of them identify as democratic socialists.', 'Experience-first Left-Out Left voters could back Gomez, who has nine years in Congress and a Ways and Means seat; they accept an open House Ethics investigation into sexual-misconduct allegations.'],
       ['OO', 'Gomez', '◐', 'Order and Opportunity Left voters prefer Gomez, the more mainstream finalist and founder of the Renters Caucus, though the ethics investigation of Gomez troubles them.'],
       ['TM', 'Gonzales-Torres', '○', 'Tuned-Out Middle voters want direct help and plain trustworthiness, and Gonzales-Torres offers guaranteed housing vouchers while Gomez faces an ethics probe.', 'Experience-first Tuned-Out Middle voters could back Gomez, a nine-year member on Ways and Means; they accept an open House Ethics investigation into sexual-misconduct allegations against Gomez.'],
-      ['PP', 'Gomez', '○', 'Pragmatic and Polite Right voters penalize misconduct and dislike the Gomez ethics probe, but they lean to Gomez as the more incremental choice over a wealth tax and a data-center moratorium.'],
+      ['PP', 'Gomez / Gonzales-Torres', '=', 'Pragmatic and Polite Right voters prefer incremental change but penalize misconduct: if avoiding a wealth tax and a data-center moratorium matters most, Gomez as the more incremental choice; if the open House Ethics probe of Gomez weighs more, Gonzales-Torres.'],
       ['UR', 'Gomez', '○', 'Unconventional Right voters dislike both, but Gomez is less far left than a candidate who would abolish ICE.'],
       ['FC', '—', '—', 'Faith First Conservatives see a democratic socialist on one side and an incumbent under investigation for sexual misconduct on the other, and many will skip the race.', 'Experience-first Faith First Conservatives could back Gomez, the finalist with years in Congress, as less far left than his rival; they accept an open sexual-misconduct investigation.'],
       ['NA', 'Gomez', '○', 'No Apologies Right voters dislike both, but Gomez is the lesser evil against a democratic socialist who would abolish ICE.'],
@@ -596,7 +596,7 @@ export const RACES_D_LA_A: Race[] = [
     counterArguments: [
       'LL (Gomez ◐): But consider that the House Ethics Committee is investigating allegations that Gomez had inappropriate sexual contact with a House staffer, because they weigh ethics findings seriously; Gomez says his conduct was consensual and an inquiry is not a finding.',
       'LP (Gonzales-Torres ●): But consider that Gonzales-Torres has never held elected office, because Gomez is already a Progressive Caucus deputy whip endorsed by Rep. Ocasio-Cortez.',
-      'PP (Gomez ○): But consider that the House Ethics investigation of Gomez is still open, because they weigh misconduct heavily and may prefer to skip the race.',
+      'PP (Toss-up): But consider that the House Ethics investigation of Gomez is still open, because they weigh misconduct heavily and may prefer to skip the race.',
     ],
   },
 
@@ -712,7 +712,7 @@ export const RACES_D_LA_A: Race[] = [
       ['LL', 'Rubio', '●', 'Loyal Liberals value Rubio, a former Insurance Committee chair whose domestic-violence laws were signed, over a recall organizer who questions voter rolls.'],
       ['LO', 'Rubio', '○', 'Left-Out Left voters distrust politicians’ motives and note the unproven Baldwin Park bribery allegation tied to Rubio, but Netter’s election-fraud claims are worse to them.'],
       ['OO', 'Rubio', '◐', 'Order and Opportunity Left voters like Rubio’s work on domestic-violence law, insurance and utility costs, though Netter’s retail-theft message also speaks to them.'],
-      ['TM', 'Netter', '○', 'Tuned-Out Middle voters respond to Netter’s 28% income-tax cut for people earning $150,000 or less, though Netter’s back-tax lien and stolen-election posts undercut trust.', 'Experience-first Tuned-Out Middle voters could back Rubio, a two-term senator and former Insurance chair; they give up Netter’s income-tax cut.'],
+      ['TM', 'Rubio / Netter', '=', 'Tuned-Out Middle voters want cost relief and plain trustworthiness: if Netter’s 28% income-tax cut for people earning $150,000 or less matters most, Netter; if his back-tax lien and stolen-election posts weigh more, Rubio.'],
       ['PP', 'Rubio', '◐', 'Pragmatic and Polite Right voters penalize election denial, and Netter reposted false stolen-election claims and questions voter rolls, so they cross to Rubio, a steady incumbent.'],
       ['UR', 'Netter', '◐', 'Unconventional Right voters like Netter’s anti-establishment recall record and tax cuts, though Netter has never held office.', 'Experience-first Unconventional Right voters could back Rubio, a two-term senator; they give up a tax-cutting outsider and accept a vote for the Democratic supermajority.'],
       ['FC', 'Netter', '◐', 'Faith First Conservatives lean to Netter to break the supermajority, though Netter’s record of unpaid taxes troubles voters who weigh personal conduct.', 'Experience-first Faith First Conservatives could back Rubio, a two-term senator and former teacher; they give up a Republican vote and accept the federal bribery allegation tied to Rubio, which never led to charges.'],

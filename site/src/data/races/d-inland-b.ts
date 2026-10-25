@@ -119,7 +119,7 @@ export const RACES_D_INLAND_B: Race[] = [
       ['LL', 'Putz', '●', 'Loyal Liberals value Putz’s 18 years on a school board and city council, his public-lands and school-funding priorities, and a Democratic vote in Sacramento.'],
       ['LO', 'Putz', '◐', 'Left-Out Left voters like Putz’s complaint that rural areas are ignored and his push for warehouse sales-tax equity, though a centrist mayor is not much of an outsider.'],
       ['OO', 'Putz', '◐', 'Order and Opportunity Left voters want rural health care, affordable housing and school money, which Putz offers, though Hughes’ police backing also speaks to their concern for order.'],
-      ['TM', 'Hughes', '○', 'Tuned-Out Middle voters weigh everyday costs first, and Hughes promises tax cuts and lower living costs, while Putz’s rural health-care pitch is less direct.'],
+      ['TM', 'Putz / Hughes', '=', 'Tuned-Out Middle voters weigh everyday costs against access to care: if tax cuts and lower living costs matter most, Hughes, who promises both; if rural health care and affordable housing matter more, Putz, who names them as priorities in a remote district.'],
       ['PP', 'Putz', '◐', 'Pragmatic and Polite Right voters reward long, steady local service and bipartisan temperament, which Putz, a former Republican with 18 years in office, offers over a first-time candidate.'],
       ['UR', 'Hughes', '◐', 'Unconventional Right voters like Hughes’ plain message of lower taxes, less regulation and backing for police, though they are not strongly tied to the party.'],
       ['FC', 'Hughes', '●', 'Faith First Conservatives favor Hughes, a Navy veteran and family man who backs school choice, law enforcement and lower taxes.'],
@@ -127,7 +127,6 @@ export const RACES_D_INLAND_B: Race[] = [
     ]),
     counterArguments: [
       'PP (Putz ◐): But consider that Hughes is a mainstream, non-combative Republican endorsed by firefighters and police, because a retired officer and Navy veteran may suit their preference for order and lower taxes.',
-      'TM (Hughes ○): But consider that Putz names rural health-care recruitment and affordable housing as priorities, because those are direct help for strained households in a remote district.',
     ],
   },
 

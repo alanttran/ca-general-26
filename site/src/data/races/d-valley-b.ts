@@ -251,7 +251,7 @@ export const RACES_D_VALLEY_B: Race[] = [
     crossTypology: ct([
       ['LP', '—', '—', 'Leftward Progressives have no candidate near their views: one finalist wants to roll back climate law and the other wants to shrink government.', 'Experience-first Leftward Progressives could back Magsig, with 25 years of local office and building-trades support, but they would be electing a senator who wants to expand oil drilling and revisit AB 32.'],
       ['LL', 'Magsig', '○', 'Loyal Liberals value governing experience and labor-trades backing, which only Magsig offers, though they disagree with his climate positions.'],
-      ['LO', 'Brown', '○', 'Left-Out Left voters, who think most officials run for money, may prefer a candidate who refuses all donations and opposed Trump over a 25-year local officeholder, though Brown wants to shrink government.', 'Experience-first Left-Out Left voters could back Magsig, a 25-year local officeholder with union support; they give up a protest vote and get a senator who wants more oil drilling.'],
+      ['LO', 'Magsig / Brown', '=', 'Left-Out Left voters, who think most officials run for money, weigh distrust of donors against labor-backed results: if refusing money matters most, Brown, who takes no donations and opposed Trump, though he wants to shrink government; if a senator with union support matters more, Magsig, a 25-year local officeholder, though he wants more oil drilling.'],
       ['OO', 'Magsig', '◐', 'Order and Opportunity Left voters with no Democrat to choose value Magsig’s law-enforcement and building-trades backing and his cost-of-living focus, though his climate rollback runs against them.'],
       ['TM', 'Magsig', '○', 'Tuned-Out Middle voters focused on cost of living lean toward the better-known supervisor who promises lower costs and reliable water.'],
       ['PP', 'Magsig', '◐', 'Pragmatic and Polite Right voters favor a seasoned local official focused on water, wildfire and costs, though Brown’s Never-Trump independence appeals to some.'],
@@ -261,7 +261,7 @@ export const RACES_D_VALLEY_B: Race[] = [
     ]),
     counterArguments: [
       'NA (Magsig ●): But consider that Brown also promises lower taxes and smaller government and takes no donations, which some conservatives may see as more independent from interest groups.',
-      'LO (Brown ○): But consider that Brown has not addressed water, public safety or energy, the issues that dominate this district.',
+      'LO (Toss-up): But consider that Brown has not addressed water, public safety or energy, the issues that dominate this district.',
     ],
   },
 
@@ -576,7 +576,7 @@ export const RACES_D_VALLEY_B: Race[] = [
       ['LP', 'Cerros', '●', 'Leftward Progressives back the Democrat focused on small-town water and park funding over the Republican leader who wants fewer state mandates on farms.'],
       ['LL', 'Cerros', '○', 'Loyal Liberals share Cerros’s party, though Cerros’s removal as mayor and thin record weaken the case.', 'Experience-first Loyal Liberals could back Macedo, a sitting member now leading her caucus in budget talks; it is a cross-party vote for a high-speed rail opponent.'],
       ['LO', 'Cerros', '◐', 'Left-Out Left voters like a young, first-generation small-town leader focused on water and streets, though his own council removed him as mayor.', 'Experience-first Left-Out Left voters could back Macedo, the sitting Republican leader with a voice in budget talks; it is a cross-party vote that gives up a working-class outsider.'],
-      ['OO', 'Macedo', '○', 'Order and Opportunity Left voters want steady, competent representation and may cross party lines for the well-known incumbent focused on costs, given that Lindsay’s council removed Cerros as mayor citing inexperience.'],
+      ['OO', 'Macedo / Cerros', '=', 'Order and Opportunity Left voters weigh steady, competent representation against party and local help: if experience matters most, Macedo, the well-known incumbent focused on costs, given that Lindsay’s council removed Cerros as mayor citing inexperience; if a Democrat focused on small-town water and park funding matters more, Cerros.'],
       ['TM', 'Macedo', '○', 'Tuned-Out Middle voters lean to the well-known incumbent from a local farm family who stresses cost of living.'],
       ['PP', 'Macedo', '◐', 'Pragmatic and Polite Right voters value a law-trained farm-country leader now heading the Republican caucus, though Macedo has served under two years.'],
       ['UR', 'Macedo', '●', 'Unconventional Right voters like Macedo’s fight against high-speed rail and Sacramento bureaucrats.'],
@@ -675,7 +675,7 @@ export const RACES_D_VALLEY_B: Race[] = [
       ['LL', 'Gonzales', '●', 'Loyal Liberals value a decade on the city council and a pragmatic Democratic agenda on homeownership and job training.'],
       ['LO', 'Gonzales', '◐', 'Left-Out Left voters may see Gonzales as a downtown insider, but his first-time homebuyer help and community-organizing roots offer working families more than the Republican.'],
       ['OO', 'Gonzales', '◐', 'Order and Opportunity Left voters want opportunity, and Gonzales offers homebuyer help and apprenticeships, though Ayon’s 25 years as a deputy speak to their wish for order.'],
-      ['TM', 'Ayon', '○', 'Tuned-Out Middle voters wary of new taxes may lean to the mayor who closed a deficit without raising them, though the race is close.'],
+      ['TM', 'Gonzales / Ayon', '=', 'Tuned-Out Middle voters weigh tax restraint against help getting ahead: if avoiding new taxes matters most, Ayon, the mayor who closed a deficit without raising them; if first-time homebuyer help and apprenticeships matter more, Gonzales.'],
       ['PP', 'Ayon', '◐', 'Pragmatic and Polite Right voters like a “firm but fair” small-town mayor who balanced the books without tax hikes, though Gonzales is a business-friendly Democrat with more years in office.'],
       ['UR', 'Ayon', '●', 'Unconventional Right voters favor a law-enforcement veteran who opposes tax increases and pushes local control over Sacramento mandates.'],
       ['FC', 'Ayon', '◐', 'Faith First Conservatives back a former sheriff’s deputy running as a Republican, though Ayon campaigns on taxes and policing rather than faith and family issues.'],

@@ -55,13 +55,13 @@ import {
 } from './data/qualifications';
 import {
   maxSeverity,
-  resolveCandidateForPick,
   SEVERITY_DEFINITION,
   SEVERITY_LABEL,
   SEVERITY_ORDER,
   sortRedFlags,
   STATUS_LABEL,
 } from './data/red-flags';
+import { experienceTiebreak, isTossUp, pickedCandidates } from './data/toss-up';
 import { COMBINED_LEVEL_GAP, combinedCellFor } from './data/experience-views';
 import { decodeChoices, encodeChoices, getChoice, importChoices, retentionKey, setChoice } from './data/my-choices';
 import { pointsFor, votingInfoFor, type VotingInfo } from './data/voting-info';
@@ -102,6 +102,8 @@ function srConfidenceLabel(c: string): string {
       return 'Low confidence';
     case '—':
       return 'No pick, skip';
+    case '=':
+      return 'Toss-up';
     default:
       return c;
   }
@@ -1080,10 +1082,10 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
         pick.textContent = 'No pick';
         pick.classList.add('quick-list__pick--none');
       } else {
-        pick.append(tp.pick);
+        pick.append(tp.label);
         if (tp.flag) pick.append(pickFlagMarker(tp.flag));
         // Same SVG confidence icons as the picks tables (the ● glyph renders smaller than ◐/○ in most fonts).
-        const badge = confidenceBadge(tp.confidence);
+        const badge = tp.tossUp ? null : confidenceBadge(tp.confidence);
         if (badge) pick.append(document.createTextNode(' '), badge);
       }
       const mine = el('span', 'quick-list__mine');
@@ -1316,14 +1318,17 @@ function fillPrintSheet(data: BallotData, code: PrintColumn): void {
     const tb = el('tbody');
     const flagMark = (flag: 'severe' | 'serious' | undefined) => (flag ? ' ⚑' : '');
     const cellText = (cell: string, flag: 'severe' | 'serious' | undefined) =>
-      !cell || cell.trim().endsWith('—') ? '— (no pick)' : `${cell}${flagMark(flag)}`;
+      !cell || cell.trim().endsWith('—')
+        ? '— (no pick)'
+        : cell.trim().endsWith(' =')
+          ? `Toss-up: ${cell.trim().slice(0, -2)}${flagMark(flag)}`
+          : `${cell}${flagMark(flag)}`;
     for (const race of races) {
       const row = race.crossTypology.find((r) => r.typology === code);
       const tr = el('tr');
       const th = el('th', undefined, { scope: 'row' });
       th.textContent = race.tldrLabel ?? race.title;
-      const picked = row ? resolveCandidateForPick(row.pick, race.candidates) : undefined;
-      const tier = maxSeverity(picked?.redFlags);
+      const tier = maxSeverity(row ? pickedCandidates(race, row).flatMap((c) => c.redFlags ?? []) : []);
       const fitFlag = tier === 'severe' || tier === 'serious' ? tier : undefined;
       const fitCell = row ? `${row.pick} ${row.confidence}`.trim() : '';
       const td = el('td');
@@ -1402,7 +1407,7 @@ function fillMyChoicesSheet(sheet: HTMLElement, data: BallotData, fallback?: Typ
       const td = el('td');
       const fb = fallback ? race.crossTypology.find((r) => r.typology === fallback) : undefined;
       const fbp = fb ? typePick(race, fb) : undefined;
-      const fbText = fbp && !fbp.none ? `${fbp.pick} ${fbp.confidence} (${fallback} pick)`.replace(/\s+/g, ' ') : undefined;
+      const fbText = fbp && !fbp.none ? `${fbp.tossUp ? fbp.label : `${fbp.pick} ${fbp.confidence}`} (${fallback} pick)`.replace(/\s+/g, ' ') : undefined;
       td.textContent = choiceSummary(race) ?? fbText ?? '— (not marked)';
       tr.append(th, td);
       tb.append(tr);
@@ -1950,8 +1955,8 @@ function renderRace(race: ZipRace): HTMLElement {
     const pick = el('span', 'race__typick');
     const tp = typePick(race, typeRow);
     pick.append(`${typeRow.typology}: `);
-    pick.append(tp.none ? 'no pick' : tp.pick);
-    const badge = tp.none ? null : confidenceBadge(tp.confidence);
+    pick.append(tp.none ? 'no pick' : tp.label);
+    const badge = tp.none || tp.tossUp ? null : confidenceBadge(tp.confidence);
     if (badge) pick.append(document.createTextNode(' '), badge);
     sumText.append(document.createTextNode(' '), pick);
   }
@@ -2145,15 +2150,21 @@ function renderPapersAtAGlance(m: MeasureBlock): HTMLElement | null {
 /** The pick shown for a typology: the 2026 typology pick as written (experience never changes it). */
 function typePick(race: Race, row: Race['crossTypology'][number]): {
   pick: string;
+  /** What to show: the pick, or “Toss-up: A / B”. */
+  label: string;
   confidence: string;
   none: boolean;
+  tossUp: boolean;
   flag?: 'severe' | 'serious';
 } {
-  const tier = race.kind === 'candidates' ? maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags) : undefined;
+  const tier = maxSeverity(pickedCandidates(race, row).flatMap((c) => c.redFlags ?? []));
+  const tossUp = isTossUp(row);
   return {
     pick: row.pick,
+    label: tossUp ? `Toss-up: ${row.pick}` : row.pick,
     confidence: row.confidence,
     none: !row.pick || row.pick === '—',
+    tossUp,
     flag: tier === 'severe' || tier === 'serious' ? tier : undefined,
   };
 }
@@ -2173,9 +2184,10 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
   head.append(typologyChip(row.typology, { title: typologyNameForChip(row.typology) }), document.createTextNode(' '));
   const tp = typePick(race, row);
   const label = el('strong');
-  label.textContent = tp.none ? `${typologyNameForChip(row.typology)}: no pick` : `${typologyNameForChip(row.typology)} pick: ${tp.pick}`;
+  const group = typologyNameForChip(row.typology);
+  label.textContent = tp.none ? `${group}: no pick` : tp.tossUp ? `${group}: ${tp.label}` : `${group} pick: ${tp.pick}`;
   head.append(label);
-  if (!tp.none) {
+  if (!tp.none && !tp.tossUp) {
     const conf = el('span', 'your-type__conf');
     const icon = confidenceBadge(tp.confidence, '');
     conf.append(document.createTextNode(' '), ...(icon ? [icon] : []), document.createTextNode(` ${srConfidenceLabel(tp.confidence).toLowerCase()}`));
@@ -2581,7 +2593,8 @@ function renderTradeoff(race: Race, code: TypologyCode, className: string): HTML
   const exp = row ? experienceNote(race, row) : undefined;
   const surname = exp?.alt.split(/\s+/).pop() ?? '';
   const showExp = exp && !counters.some((c) => surname && c!.text.includes(surname));
-  if (!counters.length && !showExp) return null;
+  const tiebreak = row ? experienceTiebreak(race, row) : undefined;
+  if (!counters.length && !showExp && !tiebreak) return null;
   p.classList.add(`${className}--counter`);
   counters.forEach((c, i) => {
     if (i) p.append(' ');
@@ -2592,6 +2605,12 @@ function renderTradeoff(race: Race, code: TypologyCode, className: string): HTML
     const strong = el('strong');
     strong.textContent = 'But consider (experience): ';
     p.append(strong, exp.reason);
+  }
+  if (tiebreak) {
+    if (counters.length) p.append(' ');
+    const strong = el('strong');
+    strong.textContent = 'Tiebreaker (experience): ';
+    p.append(strong, tiebreak);
   }
   return p;
 }

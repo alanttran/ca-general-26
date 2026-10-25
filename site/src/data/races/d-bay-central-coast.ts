@@ -804,7 +804,7 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
       ['LP', 'Lee', '●', 'Leftward Progressives back the democratic socialist who chairs the Progressive Caucus and pushes social housing and a wealth tax.'],
       ['LL', 'Lee', '◐', 'Loyal Liberals value Lee’s committee chair and experience, though his democratic-socialist agenda goes further than many of them prefer.'],
       ['LO', 'Lee', '◐', 'Left-Out Left voters like Lee’s push to ban corporate campaign donations and expand CalFresh, though his democratic-socialist label is further left than many of them.'],
-      ['OO', 'Hsia', '○', 'Order and Opportunity Left voters worried about crime may prefer Hsia’s license-plate readers and low-level-crime task force, though Lee’s food-aid and housing agenda also fits their economics.', 'Order and Opportunity Left voters who put experience first could back Lee, a six-year Assembly member who chairs Human Services, giving up Hsia’s crime-enforcement focus for a Democrat with a record.'],
+      ['OO', 'Lee / Hsia', '=', 'Order and Opportunity Left voters weigh crime against cost-of-living help: if crime matters most, Hsia, with license-plate readers and a low-level-crime task force, though he has never held office and would serve in a small minority; if food aid and housing help matter more, Lee, who chairs Human Services and expanded CalFresh.'],
       ['TM', 'Lee', '○', 'Tuned-Out Middle voters get Lee’s CalFresh expansion and housing aid, though Hsia’s fight against regional sales-tax hikes also helps their budgets.'],
       ['PP', 'Hsia', '◐', 'Pragmatic and Polite Right voters prefer incremental fixes over a wealth tax and a new public-housing agency, and Hsia is a mainstream, not combative, Republican.', 'Pragmatic and Polite Right voters who put experience first could back Lee, a six-year Assembly member and committee chair, giving up a Republican vote and accepting his wealth-tax agenda.'],
       ['UR', 'Hsia', '●', 'Unconventional Right voters back the Republican who fought sales-tax hikes and wants tougher crime enforcement over a Democrat targeting ICE contractors.'],
@@ -812,7 +812,6 @@ export const RACES_D_BAY_CENTRAL_COAST: Race[] = [
       ['NA', 'Hsia', '●', 'No Apologies Right voters back the Republican who wants less building regulation and no new taxes against a democratic socialist.'],
     ]),
     counterArguments: [
-      'OO (Hsia ○): But consider that Lee’s CalFresh and housing work targets the costs Order and Opportunity Left voters feel most, because Hsia has never held office and would serve in a small minority.',
       'LL (Lee ◐): But consider that Lee’s wealth-tax and social-housing bills have stalled, because his ideology may limit his reach with moderates.',
     ],
   },

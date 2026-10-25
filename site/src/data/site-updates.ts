@@ -26,6 +26,7 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
           'Every pick, reason, counter-argument and “Vote Yes if / Vote No if” line, about 3,500 in all across 385 contests, was rewritten for the new groups. Picks are based on each group’s values first, with party only as a tiebreaker, so the mixed groups (Left-Out Left, Order and Opportunity Left, Tuned-Out Middle, Pragmatic and Polite Right, Unconventional Right) cross party lines more often.',
           'If you picked a type before, the guide asks you to pick again; your marked choices are kept. Pew’s quiz now places you in a 2026 group.',
           'Experience no longer changes picks. The 2026 picks already weigh competence for the groups that value it, and some groups deliberately favor outsiders. Where a far more experienced candidate is running, a “But consider (experience)” line joins the counter-arguments under the pick, and the summary table’s “Fit + experience” tab is gone. Quick view, the cheat sheet and printouts show each group’s own pick.',
+          'New: toss-ups. Where both options fit a group about equally (107 cells, mostly the mixed groups), the pick reads “Toss-up: A / B” and the reason says what tips it each way. For Loyal Liberals, Order and Opportunity Left and Pragmatic and Polite Right, the more experienced candidate is noted as a tiebreaker.',
         ],
       },
     ],

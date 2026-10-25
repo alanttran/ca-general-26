@@ -101,9 +101,9 @@ function levelText(c: Candidate): string {
 export function combinedCellFor(race: Race, pick: string, confidence: ConfidenceSymbol): TldrCombinedCell {
   const keep: TldrCombinedCell = {
     cell: `${pick} ${confidence}`.trim(),
-    flag: race.kind === 'candidates' ? flagOf(resolveCandidateForPick(pick, race.candidates)) : undefined,
+    flag: race.kind === 'candidates' && confidence !== '=' ? flagOf(resolveCandidateForPick(pick, race.candidates)) : undefined,
   };
-  if (race.kind !== 'candidates' || confidence === '●') return keep;
+  if (race.kind !== 'candidates' || confidence === '●' || confidence === '=') return keep;
   const rated = race.candidates.filter((c) => c.qualification);
   if (rated.length < 2) return keep;
 

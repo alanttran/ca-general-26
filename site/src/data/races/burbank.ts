@@ -541,7 +541,7 @@ export const RACES_BURBANK: Race[] = [
       ['LO', 'Yes', '◐', 'Left-Out Left voters like taxing visitors instead of working residents, though they distrust unrestricted general fund spending with no guarantee for any service.'],
       ['OO', 'Yes', '◐', 'Order and Opportunity Left voters want police, fire and 911 services protected, and a tax paid by hotel guests does that without costing residents.'],
       ['TM', 'Yes', '○', 'Tuned-Out Middle voters pay nothing unless they book a Burbank hotel, so keeping city services funded is a mild Yes.'],
-      ['PP', 'Yes', '○', 'Pragmatic and Polite Right voters accept a targeted tax on visitors to help close a deficit, weakly, because it has no end date.'],
+      ['PP', 'Yes / No', '=', 'Pragmatic and Polite Right voters want the deficit closed but are wary of open-ended taxes: if closing it with a targeted tax on visitors rather than residents matters most, Yes; if a tax with no end date weighs more, No.'],
       ['UR', 'No', '○', 'Unconventional Right voters prefer smaller government and lean against a new open-ended tax, even one visitors pay.'],
       ['FC', 'No', '○', 'Faith First Conservatives generally favor lower taxes and limited local spending, a weak lean since residents do not pay it.'],
       ['NA', 'No', '◐', 'No Apologies Right voters oppose nearly all new taxes and want the city to cut spending before raising any rate.'],

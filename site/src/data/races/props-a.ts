@@ -484,7 +484,7 @@ export const RACES_PROPS_A: Race[] = [
       ['LO', 'Yes', '●', 'Left-Out Left voters are bothered that the wealthy don’t pay their fair share and want government to guarantee schools and health care, and this tax touches only the top earners.'],
       ['OO', 'Yes', '●', 'Order and Opportunity Left voters favor raising taxes on those at the top and want public schools and Medi-Cal funded, and their own taxes do not change.'],
       ['TM', 'Yes', '◐', 'Tuned-Out Middle voters pay nothing under this tax and use public schools and Medi-Cal, though their low trust in how Sacramento spends tempers their support.'],
-      ['PP', 'Yes', '○', 'Pragmatic and Polite Right voters lean toward lower taxes but most say the wealthy should pay their share, and keeping existing rates avoids a sudden $5–15 billion budget hole, though some see a broken “temporary” promise.'],
+      ['PP', 'Yes / No', '=', 'Pragmatic and Polite Right voters lean toward lower taxes but most say the wealthy should pay their share; if avoiding a sudden $5–15 billion budget hole by keeping existing rates matters most, Yes; if keeping the promise that Props 30 and 55 were temporary matters more, No, since the 2031 sunset leaves time to weigh a narrower extension.'],
       ['UR', 'No', '◐', 'Unconventional Right voters favor lower taxes and smaller government and object to a tax sold as temporary in 2012 and 2016 becoming permanent.'],
       ['FC', 'No', '●', 'Faith First Conservatives want government services reduced and taxes lower, and reject locking a tax increase into the Constitution.'],
       ['NA', 'No', '●', 'No Apologies Right voters oppose nearly all taxes, see high top rates as driving earners and businesses away, and want the scheduled expiration to stand.'],
@@ -501,7 +501,6 @@ export const RACES_PROPS_A: Race[] = [
       NA: 'Yes if avoiding cuts to schools matters more than lowering top rates. No if high marginal rates drive earners and businesses out and the expiration should stand.',
     },
     counterArguments: [
-      'PP (Yes ○): But consider No if keeping promises to voters matters most, because Props 30 and 55 were sold as temporary and the 2031 sunset leaves time to weigh a narrower extension.',
       'LL (Yes ●): But consider No if you worry about budget swings, because top earners already pay about half of state income tax and tying permanent spending to that volatile revenue worsens boom-and-bust budgeting.',
       'UR (No ◐): But consider Yes if you mainly want your own taxes kept low, because this tax applies only to income above about $371,000 for single filers and a No changes nothing until 2031.',
     ],

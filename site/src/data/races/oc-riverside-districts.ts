@@ -531,7 +531,7 @@ export const RACES_OC_RIVERSIDE_DISTRICTS: Race[] = [
       ['LL', 'Valencia', '●', 'Loyal Liberals value a committee chair with 24 of 35 bills passed this session and backing from the party, labor and teachers.'],
       ['LO', 'Valencia', '◐', 'Left-Out Left voters are wary of insiders like Valencia, a former legislative staffer, but his school-funding and first-time-buyer pledges offer more to working families than Shader’s tax-reform focus.'],
       ['OO', 'Valencia', '●', 'Order and Opportunity Left voters want steady, mainstream leaders who help families buy homes and curb gun violence, and Valencia is a moderate Democrat who pledges both.'],
-      ['TM', 'Valencia', '○', 'Tuned-Out Middle voters want cost relief, and Valencia pledges housing and first-time-buyer programs, though Shader’s focus on tax reform also speaks to them.'],
+      ['TM', 'Valencia / Shader', '=', 'Tuned-Out Middle voters want cost relief and both candidates offer a version of it: if help buying a home through housing and first-time-buyer programs matters most, Valencia, though his site names no specific bills; if lower taxes through tax reform matter more, Shader.'],
       ['PP', 'Shader', '◐', 'Pragmatic and Polite Right voters reward fiscal prudence and local governing experience, and Shader is a two-time Placentia mayor who joined the council after an embezzlement scandal and says she rebuilt the city’s reserves, though Valencia is also a moderate.'],
       ['UR', 'Shader', '◐', 'Unconventional Right voters want lower taxes and smaller government, which Shader emphasizes, though her campaign has little anti-establishment edge.'],
       ['FC', 'Shader', '◐', 'Faith First Conservatives lean to the Republican on limited government and taxes, though Shader has stated no positions on the social issues they rank first.'],
@@ -539,7 +539,6 @@ export const RACES_OC_RIVERSIDE_DISTRICTS: Race[] = [
     ]),
     counterArguments: [
       'PP (Shader ◐): But consider that Valencia is a moderate Democrat with a 65% Howard Jarvis score who has passed most of his bills this session, the steady record this group usually values.',
-      'TM (Valencia ○): But consider that Valencia’s housing and cost pledges have no specific bills on his site, so Shader’s tax-reform focus may matter as much to their budgets.',
     ],
   },
 
@@ -909,7 +908,7 @@ export const RACES_OC_RIVERSIDE_DISTRICTS: Race[] = [
       ['LL', 'Galvez', '◐', 'Loyal Liberals back the Democratic Party- and teacher-endorsed candidate with a balanced-budget record on a park board, though Sanchez has far more legislative experience.', 'Loyal Liberals who value legislative know-how could cross party lines for Sanchez, who vice-chairs two committees and cites enacted public-safety laws, accepting that only one of her current-session bills has passed.'],
       ['LO', 'Galvez', '●', 'Left-Out Left voters distrust corporate money and want cost relief, and Galvez refuses corporate PAC money and targets housing and insurance costs and private-equity buyers.'],
       ['OO', 'Galvez', '◐', 'Order and Opportunity Left voters want help with housing and insurance costs and trade-school pathways, which Galvez offers, though Sanchez’s public-safety laws and sheriff endorsements speak to their wish for order.', 'Order and Opportunity Left voters who want a proven legislator could pick Sanchez, who authored laws toughening sex-trafficking and child-abuse-image penalties, though they give up Galvez’s cost-of-living plan for a Republican.'],
-      ['TM', 'Galvez', '○', 'Tuned-Out Middle voters want cost relief, and Galvez proposes a gas-tax freeze and insurance discounts, though Sanchez’s no-new-taxes record and conservative stance on school sports also appeal.', 'Tuned-Out Middle voters focused on prices could lean on Sanchez, who vice-chairs Revenue and Taxation, says she has never voted for a tax increase and proposed a deduction for insurance premiums, giving up Galvez’s fuller housing-cost plan.'],
+      ['TM', 'Galvez / Sanchez', '=', 'Tuned-Out Middle voters want cost relief and lean conservative on school sports: if a gas-tax freeze, insurance discounts and a fuller housing-cost plan matter most, Galvez; if a no-new-taxes record, a proposed deduction for insurance premiums and her stance on school sports matter more, Sanchez.'],
       ['PP', 'Sanchez', '◐', 'Pragmatic and Polite Right voters prefer an experienced, fiscally careful Republican, and Sanchez has an A from the Howard Jarvis Taxpayers Association and public-safety laws, though only one of her 19 bills this session has passed.'],
       ['UR', 'Sanchez', '●', 'Unconventional Right voters want lower taxes, tough-on-crime laws and limits on gender-identity policies, and Sanchez has all three.'],
       ['FC', 'Sanchez', '●', 'Faith First Conservatives put parental rights and gender issues first, and Sanchez authored the girls’-sports bill, scores 0% with Planned Parenthood and is endorsed by the Republican Party.'],

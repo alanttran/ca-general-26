@@ -656,7 +656,7 @@ export const RACES_TEMECULA: Race[] = [
       ['LO', 'Yes', '◐', 'Left-Out Left voters back repairs at the schools working families use, but doubt a board known for feuds will spend the money as promised.'],
       ['OO', 'Yes', '◐', 'Order and Opportunity Left voters value safe, modern schools and career-technology labs, though a new levy for about 30 years weighs on stretched household budgets.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters wary of new taxes lean slightly No on adding a new line to property tax bills on top of Measure Y, though the rate is modest.'],
-      ['PP', 'No', '○', 'Pragmatic and Polite Right voters like careful, well-run spending and lean slightly No because the ballot omits the term and total cost and the board’s conflicts raise doubts about managing a large construction program.'],
+      ['PP', 'Yes / No', '=', 'Pragmatic and Polite Right voters want careful, well-run spending on aging buildings: if a modest rate, a required oversight committee and possible state matching funds make this a prudent repair bond, Yes; if a ballot that omits the term and total cost and a board in conflict raise doubts about managing a large construction program, No.'],
       ['UR', 'No', '◐', 'Unconventional Right voters favor smaller government and lower taxes and resist adding a decades-long tax on top of an existing bond.'],
       ['FC', 'No', '◐', 'Faith First Conservatives favor lower taxes and less public debt, and object to roughly doubling the cost through interest, though the measure is about repairs rather than curriculum.'],
       ['NA', 'No', '●', 'No Apologies Right voters oppose nearly all new bonds and object to a ballot question that leaves out the term and total cost.'],
@@ -675,7 +675,7 @@ export const RACES_TEMECULA: Race[] = [
     counterArguments: [
       'NA (No ●): But consider Yes if you want your tax dollars to draw state money, because the rate is modest, the money can only fund buildings, and passing it can bring in state matching funds that would otherwise go elsewhere.',
       'LL (Yes ●): But consider No if you want full disclosure first, because total payments may be close to double the amount borrowed, the ballot omits the term, and the tax stacks on the Measure Y levy that runs to 2047.',
-      'PP (No ○): But consider Yes if aging buildings worry you, because Komrosky, the board president, calls the measure reasonable and transparent enough for voters, and Prop 39 requires an oversight committee and annual audits.',
+      'PP (Toss-up): But consider Yes if aging buildings worry you, because Komrosky, the board president, calls the measure reasonable and transparent enough for voters, and Prop 39 requires an oversight committee and annual audits.',
     ],
   },
 ];

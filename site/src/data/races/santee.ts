@@ -369,7 +369,7 @@ export const RACES_SANTEE: Race[] = [
       ['LO', 'Kendall', '◐', 'Left-Out Left voters lean to Kendall, a working legal assistant and public-school parent, over a candidate pledging to protect “conservative community values.”'],
       ['OO', 'Kendall', '◐', 'Order and Opportunity Left voters value Kendall’s budget-committee work and support for public schools, though Petretta’s safety focus also appeals.'],
       ['TM', 'Petretta', '○', 'Tuned-Out Middle voters may like Petretta’s plain focus on campus safety and parents having a say, without strong feelings.'],
-      ['PP', 'Kendall', '○', 'Pragmatic and Polite Right voters value Kendall’s district committee experience and nonpartisan focus over a candidate endorsed by Reform California, though Petretta is the Republican pick.'],
+      ['PP', 'Kendall / Petretta', '=', 'Pragmatic and Polite Right voters weigh competence against party: if district committee experience and a nonpartisan focus matter most, Kendall; if backing the Republican pick, who stresses campus safety and parents having a say, matters more, Petretta, despite her Reform California endorsement.'],
       ['UR', 'Petretta', '◐', 'Unconventional Right voters lean to Petretta, who emphasizes school safety and parental rights.'],
       ['FC', 'Petretta', '●', 'Faith First Conservatives value Petretta’s church-based children’s ministry and her pledge to protect conservative community values.'],
       ['NA', 'Petretta', '●', 'No Apologies Right voters back Petretta, endorsed by Reform California and the Republican Party, against the teachers’ union candidate.'],
@@ -695,7 +695,7 @@ export const RACES_SANTEE: Race[] = [
     crossTypology: ct([
       ['LP', 'Yes', '○', 'Leftward Progressives support funding fire response and public infrastructure, weakly because a sales tax falls hardest on lower-income households.'],
       ['LL', 'Yes', '●', 'Loyal Liberals trust the costed project list, 10-year sunset and audits, endorsed even by the Taxpayers Association.'],
-      ['LO', 'No', '○', 'Left-Out Left voters want the services but doubt a general tax will be spent as promised, since the project list is not binding and the oversight committee can only advise.'],
+      ['LO', 'Yes / No', '=', 'Left-Out Left voters want the services but distrust how a general tax gets spent: if new fire stations and faster response matter most, Yes; if the fact that the project list is not binding and the oversight committee can only advise matters more, No.'],
       ['OO', 'Yes', '◐', 'Order and Opportunity Left voters want faster fire and 911 response and safer streets, and the tax would fund new fire stations and paramedic service.'],
       ['TM', 'No', '◐', 'Tuned-Out Middle voters feel every price increase and are wary of paying $1 more per $100 at the register for 10 years.'],
       ['PP', 'Yes', '○', 'Pragmatic and Polite Right voters accept targeted spending with a sunset and audits that the Taxpayers Association calls well planned, weakly because a full cent is double what the city first studied.'],

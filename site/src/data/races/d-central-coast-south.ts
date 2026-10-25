@@ -478,8 +478,8 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
       ['LP', 'Addis', '●', 'Leftward Progressives back the Democrat who restored local control over oil drilling and protects immigrants from wrongful detention.'],
       ['LL', 'Addis', '●', 'Loyal Liberals value a budget-subcommittee chair with a record of signed bills and a regional caucus Addis founded.'],
       ['LO', 'Addis', '◐', 'Left-Out Left voters want the lower drug prices Addis stresses, though Addis is now an Assembly insider.'],
-      ['OO', 'Addis', '○', 'Order and Opportunity Left voters want the health-cost help Addis offers, though Kessler’s pledge to “back the blue” and limit girls’ sports by sex at birth matches many of their views.'],
-      ['TM', 'Kessler', '○', 'Tuned-Out Middle voters hear Kessler blame regulations for housing costs and share Kessler’s view on girls’ sports, though Addis offers concrete health-cost work.', 'Tuned-Out Middle voters who put experience first could back Addis, who chairs the health budget subcommittee and works on drug prices, giving up Kessler’s cost-of-regulation and girls’ sports stands.'],
+      ['OO', 'Addis / Kessler', '=', 'Order and Opportunity Left voters weigh economic help against public-safety and social views: if health costs matter most, Addis, who chairs the health budget subcommittee and works on drug prices; if backing police and limiting girls’ sports by sex at birth matter more, Kessler, who pledges both.'],
+      ['TM', 'Addis / Kessler', '=', 'Tuned-Out Middle voters weigh health costs against housing costs and school sports: if health costs matter most, Addis, whose drug-price and medical-school work targets them; if housing costs and girls’ sports matter more, Kessler, who blames regulations for housing costs and shares their view on sports, though she has no detailed cost plan.'],
       ['PP', 'Kessler', '○', 'Pragmatic and Polite Right voters share Kessler’s support for police and sex-based school sports, though Kessler’s activist group is more combative than they like.', 'Pragmatic and Polite Right voters who put experience first could back Addis, who chairs the health budget subcommittee and founded a Central Coast caucus, giving up Kessler’s pro-oil and parental-notification agenda.'],
       ['UR', 'Kessler', '●', 'Unconventional Right voters back the Republican who would expand oil production, cut regulation and back police.'],
       ['FC', 'Kessler', '●', 'Faith First Conservatives back the candidate championing parental notification and sex-based school sports against a former Planned Parenthood board member.'],
@@ -487,7 +487,6 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
     ]),
     counterArguments: [
       'PP (Kessler ○): But consider that Kessler has no legislative experience, because Addis controls a key budget subcommittee for the region.',
-      'TM (Kessler ○): But consider that Addis’s drug-price and medical-school work targets health costs directly, because Kessler has no detailed cost plan.',
     ],
   },
 
@@ -700,7 +699,7 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
     crossTypology: ct([
       ['LP', 'Bennett', '●', 'Leftward Progressives prefer Bennett, the Progressive Caucus member with a climate and campaign-finance record, over the Realtor-backed challenger; Bennett is clearly further left.'],
       ['LL', 'Bennett', '●', 'Loyal Liberals value a budget-subcommittee chair with 30 years in Ventura government.'],
-      ['LO', 'MacDonald', '○', 'Left-Out Left voters like MacDonald’s “not a career politician” pitch and focus on rent and insurance, though Realtor backing tempers their trust.', 'Left-Out Left voters who put experience first could back Bennett, a campaign-finance reformer who chairs the climate-energy budget panel, giving up the newcomer for a 30-year officeholder.'],
+      ['LO', 'Bennett / MacDonald', '=', 'Left-Out Left voters weigh distrust of career politicians against distrust of special interests: if a newcomer matters most, MacDonald, who is “not a career politician” and focuses on rent and insurance, though Realtors back him; if curbing money in politics matters more, Bennett, a campaign-finance reformer, though he has held office for 30 years.'],
       ['OO', 'MacDonald', '○', 'Order and Opportunity Left voters want homeownership opportunity, and MacDonald, the more moderate Democrat, promises more housing supply and a stable insurance market.', 'Order and Opportunity Left voters who put experience first could back Bennett, a former county supervisor and budget chair, giving up MacDonald’s housing-supply focus.'],
       ['TM', 'MacDonald', '○', 'Tuned-Out Middle voters focused on rent and insurance may favor MacDonald’s housing-supply and insurance pitch.', 'Tuned-Out Middle voters who put experience first could back Bennett, who chairs the budget panel over energy costs, giving up MacDonald’s housing-supply focus.'],
       ['PP', 'Bennett', '◐', 'Pragmatic and Polite Right voters prize experience and steady governance, and Bennett has decades of it, though MacDonald is the more business-friendly Democrat.'],
@@ -808,7 +807,7 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
       ['LL', 'Klein Lopez', '●', 'Loyal Liberals value a former mayor endorsed by Irwin, Brownley and Stern.'],
       ['LO', 'Klein Lopez', '◐', 'Left-Out Left voters want the help with housing, child-care and utility costs Klein Lopez promises, though Klein Lopez is establishment-backed.'],
       ['OO', 'Klein Lopez', '◐', 'Order and Opportunity Left voters like Klein Lopez’s focus on costs and disaster preparedness, though Nordblum’s fentanyl and police focus appeals to them.'],
-      ['TM', 'Nordblum', '○', 'Tuned-Out Middle voters wary of taxes may favor Nordblum’s gas-tax cut and Prop 13 defense as direct savings, though Klein Lopez also targets insurance and utility costs.'],
+      ['TM', 'Klein Lopez / Nordblum', '=', 'Tuned-Out Middle voters weigh tax relief against other household bills: if taxes matter most, Nordblum, with a gas-tax cut and a Prop 13 defense; if insurance and utility costs matter more, Klein Lopez, who targets them.'],
       ['PP', 'Nordblum', '◐', 'Pragmatic and Polite Right voters, many of them older homeowners, fit Nordblum’s defense of Prop 13, fentanyl focus and promise to seek bipartisan “common sense bills.”'],
       ['UR', 'Nordblum', '●', 'Unconventional Right voters back the small-business Republican who would cut gas taxes and support police.'],
       ['FC', 'Nordblum', '●', 'Faith First Conservatives back Nordblum’s emphasis on parental rights and law enforcement.'],

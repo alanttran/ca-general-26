@@ -1,9 +1,10 @@
 import type { BallotData, Race, TldrRow, TypologyCode, ZipRace } from '../types/ballot-types';
 import { BALLOT_META } from './meta';
+import { pickedCandidates } from './toss-up';
 import { TY_CODES } from './typologies-data';
 import { mergeRaceDerivedFields } from './merge-races';
 import { experienceCellFor } from './experience-views';
-import { maxSeverity, resolveCandidateForPick } from './red-flags';
+import { maxSeverity } from './red-flags';
 import { BALLOT_CATEGORIES, BALLOT_PROFILES, COLORADO_CATEGORIES, DEFAULT_BALLOT_ZIP, type BallotProfile } from './ballot-profiles';
 import { BUNDLED_LOCAL_RACES, STATEWIDE_RACES } from './races/statewide';
 import { loadLocalRaces, ON_DEMAND_RACE_IDS } from './local-races';
@@ -41,7 +42,7 @@ function tldrRowFor(race: Race): TldrRow {
     const row = race.crossTypology.find((r) => r.typology === code);
     cells[code] = row ? `${row.pick} ${row.confidence}`.trim() : '— —';
     if (!row || race.kind !== 'candidates') continue;
-    const tier = maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags);
+    const tier = maxSeverity(pickedCandidates(race, row).flatMap((c) => c.redFlags ?? []));
     if (tier === 'severe' || tier === 'serious') flags[code] = tier;
   }
   return {

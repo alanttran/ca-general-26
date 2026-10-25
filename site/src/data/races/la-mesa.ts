@@ -739,7 +739,7 @@ export const RACES_LA_MESA: Race[] = [
     crossTypology: ct([
       ['LP', 'Coston', '●', 'Leftward Progressives back Coston, the union- and Democratic-endorsed trustee who champions staff training pipelines and public schools.'],
       ['LL', 'Coston', '●', 'Loyal Liberals value Coston’s board experience as clerk and her broad local-official endorsements.'],
-      ['LO', 'Feeley', '○', 'Left-Out Left voters skeptical of insiders may like Feeley, a parent challenger campaigning on transparency, weakly since Coston’s pro-staff record also fits them.', 'Left-Out Left voters who value experience could keep Coston, who has four years on the board and backs career advancement for school employees.'],
+      ['LO', 'Coston / Feeley', '=', 'Left-Out Left voters skeptical of insiders also like a pro-staff record: if a parent challenger campaigning on transparency matters most, Feeley; if four years on the board and support for career advancement for school employees matter more, Coston.'],
       ['OO', 'Coston', '◐', 'Order and Opportunity Left voters value Coston’s secure single-point campus entries and school modernization.'],
       ['TM', 'Coston', '○', 'Tuned-Out Middle voters who don’t follow the board may default to Coston, the incumbent.'],
       ['PP', 'Coston', '◐', 'Pragmatic and Polite Right voters value Coston’s experience and campus-safety upgrades over a challenger who has not named any vote she would change.'],
