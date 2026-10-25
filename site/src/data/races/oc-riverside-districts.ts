@@ -502,7 +502,7 @@ export const RACES_OC_RIVERSIDE_DISTRICTS: Race[] = [
             'Placentia city councilmember from 2016 and two-time mayor, a small-business owner and former North Orange County Chamber chair; she has not held state office.',
           criteria: [
             { criterionId: 'law-policy', assessment: 'partial', evidence: 'City ordinances and budgets as a Placentia councilmember; no state legislative role.' },
-            { criterionId: 'budget-oversight', assessment: 'partial', evidence: 'Says Placentia’s reserves grew from $49 to more than $15 million during her tenure (her campaign’s claim).' },
+            { criterionId: 'budget-oversight', assessment: 'partial', evidence: 'Her campaign says Placentia’s reserves grew to more than $15 million during her tenure; we could not independently verify the figure.' },
             { criterionId: 'public-mgmt', assessment: 'met', evidence: 'Placentia City Council from 2016, including two terms as mayor (campaign site).' },
             { criterionId: 'district-service', assessment: 'partial', evidence: 'Elected in North Orange County; ran for this seat in 2022 and won 41.2%.' },
             { criterionId: 'coalition', assessment: 'unknown', evidence: 'No record of passing legislation outside city government found.' },

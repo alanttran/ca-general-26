@@ -64,7 +64,7 @@ import {
 } from './data/red-flags';
 import { COMBINED_LEVEL_GAP, combinedCellFor } from './data/experience-views';
 import { decodeChoices, encodeChoices, getChoice, importChoices, retentionKey, setChoice } from './data/my-choices';
-import { votingInfoFor, type VotingInfo } from './data/voting-info';
+import { pointsFor, votingInfoFor, type VotingInfo } from './data/voting-info';
 import { getViewPrefs, setViewPrefs, TYPOLOGY_PLAIN, type ViewMode, type ViewPrefs } from './data/view-prefs';
 
 /** Alternation of the nine codes for counter-argument prefixes such as `LL (` or `UR/FC (`. */
@@ -1470,7 +1470,7 @@ function renderHowToVote(data: BallotData): HTMLElement {
     links.append(li);
   }
   sec.append(ol);
-  if (info.returning) sec.append(renderReturning(info.returning));
+  if (info.returning) sec.append(renderReturning(info.returning, todayIso));
   sec.append(links);
   const upcoming = info.dates.filter((d) => d.iso >= todayIso);
   if (upcoming.length) {
@@ -1487,11 +1487,11 @@ function renderHowToVote(data: BallotData): HTMLElement {
   const title = el('strong', 'how-vote__summary-title');
   title.textContent = `When and where to vote in ${info.where}`;
   summary.append(title);
-  if (next) {
-    const nextLine = el('span', 'how-vote__summary-next');
-    nextLine.textContent = `Next: ${next.label}. ${next.text.split('. ')[0].replace(/\.$/, '')}.`;
-    summary.append(nextLine);
-  }
+  const nextLine = el('span', 'how-vote__summary-next');
+  nextLine.textContent = next
+    ? `${next.iso === todayIso ? 'Today' : `Next: ${next.label}`}. ${next.text.split('. ')[0].replace(/\.$/, '')}.`
+    : 'Voting is over. Track your ballot to make sure it counted.';
+  summary.append(nextLine);
   sec.className = 'how-vote__inner';
   h2.className = 'visually-hidden';
   wrap.append(summary, sec);
@@ -1499,12 +1499,12 @@ function renderHowToVote(data: BallotData): HTMLElement {
 }
 
 /** “Mail it or drop it off?”: a fold in the dates box with this year's ballot-return advice and sources. */
-function renderReturning(r: NonNullable<VotingInfo['returning']>): HTMLDetailsElement {
+function renderReturning(r: NonNullable<VotingInfo['returning']>, todayIso: string): HTMLDetailsElement {
   const d = el('details', 'how-vote__returning');
   const s = el('summary', 'how-vote__returning-summary');
   s.textContent = 'Mail it or drop it off? What’s safest this year';
   const ul = el('ul', 'how-vote__returning-points');
-  for (const p of r.points) {
+  for (const p of pointsFor(r.points, todayIso)) {
     const li = el('li');
     li.textContent = p;
     ul.append(li);

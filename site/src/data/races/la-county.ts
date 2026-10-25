@@ -455,7 +455,7 @@ export const RACES_LA_COUNTY: Race[] = [
     seatContext: 'Incumbent',
     kind: 'candidates',
     stakesParagraphs: [
-      'The seven-member LACCD Board of Trustees governs nine community colleges and about 200,000 students, with an annual budget of around $10 billion according to the LA Times voter guide. Trustees are elected at large, so every voter in the district votes on every seat, and the part-time job pays about $24,000 a year.',
+      'The seven-member LACCD Board of Trustees governs nine community colleges and about 200,000 students, with an annual budget of around $10 billion according to the LA Times voter guide, most of it voter-approved bond money for construction (the district’s 2025–26 budget totals about $9.6 billion, $8 billion of it in the building fund). Trustees are elected at large, so every voter in the district votes on every seat, and the part-time job pays about $24,000 a year.',
       'The board approves the budget, hires the chancellor, and oversees spending of a $5.3 billion bond approved in 2022. Enrollment is up from recent years but still below pre-pandemic levels.',
     ],
     introParagraphs: [

@@ -688,7 +688,7 @@ export const RACES_SD_CONGRESS: Race[] = [
           },
         ],
         money:
-          'KPBS (Sept 29, 2026) reported he raised more than $25,000, including over $18,000 from individuals, $7,000 in loan support and no committee contributions. The Union-Tribune reported he had not filed the financial disclosures required of congressional candidates (, Sept 2026). Current totals: see the FEC filings at https://www.fec.gov/data/.',
+          'KPBS (Sept 29, 2026) reported he raised more than $25,000, including over $18,000 from individuals, $7,000 in loan support and no committee contributions. The Union-Tribune reported in September 2026 that he had not filed the financial disclosures required of congressional candidates. Current totals: see the FEC filings at https://www.fec.gov/data/.',
         endorsements:
           'None from major organizations, parties or unions (KPBS, Sept 29, 2026); iVoterGuide lists a California Charter Schools Association endorsement reported by the candidate.',
         redFlags: [

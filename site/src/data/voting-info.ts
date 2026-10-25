@@ -10,6 +10,21 @@ export interface VoteDate {
   text: string;
 }
 
+export interface DatedPoint {
+  text: string;
+  /** Last day the point shows. */
+  until?: string;
+  /** First day the point shows. */
+  from?: string;
+}
+
+/** Points that apply on `todayIso`. */
+export function pointsFor(points: (string | DatedPoint)[], todayIso: string): string[] {
+  return points
+    .filter((p) => typeof p === 'string' || ((!p.from || todayIso >= p.from) && (!p.until || todayIso <= p.until)))
+    .map((p) => (typeof p === 'string' ? p : p.text));
+}
+
 export interface VotingInfo {
   where: string;
   dates: VoteDate[];
@@ -18,7 +33,8 @@ export interface VotingInfo {
   heads?: string;
   /** “Mail it or drop it off?”: short points on returning a ballot safely this year, with sources. */
   returning?: {
-    points: string[];
+    /** A plain string always shows; `until`/`from` (ISO, inclusive) limit a point to part of the season. */
+    points: (string | DatedPoint)[];
     /** Ballot-tracking sign-up, shown as a button under the points. */
     track: { label: string; url: string; why: string };
     sources: { label: string; url: string }[];
@@ -43,13 +59,31 @@ const RETURN_SOURCES = [
 
 const CA_RETURNING: VotingInfo['returning'] = {
   points: [
-    'Both are safe and count the same. Mail works if you mail early; from Oct 28 on, a drop box or vote center is the surer bet.',
-    'Mailing? Mail it by Tue, Oct 27. The Secretary of State says to mail at least 7 days before Election Day.',
-    `${USPS_POSTMARK} California counts ballots postmarked by Nov 3 that arrive by Nov 10, so a ballot mailed on Election Day could get a Nov 4 postmark and be rejected.`,
-    'Mailing on Nov 3 anyway? Skip the blue box. Hand it to a clerk at a post office counter and ask for a hand-stamped postmark.',
-    'Dropping it off? Use an official county drop box (see the links below). They’re locked, emptied by election workers, and take ballots until 8 p.m. on Nov 3. Any vote center takes your ballot too.',
-    `${NOT_AFFECTED} In June the Supreme Court also ruled (Watson v. RNC) that states may count ballots that arrive after Election Day, so California’s seven-day window stands.`,
-    'Either way, sign the envelope. If your signature is missing or doesn’t match, the county contacts you so you can fix it.',
+    { until: '2026-10-27', text: 'Both are safe and count the same. Mail works if you mail early; from Oct 28 on, a drop box or vote center is the surer bet.' },
+    { until: '2026-10-27', text: 'Mailing? Mail it by Tue, Oct 27. The Secretary of State says to mail at least 7 days before Election Day.' },
+    {
+      from: '2026-10-28',
+      until: '2026-11-03',
+      text: 'It’s now past the safe mailing date (Oct 27). Put your ballot in an official county drop box or take it to any vote center by 8 p.m. on Nov 3. Both are safe and count the same as mail.',
+    },
+    {
+      until: '2026-11-03',
+      text: `${USPS_POSTMARK} California counts ballots postmarked by Nov 3 that arrive by Nov 10, so a ballot mailed on Election Day could get a Nov 4 postmark and be rejected.`,
+    },
+    { until: '2026-11-03', text: 'Mailing on Nov 3 anyway? Skip the blue box. Hand it to a clerk at a post office counter and ask for a hand-stamped postmark.' },
+    {
+      until: '2026-11-03',
+      text: 'Dropping it off? Use an official county drop box (see the links below). They’re locked, emptied by election workers, and take ballots until 8 p.m. on Nov 3. Any vote center takes your ballot too.',
+    },
+    {
+      until: '2026-11-03',
+      text: `${NOT_AFFECTED} In June the Supreme Court also ruled (Watson v. RNC) that states may count ballots that arrive after Election Day, so California’s seven-day window stands.`,
+    },
+    { until: '2026-11-03', text: 'Either way, sign the envelope. If your signature is missing or doesn’t match, the county contacts you so you can fix it.' },
+    {
+      from: '2026-11-04',
+      text: 'Voting is over. Ballots postmarked by Nov 3 still count if they arrive by Nov 10. If the county contacts you about a missing or mismatched signature, answer right away so your ballot counts.',
+    },
   ],
   track: {
     label: 'Sign up for Where’s My Ballot?',
@@ -93,7 +127,7 @@ const caDates = (opts: { early: string; centers?: [string, string] }): VoteDate[
   {
     iso: '2026-10-27',
     label: 'Oct 27',
-    text: 'Mailing your ballot? Mail it by today; the Secretary of State says to mail at least 7 days early. After this, use a drop box or a vote center.',
+    text: 'Last safe day to mail your ballot; the Secretary of State says to mail at least 7 days early. After this, use a drop box or a vote center.',
   },
   {
     iso: '2026-11-03',
@@ -246,11 +280,20 @@ const DENVER: VotingInfo = {
   ],
   returning: {
     points: [
-      'Postmarks don’t count in Colorado. Your ballot has to reach a drop box, a voter center or the clerk by 7 p.m. on Nov 3.',
-      'Mailing? Mail it by Mon, Oct 26. After that, use one of Denver’s 24-hour drop boxes or a voter center instead.',
-      `${USPS_POSTMARK} Mail can also take longer than it used to, so give it a full week.`,
-      `${NOT_AFFECTED}`,
-      'Either way, sign the envelope. If there’s a signature problem, the clerk contacts you so you can fix it.',
+      { until: '2026-11-03', text: 'Postmarks don’t count in Colorado. Your ballot has to reach a drop box, a voter center or the clerk by 7 p.m. on Nov 3.' },
+      { until: '2026-10-26', text: 'Mailing? Mail it by Mon, Oct 26. After that, use one of Denver’s 24-hour drop boxes or a voter center instead.' },
+      {
+        from: '2026-10-27',
+        until: '2026-11-03',
+        text: 'It’s now too late to mail your ballot safely. Use one of Denver’s 24-hour drop boxes or a voter center by 7 p.m. on Nov 3.',
+      },
+      { until: '2026-10-26', text: `${USPS_POSTMARK} Mail can also take longer than it used to, so give it a full week.` },
+      { until: '2026-11-03', text: `${NOT_AFFECTED}` },
+      { until: '2026-11-03', text: 'Either way, sign the envelope. If there’s a signature problem, the clerk contacts you so you can fix it.' },
+      {
+        from: '2026-11-04',
+        text: 'Voting is over. If the clerk contacts you about a signature problem, answer right away so your ballot counts.',
+      },
     ],
     track: {
       label: 'Sign up for BallotTrax',
