@@ -153,8 +153,8 @@ export interface CrossTypologyRow {
   confidence: ConfidenceSymbol;
   rationale: string;
   /**
-   * Why this typology could back the switched pick in the Fit + experience view, written from that
-   * typology's point of view. Required exactly when experience switches the pick (see `combinedCellFor`).
+   * The advisory “Experience note”: why an experience-first voter in this typology could back the far more
+   * experienced candidate instead. Required exactly when `combinedCellFor` finds such an alternative.
    */
   experienceRationale?: string;
 }
@@ -369,8 +369,6 @@ export interface TldrRow {
   flags: Partial<Record<TypologyCode, 'severe' | 'serious'>>;
   /** Most experienced candidate(s); null for measures and retention votes. */
   experience: TldrExperienceCell | null;
-  /** Typology pick adjusted for experience (see `combinedCellFor`). */
-  combined: Record<TypologyCode, TldrCombinedCell>;
 }
 
 export interface TldrExperienceCell {

@@ -2360,11 +2360,6 @@ button:focus-visible {
   }
 }
 
-.print-sheet__fit {
-  font-weight: 400;
-  color: #444;
-}
-
 .print-sheet__table--lead {
   break-inside: avoid;
 }
@@ -2761,12 +2756,6 @@ button:focus-visible {
   }
 }
 
-.pick-changed {
-  color: var(--rad-accent-dim);
-  font-weight: 600;
-  cursor: help;
-}
-
 .exp-table th.exp-table__col,
 .exp-table td.exp-table__cell {
   text-align: left;
@@ -2837,19 +2826,6 @@ button:focus-visible {
     flex-wrap: nowrap;
     justify-content: flex-start;
   }
-}
-
-.cross__was .pick-cell {
-  display: inline;
-  font-weight: 400;
-}
-
-.cross__was {
-  display: block;
-  margin-top: 0.2rem;
-  font-weight: 400;
-  color: var(--rad-text-muted);
-  font-size: var(--fs-sm);
 }
 
 .cross__switch,
@@ -4125,7 +4101,3 @@ button.quick-list__row {
   color: var(--rad-text-muted);
 }
 
-.pick-changed--inline {
-  color: var(--rad-accent-dim);
-  font-weight: 700;
-}

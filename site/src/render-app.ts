@@ -111,7 +111,6 @@ function fillPickCell(
   td: HTMLTableCellElement,
   cell: string,
   flag?: 'severe' | 'serious',
-  changedReason?: string,
 ): void {
   td.classList.add('matrix-pick-cell');
   const { label, confidence } = parsePickCell(cell);
@@ -126,16 +125,6 @@ function fillPickCell(
     inner.append(badge);
     td.append(inner);
     return;
-  }
-  if (changedReason) {
-    if (!label.includes(',')) inner.classList.add('pick-cell--nowrap');
-    const mark = el('span', 'pick-changed', { title: changedReason, tabindex: '0' });
-    const sr = el('span', 'visually-hidden');
-    sr.textContent = `Changed by experience: ${changedReason} `;
-    const glyph = el('span', undefined, { 'aria-hidden': 'true' });
-    glyph.textContent = '⇄';
-    mark.append(sr, glyph);
-    inner.append(mark, document.createTextNode(' '));
   }
   inner.append(document.createTextNode(label));
   if (flag) inner.append(pickFlagMarker(flag));
@@ -163,17 +152,6 @@ function confidenceBadge(confidence: string, srText = ` ${srConfidenceLabel(conf
   sr.textContent = srText;
   badge.append(sr, ic);
   return badge;
-}
-
-/** “⇄” before a pick that experience changed (the table and print sheet use the same mark). */
-function switchedMark(): HTMLElement {
-  const m = el('span', 'pick-changed pick-changed--inline', { title: 'Switched for experience' });
-  const sr = el('span', 'visually-hidden');
-  sr.textContent = 'Switched for experience: ';
-  const g = el('span', undefined, { 'aria-hidden': 'true' });
-  g.textContent = '⇄ ';
-  m.append(sr, g);
-  return m;
 }
 
 /** Small flag after a pick whose candidate has a Severe or Serious red flag. */
@@ -1102,7 +1080,6 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
         pick.textContent = 'No pick';
         pick.classList.add('quick-list__pick--none');
       } else {
-        if (tp.switched) pick.append(switchedMark());
         pick.append(tp.pick);
         if (tp.flag) pick.append(pickFlagMarker(tp.flag));
         // Same SVG confidence icons as the picks tables (the ● glyph renders smaller than ◐/○ in most fonts).
@@ -1349,18 +1326,8 @@ function fillPrintSheet(data: BallotData, code: PrintColumn): void {
       const tier = maxSeverity(picked?.redFlags);
       const fitFlag = tier === 'severe' || tier === 'serious' ? tier : undefined;
       const fitCell = row ? `${row.pick} ${row.confidence}`.trim() : '';
-      const combined =
-        row && race.kind === 'candidates' ? combinedCellFor(race, row.pick, row.confidence) : undefined;
-      // One pick column; when weighing experience changes the pick, the plain typology fit follows in brackets.
       const td = el('td');
-      if (combined?.reason) {
-        td.append(`⇄ ${cellText(combined.cell, combined.flag)} `);
-        const fit = el('span', 'print-sheet__fit');
-        fit.textContent = `(type fit: ${cellText(fitCell, fitFlag)})`;
-        td.append(fit);
-      } else {
-        td.textContent = cellText(fitCell, fitFlag);
-      }
+      td.textContent = cellText(fitCell, fitFlag);
       tr.append(th, td);
       tb.append(tr);
     }
@@ -1435,7 +1402,7 @@ function fillMyChoicesSheet(sheet: HTMLElement, data: BallotData, fallback?: Typ
       const td = el('td');
       const fb = fallback ? race.crossTypology.find((r) => r.typology === fallback) : undefined;
       const fbp = fb ? typePick(race, fb) : undefined;
-      const fbText = fbp && !fbp.none ? `${fbp.switched ? '⇄ ' : ''}${fbp.pick} ${fbp.confidence} (${fallback} pick)`.replace(/\s+/g, ' ') : undefined;
+      const fbText = fbp && !fbp.none ? `${fbp.pick} ${fbp.confidence} (${fallback} pick)`.replace(/\s+/g, ' ') : undefined;
       td.textContent = choiceSummary(race) ?? fbText ?? '— (not marked)';
       tr.append(th, td);
       tb.append(tr);
@@ -1708,10 +1675,10 @@ function renderMethodologySection(): HTMLElement {
   );
 
   block(
-    'Fit + experience',
+    'Experience notes',
     undefined,
     text(
-      `The default summary view. Strong (●) picks stay. A medium or low pick switches to a rival at least ${COMBINED_LEVEL_GAP} experience levels higher. A column with no pick goes to the most experienced candidate, with ties broken by job criteria met; if still tied, it stays blank. Multi-seat races fill only seats with a clear case, and “Little experience” candidates are never filled in. Switched cells drop to ○ and are marked ⇄.`,
+      `Experience never changes a pick. Groups that value competence, such as Pragmatic and Polite Right and Loyal Liberals, already weigh it in their picks, while others, such as Left-Out Left, deliberately favor outsiders. When a medium or low pick faces a rival at least ${COMBINED_LEVEL_GAP} experience levels higher, or a column has no pick and one candidate is clearly the most experienced, an “Experience note” under the reason names that candidate and what an experience-first voter in the group would weigh.`,
     ),
   );
 
@@ -1768,15 +1735,16 @@ function renderMethodologySection(): HTMLElement {
   return sec;
 }
 
-type TldrView = 'typology' | 'experience' | 'combined';
+type TldrView = 'typology' | 'experience';
 
 const TLDR_VIEW_KEY = 'ca-general-26:tldr-view';
 
 const TLDR_VIEWS: { id: TldrView; label: string; caption: string }[] = [
   {
-    id: 'combined',
-    label: 'Fit + experience',
-    caption: `Typology picks, adjusted for experience. Strong (●) picks stand. A medium or low pick switches to a rival who is at least ${COMBINED_LEVEL_GAP} experience levels higher, and a cell with no pick goes to the most experienced candidate (ties go to whoever meets more of the job’s criteria). Switched cells are marked ⇄ and drop to low confidence (hover or tap for why). Red flags show the same marker as before and don’t change picks here.`,
+    id: 'typology',
+    label: 'Typology fit',
+    caption:
+      'Picks by worldview. Each cell shows the recommended name plus a confidence icon (see legend above). A red flag after a name means that candidate has a Severe or Serious red flag on their card.',
   },
   {
     id: 'experience',
@@ -1784,22 +1752,16 @@ const TLDR_VIEWS: { id: TldrView; label: string; caption: string }[] = [
     caption:
       'The most experienced candidate in each race, using the experience rating on each candidate card. Experience doesn’t depend on worldview, so there is one column. Ballot measures and retention votes aren’t listed: there are no candidates to compare.',
   },
-  {
-    id: 'typology',
-    label: 'Typology fit',
-    caption:
-      'Picks by worldview. Each cell shows the recommended name plus a confidence icon (see legend above). A red flag after a name means that candidate has a Severe or Serious red flag on their card.',
-  },
 ];
 
 function readTldrView(): TldrView {
   try {
     const v = localStorage.getItem(TLDR_VIEW_KEY);
-    if (v === 'typology' || v === 'experience' || v === 'combined') return v;
+    if (v === 'typology' || v === 'experience') return v;
   } catch {
     /* storage unavailable: use the default */
   }
-  return 'combined';
+  return 'typology';
 }
 
 let tldrView: TldrView = readTldrView();
@@ -1876,12 +1838,7 @@ function renderTldrView(data: BallotData, view: TldrView): HTMLElement[] {
     tr.append(th);
     for (const code of TY_CODES) {
       const td = el('td', `matrix-col matrix-col--${code}`);
-      if (view === 'combined') {
-        const c = row.combined[code];
-        fillPickCell(td, c.cell, c.flag, c.reason);
-      } else {
-        fillPickCell(td, row.cells[code] ?? '—', row.flags[code]);
-      }
+      fillPickCell(td, row.cells[code] ?? '—', row.flags[code]);
       tr.append(td);
     }
     tb.append(tr);
@@ -1993,7 +1950,6 @@ function renderRace(race: ZipRace): HTMLElement {
     const pick = el('span', 'race__typick');
     const tp = typePick(race, typeRow);
     pick.append(`${typeRow.typology}: `);
-    if (!tp.none && tp.switched) pick.append(switchedMark());
     pick.append(tp.none ? 'no pick' : tp.pick);
     const badge = tp.none ? null : confidenceBadge(tp.confidence);
     if (badge) pick.append(document.createTextNode(' '), badge);
@@ -2187,31 +2143,44 @@ function renderPapersAtAGlance(m: MeasureBlock): HTMLElement | null {
 }
 
 /**
- * The pick shown for a typology outside the full table: fit + experience, exactly like the table's Pick column
- * and the printed type-picks sheet. `switched` means experience changed it.
+ * The pick shown for a typology: the 2026 typology pick as written. Experience never changes it; when a far more
+ * experienced rival is running (see `combinedCellFor`), `alt` names them for an advisory experience note.
  */
 function typePick(race: Race, row: Race['crossTypology'][number]): {
   pick: string;
   confidence: string;
   none: boolean;
-  switched: boolean;
+  alt?: string;
   reason?: string;
   flag?: 'severe' | 'serious';
 } {
-  const c = combinedCellFor(race, row.pick, row.confidence);
-  const { label, confidence } = parsePickCell(c.cell);
-  const switched = Boolean(c.reason);
-  const pick = switched ? label : row.pick;
-  const conf = switched ? confidence : row.confidence;
-  const tier = race.kind === 'candidates' ? maxSeverity(resolveCandidateForPick(pick, race.candidates)?.redFlags) : undefined;
+  const tier = race.kind === 'candidates' ? maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags) : undefined;
+  const note = experienceNote(race, row);
   return {
-    pick,
-    confidence: conf,
-    none: !pick || pick === '—',
-    switched,
-    reason: switched ? (row.experienceRationale ?? c.reason) : undefined,
+    pick: row.pick,
+    confidence: row.confidence,
+    none: !row.pick || row.pick === '—',
+    alt: note?.alt,
+    reason: note?.reason,
     flag: tier === 'severe' || tier === 'serious' ? tier : undefined,
   };
+}
+
+/** A far more experienced rival to a weak pick (or the most experienced candidate where there is no pick), with why. */
+function experienceNote(race: Race, row: Race['crossTypology'][number]): { alt: string; reason: string } | undefined {
+  if (race.kind !== 'candidates') return undefined;
+  const c = combinedCellFor(race, row.pick, row.confidence);
+  if (!c.reason) return undefined;
+  return { alt: parsePickCell(c.cell).label, reason: row.experienceRationale ?? c.reason };
+}
+
+/** “Experience note (X): …” paragraph under a pick’s reason. */
+function experienceNoteEl(className: string, note: { alt: string; reason: string }): HTMLElement {
+  const p = el('p', className);
+  const strong = el('strong');
+  strong.textContent = `Experience note (${note.alt}): `;
+  p.append(strong, document.createTextNode(note.reason));
+  return p;
 }
 
 /** Quick/Guided: the voter's own type's pick and reason, at the top of each contest. */
@@ -2230,23 +2199,9 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
     head.append(conf);
   }
   const why = el('p', 'your-type__why');
-  if (tp.switched) {
-    // Same as the picks table: experience changed this pick, so lead with why, then the fit-only pick.
-    const lead = el('strong');
-    lead.textContent = 'Switched for experience. ';
-    why.append(lead, tp.reason ?? '');
-    const fit = el('p', 'your-type__fit');
-    const fitLabel = el('strong');
-    const fitNone = !row.pick || row.pick === '—';
-    fitLabel.textContent = `On fit alone: ${fitNone ? 'no pick' : row.pick}`;
-    const fitIcon = fitNone ? null : confidenceBadge(row.confidence);
-    fitLabel.append(...(fitIcon ? [' ', fitIcon] : []), '. ');
-    fit.append(fitLabel, row.rationale);
-    box.append(head, why, fit);
-  } else {
-    why.textContent = row.rationale;
-    box.append(head, why);
-  }
+  why.textContent = row.rationale;
+  box.append(head, why);
+  if (tp.alt && tp.reason) box.append(experienceNoteEl('your-type__fit', { alt: tp.alt, reason: tp.reason }));
   // Measures: facts (what each outcome does) come before the trade-off; candidates have no such block.
   const trade = renderTradeoff(race, row.typology, 'your-type__tradeoff');
   if (trade && race.kind !== 'measure') box.append(trade);
@@ -2575,37 +2530,13 @@ function renderCrossTable(race: Race): HTMLElement {
     const tr = el('tr', row.typology === highlightTypology ? 'cross__row--mine' : undefined);
     const th = el('th', 'cross__ty', { scope: 'row' });
     th.append(typologyChip(row.typology, { title: typologyNameForChip(row.typology) }));
-    const c =
-      race.kind === 'candidates'
-        ? combinedCellFor(race, row.pick, row.confidence)
-        : { cell: `${row.pick} ${row.confidence}`.trim(), reason: undefined, flag: undefined };
-
+    const tp = typePick(race, row);
     const tdPick = el('td', 'cross__pick');
-    fillPickCell(tdPick, c.cell, c.flag, c.reason ? 'Switched for experience' : undefined);
-    if (c.reason) {
-      const was = el('span', 'cross__was');
-      was.append(document.createTextNode('On fit alone: '));
-      const orig = el('span', 'cross__was-pick');
-      fillPickCell(orig as unknown as HTMLTableCellElement, `${row.pick} ${row.confidence}`.trim());
-      orig.classList.remove('matrix-pick-cell');
-      was.append(orig);
-      tdPick.append(was);
-    }
+    fillPickCell(tdPick, `${row.pick} ${row.confidence}`.trim(), tp.flag);
 
     const tdWhy = el('td', 'cross__why');
-    if (c.reason) {
-      const lead = el('p', 'cross__switch');
-      const strong = el('strong');
-      strong.textContent = 'Switched for experience. ';
-      lead.append(strong, document.createTextNode(row.experienceRationale ?? c.reason));
-      const fit = el('p', 'cross__fit');
-      const fitLabel = el('strong');
-      fitLabel.textContent = 'On fit alone: ';
-      fit.append(fitLabel, document.createTextNode(row.rationale));
-      tdWhy.append(lead, fit);
-    } else {
-      tdWhy.textContent = row.rationale;
-    }
+    tdWhy.textContent = row.rationale;
+    if (tp.alt && tp.reason) tdWhy.append(experienceNoteEl('cross__switch', { alt: tp.alt, reason: tp.reason }));
     const trade = renderTradeoff(race, row.typology, 'cross__tradeoff');
     if (trade) tdWhy.append(trade);
     tr.append(th, tdPick, tdWhy);

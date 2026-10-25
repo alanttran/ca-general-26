@@ -252,9 +252,9 @@ export function collectExperienceRationaleIssues(races: Race[]): TypologyValidat
       const switched = race.kind === 'candidates' && Boolean(combinedCellFor(race, row.pick, row.confidence).reason);
       const has = Boolean(row.experienceRationale?.trim());
       if (switched && !has) {
-        issues.push({ raceId: race.id, typology: row.typology, message: 'Fit + experience switches this pick: add an experienceRationale.' });
+        issues.push({ raceId: race.id, typology: row.typology, message: 'A far more experienced rival is running: add an experienceRationale (shown as the Experience note).' });
       } else if (!switched && has) {
-        issues.push({ raceId: race.id, typology: row.typology, message: 'experienceRationale is set but this pick is not switched: remove it.' });
+        issues.push({ raceId: race.id, typology: row.typology, message: 'experienceRationale is set but there is no experience alternative for this pick: remove it.' });
       }
     }
   }

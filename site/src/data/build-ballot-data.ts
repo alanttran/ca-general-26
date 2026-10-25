@@ -2,7 +2,7 @@ import type { BallotData, Race, TldrRow, TypologyCode, ZipRace } from '../types/
 import { BALLOT_META } from './meta';
 import { TY_CODES } from './typologies-data';
 import { mergeRaceDerivedFields } from './merge-races';
-import { combinedCellFor, experienceCellFor } from './experience-views';
+import { experienceCellFor } from './experience-views';
 import { maxSeverity, resolveCandidateForPick } from './red-flags';
 import { BALLOT_CATEGORIES, BALLOT_PROFILES, COLORADO_CATEGORIES, DEFAULT_BALLOT_ZIP, type BallotProfile } from './ballot-profiles';
 import { BUNDLED_LOCAL_RACES, STATEWIDE_RACES } from './races/statewide';
@@ -37,11 +37,9 @@ export function getBallotProfile(zip: string): BallotProfile {
 function tldrRowFor(race: Race): TldrRow {
   const cells = {} as Record<TypologyCode, string>;
   const flags: TldrRow['flags'] = {};
-  const combined = {} as TldrRow['combined'];
   for (const code of TY_CODES) {
     const row = race.crossTypology.find((r) => r.typology === code);
     cells[code] = row ? `${row.pick} ${row.confidence}`.trim() : '— —';
-    combined[code] = row ? combinedCellFor(race, row.pick, row.confidence) : { cell: '— —' };
     if (!row || race.kind !== 'candidates') continue;
     const tier = maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags);
     if (tier === 'severe' || tier === 'serious') flags[code] = tier;
@@ -52,7 +50,6 @@ function tldrRowFor(race: Race): TldrRow {
     cells,
     flags,
     experience: experienceCellFor(race),
-    combined,
   };
 }
 

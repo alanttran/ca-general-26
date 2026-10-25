@@ -91,12 +91,12 @@ function levelText(c: Candidate): string {
 }
 
 /**
- * Typology pick adjusted for experience:
- * - ● picks stand.
- * - ◐/○ picks yield to a rival who is at least two experience levels higher (multi-seat: per name).
- * - No pick (—) goes to the most experienced candidate(s): level first, then job criteria met; in
- *   multi-seat races only seats with a clear experience edge are filled.
- * Changed cells drop to ○: the typology fit behind them is weak by definition.
+ * The experience alternative to a typology pick, shown only as an advisory “Experience note” (picks never change):
+ * - ● picks have none.
+ * - ◐/○ picks: a rival who is at least two experience levels higher (multi-seat: per name).
+ * - No pick (—): the most experienced candidate(s), level first, then job criteria met; in
+ *   multi-seat races only seats with a clear experience edge count.
+ * `reason` is set only when there is such an alternative.
  */
 export function combinedCellFor(race: Race, pick: string, confidence: ConfidenceSymbol): TldrCombinedCell {
   const keep: TldrCombinedCell = {
