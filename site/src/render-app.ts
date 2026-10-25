@@ -1675,10 +1675,10 @@ function renderMethodologySection(): HTMLElement {
   );
 
   block(
-    'Experience notes',
+    'Experience and picks',
     undefined,
     text(
-      `Experience never changes a pick. Groups that value competence, such as Pragmatic and Polite Right and Loyal Liberals, already weigh it in their picks, while others, such as Left-Out Left, deliberately favor outsiders. When a medium or low pick faces a rival at least ${COMBINED_LEVEL_GAP} experience levels higher, or a column has no pick and one candidate is clearly the most experienced, an “Experience note” under the reason names that candidate and what an experience-first voter in the group would weigh.`,
+      `Experience never changes a pick. Groups that value competence, such as Pragmatic and Polite Right and Loyal Liberals, already weigh it in their picks, while others, such as Left-Out Left, deliberately favor outsiders. When a medium or low pick faces a rival at least ${COMBINED_LEVEL_GAP} experience levels higher, or a column has no pick and one candidate is clearly the most experienced, a “But consider (experience)” line joins the counter-arguments under the reason, naming that candidate and what an experience-first voter in the group would weigh.`,
     ),
   );
 
@@ -2142,26 +2142,18 @@ function renderPapersAtAGlance(m: MeasureBlock): HTMLElement | null {
   return wrap;
 }
 
-/**
- * The pick shown for a typology: the 2026 typology pick as written. Experience never changes it; when a far more
- * experienced rival is running (see `combinedCellFor`), `alt` names them for an advisory experience note.
- */
+/** The pick shown for a typology: the 2026 typology pick as written (experience never changes it). */
 function typePick(race: Race, row: Race['crossTypology'][number]): {
   pick: string;
   confidence: string;
   none: boolean;
-  alt?: string;
-  reason?: string;
   flag?: 'severe' | 'serious';
 } {
   const tier = race.kind === 'candidates' ? maxSeverity(resolveCandidateForPick(row.pick, race.candidates)?.redFlags) : undefined;
-  const note = experienceNote(race, row);
   return {
     pick: row.pick,
     confidence: row.confidence,
     none: !row.pick || row.pick === '—',
-    alt: note?.alt,
-    reason: note?.reason,
     flag: tier === 'severe' || tier === 'serious' ? tier : undefined,
   };
 }
@@ -2172,15 +2164,6 @@ function experienceNote(race: Race, row: Race['crossTypology'][number]): { alt: 
   const c = combinedCellFor(race, row.pick, row.confidence);
   if (!c.reason) return undefined;
   return { alt: parsePickCell(c.cell).label, reason: row.experienceRationale ?? c.reason };
-}
-
-/** “Experience note (X): …” paragraph under a pick’s reason. */
-function experienceNoteEl(className: string, note: { alt: string; reason: string }): HTMLElement {
-  const p = el('p', className);
-  const strong = el('strong');
-  strong.textContent = `Experience note (${note.alt}): `;
-  p.append(strong, document.createTextNode(note.reason));
-  return p;
 }
 
 /** Quick/Guided: the voter's own type's pick and reason, at the top of each contest. */
@@ -2201,7 +2184,6 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
   const why = el('p', 'your-type__why');
   why.textContent = row.rationale;
   box.append(head, why);
-  if (tp.alt && tp.reason) box.append(experienceNoteEl('your-type__fit', { alt: tp.alt, reason: tp.reason }));
   // Measures: facts (what each outcome does) come before the trade-off; candidates have no such block.
   const trade = renderTradeoff(race, row.typology, 'your-type__tradeoff');
   if (trade && race.kind !== 'measure') box.append(trade);
@@ -2536,7 +2518,6 @@ function renderCrossTable(race: Race): HTMLElement {
 
     const tdWhy = el('td', 'cross__why');
     tdWhy.textContent = row.rationale;
-    if (tp.alt && tp.reason) tdWhy.append(experienceNoteEl('cross__switch', { alt: tp.alt, reason: tp.reason }));
     const trade = renderTradeoff(race, row.typology, 'cross__tradeoff');
     if (trade) tdWhy.append(trade);
     tr.append(th, tdPick, tdWhy);
@@ -2560,8 +2541,9 @@ function parseCounter(line: string): { codes: TypologyCode[]; text: string } | u
 }
 
 /**
- * The trade-off for one typology: its “Hinges on” line if written, else any counter-argument aimed at it
- * (“But consider …”). Undefined when neither exists.
+ * The trade-off for one typology: its “Hinges on” line if written, else the counter-arguments aimed at it
+ * (“But consider …”), plus the experience case when a far more experienced rival is running and no
+ * counter-argument already names them. Undefined when there is nothing to show.
  */
 function renderTradeoff(race: Race, code: TypologyCode, className: string): HTMLElement | null {
   const hinge = race.hinges?.[code];
@@ -2595,12 +2577,22 @@ function renderTradeoff(race: Race, code: TypologyCode, className: string): HTML
     return box;
   }
   const counters = (race.counterArguments ?? []).map(parseCounter).filter((c) => c?.codes.includes(code));
-  if (!counters.length) return null;
+  const row = race.crossTypology.find((r) => r.typology === code);
+  const exp = row ? experienceNote(race, row) : undefined;
+  const surname = exp?.alt.split(/\s+/).pop() ?? '';
+  const showExp = exp && !counters.some((c) => surname && c!.text.includes(surname));
+  if (!counters.length && !showExp) return null;
   p.classList.add(`${className}--counter`);
   counters.forEach((c, i) => {
     if (i) p.append(' ');
     appendCounterArgumentRich(p, c!.text);
   });
+  if (showExp) {
+    if (counters.length) p.append(' ');
+    const strong = el('strong');
+    strong.textContent = 'But consider (experience): ';
+    p.append(strong, exp.reason);
+  }
   return p;
 }
 
