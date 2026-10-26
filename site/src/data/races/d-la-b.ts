@@ -272,6 +272,7 @@ export const RACES_D_LA_B: Race[] = [
       ['NA', 'Kamlager-Dove / Mota', '=', 'No Apologies Right voters dislike both Democrats: if a protest vote against Kamlager-Dove, who clashed with Secretary of State Rubio and walked out of a hearing, matters most, Mota; if not backing a candidate who lists universal health care and immigration reform as priorities matters more, Kamlager-Dove, the experienced incumbent.'],
     ]),
     counterArguments: [
+      'OO (Kamlager-Dove ◐): But consider Mota’s promise of economic security and universal health care, because this group wants government help with costs, though Mota has published little and has never held office.',
     ],
   },
 

@@ -485,6 +485,9 @@ export const RACES_D_CENTRAL_COAST_SOUTH: Race[] = [
       ['FC', 'Kessler', '●', 'Faith First Conservatives, 83% of whom say abortion should be illegal in most cases, back the candidate championing parental notification and sex-based school sports against a former Planned Parenthood board member.'],
       ['NA', 'Kessler', '●', 'No Apologies Right voters, about 98% of whom say gender is determined by sex at birth, back the Republican who would expand oil production and fight transgender participation in girls’ sports.'],
     ]),
+    counterArguments: [
+      'LO (Addis ◐): But consider that Addis is now an Assembly insider who chairs a budget subcommittee, because this group distrusts career politicians, though Kessler has no legislative record and her activist group focuses on school sports rather than costs.',
+    ],
   },
 
   // ───────────────────────────── AD-37 ─────────────────────────────

@@ -813,6 +813,7 @@ export const RACES_D_LA_C: Race[] = [
       ['NA', 'Lowenthal / Essex', '=', 'No Apologies Right voters, facing two Democrats, weigh a protest against an establishment progressive: if checking an incumbent with 0% from taxpayer and business groups matters most, Essex; if a vote for Essex, also a Democrat with no stated tax position, seems unlikely to move policy right, Lowenthal, who has passed laws and holds leadership.'],
     ]),
     counterArguments: [
+      'PP (Lowenthal ○): But consider Essex’s focus on street homelessness, public safety and neglected infrastructure, because Lowenthal scores 0% with taxpayer and business groups, though Essex has published no detailed plan.',
     ],
   },
 ];

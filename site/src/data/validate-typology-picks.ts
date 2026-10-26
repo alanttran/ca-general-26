@@ -53,6 +53,10 @@ export function collectTypologyValidationIssues(races: Race[]): TypologyValidati
       issues.push({ raceId: race.id, message: 'retention race missing justices' });
     }
 
+    if (race.kind === 'candidates' && race.candidates.length > 1 && !race.counterArguments?.length) {
+      issues.push({ raceId: race.id, message: 'contested race needs at least one counter-argument' });
+    }
+
     const codes = race.crossTypology.map((r) => r.typology);
     for (const code of TY_CODES) {
       const n = codes.filter((c) => c === code).length;
