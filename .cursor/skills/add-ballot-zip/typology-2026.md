@@ -5,7 +5,7 @@ Overview: https://www.pewresearch.org/politics/2026/06/10/beyond-red-vs-blue-the
 
 These nine groups **replace** the 2021 groups (Progressive Left … Faith and Flag Conservatives). They are new clusters, not renamed old ones: do not carry over 2021 reasoning. Derive each pick from the 2026 profile below.
 
-Numbers are approximate where read from Pew charts (±2 points).
+Numbers are approximate where read from Pew charts (±2 points). The profile prose below mixes figures quoted in Pew’s text with figures read from its charts. When citing one in a reason, state it exactly only if it appears in Pew’s text (e.g. Order and Opportunity Left 84% photo ID, Left-Out Left “three-quarters” on officials’ motives); otherwise write “about N%”.
 
 ## Codes and order (left → right)
 

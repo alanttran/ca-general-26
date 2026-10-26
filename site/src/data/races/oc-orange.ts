@@ -113,8 +113,8 @@ export const RACES_OC_ORANGE: Race[] = [
     crossTypology: ct([
       ['LP', 'Barrios', '○', 'Leftward Progressives lean to Arianna Barrios, endorsed by Democratic Supervisor Vicente Sarmiento and pressing Chapman University to pay its fair share, though neither candidate runs on a progressive platform.'],
       ['LL', 'Slater', '○', 'Loyal Liberals value Dan Slater’s experience presiding over the deficit response with audits and an oversight committee, a weak lean since Democratic endorsers split between the two.'],
-      ['LO', 'Barrios', '◐', 'Left-Out Left voters distrust city hall insiders and want a powerful institution to pay its share, so they favor Arianna Barrios, who says the structural deficit is still unaddressed and wants Chapman to pay more.'],
-      ['OO', 'Slater', '◐', 'Order and Opportunity Left voters want safety and steady services, and Dan Slater cites a 28% drop in crime, reduced homelessness and the firefighters’ endorsement.'],
+      ['LO', 'Barrios', '◐', 'Left-Out Left voters, 75% of whom say few or no officials ran to serve the public, distrust city hall insiders and want a powerful institution to pay its share, so they favor Arianna Barrios, who says the structural deficit is still unaddressed and wants Chapman to pay more.'],
+      ['OO', 'Slater', '◐', 'Order and Opportunity Left voters want safety and steady services, with about 52% calling violent crime a very big problem, and Dan Slater cites a 28% drop in crime, reduced homelessness and the firefighters’ endorsement.'],
       ['TM', 'Barrios', '○', 'Tuned-Out Middle voters judge on results, and a weak lean goes to Arianna Barrios’s call for new management and ending deficit spending in a city asking voters for new taxes.'],
       ['PP', 'Slater', '◐', 'Pragmatic and Polite Right voters prize experience and fiscal steadiness, and Dan Slater cut $37.5 million and 10% of the workforce before asking voters for revenue, with bipartisan endorsements.'],
       ['UR', 'Slater', '○', 'Unconventional Right voters care about crime and spending, and lean to Dan Slater’s record of cuts and lower crime over a challenger who wanted the sales tax to have no end date.'],
@@ -236,7 +236,7 @@ export const RACES_OC_ORANGE: Race[] = [
     ],
     crossTypology: ct([
       ['LP', 'Markus', '◐', 'Leftward Progressives want strong climate and water-quality action, and Mike Markus built the Groundwater Replenishment System and a PFAS-removal program and wants less reliance on imported water.'],
-      ['LL', 'Markus', '◐', 'Loyal Liberals trust technical expertise, and Mike Markus, an engineer who ran the Orange County Water District for 16 years, offers it, weighed against Dick’s long Metropolitan experience.'],
+      ['LL', 'Markus', '◐', 'Loyal Liberals trust technical expertise, with 92% saying experts make better policy decisions than others, and Mike Markus, an engineer who ran the Orange County Water District for 16 years, offers it, weighed against Dick’s long Metropolitan experience.'],
       ['LO', 'Markus', '◐', 'Left-Out Left voters distrust long-time insiders and favor Mike Markus, who says a 26-year incumbent’s board has backed wasteful projects.'],
       ['OO', 'Dick', '○', 'Order and Opportunity Left voters prefer steady, competent management, and Larry Dick’s two decades representing Orange County at Metropolitan on supply negotiations fits, a weak lean.'],
       ['TM', 'Markus', '○', 'Tuned-Out Middle voters worry about bills, and Mike Markus’s promise to stop wasteful spending speaks most directly to costs, a weak lean in a low-information race.'],
@@ -327,13 +327,13 @@ export const RACES_OC_ORANGE: Race[] = [
     },
     crossTypology: ct([
       ['LP', 'Yes', '◐', 'Leftward Progressives want city services and jobs protected from layoffs, but weigh that a sales tax falls hardest on lower-income shoppers.'],
-      ['LL', 'Yes', '●', 'Loyal Liberals accept taxes for services when experts warn of insolvency, and value the 13-year sunset, annual audit and oversight committee.'],
+      ['LL', 'Yes', '●', 'Loyal Liberals, 80% of whom want to expand government services, accept taxes for services when experts warn of insolvency, and value the 13-year sunset, annual audit and oversight committee.'],
       ['LO', 'No', '○', 'Left-Out Left voters distrust how city hall spends money, and a regressive tax with a mayor-appointed oversight panel, while the number of employees paid over $250,000 rose, keeps them leaning No.'],
-      ['OO', 'Yes', '○', 'Order and Opportunity Left voters put police, fire and 911 service first, and lean Yes to avoid the public-safety cuts staff listed, though the cost at the register pinches.'],
-      ['TM', 'No', '◐', 'Tuned-Out Middle voters are the most financially strained and wary of a new tax on everyday purchases, even with groceries and medicine exempt.'],
+      ['OO', 'Yes', '○', 'Order and Opportunity Left voters, about 69% of whom have confidence in police to act in the public’s interest, put police, fire and 911 service first, and lean Yes to avoid the public-safety cuts staff listed, though the cost at the register pinches.'],
+      ['TM', 'No', '◐', 'Tuned-Out Middle voters are the most financially strained, with 56% lower-income, and wary of a new tax on everyday purchases, even with groceries and medicine exempt.'],
       ['PP', 'Yes / No', '=', 'Pragmatic and Polite Right voters weigh lower taxes against avoiding insolvency: if $37.5 million in cuts, a 13-year sunset and audits make new revenue the prudent course, Yes; if voters’ 2024 rejection of a smaller tax and a general tax with no spending guarantee weigh more, No.'],
       ['UR', 'No', '◐', 'Unconventional Right voters want smaller government and oppose a general tax with no spending guarantee after voters rejected a smaller one in 2024.'],
-      ['FC', 'No', '◐', 'Faith First Conservatives favor limited government and low taxes and oppose a general-fund tax they see as mislabeled public safety, as the county Republican Party does.'],
+      ['FC', 'No', '◐', 'Faith First Conservatives favor limited government and low taxes, with about 75% wanting government services reduced, and oppose a general-fund tax they see as mislabeled public safety, as the county Republican Party does.'],
       ['NA', 'No', '●', 'No Apologies Right voters oppose nearly all new taxes and want the city to cut pay and benefits first.'],
     ]),
     hinges: {
@@ -420,7 +420,7 @@ export const RACES_OC_ORANGE: Race[] = [
     },
     crossTypology: ct([
       ['LP', 'Yes', '●', 'Leftward Progressives favor taxing visitors and online travel companies to fund city services rather than residents’ everyday purchases.'],
-      ['LL', 'Yes', '●', 'Loyal Liberals value updating a 1993 tax to cover online bookings at a rate no higher than neighboring cities, backed by the county Democratic Party.'],
+      ['LL', 'Yes', '●', 'Loyal Liberals value updating a 1993 tax to cover online bookings at a rate no higher than neighboring cities, backed by the county Democratic Party, which 81% of Loyal Liberals say represents them well.'],
       ['LO', 'Yes', '◐', 'Left-Out Left voters prefer that hotel guests and online booking companies, not working residents, pay more, though the money is unrestricted.'],
       ['OO', 'Yes', '◐', 'Order and Opportunity Left voters want police, fire and streets funded without costing residents, and a tax on hotel guests does that.'],
       ['TM', 'Yes', '○', 'Tuned-Out Middle voters rarely book local hotels, so a tax paid by visitors helps keep services without adding to their costs.'],
@@ -522,13 +522,13 @@ export const RACES_OC_ORANGE: Race[] = [
     crossTypology: ct([
       ['LP', 'No', '●', 'Leftward Progressives oppose a charter that bans rent control, loosens state prevailing-wage and contracting rules, and was written by the council without a citizens’ commission.'],
       ['LL', 'No', '◐', 'Loyal Liberals value careful process and state labor standards, and object to a council-drafted charter passed 4-3 that resets term limits for sitting members, as the county Democratic Party does.'],
-      ['LO', 'No', '◐', 'Left-Out Left voters see sitting council members writing a fresh term-limit clock for themselves as an insider move, and a rent-control ban works against renters.'],
+      ['LO', 'No', '◐', 'Left-Out Left voters, 75% of whom say few or no officials ran to serve the public, see sitting council members writing a fresh term-limit clock for themselves as an insider move, and a rent-control ban works against renters.'],
       ['OO', 'No', '○', 'Order and Opportunity Left voters like balanced-budget and audit rules but lean against weaker prevailing-wage protections and a permanent rent-control ban.'],
       ['TM', 'No', '○', 'Tuned-Out Middle voters distrust officials and lean against a charter that lets incumbents restart term limits and rules out rent relief, with little else at stake for them.'],
-      ['PP', 'Yes / No', '=', 'Pragmatic and Polite Right voters like balanced-budget and audit rules but prefer cautious, well-vetted change: if local control, the balanced-budget rule and property protections matter most, Yes; if a charter rushed through 4-3 without a commission that resets incumbents’ term limits matters more, No.'],
+      ['PP', 'Yes / No', '=', 'Pragmatic and Polite Right voters like balanced-budget and audit rules but prefer cautious, well-vetted change, with 78% favoring incremental fixes over risky quick ones: if local control, the balanced-budget rule and property protections matter most, Yes; if a charter rushed through 4-3 without a commission that resets incumbents’ term limits matters more, No.'],
       ['UR', 'Yes', '○', 'Unconventional Right voters like local control over Sacramento, a ban on rent control and limits on eminent domain, though the term-limit reset gives them pause.'],
       ['FC', 'Yes', '○', 'Faith First Conservatives lean toward local control, property protections and a balanced-budget rule over state mandates.'],
-      ['NA', 'Yes', '◐', 'No Apologies Right voters favor freeing the city from state contracting and prevailing-wage rules, banning rent control and limiting eminent domain.'],
+      ['NA', 'Yes', '◐', 'No Apologies Right voters, about 80% of whom say regulation does more harm than good, favor freeing the city from state contracting and prevailing-wage rules, banning rent control and limiting eminent domain.'],
     ]),
     hinges: {
       LP: 'Yes if term limits, a balanced-budget rule and a public vote to remove open space outweigh the contracting and rent-control provisions. No if exemptions from state contracting and prevailing-wage rules plus a rent-control ban, written without a citizens’ commission, are deal-breakers.',

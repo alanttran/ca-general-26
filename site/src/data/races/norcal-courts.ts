@@ -52,15 +52,15 @@ const PICKS_NOTE = 'no sourced misconduct, Commission on Judicial Performance di
 
 const typology = (extra: string) =>
   ct([
-    ['LP', 'Yes on all', '◐', 'Leftward Progressives want an independent bench, and several justices here have public-defender, civil-rights or public-interest backgrounds; with no sourced misconduct, nothing on the record supports a No, though this police-skeptical group will notice the former prosecutors too.'],
-    ['LL', 'Yes on all', '●', `Loyal Liberals trust expert vetting and treat retention as a fitness check on a credentialed bench, and ${PICKS_NOTE}.`],
+    ['LP', 'Yes on all', '◐', 'Leftward Progressives want an independent bench, and several justices here have public-defender, civil-rights or public-interest backgrounds; with no sourced misconduct, nothing on the record supports a No, though this police-skeptical group, only 28% of whom have confidence in police, will notice the former prosecutors too.'],
+    ['LL', 'Yes on all', '●', `Loyal Liberals trust expert vetting, with 92% saying experts make better policy decisions than others, and treat retention as a fitness check on a credentialed bench, and ${PICKS_NOTE}.`],
     ['LO', 'Yes on all', '○', 'Left-Out Left voters are wary of the legal establishment and of big-firm and government-insider résumés, but nothing on the record shows misconduct or self-dealing, so a Yes is the defensible default.'],
-    ['OO', 'Yes on all', '◐', `Order and Opportunity Left voters value public safety and respect for authority, and no discipline or organized opposition is on record. ${extra}`],
+    ['OO', 'Yes on all', '◐', `Order and Opportunity Left voters value public safety and respect for authority, with 74% calling themselves respectful of authority, and no discipline or organized opposition is on record. ${extra}`],
     ['TM', 'Yes on all', '○', 'Tuned-Out Middle voters rarely have information on appellate judges and nothing here touches their costs, so with no fitness problem on record the low-effort default is to retain.'],
     ['PP', 'Yes on all', '●', 'Pragmatic and Polite Right voters value the rule of law and experienced judges, and with no discipline or organized opposition on record, this cautious group sees no reason for a protest No.'],
     ['UR', 'Yes on all', '○', 'Unconventional Right voters are wary of politics in the courts but see no scandal here, and a No would only let the governor choose a replacement, so retaining is the low-risk choice.'],
     ['FC', 'Yes on all', '○', 'Faith First Conservatives may distrust a bench appointed mostly by Democratic governors, but no ruling by these justices on this group\'s faith or family priorities is on record here, and a No would only hand the governor new appointments.'],
-    ['NA', 'No on all', '○', 'No Apologies Right voters distrust institutional authority, and most of these justices were appointed by Democratic governors, so a protest No is plausible; this is a lean, not a finding about any justice.'],
+    ['NA', 'No on all', '○', 'No Apologies Right voters distrust institutional authority, with only about 33% saying experts make better policy decisions than others, and most of these justices were appointed by Democratic governors, so a protest No is plausible; this is a lean, not a finding about any justice.'],
   ]);
 
 const counters = (newNames: string): string[] => [
