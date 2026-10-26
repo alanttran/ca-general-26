@@ -39,7 +39,8 @@ const sosCommitteesLink = {
 // Nov. 3 recommendations page, with the measure’s own endorsement editorial linked where one was found. The Denver
 // Post editorial board: Amendments 81–85 from its own editorials (read in a browser Oct. 15; 81, 82 and 83 say “vote
 // no” outright, 85 “yes”, and 84 argues against the amendment throughout); Amendment 87 No from its Oct. 11 editorial
-// as reported by Complete Colorado (Oct. 14). Its roundup page is paywalled, so its other picks aren’t listed yet.
+// as reported by Complete Colorado (Oct. 14); Amendment 86 Yes (“we urge voters to say ‘yes’”) and Prop 134 No (headline:
+// “vote no on Prop 134”) from its own editorials, read Oct. 26. Its roundup page is paywalled, so its other picks aren’t listed yet.
 // No Boulder Daily Camera or Colorado Sun board endorsements were found.
 const GAZETTE_ORG = 'The Denver Gazette editorial board';
 const GAZETTE_GUIDE_URL = 'https://www.denvergazette.com/2026/10/12/denver-gazette-editorial-board-recommendations-nov-3-ballot/';
@@ -580,7 +581,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes total is Fair Redistricting Colorado; American Revival PAC was created by House Speaker Mike Johnson, and Advance Colorado does not disclose its donors. ' + BRIGHTER_NOTE + ' No committee has registered against 86; Colorado Draws the Line, which says it will oppose it, reported $0.',
         sources: [tracer('Fair Redistricting Colorado', 52246), tracer('Colorado Draws the Line', 51540), BRIGHTER, RMV_MONEY],
       },
-      positions: [coDems('No'), gazette('Yes', 'https://www.denvergazette.com/2026/09/29/endorsement-yes-on-136-86-two-safeguards-for-colorado/')],
+      positions: [coDems('No'), post('Yes', 'https://www.denverpost.com/2026/10/06/amendment-86-redistricting-gerrymandering-congress/'), gazette('Yes', 'https://www.denvergazette.com/2026/09/29/endorsement-yes-on-136-86-two-safeguards-for-colorado/')],
       measureType: 'Initiated constitutional amendment',
       voteThreshold: '55%',
       fiscalImpact:
@@ -1090,7 +1091,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes: Protect Kids Colorado. No: Families Not Politics ($1.66 million, plus $335,892 in-kind) and No on 134 and 135 ($10,788), both fighting 134 and 135 together; The People’s No ($200,000) and ' + VCS_NOTE,
         sources: [tracer('Families Not Politics', 51677), tracer('Protect Kids Colorado – Issue Committee', 47398), tracer('No on 134 and 135', 52230), RMV_MONEY],
       },
-      positions: [coDems('No'), gazette('Yes', 'https://www.denvergazette.com/2026/10/20/editorial-the-latest-case-for-a-yes-vote-on-proposition-134/')],
+      positions: [coDems('No'), post('No', 'https://www.denverpost.com/2026/10/08/proposition-134-transgender-girls-boys-sports-colorado/'), gazette('Yes', 'https://www.denvergazette.com/2026/10/20/editorial-the-latest-case-for-a-yes-vote-on-proposition-134/')],
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:

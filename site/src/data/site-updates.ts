@@ -30,6 +30,12 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
           'Reasons now cite Pew’s own numbers where one applies (about 1,050 of them), e.g. “84% of Order and Opportunity Left voters back photo ID.” Figures read from Pew’s charts say “about.” To match how the mixed groups say they’ll vote in Pew’s July survey, 33 more Unconventional Right and Tuned-Out Middle picks became toss-ups.',
         ],
       },
+      {
+        summary: 'Newspaper endorsements on measures',
+        bullets: [
+          'More newspaper endorsements: the Denver Post on Amendment 86 (Yes) and Prop 134 (No); a link to the Union-Tribune’s own editorial on San Diego Unified Measure M.',
+        ],
+      },
     ],
   },
   {

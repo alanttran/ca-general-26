@@ -521,7 +521,7 @@ export const RACES_SD_LOCAL: Race[] = [
       positions: [
         { org: 'San Diego County Democratic Party', kind: 'party', position: 'Yes', url: 'https://www.sddemocrats.org/propositions--ballot-measures.html' },
         { org: 'Republican Party of San Diego County', kind: 'party', position: 'No', url: 'https://www.sandiegorepublicans.org/voter-guides/san-diego' },
-        { org: 'San Diego Union-Tribune', kind: 'editorial', position: 'No', url: 'https://www.sandiegouniontribune.com/2026/10/02/the-u-t-editorial-boards-endorsements/' },
+        { org: 'San Diego Union-Tribune', kind: 'editorial', position: 'No', url: 'https://www.sandiegouniontribune.com/2026/10/23/endorsement-no-on-measure-m-san-diego-unifieds-bond-bait-and-switch/' },
       ],
       measureType: 'School facilities bond (general obligation)',
       voteThreshold: '55%',
