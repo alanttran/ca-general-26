@@ -408,7 +408,7 @@ function renderZipSelector(currentZip: string, appRoot: HTMLElement): HTMLElemen
   const btn = el('button', 'zip-select__button', { type: 'submit' });
   btn.textContent = 'Show my ballot';
   const hint = el('p', 'zip-select__hint', { id: 'ballot-zip-hint', 'aria-live': 'polite' });
-  const defaultHint = `Any California ZIP shows your statewide and district races. ${BALLOT_ZIP_OPTIONS.length} ZIPs also have full local ballots with city, school and local-district contests.`;
+  const defaultHint = `Any California ZIP shows statewide and district races; ${BALLOT_ZIP_OPTIONS.length} ZIPs also include local contests.`;
   hint.textContent = defaultHint;
   input.addEventListener('focus', () => input.select());
   form.addEventListener('submit', async (e) => {
@@ -535,7 +535,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
   h1.textContent = data.meta.siteTitle;
   brand.append(brandIcon, h1);
   const sub = el('p', 'site-header__subtitle');
-  sub.textContent = `November 3, 2026 ${data.meta.state === 'CO' ? 'Colorado' : 'California'} general election · ZIP ${data.meta.scopeZip} ballot · unofficial independent research — not the government, not legal advice.`;
+  sub.textContent = `November 3, 2026 ${data.meta.state === 'CO' ? 'Colorado' : 'California'} general election · Unofficial, independent research, not legal advice.`;
   const zipSelector = renderZipSelector(zip, root);
   const imported = renderImportBanner(data, rerender);
   header.append(
@@ -547,7 +547,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
     prefs.mode && !(prefs.legacyTypology && prefs.mode !== 'full')
       ? renderViewBar(data, prefs, rerender)
       : renderWelcome(prefs, rerender, prefs.legacyTypology ? 2 : 1),
-    renderScopeNote(data, Boolean(profile.localPending)),
+    ...(viewMode === 'full' || profile.localPending ? [renderScopeNote(data, Boolean(profile.localPending))] : []),
     // With a view chosen, the print controls live in the view bar; the changelog sits in the footer.
     ...(prefs.mode ? [] : [renderPrintPicks(data, prefs.typology)]),
   );
@@ -588,6 +588,7 @@ export function renderApp(root: HTMLElement, zip: string): void {
     ),
     // Quick view: the cheat sheet above is the contest list (each row opens its contest in place).
     ...(viewMode === 'quick' && viewTypology ? [] : [renderRacesByCategory(data)]),
+    ...(viewMode !== 'full' && !profile.localPending ? [renderScopeNote(data, false)] : []),
   );
 
   const footer = el('footer', 'site-footer');
@@ -839,7 +840,7 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
   if (mode !== 'full') link('Change type', () => reopen(2));
   link(mode === 'full' ? 'Switch to a simpler view' : 'Change view', () => reopen(1));
   if (mode !== 'full') {
-    link('Show everything', () => {
+    link('Show all', () => {
       setViewPrefs({ ...prefs, mode: 'full' });
       rerender();
     });
@@ -857,11 +858,11 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
             [`Review the ${ty.name} pick on each contest. Tap one to see why or to choose differently.`],
           ]
         : [
-            [`Open each contest below: the ${ty.name} pick and why come first, then the full details.`],
-            ['Mark your own choice at the bottom of each one.'],
+            [`Open each contest below: the ${ty.name} pick and why come first, with full details one tap further.`],
+            ['Mark your own choice right under the pick.'],
           ];
     const printBtn = el('button', 'view-bar__print', { type: 'button' });
-    printBtn.textContent = 'Print my cheat sheet';
+    printBtn.textContent = 'Print cheat sheet';
     printBtn.addEventListener('click', () => {
       fillPrintSheet(data, MINE);
       window.print();
@@ -887,8 +888,6 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
     document.addEventListener(CHOICES_CHANGED, refresh, { signal: renderAbort.signal });
     // Once they've started marking, the steps fold to one line so the contests sit higher on phones.
     const how = el('details', 'view-bar__how');
-    // Quick view's cheat-sheet list explains itself, so its steps start folded.
-    how.open = mode === 'guided' && countMarked(data) === 0;
     const howSum = el('summary', 'view-bar__how-summary');
     howSum.textContent = 'How this works';
     how.append(howSum, ol);
@@ -980,7 +979,7 @@ function choiceKeys(data: BallotData): string[] {
 function renderShareButton(data: BallotData, prefs: ViewPrefs): HTMLElement {
   const wrap = el('span', 'share-mine');
   const btn = el('button', 'share-mine__button', { type: 'button' });
-  btn.textContent = 'Send to my phone';
+  btn.textContent = 'Send to phone';
   const status = el('span', 'share-mine__status', { role: 'status' });
   btn.addEventListener('click', async () => {
     const url = new URL(location.href);
@@ -1060,7 +1059,7 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
   const ty = data.typologies.find((t) => t.code === code);
   h2.append(typologyChip(code, { title: ty?.name ?? code }), document.createTextNode(` Your cheat sheet: ${data.races.length} contests`));
   const lede = el('p', 'quick-list__lede');
-  lede.textContent = `The ${ty?.name ?? code} pick for each contest. Tap one to see why, or to mark a different choice.`;
+  lede.textContent = 'Tap a contest to see why, or to mark your own choice.';
   sec.append(h2, lede);
   const refreshers: (() => void)[] = [];
   for (const cat of data.categories) {
@@ -1490,7 +1489,7 @@ function renderHowToVote(data: BallotData): HTMLElement {
   const wrap = el('details', 'how-vote how-vote--folded');
   const summary = el('summary', 'how-vote__summary');
   const title = el('strong', 'how-vote__summary-title');
-  title.textContent = `When and where to vote in ${info.where}`;
+  title.textContent = 'When and where to vote';
   summary.append(title);
   const nextLine = el('span', 'how-vote__summary-next');
   nextLine.textContent = next
@@ -2034,19 +2033,11 @@ function renderRace(race: ZipRace): HTMLElement {
   });
   body.append(choice);
 
-  if (viewMode === 'quick' && typeRow) {
-    // Quick: the pick, the vote, and everything else one tap away.
+  if ((viewMode === 'quick' || viewMode === 'guided') && typeRow) {
+    // Quick and Race by race: the pick, your vote, and everything else one tap away.
     const callout = body.firstElementChild!;
     const rest = Array.from(body.children).filter((n) => n !== callout && n !== choice);
     body.replaceChildren(callout, choice, moreDetails(quickDetailsLabel(race), ...rest));
-  } else if (viewMode === 'guided') {
-    // Race by race: the voter's own type is called out up top, so the nine-column table folds away.
-    const cross = body.querySelector(':scope > .race__cross');
-    if (cross) {
-      const fold = moreDetails('How all nine voter types would vote');
-      cross.replaceWith(fold);
-      fold.querySelector('.race__more-body')?.append(cross);
-    }
   }
   // Props: every “LAO” in the text links to that measure's Legislative Analyst's Office analysis.
   const lao = race.measure?.readingLinks?.find((l) => l.url.includes('lao.ca.gov'));
@@ -3034,15 +3025,18 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
   }
   text.append(h3);
   text.append(role);
-  for (const para of c.bio) {
+  // The first bio paragraph shows; the rest folds with the other details.
+  const bioMore: Node[] = [];
+  c.bio.forEach((para, i) => {
     const p = el('p');
     if (/https:\/\/\S+/.test(para)) {
       appendRichCandidateText(p, para);
     } else {
       p.textContent = para;
     }
-    text.append(p);
-  }
+    if (i === 0) text.append(p);
+    else bioMore.push(p);
+  });
   if (shouldShowRecordVsChange(c, raceCandidateCount)) {
     const box = el('aside', 'candidate-card__record-vs-change');
     box.setAttribute('aria-label', 'Record versus change');
@@ -3053,7 +3047,8 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     box.append(rh, rp);
     text.append(box);
   }
-  if (c.qualification) text.append(renderCandidateQualification(c.qualification));
+  // The experience badge sits by the name; the criterion-by-criterion breakdown folds away.
+  const qual = c.qualification ? renderCandidateQualification(c.qualification) : null;
   if (c.redFlags?.length) {
     const rf = el('div', 'candidate-card__flags');
     const rh = el('h4', 'candidate-card__flags-heading');
@@ -3072,8 +3067,9 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
     rf.append(rh, ul);
     text.append(rf);
   }
-  // Positions, money, endorsements and notes: one tap away so the summary, experience and red flags lead.
-  const more: Node[] = [];
+  // Rest of the bio, experience breakdown, positions, money, endorsements and notes: one tap away so the
+  // name, experience level, role, first paragraph and red flags lead.
+  const more: Node[] = [...bioMore, ...(qual ? [qual] : [])];
   if (c.scorecard?.length) {
     const hs = el('h4', 'candidate-card__sub');
     hs.textContent = 'Topical scorecard';
@@ -3135,7 +3131,14 @@ function renderCandidate(c: Candidate, raceCandidateCount: number): HTMLElement 
   }
 
   if (more.length) {
-    const label = [c.scorecard?.length && 'Positions', c.money && 'money', c.endorsements && 'endorsements', c.notes?.length && 'notes']
+    const label = [
+      bioMore.length && 'full bio',
+      qual && 'experience',
+      c.scorecard?.length && 'positions',
+      c.money && 'money',
+      c.endorsements && 'endorsements',
+      c.notes?.length && 'notes',
+    ]
       .filter(Boolean)
       .join(', ')
       .replace(/^./, (ch) => ch.toUpperCase())

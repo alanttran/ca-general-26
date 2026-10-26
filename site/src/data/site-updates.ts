@@ -16,6 +16,20 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'October 26, 2026',
+    lede: 'Less scrolling: each contest now opens to just your group’s pick, why, and a place to mark your choice.',
+    panels: [
+      {
+        summary: 'Shorter pages',
+        bullets: [
+          'Race by race now opens a contest the way Quick view does: your group’s pick and reason, then “Mark your choice,” with everything else in one Full details fold. An opened contest went from about seven phone screens to about one.',
+          'Candidate cards show the name, party, experience level, role, first paragraph and any red flags; the rest of the bio and the experience breakdown fold under Full bio.',
+          'The top of the page is tighter on phones: shorter labels, “How this works” folded, and “Is this exactly my ballot?” moved below the contests. The first contests now show on the first screen.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'October 25, 2026',
     lede: 'Picks now use Pew’s new 2026 political typology: nine new voter groups, with every pick rewritten from scratch.',
     panels: [

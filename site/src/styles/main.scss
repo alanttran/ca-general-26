@@ -1851,7 +1851,8 @@ main {
   }
 
   .site-header__title {
-    font-size: var(--fs-2xl);
+    font-size: var(--fs-xl);
+    line-height: 1.2;
     min-width: 0;
   }
 
@@ -1871,7 +1872,7 @@ main {
   }
 
   main {
-    padding: 1.25rem max(1rem, env(safe-area-inset-right)) 2.5rem
+    padding: 0.75rem max(1rem, env(safe-area-inset-right)) 2.5rem
       max(1rem, env(safe-area-inset-left));
   }
 
