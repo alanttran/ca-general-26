@@ -152,7 +152,7 @@ export const RACES_D_NORTH_STATE: Race[] = [
       ['LL', 'McGuire', '●', 'Loyal Liberals value a former state Senate leader who has moved budgets through both houses and is endorsed by Gov. Newsom and Sen. Padilla.'],
       ['LO', 'McGuire', '◐', 'Left-Out Left voters want health coverage protected, which McGuire stresses, though they distrust that a top Sacramento insider helped pass the map that drew the seat he is running for.'],
       ['OO', 'McGuire', '◐', 'Order and Opportunity Left voters want health-care help and school funding, which favor McGuire, though Gallagher’s tougher-crime and lower-fees message speaks to their wish for order and lower costs.'],
-      ['TM', 'McGuire', '○', 'Tuned-Out Middle voters support government health coverage, so McGuire’s defense of Medicaid edges Gallagher’s lower-fees pitch, a weak lean.'],
+      ['TM', 'Gallagher / McGuire', '=', 'Tuned-Out Middle voters support government health coverage but also want lower costs: if defending Medicaid matters most, McGuire; if lower taxes and fees matter more, Gallagher.'],
       ['PP', 'Gallagher', '◐', 'Pragmatic and Polite Right voters value experience and fiscal restraint, and Gallagher led the Assembly Republicans through budget talks with a Democratic majority, though his Trump endorsement and “rigged” map attacks give some of them pause.'],
       ['UR', 'Gallagher', '●', 'Unconventional Right voters want border security, lower taxes and less regulation, which are the core of Gallagher’s campaign.'],
       ['FC', 'Gallagher', '●', 'Faith First Conservatives want limited government, tougher crime laws and border security, and Gallagher is the Republican running on all three.'],

@@ -1019,7 +1019,7 @@ export const RACES_D_LA_B: Race[] = [
       ['OO', 'Rubio', '●', 'Order and Opportunity Left voters fit Rubio, a former teacher who chairs the Select Committee on Domestic Violence and works with business.'],
       ['TM', 'Rubio', '◐', 'Tuned-Out Middle voters lean to Rubio, a known local teacher, over a challenger with no published platform.'],
       ['PP', 'Rubio', '◐', 'Pragmatic and Polite Right voters like Rubio’s moderate, business-friendly record and experience over a blank-slate Republican.'],
-      ['UR', 'Tran', '○', 'Unconventional Right voters lean Republican but have no platform from Tran to judge.', 'Experience-first Unconventional Right voters could back Rubio, a 10-year legislator and committee chair with a business-friendly record; they give up a Republican vote.'],
+      ['UR', 'Rubio / Tran', '=', 'Unconventional Right voters lean Republican, but Tran has published no platform, while Rubio is a 10-year legislator and committee chair with a business-friendly record: if a Republican vote matters most, Tran; if a moderate who often sides with business matters more, Rubio.'],
       ['FC', 'Tran', '◐', 'Faith First Conservatives back Tran over Rubio, who scores 100% with Planned Parenthood and Equality California, though Tran has published nothing.', 'Experience-first Faith First Conservatives could back Rubio, a former teacher and committee chair; they give up a Republican vote on abortion.'],
       ['NA', 'Tran', '◐', 'No Apologies Right voters back the Republican, though Tran has run no visible campaign.', 'Experience-first No Apologies Right voters could back Rubio, the only finalist with a record in office; they give up a Republican vote.'],
     ]),

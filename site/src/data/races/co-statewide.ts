@@ -1118,7 +1118,7 @@ export const RACES_CO_STATEWIDE: Race[] = [
       ['LL', 'Bridges', '●', 'Loyal Liberals value Bridges’s experience chairing the Joint Budget Committee and his plan to keep PERA on track to full funding.'],
       ['LO', 'Bridges', '◐', 'Left-Out Left voters like investing Colorado money in Colorado housing and small businesses instead of “Wall Street and Washington,” though the office is low-profile for them.'],
       ['OO', 'Bridges', '◐', 'Order and Opportunity Left voters want opportunity through homeownership and small business, which Bridges would support with in-state investments, though Grantham’s returns-first approach is also steady.'],
-      ['TM', 'Bridges', '○', 'Tuned-Out Middle voters notice money in their pockets, and Bridges promises to return unclaimed property proactively, though neither candidate speaks much to them.'],
+      ['TM', 'Bridges / Grantham', '=', 'Tuned-Out Middle voters notice money in their pockets: if getting unclaimed property returned proactively matters most, Bridges; if holding down taxes matters more, Grantham, who says Bridges wants to raise them, though neither candidate speaks much to this group.'],
       ['PP', 'Grantham', '◐', 'Pragmatic and Polite Right voters prefer a cautious, returns-first treasurer who keeps policy goals out of investing, though Bridges’s budget experience is comparable.'],
       ['UR', 'Grantham', '◐', 'Unconventional Right voters want smaller government, and Grantham would cut investment-manager overhead and keep the office to its traditional job.'],
       ['FC', 'Grantham', '◐', 'Faith First Conservatives favor limited government and low taxes, and Grantham, a rural former Senate president, would keep the office narrow and oppose spending unclaimed property.'],

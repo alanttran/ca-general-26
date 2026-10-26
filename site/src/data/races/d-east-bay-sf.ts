@@ -975,7 +975,7 @@ export const RACES_D_EAST_BAY_SF: Race[] = [
       ['OO', 'Stefani', '●', 'Order and Opportunity Left voters like a former prosecutor focused on gun violence, housing near transit and school funding.'],
       ['TM', 'Stefani', '○', 'Tuned-Out Middle voters get an incumbent focused on safety and housing, against a challenger with no platform.'],
       ['PP', 'Stefani', '◐', 'Pragmatic and Polite Right voters prefer a moderate former prosecutor with signed laws over an unknown challenger.'],
-      ['UR', 'Wing', '○', 'Unconventional Right voters lean to the Republican as a check on one-party rule and new gun rules, though Wing has no platform.', 'Unconventional Right voters who put experience first could back Stefani, a former prosecutor with signed laws, giving up a protest vote.'],
+      ['UR', 'Stefani / Wing', '=', 'Unconventional Right voters may want a check on one-party rule and new gun rules, but Wing has no platform, while Stefani is a moderate former prosecutor with signed laws: if a protest vote against one-party rule matters most, Wing; if a crime-focused moderate matters more, Stefani.'],
       ['FC', 'Wing', '●', 'Faith First Conservatives back the Republican over the founder of a local Moms Demand Action chapter.'],
       ['NA', 'Wing', '●', 'No Apologies Right voters back the Republican over a gun-control Democrat.'],
     ]),

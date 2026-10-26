@@ -1640,7 +1640,7 @@ function renderMethodologySection(): HTMLElement {
   h2.textContent = 'Methodology';
   const lead = el('p', 'methodology__lede');
   lead.textContent =
-    'Picks translate public records, reporting and questionnaires into the values Pew describes for each group. They are our judgment, not a poll of those groups.';
+    'Picks translate public records, reporting and questionnaires into the values Pew describes for each group. They are our judgment, not a poll of those groups. Percentages in the reasons come from Pew’s June 2026 typology report and its July 2026 midterm survey; “about” marks a figure read from one of Pew’s charts.';
 
   const grid = el('div', 'methodology__grid');
   const block = (heading: string, id: string | undefined, ...children: Node[]) => {
