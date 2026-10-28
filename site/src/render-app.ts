@@ -268,6 +268,13 @@ function appendCounterArgumentConfidencePart(li: HTMLElement, line: string): voi
   li.append(document.createTextNode(line.slice(last)));
 }
 
+/** Outlined button-style link to Pew’s typology quiz (opens in a new tab). */
+function quizButton(text: string): HTMLAnchorElement {
+  const a = extLink(PEW_QUIZ_URL, text, true);
+  a.classList.add('quiz-button');
+  return a;
+}
+
 function extLink(href: string, text: string, withIcon = false): HTMLAnchorElement {
   const a = el('a', withIcon ? 'link-external' : undefined, {
     href,
@@ -673,12 +680,10 @@ function renderWelcome(prefs: ViewPrefs, done: () => void, startAt: 1 | 2 = 1): 
     h2.textContent = 'Welcome! How do you want to use this guide?';
     const lede = el('p', 'welcome__lede');
     lede.textContent = 'Pick one to start. You can change it anytime, and nothing you choose leaves this device.';
-    const next = el('p', 'welcome__next');
-    next.append(
-      document.createTextNode('Next you’ll pick your voter type. Don’t know it? '),
-      extLink(PEW_QUIZ_URL, 'Pew’s 5-minute quiz', true),
-      document.createTextNode(' tells you.'),
-    );
+    const next = el('div', 'welcome__next');
+    const nextText = el('p', 'welcome__next-text');
+    nextText.textContent = 'Next you’ll pick your voter type. Don’t know it? Pew’s 5-minute quiz tells you.';
+    next.append(nextText, quizButton('Take the Pew quiz'));
     const opts = el('div', 'welcome__options');
     const choices: {
       mode: ViewMode;
@@ -847,12 +852,7 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
     actions.append(b);
   };
   const reopen = (step: 1 | 2) => bar.replaceWith(renderWelcome(prefs, rerender, step));
-  if (mode !== 'full') {
-    link('Change type', () => reopen(2));
-    const q = extLink(PEW_QUIZ_URL, 'Take the quiz', true);
-    q.classList.add('view-bar__link');
-    actions.append(q);
-  }
+  if (mode !== 'full') link('Change type', () => reopen(2));
   link(mode === 'full' ? 'Switch to a simpler view' : 'Change view', () => reopen(1));
   if (mode !== 'full') {
     link('Show all', () => {
@@ -886,7 +886,7 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
     const track = votingInfoFor(data.meta.state, data.meta.registrarLabel, data.meta.scopeLabel).returning?.track;
     if (track) steps.push([extLink(track.url, track.label, true), ' to get a text when your ballot is received and counted.']);
     const tools = el('div', 'view-bar__tools');
-    tools.append(printBtn, renderShareButton(data, prefs));
+    tools.append(printBtn, renderShareButton(data, prefs), quizButton('Take the quiz'));
     for (const parts of steps) {
       const li = el('li');
       li.append(...parts);

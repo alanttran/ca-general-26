@@ -3035,7 +3035,15 @@ button:focus-visible {
 }
 
 .welcome__next {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
   margin: -0.5rem 0 1rem;
+}
+
+.welcome__next-text {
+  margin: 0;
   font-size: var(--fs-sm);
 }
 
@@ -3578,9 +3586,17 @@ button:focus-visible {
   gap: 0.4rem 0.75rem;
 }
 
+.quiz-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+}
+
 .share-mine__button,
 .how-vote__calendar,
-.import-banner__skip {
+.import-banner__skip,
+.quiz-button {
   font: inherit;
   font-weight: 600;
   min-height: 2.25rem;
