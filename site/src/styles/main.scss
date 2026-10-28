@@ -2986,6 +2986,59 @@ button:focus-visible {
   color: var(--rad-text-muted);
 }
 
+/* The quiz comes first on the type step: a card with a real button, not a sentence. */
+.welcome__quiz-card {
+  display: grid;
+  gap: 0.35rem;
+  justify-items: start;
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--rad-accent) 45%, transparent);
+  border-radius: var(--rad-radius);
+  background: color-mix(in srgb, var(--rad-accent) 8%, var(--rad-surface));
+}
+
+.welcome__quiz-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.welcome__quiz-text {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+}
+
+.welcome__quiz-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  min-height: 2.75rem;
+  padding: 0.35rem 1rem;
+  border-radius: 6px;
+  background: var(--rad-accent);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--rad-accent-dim);
+  }
+}
+
+.welcome__or {
+  margin: 0 0 0.5rem;
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+}
+
+.welcome__next {
+  margin: -0.5rem 0 1rem;
+  font-size: var(--fs-sm);
+}
+
 .welcome__notice {
   margin: 0 0 1rem;
   padding: 0.6rem 0.8rem;

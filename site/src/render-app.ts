@@ -25,7 +25,7 @@ import {
   siteUpdateBuildForDate,
   type SiteUpdatePanel,
 } from './data/site-updates';
-import { PEW_TYPOLOGY_URL, TY_CODES, TYPOLOGIES } from './data/typologies-data';
+import { PEW_QUIZ_URL, PEW_TYPOLOGY_URL, TY_CODES, TYPOLOGIES } from './data/typologies-data';
 import {
   categoryIcon,
   confidenceIconFromChar,
@@ -673,6 +673,12 @@ function renderWelcome(prefs: ViewPrefs, done: () => void, startAt: 1 | 2 = 1): 
     h2.textContent = 'Welcome! How do you want to use this guide?';
     const lede = el('p', 'welcome__lede');
     lede.textContent = 'Pick one to start. You can change it anytime, and nothing you choose leaves this device.';
+    const next = el('p', 'welcome__next');
+    next.append(
+      document.createTextNode('Next you’ll pick your voter type. Don’t know it? '),
+      extLink(PEW_QUIZ_URL, 'Pew’s 5-minute quiz', true),
+      document.createTextNode(' tells you.'),
+    );
     const opts = el('div', 'welcome__options');
     const choices: {
       mode: ViewMode;
@@ -755,7 +761,7 @@ function renderWelcome(prefs: ViewPrefs, done: () => void, startAt: 1 | 2 = 1): 
       });
       opts.append(b);
     }
-    sec.append(h2, lede, opts);
+    sec.append(h2, lede, next, opts);
   };
 
   const stepTwo = () => {
@@ -764,12 +770,16 @@ function renderWelcome(prefs: ViewPrefs, done: () => void, startAt: 1 | 2 = 1): 
     h2.textContent = 'Which kind of voter sounds most like you?';
     const notice = el('p', 'welcome__notice', { role: 'status' });
     notice.textContent = 'Pew updated its political typology in June 2026 with nine new groups, so please pick your type again. Your marked choices are kept.';
-    const quiz = el('p', 'welcome__quiz');
-    quiz.append(
-      document.createTextNode('Most accurate: take the Pew Research Center’s '),
-      extLink('https://www.pewresearch.org/politics/quiz/political-typology', 'political typology quiz', true),
-      document.createTextNode(' (about 5 minutes, opens in a new tab), then come back and pick your result. Or just pick the one closest to you below.'),
-    );
+    const quiz = el('div', 'welcome__quiz-card');
+    const quizTitle = el('p', 'welcome__quiz-title');
+    quizTitle.textContent = 'Don’t know your type? Take Pew’s quiz first.';
+    const quizText = el('p', 'welcome__quiz-text');
+    quizText.textContent = 'About 5 minutes. It places you in one of the nine groups below. Then come back to this tab and pick your result.';
+    const quizGo = extLink(PEW_QUIZ_URL, 'Take the Pew quiz', true);
+    quizGo.classList.add('welcome__quiz-go');
+    quiz.append(quizTitle, quizText, quizGo);
+    const or = el('p', 'welcome__or');
+    or.textContent = 'Already know it, or want to pick by description? Choose below.';
     const form = el('form', 'welcome__types');
     const fs = el('fieldset', 'welcome__fieldset');
     const legend = el('legend', 'visually-hidden');
@@ -807,7 +817,7 @@ function renderWelcome(prefs: ViewPrefs, done: () => void, startAt: 1 | 2 = 1): 
     });
     const note = el('p', 'welcome__note');
     note.textContent = 'Picks are our reading of what each group values, not advice. You can always switch types or see all nine.';
-    sec.append(h2, ...(prefs.legacyTypology ? [notice] : []), quiz, form, note);
+    sec.append(h2, ...(prefs.legacyTypology ? [notice] : []), quiz, or, form, note);
   };
 
   if (startAt === 2 && prefs.mode && prefs.mode !== 'full') stepTwo();
@@ -837,7 +847,12 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
     actions.append(b);
   };
   const reopen = (step: 1 | 2) => bar.replaceWith(renderWelcome(prefs, rerender, step));
-  if (mode !== 'full') link('Change type', () => reopen(2));
+  if (mode !== 'full') {
+    link('Change type', () => reopen(2));
+    const q = extLink(PEW_QUIZ_URL, 'Take the quiz', true);
+    q.classList.add('view-bar__link');
+    actions.append(q);
+  }
   link(mode === 'full' ? 'Switch to a simpler view' : 'Change view', () => reopen(1));
   if (mode !== 'full') {
     link('Show all', () => {
@@ -1594,7 +1609,7 @@ function renderTypologyKey(data: BallotData): HTMLElement {
   lede.append(
     document.createTextNode('Take the '),
     extLink(
-      'https://www.pewresearch.org/politics/quiz/political-typology',
+      PEW_QUIZ_URL,
       'Pew Political Typology Quiz',
       true,
     ),
