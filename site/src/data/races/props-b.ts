@@ -55,7 +55,7 @@ export const RACES_PROPS_B: Race[] = [
         editorial(PAPER.sfc, 'Yes', 'https://www.sfchronicle.com/opinion/editorials/article/prop-37-housing-home-loans-22422795.php'),
         editorial(PAPER.sdut, 'No', 'https://www.sandiegouniontribune.com/2026/10/02/endorsements-props-2-37-wouldnt-yield-saner-state-budgets-more-housing/'),
         editorial(PAPER.sacbee, 'Yes', 'https://www.sacbee.com/opinion/election-endorsements/article317470188.html'),
-        editorial(PAPER.bang, 'Yes', 'https://www.mercurynews.com/2026/10/13/bay-area-news-group-california-election-endorsements-november-2026/'),
+        editorial(PAPER.bang, 'No', 'https://www.mercurynews.com/2026/10/26/endorsement-proposition-1-37-affordable-housing-crisis-november-3-general-election/'),
         editorial(PAPER.ocr, 'No', 'https://www.ocregister.com/2026/09/20/endorsement-no-on-proposition-37-a-risky-25-billion-housing-experiment/'),
       ],
       measureType: 'Initiative statute (revenue bonds)',

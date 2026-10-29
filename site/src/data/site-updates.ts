@@ -27,6 +27,12 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
           'The top of the page is tighter on phones: shorter labels, “How this works” folded, and “Is this exactly my ballot?” moved below the contests. The first contests now show on the first screen.',
         ],
       },
+      {
+        summary: 'Newspaper endorsements on measures',
+        bullets: [
+          'More newspaper endorsements: the Sacramento Bee on Prop 1 (Yes); the Mercury News / East Bay Times now says No on Prop 37 (it was listed as Yes), with links to its own editorials on Props 1, 3 and 37.',
+        ],
+      },
     ],
   },
   {
