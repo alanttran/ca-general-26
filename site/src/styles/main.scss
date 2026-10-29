@@ -4443,9 +4443,54 @@ button.quick-list__row {
   padding: 0;
 }
 
-/* Contest cards. */
+/* Contest cards: the same row as the cheat sheet (contest + confidence word, pick pill on the right). */
 .race {
-  border-radius: 18px;
+  border: 0;
+  border-radius: 14px;
+  margin-bottom: 0.5rem;
+}
+
+.race__summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  min-height: 3.5rem;
+  padding: 0.6rem 0.9rem;
+  font-weight: 400;
+}
+
+.race__chevron {
+  display: none;
+}
+
+.race__summary-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.race__summary-line {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.race__summary-title {
+  font-weight: 700;
+}
+
+.race__summary-seat {
+  font-weight: 400;
+}
+
+.race__pill {
+  max-width: 11rem;
+}
+
+.race[open] > .race__summary {
+  border-bottom: 1px solid var(--rad-border);
 }
 
 /* Your group’s pick: a bordered card; toss-ups split into two “Choose … if” cards. */

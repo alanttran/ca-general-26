@@ -1105,7 +1105,7 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
         pick.textContent = 'No pick';
         pick.classList.add('quick-list__pick--none');
       } else {
-        pick.append(tp.label);
+        pick.append(tp.tossUp ? tp.pick : tp.label);
         if (tp.flag) pick.append(pickFlagMarker(tp.flag));
         pick.classList.add(`quick-list__pick--${QUICK_LEVEL[tp.tossUp ? '=' : tp.confidence] ?? 'low'}`);
       }
@@ -1951,48 +1951,54 @@ function renderRace(race: ZipRace): HTMLElement {
   details.id = `race-${race.id}`;
   const summary = el('summary', 'race__summary');
   const chev = iconChevron('icon icon--chevron race__chevron');
+  // Same row as the cheat sheet: the contest and a confidence word on the left, the pick as a pill on the right.
   const sumText = el('span', 'race__summary-text');
+  const line = el('span', 'race__summary-line');
   const titleEl = el('span', 'race__summary-title');
   titleEl.textContent = race.title;
-  sumText.append(titleEl);
+  line.append(titleEl);
   if (race.seatContext) {
-    sumText.append(document.createTextNode(' · '));
+    line.append(document.createTextNode(' · '));
     const seatEl = el('span', 'race__summary-seat');
     seatEl.textContent = race.seatContext;
-    sumText.append(seatEl);
+    line.append(seatEl);
   }
   if (race.voteFor && race.voteFor > 1) {
-    sumText.append(document.createTextNode(' · '));
+    line.append(document.createTextNode(' · '));
     const vf = el('span', 'race__summary-seat');
     vf.textContent = `Vote for up to ${race.voteFor}`;
-    sumText.append(vf);
+    line.append(vf);
   }
   if (race.zipSharePct !== undefined) {
     const share = el('span', 'race__zip-share', {
       title: 'Only part of this ZIP votes in this contest — check your official sample ballot.',
     });
     share.textContent = `~${Math.round(race.zipSharePct)}% of this ZIP`;
-    sumText.append(document.createTextNode(' '), share);
+    line.append(document.createTextNode(' '), share);
   }
+  sumText.append(line);
   const typeRow = viewTypology ? race.crossTypology.find((r) => r.typology === viewTypology) : undefined;
-  if (typeRow) {
-    const pick = el('span', 'race__typick');
-    const tp = typePick(race, typeRow);
-    pick.append(`${typeRow.typology}: `);
-    pick.append(tp.none ? 'no pick' : tp.label);
-    const badge = tp.none || tp.tossUp ? null : confidenceBadge(tp.confidence);
-    if (badge) pick.append(document.createTextNode(' '), badge);
-    sumText.append(document.createTextNode(' '), pick);
+  // Everything view: the visitor's saved type, if any, labeled with its code since all nine are on the page.
+  const pillRow = typeRow ?? (highlightTypology ? race.crossTypology.find((r) => r.typology === highlightTypology) : undefined);
+  let pill: HTMLElement | null = null;
+  if (pillRow) {
+    const tp = typePick(race, pillRow);
+    const conf = el('span', 'quick-list__conf race__conf');
+    conf.textContent = tp.none ? 'No pick for this group' : tp.tossUp ? 'Toss-up: tap to see what tips it' : (QUICK_WORD[tp.confidence] ?? '');
+    sumText.append(conf);
+    pill = el('span', `quick-list__pick race__pill quick-list__pick--${tp.none ? 'none' : (QUICK_LEVEL[tp.tossUp ? '=' : tp.confidence] ?? 'low')}`);
+    pill.textContent = `${typeRow ? '' : `${pillRow.typology} · `}${tp.none ? 'No pick' : tp.tossUp ? tp.pick : tp.label}`;
+    if (tp.flag) pill.append(pickFlagMarker(tp.flag));
   }
   const mineBadge = el('span', 'race__mine');
   const refreshBadge = () => {
     const s = choiceSummary(race, true);
     mineBadge.hidden = !s;
-    mineBadge.textContent = s ? `✓ ${s}` : '';
+    mineBadge.textContent = s ? `✓ You: ${s}` : '';
   };
   refreshBadge();
-  sumText.append(document.createTextNode(' '), mineBadge);
-  summary.append(chev, sumText);
+  sumText.append(mineBadge);
+  summary.append(chev, sumText, ...(pill ? [pill] : []));
   details.append(summary);
 
   const body = el('div', 'race__body');
