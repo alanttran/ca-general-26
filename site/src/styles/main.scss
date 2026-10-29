@@ -197,7 +197,7 @@ th {
   }
 
   &:hover {
-    color: color-mix(in srgb, var(--rad-accent) 85%, white);
+    color: var(--rad-accent-dim);
   }
 }
 
@@ -4249,9 +4249,19 @@ h2,
     color: rgba(255, 255, 255, 0.88);
   }
 
-  a,
+  a:not(.zip-areas__zip),
   summary,
   .zip-fold__change {
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  .zip-areas__group,
+  .zip-areas__area {
     color: #fff;
   }
 
@@ -4259,6 +4269,19 @@ h2,
     background: #fff;
     border-color: #fff;
     color: var(--rad-accent-dim);
+
+    &:hover,
+    &:focus-visible {
+      background: color-mix(in srgb, #fff 82%, var(--rad-accent));
+      color: var(--rad-accent-dim);
+    }
+  }
+
+  a:focus-visible,
+  summary:focus-visible,
+  button:focus-visible,
+  input:focus-visible {
+    outline-color: #fff;
   }
 }
 
@@ -4545,4 +4568,34 @@ button.quick-list__row {
     border-color: var(--rad-accent);
     background: color-mix(in srgb, var(--rad-accent) 10%, var(--rad-surface));
   }
+}
+
+/* Hover states (checked across the app): every control shows a visible change that keeps its text readable. */
+.welcome__quiz-go:hover,
+.welcome__quiz-go:focus-visible {
+  color: #fff;
+}
+
+.quiz-button:hover,
+.quiz-button:focus-visible {
+  color: var(--rad-accent-dim);
+}
+
+.view-bar__tools .quiz-button:hover,
+.view-bar__tools .quiz-button:focus-visible {
+  background: color-mix(in srgb, var(--rad-accent) 20%, var(--rad-surface));
+}
+
+.race__summary:hover,
+.race__summary:focus-visible {
+  background: color-mix(in srgb, var(--rad-accent) 7%, var(--rad-surface));
+  border-radius: 14px;
+}
+
+.race[open] > .race__summary:hover {
+  border-radius: 14px 14px 0 0;
+}
+
+.your-choice__option:hover {
+  border-color: color-mix(in srgb, var(--rad-accent) 60%, var(--rad-border));
 }
