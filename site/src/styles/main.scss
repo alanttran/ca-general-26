@@ -4586,13 +4586,17 @@ button.quick-list__row {
   background: color-mix(in srgb, var(--rad-accent) 20%, var(--rad-surface));
 }
 
+/* Card rows (cheat sheet and contest headers): hover keeps the white card and adds an accent outline, since a
+   tint would match the tinted page and look like the card is fading out. */
 .race__summary:hover,
-.race__summary:focus-visible {
-  background: color-mix(in srgb, var(--rad-accent) 7%, var(--rad-surface));
+.quick-list__rows button.quick-list__row:hover {
+  background: var(--rad-surface);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--rad-accent) 55%, var(--rad-surface));
   border-radius: 14px;
 }
 
-.race[open] > .race__summary:hover {
+.race[open] > .race__summary:hover,
+.quick-list__rows li.is-open > button.quick-list__row:hover {
   border-radius: 14px 14px 0 0;
 }
 
