@@ -6,7 +6,7 @@ import { PAPER, editorial, partyPositions, propFundingSources } from './props-a'
  * Nov 3, 2026 statewide propositions 42–45.
  * Sources checked Oct 7, 2026: SoS Official Voter Information Guide (title/summary, LAO analysis,
  * arguments, text of proposed laws), SoS ballot-measure contribution totals; `funding` and `positions`
- * checked Oct 12, 2026 (see props-a.ts header),
+ * checked Oct 12, 2026, editorials Oct 29 (see props-a.ts header),
  * PPIC Statewide Survey (Sept 4–10, 2026, likely voters), CalMatters, LAist, KQED, KPBS.
  */
 export const RACES_PROPS_C: Race[] = [

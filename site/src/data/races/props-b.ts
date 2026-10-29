@@ -6,7 +6,7 @@ import { PAPER, editorial, partyPositions, propFundingSources } from './props-a'
  * State propositions 37–41 (Nov 3, 2026 general election).
  * Sources checked Oct 7, 2026: LAO ballot analyses, SoS Voter Information Guide (text of proposed laws,
  * arguments), SoS measure-contribution pages, FPPC top-10 contributor lists
- * (page modified Oct 6, 2026); `funding` and `positions` checked Oct 12, 2026 (see props-a.ts header), PPIC Statewide Survey (Sept 4–10, 2026), CalMatters / KPBS explainers.
+ * (page modified Oct 6, 2026); `funding` and `positions` checked Oct 12, 2026, editorials Oct 29 (see props-a.ts header), PPIC Statewide Survey (Sept 4–10, 2026), CalMatters / KPBS explainers.
  */
 export const RACES_PROPS_B: Race[] = [
   // ───────────────────────────── PROP 37 ─────────────────────────────
@@ -119,7 +119,7 @@ export const RACES_PROPS_B: Race[] = [
     },
     crossTypology: ct([
       ['LP', 'No', '◐', 'Leftward Progressives want housing help aimed at renters and lower-income households and are skeptical of a measure written and funded mainly by the Realtors and Sergey Brin’s committee, even with building-trades labor standards attached.'],
-      ['LL', 'Yes', '◐', 'Loyal Liberals give weight to the LAO’s no-direct-cost finding and to backing from the state party, Treasurer Fiona Ma and three of the five editorial boards listed here, while weighing the League of Women Voters’ concern about a state agency becoming a major lender.'],
+      ['LL', 'Yes', '◐', 'Loyal Liberals give weight to the LAO’s no-direct-cost finding and to backing from the state party, Treasurer Fiona Ma and two of the five editorial boards listed here, while weighing the League of Women Voters’ concern about a state agency becoming a major lender.'],
       ['LO', 'Yes', '○', 'Left-Out Left voters, 74% of them under 50, are often young renters shut out of ownership, so a 3%-down path has real appeal, but they distrust a Realtor-funded measure whose help reaches incomes up to twice the median.'],
       ['OO', 'Yes', '●', 'Order and Opportunity Left voters prize homeownership as a path to opportunity, and a borrower-repaid loan for middle-income buyers, with carpenters’ and nurses’ unions backing it, fits that goal without taxpayer cost.'],
       ['TM', 'Yes', '○', 'Tuned-Out Middle voters welcome help with housing costs that raises no taxes, though few of them can afford even a new home near the program’s price cap.'],

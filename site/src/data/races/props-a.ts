@@ -10,7 +10,7 @@ import { ct } from './helpers';
  * (through Oct 6) and the FPPC top-10 contributor lists. The SoS pages sum shared multi-measure committees and,
  * for some 2025-formed committees, show less than one donor’s FPPC-reported total, so they are cited but not used
  * as the headline number.
- * Positions: party slates (CDP Aug 2, CAGOP, Green, Libertarian) and editorial boards checked Oct 12, 2026.
+ * Positions: party slates (CDP Aug 2, CAGOP, Green, Libertarian) checked Oct 12, 2026; editorial boards checked Oct 29, 2026.
  */
 
 // ── Shared helpers for props-a/b/c `funding` and `positions` ──
@@ -189,7 +189,7 @@ export const RACES_PROPS_A: Race[] = [
       ['LO', 'Yes', '◐', 'Left-Out Left voters want cost-of-living relief for working renters and farmworkers, though their doubt that Sacramento spends housing money well, at high per-unit costs, keeps this from being a firm Yes.'],
       ['OO', 'Yes', '●', 'Order and Opportunity Left voters want both affordable rentals and a path to homeownership, and the bond’s $1.1 billion in down-payment help plus CalVet loans fits their opportunity focus without a new tax.'],
       ['TM', 'Yes', '◐', 'Tuned-Out Middle voters are often struggling renters, 73% of whom say government is responsible for an adequate standard of living, and they welcome its help with housing costs from a bond that raises no tax, though the units it funds will reach only a fraction of them.'],
-      ['PP', 'No', '◐', 'Pragmatic and Polite Right voters value fiscal prudence and are wary of 25 years of General Fund debt during deficits, especially when interest adds about 15% and three of the four editorial boards listed here say No.'],
+      ['PP', 'No', '◐', 'Pragmatic and Polite Right voters value fiscal prudence and are wary of 25 years of General Fund debt during deficits, especially when interest adds about 15% and three of the five editorial boards listed here say No.'],
       ['UR', 'No', '◐', 'Unconventional Right voters prefer smaller government and more market supply over state subsidies, though the CalVet loans, repaid by veterans, soften their objection.'],
       ['FC', 'No', '●', 'Faith First Conservatives, about 75% of whom want government services reduced, want state government and its debt cut back and see a $10 billion General Fund bond for subsidized housing as the wrong answer even with a veterans’ share.'],
       ['NA', 'No', '●', 'No Apologies Right voters oppose nearly all new state borrowing, and with about 80% saying regulation does more harm than good, they would rather cut the permitting rules and fees that make building expensive than subsidize units.'],

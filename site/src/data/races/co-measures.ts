@@ -35,7 +35,7 @@ const sosCommitteesLink = {
 // are named in notes rather than added to a single measure’s total.
 // Positions: the Colorado Democratic Party’s State Central Committee slate. No official Colorado Republican Party
 // slate was found (only county parties’ guides), so it is omitted.
-// Editorials (checked Oct. 15, 2026): The Denver Gazette editorial board’s picks for all 14 measures come from its
+// Editorials (checked Oct. 29, 2026): The Denver Gazette editorial board’s picks for all 14 measures come from its
 // Nov. 3 recommendations page, with the measure’s own endorsement editorial linked where one was found. The Denver
 // Post editorial board: Amendments 81–85 from its own editorials (read in a browser Oct. 15; 81, 82 and 83 say “vote
 // no” outright, 85 “yes”, and 84 argues against the amendment throughout); Amendment 87 No from its Oct. 11 editorial
@@ -43,7 +43,7 @@ const sosCommitteesLink = {
 // “vote no on Prop 134”) from its own editorials, read Oct. 26. Its roundup page is paywalled, so its other picks aren’t listed yet.
 // No Boulder Daily Camera or Colorado Sun board endorsements were found.
 const GAZETTE_ORG = 'The Denver Gazette editorial board';
-const GAZETTE_GUIDE_URL = 'https://www.denvergazette.com/2026/10/12/denver-gazette-editorial-board-recommendations-nov-3-ballot/';
+const GAZETTE_GUIDE_URL = 'https://www.denvergazette.com/2026/10/26/denver-gazette-editorial-board-recommendations-nov-3-ballot/';
 const gazette = (position: 'Yes' | 'No', url: string = GAZETTE_GUIDE_URL) => ({ org: GAZETTE_ORG, kind: 'editorial' as const, position, url });
 const post = (position: 'Yes' | 'No', url: string) => ({ org: 'The Denver Post editorial board', kind: 'editorial' as const, position, url });
 const MONEY_AS_OF = 'Sept. 30, 2026';
