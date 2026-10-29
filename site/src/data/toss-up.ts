@@ -21,6 +21,39 @@ export function tossUpOptions(pick: string): string[] {
   return pick.split(SEP).map((s) => s.trim()).filter(Boolean);
 }
 
+export interface TossUpSplit {
+  /** What the group weighs, before the first “if”. */
+  lead: string;
+  sides: { option: string; when: string }[];
+}
+
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/**
+ * “…: if X matters most, A; if Y matters more, B.” → lead plus one side per option, or undefined when the
+ * reason isn’t in that shape (it then shows as plain text).
+ */
+export function splitTossUp(text: string, options: string[]): TossUpSplit | undefined {
+  const m = /^([\s\S]*?)\bif\b\s*([\s\S]+?);\s*if\b\s*([\s\S]+)$/i.exec(text.trim());
+  if (!m) return undefined;
+  const side = (clause: string) => {
+    let best: { option: string; at: number; len: number } | undefined;
+    for (const option of options) {
+      const re = new RegExp(`,\\s*${escapeRe(option)}\\b`, 'g');
+      let hit: RegExpExecArray | null;
+      while ((hit = re.exec(clause))) if (!best || hit.index > best.at) best = { option, at: hit.index, len: hit[0].length };
+    }
+    if (!best) return undefined;
+    const when = clause.slice(0, best.at).trim();
+    const rest = clause.slice(best.at + best.len).replace(/^[\s,]+/, '').replace(/[.\s]+$/, '');
+    return { option: best.option, when: rest ? `${when}, ${rest}` : when };
+  };
+  const a = side(m[2]);
+  const b = side(m[3]);
+  if (!a || !b || a.option === b.option) return undefined;
+  return { lead: m[1].trim().replace(/[\s:;,]+$/, ''), sides: [a, b] };
+}
+
 /** Candidates a row picks: both options of a toss-up, every name of a multi-seat pick, or the one pick. */
 export function pickedCandidates(race: Race, row: Pick<CrossTypologyRow, 'pick' | 'confidence'>): Candidate[] {
   if (race.kind !== 'candidates') return [];

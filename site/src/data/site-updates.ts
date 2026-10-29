@@ -16,6 +16,21 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'October 29, 2026',
+    lede: 'A new, easier-to-read look.',
+    panels: [
+      {
+        summary: 'Field Guide design',
+        bullets: [
+          'Text uses Atkinson Hyperlegible, a typeface designed for legibility, with Fraunces for headings.',
+          'Each contest in the cheat sheet is its own card. Confidence is in plain words (Strong pick, Leaning, Weak lean, Toss-up) and the pick is a colored pill.',
+          'Toss-ups show two side-by-side cards, “Choose A if …” and “Choose B if …”, and the experience tiebreaker now reads “Still torn?”.',
+          'Bigger, rounder buttons, including the choices you mark in each contest.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'October 26, 2026',
     lede: 'Less scrolling: each contest now opens to just your group’s pick, why, and a place to mark your choice.',
     panels: [

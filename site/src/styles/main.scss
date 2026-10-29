@@ -4193,3 +4193,311 @@ button.quick-list__row {
   color: var(--rad-text-muted);
 }
 
+
+/* ==========================================================================
+   Field Guide look (design direction B): Atkinson Hyperlegible text, Fraunces headings, a colored header
+   band, rounded cards, confidence in words, and toss-ups as two “Choose … if” cards. Each view keeps its
+   own accent color.
+   ========================================================================== */
+:root {
+  --rad-font: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --rad-radius: 16px;
+  --toss-bg: #fdf0e1;
+  --toss-text: #8a4b00;
+  --dates-bg: #fff4d6;
+  --dates-text: #4d3700;
+}
+
+h1,
+h2,
+.site-header__title,
+.welcome__title,
+.quick-list__title,
+.race-category__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+/* Header: title, subtitle and ZIP in a colored band with a rounded bottom. */
+#app header.site-header,
+#app[data-view] header.site-header {
+  padding-top: 0;
+  background: var(--rad-page-bg);
+  border-bottom: 0;
+}
+
+.site-header__band {
+  margin: 0 -2rem 1rem;
+  padding: 1.75rem 2rem 1.25rem;
+  background: var(--rad-accent-dim);
+  color: #fff;
+  border-radius: 0 0 24px 24px;
+
+  .site-header__title,
+  .site-header__brand-icon {
+    color: #fff;
+    filter: none;
+  }
+
+  .site-header__subtitle,
+  .zip-select,
+  .zip-select__label,
+  .zip-select__hint,
+  .zip-fold__place {
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  a,
+  summary,
+  .zip-fold__change {
+    color: #fff;
+  }
+
+  .zip-select__button {
+    background: #fff;
+    border-color: #fff;
+    color: var(--rad-accent-dim);
+  }
+}
+
+@media (max-width: 719px) {
+  .site-header__band {
+    margin: 0 -1rem 0.85rem;
+    padding: 1.25rem 1rem 1rem;
+  }
+}
+
+/* View bar: “You’re seeing picks for <group>” beside a round badge, big rounded buttons. */
+.view-bar {
+  border: 0;
+  border-radius: 18px;
+}
+
+.view-bar__line:has(.view-bar__who) {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+
+  > .typology-chip {
+    width: 2.9rem;
+    height: 2.9rem;
+    min-width: 2.9rem;
+    border-radius: 50%;
+    font-size: var(--fs-base);
+  }
+
+  .view-bar__actions {
+    grid-column: 1 / -1;
+  }
+}
+
+.view-bar__who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  strong {
+    font-size: var(--fs-lg);
+    line-height: var(--lh-tight);
+  }
+}
+
+.view-bar__who-label,
+.view-bar__mode {
+  font-size: var(--fs-sm);
+  color: var(--rad-text-muted);
+}
+
+.view-bar__tools {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+
+  .view-bar__print,
+  .share-mine,
+  .share-mine__button {
+    width: 100%;
+  }
+
+  .view-bar__print,
+  .share-mine__button {
+    min-height: 3rem;
+    border-radius: 12px;
+  }
+
+  .quiz-button {
+    grid-column: 1 / -1;
+    justify-content: center;
+    min-height: 2.75rem;
+    border: 0;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--rad-accent) 10%, var(--rad-surface));
+  }
+}
+
+/* Voting dates: a warm card. */
+.how-vote--folded {
+  border: 0;
+  border-radius: 18px;
+  background: var(--dates-bg);
+
+  .how-vote__summary-title,
+  .how-vote__summary-next,
+  .how-vote__summary::marker {
+    color: var(--dates-text);
+  }
+}
+
+/* Cheat sheet: each contest its own card, confidence in words, the pick as a pill. */
+.quick-list {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.quick-list__cat {
+  margin: 1rem 0 0.4rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 700;
+  color: var(--rad-text-muted);
+}
+
+.quick-list__rows {
+  display: grid;
+  gap: 0.5rem;
+
+  li + li {
+    border-top: 0;
+  }
+}
+
+button.quick-list__row {
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.6rem 0.9rem;
+  align-items: center;
+  background: var(--rad-surface);
+  border: 0;
+  border-radius: 14px;
+  font: inherit;
+  text-align: left;
+}
+
+.quick-list__rows li.is-open > button.quick-list__row {
+  border-radius: 14px 14px 0 0;
+  background: var(--rad-surface);
+}
+
+.quick-list__race > .race {
+  margin-top: 0;
+  border: 0;
+  border-radius: 0 0 14px 14px;
+}
+
+.quick-list__name {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  font-weight: 700;
+}
+
+.quick-list__conf {
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  color: var(--rad-text-muted);
+}
+
+.quick-list__pick {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+
+.quick-list__pick--high {
+  background: var(--rad-accent-dim);
+  color: #fff;
+}
+
+.quick-list__pick--med {
+  background: color-mix(in srgb, var(--rad-accent) 16%, var(--rad-surface));
+  color: var(--rad-accent-dim);
+}
+
+.quick-list__pick--low {
+  background: var(--rad-surface);
+  color: var(--rad-accent-dim);
+  border: 2px dashed color-mix(in srgb, var(--rad-accent) 50%, var(--rad-surface));
+}
+
+.quick-list__pick--toss {
+  background: var(--toss-bg);
+  color: var(--toss-text);
+}
+
+.quick-list__pick--none {
+  padding: 0;
+}
+
+/* Contest cards. */
+.race {
+  border-radius: 18px;
+}
+
+/* Your group’s pick: a bordered card; toss-ups split into two “Choose … if” cards. */
+.your-type {
+  border: 2px solid var(--rad-accent);
+  border-radius: 18px;
+  background: var(--rad-surface);
+}
+
+.your-type__fork {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+}
+
+.your-type__side {
+  padding: 0.7rem 0.75rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--rad-accent) 8%, var(--rad-surface));
+}
+
+.your-type__side-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.your-type__side-text {
+  margin: 0.25rem 0 0;
+  font-size: var(--fs-sm);
+  overflow-wrap: anywhere;
+}
+
+/* Your choice: large, tap-friendly options. */
+.your-choice {
+  border-radius: 18px;
+}
+
+.your-choice__options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+}
+
+.your-choice__option {
+  min-height: 3rem;
+  border: 2px solid var(--rad-border);
+  border-radius: 12px;
+  background: var(--rad-surface);
+  font-weight: 700;
+
+  &:has(input:checked) {
+    border-color: var(--rad-accent);
+    background: color-mix(in srgb, var(--rad-accent) 10%, var(--rad-surface));
+  }
+}

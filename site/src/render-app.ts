@@ -61,7 +61,7 @@ import {
   sortRedFlags,
   STATUS_LABEL,
 } from './data/red-flags';
-import { experienceTiebreak, isTossUp, pickedCandidates } from './data/toss-up';
+import { experienceTiebreak, isTossUp, pickedCandidates, splitTossUp, tossUpOptions } from './data/toss-up';
 import { COMBINED_LEVEL_GAP, combinedCellFor } from './data/experience-views';
 import { decodeChoices, encodeChoices, getChoice, importChoices, retentionKey, setChoice } from './data/my-choices';
 import { pointsFor, votingInfoFor, type VotingInfo } from './data/voting-info';
@@ -545,10 +545,10 @@ export function renderApp(root: HTMLElement, zip: string): void {
   sub.textContent = `November 3, 2026 ${data.meta.state === 'CO' ? 'Colorado' : 'California'} general election · Unofficial, independent research, not legal advice.`;
   const zipSelector = renderZipSelector(zip, root);
   const imported = renderImportBanner(data, rerender);
+  const band = el('div', 'site-header__band');
+  band.append(brand, sub, viewMode === 'full' ? zipSelector : foldZipSelector(zipSelector, data));
   header.append(
-    brand,
-    sub,
-    viewMode === 'full' ? zipSelector : foldZipSelector(zipSelector, data),
+    band,
     ...(imported ? [imported] : []),
     // A type saved under Pew’s 2021 groups was cleared: reopen the type step with a notice.
     prefs.mode && !(prefs.legacyTypology && prefs.mode !== 'full')
@@ -837,10 +837,15 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
   const ty = prefs.typology ? data.typologies.find((t) => t.code === prefs.typology) : undefined;
   const mode = prefs.mode ?? 'full';
   if (mode !== 'full' && ty) {
-    line.append(document.createTextNode('Viewing as '), typologyChip(ty.code, { title: ty.name }), document.createTextNode(' '));
+    const who = el('span', 'view-bar__who');
+    const whoLabel = el('span', 'view-bar__who-label');
+    whoLabel.textContent = 'You’re seeing picks for';
     const strong = el('strong');
     strong.textContent = ty.name;
-    line.append(strong, document.createTextNode(` · ${VIEW_LABEL[mode]} view`));
+    const modeLabel = el('span', 'view-bar__mode');
+    modeLabel.textContent = `${VIEW_LABEL[mode]} view`;
+    who.append(whoLabel, strong, modeLabel);
+    line.append(typologyChip(ty.code, { title: ty.name }), who);
   } else {
     line.append(document.createTextNode('Showing everything: all nine viewpoints and full details.'));
   }
@@ -1068,6 +1073,10 @@ function renderImportBanner(data: BallotData, rerender: () => void): HTMLElement
 }
 
 /** Quick view: every contest and the voter type's pick on one screen; tap a row to open that contest. */
+/** Quick rows say confidence in words, and color the pick pill to match. */
+const QUICK_WORD: Record<string, string> = { '●': 'Strong pick', '◐': 'Leaning', '○': 'Weak lean' };
+const QUICK_LEVEL: Record<string, string> = { '●': 'high', '◐': 'med', '○': 'low', '=': 'toss' };
+
 function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
   const sec = el('section', 'quick-list', { 'aria-labelledby': 'quick-list-title' });
   const h2 = el('h2', 'quick-list__title', { id: 'quick-list-title', tabindex: '-1' });
@@ -1098,10 +1107,11 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
       } else {
         pick.append(tp.label);
         if (tp.flag) pick.append(pickFlagMarker(tp.flag));
-        // Same SVG confidence icons as the picks tables (the ● glyph renders smaller than ◐/○ in most fonts).
-        const badge = tp.tossUp ? null : confidenceBadge(tp.confidence);
-        if (badge) pick.append(document.createTextNode(' '), badge);
+        pick.classList.add(`quick-list__pick--${QUICK_LEVEL[tp.tossUp ? '=' : tp.confidence] ?? 'low'}`);
       }
+      const confWord = el('span', 'quick-list__conf');
+      confWord.textContent = !tp || tp.none ? 'No pick for this group' : tp.tossUp ? 'Toss-up: tap to see what tips it' : (QUICK_WORD[tp.confidence] ?? '');
+      name.append(confWord);
       const mine = el('span', 'quick-list__mine');
       const refresh = () => {
         const s = choiceSummary(race, true);
@@ -2200,8 +2210,24 @@ function renderYourTypePick(race: Race, row: Race['crossTypology'][number]): HTM
     head.append(conf);
   }
   const why = el('p', 'your-type__why');
-  why.textContent = row.rationale;
-  box.append(head, why);
+  const split = tp.tossUp ? splitTossUp(row.rationale, tossUpOptions(row.pick)) : undefined;
+  if (split) {
+    why.textContent = split.lead ? `It depends on what you weigh most. ${split.lead}.` : 'It depends on what you weigh most.';
+    const fork = el('div', 'your-type__fork');
+    for (const s of split.sides) {
+      const card = el('div', 'your-type__side');
+      const t = el('p', 'your-type__side-title');
+      t.textContent = `Choose ${s.option} if`;
+      const p = el('p', 'your-type__side-text');
+      p.textContent = s.when;
+      card.append(t, p);
+      fork.append(card);
+    }
+    box.append(head, why, fork);
+  } else {
+    why.textContent = row.rationale;
+    box.append(head, why);
+  }
   // Measures: facts (what each outcome does) come before the trade-off; candidates have no such block.
   const trade = renderTradeoff(race, row.typology, 'your-type__tradeoff');
   if (trade && race.kind !== 'measure') box.append(trade);
@@ -2615,7 +2641,7 @@ function renderTradeoff(race: Race, code: TypologyCode, className: string): HTML
   if (tiebreak) {
     if (counters.length) p.append(' ');
     const strong = el('strong');
-    strong.textContent = 'Tiebreaker (experience): ';
+    strong.textContent = 'Still torn? ';
     p.append(strong, tiebreak);
   }
   return p;
