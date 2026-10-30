@@ -4595,9 +4595,43 @@ button.quick-list__row {
   border-radius: 14px;
 }
 
+/* An open contest is one card: no page-colored gap under the row, one divider, and the outline wraps the
+   whole card (stronger while the row is hovered) instead of only the top half. */
+.quick-list__race {
+  padding: 0;
+}
+
+.quick-list__rows li.is-open {
+  margin-bottom: 0.75rem;
+}
+
+.quick-list__rows li.is-open > button.quick-list__row {
+  border-bottom: 1px solid var(--rad-border);
+}
+
+.race[open] > .race__summary + .race__body {
+  border-top: 0;
+}
+
+.race[open],
+.quick-list__rows li.is-open {
+  border-radius: 14px;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--rad-accent) 30%, var(--rad-surface));
+}
+
+.race[open]:has(> .race__summary:hover),
+.quick-list__rows li.is-open:has(> button.quick-list__row:hover) {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--rad-accent) 55%, var(--rad-surface));
+}
+
 .race[open] > .race__summary:hover,
 .quick-list__rows li.is-open > button.quick-list__row:hover {
   border-radius: 14px 14px 0 0;
+  box-shadow: none;
+}
+
+.quick-list__rows li.is-open .quick-list__race > .race[open] {
+  box-shadow: none;
 }
 
 .your-choice__option:hover {
