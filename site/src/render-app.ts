@@ -867,7 +867,16 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
   }
   line.append(' ', actions);
   bar.append(line);
-  if (mode === 'full') bar.append(renderPrintPicks(data, prefs.typology));
+  // Everything view: picking a group here also moves the pick pills and highlighted rows to that group.
+  if (mode === 'full') {
+    bar.append(
+      renderPrintPicks(data, prefs.typology, (code) => {
+        setViewPrefs({ ...prefs, typology: code });
+        rerender();
+        document.getElementById('print-typology')?.focus({ preventScroll: true });
+      }),
+    );
+  }
 
   if (mode !== 'full' && ty) {
     const ol = el('ol', 'view-bar__steps');
@@ -917,7 +926,14 @@ function renderViewBar(data: BallotData, prefs: ViewPrefs, rerender: () => void)
 }
 
 /** Header control: pick your typology column, then print a one-page cheat sheet of those picks. */
-function renderPrintPicks(data: BallotData, typology?: TypologyCode): HTMLElement {
+/** The column last picked in the cheat-sheet select, kept across re-renders so it doesn't snap back. */
+let printColumnChoice: PrintColumn | undefined;
+
+function renderPrintPicks(
+  data: BallotData,
+  typology?: TypologyCode,
+  onTypology?: (code: TypologyCode) => void,
+): HTMLElement {
   const wrap = el('div', 'print-picks');
   const label = el('label', 'print-picks__label', { for: 'print-typology' });
   label.textContent = 'Cheat sheet for';
@@ -932,8 +948,12 @@ function renderPrintPicks(data: BallotData, typology?: TypologyCode): HTMLElemen
     option.textContent = `${t.code} — ${t.name}`;
     select.append(option);
   }
-  select.value = countMarked(data) ? MINE : (typology ?? 'LL');
-  select.addEventListener('change', () => fillPrintSheet(data, select.value as PrintColumn));
+  select.value = printColumnChoice ?? (countMarked(data) ? MINE : (typology ?? 'LL'));
+  select.addEventListener('change', () => {
+    printColumnChoice = select.value as PrintColumn;
+    fillPrintSheet(data, printColumnChoice);
+    if (onTypology && printColumnChoice !== MINE) onTypology(printColumnChoice);
+  });
   const btn = el('button', 'print-picks__button', { type: 'button' });
   btn.textContent = 'Print my picks';
   btn.addEventListener('click', () => {
