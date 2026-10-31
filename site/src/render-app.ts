@@ -1097,6 +1097,16 @@ function renderImportBanner(data: BallotData, rerender: () => void): HTMLElement
 const QUICK_WORD: Record<string, string> = { '●': 'Strong pick', '◐': 'Leaning', '○': 'Weak lean' };
 const QUICK_LEVEL: Record<string, string> = { '●': 'high', '◐': 'med', '○': 'low', '=': 'toss' };
 
+/** “~10% of this ZIP” for a contest only part of the ZIP votes in; undefined when everyone does. */
+function zipShareChip(race: ZipRace): HTMLElement | undefined {
+  if (race.zipSharePct === undefined) return undefined;
+  const share = el('span', 'race__zip-share', {
+    title: 'Only part of this ZIP votes in this contest — check your official sample ballot.',
+  });
+  share.textContent = `~${Math.round(race.zipSharePct)}% of this ZIP`;
+  return share;
+}
+
 function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
   const sec = el('section', 'quick-list', { 'aria-labelledby': 'quick-list-title' });
   const h2 = el('h2', 'quick-list__title', { id: 'quick-list-title', tabindex: '-1' });
@@ -1118,7 +1128,11 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
       // A toggle, not a link: the contest opens right under its row.
       const a = el('button', 'quick-list__row', { type: 'button', 'aria-expanded': 'false', 'aria-controls': `quick-race-${race.id}` });
       const name = el('span', 'quick-list__name');
-      name.textContent = race.tldrLabel ?? race.title;
+      const nameLine = el('span', 'quick-list__name-line');
+      nameLine.textContent = race.tldrLabel ?? race.title;
+      const share = zipShareChip(race);
+      if (share) nameLine.append(document.createTextNode(' '), share);
+      name.append(nameLine);
       const pick = el('span', 'quick-list__pick');
       const tp = row ? typePick(race, row) : undefined;
       if (!tp || tp.none) {
@@ -1989,13 +2003,8 @@ function renderRace(race: ZipRace): HTMLElement {
     vf.textContent = `Vote for up to ${race.voteFor}`;
     line.append(vf);
   }
-  if (race.zipSharePct !== undefined) {
-    const share = el('span', 'race__zip-share', {
-      title: 'Only part of this ZIP votes in this contest — check your official sample ballot.',
-    });
-    share.textContent = `~${Math.round(race.zipSharePct)}% of this ZIP`;
-    line.append(document.createTextNode(' '), share);
-  }
+  const share = zipShareChip(race);
+  if (share) line.append(document.createTextNode(' '), share);
   sumText.append(line);
   const typeRow = viewTypology ? race.crossTypology.find((r) => r.typology === viewTypology) : undefined;
   // Everything view: the visitor's saved type, if any, labeled with its code since all nine are on the page.
