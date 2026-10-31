@@ -2,8 +2,8 @@ import type { BallotProfile } from './ballot-profiles';
 
 /**
  * San Diego County ZIPs beyond 92126, built from the Registrar’s Nov 2026 ballot-type map and sample
- * ballots (see docs/wave2-sd-zip-scope.md). Contests covering ≥20% of a ZIP’s residents are listed
- * (with `partialShares` when not ~all); smaller slivers are named in the note instead.
+ * ballots (see docs/wave2-sd-zip-scope.md). Contests on any of a ZIP’s ballot types are listed, even small slivers
+ * (with `partialShares` when not ~all, so the card shows “~N% of this ZIP”).
  */
 
 const SD_REGISTRAR = {
