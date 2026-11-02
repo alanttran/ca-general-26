@@ -26,6 +26,8 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
           'Each contest in the cheat sheet is its own card. Confidence is in plain words (Strong pick, Leaning, Weak lean, Toss-up) and the pick is a colored pill.',
           'Toss-ups show two side-by-side cards, “Choose A if …” and “Choose B if …”, and the experience tiebreaker now reads “Still torn?”.',
           'Bigger, rounder buttons, including the choices you mark in each contest.',
+          'More newspaper endorsements: the Denver Gazette entries for Colorado Amendment 87 and Propositions 133 and 135 now link the board’s own editorials.',
+          'New news explainer: Riverside County Measure A now features City News Service’s piece covering both sides.',
         ],
       },
     ],

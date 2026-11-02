@@ -682,7 +682,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes: Protect Colorado’s Future Coalition ($1.18 million, plus $351,935 in-kind) and Great Education Colorado Action ($48,717), which also gave to the coalition. No: Don’t Price Us Out ($1.06 million; donors not yet reported in news coverage), Americans for Prosperity Colorado ($266,476) and Your Family’s Future Alliance ($15,938); Keep Colorado Affordable, Let’s Go Colorado and Affordable Colorado reported no cash. ' + BRIGHTER_NOTE,
         sources: [tracer('Protect Colorado’s Future Coalition', 51642), tracer('Don’t Price Us Out', 52410), tracer('Americans for Prosperity Colorado Issue Committee', 52340), BRIGHTER, RMV_MONEY],
       },
-      positions: [coDems('Yes'), { org: 'The Denver Post editorial board', kind: 'editorial', position: 'No', url: 'https://www.denverpost.com/2026/10/11/amendment-87-graduated-income-tax-colorado-endorsement/' }, gazette('No')],
+      positions: [coDems('Yes'), { org: 'The Denver Post editorial board', kind: 'editorial', position: 'No', url: 'https://www.denverpost.com/2026/10/11/amendment-87-graduated-income-tax-colorado-endorsement/' }, gazette('No', 'https://www.denvergazette.com/2026/10/18/editorial-no-to-87s-massive-tax-hike-and-yes-to-136s-tax-cap/')],
       measureType: 'Initiated constitutional amendment and statute (TABOR tax increase)',
       voteThreshold: 'Simple majority (Blue Book: limited to repealing constitutional language)',
       fiscalImpact:
@@ -991,7 +991,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes: Protect Kids Colorado, which campaigns for 133, 134 and 135 together; Protect Our Children reported no money. No committee targets 133 alone; ' + VCS_NOTE,
         sources: [tracer('Protect Kids Colorado – Issue Committee', 47398), VOTE_COMMON_SENSE, RMV_MONEY],
       },
-      positions: [coDemsNoPosition, gazette('Yes')],
+      positions: [coDemsNoPosition, gazette('Yes', 'https://www.denvergazette.com/2026/09/25/endorsement-protect-colorados-children-yes-on-133-134-135/')],
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:
@@ -1191,7 +1191,7 @@ export const RACES_CO_MEASURES: Race[] = [
         note: 'Yes: Protect Kids Colorado. No: Families Not Politics ($1.66 million, plus $335,892 in-kind) and No on 134 and 135 ($10,788), both fighting 134 and 135 together; The People’s No ($200,000) and ' + VCS_NOTE,
         sources: [tracer('Families Not Politics', 51677), tracer('Protect Kids Colorado – Issue Committee', 47398), tracer('No on 134 and 135', 52230), RMV_MONEY],
       },
-      positions: [coDems('No'), gazette('Yes')],
+      positions: [coDems('No'), gazette('Yes', 'https://www.denvergazette.com/2026/09/25/endorsement-protect-colorados-children-yes-on-133-134-135/')],
       measureType: 'Initiated statute',
       voteThreshold: 'Simple majority',
       fiscalImpact:

@@ -713,8 +713,9 @@ export const RACES_RIVCO_MURRIETA: Race[] = [
         { label: 'RCTC: Renewal fact sheet', url: 'https://www.rctc.org/wp-content/uploads/2026/07/2026.07-Renewal-Fact-Sheet-FINAL-compressed.pdf', summary: 'Projected funding by city through 2057.' },
         { label: 'Inland Empire Business Daily: voters will determine if Measure A stays', url: 'https://iebusinessdaily.com/riverside-county-voters-will-determine-if-measure-a-stays-on-the-books/', summary: 'History, allocations since 2009 and the new oversight committee.' },
         { label: 'Riverside Registrar: Measure A notice', url: 'https://voteinfo.net/sites/g/files/aldnop371/files/2026-08/Measure%20A%20-%20Riverside%20County%20Transportation%20Commission.pdf', summary: 'Official measure notice for the Nov. 3 ballot.' },
+        { label: 'NBC Palm Springs (City News Service): County voters to decide whether to extend transportation sales tax (Oct 28)', url: 'https://www.nbcpalmsprings.com/local-and-community/2026/10/28/county-voters-to-decide-whether-to-extend-transportation-sales-tax', summary: 'What a Yes vote changes about the 2039 end date, with the supporters’ and opponents’ ballot arguments.' },
       ],
-      explainerUrl: 'https://iebusinessdaily.com/riverside-county-voters-will-determine-if-measure-a-stays-on-the-books/',
+      explainerUrl: 'https://www.nbcpalmsprings.com/local-and-community/2026/10/28/county-voters-to-decide-whether-to-extend-transportation-sales-tax',
     },
     crossTypology: ct([
       ['LP', 'Yes', '◐', 'Leftward Progressives want public transit and climate-friendly investment and note building-trades labor support, but a sales tax falls hardest on lower-income households, so their Yes is a trade-off.'],
