@@ -38,7 +38,7 @@ const sdc = lead('San Diego County Registrar', 'Nov 4, 2:51 a.m. update', 'https
 const lac = lead('LA County Registrar', 'Nov 4, 3:11 a.m. update', 'https://results.lavote.gov/#year=2026&election=4348');
 const occ = lead('Orange County Registrar', 'Nov 4, 1:36 a.m. update', 'https://www.livevoterturnout.com/ENR/orangecaenr/24/en/phkv4sV_Index_24.html');
 const riv = lead('Riverside County Registrar', 'Nov 4, 4:22 a.m. update', 'https://www.livevoterturnout.com/ENR/riversidecaenr/12/en/Index_12.html');
-const plc = lead('Placer County Elections', 'Nov 3 election-night update', 'https://www.placercountyelections.gov/election-results/');
+const plc = lead('Placer County Elections', 'Nov 4, 12:16 a.m. update', 'https://www.placercountyelections.gov/Uploads/documents/11032026/11032026_results05.pdf');
 const ala = lead('Alameda County Registrar', 'Nov 4, 2:07 a.m. update', 'https://alamedacountyca.gov/rovresults/260');
 const scc = lead('Santa Clara County Registrar', 'Nov 3, 11:22 p.m. update', 'https://results.enr.clarityelections.com/CA/Santa_Clara/127570/web.345435/#/summary');
 const cos = lead('Colorado Secretary of State', 'Nov 4, 9:16 a.m. MT update', 'https://results.enr.clarityelections.com/CO/127407/');
@@ -398,13 +398,13 @@ export const RESULTS: Record<string, RaceResult> = {
   'tvusd-measure-s': riv('No', 51.91), // bonds need 55% Yes
 
   // Placer County
-  'rocklin-city-council': plc('Halldin, Gayaldo'),
-  'rusd-trustee-area-4': plc('Hoehne'),
-  'rusd-trustee-area-5': plc('Counter'),
-  'placer-measure-g': plc('Yes'),
-  'placer-measure-h': plc('Yes'),
-  'rocklin-measure-c': plc('Yes'),
-  'rusd-measure-d': plc('No'), // 52.2% Yes; bonds need 55%
+  'rocklin-city-council': plc('Halldin, Gayaldo', [44.48, 37.47]),
+  'rusd-trustee-area-4': plc('Hoehne', 58.65),
+  'rusd-trustee-area-5': plc('Counter', 55.75),
+  'placer-measure-g': plc('Yes', 69.8),
+  'placer-measure-h': plc('Yes', 51.64),
+  'rocklin-measure-c': plc('Yes', 52.83),
+  'rusd-measure-d': plc('No', 52.16), // bonds need 55% Yes
 
   // Alameda County
   'hayward-mayor': ala('Salinas', 75.31),
