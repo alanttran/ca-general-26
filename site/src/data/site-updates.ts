@@ -16,6 +16,20 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 3, 2026',
+    lede: 'Two more ZIPs: Monterey Park and Garden Grove.',
+    panels: [
+      {
+        summary: 'New ZIPs',
+        bullets: [
+          '91755 (Monterey Park, LA County): CA-28, Assembly 49 and the LA countywide races, plus Monterey Park’s Council District 5, City Clerk, City Treasurer and Measures HOM and AAA.',
+          '92841 (Garden Grove, Orange County): CA-45, Senate 36, Assembly 70, Garden Grove’s mayor and Council Districts 1 and 3, Garden Grove Unified Area 2, North Orange County and Coast college seats, Supervisor District 4 (the Stanton part) and MWDOC Division 2.',
+          'Contests that only part of a ZIP votes in show “~N% of this ZIP” on the cheat sheet as well as in each contest.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'October 29, 2026',
     lede: 'A new, easier-to-read look.',
     panels: [

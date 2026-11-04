@@ -2,7 +2,7 @@ import type { BallotMeta } from '../types/ballot-types';
 
 export const BALLOT_META: BallotMeta = {
   siteTitle: 'Unofficial 2026 California general election voter guide',
-  lastContentUpdated: 'October 29, 2026',
+  lastContentUpdated: 'November 3, 2026',
   scopeZip: '92126',
   scopeLabel: 'Mira Mesa, San Diego',
   verificationNote: '',

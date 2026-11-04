@@ -63,6 +63,24 @@ export const WAVE3_PROFILES: Record<string, BallotProfile> = {
     ],
     { 'senate-sd24': 78, 'senate-sd26': 22 },
   ),
+  '91755': profile(
+    '91755',
+    'Monterey Park, Los Angeles County',
+    ...LA,
+    'Built from the LA County Registrar’s November contest list for this ZIP: CA-28, Board of Equalization 3, Assembly 49, the countywide Sheriff, judicial and community-college races, and Monterey Park’s District 5 council race, clerk, treasurer and Measures HOM and AAA. There is no State Senate race (District 25 isn’t up), Supervisor District 1 was decided in June, and the Alhambra Unified, Garvey and Montebello Unified seats here were filled without an election. Only about 44% of the ZIP is in Council District 5. Trust your official sample ballot over us.',
+    [
+      LA_COUNTYWIDE[0],
+      'us-rep-ca28',
+      'assembly-ad49',
+      ...LA_COUNTYWIDE.slice(2),
+      'monterey-park-council-d5',
+      'monterey-park-city-clerk',
+      'monterey-park-city-treasurer',
+      'monterey-park-measure-hom',
+      'monterey-park-measure-aaa',
+    ],
+    { 'monterey-park-council-d5': 44 },
+  ),
   '91501': profile(
     '91501',
     'Burbank, Los Angeles County',
@@ -90,6 +108,22 @@ export const WAVE3_PROFILES: Record<string, BallotProfile> = {
     'https://www.ocvote.gov',
     'Built from the Orange County Registrar’s November candidate and measure lists for this ZIP: CA-46, Senate 34, Assembly 68, Board of Equalization 4, the 4th District Court of Appeal, Orange’s mayor and Measures I, J and K, and MWDOC Division 2. Most of the ZIP is in City Council District 2, which isn’t up; small parts also vote on Council District 1 (~11%), Rancho Santiago College Area 2 (~15%) or Orange Unified Area 7 (~4%), which we don’t cover. Trust your official sample ballot over us.',
     ['boe-d4', 'us-rep-ca46', 'senate-sd34', 'assembly-ad68', 'retention-dca4', 'orange-mayor', 'mwdoc-division-2', 'orange-measure-i', 'orange-measure-j', 'orange-measure-k'],
+  ),
+  '92841': profile(
+    '92841',
+    'Garden Grove, Orange County',
+    'Orange County Registrar of Voters',
+    'https://www.ocvote.gov',
+    'Built from the Orange County Registrar’s November candidate and measure lists for this ZIP: CA-45, Senate 36, Assembly 70, Board of Equalization 4, the 4th District Court of Appeal, Garden Grove’s mayor, MWDOC Division 2, and seats on the Garden Grove Unified, North Orange County and Coast college boards. Most voters see only some local races: Council District 3 (~31%) or District 1 (~14%), Garden Grove Unified Area 2 (~48%), North Orange College Area 1 (~38%) or Coast College Area 1 (~11%). About 9% of the ZIP is in Stanton, which votes on Supervisor District 4 instead of Garden Grove’s races. There are no local measures. Trust your official sample ballot over us.',
+    [
+      'boe-d4', 'us-rep-ca45', 'senate-sd36', 'assembly-ad70', 'retention-dca4',
+      'nocccd-trustee-area-1', 'coast-ccd-trustee-area-1', 'ggusd-trustee-area-2', 'oc-supervisor-d4',
+      'garden-grove-mayor', 'garden-grove-council-d1', 'garden-grove-council-d3', 'mwdoc-division-2',
+    ],
+    {
+      'nocccd-trustee-area-1': 38, 'coast-ccd-trustee-area-1': 11, 'ggusd-trustee-area-2': 48, 'oc-supervisor-d4': 9,
+      'garden-grove-mayor': 91, 'garden-grove-council-d1': 14, 'garden-grove-council-d3': 31, 'mwdoc-division-2': 63,
+    },
   ),
   '92562': profile(
     '92562',

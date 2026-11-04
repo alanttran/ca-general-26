@@ -34,6 +34,8 @@ import { RACES_SANTEE } from './santee';
 import { RACES_OCEANSIDE } from './oceanside';
 import { RACES_VISTA } from './vista';
 import { RACES_TEMECULA } from './temecula';
+import { RACES_MONTEREY_PARK } from './monterey-park';
+import { RACES_GARDEN_GROVE } from './garden-grove';
 import { RACES_CO_STATEWIDE } from './co-statewide';
 import { RACES_CO_MEASURES } from './co-measures';
 import { RACES_CO_COURTS } from './co-courts';
@@ -112,6 +114,8 @@ export const LOCAL_RACES: Race[] = [
   ...RACES_OC_ORANGE,
   ...RACES_RIVCO_MURRIETA,
   ...RACES_TEMECULA,
+  ...RACES_MONTEREY_PARK,
+  ...RACES_GARDEN_GROVE,
   // Colorado one-off (80204): listed only by that profile.
   ...RACES_CO_STATEWIDE,
   ...RACES_CO_COURTS,
