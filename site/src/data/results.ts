@@ -470,6 +470,19 @@ export function resultLabel(r: RaceResult): string {
   return who ? `${who === 'Passed' ? 'Passing' : 'Failing'} (${r.source}, ${r.when})` : `Leading: ${r.winner} (${r.source}, ${r.when})`;
 }
 
+/**
+ * Compact chip text: `main` is the outcome (“✓ Becerra”, “Leading: Bass”, “✓ Passed”, “Failing”);
+ * `meta` is a short source tag (“AP · Nov 4”, “Nov 6 count”). The full `resultLabel` goes in the tooltip.
+ */
+export function resultChipParts(r: RaceResult): { main: string; meta: string } {
+  const who = r.winner === 'Yes' ? 'Passed' : r.winner === 'No' ? 'Failed' : undefined;
+  const day = r.when.match(/^[A-Z][a-z]{2} \d{1,2}/)?.[0] ?? r.when;
+  if (r.status === 'called') {
+    return { main: who ? `✓ ${who}` : `✓ ${r.winner}`, meta: `${r.source === 'AP' ? 'AP' : 'Certified'} · ${day}` };
+  }
+  return { main: who ? (who === 'Passed' ? 'Passing' : 'Failing') : `Leading: ${r.winner}`, meta: `${day} count` };
+}
+
 /** Build-time check: every result names a real race and a real candidate (or Yes/No), with a source link. */
 export function resultIssues(races: Race[]): string[] {
   const issues: string[] = [];

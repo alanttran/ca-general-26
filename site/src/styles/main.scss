@@ -4640,12 +4640,31 @@ button.quick-list__row {
 
 /* Election results: a called contest gets a solid tag, a leading one a dashed tag (the count can still change). */
 .race__result {
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 0.4em;
+  width: fit-content;
+  max-width: 100%;
   margin-top: 0.15rem;
   padding: 0.05rem 0.5rem;
   border-radius: 999px;
   font-size: var(--fs-sm);
   font-weight: 700;
+  line-height: 1.35;
+  vertical-align: middle;
+}
+
+.race__result-main {
+  overflow-wrap: anywhere;
+}
+
+/* Source and day (“AP · Nov 4”, “Nov 6 count”): smaller and quieter than the outcome. */
+.race__result-meta {
+  font-size: 0.85em;
+  font-weight: 500;
+  opacity: 0.75;
+  white-space: nowrap;
 }
 
 .race__result--called {
