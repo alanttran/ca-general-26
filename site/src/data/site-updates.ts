@@ -30,7 +30,7 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
       {
         summary: 'Election results',
         bullets: [
-          'Results: AP calls for Governor, Lt. Governor, Secretary of State, Attorney General, Props 37 and 39, 36 California House seats and five Colorado races; every other contest shows its election-night leader (county counts as of Nov 3, about 10–10:30 p.m.).',
+          'Results: AP calls for Governor, Lt. Governor, Secretary of State, Attorney General, Props 37 and 39, 36 California House seats and five Colorado races; every other contest shows its election-night leader (county counts as of Nov 3, about 10–10:30 p.m.; later counts for state props, Alameda, Santa Clara, Colorado and some San Diego and Riverside contests, with no leader changes).',
         ],
       },
     ],

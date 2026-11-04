@@ -28,14 +28,18 @@ const AP_CA = 'https://apnews.com/projects/elections-2026/';
 const ap = (winner: string, url: string, when = 'Nov 3'): RaceResult => ({ status: 'called', winner, source: 'AP', when, url });
 const lead = (source: string, when: string, url: string) => (winner: string): RaceResult => ({ status: 'leading', winner, source, when, url });
 const sos = lead('CA Secretary of State', 'Nov 3, 10:25 p.m. update', 'https://electionresults.sos.ca.gov/');
+const sosBm = lead('CA Secretary of State', 'Nov 3, 11:13 p.m. update', 'https://electionresults.sos.ca.gov/returns/ballot-measures');
 const sdc = lead('San Diego County Registrar', 'Nov 3, 10:03 p.m. update', 'https://www.livevoterturnout.com/ENR/sandiegocaenr/25/en/Index_25.html');
+// Contests re-read at the later count (the rest of the summary page didn't load).
+const sdc2 = lead('San Diego County Registrar', 'Nov 3, 10:58 p.m. update', 'https://www.livevoterturnout.com/ENR/sandiegocaenr/25/en/Index_25.html');
 const lac = lead('LA County Registrar', 'Nov 3 election-night update', 'https://results.lavote.gov/#year=2026&election=4348');
 const occ = lead('Orange County Registrar', 'Nov 3, 10:31 p.m. update', 'https://www.livevoterturnout.com/ENR/orangecaenr/24/en/phkv4sV_Index_24.html');
 const riv = lead('Riverside County Registrar', 'Nov 3, 10:13 p.m. update', 'https://www.livevoterturnout.com/ENR/riversidecaenr/12/en/Index_12.html');
+const riv2 = lead('Riverside County Registrar', 'Nov 3, 11:11 p.m. update', 'https://www.livevoterturnout.com/ENR/riversidecaenr/12/en/Index_12.html');
 const plc = lead('Placer County Elections', 'Nov 3 election-night update', 'https://www.placercountyelections.gov/election-results/');
-const ala = lead('Alameda County Registrar', 'Nov 3, 10:02 p.m. update', 'https://alamedacountyca.gov/rovresults/260');
-const scc = lead('Santa Clara County Registrar', 'Nov 3, 10:30 p.m. update', 'https://results.enr.clarityelections.com/CA/Santa_Clara/127570/web.345435/#/summary');
-const cos = lead('Colorado Secretary of State', 'Nov 3, 11:19 p.m. MT update', 'https://results.enr.clarityelections.com/CO/127407/');
+const ala = lead('Alameda County Registrar', 'Nov 3, 11:11 p.m. update', 'https://alamedacountyca.gov/rovresults/260');
+const scc = lead('Santa Clara County Registrar', 'Nov 3, 11:22 p.m. update', 'https://results.enr.clarityelections.com/CA/Santa_Clara/127570/web.345435/#/summary');
+const cos = lead('Colorado Secretary of State', 'Nov 4, 12:21 a.m. MT update', 'https://results.enr.clarityelections.com/CO/127407/');
 const den = lead('Denver Elections', 'Nov 3, 11:30 p.m. MT update', 'https://results.enr.clarityelections.com/CO/Denver/127425/');
 
 export const RESULTS: Record<string, RaceResult> = {
@@ -55,20 +59,20 @@ export const RESULTS: Record<string, RaceResult> = {
   'retention-dca4': sos('All retained'),
   'retention-dca5': sos('All retained'),
   'retention-dca6': sos('All retained'),
-  'prop-1': sos('Yes'),
-  'prop-2': sos('Yes'),
-  'prop-3': sos('Yes'),
-  'prop-4': sos('No'),
-  'prop-5': sos('Yes'),
+  'prop-1': sosBm('Yes'),
+  'prop-2': sosBm('Yes'),
+  'prop-3': sosBm('Yes'),
+  'prop-4': sosBm('No'),
+  'prop-5': sosBm('Yes'),
   'prop-37': ap('Yes', `${AP_CA}california-proposition-37-results/`),
-  'prop-38': sos('Yes'),
+  'prop-38': sosBm('Yes'),
   'prop-39': ap('No', `${AP_CA}california-proposition-39-results/`),
-  'prop-40': sos('No'),
-  'prop-41': sos('No'),
-  'prop-42': sos('Yes'),
-  'prop-43': sos('No'),
-  'prop-44': sos('No'),
-  'prop-45': sos('No'),
+  'prop-40': sosBm('No'),
+  'prop-41': sosBm('No'),
+  'prop-42': sosBm('Yes'),
+  'prop-43': sosBm('No'),
+  'prop-44': sosBm('No'),
+  'prop-45': sosBm('No'),
   'boe-d1': sos('Esparza'),
   'boe-d2': sos('Lieber'),
   'boe-d3': sos('Gipson'),
@@ -237,15 +241,15 @@ export const RESULTS: Record<string, RaceResult> = {
   'sd-county-treasurer': sdc('Cohen'),
   'sd-supervisor-d4': sdc('Montgomery Steppe'),
   'sd-supervisor-d5': sdc('Jones'),
-  'sd-county-board-ed-d3': sdc('Muñoz'),
-  'sd-county-board-ed-d5': sdc('Shea'),
+  'sd-county-board-ed-d3': sdc2('Muñoz'),
+  'sd-county-board-ed-d5': sdc2('Shea'),
   'sd-measure-a': sdc('Yes'),
   'sd-measure-b': sdc('Yes'),
   'sdusd-measure-m': sdc('Yes'),
-  'sdusd-district-b': sdc('Hazan'),
-  'sdusd-district-c': sdc('Gore'),
-  'sdccd-district-a': sdc('Nieto Senour'),
-  'sdccd-district-c': sdc('Milgrim'),
+  'sdusd-district-b': sdc2('Hazan'),
+  'sdusd-district-c': sdc2('Gore'),
+  'sdccd-district-a': sdc2('Nieto Senour'),
+  'sdccd-district-c': sdc2('Milgrim'),
   'sd-city-council-d2': sdc('Crosby'),
   'sd-city-council-d4': sdc('Abraham'),
   'sd-city-council-d6': sdc('Lee'),
@@ -254,19 +258,19 @@ export const RESULTS: Record<string, RaceResult> = {
   'sduhsd-trustee-area-3': sdc('Doyle'),
   'sduhsd-trustee-area-5': sdc('Moodie'),
   'del-mar-city-council': sdc('Spieker, Grewal'),
-  'poway-usd-area-b': sdc('Sosnowski'),
-  'poway-usd-area-c': sdc('Plotzke'),
-  'poway-usd-area-d': sdc("O'Connor-Ratcliff"),
-  'palomar-ccd-area-1': sdc('Patacsil'),
-  'palomar-ccd-area-5': sdc('Jeffries'),
+  'poway-usd-area-b': sdc2('Sosnowski'),
+  'poway-usd-area-c': sdc2('Plotzke'),
+  'poway-usd-area-d': sdc2("O'Connor-Ratcliff"),
+  'palomar-ccd-area-1': sdc2('Patacsil'),
+  'palomar-ccd-area-5': sdc2('Jeffries'),
   'palomar-health-div-3': sdc('Edwards-Tate'),
   'palomar-health-div-5': sdc('Christensen'),
   'palomar-health-div-7': sdc('Butler'),
   'cvesd-seat-1': sdc('Castillo Tolston'),
   'cvesd-seat-3': sdc('Segura'),
   'cvesd-seat-5': sdc('Dominguez Cervantes'),
-  'swc-trustee-area-1': sdc('Moreno'),
-  'swc-trustee-area-4': sdc('Cuellar-Martinez'),
+  'swc-trustee-area-1': sdc2('Moreno'),
+  'swc-trustee-area-4': sdc2('Cuellar-Martinez'),
   'chula-vista-mayor': sdc('McCann'),
   'chula-vista-council-d1': sdc('Chavez'),
   'chula-vista-council-d2': sdc('Preciado'),
@@ -315,17 +319,17 @@ export const RESULTS: Record<string, RaceResult> = {
   'santee-sd-measure-bb': sdc('No'),
   'oceanside-council-d1': sdc('Joyce'),
   'oceanside-council-d2': sdc('Robinson'),
-  'oceanside-usd-trustee-area-1': sdc('Licona'),
-  'oceanside-usd-trustee-area-3': sdc('Pearson'),
-  'oceanside-usd-trustee-area-4': sdc('Riojas Alvarez'),
+  'oceanside-usd-trustee-area-1': sdc2('Licona'),
+  'oceanside-usd-trustee-area-3': sdc2('Pearson'),
+  'oceanside-usd-trustee-area-4': sdc2('Riojas Alvarez'),
   'tri-city-healthcare-zone-2': sdc('Lauriano'),
   'oceanside-measure-r': sdc('Yes'),
   'oceanside-measure-s': sdc('No'),
   'vista-mayor': sdc('Green'),
   'vista-council-d1': sdc('Contreras'),
   'vista-council-d4': sdc("O'Donnell"),
-  'vista-usd-trustee-area-3': sdc('Alvarado'),
-  'san-marcos-usd-area-e': sdc('Baker'),
+  'vista-usd-trustee-area-3': sdc2('Alvarado'),
+  'san-marcos-usd-area-e': sdc2('Baker'),
   'vista-irrigation-div-2': sdc('Vásquez'),
   'vista-usd-measure-n': sdc('No'), // 17,515 of 31,848 = 54.995% Yes; bonds need 55%
   'fuesd-measure-k': sdc('No'), // 51.5% Yes; bonds need 55%
@@ -379,16 +383,16 @@ export const RESULTS: Record<string, RaceResult> = {
   'garden-grove-council-d3': occ('Tran'),
 
   // Riverside County
-  'rivco-superior-court-10': riv('Paradise'),
-  'mvusd-trustee-area-1': riv('Pardue'),
-  'mvusd-trustee-area-2': riv('Young'),
+  'rivco-superior-court-10': riv2('Paradise'),
+  'mvusd-trustee-area-1': riv2('Pardue'),
+  'mvusd-trustee-area-2': riv2('Young'),
   'rcwd-board': riv('Harkey, Plummer, Brady, Edwards'),
   'mvusd-measure-m': riv('No'),
   'rctc-measure-a': riv('Yes'),
-  'temecula-council-d5': riv('Schwank'),
-  'tvusd-trustee-area-2': riv('Barham'),
-  'tvusd-trustee-area-4': riv('Sola'),
-  'msjc-trustee-area-3': riv('Carpenter'),
+  'temecula-council-d5': riv2('Schwank'),
+  'tvusd-trustee-area-2': riv2('Barham'),
+  'tvusd-trustee-area-4': riv2('Sola'),
+  'msjc-trustee-area-3': riv2('Carpenter'),
   'tvusd-measure-s': riv('No'), // 51.6% Yes; bonds need 55%
 
   // Placer County
@@ -437,7 +441,7 @@ export const RESULTS: Record<string, RaceResult> = {
   'co-amendment-84': cos('No'),
   'co-amendment-85': cos('No'), // 50.6% Yes; constitutional amendments need 55%
   'co-amendment-86': cos('No'),
-  'co-amendment-87': cos('No'), // 50.5% Yes; constitutional amendments need 55%
+  'co-amendment-87': cos('No'), // 50.6% Yes; constitutional amendments need 55%
   'co-prop-nn': cos('Yes'),
   'co-prop-132': cos('Yes'),
   'co-prop-133': cos('Yes'),
