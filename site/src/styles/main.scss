@@ -4637,3 +4637,24 @@ button.quick-list__row {
 .your-choice__option:hover {
   border-color: color-mix(in srgb, var(--rad-accent) 60%, var(--rad-border));
 }
+
+/* Election results: a called contest gets a solid tag, a leading one a dashed tag (the count can still change). */
+.race__result {
+  display: inline-block;
+  margin-top: 0.15rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.race__result--called {
+  background: color-mix(in srgb, var(--rad-accent) 14%, var(--rad-surface));
+  color: var(--rad-accent-dim);
+}
+
+.race__result--leading {
+  border: 1px dashed var(--rad-text-muted);
+  color: var(--rad-text-muted);
+  font-weight: 600;
+}

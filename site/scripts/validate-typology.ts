@@ -5,12 +5,15 @@
 import { BALLOT_PROFILES } from '../src/data/ballot-profiles';
 import { mergeRaceDerivedFields } from '../src/data/merge-races';
 import { LOCAL_RACES, STATEWIDE_RACES } from '../src/data/races';
+import { resultIssues } from '../src/data/results';
 import { assertBallotDataValid } from '../src/data/validate-typology-picks';
 import { ZIP_AREA_ZIPS } from '../src/data/zip-areas';
 
 const ALL_RACES = mergeRaceDerivedFields([...STATEWIDE_RACES, ...LOCAL_RACES]);
 
 assertBallotDataValid(ALL_RACES, Object.values(BALLOT_PROFILES));
+const badResults = resultIssues(ALL_RACES);
+if (badResults.length) throw new Error(`Results:\n${badResults.join('\n')}`);
 // Every hand-built ZIP shows up exactly once in the grouped ZIP list under the ZIP box.
 const profileZips = Object.keys(BALLOT_PROFILES);
 const unlisted = profileZips.filter((z) => !ZIP_AREA_ZIPS.includes(z));

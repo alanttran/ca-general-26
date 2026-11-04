@@ -65,6 +65,7 @@ import { experienceTiebreak, isTossUp, pickedCandidates, splitTossUp, tossUpOpti
 import { COMBINED_LEVEL_GAP, combinedCellFor } from './data/experience-views';
 import { decodeChoices, encodeChoices, getChoice, importChoices, retentionKey, setChoice } from './data/my-choices';
 import { pointsFor, votingInfoFor, type VotingInfo } from './data/voting-info';
+import { RESULTS, resultLabel } from './data/results';
 import { getViewPrefs, setViewPrefs, TYPOLOGY_PLAIN, type ViewMode, type ViewPrefs } from './data/view-prefs';
 
 /** Alternation of the nine codes for counter-argument prefixes such as `LL (` or `UR/FC (`. */
@@ -1097,6 +1098,17 @@ function renderImportBanner(data: BallotData, rerender: () => void): HTMLElement
 const QUICK_WORD: Record<string, string> = { '●': 'Strong pick', '◐': 'Leaning', '○': 'Weak lean' };
 const QUICK_LEVEL: Record<string, string> = { '●': 'high', '◐': 'med', '○': 'low', '=': 'toss' };
 
+/** “✓ Won: Becerra (AP call, Nov 4)” once a contest has a result; undefined before. */
+function resultChip(race: ZipRace): HTMLElement | undefined {
+  const r = RESULTS[race.id];
+  if (!r) return undefined;
+  const chip = el('span', `race__result race__result--${r.status}`, {
+    title: r.status === 'leading' ? 'Not called yet: the count continues and the leader can change.' : `Source: ${r.source}`,
+  });
+  chip.textContent = resultLabel(r);
+  return chip;
+}
+
 /** “~10% of this ZIP” for a contest only part of the ZIP votes in; undefined when everyone does. */
 function zipShareChip(race: ZipRace): HTMLElement | undefined {
   if (race.zipSharePct === undefined) return undefined;
@@ -1146,6 +1158,8 @@ function renderQuickList(data: BallotData, code: TypologyCode): HTMLElement {
       const confWord = el('span', 'quick-list__conf');
       confWord.textContent = !tp || tp.none ? 'No pick for this group' : tp.tossUp ? 'Toss-up: tap to see what tips it' : (QUICK_WORD[tp.confidence] ?? '');
       name.append(confWord);
+      const result = resultChip(race);
+      if (result) name.append(result);
       const mine = el('span', 'quick-list__mine');
       const refresh = () => {
         const s = choiceSummary(race, true);
@@ -2026,6 +2040,8 @@ function renderRace(race: ZipRace): HTMLElement {
     mineBadge.textContent = s ? `✓ You: ${s}` : '';
   };
   refreshBadge();
+  const result = resultChip(race);
+  if (result) sumText.append(result);
   sumText.append(mineBadge);
   summary.append(chev, sumText, ...(pill ? [pill] : []));
   details.append(summary);
