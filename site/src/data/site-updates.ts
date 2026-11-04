@@ -16,6 +16,21 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 4, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Uncalled contests now show the leader’s share of the vote (a measure’s Yes share), e.g. “Leading: Cohen · 63.8%” or “Passing · 59.4% Yes”.',
+          'New AP calls: CA-5 (McClintock), CA-6 (Pan), CA-45 (Tran) and CA-49 (Levin).',
+          'New leaders in the latest counts: LA Mayor (Raman), OC Supervisor District 4 (Shaw), Senate District 6 (Niello), Assembly Districts 70 (Ta), 72 (Van Der Mark) and 74 (Davies), Palomar Health Division 3 (Telahun), Rincon del Diablo Water Division 3 (Martinez), La Mesa City Treasurer (Stewart) and the third Del Mar Union seat (Cochrane). Vista Unified’s Measure N is now above the 55% it needs.',
+          'Counts as of Nov 4: Secretary of State 8:08 a.m., San Diego 2:51 a.m., LA 3:11 a.m., Orange 1:36 a.m., Riverside 4:22 a.m., Alameda 2:07 a.m., Colorado 9:16 a.m. MT. Placer posts its count only as a PDF and keeps its election-night numbers here.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 3, 2026',
     lede: 'Two more ZIPs: Monterey Park and Garden Grove.',
     panels: [
