@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 5, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: AP calls for CA-29 (Rivas), LA Mayor (Raman) and Colorado Proposition 134 (passes); no leader changes in the new counts. Counts as of Nov 5: Secretary of State 5:47 p.m., San Diego 5:44 p.m., LA 4:34 p.m., Orange 5:00 p.m., Riverside 5:13 p.m., Santa Clara 5:11 p.m., Colorado 3:00 p.m. MT, Denver 4:56 p.m. MT. Alameda (next update Nov 6) and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 4, 2026',
     lede: 'Election results update.',
     panels: [
