@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 6, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: AP calls for CA-11 (Wiener), CA-14 (Wahab) and Colorado Propositions 132 and 135 (both pass). New leaders: Assembly District 70 (Swift) and the third Del Mar Union seat (Fitzpatrick). Counts as of Nov 6: Secretary of State 5:37 p.m., San Diego 5:46 p.m., LA 4:37 p.m., Orange 5:00 p.m., Riverside 5:18 p.m., Alameda 5:32 p.m., Santa Clara 5:07 p.m., Colorado 4:28 p.m. MT, Denver 3:49 p.m. MT. Placer is unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 5, 2026',
     lede: 'Election results update.',
     panels: [
