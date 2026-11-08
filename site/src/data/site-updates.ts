@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 7, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: AP calls for Controller, Treasurer, Superintendent of Public Instruction, Board of Equalization Districts 2–4, Propositions 1, 2, 3, 41, 43, 44 and 45, LA Sheriff, 14 State Senate and 65 Assembly seats, and Colorado Treasurer, State Board of Education CD1, Amendments 83–87, Propositions NN, 133, 136 and 137, and five Denver-area legislative and RTD seats. Amendment 87 passes (simple majority). New leader: Assembly District 68 (Lopez). Counts as of Nov 7: Secretary of State 5:10 p.m., LA 4:38 p.m., Orange 5:00 p.m., Riverside 4:30 p.m., Santa Clara 4:50 p.m. San Diego, Alameda, Colorado, Denver and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 6, 2026',
     lede: 'Election results update.',
     panels: [
