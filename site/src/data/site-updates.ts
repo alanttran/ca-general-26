@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 8, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: AP calls for Insurance Commissioner (Kim) and State Senate District 26 (Hernandez). New leader: Mountain View City Council third seat (Poicon). Counts as of Nov 8: Secretary of State 4:21 p.m., LA 4:02 p.m., Santa Clara 5:03 p.m.; Colorado as of Nov 7, 6:11 p.m. MT. San Diego, Orange, Riverside, Alameda, Denver and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 7, 2026',
     lede: 'Election results update.',
     panels: [
