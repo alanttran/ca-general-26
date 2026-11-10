@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 9, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: no new AP calls in races on this guide. New leaders in San Diego’s count: Escondido Mayor (Velazquez), Vista Mayor (Zuniga) and Padre Dam Water District Division 1 (Fordyce). Counts as of Nov 9: Secretary of State 5:14 p.m., San Diego 5:57 p.m., LA 4:45 p.m., Orange 5:00 p.m., Riverside 5:55 p.m., Alameda 4:59 p.m., Santa Clara 5:02 p.m., Colorado 5:19 p.m. MT. Denver and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 8, 2026',
     lede: 'Election results update.',
     panels: [
