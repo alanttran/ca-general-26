@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 10, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: AP calls for U.S. House 7 (Matsui) and 40 (Calvert), State Senate 40 (Elliott), nine Assembly seats (3, 9, 12, 34, 42, 47, 63, 71, 75), Board of Equalization 1 (Esparza), and Props 38 (passed) and 40 (failed). New leaders: Assembly 74 (Farias) in the Secretary of State’s count, and Fallbrook Elementary Measure K, now passing at 55.05% Yes in San Diego’s count. Counts as of Nov 10: Secretary of State 5:31 p.m., San Diego 5:56 p.m., LA 5:01 p.m., Orange 5:00 p.m., Riverside 5:47 p.m., Santa Clara 5:08 p.m., Colorado 3:55 p.m. MT. Alameda, Denver and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 9, 2026',
     lede: 'Election results update.',
     panels: [
