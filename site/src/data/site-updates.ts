@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 11, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: AP calls for State Senate 36 (Duncan) and Assembly 70 (Swift). New leaders in the Secretary of State’s count: Assembly 33 (Cerros) and Assembly 72 (Kluwe). Counts as of Nov 11: Secretary of State 5:17 p.m., Orange 5:01 p.m., Riverside 4:21 p.m., Santa Clara 4:52 p.m.; Colorado as of Nov 10, 8:17 p.m. MT. San Diego, LA, Alameda, Denver and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 10, 2026',
     lede: 'Election results update.',
     panels: [

@@ -34,16 +34,16 @@ const AP_CA_ALL = `${AP_CA}california-results/`;
 const AP_CO_ALL = `${AP_CA}colorado-results/`;
 const ap = (winner: string, url: string, when = 'Nov 3'): RaceResult => ({ status: 'called', winner, source: 'AP', when, url });
 const lead = (source: string, when: string, url: string) => (winner: string, pct?: number | number[]): RaceResult => ({ status: 'leading', winner, source, when, url, ...(pct === undefined ? {} : { pct }) });
-const sos = lead('CA Secretary of State', 'Nov 10, 5:31 p.m. update', 'https://electionresults.sos.ca.gov/');
-const sosBm = lead('CA Secretary of State', 'Nov 10, 5:31 p.m. update', 'https://electionresults.sos.ca.gov/returns/ballot-measures');
+const sos = lead('CA Secretary of State', 'Nov 11, 5:17 p.m. update', 'https://electionresults.sos.ca.gov/');
+const sosBm = lead('CA Secretary of State', 'Nov 11, 5:17 p.m. update', 'https://electionresults.sos.ca.gov/returns/ballot-measures');
 const sdc = lead('San Diego County Registrar', 'Nov 10, 5:56 p.m. update', 'https://www.livevoterturnout.com/ENR/sandiegocaenr/25/en/Index_25.html');
 const lac = lead('LA County Registrar', 'Nov 10, 5:01 p.m. update', 'https://results.lavote.gov/#year=2026&election=4348');
-const occ = lead('Orange County Registrar', 'Nov 10, 5:00 p.m. update', 'https://www.livevoterturnout.com/ENR/orangecaenr/24/en/phkv4sV_Index_24.html');
-const riv = lead('Riverside County Registrar', 'Nov 10, 5:47 p.m. update', 'https://www.livevoterturnout.com/ENR/riversidecaenr/12/en/Index_12.html');
+const occ = lead('Orange County Registrar', 'Nov 11, 5:01 p.m. update', 'https://www.livevoterturnout.com/ENR/orangecaenr/24/en/phkv4sV_Index_24.html');
+const riv = lead('Riverside County Registrar', 'Nov 11, 4:21 p.m. update', 'https://www.livevoterturnout.com/ENR/riversidecaenr/12/en/Index_12.html');
 const plc = lead('Placer County Elections', 'Nov 4, 12:16 a.m. update', 'https://www.placercountyelections.gov/Uploads/documents/11032026/11032026_results05.pdf');
 const ala = lead('Alameda County Registrar', 'Nov 9, 4:59 p.m. update', 'https://alamedacountyca.gov/rovresults/260');
-const scc = lead('Santa Clara County Registrar', 'Nov 10, 5:08 p.m. update', 'https://results.enr.clarityelections.com/CA/Santa_Clara/127570/web.345435/#/summary');
-const cos = lead('Colorado Secretary of State', 'Nov 10, 3:55 p.m. MT update', 'https://results.enr.clarityelections.com/CO/127407/');
+const scc = lead('Santa Clara County Registrar', 'Nov 11, 4:52 p.m. update', 'https://results.enr.clarityelections.com/CA/Santa_Clara/127570/web.345435/#/summary');
+const cos = lead('Colorado Secretary of State', 'Nov 10, 8:17 p.m. MT update', 'https://results.enr.clarityelections.com/CO/127407/');
 const den = lead('Denver Elections', 'Nov 6, 3:49 p.m. MT update', 'https://results.enr.clarityelections.com/CO/Denver/127425/');
 
 export const RESULTS: Record<string, RaceResult> = {
@@ -73,7 +73,7 @@ export const RESULTS: Record<string, RaceResult> = {
   'prop-39': ap('No', `${AP_CA}california-proposition-39-results/`),
   'prop-40': ap('No', AP_CA_ALL, 'Nov 9'),
   'prop-41': ap('No', `${AP_CA}california-proposition-41-results/`, 'Nov 7'),
-  'prop-42': sosBm('Yes', 51.5),
+  'prop-42': sosBm('Yes', 51.4),
   'prop-43': ap('No', AP_CA_ALL, 'Nov 7'),
   'prop-44': ap('No', AP_CA_ALL),
   'prop-45': ap('No', AP_CA_ALL, 'Nov 7'),
@@ -86,7 +86,7 @@ export const RESULTS: Record<string, RaceResult> = {
   'us-rep-ca1': ap('McGuire', `${AP_HOUSE}#1`),
   'us-rep-ca2': ap('Huffman', `${AP_HOUSE}#2`),
   'us-rep-ca3': ap('Bera', `${AP_HOUSE}#3`),
-  'us-rep-ca4': sos('Jones', 52.1),
+  'us-rep-ca4': sos('Jones', 52.0),
   'us-rep-ca5': ap('McClintock', `${AP_HOUSE}#5`),
   'us-rep-ca6': ap('Pan', `${AP_HOUSE}#6`),
   'us-rep-ca7': ap('Matsui', `${AP_HOUSE}#7`, 'Nov 10'),
@@ -105,7 +105,7 @@ export const RESULTS: Record<string, RaceResult> = {
   'us-rep-ca20': ap('Fong', `${AP_HOUSE}#20`),
   'us-rep-ca21': ap('Costa', `${AP_HOUSE}#21`),
   'us-rep-ca22': ap('Villegas', `${AP_HOUSE}#22`, 'Nov 4'),
-  'us-rep-ca23': sos('Obernolte', 50.8),
+  'us-rep-ca23': sos('Obernolte', 50.9),
   'us-rep-ca24': ap('Carbajal', `${AP_HOUSE}#24`),
   'us-rep-ca25': ap('Ruiz', `${AP_HOUSE}#25`),
   'us-rep-ca26': ap('Irwin', `${AP_HOUSE}#26`),
@@ -152,9 +152,9 @@ export const RESULTS: Record<string, RaceResult> = {
   'senate-sd26': ap('Hernandez', AP_CA_ALL, 'Nov 8'),
   'senate-sd28': ap('Smallwood-Cuevas', AP_CA_ALL),
   'senate-sd30': ap('Archuleta', AP_CA_ALL),
-  'senate-sd32': sos('Seyarto', 52.5),
+  'senate-sd32': sos('Seyarto', 52.3),
   'senate-sd34': ap('Valencia', AP_CA_ALL),
-  'senate-sd36': sos('Duncan', 51.4),
+  'senate-sd36': ap('Duncan', AP_CA_ALL, 'Nov 11'),
   'senate-sd38': ap('Blakespear', AP_CA_ALL, 'Nov 7'),
   'senate-sd40': ap('Elliott', AP_CA_ALL, 'Nov 10'),
 
@@ -191,7 +191,7 @@ export const RESULTS: Record<string, RaceResult> = {
   'assembly-ad30': ap('Addis', AP_CA_ALL),
   'assembly-ad31': ap('Perea', AP_CA_ALL),
   'assembly-ad32': ap('Couch', AP_CA_ALL),
-  'assembly-ad33': sos('Macedo', 50.5),
+  'assembly-ad33': sos('Cerros', 50.2),
   'assembly-ad34': ap('Hughes', AP_CA_ALL, 'Nov 10'),
   'assembly-ad35': ap('Gonzales', AP_CA_ALL),
   'assembly-ad36': ap('Obeso-Martinez', AP_CA_ALL, 'Nov 7'),
@@ -226,13 +226,13 @@ export const RESULTS: Record<string, RaceResult> = {
   'assembly-ad65': ap('Davis', AP_CA_ALL),
   'assembly-ad66': ap('Seo', AP_CA_ALL, 'Nov 7'),
   'assembly-ad67': ap('Pulido', AP_CA_ALL, 'Nov 4'),
-  'assembly-ad68': sos('Lopez', 51.9),
+  'assembly-ad68': sos('Lopez', 52.3),
   'assembly-ad69': ap('Lowenthal', AP_CA_ALL, 'Nov 4'),
-  'assembly-ad70': sos('Swift', 51.8),
+  'assembly-ad70': ap('Swift', AP_CA_ALL, 'Nov 11'),
   'assembly-ad71': ap('Sanchez', AP_CA_ALL, 'Nov 10'),
-  'assembly-ad72': sos('Van Der Mark', 50.0),
+  'assembly-ad72': sos('Kluwe', 50.1),
   'assembly-ad73': ap('Petrie-Norris', AP_CA_ALL, 'Nov 5'),
-  'assembly-ad74': sos('Farias', 51.0),
+  'assembly-ad74': sos('Farias', 51.4),
   'assembly-ad75': ap('DeMaio', AP_CA_ALL, 'Nov 10'),
   'assembly-ad76': ap('Patel', AP_CA_ALL, 'Nov 7'),
   'assembly-ad77': ap('Boerner', AP_CA_ALL, 'Nov 5'),
@@ -373,31 +373,31 @@ export const RESULTS: Record<string, RaceResult> = {
   'monterey-park-measure-aaa': lac('Yes', 77.25),
 
   // Orange County
-  'orange-mayor': occ('Slater', 56.7),
-  'mwdoc-division-2': occ('Dick', 41.9),
-  'orange-measure-i': occ('Yes', 54.84),
-  'orange-measure-j': occ('Yes', 59.7),
-  'orange-measure-k': occ('No', 35.17),
-  'nocccd-trustee-area-1': occ('Dunsheath', 67.85),
-  'coast-ccd-trustee-area-1': occ('Kalmick', 46.35),
-  'ggusd-trustee-area-2': occ('Nguyen', 58.5),
-  'oc-supervisor-d4': occ('Traut', 52.21),
-  'garden-grove-mayor': occ('Klopfenstein', 53.94),
-  'garden-grove-council-d1': occ('Flanders', 49.54),
-  'garden-grove-council-d3': occ('Tran', 54.08),
+  'orange-mayor': occ('Slater', 56.48),
+  'mwdoc-division-2': occ('Dick', 41.72),
+  'orange-measure-i': occ('Yes', 54.93),
+  'orange-measure-j': occ('Yes', 59.72),
+  'orange-measure-k': occ('No', 35.12),
+  'nocccd-trustee-area-1': occ('Dunsheath', 67.92),
+  'coast-ccd-trustee-area-1': occ('Kalmick', 46.36),
+  'ggusd-trustee-area-2': occ('Nguyen', 58.42),
+  'oc-supervisor-d4': occ('Traut', 52.41),
+  'garden-grove-mayor': occ('Klopfenstein', 53.75),
+  'garden-grove-council-d1': occ('Flanders', 49.51),
+  'garden-grove-council-d3': occ('Tran', 53.85),
 
   // Riverside County
-  'rivco-superior-court-10': riv('Paradise', 53.52),
-  'mvusd-trustee-area-1': riv('Pardue', 55.54),
-  'mvusd-trustee-area-2': riv('Young', 54.14),
-  'rcwd-board': riv('Plummer, Brady, Harkey, Edwards', [23.03, 22.78, 22.73, 16.11]),
-  'mvusd-measure-m': riv('No', 50.34),
-  'rctc-measure-a': riv('Yes', 70.52),
-  'temecula-council-d5': riv('Schwank', 36.3),
-  'tvusd-trustee-area-2': riv('Barham', 52.72),
-  'tvusd-trustee-area-4': riv('Sola', 54.76),
-  'msjc-trustee-area-3': riv('Carpenter', 65.54),
-  'tvusd-measure-s': riv('No', 52.92), // bonds need 55% Yes
+  'rivco-superior-court-10': riv('Paradise', 53.02),
+  'mvusd-trustee-area-1': riv('Pardue', 56.17),
+  'mvusd-trustee-area-2': riv('Young', 53.79),
+  'rcwd-board': riv('Plummer, Brady, Harkey, Edwards', [23.02, 22.78, 22.75, 15.89]),
+  'mvusd-measure-m': riv('No', 50.38),
+  'rctc-measure-a': riv('Yes', 70.64),
+  'temecula-council-d5': riv('Schwank', 36.36),
+  'tvusd-trustee-area-2': riv('Barham', 52.5),
+  'tvusd-trustee-area-4': riv('Sola', 54.81),
+  'msjc-trustee-area-3': riv('Carpenter', 65.42),
+  'tvusd-measure-s': riv('No', 53.27), // bonds need 55% Yes
 
   // Placer County
   'rocklin-city-council': plc('Halldin, Gayaldo', [44.48, 37.47]),
@@ -421,13 +421,13 @@ export const RESULTS: Record<string, RaceResult> = {
   'bay-area-regional-transit-measure': ala('Yes', 66.83), // Alameda's share only; no combined multi-county total posted yet
 
   // Santa Clara County
-  'mountain-view-city-council': scc('Sylvester, Poicon, Paymer', [18.31, 15.26, 15.22]),
-  'mvwsd-board': scc('Conley, Lambert', [33.64, 26.67]),
-  'mvlahsd-trustee-area-3': scc('Cornes', 56.76),
-  'valley-water-d7': scc('Dailey', 58.67),
-  'mountain-view-measure-e': scc('Yes', 71.27),
-  'mountain-view-measure-f': scc('Yes', 79.35),
-  'el-camino-measure-s': scc('Yes', 91.71),
+  'mountain-view-city-council': scc('Sylvester, Poicon, Paymer', [18.22, 15.3, 15.28]),
+  'mvwsd-board': scc('Conley, Lambert', [33.48, 26.33]),
+  'mvlahsd-trustee-area-3': scc('Cornes', 56.79),
+  'valley-water-d7': scc('Dailey', 58.65),
+  'mountain-view-measure-e': scc('Yes', 71.34),
+  'mountain-view-measure-f': scc('Yes', 79.46),
+  'el-camino-measure-s': scc('Yes', 91.69),
 
   // Colorado statewide
   'co-us-senate': ap('Hickenlooper', `${AP_CA}colorado-us-senate-results/`),
