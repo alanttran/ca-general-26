@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 12, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: AP calls Prop 5 (passed). New leader in San Diego’s count: Padre Dam Water District Division 1 (Woods). Counts as of Nov 12: Secretary of State 5:26 p.m., San Diego 5:49 p.m., Orange 5:00 p.m., Riverside 5:57 p.m., Santa Clara 5:03 p.m., Colorado 3:45 p.m. MT. LA, Alameda, Denver and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 11, 2026',
     lede: 'Election results update.',
     panels: [
