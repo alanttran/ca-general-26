@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 13, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: AP calls U.S. House 4 (Jones) and Prop 42 (passed). New leader in Riverside’s count: Rancho California Water District (Woodrome now holds the fourth seat). Counts as of Nov 13: Secretary of State 5:41 p.m., LA 5:51 p.m., Orange 5:00 p.m., Riverside 5:38 p.m., Santa Clara 3:28 p.m., Colorado 4:40 p.m. MT, Denver 12:47 p.m. MT. San Diego, Alameda and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 12, 2026',
     lede: 'Election results update.',
     panels: [
