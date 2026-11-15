@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 15, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: AP calls State Senate 4 (Duarte) and Assembly 7 (Slavensky), 33 (Cerros), 68 (Lopez) and 74 (Farias). No leader changes. New counts: Secretary of State Nov 14, 5:16 p.m.; Riverside Nov 14, 4:27 p.m.; Santa Clara Nov 14, 5:14 p.m.; Alameda Nov 13, 6:14 p.m. San Diego, LA, Orange, Colorado, Denver and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 13, 2026',
     lede: 'Election results update.',
     panels: [
