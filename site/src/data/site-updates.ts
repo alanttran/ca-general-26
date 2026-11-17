@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 16, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: AP calls U.S. House 23 (Obernolte). New leaders in San Diego’s count: Grossmont-Cuyamaca Measure G now passing (55.2% Yes, needs 55%) and Oceanside Measure S now passing (50.1% Yes). New counts as of Nov 16: Secretary of State 5:41 p.m., San Diego 5:31 p.m., Orange 5:00 p.m., Riverside 4:19 p.m., Santa Clara 4:32 p.m., Alameda 6:53 p.m. LA, Colorado, Denver and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 15, 2026',
     lede: 'Election results update.',
     panels: [
