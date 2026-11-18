@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 17, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: no new AP calls today. Lead changes: State Senate 32 (Seyarto) now leads with 51.9%. New counts as of Nov 17: Secretary of State 5:25 p.m., LA 6:13 p.m., Orange 5:00 p.m., Riverside 4:55 p.m. San Diego, Santa Clara, Alameda, Colorado, Denver and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 16, 2026',
     lede: 'Election results update.',
     panels: [
