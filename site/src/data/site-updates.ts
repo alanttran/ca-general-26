@@ -22,7 +22,7 @@ export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
       {
         summary: 'Election results',
         bullets: [
-          'Results: no new AP calls today and no lead changes. Vote shares refreshed from counts as of Nov 20: Secretary of State 6:26 p.m., San Diego 5:47 p.m., Orange 5:04 p.m., Riverside 5:20 p.m., Santa Clara 4:27 p.m. LA, Alameda, Colorado, Denver and Placer are unchanged.',
+          'Results: no new AP calls today and no lead changes. Vote shares refreshed from the latest counts: Secretary of State Nov 21, 4:37 p.m., Riverside Nov 21, 4:35 p.m., San Diego Nov 20, 5:47 p.m., Orange Nov 20, 5:04 p.m., Santa Clara Nov 20, 4:27 p.m. LA, Alameda, Colorado, Denver and Placer are unchanged.',
         ],
       },
     ],
