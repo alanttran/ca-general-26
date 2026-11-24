@@ -34,13 +34,13 @@ const AP_CA_ALL = `${AP_CA}california-results/`;
 const AP_CO_ALL = `${AP_CA}colorado-results/`;
 const ap = (winner: string, url: string, when = 'Nov 3'): RaceResult => ({ status: 'called', winner, source: 'AP', when, url });
 const lead = (source: string, when: string, url: string) => (winner: string, pct?: number | number[]): RaceResult => ({ status: 'leading', winner, source, when, url, ...(pct === undefined ? {} : { pct }) });
-const sos = lead('CA Secretary of State', 'Nov 21, 4:37 p.m. update', 'https://electionresults.sos.ca.gov/');
-const sosRet = lead('CA Secretary of State', 'Nov 21, 4:37 p.m. update', 'https://electionresults.sos.ca.gov/');
-const sosBm = lead('CA Secretary of State', 'Nov 21, 4:37 p.m. update', 'https://electionresults.sos.ca.gov/returns/ballot-measures');
+const sos = lead('CA Secretary of State', 'Nov 23, 5:23 p.m. update', 'https://electionresults.sos.ca.gov/');
+const sosRet = lead('CA Secretary of State', 'Nov 23, 5:23 p.m. update', 'https://electionresults.sos.ca.gov/');
+const sosBm = lead('CA Secretary of State', 'Nov 23, 5:23 p.m. update', 'https://electionresults.sos.ca.gov/returns/ballot-measures');
 const sdc = lead('San Diego County Registrar', 'Nov 20, 5:47 p.m. update', 'https://www.livevoterturnout.com/ENR/sandiegocaenr/25/en/Index_25.html');
 const lac = lead('LA County Registrar', 'Nov 19, 7:51 p.m. update', 'https://results.lavote.gov/#year=2026&election=4348');
-const occ = lead('Orange County Registrar', 'Nov 20, 5:04 p.m. update', 'https://www.livevoterturnout.com/ENR/orangecaenr/24/en/phkv4sV_Index_24.html');
-const riv = lead('Riverside County Registrar', 'Nov 21, 4:35 p.m. update', 'https://www.livevoterturnout.com/ENR/riversidecaenr/12/en/Index_12.html');
+const occ = lead('Orange County Registrar', 'Nov 23, 5:01 p.m. update', 'https://www.livevoterturnout.com/ENR/orangecaenr/24/en/phkv4sV_Index_24.html');
+const riv = lead('Riverside County Registrar', 'Nov 23, 5:18 p.m. update', 'https://www.livevoterturnout.com/ENR/riversidecaenr/12/en/Index_12.html');
 const plc = lead('Placer County Elections', 'Nov 4, 12:16 a.m. update', 'https://www.placercountyelections.gov/Uploads/documents/11032026/11032026_results05.pdf');
 const ala = lead('Alameda County Registrar', 'Nov 16, 6:53 p.m. update', 'https://alamedacountyca.gov/rovresults/260');
 const scc = lead('Santa Clara County Registrar', 'Nov 20, 4:27 p.m. update', 'https://results.enr.clarityelections.com/CA/Santa_Clara/127570/web.345435/#/summary');
@@ -375,30 +375,30 @@ export const RESULTS: Record<string, RaceResult> = {
 
   // Orange County
   'orange-mayor': occ('Slater', 56.37),
-  'mwdoc-division-2': occ('Dick', 41.69),
+  'mwdoc-division-2': occ('Dick', 41.68),
   'orange-measure-i': occ('Yes', 55.04),
-  'orange-measure-j': occ('Yes', 59.7),
+  'orange-measure-j': occ('Yes', 59.69),
   'orange-measure-k': occ('No', 35.14),
   'nocccd-trustee-area-1': occ('Dunsheath', 67.97),
   'coast-ccd-trustee-area-1': occ('Kalmick', 46.36),
   'ggusd-trustee-area-2': occ('Nguyen', 58.45),
   'oc-supervisor-d4': occ('Traut', 52.38),
-  'garden-grove-mayor': occ('Klopfenstein', 53.68),
-  'garden-grove-council-d1': occ('Flanders', 49.4),
+  'garden-grove-mayor': occ('Klopfenstein', 53.67),
+  'garden-grove-council-d1': occ('Flanders', 49.39),
   'garden-grove-council-d3': occ('Tran', 53.85),
 
   // Riverside County
-  'rivco-superior-court-10': riv('Paradise', 51.79),
-  'mvusd-trustee-area-1': riv('Pardue', 56.03),
-  'mvusd-trustee-area-2': riv('Young', 54.03),
-  'rcwd-board': riv('Plummer, Brady, Harkey, Woodrome', [22.95, 22.76, 22.63, 15.94]),
-  'mvusd-measure-m': riv('No', 51.48), // bonds need 55% Yes,
-  'rctc-measure-a': riv('Yes', 71.17),
-  'temecula-council-d5': riv('Schwank', 35.69),
+  'rivco-superior-court-10': riv('Paradise', 51.75),
+  'mvusd-trustee-area-1': riv('Pardue', 56.08),
+  'mvusd-trustee-area-2': riv('Young', 54.02),
+  'rcwd-board': riv('Plummer, Brady, Harkey, Woodrome', [22.95, 22.76, 22.61, 15.95]),
+  'mvusd-measure-m': riv('No', 51.51), // bonds need 55% Yes,
+  'rctc-measure-a': riv('Yes', 71.21),
+  'temecula-council-d5': riv('Schwank', 35.64),
   'tvusd-trustee-area-2': riv('Barham', 52.19),
-  'tvusd-trustee-area-4': riv('Sola', 54.16),
+  'tvusd-trustee-area-4': riv('Sola', 54.2),
   'msjc-trustee-area-3': riv('Carpenter', 65.22),
-  'tvusd-measure-s': riv('No', 53.65), // bonds need 55% Yes
+  'tvusd-measure-s': riv('No', 53.69), // bonds need 55% Yes
 
   // Placer County
   'rocklin-city-council': plc('Halldin, Gayaldo', [44.48, 37.47]),
