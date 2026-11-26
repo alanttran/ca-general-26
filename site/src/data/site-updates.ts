@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 25, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: no new AP calls today and no lead changes. Vote shares refreshed from the latest counts: Secretary of State Nov 25, 5:38 p.m., Riverside Nov 25, 6:00 p.m., LA Nov 25, 4:12 p.m., Santa Clara Nov 25, 4:09 p.m., Orange Nov 24, 5:00 p.m. San Diego, Alameda, Colorado, Denver and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 23, 2026',
     lede: 'Election results update.',
     panels: [
