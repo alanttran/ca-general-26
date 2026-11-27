@@ -34,18 +34,21 @@ const AP_CA_ALL = `${AP_CA}california-results/`;
 const AP_CO_ALL = `${AP_CA}colorado-results/`;
 const ap = (winner: string, url: string, when = 'Nov 3'): RaceResult => ({ status: 'called', winner, source: 'AP', when, url });
 const lead = (source: string, when: string, url: string) => (winner: string, pct?: number | number[]): RaceResult => ({ status: 'leading', winner, source, when, url, ...(pct === undefined ? {} : { pct }) });
-const sos = lead('CA Secretary of State', 'Nov 25, 5:38 p.m. update', 'https://electionresults.sos.ca.gov/');
+const sos = lead('CA Secretary of State', 'Nov 25, 6:54 p.m. update', 'https://electionresults.sos.ca.gov/');
 const sosRet = lead('CA Secretary of State', 'Nov 25, 5:38 p.m. update', 'https://electionresults.sos.ca.gov/');
-const sosBm = lead('CA Secretary of State', 'Nov 25, 5:38 p.m. update', 'https://electionresults.sos.ca.gov/returns/ballot-measures');
+const sosBm = lead('CA Secretary of State', 'Nov 25, 6:54 p.m. update', 'https://electionresults.sos.ca.gov/returns/ballot-measures');
 const sdc = lead('San Diego County Registrar', 'Nov 20, 5:47 p.m. update', 'https://www.livevoterturnout.com/ENR/sandiegocaenr/25/en/Index_25.html');
 const lac = lead('LA County Registrar', 'Nov 25, 4:12 p.m. update', 'https://results.lavote.gov/#year=2026&election=4348');
-const occ = lead('Orange County Registrar', 'Nov 24, 5:00 p.m. update', 'https://www.livevoterturnout.com/ENR/orangecaenr/24/en/phkv4sV_Index_24.html');
+const occ = lead('Orange County Registrar', 'Nov 25, 7:18 p.m. update', 'https://www.livevoterturnout.com/ENR/orangecaenr/24/en/phkv4sV_Index_24.html');
 const riv = lead('Riverside County Registrar', 'Nov 25, 6:00 p.m. update', 'https://www.livevoterturnout.com/ENR/riversidecaenr/12/en/Index_12.html');
 const plc = lead('Placer County Elections', 'Nov 4, 12:16 a.m. update', 'https://www.placercountyelections.gov/Uploads/documents/11032026/11032026_results05.pdf');
-const ala = lead('Alameda County Registrar', 'Nov 16, 6:53 p.m. update', 'https://alamedacountyca.gov/rovresults/260');
+
+// Alameda certified its final results on Nov 25; for races AP doesn't call, a certified count is a call.
+const alaCert = (winner: string): RaceResult => ({ status: 'called', winner, source: 'Alameda County Registrar', when: 'Nov 25', url: 'https://alamedacountyca.gov/rovresults/260' });
+const ala = lead('Alameda County Registrar', 'Nov 25, 6:34 p.m. update', 'https://alamedacountyca.gov/rovresults/260');
 const scc = lead('Santa Clara County Registrar', 'Nov 25, 4:09 p.m. update', 'https://results.enr.clarityelections.com/CA/Santa_Clara/127570/web.345435/#/summary');
 const cos = lead('Colorado Secretary of State', 'Nov 13, 4:40 p.m. MT update', 'https://results.enr.clarityelections.com/CO/127407/');
-const den = lead('Denver Elections', 'Nov 13, 12:47 p.m. MT update', 'https://results.enr.clarityelections.com/CO/Denver/127425/');
+const den = lead('Denver Elections', 'Nov 24, 10:59 a.m. MT update', 'https://results.enr.clarityelections.com/CO/Denver/127425/');
 
 export const RESULTS: Record<string, RaceResult> = {
   // California statewide
@@ -153,7 +156,7 @@ export const RESULTS: Record<string, RaceResult> = {
   'senate-sd26': ap('Hernandez', AP_CA_ALL, 'Nov 8'),
   'senate-sd28': ap('Smallwood-Cuevas', AP_CA_ALL),
   'senate-sd30': ap('Archuleta', AP_CA_ALL),
-  'senate-sd32': sos('Seyarto', 51.72),
+  'senate-sd32': sos('Seyarto', 51.69),
   'senate-sd34': ap('Valencia', AP_CA_ALL),
   'senate-sd36': ap('Duncan', AP_CA_ALL, 'Nov 11'),
   'senate-sd38': ap('Blakespear', AP_CA_ALL, 'Nov 7'),
@@ -374,17 +377,17 @@ export const RESULTS: Record<string, RaceResult> = {
   'monterey-park-measure-aaa': lac('Yes', 77.31),
 
   // Orange County
-  'orange-mayor': occ('Slater', 56.37),
+  'orange-mayor': occ('Slater', 56.36),
   'mwdoc-division-2': occ('Dick', 41.68),
   'orange-measure-i': occ('Yes', 55.04),
   'orange-measure-j': occ('Yes', 59.69),
   'orange-measure-k': occ('No', 35.14),
   'nocccd-trustee-area-1': occ('Dunsheath', 67.97),
   'coast-ccd-trustee-area-1': occ('Kalmick', 46.35),
-  'ggusd-trustee-area-2': occ('Nguyen', 58.44),
+  'ggusd-trustee-area-2': occ('Nguyen', 58.45),
   'oc-supervisor-d4': occ('Traut', 52.38),
-  'garden-grove-mayor': occ('Klopfenstein', 53.67),
-  'garden-grove-council-d1': occ('Flanders', 49.39),
+  'garden-grove-mayor': occ('Klopfenstein', 53.66),
+  'garden-grove-council-d1': occ('Flanders', 49.38),
   'garden-grove-council-d3': occ('Tran', 53.85),
 
   // Riverside County
@@ -410,15 +413,15 @@ export const RESULTS: Record<string, RaceResult> = {
   'rusd-measure-d': plc('No', 52.16), // bonds need 55% Yes
 
   // Alameda County
-  'hayward-mayor': ala('Salinas', 76.81),
-  'hayward-council-d6': ala('Roche', 100),
-  'husd-trustee-area-4': ala('Fernelius', 52.91),
-  'clpccd-area-6': ala('Gin', 60.08),
-  'clpccd-area-3': ala('Mojadedi', 57.12),
-  'ac-transit-ward-4': ala('Syed', 78.8),
-  'bart-district-4': ala('Raburn', 68.85),
-  'ebrpd-ward-3': ala('Lewington', 50.43),
-  'hayward-measure-cc': ala('Yes', 65.03),
+  'hayward-mayor': alaCert('Salinas'),
+  'hayward-council-d6': alaCert('Roche'),
+  'husd-trustee-area-4': alaCert('Fernelius'),
+  'clpccd-area-6': alaCert('Gin'),
+  'clpccd-area-3': alaCert('Mojadedi'),
+  'ac-transit-ward-4': alaCert('Syed'),
+  'bart-district-4': alaCert('Raburn'),
+  'ebrpd-ward-3': alaCert('Lewington'),
+  'hayward-measure-cc': alaCert('Yes'),
   'bay-area-regional-transit-measure': ala('Yes', 67.14), // Alameda's share only; no combined multi-county total posted yet
 
   // Santa Clara County

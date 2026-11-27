@@ -16,6 +16,18 @@ export interface SiteUpdateBuild {
 
 export const SITE_UPDATE_BUILDS: SiteUpdateBuild[] = [
   {
+    dateLabel: 'November 26, 2026',
+    lede: 'Election results update.',
+    panels: [
+      {
+        summary: 'Election results',
+        bullets: [
+          'Results: Alameda County certified its final results on Nov 25, so its 9 local races (Hayward, Chabot-Las Positas, AC Transit, BART, East Bay Parks) are now marked final. No new AP calls and no lead changes elsewhere. Vote shares refreshed: Secretary of State Nov 25, 6:54 p.m., Orange Nov 25, 7:18 p.m., Denver Nov 24 official results. San Diego, LA, Riverside, Santa Clara, Colorado and Placer are unchanged.',
+        ],
+      },
+    ],
+  },
+  {
     dateLabel: 'November 25, 2026',
     lede: 'Election results update.',
     panels: [
