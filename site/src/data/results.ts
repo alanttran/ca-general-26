@@ -34,11 +34,11 @@ const AP_CA_ALL = `${AP_CA}california-results/`;
 const AP_CO_ALL = `${AP_CA}colorado-results/`;
 const ap = (winner: string, url: string, when = 'Nov 3'): RaceResult => ({ status: 'called', winner, source: 'AP', when, url });
 const lead = (source: string, when: string, url: string) => (winner: string, pct?: number | number[]): RaceResult => ({ status: 'leading', winner, source, when, url, ...(pct === undefined ? {} : { pct }) });
-const sos = lead('CA Secretary of State', 'Nov 25, 6:54 p.m. update', 'https://electionresults.sos.ca.gov/');
-const sosRet = lead('CA Secretary of State', 'Nov 25, 5:38 p.m. update', 'https://electionresults.sos.ca.gov/');
-const sosBm = lead('CA Secretary of State', 'Nov 25, 6:54 p.m. update', 'https://electionresults.sos.ca.gov/returns/ballot-measures');
+const sos = lead('CA Secretary of State', 'Nov 27, 12:37 p.m. update', 'https://electionresults.sos.ca.gov/');
+const sosRet = lead('CA Secretary of State', 'Nov 27, 12:37 p.m. update', 'https://electionresults.sos.ca.gov/');
+const sosBm = lead('CA Secretary of State', 'Nov 27, 12:37 p.m. update', 'https://electionresults.sos.ca.gov/returns/ballot-measures');
 const sdc = lead('San Diego County Registrar', 'Nov 20, 5:47 p.m. update', 'https://www.livevoterturnout.com/ENR/sandiegocaenr/25/en/Index_25.html');
-const lac = lead('LA County Registrar', 'Nov 25, 4:12 p.m. update', 'https://results.lavote.gov/#year=2026&election=4348');
+const lac = lead('LA County Registrar', 'Nov 27, 12:33 p.m. update', 'https://results.lavote.gov/#year=2026&election=4348');
 const occ = lead('Orange County Registrar', 'Nov 25, 7:18 p.m. update', 'https://www.livevoterturnout.com/ENR/orangecaenr/24/en/phkv4sV_Index_24.html');
 const riv = lead('Riverside County Registrar', 'Nov 25, 6:00 p.m. update', 'https://www.livevoterturnout.com/ENR/riversidecaenr/12/en/Index_12.html');
 const plc = lead('Placer County Elections', 'Nov 4, 12:16 a.m. update', 'https://www.placercountyelections.gov/Uploads/documents/11032026/11032026_results05.pdf');
@@ -351,9 +351,9 @@ export const RESULTS: Record<string, RaceResult> = {
   'laccd-seat-6': lac('Winston', 38.63),
   'la-mayor': ap('Raman', `${AP_CA}california-los-angeles-mayor-results/`, 'Nov 5'),
   'la-city-attorney': lac('Roy', 68.56),
-  'la-measure-te': lac('Yes', 60.89),
+  'la-measure-te': lac('Yes', 60.9),
   'la-measure-la': lac('Yes', 62.49),
-  'la-measure-pl': lac('Yes', 71.72),
+  'la-measure-pl': lac('Yes', 71.73),
   'la-measure-ee': lac('Yes', 52.74),
   'la-measure-prk': lac('Yes', 79.28),
   'la-measure-prt': lac('Yes', 77.36),
@@ -367,10 +367,10 @@ export const RESULTS: Record<string, RaceResult> = {
   'burbank-city-clerk': lac('Clark', 100),
   'burbank-city-treasurer': lac('Palmer', 100),
   'burbank-measure-c': lac('Yes', 79.01),
-  'burbank-measure-cc': lac('Yes', 52.73),
+  'burbank-measure-cc': lac('Yes', 52.74),
   'burbank-measure-cd': lac('No', 21.45),
-  'busd-trustee-area-3': lac('Morrison', 50.49),
-  'monterey-park-council-d5': lac('Ngo', 50.06),
+  'busd-trustee-area-3': lac('Morrison', 50.47),
+  'monterey-park-council-d5': lac('Ngo', 50.09),
   'monterey-park-city-clerk': lac('Leung', 100),
   'monterey-park-city-treasurer': lac('Lee', 100),
   'monterey-park-measure-hom': lac('Yes', 86.44),
